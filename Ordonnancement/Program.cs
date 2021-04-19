@@ -5,10 +5,10 @@ namespace Ordonnancement
 {
     class Processus
     {
-        public int ID { get; set; } //ID du processus
-        public int ARRIV { get; set; } //temps d'arrivé
-        public int BT { get; set; } //le temps qu'il faut pour executer le processus
-        public int PRIO { get; set; } //priorite du processus
+        public int ID { get; } //ID du processus
+        public int ARRIV { get; } //temps d'arrivé
+        public int BT { get; } //le temps qu'il faut pour executer le processus
+        public int PRIO { get; } //priorite du processus
 
         public Processus(int ID, int ARRIV, int BT, int PRIO)
         {
@@ -25,13 +25,13 @@ namespace Ordonnancement
             this.BT = BT;
             this.PRIO = 0;
         }
-        public void affichage()
+        public void Affichage()
         {
-            Console.WriteLine("Le processus");
-            Console.WriteLine("ID : " + ID);
-            Console.WriteLine("ARRIV : " + ARRIV);
-            Console.WriteLine("BT : " + BT);
-            Console.WriteLine("PRIO : " + PRIO);
+            Console.WriteLine(" ");
+            Console.Write("ID : " + ID);
+            Console.Write("\t\tARRIV : " + ARRIV);
+            Console.Write("\tBT : " + BT);
+            Console.Write("\tPRIO : " + PRIO);
         }
     }
     class Schedule
@@ -53,9 +53,9 @@ namespace Ordonnancement
             P.Sort(
                 delegate (Processus x, Processus y) 
                 {
-                    if (x.PRIO.CompareTo(y.PRIO) == 0) return x.ARRIV.CompareTo(y.ARRIV);
-                    else return y.PRIO.CompareTo(x.PRIO); 
-                }); //tri par priorité
+                    if (x.PRIO.CompareTo(y.PRIO) == 0) return x.ARRIV.CompareTo(y.ARRIV); //si priorité egale
+                    else return x.PRIO.CompareTo(y.PRIO); //tri par priorité
+                }); 
             Affichage();
         }
 
@@ -72,10 +72,10 @@ namespace Ordonnancement
             TempsDeSejour();
             for (int i=0;i<nb;i++)
             {
-                P[i].affichage();
-                Console.WriteLine("FIN : " + FIN[i]);
-                Console.WriteLine("WT : " + WT[i]);
-                Console.WriteLine("TAT : " + TAT[i]);
+                P[i].Affichage();
+                Console.Write("\tFIN : " + FIN[i]);
+                Console.Write("\tWT : " + WT[i]);
+                Console.WriteLine("\tTAT : " + TAT[i]);
             }
             /*Console.WriteLine("Les processus");
             Console.WriteLine("ID : " + P[1].ID);
@@ -131,15 +131,18 @@ namespace Ordonnancement
     {
         static void Main(string[] args)
         {
-            Processus proa = new Processus(1, 4, 3);
-            Processus prob = new Processus(5, 2, 3);
-            Processus proc = new Processus(5, 5, 3,0);
-            Processus prod = new Processus(5, 1, 3,1);
-            Schedule prgm = new Schedule();
-            prgm.push(proa);
-            prgm.push(prob);
-            prgm.push(proc);
-            prgm.push(prod);
+            Processus Pro;
+            Schedule prgm = new();
+            Random r1,r2,r3,r4;
+            for (int i = 0; i < 20; i++)
+            {
+                r1 = new Random();
+                r2 = new Random();
+                r3 = new Random();
+                r4 = new Random();
+                Pro = new(r1.Next(0, 100), r2.Next(0, 100), r3.Next(1, 100), r3.Next(0, 100));
+                prgm.push(Pro);
+            }
             prgm.Priorité();
         }
     }
