@@ -23,6 +23,15 @@ namespace Ordonnancement
             this.ID = ID;
             this.ARRIV = ARRIV;
             this.BT = BT;
+            this.PRIO = 0;
+        }
+        public void affichage()
+        {
+            Console.WriteLine("Le processus");
+            Console.WriteLine("ID : " + ID);
+            Console.WriteLine("ARRIV : " + ARRIV);
+            Console.WriteLine("BT : " + BT);
+            Console.WriteLine("PRIO : " + PRIO);
         }
     }
     class Schedule
@@ -39,6 +48,16 @@ namespace Ordonnancement
             P.Sort(delegate (Processus x, Processus y) { return x.ARRIV.CompareTo(y.ARRIV); }); //tri par ordre d'arrivé
             Affichage();
         }
+        public void Priorité()
+        {
+            P.Sort(
+                delegate (Processus x, Processus y) 
+                {
+                    if (x.PRIO.CompareTo(y.PRIO) == 0) return x.ARRIV.CompareTo(y.ARRIV);
+                    else return y.PRIO.CompareTo(x.PRIO); 
+                }); //tri par priorité
+            Affichage();
+        }
 
         public void push(Processus pro) //ajout d'un processus à la liste P
         {
@@ -51,13 +70,20 @@ namespace Ordonnancement
             TempsFinExecution();
             TempsDAttente();
             TempsDeSejour();
-            Console.WriteLine("Les processus");
+            for (int i=0;i<nb;i++)
+            {
+                P[i].affichage();
+                Console.WriteLine("FIN : " + FIN[i]);
+                Console.WriteLine("WT : " + WT[i]);
+                Console.WriteLine("TAT : " + TAT[i]);
+            }
+            /*Console.WriteLine("Les processus");
             Console.WriteLine("ID : " + P[1].ID);
             Console.WriteLine("ARRIV : " + P[1].ARRIV);
             Console.WriteLine("BT : " + P[1].BT);
             Console.WriteLine("FIN : " + FIN[0]);
             Console.WriteLine("WT : " + WT[0]);
-            Console.WriteLine("TAT : " + TAT[0]);
+            Console.WriteLine("TAT : " + TAT[0]);*/
         }
 
         private void TempsFinExecution() //temps de fin d'execution FIN
@@ -107,10 +133,14 @@ namespace Ordonnancement
         {
             Processus proa = new Processus(1, 4, 3);
             Processus prob = new Processus(5, 2, 3);
+            Processus proc = new Processus(5, 5, 3,0);
+            Processus prod = new Processus(5, 1, 3,1);
             Schedule prgm = new Schedule();
             prgm.push(proa);
             prgm.push(prob);
-            prgm.PAPS();
+            prgm.push(proc);
+            prgm.push(prod);
+            prgm.Priorité();
         }
     }
 }
