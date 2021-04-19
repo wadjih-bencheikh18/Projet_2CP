@@ -52,12 +52,12 @@ namespace Ordonnancement
         public void Priorité()
         {
             P.Sort(
-                delegate (Processus x, Processus y) 
+                delegate (Processus x, Processus y)
                     {
                         if (x.PRIO.CompareTo(y.PRIO) == 0) return x.ARRIV.CompareTo(y.ARRIV); //si priorité egale
                         else return x.PRIO.CompareTo(y.PRIO); //tri par priorité
                     }
-                ); 
+                );
             Affichage();
         }
 
@@ -72,7 +72,7 @@ namespace Ordonnancement
             TempsFinExecution();
             TempsDAttente();
             TempsDeSejour();
-            for (int i=0;i<nb;i++)
+            for (int i = 0; i < nb; i++)
             {
                 P[i].Affichage();
                 Console.Write("\tFIN : " + FIN[i]);
@@ -135,7 +135,7 @@ namespace Ordonnancement
         {
             Processus Pro;
             Schedule prgm = new();
-            Random r1,r2,r3,r4;
+            Random r1, r2, r3, r4;
             for (int i = 0; i < 20; i++)
             {
                 r1 = new Random();
