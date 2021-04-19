@@ -48,24 +48,26 @@ namespace Ordonnancement
             P.Sort(delegate (Processus x, Processus y) { return x.ARRIV.CompareTo(y.ARRIV); }); //tri par ordre d'arrivé
             Affichage();
         }
+
         public void Priorité()
         {
             P.Sort(
                 delegate (Processus x, Processus y) 
-                {
-                    if (x.PRIO.CompareTo(y.PRIO) == 0) return x.ARRIV.CompareTo(y.ARRIV); //si priorité egale
-                    else return x.PRIO.CompareTo(y.PRIO); //tri par priorité
-                }); 
+                    {
+                        if (x.PRIO.CompareTo(y.PRIO) == 0) return x.ARRIV.CompareTo(y.ARRIV); //si priorité egale
+                        else return x.PRIO.CompareTo(y.PRIO); //tri par priorité
+                    }
+                ); 
             Affichage();
         }
 
-        public void push(Processus pro) //ajout d'un processus à la liste P
+        public void Push(Processus pro) //ajout d'un processus à la liste P
         {
             P.Add(pro);
             nb++;
         }
 
-        public void Affichage() //A MODIFIER
+        public void Affichage()
         {
             TempsFinExecution();
             TempsDAttente();
@@ -140,8 +142,8 @@ namespace Ordonnancement
                 r2 = new Random();
                 r3 = new Random();
                 r4 = new Random();
-                Pro = new(r1.Next(0, 100), r2.Next(0, 100), r3.Next(1, 100), r3.Next(0, 100));
-                prgm.push(Pro);
+                Pro = new(r1.Next(0, 100), r2.Next(0, 100), r3.Next(1, 100), r4.Next(0, 100));
+                prgm.Push(Pro);
             }
             prgm.Priorité();
         }
