@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordonnancement", "Ordonnancement\Ordonnancement.csproj", "{A229EBA4-60F2-4F41-AF86-0DCDE4CD15FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A229EBA4-60F2-4F41-AF86-0DCDE4CD15FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A229EBA4-60F2-4F41-AF86-0DCDE4CD15FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A229EBA4-60F2-4F41-AF86-0DCDE4CD15FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A229EBA4-60F2-4F41-AF86-0DCDE4CD15FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {148C8C08-5B25-4E54-8DA7-55CCC43FF3B5}
+	EndGlobalSection
+EndGlobal
