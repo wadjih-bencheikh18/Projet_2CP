@@ -39,7 +39,7 @@
             <Button Content="HOME" HorizontalAlignment="Center" VerticalAlignment="Center" Width="82.5" Margin="0" Height="36.46" FontSize="20" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Bahnschrift" FontWeight="Bold" Grid.Column="3"/>
             <Button Content="CONTACT US" HorizontalAlignment="Center" VerticalAlignment="Center" Width="135" Margin="0" Height="36.46" FontSize="20" BorderBrush="{x:Null}" FontWeight="Bold" Background="{x:Null}" FontFamily="Bahnschrift" Grid.Column="2"/>
             <Button Content="HELP" HorizontalAlignment="Center" VerticalAlignment="Center" Width="106.5" Margin="0" Height="36.46" FontSize="20" BorderBrush="{x:Null}" FontWeight="Bold" Background="{x:Null}" FontFamily="Bahnschrift" Grid.Column="1"/>
-            <Border BorderThickness="1" HorizontalAlignment="Left" Height="90" VerticalAlignment="Center" Width="90" Margin="66,0,0,0">
+            <Border BorderThickness="1" HorizontalAlignment="Left" Height="64" VerticalAlignment="Center" Width="64" Margin="20,0,0,0">
                 <Border.Background>
                     <ImageBrush ImageSource="Asset 1.png"/>
                 </Border.Background>
