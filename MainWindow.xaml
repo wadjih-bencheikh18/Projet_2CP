@@ -8,27 +8,29 @@
         Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="31*"/>
-            <ColumnDefinition Width="287*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="Background.png" Opacity="1"/>
         </Grid.Background>
-        <Button Style="{StaticResource RoundButtonTemplate}" Background="#FFFD5825" Name="Start" Content="Start" Grid.Column="1" Margin="651.5,518,246.5,62.5" FontSize="45" RenderTransformOrigin="0.528,1.074" Width="250" >
+        <Button Style="{StaticResource RoundButtonTemplate}" Background="#FFFD5825" Name="Start" Content="Start" Grid.Column="1" Margin="0,380,0,0" FontSize="45" RenderTransformOrigin="0.528,1.074" HorizontalAlignment="Left" Width="330" Height="100" VerticalAlignment="Center" >
             <Button.Effect>
                 <DropShadowEffect Color="#FF818080"/>
             </Button.Effect>
 
         </Button>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Margin="834.5,144,0,0" Height="128.5" Width="229.5" FontSize="50" FontWeight="Bold"><Run Text="CPU "/><LineBreak/><Run Text="Simulator"/></TextBlock>
-        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="117" Stroke="Black" VerticalAlignment="Top" Width="8.5" Grid.Column="1" Margin="806,155.5,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="191" Width="388" Grid.Column="1" Margin="722,322,0,0" FontSize="40"><Run Text="a Process"/><Run Text=" scheduling"/><Run Text=" Visualisation "/><Run Text="Software"/></TextBlock>
-        <Border BorderThickness="1" HorizontalAlignment="Left" Height="152" VerticalAlignment="Top" Width="148.5" Grid.Column="1" Margin="640,144,0,0">
-            <Border.Background>
-                <ImageBrush ImageSource="Asset 1.png"/>
-            </Border.Background>
-        </Border>
-        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0" VerticalAlignment="Top">
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Height="116" Width="390" Margin="0,26,0,0" FontSize="40" Grid.Column="1"><Run Text="a Process"/><Run Text=" scheduling"/><Run Text=" "/><Run Text="   "/><Run Text="  "/><Run Text="   "/><Run Text="Visuali"/><Run Text="s"/><Run Text="ation"/><Run Text=" "/><Run Text="Software"/></TextBlock>
+        <Grid Grid.Column="1" Margin="0,139,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="194.5,9,0,0" Height="128.5" Width="259.5" FontSize="53" FontWeight="Bold" FontFamily="Bahnschrift"><Run Text="CPU "/><LineBreak/><Run Text="Simulator"/></TextBlock>
+            <Rectangle Fill="Black" HorizontalAlignment="Left" Height="117" Stroke="Black" VerticalAlignment="Top" Width="8.5" Margin="166,11.5,0,0"/>
+            <Border BorderThickness="1" HorizontalAlignment="Left" Height="152" VerticalAlignment="Top" Width="148.5">
+                <Border.Background>
+                    <ImageBrush ImageSource="Asset 1.png"/>
+                </Border.Background>
+            </Border>
+        </Grid>
+        <Grid Grid.ColumnSpan="2" Margin="0,20,0,0" VerticalAlignment="Top" Height="64">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="11*"/>
                 <ColumnDefinition Width="4*"/>
