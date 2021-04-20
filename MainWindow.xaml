@@ -14,7 +14,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="Background.png" Opacity="1"/>
         </Grid.Background>
-        <Button Background="#FFFD5825" Name="Start" Content="Start" Grid.Column="1" Margin="651.5,518,246.5,62.5" FontSize="45" RenderTransformOrigin="0.528,1.074" Width="250" >
+        <Button Style="{StaticResource RoundButtonTemplate}" Background="#FFFD5825" Name="Start" Content="Start" Grid.Column="1" Margin="651.5,518,246.5,62.5" FontSize="45" RenderTransformOrigin="0.528,1.074" Width="250" >
             <Button.Effect>
                 <DropShadowEffect Color="#FF818080"/>
             </Button.Effect>
