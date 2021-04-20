@@ -32,13 +32,21 @@ using System.Windows.Shapes;
 using System.Windows.Shell;
 
 
-namespace Projet_2CP {
+namespace Projet {
     
     
     /// <summary>
     /// MainWindow
     /// </summary>
     public partial class MainWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
+        
+        
+        #line 17 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button Start;
+        
+        #line default
+        #line hidden
         
         private bool _contentLoaded;
         
@@ -68,6 +76,12 @@ namespace Projet_2CP {
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
         void System.Windows.Markup.IComponentConnector.Connect(int connectionId, object target) {
+            switch (connectionId)
+            {
+            case 1:
+            this.Start = ((System.Windows.Controls.Button)(target));
+            return;
+            }
             this._contentLoaded = true;
         }
     }
