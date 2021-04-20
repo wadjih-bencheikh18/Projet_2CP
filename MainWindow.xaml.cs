@@ -22,7 +22,7 @@ namespace Projet_2CP
     {
         public MainWindow()
         {
-            InitializeComponent();
+
         }
     }
 }
