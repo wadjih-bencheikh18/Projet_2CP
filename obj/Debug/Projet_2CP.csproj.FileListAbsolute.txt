@@ -32,3 +32,4 @@ C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\obj\Debug\Projet_2CP.csproj.G
 C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\obj\Debug\Projet_2CP.csproj.CoreCompileInputs.cache
 C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\obj\Debug\Projet_2CP.exe
 C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\obj\Debug\Projet_2CP.pdb
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\obj\Debug\App.baml
