@@ -2,8 +2,6 @@
 {
     class PAPS : Ordonnancement
     {
-
-
         public void Faire()
         {
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
