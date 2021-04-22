@@ -23,8 +23,6 @@ namespace Ordonnancement
                 listeExecution.Sort(delegate (Processus x, Processus y) { return y.prio.CompareTo(x.prio); }); //tri par Priorité
                 listeExecution[0].tempsRestant --;
                 Horloge++;
-                Console.Write(listeExecution[0].id+"-");
-                //Console.WriteLine(listeExecution[0].tempsRestant);
                 if (listeExecution[0].tempsRestant == 0)
                 {
                     int j = listeProcessus.FindIndex(p => ((p.id == listeExecution[0].id) && (p.prio == listeExecution[0].prio)));

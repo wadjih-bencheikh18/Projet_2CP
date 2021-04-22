@@ -19,7 +19,6 @@ namespace Ordonnancement
                 Pro = new(r1.Next(0, 100), r2.Next(0, 100), r3.Next(1, 100), r4.Next(0, 5));
                 prgm.Push(Pro);
             }
-            Console.ReadLine();;
             Console.WriteLine("Le temps total: " + prgm.Executer());
             prgm.Affichage();
             Console.ReadLine();
