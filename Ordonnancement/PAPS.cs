@@ -5,10 +5,13 @@
         public void Faire()
         {
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
+            CalculFin();
+            CalculAtt();
+            CalculService();
             Affichage();
         }
 
-        public override void CalculFin() //temps de fin d'execution FIN
+        public new void CalculFin() //temps de fin d'execution FIN
         {
             listeProcessus[0].tempsFin = listeProcessus[0].duree + listeProcessus[0].tempsArriv;
             for (int i = 1; i < nb; i++)
@@ -24,7 +27,7 @@
             }
         }
 
-        public override void CalculAtt() //Waiting Time WT (pour FCFS waiting time = response time)
+        public new void CalculAtt() //Waiting Time WT (pour FCFS waiting time = response time)
         {
             listeProcessus[0].tempsAtt = 0;
             for (int i = 1; i < nb; i++)
@@ -40,7 +43,7 @@
             }
         }
 
-        public override void CalculService() //Turn Around Time TAT
+        public new void CalculService() //Turn Around Time TAT
         {
             for (int i = 0; i < nb; i++)
             {

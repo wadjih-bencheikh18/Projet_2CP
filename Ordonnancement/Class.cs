@@ -43,8 +43,9 @@ namespace Ordonnancement
 
     abstract class Ordonnancement
     {
-        public List<Processus> listeProcessus = new List<Processus>();
-        public int nb; //le nombre de processus dans la liste P
+        protected List<Processus> listeProcessus = new List<Processus>();
+        protected int nb; //le nombre de processus dans la liste P
+        
         public void Push(Processus pro) //ajout d'un processus à la liste P
         {
             listeProcessus.Add(pro);
@@ -52,14 +53,10 @@ namespace Ordonnancement
         }
         public void Affichage()
         {
-            CalculFin();
-            CalculAtt();
-            CalculService();
-            for (int i = 0; i < nb; i++) listeProcessus[i].Affichage();
+            for (int i = 0; i < listeProcessus.Count; i++) listeProcessus[i].Affichage();
         }
-        public abstract void CalculFin();
-        public abstract void CalculAtt();
-        public abstract void CalculService();
-
+        public void CalculFin() { }
+        public void CalculAtt() { }
+        public void CalculService() { }
     }
 }
