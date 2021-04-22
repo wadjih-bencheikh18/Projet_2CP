@@ -37,6 +37,7 @@
             }
         }
 
+
         public override void CalculService()
         {
             int tmp, i, j, val = -1, low;
@@ -56,7 +57,6 @@
                 listeProcessus[i] = tem;
             }
         }
-
         public override void CalculAtt()
         {
             int tmp, i, j, val = -1, low;
@@ -78,3 +78,5 @@
         }
     }
 }
+
+
