@@ -8,12 +8,12 @@ namespace Ordonnancement
         public int id { get; } //ID du processus
         public int tempsArriv { get; } //temps d'arrivé
         public int duree { get; } //le temps qu'il faut pour executer le processus
-        public int prio; //priorite du processus
+        public int prio { get; } //priorite du processus
         public int etat; // 0 disactivé  1 pret   2 en cours
         public int tempsFin;
         public int tempsAtt;
         public int tempsService;
-        internal readonly decimal SomeSelectedComparableValue;
+        public int tempsRestant;
 
         public Processus(int id, int tempsArriv, int duree, int prio)
         {
@@ -21,6 +21,7 @@ namespace Ordonnancement
             this.tempsArriv = tempsArriv;
             this.duree = duree;
             this.prio = prio;
+            this.tempsRestant = duree;
         }
 
         public Processus(int id, int tempsArriv, int duree) //pour PAPS (FCFS)
@@ -29,7 +30,9 @@ namespace Ordonnancement
             this.tempsArriv = tempsArriv;
             this.duree = duree;
             this.prio = 0;
+            this.tempsRestant = duree;
         }
+
         public void Affichage()
         {
             Console.WriteLine(" ");
@@ -45,23 +48,17 @@ namespace Ordonnancement
 
     abstract class Ordonnancement
     {
-        public List<Processus> listeProcessus = new List<Processus>();
-        public int nb; //le nombre de processus dans la liste P
+        protected List<Processus> listeProcessus = new List<Processus>();  // liste des processus fournis par l'utilisateur
+        protected List<Processus> listeExecution = new List<Processus>();  // liste d'execution par le precesseur
+        
         public void Push(Processus pro) //ajout d'un processus à la liste P
         {
             listeProcessus.Add(pro);
-            nb++;
         }
+
         public void Affichage()
         {
-            CalculFin();
-            CalculAtt();
-            CalculService();
-            for (int i = 0; i < nb; i++) listeProcessus[i].Affichage();
+            for (int i = 0; i < listeProcessus.Count; i++) listeProcessus[i].Affichage();
         }
-        public abstract void CalculFin();
-        public abstract void CalculAtt();
-        public abstract void CalculService();
-
     }
 }
