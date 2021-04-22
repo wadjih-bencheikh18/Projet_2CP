@@ -13,6 +13,7 @@ namespace Ordonnancement
         public int tempsFin;
         public int tempsAtt;
         public int tempsService;
+
         public Processus(int id, int tempsArriv, int duree, int prio)
         {
             this.id = id;
@@ -28,6 +29,7 @@ namespace Ordonnancement
             this.duree = duree;
             this.prio = 0;
         }
+
         public void Affichage()
         {
             Console.WriteLine(" ");
@@ -44,19 +46,14 @@ namespace Ordonnancement
     abstract class Ordonnancement
     {
         protected List<Processus> listeProcessus = new List<Processus>();
-        protected int nb; //le nombre de processus dans la liste P
         
         public void Push(Processus pro) //ajout d'un processus à la liste P
         {
             listeProcessus.Add(pro);
-            nb++;
         }
         public void Affichage()
         {
             for (int i = 0; i < listeProcessus.Count; i++) listeProcessus[i].Affichage();
         }
-        public void CalculFin() { }
-        public void CalculAtt() { }
-        public void CalculService() { }
     }
 }

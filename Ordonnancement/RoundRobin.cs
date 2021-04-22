@@ -37,15 +37,6 @@ namespace Ordonnancement
         {
             return k == 0;
         }
-
-        public static void print(List<int> l)
-        {
-            Console.WriteLine("debut");
-            foreach(int k in l)
-            {
-                Console.WriteLine(k);
-            }
-        }
         
         public int Executer(List<Processus> total)  // executer la liste des processus "total" et retourner le temps total pour le faire
         {

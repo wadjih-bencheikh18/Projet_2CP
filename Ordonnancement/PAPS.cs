@@ -11,10 +11,10 @@
             Affichage();
         }
 
-        public new void CalculFin() //temps de fin d'execution FIN
+        public void CalculFin() //temps de fin d'execution FIN
         {
             listeProcessus[0].tempsFin = listeProcessus[0].duree + listeProcessus[0].tempsArriv;
-            for (int i = 1; i < nb; i++)
+            for (int i = 1; i < listeProcessus.Count; i++)
             {
                 if (listeProcessus[i].tempsArriv < listeProcessus[i - 1].tempsFin)
                 {
@@ -27,10 +27,10 @@
             }
         }
 
-        public new void CalculAtt() //Waiting Time WT (pour FCFS waiting time = response time)
+        public void CalculAtt() //Waiting Time WT (pour FCFS waiting time = response time)
         {
             listeProcessus[0].tempsAtt = 0;
-            for (int i = 1; i < nb; i++)
+            for (int i = 1; i < listeProcessus.Count; i++)
             {
                 if (listeProcessus[i].tempsArriv < listeProcessus[i - 1].tempsFin)
                 {
@@ -43,9 +43,9 @@
             }
         }
 
-        public new void CalculService() //Turn Around Time TAT
+        public void CalculService() //Turn Around Time TAT
         {
-            for (int i = 0; i < nb; i++)
+            for (int i = 0; i < listeProcessus.Count; i++)
             {
                 listeProcessus[i].tempsService = listeProcessus[i].tempsAtt + listeProcessus[i].duree;
             }
