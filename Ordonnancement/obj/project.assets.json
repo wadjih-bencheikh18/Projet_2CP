@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pc\\Desktop\\Projet\\Ordonnancement\\Ordonnancement.csproj",
+      "projectUniqueName": "C:\\Users\\pc\\Desktop\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
       "projectName": "Ordonnancement",
-      "projectPath": "C:\\Users\\pc\\Desktop\\Projet\\Ordonnancement\\Ordonnancement.csproj",
+      "projectPath": "C:\\Users\\pc\\Desktop\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
       "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pc\\Desktop\\Projet\\Ordonnancement\\obj\\",
+      "outputPath": "C:\\Users\\pc\\Desktop\\Projet_2CP\\Ordonnancement\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",

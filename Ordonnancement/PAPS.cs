@@ -6,28 +6,22 @@ namespace Ordonnancement
 {
     class PSP : Ordonnancement
     {
-        public Queue<Processus> prioFifo = new Queue<Processus>();
-        public int Horloge;
+        public List<Processus> listPrio = new List<Processus>();
+        public int Horloge = 0;
         public void Faire()
         {
             int i=0;
             Processus element;
-            Processus q;
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
-            Horloge = 0;
             element = listeProcessus[0];
             while(element.tempsArriv <= Horloge)
             {
-                prioFifo.Enqueue(element);
+                listPrio.Add(element);
                 i++;
                 element = listeProcessus[i];
             }
-            prioFifo = new Queue<Processus>(prioFifo.OrderBy(q.prio)
-                );
-            foreach (var element2 in prioFifo)
-            {
-                element2.prio = prioFifo.Dequeue;
-            }
+            listPrio.Sort(delegate (Processus x, Processus y) { return x.prio.CompareTo(y.prio); }); //tri par Priorité
+
 
             Affichage();
         }
