@@ -18,10 +18,13 @@ namespace Ordonnancement
                 listeExecution.Add(listeProcessus[i]);
                 i++;
             }
-            while ((listeExecution.Count != 0) && i < (listeProcessus.Count))
+            while (listeExecution.Count != 0)
             {
-                listeExecution.Sort(delegate (Processus x, Processus y) { return x.prio.CompareTo(y.prio); }); //tri par Priorité
+                listeExecution.Sort(delegate (Processus x, Processus y) { return y.prio.CompareTo(x.prio); }); //tri par Priorité
                 listeExecution[0].tempsRestant --;
+                Horloge++;
+                Console.Write(listeExecution[0].id+"-");
+                //Console.WriteLine(listeExecution[0].tempsRestant);
                 if (listeExecution[0].tempsRestant == 0)
                 {
                     int j = listeProcessus.FindIndex(p => ((p.id == listeExecution[0].id) && (p.prio == listeExecution[0].prio)));
@@ -30,10 +33,9 @@ namespace Ordonnancement
                     listeProcessus[j].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree;
                     listeExecution.RemoveAt(0);
                 }
-                Horloge ++;
+                
                 while ((i < listeProcessus.Count)&&(listeProcessus[i].tempsArriv == Horloge))
                 {
-                    Console.WriteLine(i);
                     listeExecution.Add(listeProcessus[i]);
                     i++;
                 }
