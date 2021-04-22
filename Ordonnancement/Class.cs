@@ -48,7 +48,8 @@ namespace Ordonnancement
 
     abstract class Ordonnancement
     {
-        protected List<Processus> listeProcessus = new List<Processus>();
+        protected List<Processus> listeProcessus = new List<Processus>();  // liste des processus fournis par l'utilisateur
+        protected List<Processus> listeExecution = new List<Processus>();  // liste d'execution par le precesseur
         
         public void Push(Processus pro) //ajout d'un processus à la liste P
         {

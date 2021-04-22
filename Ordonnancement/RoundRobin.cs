@@ -15,7 +15,7 @@ namespace Ordonnancement
             quantum = q;
         }
 
-        public void AjouterTous(List<Processus> listeExecution, int temps)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        public void AjouterTous(int temps)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
         {
             int k = 0;
             for (; k < listeProcessus.Count; k++)
@@ -33,11 +33,10 @@ namespace Ordonnancement
         
         public int Executer()  // executer la liste des processus et retourner le temps total pour le faire
         {
-            List<Processus> listeExecution = new List<Processus>();
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
             int debut = listeProcessus[0].tempsArriv;  // indiquer quand le processeur à commencer d'executer le premier processus
             int temps = listeProcessus[0].tempsArriv;  // horloge
-            AjouterTous(listeExecution, temps);
+            AjouterTous(temps);
             int i = 0;
             while ((listeProcessus.Count != 0) || (!listeExecution.TrueForAll(Termine)))
             {
@@ -45,7 +44,7 @@ namespace Ordonnancement
                 {
                     debut = listeProcessus[0].tempsArriv;  // une nouvelle serie d'execution
                     temps += listeProcessus[0].tempsArriv;
-                    AjouterTous(listeExecution, temps);
+                    AjouterTous(temps);
                 }
                 else if (listeExecution[i].tempsRestant == 0)  // le processus est fini, passer au suivant
                 {
@@ -70,12 +69,12 @@ namespace Ordonnancement
                         
                     }
                     listeExecution[i].tempsFin = temps;  // stocker la fin d'execution du processus pour qu'on puisse calculer le temps d'att le prochain quantum
-                    AjouterTous(listeExecution, temps);
+                    AjouterTous(temps);
                     i++;  // passer au processus suivant
                     if (i >= listeExecution.Count) i = 0;
                 }
             }
-            listeProcessus = listeExecution;
+            listeProcessus = listeExecution;  // pour visualiser le resultat
             return temps;
         }
     }
