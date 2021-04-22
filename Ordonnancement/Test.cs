@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Ordonnancement
 {
@@ -24,4 +23,5 @@ namespace Ordonnancement
             prgm.Affichage();
         }
     }
+
 }

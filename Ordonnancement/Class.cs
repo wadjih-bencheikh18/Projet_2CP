@@ -14,7 +14,7 @@ namespace Ordonnancement
         public int tempsAtt;
         public int tempsService;
         public int tempsRestant;
-
+        public int niveau;
         public Processus(int id, int tempsArriv, int duree, int prio)
         {
             this.id = id;
@@ -23,7 +23,15 @@ namespace Ordonnancement
             this.prio = prio;
             this.tempsRestant = duree;
         }
-
+        public Processus(int id, int tempsArriv, int duree, int prio,int niveau)
+        {
+            this.id = id;
+            this.tempsArriv = tempsArriv;
+            this.duree = duree;
+            this.prio = prio;
+            this.tempsRestant = duree;
+            this.niveau = niveau;
+        }
         public Processus(int id, int tempsArriv, int duree) //pour PAPS (FCFS)
         {
             this.id = id;
