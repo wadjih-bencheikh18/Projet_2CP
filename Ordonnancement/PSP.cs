@@ -25,6 +25,7 @@ namespace Ordonnancement
                 if (listeExecution[0].tempsRestant == 0)
                 {
                     int j = listeProcessus.FindIndex(p => ((p.id == listeExecution[i].id) && (p.prio == listeExecution[i].prio)));
+                    listeProcessus[j].tempsFin = Horloge; // temps de fin d'execution
                     listeProcessus[j].tempsService = Horloge - listeExecution[0].tempsArriv;
                     listeProcessus[j].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree;
                     listeExecution.RemoveAt(0);
