@@ -8,7 +8,7 @@ namespace Ordonnancement
         {
             Processus Pro;
             PCA programme = new();
-            int r1, r2, r3, r4;
+            int r1, r2, r3;
             for (int i = 0; i < 5; i++)
             {
                 string val; // lecture des parametres des processus (ID, BT, AT)
