@@ -13,6 +13,7 @@ namespace Ordonnancement
         public int tempsFin;
         public int tempsAtt;
         public int tempsService;
+        public int tempsRestant;
 
         public Processus(int id, int tempsArriv, int duree, int prio)
         {
@@ -20,6 +21,7 @@ namespace Ordonnancement
             this.tempsArriv = tempsArriv;
             this.duree = duree;
             this.prio = prio;
+            this.tempsRestant = duree;
         }
 
         public Processus(int id, int tempsArriv, int duree) //pour PAPS (FCFS)
@@ -28,6 +30,7 @@ namespace Ordonnancement
             this.tempsArriv = tempsArriv;
             this.duree = duree;
             this.prio = 0;
+            this.tempsRestant = duree;
         }
 
         public void Affichage()
@@ -51,6 +54,7 @@ namespace Ordonnancement
         {
             listeProcessus.Add(pro);
         }
+
         public void Affichage()
         {
             for (int i = 0; i < listeProcessus.Count; i++) listeProcessus[i].Affichage();
