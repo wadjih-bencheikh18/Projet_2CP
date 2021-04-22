@@ -8,7 +8,7 @@ namespace Ordonnancement
         static void Main(string[] args)
         {
             Processus Pro;
-            RoundRobin prgm = new RoundRobin(5);
+            RoundRobin prgm = new RoundRobin(50);
             Random r1, r2, r3, r4;
             for (int i = 0; i < 4; i++)
             {

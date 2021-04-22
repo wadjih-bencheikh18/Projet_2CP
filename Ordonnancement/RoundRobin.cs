@@ -33,18 +33,13 @@ namespace Ordonnancement
             int temps = listeProcessus[0].tempsArriv;  // horloge
             indice = AjouterTous(temps, indice);
             int i = 0;
-            while ((indice < listeProcessus.Count) || (!listeExecution.TrueForAll(p => p.tempsRestant == 0)))
+            while ((indice < listeProcessus.Count) || (listeExecution.Count != 0))
             {
-                if ((indice < listeProcessus.Count) && (listeExecution.TrueForAll(p => p.tempsRestant == 0)))  // si le processeur a terminé mais il y a des processus arrivant
+                if ((indice < listeProcessus.Count) && (listeExecution.Count == 0))  // si le processeur a terminé mais il y a des processus arrivant
                 {
                     debut = listeProcessus[0].tempsArriv;  // une nouvelle serie d'execution
                     temps += listeProcessus[0].tempsArriv;
                     indice = AjouterTous(temps, indice);
-                }
-                else if (listeExecution[i].tempsRestant == 0)  // le processus est fini, passer au suivant
-                {
-                    i++;
-                    if (i >= listeExecution.Count) i = 0;
                 }
                 else  // le processus n'est pas terminé
                 {
