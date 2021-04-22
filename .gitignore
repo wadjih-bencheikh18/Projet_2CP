@@ -1,6 +1,6 @@
-/bin/
-/obj/
-/.vs/
-/Ordonnancement/obj
-/Ordonnancement/bin
-Ordonnancement.csproj
+bin/
+obj/
+.vs/
+Ordonnancement/obj/
+Ordonnancement/bin/
+Ordonnancement/Ordonnancement.csproj
