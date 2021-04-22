@@ -24,11 +24,6 @@ namespace Ordonnancement
             }
             return indice;
         }
-
-        private static bool Termine(Processus p)  // savoir si un processus a terminé ou pas encore
-        {
-            return p.tempsRestant == 0;
-        }
         
         public int Executer()  // executer la liste des processus et retourner le temps total pour le faire
         {
@@ -38,9 +33,9 @@ namespace Ordonnancement
             int temps = listeProcessus[0].tempsArriv;  // horloge
             indice = AjouterTous(temps, indice);
             int i = 0;
-            while ((indice < listeProcessus.Count) || (!listeExecution.TrueForAll(Termine)))
+            while ((indice < listeProcessus.Count) || (!listeExecution.TrueForAll(p => p.tempsRestant == 0)))
             {
-                if ((indice < listeProcessus.Count) && (listeExecution.TrueForAll(Termine)))  // si le processeur a terminé mais il y a des processus arrivant
+                if ((indice < listeProcessus.Count) && (listeExecution.TrueForAll(p => p.tempsRestant == 0)))  // si le processeur a terminé mais il y a des processus arrivant
                 {
                     debut = listeProcessus[0].tempsArriv;  // une nouvelle serie d'execution
                     temps += listeProcessus[0].tempsArriv;
@@ -59,6 +54,8 @@ namespace Ordonnancement
                         listeExecution[i].etat = 1;  // prés
                         listeExecution[i].tempsRestant -= quantum;
                         temps += quantum;
+                        listeExecution[i].tempsFin = temps;  // stocker la fin d'execution du processus pour qu'on puisse calculer le temps d'att le prochain quantum
+                        i++;  // passer au processus suivant
                     }
                     else  // sera terminé pendant ce quantum
                     {
@@ -66,10 +63,13 @@ namespace Ordonnancement
                         listeExecution[i].tempsRestant = 0;
                         listeExecution[i].tempsAtt -= debut;  // enlever le debut d'execution
                         listeExecution[i].etat = 0;  // terminé
+                        // on supprime ce processus à partir de la liste d'execution mais on le mis à jour dans la liste des processus
+                        int j = listeProcessus.FindIndex(p => ((p.id == listeExecution[i].id) && (p.prio == listeExecution[i].prio)));
+                        listeProcessus[j] = listeExecution[i];
+                        listeProcessus[j].tempsFin = temps;  // temps de fin d'execution
+                        listeExecution.RemoveAt(i);
                     }
-                    listeExecution[i].tempsFin = temps;  // stocker la fin d'execution du processus pour qu'on puisse calculer le temps d'att le prochain quantum
                     indice = AjouterTous(temps, indice);
-                    i++;  // passer au processus suivant
                     if (i >= listeExecution.Count) i = 0;
                 }
             }
