@@ -24,14 +24,9 @@ namespace Ordonnancement
                 listeExecution[0].tempsRestant --;
                 if (listeExecution[0].tempsRestant == 0)
                 {
-                    listeExecution[0].tempsFin = Horloge;
-                    listeExecution[0].tempsService = Horloge - listeExecution[0].tempsArriv;
-                    listeExecution[0].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree;
                     int j = listeProcessus.FindIndex(p => ((p.id == listeExecution[i].id) && (p.prio == listeExecution[i].prio)));
-                    listeProcessus[j] = listeExecution[0];
-                    listeProcessus[j].tempsFin = listeExecution[0].tempsFin; // temps de fin d'execution
-                    listeProcessus[j].tempsService = listeExecution[0].tempsService;
-                    listeProcessus[j].tempsAtt = listeExecution[0].tempsAtt;
+                    listeProcessus[j].tempsService = Horloge - listeExecution[0].tempsArriv;
+                    listeProcessus[j].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree;
                     listeExecution.RemoveAt(0);
                 }
                 Horloge ++;
