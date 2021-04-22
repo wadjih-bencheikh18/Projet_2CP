@@ -37,11 +37,8 @@
             }
         }
 
-<<<<<<< HEAD
-        public override void CalculService() 
-=======
+
         public override void CalculService()
->>>>>>> 47ff79a26b527be3084ab78179c94ffb25615599
         {
             int tmp, i, j, val = -1, low;
             listeProcessus[0].tempsService = listeProcessus[0].tempsFin - listeProcessus[0].tempsArriv;
@@ -60,12 +57,7 @@
                 listeProcessus[i] = tem;
             }
         }
-
-<<<<<<< HEAD
-        public override void CalculAtt() 
-=======
         public override void CalculAtt()
->>>>>>> 47ff79a26b527be3084ab78179c94ffb25615599
         {
             int tmp, i, j, val = -1, low;
             listeProcessus[0].tempsAtt = listeProcessus[0].tempsService - listeProcessus[0].duree;
@@ -85,8 +77,6 @@
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 47ff79a26b527be3084ab78179c94ffb25615599
+
+
