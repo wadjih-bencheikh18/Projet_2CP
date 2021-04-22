@@ -1,0 +1,16 @@
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\bin\Debug\net5.0\Ordonnancement.exe
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\bin\Debug\net5.0\Ordonnancement.deps.json
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\bin\Debug\net5.0\Ordonnancement.runtimeconfig.json
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\bin\Debug\net5.0\Ordonnancement.runtimeconfig.dev.json
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\bin\Debug\net5.0\Ordonnancement.dll
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\bin\Debug\net5.0\ref\Ordonnancement.dll
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\bin\Debug\net5.0\Ordonnancement.pdb
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.csprojAssemblyReference.cache
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.AssemblyInfoInputs.cache
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.AssemblyInfo.cs
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.csproj.CoreCompileInputs.cache
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.dll
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\obj\Debug\net5.0\ref\Ordonnancement.dll
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.pdb
+C:\Users\Meriem Afaf HADDOU\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.genruntimeconfig.cache
