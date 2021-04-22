@@ -9,7 +9,7 @@ namespace Ordonnancement
         public int tempsArriv { get; } //temps d'arrivé
         public int duree { get; } //le temps qu'il faut pour executer le processus
         public int prio { get; } //priorite du processus
-//        public int etat; // 0 disactivé  1 pret   2 en cours
+        public int etat; // 0 disactivé  1 pret   2 en cours
         public int tempsFin;
         public int tempsAtt;
         public int tempsService;
@@ -50,7 +50,7 @@ namespace Ordonnancement
     {
         protected List<Processus> listeProcessus = new List<Processus>();  // liste des processus fournis par l'utilisateur
         protected List<Processus> listeExecution = new List<Processus>();  // liste d'execution par le precesseur
-        
+
         public void Push(Processus pro) //ajout d'un processus à la liste P
         {
             listeProcessus.Add(pro);

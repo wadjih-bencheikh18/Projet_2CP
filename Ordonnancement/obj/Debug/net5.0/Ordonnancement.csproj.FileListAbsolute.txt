@@ -30,3 +30,19 @@ C:\Users\pc\Desktop\ProjetTest\Ordonnancement\obj\Debug\net5.0\Ordonnancement.dl
 C:\Users\pc\Desktop\ProjetTest\Ordonnancement\obj\Debug\net5.0\ref\Ordonnancement.dll
 C:\Users\pc\Desktop\ProjetTest\Ordonnancement\obj\Debug\net5.0\Ordonnancement.pdb
 C:\Users\pc\Desktop\ProjetTest\Ordonnancement\obj\Debug\net5.0\Ordonnancement.genruntimeconfig.cache
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.csprojAssemblyReference.cache
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.AssemblyInfoInputs.cache
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.AssemblyInfo.cs
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.csproj.CoreCompileInputs.cache
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.dll
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\obj\Debug\net5.0\ref\Ordonnancement.dll
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.pdb
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\bin\Debug\net5.0\Ordonnancement.exe
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\bin\Debug\net5.0\Ordonnancement.deps.json
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\bin\Debug\net5.0\Ordonnancement.runtimeconfig.json
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\bin\Debug\net5.0\Ordonnancement.runtimeconfig.dev.json
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\bin\Debug\net5.0\Ordonnancement.dll
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\bin\Debug\net5.0\ref\Ordonnancement.dll
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\bin\Debug\net5.0\Ordonnancement.pdb
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Ordonnancement\obj\Debug\net5.0\Ordonnancement.genruntimeconfig.cache
