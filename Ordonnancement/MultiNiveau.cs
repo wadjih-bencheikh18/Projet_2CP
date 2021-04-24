@@ -14,7 +14,6 @@ namespace Ordonnancement
         public int niveau;
         public ProcessusNiveau(int id, int tempsArriv, int duree, int prio, int niveau) : base(id, tempsArriv, duree, prio)
         {
-            this.tempsRestant = duree;
             this.niveau = niveau;
         }
     }
@@ -30,51 +29,67 @@ namespace Ordonnancement
         }
         public void InitNiveaux()
         {
-            for (int i=0; i<listeProcessus.Count;i++)
+            for (int i = 0; i < listeProcessus.Count; i++)
                 niveaux[listeProcessus[i].niveau].listeProcessus.Add(listeProcessus[i]);
         }
         public void Executer()
         {
             SortListeProcessus();
             InitNiveaux();
-            int p = 0, temps = 0, i = 0, j = 0;
-            bool avance=true;
-            while (p < listeProcessus.Count)
+            int temps = 0, indice = 0, i = 0,tempsFin;
+            bool avance = true;
+            while (indice < listeProcessus.Count || listeExecution.Count != 0)
             {
-                if (temps == listeProcessus[j].tempsArriv)
-                {
-                    niveaux[listeProcessus[j].niveau].listeProcessus.Add(listeProcessus[j]);
-                    j++;
-                    avance = false;
-                }
-                else if (t < listeProcessus[j].tempsArriv)
-                {
-                    t++;
-                    avance = true;
-                }
-                while (i != nbNiveau && avance)
+                AjouterTous(temps, indice);
+                temps++;
+                if (listeExecution.Count != 0)
                 {
                     for (i = 0; i < nbNiveau || niveaux[i].listeProcessus.Count == 0; i++) ; //la recherche de permier niveau non vide
+                    tempsFin = TempsFin(temps, indice, i);
                     if (niveaux[i].numAlgo == 0)
                     {
                         niveaux[i].algo = new PAPS(niveaux[i].listeProcessus, niveaux[i].listeExecution);
-                        ((PAPS) niveaux[i].algo).Executer(1,5);
+                        temps=((PAPS)niveaux[i].algo).Executer(temps, tempsFin);
                     }
                     else if (niveaux[i].numAlgo == 1)
                     {
-
+                        niveaux[i].algo = new PAPS(niveaux[i].listeProcessus, niveaux[i].listeExecution);
+                        temps = ((PAPS)niveaux[i].algo).Executer(temps, tempsFin);
                     }
                     else if (niveaux[i].numAlgo == 2)
                     {
-
+                        niveaux[i].algo = new PAPS(niveaux[i].listeProcessus, niveaux[i].listeExecution);
+                        temps = ((PAPS)niveaux[i].algo).Executer(temps, tempsFin);
                     }
-                    else if(niveaux[i].numAlgo == 3)
+                    else if (niveaux[i].numAlgo == 3)
                     {
-
+                        niveaux[i].algo = new PAPS(niveaux[i].listeProcessus, niveaux[i].listeExecution);
+                        temps = ((PAPS)niveaux[i].algo).Executer(temps, tempsFin);
                     }
                 }
             }
 
+        }
+        public int AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        {
+            for (; indice < listeProcessus.Count; indice++)
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break;
+                else
+                {
+                    listeExecution.Add(listeProcessus[indice]);
+                    niveaux[listeProcessus[indice].niveau].listeExecution.Add(listeProcessus[indice]);
+                }
+            }
+            return indice;
+        }
+        public int TempsFin(int temps,int indice,int i)
+        {
+            for (; indice < listeProcessus.Count; indice++)
+            {
+                if (listeProcessus[indice].niveau > i) break;
+            }
+            return listeProcessus[indice].tempsArriv;
         }
     }
 }

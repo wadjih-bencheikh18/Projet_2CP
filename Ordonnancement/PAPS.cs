@@ -9,7 +9,8 @@ namespace Ordonnancement
             this.listeProcessus = listeProcessus;
             this.listeExecution = listeExecution;
         }
-        public void Executer(int tempsDebut, int tempsFin)
+        public PAPS() { }
+        public int Executer(int tempsDebut, int tempsFin)
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = tempsDebut, indice = 0;
@@ -29,6 +30,7 @@ namespace Ordonnancement
                     }
                 }
             }
+            return temps;
 
         }
         public int AjouterTous(int temps, int indice) //ajouter à la liste d'execution tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution

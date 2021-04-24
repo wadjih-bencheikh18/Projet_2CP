@@ -9,6 +9,7 @@ namespace Ordonnancement
             this.listeProcessus = listeProcessus;
             this.listeExecution = listeExecution;
         }
+        public PCA() { }
         public void Executer(int tempsDebut, int tempsFin)
         {
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
