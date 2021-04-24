@@ -2,7 +2,7 @@
 
 namespace Ordonnancement
 {
-    class PAPS : Ordonnancement
+    partial class PAPS : Ordonnancement
     {
         public PAPS(List<Processus> listeProcessus, List<Processus> listeExecution)
         {

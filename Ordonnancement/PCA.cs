@@ -10,9 +10,9 @@ namespace Ordonnancement
             this.listeExecution = listeExecution;
         }
         public PCA() { }
-        public void Executer(int tempsDebut, int tempsFin)
+        public int Executer(int tempsDebut, int tempsFin)
         {
-            listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
+            SortListeProcessus(); //tri par ordre d'arrivé
             int temps = tempsDebut, indice = 0;
             bool sort;
             while ((indice < listeProcessus.Count || listeExecution.Count != 0) && temps < tempsFin)
@@ -35,10 +35,11 @@ namespace Ordonnancement
                         listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv;
                         listeExecution.RemoveAt(0);
                         // on tri les processus restants
-                        if (listeExecution.Count != 0) listeExecution.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //tri par duree
+                        if (listeExecution.Count != 0) sort = true;
                     }
                 }
             }
+            return temps;
 
         }
         public int AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 

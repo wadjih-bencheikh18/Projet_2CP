@@ -23,7 +23,7 @@ namespace Ordonnancement
             //prgm.Faire();
             //prgm.Affichage();
             Console.WriteLine("***********************");
-            prgm.Executer(1,5);
+            prgm.Executer(0,11);
             prgm.Affichage();
         }
     }

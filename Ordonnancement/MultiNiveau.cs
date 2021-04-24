@@ -8,6 +8,7 @@ namespace Ordonnancement
         public List<Processus> listeExecution = new List<Processus>();
         public Ordonnancement algo;
         public int numAlgo; //0 PAPS  1 SJF  2 PRIO 3 RR
+        public int quantum;
     }
     class ProcessusNiveau : Processus
     {
@@ -32,12 +33,11 @@ namespace Ordonnancement
             for (int i = 0; i < listeProcessus.Count; i++)
                 niveaux[listeProcessus[i].niveau].listeProcessus.Add(listeProcessus[i]);
         }
-        public void Executer()
+        public int Executer()
         {
             SortListeProcessus();
             InitNiveaux();
             int temps = 0, indice = 0, i = 0,tempsFin;
-            bool avance = true;
             while (indice < listeProcessus.Count || listeExecution.Count != 0)
             {
                 AjouterTous(temps, indice);
@@ -53,21 +53,22 @@ namespace Ordonnancement
                     }
                     else if (niveaux[i].numAlgo == 1)
                     {
-                        niveaux[i].algo = new PAPS(niveaux[i].listeProcessus, niveaux[i].listeExecution);
-                        temps = ((PAPS)niveaux[i].algo).Executer(temps, tempsFin);
+                        niveaux[i].algo = new PCA(niveaux[i].listeProcessus, niveaux[i].listeExecution);
+                        temps = ((PCA)niveaux[i].algo).Executer(temps, tempsFin);
                     }
                     else if (niveaux[i].numAlgo == 2)
                     {
-                        niveaux[i].algo = new PAPS(niveaux[i].listeProcessus, niveaux[i].listeExecution);
-                        temps = ((PAPS)niveaux[i].algo).Executer(temps, tempsFin);
+                        niveaux[i].algo = new PSP(niveaux[i].listeProcessus, niveaux[i].listeExecution);
+                        temps = ((PSP)niveaux[i].algo).Executer(temps, tempsFin);
                     }
                     else if (niveaux[i].numAlgo == 3)
                     {
-                        niveaux[i].algo = new PAPS(niveaux[i].listeProcessus, niveaux[i].listeExecution);
-                        temps = ((PAPS)niveaux[i].algo).Executer(temps, tempsFin);
+                        niveaux[i].algo = new RoundRobin(niveaux[i].quantum,niveaux[i].listeProcessus, niveaux[i].listeExecution);
+                        temps = ((RoundRobin)niveaux[i].algo).Executer();
                     }
                 }
             }
+            return temps;
 
         }
         public int AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
