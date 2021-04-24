@@ -58,7 +58,8 @@ namespace Ordonnancement
     {
         protected List<Processus> listeProcessus = new List<Processus>();  // liste des processus fournis par l'utilisateur
         protected List<Processus> listeExecution = new List<Processus>();  // liste d'execution par le precesseur
-        
+ //       protected int tempsDebut;
+ //       protected int tempsFin;
         public void Push(Processus pro) //ajout d'un processus à la liste P
         {
             listeProcessus.Add(pro);

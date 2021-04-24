@@ -11,12 +11,12 @@ namespace Ordonnancement
             CalculAtt();
             CalculService();
         }*/
-        public void Executer()
+        public void Executer(int tempsDebut , int tempsFin)
         {
 
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
-            int temps = 0, indice = 0;
-            while (indice < listeProcessus.Count || listeExecution.Count != 0)
+            int temps = tempsDebut, indice = 0;
+            while (indice < listeProcessus.Count || listeExecution.Count != 0 || temps < tempsFin)
             {
                 indice = AjouterTous(temps, indice);
                 temps++;

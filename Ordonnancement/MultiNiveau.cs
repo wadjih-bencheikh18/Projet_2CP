@@ -5,7 +5,10 @@ namespace Ordonnancement
     class Niveau
     {
         public List<Processus> listeProcessus = new List<Processus>();
-        public int algo;  //0 PAPS  1 SJF  2 PRIO 3 RR
+        public List<Processus> listeExecution = new List<Processus>();
+        public Ordonnancement algo;
+        public int numAlgo;
+        //0 PAPS  1 SJF  2 PRIO 3 RR
     }
 
     class MultiNiveau : Ordonnancement
@@ -37,20 +40,22 @@ namespace Ordonnancement
                 }
                 while (i != nbNiveau && avance)
                 {
-                    for (i = 0; i < nbNiveau || niveaux[i].listeProcessus.Count == 0; i++) ; //la recheerche de permier niveau non vide
-                    if (niveaux[i].algo == 0)
+                    for (i = 0; i < nbNiveau || niveaux[i].listeProcessus.Count == 0; i++) ; //la recherche de permier niveau non vide
+                    if (niveaux[i].numAlgo == 0)
+                    {
+                        niveaux[i].algo = new PAPS();
+                        ((PAPS) niveaux[i].algo).Executer(1,5);
+                    }
+                    else if (niveaux[i].numAlgo == 1)
+                    {
+                        niveaux[i].algo = new RoundRobin(10);
+                        ((RoundRobin)niveaux[i].algo).Executer(1, 5);
+                    }
+                    else if (niveaux[i].numAlgo == 2)
                     {
 
                     }
-                    else if (niveaux[i].algo == 1)
-                    {
-
-                    }
-                    else if (niveaux[i].algo == 2)
-                    {
-
-                    }
-                    else if(niveaux[i].algo == 3)
+                    else if(niveaux[i].numAlgo == 3)
                     {
 
                     }

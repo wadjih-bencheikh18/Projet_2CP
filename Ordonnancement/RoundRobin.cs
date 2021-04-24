@@ -9,7 +9,6 @@ namespace Ordonnancement
     class RoundRobin : Ordonnancement
     {
         private int quantum { get; }
-
         public RoundRobin(int q)
         {
             quantum = q;
