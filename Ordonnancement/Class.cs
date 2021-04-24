@@ -55,7 +55,12 @@ namespace Ordonnancement
         {
             listeProcessus.Add(pro);
         }
-
+        public int Somme()
+        {
+            int result = 0;
+            for (int i = 0; i < listeProcessus.Count; i++) result += listeProcessus[i].duree;
+            return result;
+        }
         public void Affichage()
         {
             for (int i = 0; i < listeProcessus.Count; i++) listeProcessus[i].Affichage();
