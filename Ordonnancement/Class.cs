@@ -14,7 +14,6 @@ namespace Ordonnancement
         public int tempsAtt;
         public int tempsService;
         public int tempsRestant;
-        public int niveau;
         public Processus(int id, int tempsArriv, int duree, int prio)
         {
             this.id = id;
@@ -22,15 +21,6 @@ namespace Ordonnancement
             this.duree = duree;
             this.prio = prio;
             this.tempsRestant = duree;
-        }
-        public Processus(int id, int tempsArriv, int duree, int prio,int niveau)
-        {
-            this.id = id;
-            this.tempsArriv = tempsArriv;
-            this.duree = duree;
-            this.prio = prio;
-            this.tempsRestant = duree;
-            this.niveau = niveau;
         }
         public Processus(int id, int tempsArriv, int duree) //pour PAPS (FCFS)
         {
@@ -40,7 +30,6 @@ namespace Ordonnancement
             this.prio = 0;
             this.tempsRestant = duree;
         }
-
         public void Affichage()
         {
             Console.WriteLine(" ");
@@ -62,10 +51,13 @@ namespace Ordonnancement
         {
             listeProcessus.Add(pro);
         }
-
         public void Affichage()
         {
             for (int i = 0; i < listeProcessus.Count; i++) listeProcessus[i].Affichage();
+        }
+        public void SortListeProcessus()
+        {
+            listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
         }
     }
 }

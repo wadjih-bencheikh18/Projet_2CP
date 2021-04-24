@@ -9,6 +9,12 @@ namespace Ordonnancement
     class RoundRobin : Ordonnancement
     {
         private int quantum { get; }
+        public RoundRobin(int q,List<Processus> listeProcessus, List<Processus> listeExecution)
+        {
+            this.listeProcessus = listeProcessus;
+            this.listeExecution = listeExecution;
+            quantum = q;
+        }
         public RoundRobin(int q)
         {
             quantum = q;

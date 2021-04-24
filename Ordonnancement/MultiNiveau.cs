@@ -9,9 +9,18 @@ namespace Ordonnancement
         public Ordonnancement algo;
         public int numAlgo; //0 PAPS  1 SJF  2 PRIO 3 RR
     }
-
+    class ProcessusNiveau : Processus
+    {
+        public int niveau;
+        public ProcessusNiveau(int id, int tempsArriv, int duree, int prio, int niveau) : base(id, tempsArriv, duree, prio)
+        {
+            this.tempsRestant = duree;
+            this.niveau = niveau;
+        }
+    }
     class MultiNiveau : Ordonnancement
     {
+        protected new List<ProcessusNiveau> listeProcessus = new List<ProcessusNiveau>();
         private int nbNiveau;
         private Niveau[] niveaux;
         public MultiNiveau(int nbNiveau)
@@ -19,14 +28,22 @@ namespace Ordonnancement
             this.nbNiveau = nbNiveau;
             this.niveaux = new Niveau[nbNiveau];
         }
+        public void initNiveau()
+        { 
+            int i = 0;
+            while (i<listeProcessus.Count)
+            {
+                niveaux[listeProcessus[i].niveau].listeProcessus.Add(listeProcessus[i]);
+            }
+        }
         public void Executer()
         {
-            listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
-            int p = 0, t = 0, i = 0, j = 0;
+            SortListeProcessus
+            int p = 0, temps = 0, i = 0, j = 0;
             bool avance=true;
             while (p < listeProcessus.Count)
             {
-                if (t == listeProcessus[j].tempsArriv)
+                if (temps == listeProcessus[j].tempsArriv)
                 {
                     niveaux[listeProcessus[j].niveau].listeProcessus.Add(listeProcessus[j]);
                     j++;
@@ -42,7 +59,7 @@ namespace Ordonnancement
                     for (i = 0; i < nbNiveau || niveaux[i].listeProcessus.Count == 0; i++) ; //la recherche de permier niveau non vide
                     if (niveaux[i].numAlgo == 0)
                     {
-                        niveaux[i].algo = new PAPS();
+                        niveaux[i].algo = new PAPS(niveaux[i].listeProcessus, niveaux[i].listeExecution);
                         ((PAPS) niveaux[i].algo).Executer(1,5);
                     }
                     else if (niveaux[i].numAlgo == 1)

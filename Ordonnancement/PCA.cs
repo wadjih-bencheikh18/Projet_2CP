@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Ordonnancement
 {
     class PCA : Ordonnancement
     {
-        public void Executer()
+        public PCA(List<Processus> listeProcessus, List<Processus> listeExecution)
+        {
+            this.listeProcessus = listeProcessus;
+            this.listeExecution = listeExecution;
+        }
+        public void  Executer()
         {
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
             int temps = 0, indice = 0;
@@ -16,7 +22,7 @@ namespace Ordonnancement
                 indice = AjouterTous(temps, indice);
                 if (sort == true && listeExecution.Count != 0)
                 {
-                    listeExecution.Sort(delegate (Processus x, Processus y) { return y.duree.CompareTo(x.duree); }); //tri par duree
+                    listeExecution.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //tri par duree
                 }
                 temps++;
                 if (listeExecution.Count != 0)
