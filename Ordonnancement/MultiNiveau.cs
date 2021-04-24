@@ -17,7 +17,7 @@ namespace Ordonnancement
             this.nbNiveau = nbNiveau;
             this.niveaux = new Niveau[nbNiveau];
         }
-        public void Excuter()
+        public void Executer()
         {
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
             int p = 0, t = 0, i = 0, j = 0;
@@ -37,7 +37,7 @@ namespace Ordonnancement
                 }
                 while (i != nbNiveau && avance)
                 {
-                    for (i = 0; i < nbNiveau || niveaux[i].listeProcessus.Count == 0; i++) ;
+                    for (i = 0; i < nbNiveau || niveaux[i].listeProcessus.Count == 0; i++) ; //la recheerche de permier niveau non vide
                     if (niveaux[i].algo == 0)
                     {
 
