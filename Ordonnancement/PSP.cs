@@ -8,12 +8,12 @@ namespace Ordonnancement
 {
     class PSP : Ordonnancement
     {
-        public void Executer(int tempsDebut, int tempsFin)  // executer la liste des processus 
+        public int Executer(int tempsDebut, int tempsFin)  // executer la liste des processus 
         {
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
             int temps = tempsDebut;  // horloge
             int indice = 0;
-            while ((listeExecution.Count != 0 || indice < listeProcessus.Count) && temps <= tempsFin)
+            while ((listeExecution.Count != 0 || indice < listeProcessus.Count) && temps < tempsFin)
             {
                 indice = AjouterTous(temps, indice); 
                 temps++;
@@ -30,6 +30,7 @@ namespace Ordonnancement
                     }
                 }
             }
+            return temps;
         }
         public int AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
         {

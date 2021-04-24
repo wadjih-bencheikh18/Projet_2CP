@@ -19,7 +19,7 @@ namespace Ordonnancement
                 Pro = new(r1.Next(0, 10), r2.Next(0, 10), r3.Next(1, 10), r4.Next(0, 5));
                 prgm.Push(Pro);
             }
-            prgm.Executer(0,prgm.Somme());
+            Console.WriteLine("Le temps: "+ prgm.Executer(5, 15));
             prgm.Affichage();
             Console.ReadLine();
         }
