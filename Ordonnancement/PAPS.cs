@@ -1,7 +1,14 @@
-﻿namespace Ordonnancement
+﻿using System.Collections.Generic;
+
+namespace Ordonnancement
 {
     class PAPS : Ordonnancement
     {
+        public PAPS(List<Processus> listeProcessus, List<Processus> listeExecution)
+        {
+            this.listeProcessus = listeProcessus;
+            this.listeExecution = listeExecution;
+        }
         public void Executer(int tempsDebut, int tempsFin)
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé

@@ -11,7 +11,7 @@ namespace Ordonnancement
     }
     class ProcessusNiveau : Processus
     {
-        public int niveau;
+        private int niveau { get; }
         public ProcessusNiveau(int id, int tempsArriv, int duree, int prio, int niveau) : base(id, tempsArriv, duree, prio)
         {
             this.tempsRestant = duree;
@@ -28,17 +28,15 @@ namespace Ordonnancement
             this.nbNiveau = nbNiveau;
             this.niveaux = new Niveau[nbNiveau];
         }
-        public void initNiveau()
-        { 
-            int i = 0;
-            while (i<listeProcessus.Count)
-            {
+        public void InitNiveaux()
+        {
+            for (int i=0; i<listeProcessus.Count;i++)
                 niveaux[listeProcessus[i].niveau].listeProcessus.Add(listeProcessus[i]);
-            }
         }
         public void Executer()
         {
             SortListeProcessus();
+            InitNiveaux();
             int p = 0, temps = 0, i = 0, j = 0;
             bool avance=true;
             while (p < listeProcessus.Count)

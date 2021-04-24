@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 
 namespace Ordonnancement
@@ -10,31 +10,31 @@ namespace Ordonnancement
             this.listeProcessus = listeProcessus;
             this.listeExecution = listeExecution;
         }
-        public void  Executer()
+        public void Executer(int tempsDebut, int tempsFin)
         {
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
-            int temps = 0, indice = 0;
+            int temps = tempsDebut, indice = 0;
             bool sort;
-            while (indice < listeProcessus.Count || listeExecution.Count != 0)
+            while ((indice < listeProcessus.Count || listeExecution.Count != 0) && temps < tempsFin)
             {
-                if (listeExecution.Count == 0) sort = true;
+                if (listeExecution.Count == 0) sort = true; //les premiers processus arrivés => on fait le tri pour avoir la plus courte durée
                 else sort = false;
                 indice = AjouterTous(temps, indice);
                 if (sort == true && listeExecution.Count != 0)
                 {
-                    listeExecution.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //tri par duree
+                    listeExecution.Sort(delegate (Processus x, Processus y) { return y.duree.CompareTo(x.duree); }); //tri par duree
                 }
                 temps++;
-                if (listeExecution.Count != 0)
+                if (listeExecution.Count != 0) //il y a des processus à exécuter
                 {
-                    listeExecution[0].tempsRestant--;
-                    Console.WriteLine(listeExecution[0].id + "-" + listeExecution[0].tempsRestant);
-                    for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++;
-                    if (listeExecution[0].tempsRestant == 0)
+                    listeExecution[0].tempsRestant--; //le processus est entrain de s'exécuter => décrémenter le tempsRestant
+                    for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++;  //incrementer le tempsAtt pour les autres processus
+                    if (listeExecution[0].tempsRestant == 0) // fin d'exécution du processus 
                     {
                         listeExecution[0].tempsFin = temps;
                         listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv;
                         listeExecution.RemoveAt(0);
+                        // on tri les processus restants
                         if (listeExecution.Count != 0) listeExecution.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //tri par duree
                     }
                 }
