@@ -11,7 +11,7 @@ namespace Ordonnancement
     }
     class ProcessusNiveau : Processus
     {
-        private int niveau { get; }
+        public int niveau;
         public ProcessusNiveau(int id, int tempsArriv, int duree, int prio, int niveau) : base(id, tempsArriv, duree, prio)
         {
             this.tempsRestant = duree;
