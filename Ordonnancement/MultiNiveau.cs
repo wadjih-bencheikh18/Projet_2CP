@@ -7,8 +7,7 @@ namespace Ordonnancement
         public List<Processus> listeProcessus = new List<Processus>();
         public List<Processus> listeExecution = new List<Processus>();
         public Ordonnancement algo;
-        public int numAlgo;
-        //0 PAPS  1 SJF  2 PRIO 3 RR
+        public int numAlgo; //0 PAPS  1 SJF  2 PRIO 3 RR
     }
 
     class MultiNiveau : Ordonnancement
