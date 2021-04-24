@@ -4,8 +4,7 @@
     {
         public void Executer(int tempsDebut, int tempsFin)
         {
-
-            SortListeProcessus();
+            SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = tempsDebut, indice = 0;
             while ((indice < listeProcessus.Count || listeExecution.Count != 0) && temps < tempsFin) //s'il existe des processus non executés et le temps < le temps de fin
             {

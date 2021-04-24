@@ -38,7 +38,7 @@ namespace Ordonnancement
         }
         public void Executer()
         {
-            SortListeProcessus
+            SortListeProcessus();
             int p = 0, temps = 0, i = 0, j = 0;
             bool avance=true;
             while (p < listeProcessus.Count)
