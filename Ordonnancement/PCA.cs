@@ -16,20 +16,20 @@ namespace Ordonnancement
                 indice = AjouterTous(temps, indice);
                 if (sort == true && listeExecution.Count != 0)
                 {
-                    listeProcessus.Sort(delegate (Processus x, Processus y) { return y.duree.CompareTo(x.duree); }); //tri par duree
+                    listeExecution.Sort(delegate (Processus x, Processus y) { return y.duree.CompareTo(x.duree); }); //tri par duree
                 }
                 temps++;
                 if (listeExecution.Count != 0)
                 {
                     listeExecution[0].tempsRestant--;
                     Console.WriteLine(listeExecution[0].id + "-" + listeExecution[0].tempsRestant);
-                    //for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++;
-                    if (listeExecution[0].tempsRestant <= 0)
+                    for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++;
+                    if (listeExecution[0].tempsRestant == 0)
                     {
                         listeExecution[0].tempsFin = temps;
                         listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv;
                         listeExecution.RemoveAt(0);
-                        if (listeExecution.Count != 0) listeProcessus.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //tri par duree
+                        if (listeExecution.Count != 0) listeExecution.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //tri par duree
                     }
                 }
             }
