@@ -1,19 +1,16 @@
-﻿using System;
-
-namespace Ordonnancement
+﻿namespace Ordonnancement
 {
-    class PAPS : Ordonnancement
+    class PCA : Ordonnancement
     {
-        public void Executer(int tempsDebut, int tempsFin)
+        public void Executer()
         {
-
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
-            int temps = tempsDebut, indice = 0;
-            while (indice < listeProcessus.Count || listeExecution.Count != 0 || temps < tempsFin)
+            int temps = 0, indice = 0;
+            while (indice < listeProcessus.Count || listeExecution.Count != 0)
             {
                 indice = AjouterTous(temps, indice);
                 temps++;
-                if (listeExecution.Count != 0)
+                if (listeExecution.Count != 0 )
                 {
                     listeExecution[0].tempsRestant--;
                     for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++;
