@@ -1,17 +1,49 @@
-﻿namespace Ordonnancement
+﻿using System;
+
+namespace Ordonnancement
 {
     class PAPS : Ordonnancement
     {
-        public void Faire()
+        /*public void Faire()
         {
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
             CalculFin();
             CalculAtt();
             CalculService();
-            Affichage();
-        }
+        }*/
+        public void Executer()
+        {
 
-        public void CalculFin() //temps de fin d'execution FIN
+            listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
+            int temps = 0, indice = 0;
+            while (indice < listeProcessus.Count || listeExecution.Count != 0)
+            {
+                indice = AjouterTous(temps, indice);
+                temps++;
+                if (listeExecution.Count != 0 )
+                {
+                    listeExecution[0].tempsRestant--;
+                    for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++;
+                    if (listeExecution[0].tempsRestant == 0)
+                    {
+                        listeExecution[0].tempsFin = temps;
+                        listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv;
+                        listeExecution.RemoveAt(0);
+                    }
+                }
+            }
+
+        }
+        public int AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        {
+            for (; indice < listeProcessus.Count; indice++)
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break;
+                else listeExecution.Add(listeProcessus[indice]);
+            }
+            return indice;
+        }
+        /*public void CalculFin() //temps de fin d'execution FIN
         {
             listeProcessus[0].tempsFin = listeProcessus[0].duree + listeProcessus[0].tempsArriv;
             for (int i = 1; i < listeProcessus.Count; i++)
@@ -49,6 +81,6 @@
             {
                 listeProcessus[i].tempsService = listeProcessus[i].tempsAtt + listeProcessus[i].duree;
             }
-        }
+        }*/
     }
 }
