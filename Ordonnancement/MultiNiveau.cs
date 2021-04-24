@@ -47,8 +47,7 @@ namespace Ordonnancement
                     }
                     else if (niveaux[i].numAlgo == 1)
                     {
-                        niveaux[i].algo = new RoundRobin(10);
-                        ((RoundRobin)niveaux[i].algo).Executer(1, 5);
+
                     }
                     else if (niveaux[i].numAlgo == 2)
                     {
