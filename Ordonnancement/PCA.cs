@@ -14,15 +14,15 @@ namespace Ordonnancement
         {
             SortListeProcessus(); //tri par ordre d'arrivé
             int temps = 0, indice = 0;
-            bool sort;
+            bool sort=true;
             while ((indice < listeProcessus.Count || listeExecution.Count != 0))
             {
                 if (listeExecution.Count == 0) sort = true; //les premiers processus arrivés => on fait le tri pour avoir la plus courte durée
-                else sort = false;
                 indice = AjouterTous(temps, indice);
                 if (sort == true && listeExecution.Count != 0)
                 {
                     listeExecution.Sort(delegate (Processus x, Processus y) { return y.duree.CompareTo(x.duree); }); //tri par duree
+                    sort = false;
                 }
                 temps++;
                 if (listeExecution.Count != 0) //il y a des processus à exécuter
@@ -41,19 +41,19 @@ namespace Ordonnancement
             }
             return temps;
         }
-        public int Executer(int tempsDebut, int tempsFin,Niveau niveau)
+        public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         {
             SortListeProcessus(); //tri par ordre d'arrivé
             int temps = tempsDebut;
-            bool sort;
             while (listeExecution.Count != 0 && temps < tempsFin)
             {
-                if (listeExecution.Count == 0) sort = true; //les premiers processus arrivés => on fait le tri pour avoir la plus courte durée
-                else sort = false;
-                niveau.indice = AjouterTous(temps, niveau.indice);
-                if (sort == true && listeExecution.Count != 0)
+                if (listeExecution[0]==listeProcessus[0] && niveaux[indiceNiveau].indice[2]==0) niveaux[indiceNiveau].indice[1] = 1; //les premiers processus arrivés => on fait le tri pour avoir la plus courte durée
+                niveaux[indiceNiveau].indice[2] = 1;
+                niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral);
+                if (niveaux[indiceNiveau].indice[1] == 1 && listeExecution.Count != 0)
                 {
                     listeExecution.Sort(delegate (Processus x, Processus y) { return y.duree.CompareTo(x.duree); }); //tri par duree
+                    niveaux[indiceNiveau].indice[1] = 0;
                 }
                 temps++;
                 if (listeExecution.Count != 0) //il y a des processus à exécuter
@@ -66,7 +66,7 @@ namespace Ordonnancement
                         listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv;
                         listeExecution.RemoveAt(0);
                         // on tri les processus restants
-                        if (listeExecution.Count != 0) sort = true;
+                        if (listeExecution.Count != 0) niveaux[indiceNiveau].indice[1] = 1;
                     }
                 }
             }
@@ -78,6 +78,19 @@ namespace Ordonnancement
             {
                 if (listeProcessus[indice].tempsArriv > temps) break;
                 else listeExecution.Add(listeProcessus[indice]);
+            }
+            return indice;
+        }
+        public int AjouterTous(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        {
+            for (; indice < listeProcessus.Count; indice++)
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break;
+                else
+                {
+                    //listeExecution.Add(listeProcessus[indice]);
+                    niveaux[listeGeneral[indice].niveau].listeExecution.Add(listeGeneral[indice]);
+                }
             }
             return indice;
         }

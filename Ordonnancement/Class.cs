@@ -30,8 +30,9 @@ namespace Ordonnancement
             this.prio = 0;
             this.tempsRestant = duree;
         }
-        public void Affichage()
+        public virtual void Affichage()
         {
+            Console.WriteLine(" ");
             Console.WriteLine(" ");
             Console.Write("ID : " + id);
             Console.Write("\t\tARRIV : " + tempsArriv);
@@ -40,7 +41,7 @@ namespace Ordonnancement
             Console.Write("\tFIN : " + tempsFin);
             Console.Write("\tWT : " + tempsAtt);
             Console.Write("\tTAT : " + tempsService);
-            Console.WriteLine("\tTR : " + tempsRestant);
+            Console.Write("\tTR : " + tempsRestant);
         }
     }
 
@@ -52,11 +53,11 @@ namespace Ordonnancement
         {
             listeProcessus.Add(pro);
         }
-        public void Affichage()
+        public virtual void Affichage()
         {
             for (int i = 0; i < listeProcessus.Count; i++) listeProcessus[i].Affichage();
         }
-        public void SortListeProcessus()
+        public virtual void SortListeProcessus()
         {
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
         }

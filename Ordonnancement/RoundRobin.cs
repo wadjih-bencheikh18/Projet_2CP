@@ -5,7 +5,7 @@ namespace Ordonnancement
     class RoundRobin : Ordonnancement
     {
         private int quantum { get; }
-        public RoundRobin(int q,List<Processus> listeProcessus, List<Processus> listeExecution)
+        public RoundRobin(int q, List<Processus> listeProcessus, List<Processus> listeExecution)
         {
             this.listeProcessus = listeProcessus;
             this.listeExecution = listeExecution;
@@ -68,7 +68,7 @@ namespace Ordonnancement
             }
             return temps;
         }
-        
+
         public int Executer(int tempsDebut, int tempsFin, int[] indices)
         // executer l'algo pendant un intervalle de temps où indices[0] est l'indice de listeProcessus où on doit reprendre et indices[1] est l'indice de listeExecution où on doit reprendre et indices[2] est le quantum du temps du dernier execution
         {
@@ -80,7 +80,7 @@ namespace Ordonnancement
                 {
                     if (tempsDebut < listeProcessus[indices[0]].tempsArriv) tempsDebut++;  // si aucun processus est arrivant, donc horloge++
                     else indices[0] = AjouterTous(tempsDebut, indices[0]);  // sinon on lui ajoute à la liste d'execution
-                } 
+                }
                 else  // la liste d'execution n'est pas vide pour le moment
                 {
                     if (indices[2] == 0)  // si l'indice du quantum == 0 donc c'est un nouveau processus qu'on va commencer à executer
@@ -112,7 +112,7 @@ namespace Ordonnancement
                 if (tempsDebut == tempsFin)  // attent le fin de l'intervalle du temps
                 {
                     MisAJourTempsAtt(-tempsFin);
-                    return tempsFin;  
+                    return tempsFin;
                 }
             }
             return tempsDebut;
@@ -120,7 +120,7 @@ namespace Ordonnancement
 
         public void MisAJourTempsAtt(int deltaTemps)  // mis a jour le temps d'attente des processus non terminée avec la periode deltaTemps
         {
-            foreach(Processus p in listeExecution)
+            foreach (Processus p in listeExecution)
             {
                 if (p.tempsRestant == 0) continue;
                 p.tempsAtt += deltaTemps;
