@@ -40,6 +40,7 @@ namespace Ordonnancement
             SortListeProcessus();
             InitNiveaux();
             int temps = 0, indice = 0, i,tempsFin;
+            int[] l = { 0, 0, 0 };
             while (indice < listeProcessus.Count || listeExecution.Count != 0)
             {
                 AjouterTous(temps, indice);
@@ -66,7 +67,7 @@ namespace Ordonnancement
                     else if (niveaux[i].numAlgo == 3)
                     {
                         niveaux[i].algo = new RoundRobin(niveaux[i].quantum, niveaux[i].listeProcessus, niveaux[i].listeExecution);
-                        temps = ((RoundRobin)niveaux[i].algo).Executer(temps, tempsFin,indice);
+                        temps = ((RoundRobin)niveaux[i].algo).Executer(temps, tempsFin, l);
                     }
                 }
             }

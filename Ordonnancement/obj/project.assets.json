@@ -8,24 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\jw_be\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\ADMIB\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jw_be\\Desktop\\Project 2CP\\Repo\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
+      "projectUniqueName": "E:\\ESi\\SEMESTRE 4\\PROJECT 2CP\\Coding\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
       "projectName": "Ordonnancement",
-      "projectPath": "C:\\Users\\jw_be\\Desktop\\Project 2CP\\Repo\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
-      "packagesPath": "C:\\Users\\jw_be\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jw_be\\Desktop\\Project 2CP\\Repo\\Projet_2CP\\Ordonnancement\\obj\\",
+      "projectPath": "E:\\ESi\\SEMESTRE 4\\PROJECT 2CP\\Coding\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
+      "packagesPath": "C:\\Users\\ADMIB\\.nuget\\packages\\",
+      "outputPath": "E:\\ESi\\SEMESTRE 4\\PROJECT 2CP\\Coding\\Projet_2CP\\Ordonnancement\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\jw_be\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\ADMIB\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
