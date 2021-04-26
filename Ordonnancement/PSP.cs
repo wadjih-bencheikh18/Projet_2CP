@@ -22,7 +22,13 @@ namespace Ordonnancement
                 temps++;
                 if (listeExecution.Count != 0)
                 {
-                    listeExecution.Sort(delegate (Processus x, Processus y) { return y.prio.CompareTo(x.prio); });
+                    listeExecution.Sort(
+                                           delegate (Processus x, Processus y)
+                                           {
+                                               if (x.prio.CompareTo(y.prio) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si priorité egale
+                                               else return x.prio.CompareTo(y.prio); //tri par priorité
+                                           }
+                                        );
                     listeExecution[0].tempsRestant--;
                     for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++; // a chaque fois on incremente le temps d'attente jusqu'a le processus sera suprimé
                     if (listeExecution[0].tempsRestant == 0) // si le temps restant de l'execution = 0
@@ -45,7 +51,13 @@ namespace Ordonnancement
                 temps++;
                 if (listeExecution.Count != 0)
                 {
-                    listeExecution.Sort(delegate (Processus x, Processus y) { return x.prio.CompareTo(y.prio); });
+                    listeExecution.Sort(
+                                           delegate (Processus x, Processus y)
+                                           {
+                                               if (x.prio.CompareTo(y.prio) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si priorité egale
+                                               else return x.prio.CompareTo(y.prio); //tri par priorité
+                                           }
+                                        );
                     listeExecution[0].tempsRestant--;
                     Console.WriteLine(temps + "-" + listeExecution[0].id);
                     for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++; // a chaque fois on incremente le temps d'attente jusqu'a le processus sera suprimé
