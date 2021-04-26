@@ -92,8 +92,8 @@ namespace Ordonnancement
                 else
                 {
                     //listeExecution.Add(listeProcessus[indice]);
-                    niveaux[listeGeneral[indice].niveau].listeExecution.Add(listeGeneral[indice]);
                     if (listeGeneral[indice].niveau == indiceNiveau) listeExecution.Add(listeGeneral[indice]);
+                    else niveaux[listeGeneral[indice].niveau].listeExecution.Add(listeGeneral[indice]);
                 }
             }
             return indice;
