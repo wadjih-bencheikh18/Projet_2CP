@@ -102,7 +102,7 @@ namespace Ordonnancement
             bool conditionTempsAtt = false;
             while (indice < listeProcessus.Count || indiceNiveau < nbNiveau)
             {
-                indice = AjouterTous(temps, indice);
+                indice = AjouterTous(temps, indice);  //remplir les niveaux
                 if (conditionTempsAtt)
                 {
                     for (int i = 0; i < nbNiveau; i++)
@@ -121,10 +121,10 @@ namespace Ordonnancement
                     conditionTempsAtt = false;
                 }
                 for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listeExecution.Count == 0; indiceNiveau++) ; //la recherche de permier niveau non vide
-                if (indiceNiveau < nbNiveau)  //a vider
+                if (indiceNiveau < nbNiveau)  //il exist un niveau non vide
                 {
                     conditionTempsAtt = true;
-                    tempsFin = TempsFin(temps, indice, indiceNiveau);
+                    tempsFin = TempsFin(temps, indice, indiceNiveau);  //calcule de temps fin
                     tempsDebut = temps;
                     niveaux[indiceNiveau].indice[0] = indice;
                     switch (niveaux[indiceNiveau].numAlgo)

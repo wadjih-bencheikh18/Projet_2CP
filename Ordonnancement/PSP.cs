@@ -5,12 +5,16 @@ namespace Ordonnancement
 {
     class PSP : Ordonnancement
     {
-        public void InitPSP(List<Processus> listeProcessus, List<Processus> listeExecution)
-        {
-            this.listeProcessus = listeProcessus;
-            this.listeExecution = listeExecution;
-        }
         public PSP() { }
+        public int AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        {
+            for (; indice < listeProcessus.Count; indice++)
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break;
+                else listeExecution.Add(listeProcessus[indice]);
+            }
+            return indice;
+        }
         public int Executer()  // executer la liste des processus 
         {
             SortListeProcessus(); //tri par ordre d'arrivé
@@ -18,7 +22,7 @@ namespace Ordonnancement
             int indice = 0;
             while (listeExecution.Count != 0 || indice < listeProcessus.Count)
             {
-                indice = AjouterTous(temps, indice);
+                indice = AjouterTous(temps, indice);  //remplir list Execution
                 temps++;
                 if (listeExecution.Count != 0)
                 {
@@ -41,13 +45,18 @@ namespace Ordonnancement
             }
             return temps;
         }
+        public void InitPSP(List<Processus> listeProcessus, List<Processus> listeExecution)
+        {
+            this.listeProcessus = listeProcessus;
+            this.listeExecution = listeExecution;
+        }
         public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)  // executer la liste des processus 
         {
             SortListeProcessus(); //tri par ordre d'arrivé
             int temps = tempsDebut;  // horloge
             while (listeExecution.Count != 0 && temps < tempsFin)
             {
-                niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral);
+                niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau);
                 temps++;
                 if (listeExecution.Count != 0)
                 {
@@ -71,16 +80,7 @@ namespace Ordonnancement
             }
             return temps;
         }
-        public int AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
-        {
-            for (; indice < listeProcessus.Count; indice++)
-            {
-                if (listeProcessus[indice].tempsArriv > temps) break;
-                else listeExecution.Add(listeProcessus[indice]);
-            }
-            return indice;
-        }
-        public int AjouterTous(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        public int AjouterTous(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral,int indiceNiveau)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
         {
             for (; indice < listeProcessus.Count; indice++)
             {
@@ -89,6 +89,7 @@ namespace Ordonnancement
                 {
                     //listeExecution.Add(listeProcessus[indice]);
                     niveaux[listeGeneral[indice].niveau].listeExecution.Add(listeGeneral[indice]);
+                    if (listeGeneral[indice].niveau==indiceNiveau) listeExecution.Add(listeGeneral[indice]);
                 }
             }
             return indice;

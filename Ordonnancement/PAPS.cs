@@ -5,12 +5,17 @@ namespace Ordonnancement
 {
     partial class PAPS : Ordonnancement
     {
-        public void InitPAPS(List<Processus> listeProcessus, List<Processus> listeExecution)
-        {
-            this.listeProcessus = listeProcessus;
-            this.listeExecution = listeExecution;
-        }
+        
         public PAPS() { }
+        public int AjouterTous(int temps, int indice) //ajouter à la liste d'execution tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
+        {
+            for (; indice < listeProcessus.Count; indice++) //parcours de listeProcessus à partir du processus d'indice "indice"
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break; //si le processus n'est pas encore arrivé on sort
+                else listeExecution.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste d'execution et on passe au suivant
+            }
+            return indice;
+        }
         public int Executer()
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé
@@ -33,14 +38,22 @@ namespace Ordonnancement
             }
             return temps;
         }
+
+
+
+        public void InitPAPS(List<Processus> listeProcessus, List<Processus> listeExecution)
+        {
+            this.listeProcessus = listeProcessus;
+            this.listeExecution = listeExecution;
+        }
         public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = tempsDebut;
             while (listeExecution.Count != 0 && temps < tempsFin) //s'il existe des processus non executés et le temps < le temps de fin
             {
-                niveaux[indiceNiveau].indice[0] = AjouterTous(temps,niveaux[indiceNiveau].indice[0],niveaux,listeGeneral);
-                //indice[0] = AjouterTous(temps, indice[0]); //remplir listeExecution
+                niveaux[indiceNiveau].indice[0] = AjouterTous(temps,niveaux[indiceNiveau].indice[0],niveaux,listeGeneral,indiceNiveau); //remplir listeExecution
+                //indice[0] = AjouterTous(temps, indice[0]); 
                 temps++; //incrementer le temps réel
                 if (listeExecution.Count != 0) //s'il y a des processus à executer
                 {
@@ -57,16 +70,8 @@ namespace Ordonnancement
             }
             return temps;
         }
-        public int AjouterTous(int temps, int indice) //ajouter à la liste d'execution tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
-        {
-            for (; indice < listeProcessus.Count; indice++) //parcours de listeProcessus à partir du processus d'indice "indice"
-            {
-                if (listeProcessus[indice].tempsArriv > temps) break; //si le processus n'est pas encore arrivé on sort
-                else listeExecution.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste d'execution et on passe au suivant
-            }
-            return indice;
-        }
-        public int AjouterTous(int temps, int indice,Niveau[] niveaux, List<ProcessusNiveau> listeGeneral)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        
+        public int AjouterTous(int temps, int indice,Niveau[] niveaux, List<ProcessusNiveau> listeGeneral,int indiceNiveau)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
         {
             for (; indice < listeProcessus.Count; indice++)
             {
@@ -75,6 +80,7 @@ namespace Ordonnancement
                 {
                     //listeExecution.Add(listeProcessus[indice]);
                     niveaux[listeGeneral[indice].niveau].listeExecution.Add(listeGeneral[indice]);
+                    if (listeGeneral[indice].niveau == indiceNiveau) listeExecution.Add(listeGeneral[indice]);
                 }
             }
             return indice;

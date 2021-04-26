@@ -9,6 +9,7 @@ namespace Ordonnancement
         public int tempsArriv { get; } //temps d'arrivé
         public int duree { get; } //le temps qu'il faut pour executer le processus
         public int prio { get; } //priorite du processus
+        // a remplir
         public int etat; // 0 disactivé  1 pret   2 en cours
         public int tempsFin;
         public int tempsAtt;

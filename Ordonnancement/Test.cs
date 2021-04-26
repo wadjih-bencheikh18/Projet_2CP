@@ -36,8 +36,8 @@ namespace Ordonnancement
             for (int i = 0; i < nbNiveau; i++)
             {
                 r1 = new Random();
-                Console.WriteLine(i + "=>" + r1.Next(0, 2));
-                niveaux[i] = new(r1.Next(0, 2));
+                Console.WriteLine(i + "=>" + r1.Next(0, 3));
+                niveaux[i] = new(r1.Next(0,3));
             }
             MultiNiveau prgm = new(nbNiveau, niveaux);
             for (int i = 0; i < 4; i++)
@@ -49,6 +49,7 @@ namespace Ordonnancement
                 Pro = new(i, r2.Next(0, 15), r3.Next(1, 15), r4.Next(0, 15), r1.Next(0, 3));
                 prgm.Push(Pro);
             }
+            prgm.SortListeProcessus();
             prgm.Affichage();
             Console.WriteLine(" ");
             Console.WriteLine("***********************");
