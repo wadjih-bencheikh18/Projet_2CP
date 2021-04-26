@@ -5,7 +5,7 @@ namespace Ordonnancement
 {
     class PCA : Ordonnancement
     {
-        public PCA(List<Processus> listeProcessus, List<Processus> listeExecution)
+        public void InitPCA(List<Processus> listeProcessus, List<Processus> listeExecution)
         {
             this.listeProcessus = listeProcessus;
             this.listeExecution = listeExecution;

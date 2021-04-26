@@ -9,7 +9,6 @@ namespace Ordonnancement
         public List<Processus> listeExecution = new List<Processus>();
         public Ordonnancement algo;
         public int numAlgo; //0 PAPS  1 SJF  2 PRIO 3 RR
-        public int quantum; //a khemem
         public int[] indice = new int[4];
         public Niveau(int numAlgo)
         {
@@ -17,26 +16,40 @@ namespace Ordonnancement
             switch (this.numAlgo)
             {
                 case 0:
-                    // code block
+                    algo = new PAPS();
                     break;
                 case 1:
-                    // code block
+                    algo = new PCA();
                     break;
                 case 2:
-                    // code block
-                    break;
-                case 3:
-                    // code block
+                    algo = new PSP();
                     break;
                 default:
-                    // code block
+                    Console.WriteLine("we need quantum");
                     break;
             }
         }
         public Niveau(int numAlgo, int quantum)
         {
             this.numAlgo = numAlgo;
-            this.quantum = quantum;
+            switch (this.numAlgo)
+            {
+                case 0:
+                    algo = new PAPS();
+                    break;
+                case 1:
+                    algo = new PCA();
+                    break;
+                case 2:
+                    algo = new PSP();
+                    break;
+                case 3:
+                    algo = new RoundRobin(quantum);
+                    break;
+                default:
+                    Console.WriteLine("Error");
+                    break;
+            }
         }
     }
     class ProcessusNiveau : Processus
@@ -55,21 +68,14 @@ namespace Ordonnancement
     class MultiNiveau : Ordonnancement
     {
         protected new List<ProcessusNiveau> listeProcessus = new List<ProcessusNiveau>();
-        //public Ordonnancement[] algo = new Ordonnancement[4];
         private int nbNiveau;
         private Niveau[] niveaux;
 
-        public MultiNiveau(int nbNiveau)
+        public MultiNiveau(int nbNiveau, Niveau[] niveaux)
         {
-            Random r;
             this.nbNiveau = nbNiveau;
             this.niveaux = new Niveau[nbNiveau];
-            for (int i = 0; i < nbNiveau; i++)
-            {
-                r = new Random();
-                Console.WriteLine(i + "=>" + r.Next(0, 3));
-                niveaux[i] = new(r.Next(0,3));
-            }
+            this.niveaux = niveaux;
         }
         public override void Affichage()
         {
@@ -120,32 +126,30 @@ namespace Ordonnancement
                     conditionTempsAtt = true;
                     tempsFin = TempsFin(temps, indice, indiceNiveau);
                     tempsDebut = temps;
-                    if (niveaux[indiceNiveau].numAlgo == 0)
+                    niveaux[indiceNiveau].indice[0] = indice;
+                    switch (niveaux[indiceNiveau].numAlgo)
                     {
-                        niveaux[indiceNiveau].algo = new PAPS(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
-                        niveaux[indiceNiveau].indice[0] = indice;
-                        temps = ((PAPS)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
-                        indice = niveaux[indiceNiveau].indice[0];
+                        case 0:
+                            ((PAPS)niveaux[indiceNiveau].algo).InitPAPS(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
+                            temps = ((PAPS)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
+                            break;
+                        case 1:
+                            ((PCA)niveaux[indiceNiveau].algo).InitPCA(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
+                            temps = ((PCA)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
+                            break;
+                        case 2:
+                            ((PSP)niveaux[indiceNiveau].algo).InitPSP(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
+                            temps = ((PSP)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
+                            break;
+                        case 3:
+                            ((RoundRobin)niveaux[indiceNiveau].algo).InitRoundRobin(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
+                            temps = ((RoundRobin)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux[indiceNiveau].indice, niveaux, indiceNiveau, listeProcessus);
+                            break;
+                        default:
+                            Console.WriteLine("Error");
+                            break;
                     }
-                    else if (niveaux[indiceNiveau].numAlgo == 1)
-                    {
-                        niveaux[indiceNiveau].algo = new PCA(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
-                        niveaux[indiceNiveau].indice[0] = indice;
-                        temps = ((PCA)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
-                        indice = niveaux[indiceNiveau].indice[0];
-                    }
-                    else if (niveaux[indiceNiveau].numAlgo == 2)
-                    {
-                        niveaux[indiceNiveau].algo = new PSP(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
-                        niveaux[indiceNiveau].indice[0] = indice;
-                        temps = ((PSP)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
-                        indice = niveaux[indiceNiveau].indice[0];
-                    }
-                    else if (niveaux[indiceNiveau].numAlgo == 3)
-                    {
-                        niveaux[indiceNiveau].algo = new RoundRobin(niveaux[indiceNiveau].quantum, niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
-                        temps = ((RoundRobin)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux[indiceNiveau].indice);
-                    }
+                    indice = niveaux[indiceNiveau].indice[0];
                     tempsAtt = temps - tempsDebut;
                 }
                 else temps++;

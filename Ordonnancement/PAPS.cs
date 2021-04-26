@@ -5,7 +5,7 @@ namespace Ordonnancement
 {
     partial class PAPS : Ordonnancement
     {
-        public PAPS(List<Processus> listeProcessus, List<Processus> listeExecution)
+        public void InitPAPS(List<Processus> listeProcessus, List<Processus> listeExecution)
         {
             this.listeProcessus = listeProcessus;
             this.listeExecution = listeExecution;

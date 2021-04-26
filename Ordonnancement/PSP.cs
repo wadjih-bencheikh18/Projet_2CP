@@ -5,7 +5,7 @@ namespace Ordonnancement
 {
     class PSP : Ordonnancement
     {
-        public PSP(List<Processus> listeProcessus, List<Processus> listeExecution)
+        public void InitPSP(List<Processus> listeProcessus, List<Processus> listeExecution)
         {
             this.listeProcessus = listeProcessus;
             this.listeExecution = listeExecution;
@@ -45,7 +45,7 @@ namespace Ordonnancement
                 temps++;
                 if (listeExecution.Count != 0)
                 {
-                    listeExecution.Sort(delegate (Processus x, Processus y) { return y.prio.CompareTo(x.prio); });
+                    listeExecution.Sort(delegate (Processus x, Processus y) { return x.prio.CompareTo(y.prio); });
                     listeExecution[0].tempsRestant--;
                     Console.WriteLine(temps + "-" + listeExecution[0].id);
                     for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++; // a chaque fois on incremente le temps d'attente jusqu'a le processus sera suprimé

@@ -5,7 +5,7 @@ namespace Ordonnancement
     class RoundRobin : Ordonnancement
     {
         private int quantum { get; }
-        public RoundRobin(int q, List<Processus> listeProcessus, List<Processus> listeExecution)
+        public void InitRoundRobin(List<Processus> listeProcessus, List<Processus> listeExecution)
         {
             this.listeProcessus = listeProcessus;
             this.listeExecution = listeExecution;
@@ -69,7 +69,7 @@ namespace Ordonnancement
             return temps;
         }
 
-        public int Executer(int tempsDebut, int tempsFin, int[] indices)
+        public int Executer(int tempsDebut, int tempsFin, int[] indices, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         // executer l'algo pendant un intervalle de temps où indices[0] est l'indice de listeProcessus où on doit reprendre et indices[1] est l'indice de listeExecution où on doit reprendre et indices[2] est le quantum du temps du dernier execution
         {
             SortListeProcessus();
@@ -79,7 +79,7 @@ namespace Ordonnancement
                 if (indices[0] < listeProcessus.Count && listeExecution.Count == 0)  // la liste d'execution est vide pour le moment
                 {
                     if (tempsDebut < listeProcessus[indices[0]].tempsArriv) tempsDebut++;  // si aucun processus est arrivant, donc horloge++
-                    else indices[0] = AjouterTous(tempsDebut, indices[0]);  // sinon on lui ajoute à la liste d'execution
+                    else indices[0] = AjouterTous(tempsDebut, indices[0],niveaux,listeGeneral);  // sinon on lui ajoute à la liste d'execution
                 }
                 else  // la liste d'execution n'est pas vide pour le moment
                 {
@@ -106,7 +106,7 @@ namespace Ordonnancement
                         indices[2] = 0;  // nouveau quantum
                         indices[1]++;  // passer au suivant processus dans la liste d'execution
                     }
-                    indices[0] = AjouterTous(tempsDebut, indices[0]);  // ajouter si il y a un processus qui a arrivé
+                    indices[0] = AjouterTous(tempsDebut, indices[0], niveaux, listeGeneral);  // ajouter si il y a un processus qui a arrivé
                     if (indices[1] >= listeExecution.Count) indices[1] = 0;
                 }
                 if (tempsDebut == tempsFin)  // attent le fin de l'intervalle du temps
@@ -125,6 +125,19 @@ namespace Ordonnancement
                 if (p.tempsRestant == 0) continue;
                 p.tempsAtt += deltaTemps;
             }
+        }
+        public int AjouterTous(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        {
+            for (; indice < listeProcessus.Count; indice++)
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break;
+                else
+                {
+                    //listeExecution.Add(listeProcessus[indice]);
+                    niveaux[listeGeneral[indice].niveau].listeExecution.Add(listeGeneral[indice]);
+                }
+            }
+            return indice;
         }
     }
 }

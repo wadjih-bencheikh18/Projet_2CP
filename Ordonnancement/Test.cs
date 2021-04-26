@@ -31,9 +31,16 @@ namespace Ordonnancement
             //   MultiLvl Test
             //*******************
             ProcessusNiveau Pro;
-            MultiNiveau prgm = new(3);
+            int nbNiveau = 3;
             Random r1, r2, r3, r4;
-            for (int i = 0; i < 20; i++)
+            Niveau[] niveaux = new Niveau[nbNiveau];
+            for (int i = 0; i < nbNiveau; i++)
+            {
+                r1 = new Random();
+                niveaux[i] = new(2);
+            }
+            MultiNiveau prgm = new(nbNiveau, niveaux);
+            for (int i = 0; i < 4; i++)
             {
                 r1 = new Random();
                 r2 = new Random();
