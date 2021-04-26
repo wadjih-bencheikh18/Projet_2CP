@@ -30,17 +30,30 @@ namespace Ordonnancement
             //   MultiLvl Test
             //*******************
             ProcessusNiveau Pro;
-            int nbNiveau = 3;
+            int nbNiveau = 4;
             Random r1, r2, r3, r4;
+            int a1, a2;
             Niveau[] niveaux = new Niveau[nbNiveau];
             for (int i = 0; i < nbNiveau; i++)
             {
                 r1 = new Random();
-                Console.WriteLine(i + "=>" + r1.Next(0, 3));
-                niveaux[i] = new(2);
+                r2 = new Random();
+                a1 = r1.Next(0, 4);
+                a2 = r2.Next(1, 10);
+                if (a1 == 3)
+                {
+                    Console.WriteLine(i + "=>" +a1+"=>"+ a2) ;
+                    niveaux[i] = new(a1, a2);
+                }
+                else
+                {
+                    Console.WriteLine(i + "=>" + a1);
+                    niveaux[i] = new(a1);
+                }
+
             }
             MultiNiveau prgm = new(nbNiveau, niveaux);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 r1 = new Random();
                 r2 = new Random();

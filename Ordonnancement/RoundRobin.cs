@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Ordonnancement
 {
@@ -77,8 +78,8 @@ namespace Ordonnancement
             {
                 if (indices[0] < listeProcessus.Count && listeExecution.Count == 0)  // la liste d'execution est vide pour le moment
                 {
-                    if (tempsDebut < listeProcessus[indices[0]].tempsArriv) tempsDebut++;  // si aucun processus est arrivant, donc horloge++
-                    else indices[0] = AjouterTous(tempsDebut, indices[0],niveaux,listeGeneral, indiceNiveau);  // sinon on lui ajoute à la liste d'execution
+                    tempsDebut++;  // si aucun processus est arrivant, donc horloge++
+                    indices[0] = AjouterTous(tempsDebut, indices[0],niveaux,listeGeneral, indiceNiveau);  // sinon on lui ajoute à la liste d'execution
                 }
                 else  // la liste d'execution n'est pas vide pour le moment
                 {
@@ -89,13 +90,12 @@ namespace Ordonnancement
                     tempsDebut++;  // horloge++
                     indices[2]++;  // quantum++
                     listeExecution[indices[1]].tempsRestant--;
+                    Console.WriteLine(tempsDebut + "-" + listeExecution[0].id);
                     if (listeExecution[indices[1]].tempsRestant == 0)  // on a terminé ce processus
                     {
                         listeExecution[indices[1]].tempsAtt -= listeExecution[indices[1]].tempsArriv;
                         listeExecution[indices[1]].tempsFin = tempsDebut;
                         // maitenant on le supprime de la liste d'execution
-                        int j = listeProcessus.FindIndex(p => ((p.id == listeExecution[indices[1]].id) && (p.prio == listeExecution[indices[1]].prio)));
-                        listeProcessus[j] = listeExecution[indices[1]];
                         listeExecution.RemoveAt(indices[1]);
                         indices[2] = 0;  // un nouveau quantum va commencer
                     }
@@ -110,7 +110,7 @@ namespace Ordonnancement
                 }
                 if (tempsDebut == tempsFin)  // attent le fin de l'intervalle du temps
                 {
-                    MisAJourTempsAtt(-tempsFin);
+                    //MisAJourTempsAtt(-tempsFin);
                     return tempsFin;
                 }
             }
