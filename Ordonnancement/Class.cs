@@ -38,9 +38,9 @@ namespace Ordonnancement
             Console.Write("\t\tARRIV : " + tempsArriv);
             Console.Write("\tBT : " + duree);
             Console.Write("\tPRIO : " + prio);
-            Console.Write("\tFIN : " + tempsFin);
-            Console.Write("\tWT : " + tempsAtt);
-            Console.Write("\tTAT : " + tempsService);
+            Console.Write("\tFIN :  " + tempsFin);
+            Console.Write("\tWT :   " + tempsAtt);
+            Console.Write("\tTAT  : " + tempsService);
             Console.Write("\tTR : " + tempsRestant);
         }
     }

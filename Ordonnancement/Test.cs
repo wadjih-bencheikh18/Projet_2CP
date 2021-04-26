@@ -33,14 +33,13 @@ namespace Ordonnancement
             ProcessusNiveau Pro;
             MultiNiveau prgm = new(3);
             Random r1, r2, r3, r4;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 20; i++)
             {
                 r1 = new Random();
                 r2 = new Random();
                 r3 = new Random();
                 r4 = new Random();
-                Pro = new(r1.Next(0, 15), r2.Next(0, 15), r3.Next(1, 15), r4.Next(0, 15), i);
-                Console.WriteLine("id: " + Pro.id + "  arriv: " + Pro.tempsArriv + "  duree: " + Pro.duree + " niveau: " + Pro.niveau);
+                Pro = new(i, r2.Next(0, 15), r3.Next(1, 15), r4.Next(0, 15), r1.Next(0, 3));
                 prgm.Push(Pro);
             }
             prgm.Affichage();

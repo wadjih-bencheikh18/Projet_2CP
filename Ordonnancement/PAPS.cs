@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Ordonnancement
 {
@@ -44,6 +45,7 @@ namespace Ordonnancement
                 if (listeExecution.Count != 0) //s'il y a des processus à executer
                 {
                     listeExecution[0].tempsRestant--; //l'execution du 1er processus de listeExecution commence
+                    Console.WriteLine(temps + "-" + listeExecution[0].id);
                     for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++; //incrementer le temps d'attente des processus de listeExecution à partir du 2eme 
                     if (listeExecution[0].tempsRestant == 0) //si l'execution du premier processus de listeExecution est terminée
                     {
