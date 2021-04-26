@@ -22,40 +22,41 @@ namespace Ordonnancement
 
         public int Executer()  // executer la liste des processus et retourner le temps total pour le faire
         {
-            int indice = 0;
-            SortListeProcessus(); //tri par ordre d'arrivé
-            int temps = 0;  // horloge
-            indice = AjouterTous(temps, indice);
-            int i = 0;
-            while (indice < listeProcessus.Count || listeExecution.Count != 0)
+            SortListeProcessus();
+            int indice = 0, temps = 0, i = 0, q = 0;
+            while (indice < listeProcessus.Count || listeExecution.Count != 0)  // il y reste un processus à executer
             {
-                if (indice < listeProcessus.Count && listeExecution.Count == 0)  // si le processeur a terminé mais il y a des processus arrivant
+                if (indice < listeProcessus.Count && listeExecution.Count == 0)  // la liste d'execution est vide pour le moment
                 {
-                    temps = listeProcessus[indice].tempsArriv;  // passer au prochain processus arrivant
-                    indice = AjouterTous(temps, indice); //remplir list execution
+                    if (temps < listeProcessus[indice].tempsArriv) temps++;  // si aucun processus est arrivant, donc horloge++
+                    else indice = AjouterTous(temps, indice);  // sinon on lui ajoute à la liste d'execution
                 }
-                else  // le processus n'est pas terminé
+                else  // la liste d'execution n'est pas vide pour le moment
                 {
-                    listeExecution[i].tempsAtt += temps - listeExecution[i].tempsFin;
-                    if (listeExecution[i].tempsRestant > quantum)  // il ne sera pas terminé pendant ce quantum
+                    if (q == 0)  // si l'indice du quantum == 0 donc c'est un nouveau processus qu'on va commencer à executer
                     {
-                        listeExecution[i].etat = 1;  // prés
-                        listeExecution[i].tempsRestant -= quantum;
-                        temps += quantum;
-                        listeExecution[i].tempsFin = temps;  // stocker la fin d'execution du processus pour qu'on puisse calculer le temps d'att le prochain quantum
-                        i++;  // passer au processus suivant
+                        listeExecution[i].tempsAtt += temps - listeExecution[i].tempsFin;  // mis a jour son temps d'attente
                     }
-                    else  // sera terminé pendant ce quantum
+                    temps++;  // horloge++
+                    q++;  // quantum++
+                    listeExecution[i].tempsRestant--;
+                    if (listeExecution[i].tempsRestant == 0)  // on a terminé ce processus
                     {
-                        temps += listeExecution[i].tempsRestant;
-                        listeExecution[i].tempsAtt -= listeExecution[i].tempsArriv;  // car il a commencer à attendre à partir où il a arrivé
-                        listeExecution[i].tempsRestant = 0;
-                        listeExecution[i].etat = 0;  // terminé
-                        listeExecution[i].tempsFin = temps;  // temps de fin d'execution
-                        // on supprime ce processus à partir de la liste d'execution mais on le mis à jour dans la liste des processus
+                        listeExecution[i].tempsAtt -= listeExecution[i].tempsArriv;
+                        listeExecution[i].tempsFin = temps;
+                        // maitenant on le supprime de la liste d'execution
+                        int j = listeProcessus.FindIndex(p => ((p.id == listeExecution[i].id) && (p.prio == listeExecution[i].prio)));
+                        listeProcessus[j] = listeExecution[i];
                         listeExecution.RemoveAt(i);
+                        q = 0;  // un nouveau quantum va commencer
                     }
-                    indice = AjouterTous(temps, indice);
+                    else if (q == quantum)  // on a terminé ce quantum, donc il faut passer au suivant processus
+                    {
+                        listeExecution[i].tempsFin = temps;  // sauvegarder quand on a arrété l'execution de ce processus
+                        q = 0;  // nouveau quantum
+                        i++;  // passer au suivant processus dans la liste d'execution
+                    }
+                    indice = AjouterTous(temps, indice);  // ajouter si il y a un processus qui a arrivé
                     if (i >= listeExecution.Count) i = 0;
                 }
             }
