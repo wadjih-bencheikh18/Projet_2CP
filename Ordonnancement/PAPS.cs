@@ -27,6 +27,7 @@ namespace Ordonnancement
                 if (listeExecution.Count != 0) //s'il y a des processus à executer
                 {
                     listeExecution[0].tempsRestant--; //l'execution du 1er processus de listeExecution commence
+                    Console.WriteLine(temps + "\t|\t " + listeExecution[0].id+ "\t\t\t|");
                     for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++; //incrementer le temps d'attente des processus de listeExecution à partir du 2eme 
                     if (listeExecution[0].tempsRestant == 0) //si l'execution du premier processus de listeExecution est terminée
                     {
@@ -35,6 +36,7 @@ namespace Ordonnancement
                         listeExecution.RemoveAt(0); //supprimer le premier processus executé
                     }
                 }
+                else Console.WriteLine(temps + "\t|\t Ropos\t\t\t|");
             }
             return temps;
         }

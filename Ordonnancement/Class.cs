@@ -54,11 +54,11 @@ namespace Ordonnancement
         {
             listeProcessus.Add(pro);
         }
-        public virtual void Affichage()
+        public virtual void Affichage() //affichage de listeProcessus
         {
             for (int i = 0; i < listeProcessus.Count; i++) listeProcessus[i].Affichage();
         }
-        public virtual void SortListeProcessus()
+        public virtual void SortListeProcessus() //tri des processus par ordre d'arrivé
         {
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
         }

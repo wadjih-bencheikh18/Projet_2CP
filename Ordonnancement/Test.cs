@@ -16,13 +16,13 @@ namespace Ordonnancement
                 r2 = new Random();
                 r3 = new Random();
                 r4 = new Random();
-                Pro = new(r1.Next(0, 15), r2.Next(0, 15), r3.Next(1, 15), r4.Next(0, 15));
+                Pro = new(i, r2.Next(0, 15), r3.Next(1, 15));
                 Console.WriteLine("id: " + Pro.id + "  arriv: " + Pro.tempsArriv + "  duree: " + Pro.duree);
                 prgm.Push(Pro);
             }
-            Console.WriteLine("***********************");
-            prgm.Executer();
-            prgm.Affichage();
+            Console.WriteLine("\n******************************************\n");
+            Console.WriteLine("Le temps| Id de processus executer\t|\n");
+            Console.WriteLine("******************************************");
             prgm.Executer();
             prgm.Affichage();
         }
