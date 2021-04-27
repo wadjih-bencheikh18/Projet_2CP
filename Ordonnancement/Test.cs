@@ -20,11 +20,15 @@ namespace Ordonnancement
                 Console.WriteLine("id: " + Pro.id + "  arriv: " + Pro.tempsArriv + "  duree: " + Pro.duree);
                 prgm.Push(Pro);
             }
-            Console.WriteLine("\n******************************************\n");
+            Console.WriteLine("\n*****************************************\n");
             Console.WriteLine("Le temps| Id de processus executer\t|\n");
-            Console.WriteLine("******************************************");
+            Console.WriteLine("*****************************************");
             prgm.Executer();
+            Console.WriteLine("*****************************************");
+            Console.WriteLine("\n\n\n");
+            Console.WriteLine("Les resultats :");
             prgm.Affichage();
+            Console.WriteLine("\n\n\n");
         }
     }
 
