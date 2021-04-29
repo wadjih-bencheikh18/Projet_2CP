@@ -7,10 +7,10 @@ namespace Ordonnancement
         static void Main(string[] args)
         {
             Processus Pro;
-            PAPS prgm = new();
+            RoundRobin prgm = new(2);
             Random r1, r2, r3, r4;
             Console.WriteLine("Initialisation : \n");
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
                 r1 = new Random();
                 r2 = new Random();

@@ -38,9 +38,9 @@ namespace Ordonnancement
             Console.Write("ID : " + id);
             Console.Write("\t\ttemps d'arrivé : " + tempsArriv);
             Console.Write("\tduree : " + duree);
-            //Console.Write("\tPRIO : " + prio);
+            Console.Write("\tpriorité : " + prio);
             Console.Write("\ttemps de fin :  " + tempsFin);
-            Console.Write("\temps d'attente :   " + tempsAtt);
+            Console.Write("\ttemps d'attente :   " + tempsAtt);
             Console.Write("\ttemps de service  : " + tempsService);
             Console.Write("\ttemps restant : " + tempsRestant);
         }
@@ -61,6 +61,28 @@ namespace Ordonnancement
         public virtual void SortListeProcessus() //tri des processus par ordre d'arrivé
         {
             listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
+        }
+        public virtual int  AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        {
+            for (; indice < listeProcessus.Count; indice++)
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break;
+                else listeExecution.Add(listeProcessus[indice]);
+            }
+            return indice;
+        }
+        public int AjouterTous(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        {
+            for (; indice < listeProcessus.Count; indice++)
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break;
+                else
+                {
+                    if (listeGeneral[indice].niveau == indiceNiveau) listeExecution.Add(listeGeneral[indice]);
+                    else niveaux[listeGeneral[indice].niveau].listeExecution.Add(listeGeneral[indice]);
+                }
+            }
+            return indice;
         }
     }
 }

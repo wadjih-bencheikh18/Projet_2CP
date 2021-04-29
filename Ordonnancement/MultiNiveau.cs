@@ -98,33 +98,14 @@ namespace Ordonnancement
         {
             SortListeProcessus();
             InitNiveaux();
-            int temps = 0, indice = 0, indiceNiveau = -1, tempsFin, tempsAtt = 0, tempsDebut = 0;
-            bool conditionTempsAtt = false;
+            int temps = 0, indice = 0, indiceNiveau=0, tempsFin, tempsAtt, tempsDebut;
             while (indice < listeProcessus.Count || indiceNiveau < nbNiveau)
             {
                 indice = AjouterTous(temps, indice);  //remplir les niveaux
-                if (conditionTempsAtt)
-                {
-                    for (int i = 0; i < nbNiveau; i++)
-                    {
-                        if (i != indiceNiveau)
-                        {
-                            for (int j = 0; j < niveaux[i].listeExecution.Count; j++)
-                            {
-                                if (niveaux[i].listeExecution[j].tempsArriv > tempsDebut)
-                                    niveaux[i].listeExecution[j].tempsAtt = temps - niveaux[i].listeExecution[j].tempsArriv;
-                                else niveaux[i].listeExecution[j].tempsAtt += tempsAtt;
-                            }
-                        }
-
-                    }
-                    conditionTempsAtt = false;
-                }
                 for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listeExecution.Count == 0; indiceNiveau++) ; //la recherche de permier niveau non vide
                 if (indiceNiveau < nbNiveau)  //il exist un niveau non vide
                 {
-                    conditionTempsAtt = true;
-                    tempsFin = TempsFin(temps, indice, indiceNiveau);  //calcule de temps fin
+                    tempsFin = TempsFin(indice, indiceNiveau);  //calcule de temps fin
                     tempsDebut = temps;
                     niveaux[indiceNiveau].indice[0] = indice;
                     switch (niveaux[indiceNiveau].numAlgo)
@@ -157,20 +138,19 @@ namespace Ordonnancement
             return temps;
 
         }
-        public int AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        public override int AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
         {
             for (; indice < listeProcessus.Count; indice++)
             {
                 if (listeProcessus[indice].tempsArriv > temps) break;
                 else
                 {
-                    //listeExecution.Add(listeProcessus[indice]);
                     niveaux[listeProcessus[indice].niveau].listeExecution.Add(listeProcessus[indice]);
                 }
             }
             return indice;
         }
-        public int TempsFin(int temps, int indice, int i)
+        public int TempsFin(int indice, int i)
         {
             for (; indice < listeProcessus.Count; indice++)
             {
