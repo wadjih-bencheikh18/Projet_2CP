@@ -40,7 +40,6 @@ namespace Ordonnancement
             Console.Write("\tduree : " + duree);
             Console.Write("\tpriorité : " + prio);
             Console.Write("\ttemps de fin :  " + tempsFin);
-            Console.Write("\ttemps d'attente :   " + tempsAtt);
             Console.Write("\ttemps de service  : " + tempsService);
             Console.Write("\ttemps restant : " + tempsRestant);
         }

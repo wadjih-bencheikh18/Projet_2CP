@@ -70,6 +70,7 @@ namespace Ordonnancement
                     tempsDebut++;  // horloge++
                     indices[2]++;  // quantum++
                     listeExecution[indices[1]].tempsRestant--;
+                    Console.WriteLine(tempsDebut + "-" + listeExecution[indices[1]].id);
                     if (listeExecution[indices[1]].tempsRestant == 0)  // on a terminé ce processus
                     {
                         listeExecution[indices[1]].tempsFin = tempsDebut;

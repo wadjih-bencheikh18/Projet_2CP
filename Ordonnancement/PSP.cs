@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Ordonnancement
 {
@@ -59,6 +60,7 @@ namespace Ordonnancement
                                            }
                                         );
                     listeExecution[0].tempsRestant--;
+                    Console.WriteLine(temps + "-" + listeExecution[0].id);
                     for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++; // a chaque fois on incremente le temps d'attente jusqu'a le processus sera suprimé
                     if (listeExecution[0].tempsRestant == 0) // si le temps restant de l'execution = 0
                     {
