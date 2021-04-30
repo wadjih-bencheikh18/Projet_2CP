@@ -30,7 +30,7 @@ namespace Ordonnancement
                         listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listeExecution[0].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree; //temps d'attente = temps de service - durée d'execution
                         listeExecution.RemoveAt(0); //supprimer le premier processus executé
-                        if (listeExecution.Count != 0) sort = true; //tri des processus restants dans listeExecution
+                        if (listeExecution.Count != 0) sort = true; //donc il faut trier les processus restants dans listeExecution
                     }
                 }
                 else AfficheLigne(temps - 1); //affiche le temps actuel et le mot "repos" ie le processeur n'execute aucun processus
@@ -46,17 +46,16 @@ namespace Ordonnancement
         }
         public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         {
-            SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = tempsDebut;
             while (listeExecution.Count != 0 && temps < tempsFin) //s'il existe des processus non executés et le temps < le temps de fin
             {
-                if (listeExecution[0]==listeProcessus[0] && niveaux[indiceNiveau].indice[2]==0) niveaux[indiceNiveau].indice[1] = 1;
-                niveaux[indiceNiveau].indice[2] = 1;
-                niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral,indiceNiveau);
-                if (niveaux[indiceNiveau].indice[1] == 1 && listeExecution.Count != 0)
+                if (listeExecution[0]==listeProcessus[0] && niveaux[indiceNiveau].indice[2]==0) niveaux[indiceNiveau].indice[1] = 1; //
+                niveaux[indiceNiveau].indice[2] = 1; //
+                niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral,indiceNiveau); //remplir la liste d'execution de chaque niveau
+                if (niveaux[indiceNiveau].indice[1] == 1 && listeExecution.Count != 0) //
                 {
                     listeExecution.Sort(delegate (Processus x, Processus y) { return y.duree.CompareTo(x.duree); }); //tri des processus par durée
-                    niveaux[indiceNiveau].indice[1] = 0;
+                    niveaux[indiceNiveau].indice[1] = 0; //
                 }
                 temps++; //incrementer le temps réel
                 if (listeExecution.Count != 0) //il y a des processus à exécuter
@@ -69,8 +68,7 @@ namespace Ordonnancement
                         listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listeExecution[0].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree;  //temps d'attente = temps de service - durée d'execution
                         listeExecution.RemoveAt(0); //supprimer le premier processus executé
-                        // on tri les processus restants
-                        if (listeExecution.Count != 0) niveaux[indiceNiveau].indice[1] = 1;
+                        if (listeExecution.Count != 0) niveaux[indiceNiveau].indice[1] = 1; //il faut trier les processus restants dans listeExecution
                     }
                 }
             }

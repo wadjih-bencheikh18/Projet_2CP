@@ -45,7 +45,6 @@ namespace Ordonnancement
         }
         public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)  // executer la liste des processus 
         {
-            SortListeProcessus(); //tri par ordre d'arrivé
             int temps = tempsDebut;  // horloge
             while (listeExecution.Count != 0 && temps < tempsFin)
             {
