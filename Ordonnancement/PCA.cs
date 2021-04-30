@@ -63,7 +63,6 @@ namespace Ordonnancement
                 {
                     listeExecution[0].tempsRestant--; //le processus est entrain de s'exécuter => décrémenter le tempsRestant
                     Console.WriteLine(temps + "-" + listeExecution[0].id);
-                    for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++;  //incrementer le tempsAtt pour les autres processus
                     if (listeExecution[0].tempsRestant == 0) // fin d'exécution du processus 
                     {
                         listeExecution[0].tempsFin = temps;

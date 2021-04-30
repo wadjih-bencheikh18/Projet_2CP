@@ -24,7 +24,7 @@ namespace Ordonnancement
                                            }
                                         );
                     listeExecution[0].tempsRestant--;
-                    for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++; // a chaque fois on incremente le temps d'attente jusqu'a le processus sera suprimé
+                    Console.WriteLine(temps + "\t|\t       " + listeExecution[0].id + "\t\t|");
                     if (listeExecution[0].tempsRestant == 0) // si le temps restant de l'execution = 0
                     {
                         listeExecution[0].tempsFin = temps; // temps de fin d'execution
@@ -62,7 +62,6 @@ namespace Ordonnancement
                                         );
                     listeExecution[0].tempsRestant--;
                     Console.WriteLine(temps + "-" + listeExecution[0].id);
-                    for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++; // a chaque fois on incremente le temps d'attente jusqu'a le processus sera suprimé
                     if (listeExecution[0].tempsRestant == 0) // si le temps restant de l'execution = 0
                     {
                         listeExecution[0].tempsFin = temps; // temps de fin d'execution
