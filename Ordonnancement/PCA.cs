@@ -53,7 +53,7 @@ namespace Ordonnancement
             int temps = tempsDebut;
             if (niveaux[indiceNiveau].indice[2] == 0) niveaux[indiceNiveau].indice[1] = 1; //si aucun processus du niveau actuel n'a été executé alors il faut trier les processus de listeExecution de ce niveau par durée
             niveaux[indiceNiveau].indice[2] = 1; //l'execution d'un processus de ce niveau commence
-            while (listeExecution.Count != 0 && temps < tempsFin) //s'il existe des processus non executés et le temps < le temps de fin
+            while (listeExecution.Count != 0 && (temps < tempsFin || tempsFin == -1)) //s'il existe des processus non executés et le temps < le temps de fin  ou il n'y a pas de temps fin
             {
                 niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral,indiceNiveau); //remplir la liste d'execution de chaque niveau
                 if (listeExecution.Count != 0 && niveaux[indiceNiveau].indice[1] == 1) //s'il y a des processus à exécuter et un tri par durée est necessaire

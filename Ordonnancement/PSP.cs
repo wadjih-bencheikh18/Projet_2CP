@@ -46,7 +46,7 @@ namespace Ordonnancement
         public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)  // executer la liste des processus 
         {
             int temps = tempsDebut;  // horloge
-            while (listeExecution.Count != 0 && temps < tempsFin)
+            while (listeExecution.Count != 0 && (temps < tempsFin || tempsFin == -1))
             {
                 niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau);
                 temps++;

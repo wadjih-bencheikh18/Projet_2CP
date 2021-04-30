@@ -96,8 +96,8 @@ namespace Ordonnancement
         }
         public int Executer()
         {
-            SortListeProcessus();
-            InitNiveaux();
+            SortListeProcessus();  //ordoner la liste des processus
+            InitNiveaux();   // remplir la liste des processus dans chaque niveau
             int temps = 0, indice = 0, indiceNiveau = 0, tempsFin;
             while (indice < listeProcessus.Count || indiceNiveau < nbNiveau)
             {
@@ -106,20 +106,20 @@ namespace Ordonnancement
                 if (indiceNiveau < nbNiveau)  //il exist un niveau non vide
                 {
                     tempsFin = TempsFin(indice, indiceNiveau);  //calcule de temps fin
-                    niveaux[indiceNiveau].indice[0] = indice;
-                    temps = NiveauExecute(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
-                    indice = niveaux[indiceNiveau].indice[0];
+                    niveaux[indiceNiveau].indice[0] = indice;   //sauvgarder indice dans le niveau
+                    temps = NiveauExecute(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);  //executer le niveau "indiceNiveau"
+                    indice = niveaux[indiceNiveau].indice[0];  //recuperer l'indice 
                 }
                 else
                 {
-                    if (indice < listeProcessus.Count) AfficheLigne(temps);
-                    temps++;
+                    if (indice < listeProcessus.Count) AfficheLigne(temps);  //afficher repos (aucun niveau est executer)
+                    temps++;  
                 }
             }
             return temps;
 
         }
-        public int NiveauExecute(int temps,int tempsFin,Niveau[] niveaux,int indiceNiveau, List<ProcessusNiveau> listeProcessus)
+        public int NiveauExecute(int temps,int tempsFin,Niveau[] niveaux,int indiceNiveau, List<ProcessusNiveau> listeProcessus)  //executer le niveau "indiceNiveau"
         {
             switch (niveaux[indiceNiveau].numAlgo)
             {
@@ -145,7 +145,7 @@ namespace Ordonnancement
             }
             return temps;
         }
-        public override int AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        public override int AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution de chaque niveau
         {
             for (; indice < listeProcessus.Count; indice++)
             {
@@ -157,14 +157,14 @@ namespace Ordonnancement
             }
             return indice;
         }
-        public int TempsFin(int indice, int i)
+        public int TempsFin(int indice, int i)   //calcule de temps fin d'execution ( si il n ya pas de temps fin alors return -1)
         {
             for (; indice < listeProcessus.Count; indice++)
             {
                 if (listeProcessus[indice].niveau < i) break;
             }
             if (indice < listeProcessus.Count) return listeProcessus[indice].tempsArriv;
-            else return 999999;
+            else return -1;
         }
     }
 }
