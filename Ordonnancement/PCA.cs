@@ -12,9 +12,9 @@ namespace Ordonnancement
             bool sort = true; //est à vrai si un tri par durée est necessaire
             while ((indice < listeProcessus.Count || listeExecution.Count != 0)) //s'il existe des processus non executés
             {
-                if (listeExecution.Count == 0) sort = true; //les premiers processus arrivés => on fait le tri pour avoir la plus courte durée
+                if (listeExecution.Count == 0) sort = true; //les premiers processus arrivés => on fait un tri par durée (croissant)
                 indice = AjouterTous(temps, indice);  //remplir listeExecution
-                if (sort == true && listeExecution.Count != 0) //si un tri est necessaire et il y a des processus à executer
+                if (sort == true && listeExecution.Count != 0) //si un tri par durée est necessaire et il y a des processus à executer
                 {
                     listeExecution.Sort(delegate (Processus x, Processus y) { return y.duree.CompareTo(x.duree); }); //tri des processus de listeExecution par durée
                     sort = false; //le tri par durée n'est plus necessaire (déja fait)
@@ -46,16 +46,20 @@ namespace Ordonnancement
         }
         public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         {
+            /*dans cette methode on utilisera :
+             * niveau[].indice[1] est à 1 si un tri par durée est necessaire, à 0 sinon (déja trié)
+             * niveau[].indice[2] est à 1 si au moins un processus de ce niveau a été executé, à 0 sinon (aucun processus de ce niveau n'a été executé)*/
+
             int temps = tempsDebut;
+            if (niveaux[indiceNiveau].indice[2] == 0) niveaux[indiceNiveau].indice[1] = 1; //si aucun processus du niveau actuel n'a été executé alors il faut trier les processus de listeExecution de ce niveau par durée
+            niveaux[indiceNiveau].indice[2] = 1; //l'execution d'un processus de ce niveau commence
             while (listeExecution.Count != 0 && temps < tempsFin) //s'il existe des processus non executés et le temps < le temps de fin
             {
-                if (listeExecution[0]==listeProcessus[0] && niveaux[indiceNiveau].indice[2]==0) niveaux[indiceNiveau].indice[1] = 1; //
-                niveaux[indiceNiveau].indice[2] = 1; //
                 niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral,indiceNiveau); //remplir la liste d'execution de chaque niveau
-                if (niveaux[indiceNiveau].indice[1] == 1 && listeExecution.Count != 0) //
+                if (listeExecution.Count != 0 && niveaux[indiceNiveau].indice[1] == 1) //s'il y a des processus à exécuter et un tri par durée est necessaire
                 {
                     listeExecution.Sort(delegate (Processus x, Processus y) { return y.duree.CompareTo(x.duree); }); //tri des processus par durée
-                    niveaux[indiceNiveau].indice[1] = 0; //
+                    niveaux[indiceNiveau].indice[1] = 0; //le tri par durée n'est plus necessaire (déja fait)
                 }
                 temps++; //incrementer le temps réel
                 if (listeExecution.Count != 0) //il y a des processus à exécuter
@@ -68,7 +72,7 @@ namespace Ordonnancement
                         listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listeExecution[0].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree;  //temps d'attente = temps de service - durée d'execution
                         listeExecution.RemoveAt(0); //supprimer le premier processus executé
-                        if (listeExecution.Count != 0) niveaux[indiceNiveau].indice[1] = 1; //il faut trier les processus restants dans listeExecution
+                        if (listeExecution.Count != 0) niveaux[indiceNiveau].indice[1] = 1; //il faut trier les processus restants dans listeExecution par durée
                     }
                 }
             }
