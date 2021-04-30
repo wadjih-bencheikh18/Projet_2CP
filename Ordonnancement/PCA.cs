@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Ordonnancement
 {
@@ -24,6 +23,7 @@ namespace Ordonnancement
                 if (listeExecution.Count != 0) //il y a des processus à exécuter
                 {
                     listeExecution[0].tempsRestant--; //le processus est entrain de s'exécuter => décrémenter le tempsRestant
+                    AfficheLigne(temps - 1, listeExecution[0].id);
                     if (listeExecution[0].tempsRestant == 0) // fin d'exécution du processus 
                     {
                         listeExecution[0].tempsFin = temps;
@@ -34,6 +34,7 @@ namespace Ordonnancement
                         if (listeExecution.Count != 0) sort = true;
                     }
                 }
+                else AfficheLigne(temps - 1);
             }
             return temps;
         }
@@ -62,7 +63,7 @@ namespace Ordonnancement
                 if (listeExecution.Count != 0) //il y a des processus à exécuter
                 {
                     listeExecution[0].tempsRestant--; //le processus est entrain de s'exécuter => décrémenter le tempsRestant
-                    Console.WriteLine(temps + "-" + listeExecution[0].id);
+                    AfficheLigne(temps - 1, listeExecution[0].id);
                     if (listeExecution[0].tempsRestant == 0) // fin d'exécution du processus 
                     {
                         listeExecution[0].tempsFin = temps;

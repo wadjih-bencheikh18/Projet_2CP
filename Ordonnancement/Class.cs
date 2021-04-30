@@ -83,5 +83,13 @@ namespace Ordonnancement
             }
             return indice;
         }
+        public void AfficheLigne(int temps, int id)
+        {
+            Console.WriteLine(temps + "\t|\t " + id + "\t\t\t|");
+        }
+        public void AfficheLigne(int temps)
+        {
+            Console.WriteLine(temps + "\t|\t   Repos   \t\t|");
+        }
     }
 }
