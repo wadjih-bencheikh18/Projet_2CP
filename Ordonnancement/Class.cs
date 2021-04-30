@@ -36,12 +36,12 @@ namespace Ordonnancement
             Console.WriteLine(" ");
             Console.WriteLine(" ");
             Console.Write("ID : " + id);
-            Console.Write("\t\ttemps d'arrivé : " + tempsArriv);
+            Console.Write("\ttemps d'arrivé : " + tempsArriv);
             Console.Write("\tduree : " + duree);
             Console.Write("\tpriorité : " + prio);
             Console.Write("\ttemps de fin :  " + tempsFin);
             Console.Write("\ttemps de service  : " + tempsService);
-            Console.Write("\ttemps restant : " + tempsRestant);
+            //.Write("\ttemps restant : " + tempsRestant);
         }
     }
 

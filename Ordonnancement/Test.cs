@@ -6,7 +6,7 @@ namespace Ordonnancement
     {
         static void Main(string[] args)
         {
-            
+            /*
             Processus Pro;
             PAPS prgm = new();
             Random r1, r2, r3, r4;
@@ -31,9 +31,9 @@ namespace Ordonnancement
             Console.WriteLine("Les resultats :");
             prgm.Affichage();
             Console.WriteLine("\n\n\n");
-            
+            */
 
-            /*
+            
             ProcessusNiveau Pro;
             Random r1, r2, r3, r4;
             int a1, a2;
@@ -75,7 +75,7 @@ namespace Ordonnancement
             prgm.Executer();
             prgm.Affichage();
             Console.WriteLine("\n\n\n");
-            */
+            
         }
     }
 
