@@ -4,7 +4,7 @@ namespace Ordonnancement
 {
     partial class PAPS : Ordonnancement
     {
-        
+
         public PAPS() { }
         public int Executer()
         {
@@ -43,7 +43,7 @@ namespace Ordonnancement
             int temps = tempsDebut;
             while (listeExecution.Count != 0 && temps < tempsFin) //s'il existe des processus non executés et le temps < le temps de fin
             {
-                niveaux[indiceNiveau].indice[0] = AjouterTous(temps,niveaux[indiceNiveau].indice[0],niveaux,listeGeneral,indiceNiveau); //
+                niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau); //remplir listeExecution
                 temps++; //incrementer le temps réel
                 if (listeExecution.Count != 0) //s'il y a des processus à executer
                 {
