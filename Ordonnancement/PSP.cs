@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Ordonnancement
 {
@@ -24,7 +23,7 @@ namespace Ordonnancement
                                            }
                                         );
                     listeExecution[0].tempsRestant--;
-                    Console.WriteLine(temps + "\t|\t       " + listeExecution[0].id + "\t\t|");
+                    AfficheLigne(temps - 1, listeExecution[0].id);
                     if (listeExecution[0].tempsRestant == 0) // si le temps restant de l'execution = 0
                     {
                         listeExecution[0].tempsFin = temps; // temps de fin d'execution
@@ -33,6 +32,7 @@ namespace Ordonnancement
                         listeExecution.RemoveAt(0); //suprimer le processus lequel sa duree est ecoulé
                     }
                 }
+                else AfficheLigne(temps - 1);
             }
             return temps;
         }
@@ -61,7 +61,7 @@ namespace Ordonnancement
                                            }
                                         );
                     listeExecution[0].tempsRestant--;
-                    Console.WriteLine(temps + "-" + listeExecution[0].id);
+                    AfficheLigne(temps - 1, listeExecution[0].id);
                     if (listeExecution[0].tempsRestant == 0) // si le temps restant de l'execution = 0
                     {
                         listeExecution[0].tempsFin = temps; // temps de fin d'execution

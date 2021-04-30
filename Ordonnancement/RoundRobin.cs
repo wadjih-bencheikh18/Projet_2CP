@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Ordonnancement
 {
@@ -20,14 +19,14 @@ namespace Ordonnancement
                 {
                     if (temps < listeProcessus[indice].tempsArriv)  // si aucun processus est arrivant, donc horloge++
                     {
-                        Console.WriteLine(temps + "\t|\t   Repos   \t\t|");
+                        AfficheLigne(temps);
                         temps++;
                     }
                     else indice = AjouterTous(temps, indice);  // sinon on lui ajoute à la liste d'execution
                 }
                 else  // la liste d'execution n'est pas vide pour le moment
                 {
-                    Console.WriteLine(temps + "\t|\t       " + listeExecution[0].id + "\t\t|");
+                    AfficheLigne(temps, listeExecution[0].id);
                     temps++;  // horloge++
                     q++;  // quantum++
                     listeExecution[0].tempsRestant--;
@@ -73,7 +72,7 @@ namespace Ordonnancement
                 }
                 else  // la liste d'execution n'est pas vide pour le moment
                 {
-                    Console.WriteLine(tempsDebut + "-" + listeExecution[0].id);
+                    AfficheLigne(tempsDebut, listeExecution[0].id);
                     tempsDebut++;  // horloge++
                     indices[1]++;  // quantum++
                     listeExecution[0].tempsRestant--;

@@ -6,7 +6,7 @@ namespace Ordonnancement
     {
         static void Main(string[] args)
         {
-            
+            /*
             Processus Pro;
             PAPS prgm = new();
             Random r1, r2, r3, r4;
@@ -31,13 +31,13 @@ namespace Ordonnancement
             Console.WriteLine("Les resultats :");
             prgm.Affichage();
             Console.WriteLine("\n\n\n");
-            
+            */
 
-            /*
+
             ProcessusNiveau Pro;
             Random r1, r2, r3, r4;
             int a1, a2;
-            int nbNiveau = 5;
+            int nbNiveau = 6;
             Niveau[] niveaux = new Niveau[nbNiveau];
             Console.WriteLine("Les niveaux : \n");
             for (int i = 0; i < nbNiveau; i++)
@@ -54,14 +54,14 @@ namespace Ordonnancement
                 else
                 {
                     niveaux[i] = new(a1);
-                    Console.WriteLine(i + "=>" + a1 );
+                    Console.WriteLine(i + "=>" + a1);
                 }
 
             }
             MultiNiveau prgm = new(nbNiveau, niveaux);
             Console.WriteLine("\n\n");
             Console.WriteLine("Initialisation : \n");
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 10; i++)
             {
                 r1 = new Random();
                 r2 = new Random();
@@ -71,11 +71,16 @@ namespace Ordonnancement
                 Pro.Affichage();
                 prgm.Push(Pro);
             }
-            Console.WriteLine("\n\n");
+            Console.WriteLine("\n*****************************************\n");
+            Console.WriteLine("Le temps| Id de processus executer\t|\n");
+            Console.WriteLine("*****************************************");
             prgm.Executer();
+            Console.WriteLine("*****************************************");
+            Console.WriteLine("\n\n\n");
+            Console.WriteLine("Les resultats :");
             prgm.Affichage();
             Console.WriteLine("\n\n\n");
-            */
+
         }
     }
 

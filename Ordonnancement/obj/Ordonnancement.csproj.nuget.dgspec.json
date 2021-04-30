@@ -1,22 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "C:\\Users\\Meriem Afaf HADDOU\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\Meriem Afaf HADDOU\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Meriem Afaf HADDOU\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
-        "projectName": "Ordonnancement",
-        "projectPath": "C:\\Users\\Meriem Afaf HADDOU\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
-        "packagesPath": "C:\\Users\\Meriem Afaf HADDOU\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Meriem Afaf HADDOU\\Projet_2CP\\Ordonnancement\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Meriem Afaf HADDOU\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
     "C:\\Users\\jw_be\\Desktop\\Project 2CP\\Repo\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj": {}
   },
   "projects": {
@@ -35,19 +19,13 @@
         "configFilePaths": [
           "C:\\Users\\jw_be\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
->>>>>>> Wadjih_MultiLvl
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-<<<<<<< HEAD
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-=======
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
->>>>>>> Wadjih_MultiLvl
         },
         "frameworks": {
           "net5.0": {

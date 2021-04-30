@@ -98,7 +98,7 @@ namespace Ordonnancement
         {
             SortListeProcessus();
             InitNiveaux();
-            int temps = 0, indice = 0, indiceNiveau=0, tempsFin;
+            int temps = 0, indice = 0, indiceNiveau = 0, tempsFin;
             while (indice < listeProcessus.Count || indiceNiveau < nbNiveau)
             {
                 indice = AjouterTous(temps, indice);  //remplir les niveaux
@@ -133,8 +133,8 @@ namespace Ordonnancement
                 }
                 else
                 {
+                    if (indice < listeProcessus.Count) AfficheLigne(temps);
                     temps++;
-                    if (indice < listeProcessus.Count) Console.WriteLine(temps + "-Repos");
                 }
             }
             return temps;
@@ -159,7 +159,7 @@ namespace Ordonnancement
                 if (listeProcessus[indice].niveau < i) break;
             }
             if (indice < listeProcessus.Count) return listeProcessus[indice].tempsArriv;
-            else return 999;
+            else return 999999;
         }
     }
 }
