@@ -15,8 +15,8 @@ namespace Ordonnancement
                 Console.WriteLine("Voici les algorithmes d'ordonnancement:\n");
                 Console.WriteLine("\t1 - Premier Arrivé Premier Servie (PAPS)");
                 Console.WriteLine("\t2 - Plus Court d’Abord (PCA)");
-                Console.WriteLine("\t3 - Le Tourniquet (Round Robin)");
-                Console.WriteLine("\t4 - Priorité Avec Réquisition (PSP)");
+                Console.WriteLine("\t3 - Priorité Avec Réquisition (PSP)");
+                Console.WriteLine("\t4 - Le Tourniquet (Round Robin)");
                 Console.WriteLine("\t5 - Multi-Niveau \n");
                 Console.Write(" > ");
                 numAlgo = Convert.ToInt32(Console.ReadLine());
@@ -107,55 +107,55 @@ namespace Ordonnancement
             Console.WriteLine("\n\n\n");
             Console.ReadLine();
 
-        /*
-        ProcessusNiveau Pro;
-        Random r1, r2, r3, r4;
-        int a1, a2;
-        int nbNiveau = 6;
-        Niveau[] niveaux = new Niveau[nbNiveau];
-        Console.WriteLine("Les niveaux : \n");
-        for (int i = 0; i < nbNiveau; i++)
-        {
-            r1 = new Random();
-            a1 = r1.Next(0, 4);
-            if (a1 == 3)
+            /*
+            ProcessusNiveau Pro;
+            Random r1, r2, r3, r4;
+            int a1, a2;
+            int nbNiveau = 6;
+            Niveau[] niveaux = new Niveau[nbNiveau];
+            Console.WriteLine("Les niveaux : \n");
+            for (int i = 0; i < nbNiveau; i++)
             {
-                r2 = new Random();
-                a2 = r2.Next(0, 6);
-                niveaux[i] = new(a1, a2);
-                Console.WriteLine(i + "=>" + a1 + "=>" + a2);
-            }
-            else
-            {
-                niveaux[i] = new(a1);
-                Console.WriteLine(i + "=>" + a1);
-            }
+                r1 = new Random();
+                a1 = r1.Next(0, 4);
+                if (a1 == 3)
+                {
+                    r2 = new Random();
+                    a2 = r2.Next(0, 6);
+                    niveaux[i] = new(a1, a2);
+                    Console.WriteLine(i + "=>" + a1 + "=>" + a2);
+                }
+                else
+                {
+                    niveaux[i] = new(a1);
+                    Console.WriteLine(i + "=>" + a1);
+                }
 
+            }
+            MultiNiveau prgm = new(nbNiveau, niveaux);
+            Console.WriteLine("\n\n");
+            Console.WriteLine("Initialisation : \n");
+            for (int i = 0; i < 10; i++)
+            {
+                r1 = new Random();
+                r2 = new Random();
+                r3 = new Random();
+                r4 = new Random();
+                Pro = new(i, r1.Next(0, 15), r2.Next(1, 15), r3.Next(0, 15), r3.Next(0, 4));
+                Pro.Affichage();
+                prgm.Push(Pro);
+            }
+            Console.WriteLine("\n*****************************************\n");
+            Console.WriteLine("Le temps| Id de processus executer\t|\n");
+            Console.WriteLine("*****************************************");
+            prgm.Executer();
+            Console.WriteLine("*****************************************");
+            Console.WriteLine("\n\n\n");
+            Console.WriteLine("Les resultats :");
+            prgm.Affichage();
+            Console.WriteLine("\n\n\n");
+            */
         }
-        MultiNiveau prgm = new(nbNiveau, niveaux);
-        Console.WriteLine("\n\n");
-        Console.WriteLine("Initialisation : \n");
-        for (int i = 0; i < 10; i++)
-        {
-            r1 = new Random();
-            r2 = new Random();
-            r3 = new Random();
-            r4 = new Random();
-            Pro = new(i, r1.Next(0, 15), r2.Next(1, 15), r3.Next(0, 15), r3.Next(0, 4));
-            Pro.Affichage();
-            prgm.Push(Pro);
-        }
-        Console.WriteLine("\n*****************************************\n");
-        Console.WriteLine("Le temps| Id de processus executer\t|\n");
-        Console.WriteLine("*****************************************");
-        prgm.Executer();
-        Console.WriteLine("*****************************************");
-        Console.WriteLine("\n\n\n");
-        Console.WriteLine("Les resultats :");
-        prgm.Affichage();
-        Console.WriteLine("\n\n\n");
-        */
-    }
     }
 
 }
