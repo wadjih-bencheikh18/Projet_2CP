@@ -1,51 +1,67 @@
-﻿namespace Ordonnancement
+﻿using System;
+using System.Collections.Generic;
+
+namespace Ordonnancement
 {
-    class PAPS : Ordonnancement
+    partial class PAPS : Ordonnancement
     {
-        public void Faire()
+        
+        public PAPS() { }
+        public int Executer()
         {
-            listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
-            Affichage();
+            SortListeProcessus(); //tri des processus par ordre d'arrivé
+            int temps = 0, indice = 0;
+            while (indice < listeProcessus.Count || listeExecution.Count != 0) //s'il existe des processus non executés et le temps < le temps de fin
+            {
+                indice = AjouterTous(temps, indice); //remplir listeExecution
+                temps++; //incrementer le temps réel
+                if (listeExecution.Count != 0) //s'il y a des processus à executer
+                {
+                    listeExecution[0].tempsRestant--; //l'execution du 1er processus de listeExecution commence
+                    Console.WriteLine(temps + "\t|\t " + listeExecution[0].id+ "\t\t\t|");
+                    for (int i = 1; i < listeExecution.Count; i++) listeExecution[i].tempsAtt++; //incrementer le temps d'attente des processus de listeExecution à partir du 2eme 
+                    if (listeExecution[0].tempsRestant == 0) //si l'execution du premier processus de listeExecution est terminée
+                    {
+                        listeExecution[0].tempsFin = temps; //temps de fin d'execution = au temps actuel
+                        listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
+                        listeExecution[0].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree;
+                        listeExecution.RemoveAt(0); //supprimer le premier processus executé
+                    }
+                }
+                else Console.WriteLine(temps + "\t|\t Ropos\t\t\t|");
+            }
+            return temps;
         }
 
-        public override void CalculFin() //temps de fin d'execution FIN
-        {
-            listeProcessus[0].tempsFin = listeProcessus[0].duree + listeProcessus[0].tempsArriv;
-            for (int i = 1; i < nb; i++)
-            {
-                if (listeProcessus[i].tempsArriv < listeProcessus[i - 1].tempsFin)
-                {
-                    listeProcessus[i].tempsFin = listeProcessus[i - 1].tempsFin + listeProcessus[i].duree;
-                }
-                else
-                {
-                    listeProcessus[i].tempsFin = listeProcessus[i].duree + listeProcessus[i].tempsArriv;
-                }
-            }
-        }
 
-        public override void CalculAtt() //Waiting Time WT (pour FCFS waiting time = response time)
+        // des algos pour utiliser dans MultiNiveaux
+        public void InitPAPS(List<Processus> listeProcessus, List<Processus> listeExecution)
         {
-            listeProcessus[0].tempsAtt = 0;
-            for (int i = 1; i < nb; i++)
-            {
-                if (listeProcessus[i].tempsArriv < listeProcessus[i - 1].tempsFin)
-                {
-                    listeProcessus[i].tempsAtt = listeProcessus[i - 1].tempsFin - listeProcessus[i].tempsArriv;
-                }
-                else
-                {
-                    listeProcessus[i].tempsAtt = 0;
-                }
-            }
+            this.listeProcessus = listeProcessus;
+            this.listeExecution = listeExecution;
         }
-
-        public override void CalculService() //Turn Around Time TAT
+        public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         {
-            for (int i = 0; i < nb; i++)
+            SortListeProcessus(); //tri des processus par ordre d'arrivé
+            int temps = tempsDebut;
+            while (listeExecution.Count != 0 && temps < tempsFin) //s'il existe des processus non executés et le temps < le temps de fin
             {
-                listeProcessus[i].tempsService = listeProcessus[i].tempsAtt + listeProcessus[i].duree;
+                niveaux[indiceNiveau].indice[0] = AjouterTous(temps,niveaux[indiceNiveau].indice[0],niveaux,listeGeneral,indiceNiveau); //remplir listeExecution
+                temps++; //incrementer le temps réel
+                if (listeExecution.Count != 0) //s'il y a des processus à executer
+                {
+                    listeExecution[0].tempsRestant--; //l'execution du 1er processus de listeExecution commence
+                    Console.WriteLine(temps + "-" + listeExecution[0].id);
+                    if (listeExecution[0].tempsRestant == 0) //si l'execution du premier processus de listeExecution est terminée
+                    {
+                        listeExecution[0].tempsFin = temps; //temps de fin d'execution = au temps actuel
+                        listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
+                        listeExecution[0].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree;
+                        listeExecution.RemoveAt(0); //supprimer le premier processus executé
+                    }
+                }
             }
+            return temps;
         }
     }
 }

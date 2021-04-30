@@ -9,57 +9,79 @@ namespace Ordonnancement
         public int tempsArriv { get; } //temps d'arrivé
         public int duree { get; } //le temps qu'il faut pour executer le processus
         public int prio { get; } //priorite du processus
+        // a remplir
         public int etat; // 0 disactivé  1 pret   2 en cours
         public int tempsFin;
         public int tempsAtt;
         public int tempsService;
-        public Processus(int id, int tempsArriv, int duree, int prio)
+        public int tempsRestant;
+        public Processus(int id, int tempsArriv, int duree, int prio)  //pour prio
         {
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
             this.prio = prio;
+            this.tempsRestant = duree;
         }
-
-        public Processus(int id, int tempsArriv, int duree) //pour PAPS (FCFS)
+        public Processus(int id, int tempsArriv, int duree)
         {
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
             this.prio = 0;
+            this.tempsRestant = duree;
         }
-        public void Affichage()
+        public virtual void Affichage()
         {
             Console.WriteLine(" ");
+            Console.WriteLine(" ");
             Console.Write("ID : " + id);
-            Console.Write("\t\tARRIV : " + tempsArriv);
-            Console.Write("\tBT : " + duree);
-            Console.Write("\tPRIO : " + prio);
-            Console.Write("\tFIN : " + tempsFin);
-            Console.Write("\tWT : " + tempsAtt);
-            Console.WriteLine("\tTAT : " + tempsService);
+            Console.Write("\t\ttemps d'arrivé : " + tempsArriv);
+            Console.Write("\tduree : " + duree);
+            Console.Write("\tpriorité : " + prio);
+            Console.Write("\ttemps de fin :  " + tempsFin);
+            Console.Write("\ttemps de service  : " + tempsService);
+            Console.Write("\ttemps restant : " + tempsRestant);
         }
     }
 
     abstract class Ordonnancement
     {
-        public List<Processus> listeProcessus = new List<Processus>();
-        public int nb; //le nombre de processus dans la liste P
+        protected List<Processus> listeProcessus = new List<Processus>();  // liste des processus fournis par l'utilisateur
+        protected List<Processus> listeExecution = new List<Processus>();  // liste d'execution par le precesseur (c'est la liste des processus prés)
         public void Push(Processus pro) //ajout d'un processus à la liste P
         {
             listeProcessus.Add(pro);
-            nb++;
         }
-        public void Affichage()
+        public virtual void Affichage() //affichage de listeProcessus
         {
-            CalculFin();
-            CalculAtt();
-            CalculService();
-            for (int i = 0; i < nb; i++) listeProcessus[i].Affichage();
+            for (int i = 0; i < listeProcessus.Count; i++) listeProcessus[i].Affichage();
         }
-        public abstract void CalculFin();
-        public abstract void CalculAtt();
-        public abstract void CalculService();
-
+        public virtual void SortListeProcessus() //tri des processus par ordre d'arrivé
+        {
+            listeProcessus.Sort(delegate (Processus x, Processus y) { return x.tempsArriv.CompareTo(y.tempsArriv); }); //tri par ordre d'arrivé
+        }
+        public virtual int  AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        {
+            for (; indice < listeProcessus.Count; indice++)
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break;
+                else listeExecution.Add(listeProcessus[indice]);
+            }
+            return indice;
+        }
+        public int AjouterTous(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution (utilisé dans multiNiveaux)
+        {
+            for (; indice < listeProcessus.Count; indice++)
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break;
+                else
+                {
+                    if (listeGeneral[indice].niveau == indiceNiveau) listeExecution.Add(listeGeneral[indice]);
+                    else niveaux[listeGeneral[indice].niveau].listeExecution.Add(listeGeneral[indice]);
+                }
+            }
+            return indice;
+        }
     }
 }

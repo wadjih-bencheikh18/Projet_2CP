@@ -1,8 +1,14 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
+<<<<<<< HEAD
       "C:\\Users\\Meriem Afaf HADDOU\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\Meriem Afaf HADDOU\\.nuget\\packages"
+=======
+      "C:\\Users\\jw_be\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\jw_be\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+>>>>>>> Wadjih_MultiLvl
     ]
   }
 }

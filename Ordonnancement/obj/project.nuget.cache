@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "VINJhbom8k9DcsMwKMyhFg6dsTCEFpDl0fR5kdj9+Zy0XuNE5aISn7HKk1AXRFGKy4Z5ZCIwXitcuQ4qIAc6hw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Meriem Afaf HADDOU\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
+=======
+  "dgSpecHash": "899RrXC8/R8GmN8OQcVEvFB7AXltmtj7XR7ADwjaYjqR0PZNbN8ch4GMXiIlXRuzLIJEwAyizxjmH+oOAHA68A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jw_be\\Desktop\\Project 2CP\\Repo\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
+>>>>>>> Wadjih_MultiLvl
   "expectedPackageFiles": [],
   "logs": []
 }
