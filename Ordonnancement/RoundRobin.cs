@@ -62,7 +62,6 @@ namespace Ordonnancement
         public int Executer(int tempsDebut, int tempsFin, int[] indices, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         // executer l'algo pendant un intervalle de temps où indices[0] est l'indice de listeProcessus où on doit reprendre et indices[1] est le quantum du temps du dernier execution
         {
-            SortListeProcessus();
             while (indices[0] < listeProcessus.Count || listeExecution.Count != 0)  // il y reste un processus à executer
             {
                 if (indices[0] < listeProcessus.Count && listeExecution.Count == 0)  // la liste d'execution est vide pour le moment

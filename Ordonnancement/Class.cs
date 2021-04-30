@@ -71,15 +71,15 @@ namespace Ordonnancement
             }
             return indice;
         }
-        public int AjouterTous(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau) //ajouter à la liste d'execution tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution de MultiNiveaux
+        public int AjouterTous(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau) //ajouter à la liste d'execution tous les processus de "listeGeneral" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution de MultiNiveaux
         {
             for (; indice < listeGeneral.Count; indice++) //parcours de listeGeneral à partir du processus d'indice "indice"
             {
                 if (listeGeneral[indice].tempsArriv > temps) break; //si le processus n'est pas encore arrivé on sort
                 else
                 {
-                    if (listeGeneral[indice].niveau == indiceNiveau) listeExecution.Add(listeGeneral[indice]); //si le niveau du processus = indiceNiveau on ajoute le processus à la liste d'execution
-                    else niveaux[listeGeneral[indice].niveau].listeExecution.Add(listeGeneral[indice]); //sinon 
+                    if (listeGeneral[indice].niveau == indiceNiveau) listeExecution.Add(listeGeneral[indice]); //si le niveau du processus = indiceNiveau (niveau actuel) on ajoute ce processus à la liste d'execution de ce niveau
+                    else niveaux[listeGeneral[indice].niveau].listeExecution.Add(listeGeneral[indice]); //sinon on ajoute le processus à la liste d'execution de son niveau
                 }
             }
             return indice;
