@@ -48,7 +48,7 @@ namespace Ordonnancement
     abstract class Ordonnancement
     {
         protected List<Processus> listeProcessus = new List<Processus>();  // liste des processus fournis par l'utilisateur
-        protected List<Processus> listeExecution = new List<Processus>();  // liste d'execution par le precesseur
+        protected List<Processus> listeExecution = new List<Processus>();  // liste d'execution par le precesseur (c'est la liste des processus prés)
         public void Push(Processus pro) //ajout d'un processus à la liste P
         {
             listeProcessus.Add(pro);
@@ -70,7 +70,7 @@ namespace Ordonnancement
             }
             return indice;
         }
-        public int AjouterTous(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
+        public int AjouterTous(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution (utilisé dans multiNiveaux)
         {
             for (; indice < listeProcessus.Count; indice++)
             {

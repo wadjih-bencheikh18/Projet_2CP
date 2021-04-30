@@ -8,10 +8,10 @@ namespace Ordonnancement
         {
             /*
             Processus Pro;
-            RoundRobin prgm = new(2);
+            RoundRobin prgm = new(5);
             Random r1, r2, r3, r4;
             Console.WriteLine("Initialisation : \n");
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
                 r1 = new Random();
                 r2 = new Random();
@@ -31,6 +31,8 @@ namespace Ordonnancement
             prgm.Affichage();
             Console.WriteLine("\n\n\n");
             */
+
+
             ProcessusNiveau Pro;
             Random r1, r2, r3, r4;
             int a1, a2;
@@ -72,6 +74,7 @@ namespace Ordonnancement
             prgm.Executer();
             prgm.Affichage();
             Console.WriteLine("\n\n\n");
+
         }
     }
 

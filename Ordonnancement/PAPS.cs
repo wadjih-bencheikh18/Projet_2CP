@@ -34,7 +34,7 @@ namespace Ordonnancement
         }
 
 
-
+        // des algos pour utiliser dans MultiNiveaux
         public void InitPAPS(List<Processus> listeProcessus, List<Processus> listeExecution)
         {
             this.listeProcessus = listeProcessus;

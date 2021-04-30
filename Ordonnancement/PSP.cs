@@ -17,11 +17,10 @@ namespace Ordonnancement
                 temps++;
                 if (listeExecution.Count != 0)
                 {
-                    listeExecution.Sort(
-                                           delegate (Processus x, Processus y)
+                    listeExecution.Sort(delegate (Processus x, Processus y)
                                            {
-                                               if (x.prio.CompareTo(y.prio) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si priorité egale
-                                               else return x.prio.CompareTo(y.prio); //tri par priorité
+                                               if (x.prio.CompareTo(y.prio) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si priorité egale, on trie par arrivé
+                                               else return x.prio.CompareTo(y.prio); //sinon, tri par priorité
                                            }
                                         );
                     listeExecution[0].tempsRestant--;
@@ -37,6 +36,8 @@ namespace Ordonnancement
             }
             return temps;
         }
+
+        // des algos pour utiliser dans MultiNiveaux
         public void InitPSP(List<Processus> listeProcessus, List<Processus> listeExecution)
         {
             this.listeProcessus = listeProcessus;

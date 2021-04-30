@@ -37,6 +37,8 @@ namespace Ordonnancement
             }
             return temps;
         }
+
+        // des algos pour utiliser dans MultiNiveaux
         public void InitPCA(List<Processus> listeProcessus, List<Processus> listeExecution)
         {
             this.listeProcessus = listeProcessus;
