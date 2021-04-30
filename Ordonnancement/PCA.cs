@@ -50,8 +50,16 @@ namespace Ordonnancement
             int temps = tempsDebut;
             while (listeExecution.Count != 0 && temps < tempsFin) //s'il existe des processus non executés et le temps < le temps de fin
             {
-                if (listeExecution[0]==listeProcessus[0] && niveaux[indiceNiveau].indice[2]==0) niveaux[indiceNiveau].indice[1] = 1;
+
+
+                if (niveaux[indiceNiveau].indice[2]==0) niveaux[indiceNiveau].indice[1] = 1;
+
+
+
                 niveaux[indiceNiveau].indice[2] = 1;
+
+
+
                 niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral,indiceNiveau);
                 if (niveaux[indiceNiveau].indice[1] == 1 && listeExecution.Count != 0)
                 {

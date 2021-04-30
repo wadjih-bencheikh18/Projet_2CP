@@ -107,28 +107,7 @@ namespace Ordonnancement
                 {
                     tempsFin = TempsFin(indice, indiceNiveau);  //calcule de temps fin
                     niveaux[indiceNiveau].indice[0] = indice;
-                    switch (niveaux[indiceNiveau].numAlgo)
-                    {
-                        case 0:
-                            ((PAPS)niveaux[indiceNiveau].algo).InitPAPS(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
-                            temps = ((PAPS)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
-                            break;
-                        case 1:
-                            ((PCA)niveaux[indiceNiveau].algo).InitPCA(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
-                            temps = ((PCA)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
-                            break;
-                        case 2:
-                            ((PSP)niveaux[indiceNiveau].algo).InitPSP(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
-                            temps = ((PSP)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
-                            break;
-                        case 3:
-                            ((RoundRobin)niveaux[indiceNiveau].algo).InitRoundRobin(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
-                            temps = ((RoundRobin)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux[indiceNiveau].indice, niveaux, indiceNiveau, listeProcessus);
-                            break;
-                        default:
-                            Console.WriteLine("Error");
-                            break;
-                    }
+                    temps = NiveauExecute(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
                     indice = niveaux[indiceNiveau].indice[0];
                 }
                 else
@@ -139,6 +118,32 @@ namespace Ordonnancement
             }
             return temps;
 
+        }
+        public int NiveauExecute(int temps,int tempsFin,Niveau[] niveaux,int indiceNiveau, List<ProcessusNiveau> listeProcessus)
+        {
+            switch (niveaux[indiceNiveau].numAlgo)
+            {
+                case 0:
+                    ((PAPS)niveaux[indiceNiveau].algo).InitPAPS(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
+                    temps = ((PAPS)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
+                    break;
+                case 1:
+                    ((PCA)niveaux[indiceNiveau].algo).InitPCA(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
+                    temps = ((PCA)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
+                    break;
+                case 2:
+                    ((PSP)niveaux[indiceNiveau].algo).InitPSP(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
+                    temps = ((PSP)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);
+                    break;
+                case 3:
+                    ((RoundRobin)niveaux[indiceNiveau].algo).InitRoundRobin(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution);
+                    temps = ((RoundRobin)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux[indiceNiveau].indice, niveaux, indiceNiveau, listeProcessus);
+                    break;
+                default:
+                    Console.WriteLine("Error");
+                    break;
+            }
+            return temps;
         }
         public override int AjouterTous(int temps, int indice)  // collecter tous les processus a partit de "listeProcessus" (liste ordonnée) où leur temps d'arrivé est <= le temps réel d'execution, et les ajouter à la liste d'execution 
         {
