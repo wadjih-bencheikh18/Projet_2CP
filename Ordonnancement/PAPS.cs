@@ -32,11 +32,7 @@ namespace Ordonnancement
         }
 
         // à utiliser dans MultiNiveaux
-        public void InitPAPS(List<Processus> listeProcessus, List<Processus> listeExecution)
-        {
-            this.listeProcessus = listeProcessus;
-            this.listePrets = listeExecution;
-        }
+        
         public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         {
             int temps = tempsDebut;

@@ -11,7 +11,7 @@ namespace Ordonnancement
         public int duree { get; } //temps d'execution du processus (burst time)
         public int prio { get; } //priorite du processus
         //à remplir
-        public int etat; // 0:désactivé  1:prêt  2:en cours
+        public int etat; // 0:bloqué  1:prêt  2:en cours
         public int tempsFin;
         public int tempsAtt;
         public int tempsService;
@@ -40,6 +40,7 @@ namespace Ordonnancement
             Console.Write("\ttemps d'arrivé : " + tempsArriv);
             Console.Write("\tduree : " + duree);
             Console.Write("\tpriorité : " + prio);
+            Console.Write("\ttemps d'attente : " + tempsAtt);
             Console.Write("\ttemps de fin :  " + tempsFin);
             Console.Write("\ttemps de service  : " + tempsService);
             //Console.Write("\ttemps restant : " + tempsRestant);
@@ -91,6 +92,11 @@ namespace Ordonnancement
         public void AfficheLigne(int temps) //affiche le temps actuel et le mot "repos" ie le processeur n'execute aucun processus
         {
             Console.WriteLine(temps + "\t|\t   Repos   \t\t|");
+        }
+        public void Init(List<Processus> listeProcessus, List<Processus> listePrets)
+        {
+            this.listeProcessus = listeProcessus;
+            this.listePrets = listePrets;
         }
     }
 }

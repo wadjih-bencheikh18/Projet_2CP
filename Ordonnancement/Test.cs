@@ -6,7 +6,7 @@ namespace Ordonnancement
     {
         static void Main(string[] args)
         {
-            /*
+            
             bool test = false;
             Processus Pro;
             int numAlgo = 0;
@@ -107,8 +107,8 @@ namespace Ordonnancement
             prgm.Affichage();
             Console.WriteLine("\n\n\n");
             Console.ReadLine();
-            */
             
+            /*
             ProcessusNiveau Pro;
             Random r1, r2, r3, r4;
             int a1, a2;
@@ -146,7 +146,7 @@ namespace Ordonnancement
                 Pro.Affichage();
                 prgm.Push(Pro);
             }
-            Console.WriteLine("\n*****************************************\n");
+            Console.WriteLine("\n\n*****************************************");
             Console.WriteLine("Le temps| Id de processus executer\t|\n");
             Console.WriteLine("*****************************************");
             prgm.Executer();
@@ -155,6 +155,7 @@ namespace Ordonnancement
             Console.WriteLine("Les resultats :");
             prgm.Affichage();
             Console.WriteLine("\n\n\n");
+            */
         }
     }
 
