@@ -10,26 +10,26 @@ namespace Ordonnancement
             SortListeProcessus(); //tri par ordre d'arrivé
             int temps = 0;  // horloge
             int indice = 0;
-            while (listeExecution.Count != 0 || indice < listeProcessus.Count)
+            while (listePrets.Count != 0 || indice < listeProcessus.Count)
             {
-                indice = AjouterTous(temps, indice);  //remplir list Execution
+                indice = AjouterTous(temps, indice);  //remplir listePrets
                 temps++;
-                if (listeExecution.Count != 0)
+                if (listePrets.Count != 0)
                 {
-                    listeExecution.Sort(delegate (Processus x, Processus y)
+                    listePrets.Sort(delegate (Processus x, Processus y)
                                            {
                                                if (x.prio.CompareTo(y.prio) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si priorité egale, on trie par arrivé
                                                else return x.prio.CompareTo(y.prio); //sinon, tri par priorité
                                            }
                                         );
-                    listeExecution[0].tempsRestant--;
-                    AfficheLigne(temps - 1, listeExecution[0].id);
-                    if (listeExecution[0].tempsRestant == 0) // si le temps restant de l'execution = 0
+                    listePrets[0].tempsRestant--;
+                    AfficheLigne(temps - 1, listePrets[0].id);
+                    if (listePrets[0].tempsRestant == 0) // si le temps restant de l'execution = 0
                     {
-                        listeExecution[0].tempsFin = temps; // temps de fin d'execution
-                        listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv; // temps de service d'execution
-                        listeExecution[0].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree;
-                        listeExecution.RemoveAt(0); //suprimer le processus lequel sa duree est ecoulé
+                        listePrets[0].tempsFin = temps; // temps de fin d'execution
+                        listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service d'execution
+                        listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;
+                        listePrets.RemoveAt(0); //supprimer le processus lequel sa duree est ecoulé
                     }
                 }
                 else AfficheLigne(temps - 1);
@@ -37,36 +37,36 @@ namespace Ordonnancement
             return temps;
         }
 
-        // des algos pour utiliser dans MultiNiveaux
+        // à utiliser dans MultiNiveaux
         public void InitPSP(List<Processus> listeProcessus, List<Processus> listeExecution)
         {
             this.listeProcessus = listeProcessus;
-            this.listeExecution = listeExecution;
+            this.listePrets = listeExecution;
         }
         public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)  // executer la liste des processus 
         {
             int temps = tempsDebut;  // horloge
-            while (listeExecution.Count != 0 && (temps < tempsFin || tempsFin == -1))
+            while (listePrets.Count != 0 && (temps < tempsFin || tempsFin == -1))
             {
                 niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau);
                 temps++;
-                if (listeExecution.Count != 0)
+                if (listePrets.Count != 0)
                 {
-                    listeExecution.Sort(
+                    listePrets.Sort(
                                            delegate (Processus x, Processus y)
                                            {
                                                if (x.prio.CompareTo(y.prio) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si priorité egale
                                                else return x.prio.CompareTo(y.prio); //tri par priorité
                                            }
                                         );
-                    listeExecution[0].tempsRestant--;
-                    AfficheLigne(temps - 1, listeExecution[0].id);
-                    if (listeExecution[0].tempsRestant == 0) // si le temps restant de l'execution = 0
+                    listePrets[0].tempsRestant--;
+                    AfficheLigne(temps - 1, listePrets[0].id);
+                    if (listePrets[0].tempsRestant == 0) // si le temps restant de l'execution = 0
                     {
-                        listeExecution[0].tempsFin = temps; // temps de fin d'execution
-                        listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv; // temps de service d'execution
-                        listeExecution[0].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree;
-                        listeExecution.RemoveAt(0); //suprimer le processus lequel sa duree est ecoulé
+                        listePrets[0].tempsFin = temps; // temps de fin d'execution
+                        listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service d'execution
+                        listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;
+                        listePrets.RemoveAt(0); //supprimer le processus dont la duree est ecoulée
                     }
                 }
             }
