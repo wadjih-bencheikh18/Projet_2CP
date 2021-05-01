@@ -122,24 +122,21 @@ namespace Ordonnancement
             }
             return temps;
         }
-        public int NiveauExecute(int temps,int tempsFin,Niveau[] niveaux,int indiceNiveau, List<ProcessusNiveau> listeProcessus)  //executer le niveau "indiceNiveau"
+        public int NiveauExecute(int temps, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeProcessus)  //executer le niveau "indiceNiveau"
         {
+            niveaux[indiceNiveau].algo.Init(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution); //initialisation de algo avec la liste des processus et la liste des processus prêts du niveau
             switch (niveaux[indiceNiveau].numAlgo)
             {
                 case 0:
-                    ((PAPS)niveaux[indiceNiveau].algo).InitPAPS(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution); //initialisation de algo avec la liste des processus et la liste des processus prêts du niveau
                     temps = ((PAPS)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus); //executer le niveau jusqu'à tempsfin en incrementant le temps
                     break;
                 case 1:
-                    ((PCA)niveaux[indiceNiveau].algo).InitPCA(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution); //(pareil que case 0)
                     temps = ((PCA)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus); //(pareil que case 0)
                     break;
                 case 2:
-                    ((PSP)niveaux[indiceNiveau].algo).InitPSP(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution); //(pareil que case 0)
                     temps = ((PSP)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus); //(pareil que case 0)
                     break;
                 case 3:
-                    ((RoundRobin)niveaux[indiceNiveau].algo).InitRoundRobin(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listeExecution); //(pareil que case 0)
                     temps = ((RoundRobin)niveaux[indiceNiveau].algo).Executer(temps, tempsFin, niveaux[indiceNiveau].indice, niveaux, indiceNiveau, listeProcessus); //(pareil que case 0)
                     break;
                 default:

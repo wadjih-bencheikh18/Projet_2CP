@@ -53,11 +53,7 @@ namespace Ordonnancement
         }
 
         // Des algorithmes nécessaires pour implémenter MultiNiveaux
-        public void InitRoundRobin(List<Processus> listeProcessus, List<Processus> listeExecution)
-        {
-            this.listeProcessus = listeProcessus;
-            this.listePrets = listeExecution;
-        }
+
         public int Executer(int tempsDebut, int tempsFin, int[] indices, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         // executer l'algo pendant un intervalle de temps où :
         // indices[0] est l'indice de listeProcessus où on doit reprendre l'exécution

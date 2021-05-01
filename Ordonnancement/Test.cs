@@ -146,7 +146,7 @@ namespace Ordonnancement
                 Pro.Affichage();
                 prgm.Push(Pro);
             }
-            Console.WriteLine("\n*****************************************\n");
+            Console.WriteLine("\n\n*****************************************");
             Console.WriteLine("Le temps| Id de processus executer\t|\n");
             Console.WriteLine("*****************************************");
             prgm.Executer();

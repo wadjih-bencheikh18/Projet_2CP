@@ -38,11 +38,7 @@ namespace Ordonnancement
         }
 
         // des algorithmes nécessaires pour implémenter MultiNiveaux
-        public void InitPSP(List<Processus> listeProcessus, List<Processus> listeExecution) //Initialiser listProcessus et listePrets
-        {
-            this.listeProcessus = listeProcessus;
-            listePrets = listeExecution;
-        }
+
         public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         {
             int temps = tempsDebut;  // initialisation du temps

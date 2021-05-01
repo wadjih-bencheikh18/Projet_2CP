@@ -92,5 +92,10 @@ namespace Ordonnancement
         {
             Console.WriteLine(temps + "\t|\t   Repos   \t\t|");
         }
+        public void Init(List<Processus> listeProcessus, List<Processus> listePrets)
+        {
+            this.listeProcessus = listeProcessus;
+            this.listePrets = listePrets;
+        }
     }
 }
