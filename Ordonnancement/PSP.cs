@@ -41,7 +41,7 @@ namespace Ordonnancement
         public void InitPSP(List<Processus> listeProcessus, List<Processus> listeExecution) //Initialiser listProcessus et listePrets
         {
             this.listeProcessus = listeProcessus;
-            this.listePrets = listeExecution;
+            listePrets = listeExecution;
         }
         public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         {

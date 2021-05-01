@@ -42,7 +42,7 @@ namespace Ordonnancement
         public void InitPCA(List<Processus> listeProcessus, List<Processus> listeExecution)
         {
             this.listeProcessus = listeProcessus;
-            this.listePrets = listeExecution;
+            listePrets = listeExecution;
         }
         public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         {
