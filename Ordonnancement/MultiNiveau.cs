@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ordonnancement
 {
-    class Niveau
+    class Niveau 
     {
         public List<Processus> listeProcessus = new List<Processus>();
         public List<Processus> listeExecution = new List<Processus>();
