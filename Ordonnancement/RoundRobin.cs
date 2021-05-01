@@ -13,47 +13,46 @@ namespace Ordonnancement
         {
             SortListeProcessus(); //Tri de la liste des processus par temps d'arrivée
             int indice = 0, temps = 0, q = 0;
-            while (indice < listeProcessus.Count || listePrets.Count != 0)  // il reste un processus prêts
-            while (indice < listeProcessus.Count || listeExecution.Count != 0)  //s'il existe des processus non executés
+            while (indice < listeProcessus.Count || listePrets.Count != 0)  //s'il existe des processus prêts
             {
-                if (indice < listeProcessus.Count && listeExecution.Count == 0)  // Si il y a des processus dans listPrets et la listExecution est vide
-                {
+                if (indice < listeProcessus.Count && listePrets.Count == 0)  // Si il y a des processus dans listeProcessus et la listePrets est vide
+                    {
                     if (temps < listeProcessus[indice].tempsArriv)  // si aucun processus n'est arrivé
                     {
                         AfficheLigne(temps); //affiche le temps actuel et le mot "repos", i.e le processeur n'execute aucun processus
                         temps++;
                     }
-                    else indice = AjouterTous(temps, indice);  // sinon, on ajoute les processus arrivés à listPrets
+                    else indice = AjouterTous(temps, indice);  // sinon, on ajoute les processus arrivés à listePrets
                 }
-                else  // listPrets n'est pas vide 
+                else  // listePrets n'est pas vide 
                 {
-                    AfficheLigne(temps, listeExecution[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
+                    AfficheLigne(temps, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     temps++;  
                     q++;  // on incrémente le quantum
-                    listeExecution[0].tempsRestant--; //L'exécution courante du 1er processus de listeExecution => décrémenter tempsRestant
-                    indice = AjouterTous(temps, indice);  // ajouter les processus arrivés à listExecution
+                        listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
+                    indice = AjouterTous(temps, indice);  // ajouter les processus arrivés à listePrets
 
-                    if (listeExecution[0].tempsRestant == 0) //fin d'exécution du processus 
+                    if (listePrets[0].tempsRestant == 0) //fin d'exécution du processus 
                     {
-                        listeExecution[0].tempsFin = temps; // temps de fin d'execution = temps actuel
-                        listeExecution[0].tempsService = temps - listeExecution[0].tempsArriv;// temps de service = temps de fin d'execution - temps d'arrivé
-                        listeExecution[0].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree;  //temps d'attente = temps de service - durée d'execution
-                        listeExecution.RemoveAt(0);//supprimer le premier processus executé
+                        listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
+                        listePrets[0].tempsService = temps - listePrets[0].tempsArriv;// temps de service = temps de fin d'execution - temps d'arrivé
+                        listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;  //temps d'attente = temps de service - durée d'execution
+                        listePrets.RemoveAt(0);//supprimer le premier processus executé
                         q = 0;  // un nouveau quantum va commencer
                     }
                     else if (q == quantum)  // on a terminé ce quantum => il faut passer au processus suivant => on defile, et à la fin, on enfile le processus courant
                     {
-                        listeExecution[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
+                        listePrets[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                         q = 0;  //Un nouveau quantum
-                        listeExecution.Add(listeExecution[0]);  //Enfilement à la fin
-                        listeExecution.RemoveAt(0);  // defiler 
+                        listePrets.Add(listePrets[0]);  //Enfilement à la fin
+                        listePrets.RemoveAt(0);  // defiler 
                     }
                 }
             }
             return temps;
         }
 
-        // Des algorithmes nécessaires ^pour implémenter MultiNiveaux
+        // Des algorithmes nécessaires pour implémenter MultiNiveaux
         public void InitRoundRobin(List<Processus> listeProcessus, List<Processus> listeExecution)
         {
             this.listeProcessus = listeProcessus;
@@ -64,32 +63,32 @@ namespace Ordonnancement
         // indices[0] est l'indice de listeProcessus où on doit reprendre l'exécution
         // indices[1] est le quantum du temps de la derniére exécution
         {
-            while (indices[0] < listeProcessus.Count || listeExecution.Count != 0)  //s'il existe des processus non executés
+            while (indices[0] < listeProcessus.Count || listePrets.Count != 0)  //tant qu'il existe des processus prêts
             {
-                if (indices[0] < listeProcessus.Count && listeExecution.Count == 0)  // Si il y a des processus dans listProcessus et la listExecution est vide
+                if (indices[0] < listeProcessus.Count && listePrets.Count == 0)  // Si il y a des processus dans listProcessus et listePrets est vide
                 {
                     tempsDebut++;  // aucun processus n'est arrivé => on incrémente le temps
-                    indices[0] = AjouterTous(tempsDebut, indices[0], niveaux, listeGeneral, indiceNiveau);  // On rempli listExecution
+                    indices[0] = AjouterTous(tempsDebut, indices[0], niveaux, listeGeneral, indiceNiveau);  // On rempli listePrets
                 }
-                else  // listExecution n'est pas vide 
+                else  // listePrets n'est pas vide 
                 {
-                    AfficheLigne(tempsDebut, listeExecution[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
+                    AfficheLigne(tempsDebut, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     tempsDebut++;
                     indices[1]++;  // quantum++
-                    listeExecution[0].tempsRestant--; //L'exécution courante du 1er processus de listeExecution => décrémenter tempsRestant
-                    indices[0] = AjouterTous(tempsDebut, indices[0], niveaux, listeGeneral, indiceNiveau);  // On rempli la listExecution
-                    
-                    if (listeExecution[0].tempsRestant == 0)  // fin d'exécution du processus 
+                    listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
+                    indices[0] = AjouterTous(tempsDebut, indices[0], niveaux, listeGeneral, indiceNiveau);  // On rempli listePrets
+
+                    if (listePrets[0].tempsRestant == 0)  // fin d'exécution du processus 
                     {
-                        listeExecution[0].tempsFin = tempsDebut;
-                        listeExecution[0].tempsService = tempsDebut - listeExecution[0].tempsArriv;
-                        listeExecution[0].tempsAtt = listeExecution[0].tempsService - listeExecution[0].duree;
-                        listeExecution.RemoveAt(0); //supprimer le premier processus executé
+                        listePrets[0].tempsFin = tempsDebut;
+                        listePrets[0].tempsService = tempsDebut - listePrets[0].tempsArriv;
+                        listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;
+                        listePrets.RemoveAt(0); //supprimer le premier processus executé
                         indices[1] = 0;  // un nouveau quantum va commencer
                     }
                     else if (indices[1] == quantum)  // on a terminé ce quantum => il faut passer au processus suivant => on defile, et à la fin, on enfile le processus courant
                     {
-                        listeExecution[0].tempsFin = tempsDebut;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
+                        listePrets[0].tempsFin = tempsDebut;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                         indices[1] = 0;  // nouveau quantum
                         listePrets.Add(listePrets[0]);  // enfiler à la fin
                         listePrets.RemoveAt(0);  // defiler 
