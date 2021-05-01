@@ -6,7 +6,7 @@ namespace Ordonnancement
     {
         static void Main(string[] args)
         {
-            
+            /*
             bool test = false;
             Processus Pro;
             int numAlgo = 0;
@@ -77,7 +77,7 @@ namespace Ordonnancement
                     r2 = new Random();
                     r3 = new Random();
                     r4 = new Random();
-                    Pro = new(r1.Next(0, 15), r2.Next(0, 15), r3.Next(1, 15), r4.Next(1, 5));
+                    Pro = new(i, r2.Next(0, 15), r3.Next(1, 15), r4.Next(1, 5));
                 }
                 prgm.Push(Pro);
             }
@@ -107,8 +107,8 @@ namespace Ordonnancement
             prgm.Affichage();
             Console.WriteLine("\n\n\n");
             Console.ReadLine();
+            */
             
-            /*
             ProcessusNiveau Pro;
             Random r1, r2, r3, r4;
             int a1, a2;
@@ -142,7 +142,7 @@ namespace Ordonnancement
                 r2 = new Random();
                 r3 = new Random();
                 r4 = new Random();
-                Pro = new(i, r1.Next(0, 15), r2.Next(1, 15), r3.Next(0, 15), r3.Next(0, 4));
+                Pro = new(i, r1.Next(0, 15), r2.Next(1, 15), r3.Next(0, 15), r4.Next(0, 4));
                 Pro.Affichage();
                 prgm.Push(Pro);
             }
@@ -155,7 +155,7 @@ namespace Ordonnancement
             Console.WriteLine("Les resultats :");
             prgm.Affichage();
             Console.WriteLine("\n\n\n");
-            */
+            
         }
     }
 

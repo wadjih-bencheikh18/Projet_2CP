@@ -16,7 +16,7 @@ namespace Ordonnancement
             while (indice < listeProcessus.Count || listePrets.Count != 0)  //s'il existe des processus prêts
             {
                 if (indice < listeProcessus.Count && listePrets.Count == 0)  // Si il y a des processus dans listeProcessus et la listePrets est vide
-                    {
+                {
                     if (temps < listeProcessus[indice].tempsArriv)  // si aucun processus n'est arrivé
                     {
                         AfficheLigne(temps); //affiche le temps actuel et le mot "repos", i.e le processeur n'execute aucun processus
@@ -27,9 +27,10 @@ namespace Ordonnancement
                 else  // listePrets n'est pas vide 
                 {
                     AfficheLigne(temps, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
-                    temps++;  
+                    temps++;
                     q++;  // on incrémente le quantum
-                        listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
+                    listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     indice = AjouterTous(temps, indice);  // ajouter les processus arrivés à listePrets
 
                     if (listePrets[0].tempsRestant == 0) //fin d'exécution du processus 
@@ -71,6 +72,7 @@ namespace Ordonnancement
                     AfficheLigne(tempsDebut, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     tempsDebut++;
                     indices[1]++;  // quantum++
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = tempsDebut - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     indices[0] = AjouterTous(tempsDebut, indices[0], niveaux, listeGeneral, indiceNiveau);  // On rempli listePrets
 

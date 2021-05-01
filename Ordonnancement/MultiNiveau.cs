@@ -66,7 +66,7 @@ namespace Ordonnancement
         public override void Affichage() //surdefinition : affiche les caracteristiques d'un processus en plus de son niveau
         {
             base.Affichage();
-            Console.Write("\tNiveau : " + niveau);
+            Console.Write(" Niveau : " + niveau);
         }
     }
     class MultiNiveau : Ordonnancement

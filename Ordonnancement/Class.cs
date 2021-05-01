@@ -11,10 +11,11 @@ namespace Ordonnancement
         public int duree { get; } //temps d'execution du processus (burst time)
         public int prio { get; } //priorite du processus
         //à remplir
-        public int etat; // 0:bloqué  1:prêt  2:en cours
+        public int etat; // 0:bloqué  1:prêt  2:active
         public int tempsFin;
         public int tempsAtt;
         public int tempsService;
+        public int tempsReponse;
         public int tempsRestant;
         public Processus(int id, int tempsArriv, int duree, int prio)  //constructeur pour l'algorithme de priorité
         {
@@ -43,12 +44,13 @@ namespace Ordonnancement
             Console.Write("\ttemps d'attente : " + tempsAtt);
             Console.Write("\ttemps de fin :  " + tempsFin);
             Console.Write("\ttemps de service  : " + tempsService);
-            //Console.Write("\ttemps restant : " + tempsRestant);
+            Console.Write("\ttemps de reponse : " + tempsReponse);
         }
     }
 
     abstract class Ordonnancement
     {
+        protected Processus processusActif;
         protected List<Processus> listeProcessus = new List<Processus>();  // liste des processus fournis par l'utilisateur
         protected List<Processus> listePrets = new List<Processus>();  // liste des processus prêts
         public void Push(Processus pro) //ajout d'un processus à la liste listeProcessus
