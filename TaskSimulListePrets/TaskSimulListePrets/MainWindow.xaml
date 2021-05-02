@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskSimulListePrets"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="MainWindow" Height="600" Width="800" Loaded="Window_Loaded">
     <Grid>
         
-        <DockPanel Width="500" Height="150" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF09AAE7">
+        <DockPanel Width="500" Height="150" HorizontalAlignment="Center" VerticalAlignment="Center">
            
             <TreeView x:Name="ListView">
             <TreeView.Resources>
@@ -20,7 +20,7 @@
 
 
 
-                                    <Border x:Name="borderTest" Width="90" Height="90" Background="red" HorizontalAlignment="Left" Margin="8,0,0,0" VerticalAlignment="Center">
+                                    <Border x:Name="borderTest" Width="90" Height="90" Background="#FFEEB0B0" HorizontalAlignment="Left" Margin="8,2,2,0" VerticalAlignment="Center" CornerRadius="2">
                                         <TextBlock HorizontalAlignment="Center" Background="FloralWhite" Foreground="DarkBlue" Margin="0,0,0,-7" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Center" TextAlignment="Center" Padding="2"/>
                                     </Border>
 
