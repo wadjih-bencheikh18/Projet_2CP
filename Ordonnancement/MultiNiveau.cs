@@ -55,6 +55,22 @@ namespace Ordonnancement
                     break;
             }
         }
+        public string Algo()
+        {
+            switch (numAlgo)
+            {
+                case 0:
+                    return"PAPS";
+                case 1:
+                    return "PCA";
+                case 2:
+                    return "PSP";
+                case 3:
+                    return "Round Robin";
+                default:
+                    return "ERREUR. Veuillez choisir un numero entre 0 et 3";
+            }
+        }
     }
     class ProcessusNiveau : Processus
     {
