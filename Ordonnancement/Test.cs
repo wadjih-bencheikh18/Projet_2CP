@@ -151,6 +151,7 @@ namespace Ordonnancement
                 }
                 if (numAlgo != 5) prgm.Push(Pro);
                 else ((MultiNiveau)prgm).Push((ProcessusNiveau)Pro);
+                Pro.Affichage();
             }
             Console.WriteLine("**** Iniatialisation **** ");
             if(numAlgo!=5) prgm.Affichage();

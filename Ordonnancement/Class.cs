@@ -40,7 +40,7 @@ namespace Ordonnancement
             Console.Write("ID : " + id);
             Console.Write("\ttemps d'arrivé : " + tempsArriv);
             Console.Write("\tduree : " + duree);
-            Console.Write("\tpriorité : " + prio);
+            //Console.Write("\tpriorité : " + prio);
             Console.Write("\ttemps d'attente : " + tempsAtt);
             Console.Write("\ttemps de fin :  " + tempsFin);
             Console.Write("\ttemps de service  : " + tempsService);
@@ -50,7 +50,7 @@ namespace Ordonnancement
 
     abstract class Ordonnancement
     {
-        protected Processus processusActif;
+        protected Processus processusActif= new Processus(0,0,0,0);
         protected List<Processus> listeProcessus = new List<Processus>();  // liste des processus fournis par l'utilisateur
         protected List<Processus> listePrets = new List<Processus>();  // liste des processus prêts
         public void Push(Processus pro) //ajout d'un processus à la liste listeProcessus
@@ -82,7 +82,7 @@ namespace Ordonnancement
                 else
                 {
                     if (listeGeneral[indice].niveau == indiceNiveau) listePrets.Add(listeGeneral[indice]); //si le niveau du processus = indiceNiveau (niveau actuel) on ajoute ce processus à la liste des processus prêts de ce niveau
-                    else niveaux[listeGeneral[indice].niveau].listeExecution.Add(listeGeneral[indice]); //sinon on ajoute le processus à la liste des processus prêts de son niveau
+                    else niveaux[listeGeneral[indice].niveau].listePrets.Add(listeGeneral[indice]); //sinon on ajoute le processus à la liste des processus prêts de son niveau
                 }
             }
             return indice;
