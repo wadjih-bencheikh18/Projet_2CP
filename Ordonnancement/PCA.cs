@@ -22,12 +22,14 @@ namespace Ordonnancement
                 temps++; //incrementer le temps réel
                 if (listePrets.Count != 0) //il y a des processus prêts
                 {
+                    listePrets[0].etat = 2;
                     listePrets[0].tempsRestant--; //execution du 1er processus de listePrets et donc décrémenter le tempsRestant
                     AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     if (listePrets[0].tempsRestant == 0) //si l'execution du premier processus de listePrets est terminée
                     {
                         listePrets[0].tempsFin = temps; //temps de fin d'execution = au temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
+                        listePrets[0].etat = 3;
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                         if (listePrets.Count != 0) sort = true; //donc il faut trier les processus restants dans listePrets
@@ -59,6 +61,7 @@ namespace Ordonnancement
                 temps++; //incrementer le temps réel
                 if (listePrets.Count != 0) //il y a des processus prêts
                 {
+                    listePrets[0].etat = 2;
                     listePrets[0].tempsRestant--; //le processus est entrain de s'exécuter donc on décrémente le tempsRestant
                     AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     if (listePrets[0].tempsRestant == 0) // fin d'exécution du processus 
@@ -66,9 +69,17 @@ namespace Ordonnancement
                         listePrets[0].tempsFin = temps; //temps de fin d'execution = au temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;  //temps d'attente = temps de service - durée d'execution
+                        listePrets[0].etat = 3;
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                         if (listePrets.Count != 0) niveaux[indiceNiveau].indice[1] = 1; //il faut trier les processus restants dans listePrets par durée
                     }
+                }
+                if (temps == tempsFin)
+                {
+                    listePrets[0].etat = 1;
+                    listePrets.Add(listePrets[0]);
+                    listePrets.RemoveAt(0);
+                    return temps;
                 }
             }
             return temps;

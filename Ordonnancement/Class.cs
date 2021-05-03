@@ -11,13 +11,14 @@ namespace Ordonnancement
         public int duree { get; } //temps d'execution du processus (burst time)
         public int prio { get; } //priorite du processus
         //à remplir
-        public int etat; // 0:bloqué  1:prêt  2:en cours
+        public int etat; // 0:bloqué  1:prêt  2:en cours  3:fini
         public int tempsFin;
         public int tempsAtt;
         public int tempsService;
         public int tempsRestant;
         public Processus(int id, int tempsArriv, int duree, int prio)  //constructeur pour l'algorithme de priorité
         {
+            this.etat = 1;
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
@@ -26,6 +27,7 @@ namespace Ordonnancement
         }
         public Processus(int id, int tempsArriv, int duree) //constructeur pour les autres algorithmes
         {
+            this.etat = 1;
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
@@ -80,7 +82,7 @@ namespace Ordonnancement
                 else
                 {
                     if (listeGeneral[indice].niveau == indiceNiveau) listePrets.Add(listeGeneral[indice]); //si le niveau du processus = indiceNiveau (niveau actuel) on ajoute ce processus à la liste des processus prêts de ce niveau
-                    else niveaux[listeGeneral[indice].niveau].listeExecution.Add(listeGeneral[indice]); //sinon on ajoute le processus à la liste des processus prêts de son niveau
+                    else niveaux[listeGeneral[indice].niveau].listePrets.Add(listeGeneral[indice]); //sinon on ajoute le processus à la liste des processus prêts de son niveau
                 }
             }
             return indice;

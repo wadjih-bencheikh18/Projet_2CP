@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pc\\Desktop\\PROJET\\PROJ\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj": {}
+    "C:\\Users\\jw_be\\Desktop\\Project 2CP\\Repo\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pc\\Desktop\\PROJET\\PROJ\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj": {
+    "C:\\Users\\jw_be\\Desktop\\Project 2CP\\Repo\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Desktop\\PROJET\\PROJ\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
+        "projectUniqueName": "C:\\Users\\jw_be\\Desktop\\Project 2CP\\Repo\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
         "projectName": "Ordonnancement",
-        "projectPath": "C:\\Users\\pc\\Desktop\\PROJET\\PROJ\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
-        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Desktop\\PROJET\\PROJ\\Projet_2CP\\Ordonnancement\\obj\\",
+        "projectPath": "C:\\Users\\jw_be\\Desktop\\Project 2CP\\Repo\\Projet_2CP\\Ordonnancement\\Ordonnancement.csproj",
+        "packagesPath": "C:\\Users\\jw_be\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jw_be\\Desktop\\Project 2CP\\Repo\\Projet_2CP\\Ordonnancement\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jw_be\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -57,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

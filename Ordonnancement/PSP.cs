@@ -22,6 +22,7 @@ namespace Ordonnancement
                                                else return x.prio.CompareTo(y.prio); //sinon, on fait le tri par priorité
                                            }
                                         );
+                    listePrets[0].etat = 2;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps et l'ID du processus entrain d'être executé
                     if (listePrets[0].tempsRestant == 0)  // Si l'execution du premier processus de listePrets est terminée :
@@ -29,6 +30,7 @@ namespace Ordonnancement
                         listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
+                        listePrets[0].etat = 3;
                         listePrets.RemoveAt(0); //supprimer le processus dont la duree est écoulée
                     }
                 }
@@ -56,6 +58,7 @@ namespace Ordonnancement
                                                else return x.prio.CompareTo(y.prio); //sinon, on fait le tri par priorité
                                            }
                                         );
+                    listePrets[0].etat = 2;
                     listePrets[0].tempsRestant--;//L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps et l'ID du processus entrain d'être executé
                     if (listePrets[0].tempsRestant == 0) // Si l'execution du premier processus de listePrets est terminée :
@@ -63,8 +66,16 @@ namespace Ordonnancement
                         listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
+                        listePrets[0].etat = 3;
                         listePrets.RemoveAt(0); //supprimer le processus dont la duree est écoulée
                     }
+                }
+                if (temps == tempsFin)
+                {
+                    listePrets[0].etat = 1;
+                    listePrets.Add(listePrets[0]);
+                    listePrets.RemoveAt(0);
+                    return temps;
                 }
             }
             return temps;

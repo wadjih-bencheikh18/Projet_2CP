@@ -37,6 +37,7 @@ namespace Ordonnancement
                         listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv;// temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;  //temps d'attente = temps de service - durée d'execution
+                        listePrets[0].etat = 3;
                         listePrets.RemoveAt(0);//supprimer le premier processus executé
                         q = 0;  // un nouveau quantum va commencer
                     }
@@ -44,6 +45,7 @@ namespace Ordonnancement
                     {
                         listePrets[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                         q = 0;  //Un nouveau quantum
+                        listePrets[0].etat = 1;
                         listePrets.Add(listePrets[0]);  //Enfilement à la fin
                         listePrets.RemoveAt(0);  // defiler 
                     }
@@ -71,6 +73,7 @@ namespace Ordonnancement
                     AfficheLigne(tempsDebut, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     tempsDebut++;
                     indices[1]++;  // quantum++
+                    listePrets[0].etat = 2;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     indices[0] = AjouterTous(tempsDebut, indices[0], niveaux, listeGeneral, indiceNiveau);  // On rempli listePrets
 
@@ -79,6 +82,7 @@ namespace Ordonnancement
                         listePrets[0].tempsFin = tempsDebut;
                         listePrets[0].tempsService = tempsDebut - listePrets[0].tempsArriv;
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;
+                        listePrets[0].etat = 3;
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                         indices[1] = 0;  // un nouveau quantum va commencer
                     }
@@ -86,12 +90,16 @@ namespace Ordonnancement
                     {
                         listePrets[0].tempsFin = tempsDebut;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                         indices[1] = 0;  // nouveau quantum
+                        listePrets[0].etat = 1;
                         listePrets.Add(listePrets[0]);  // enfiler à la fin
                         listePrets.RemoveAt(0);  // defiler 
                     }
                 }
                 if (tempsDebut == tempsFin)  // On est arrivé à tempsFin => la fin de l'exécution 
                 {
+                    listePrets[0].etat = 1;
+                    listePrets.Add(listePrets[0]);
+                    listePrets.RemoveAt(0);
                     return tempsFin;
                 }
             }
