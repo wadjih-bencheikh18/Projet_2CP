@@ -78,7 +78,6 @@ namespace TaskSimulListePrets
             Processus Pro;
             int Nb = 7;
             int duree, tempsArriv;
-            Random r1, r2, r3;
             List<Processus> P = new List<Processus>();
             for (int i = 0; i < Nb; i++)
             {
