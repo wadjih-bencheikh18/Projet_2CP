@@ -18,7 +18,7 @@
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition  Width="2*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0"  Text="{Binding id}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
+                            <TextBlock Grid.Column="0"  Text="test" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                             <TextBlock Grid.Column="2" Text="{Binding tempsArriv}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                             <TextBlock Grid.Column="1" Text="{Binding duree}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                             <TextBlock Grid.Column="3" Text="{Binding prio}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>

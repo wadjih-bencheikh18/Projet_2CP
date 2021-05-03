@@ -184,11 +184,11 @@ namespace ResultTable
                     tempsFin = P[i].tempsFin.ToString(),
                     tempsAtt = P[i].tempsAtt.ToString(),
                     tempsService = P[i].tempsService.ToString(),
-                    row = (i+1).ToString()
+                    row = i.ToString()
                 };
                 item.Header = proc;
                 
-                Grid1.Children.Insert(Grid1.Children.Count,item);
+                Grid1.Children.Add(item);
             }
         }
 
