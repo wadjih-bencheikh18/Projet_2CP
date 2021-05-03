@@ -1,18 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Xml.Linq;
 
 namespace TaskSimulListePrets
 {
@@ -63,12 +52,22 @@ namespace TaskSimulListePrets
             Console.Write("\ttemps de reponse : " + tempsReponse);
         }
     }
-
+    class ProcessusString
+    {
+        public string id { get; set; }
+        public string tempsRestant { get; set; }
+        public ProcessusString(int id, int tempsRestant)
+        {
+            this.id = id.ToString();
+            this.tempsRestant = tempsRestant.ToString();
+        }
+    }
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Random random = new Random();
         public MainWindow()
         {
             InitializeComponent();
@@ -77,24 +76,24 @@ namespace TaskSimulListePrets
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Processus Pro;
-            int Nb=5;
-            Random r1,r2,r3;
+            int Nb = 5;
+            int duree, tempsArriv;
+            Random r1, r2, r3;
             List<Processus> P = new List<Processus>();
             for (int i = 0; i < Nb; i++)
             {
-                r1 = new Random();
-                r2 = new Random();
-                r3 = new Random();
-                Pro = new Processus(i, r1.Next(0, 15), r2.Next(1, 15), r3.Next(1, 5));
-                //MessageBox.Show($"The ID n°{i+1} is : {Pro.tempsArriv}");
+                duree = random.Next(1, 15);
+                tempsArriv = random.Next(0, 15);
+                Pro = new Processus(i, tempsArriv, duree);
                 P.Add(Pro);
             }
-
+            ProcessusString Proc;
             foreach (var process in P)
             {
                 var item = new TreeViewItem();
-                item.Header = process.id;
-                ListView.Items.Add(item);
+                Proc = new ProcessusString (process.id,process.tempsRestant);
+                item.Header = Proc;
+                ListView.Children.Add(item);
             }
         }
 

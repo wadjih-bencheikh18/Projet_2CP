@@ -7,34 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800" Loaded="Window_Loaded">
     <Grid>
-        
-        <DockPanel Width="500" Height="150" HorizontalAlignment="Center" VerticalAlignment="Center">
-           
-            <TreeView x:Name="ListView">
-            <TreeView.Resources>
 
-                <Style TargetType="{x:Type TreeViewItem}">
-                    <Setter Property="HeaderTemplate">
-                        <Setter.Value>
-                                <DataTemplate>
+        <StackPanel x:Name="ListView" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black" Orientation="Horizontal" Height="60"/>
 
 
 
-                                    <Border x:Name="borderTest" Width="90" Height="90" Background="#FFEEB0B0" HorizontalAlignment="Left" Margin="8,2,2,0" VerticalAlignment="Center" CornerRadius="2">
-                                        <TextBlock HorizontalAlignment="Center" Background="FloralWhite" Foreground="DarkBlue" Margin="0,0,0,-7" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Center" TextAlignment="Center" Padding="2"/>
-                                    </Border>
-
-                                
-
-                            </DataTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-
-            </TreeView.Resources>
-        </TreeView>
-            
-        </DockPanel>
-        
     </Grid>
 </Window>
