@@ -76,7 +76,7 @@ namespace TaskSimulListePrets
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Processus Pro;
-            int Nb = 5;
+            int Nb = 7;
             int duree, tempsArriv;
             Random r1, r2, r3;
             List<Processus> P = new List<Processus>();
