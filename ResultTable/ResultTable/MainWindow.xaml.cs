@@ -61,6 +61,10 @@ namespace ResultTable
             //Console.Write("\ttemps restant : " + tempsRestant);
         }
     }
+    class ProcessusString
+    {
+        public string id, tempsArriv, duree, prio, tempsAtt, tempsFin, tempsService,row;
+    }
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
@@ -75,18 +79,12 @@ namespace ResultTable
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Processus Pro;
-            int Nb = 3;
-            Random r1, r2, r3,r4,r5,r6,r7;
+            int Nb = 5;
+            Random random= new Random();
             List<Processus> P = new List<Processus>();
             for (int i = 0; i < Nb; i++)
             {
-                r1 = new Random();
-                r2 = new Random();
-                r3 = new Random();
-                r4 = new Random();
-                r5 = new Random();
-                r6 = new Random();
-
+                /*
                 RowDefinition rowdef = new RowDefinition();
                 rowdef.Height = new GridLength(30);
                 Grid1.RowDefinitions.Insert(i,rowdef);
@@ -111,7 +109,7 @@ namespace ResultTable
                 Grid1.Children.Add(id);
 
                 TextBlock tAr = new TextBlock();
-                tAr.Text = r1.Next(0,30).ToString() + "s";
+                tAr.Text = random.Next(0,30).ToString() + "s";
                 id.Name = "Tar" + tAr.Text.ToString();
                 tAr.FontFamily = new FontFamily("Lexend");
                 tAr.HorizontalAlignment = HorizontalAlignment.Center;
@@ -121,7 +119,7 @@ namespace ResultTable
                 Grid1.Children.Add(tAr);
 
                 TextBlock dur = new TextBlock();
-                dur.Text = r2.Next(4, 80).ToString() + "s";
+                dur.Text = random.Next(4, 80).ToString() + "s";
                 dur.FontFamily = new FontFamily("Lexend");
                 dur.HorizontalAlignment = HorizontalAlignment.Center;
                 dur.VerticalAlignment = VerticalAlignment.Center;
@@ -130,7 +128,7 @@ namespace ResultTable
                 Grid1.Children.Add(dur);
 
                 TextBlock prio = new TextBlock();
-                prio.Text = r3.Next(2, 8).ToString(); 
+                prio.Text = random.Next(2, 8).ToString(); 
                 prio.FontFamily = new FontFamily("Lexend");
                 prio.HorizontalAlignment = HorizontalAlignment.Center;
                 prio.VerticalAlignment = VerticalAlignment.Center;
@@ -139,7 +137,7 @@ namespace ResultTable
                 Grid1.Children.Add(prio);
 
                 TextBlock tAtt = new TextBlock();
-                tAtt.Text = r4.Next(0, 50).ToString() + "s"; ;
+                tAtt.Text = random.Next(0, 50).ToString() + "s"; ;
                 tAtt.FontFamily = new FontFamily("Lexend");
                 tAtt.HorizontalAlignment = HorizontalAlignment.Center;
                 tAtt.VerticalAlignment = VerticalAlignment.Center;
@@ -148,7 +146,7 @@ namespace ResultTable
                 Grid1.Children.Add(tAtt);
 
                 TextBlock tFin = new TextBlock();
-                tFin.Text = r5.Next(10, 200).ToString() + "s"; ;
+                tFin.Text = random.Next(10, 200).ToString() + "s"; ;
                 tFin.FontFamily = new FontFamily("Lexend");
                 tFin.HorizontalAlignment = HorizontalAlignment.Center;
                 tFin.VerticalAlignment = VerticalAlignment.Center;
@@ -157,19 +155,40 @@ namespace ResultTable
                 Grid1.Children.Add(tFin);
 
                 TextBlock tSer = new TextBlock();
-                tSer.Text = r6.Next(4, 60).ToString() + "s"; ;
+                tSer.Text = random.Next(4, 60).ToString() + "s"; ;
                 tSer.FontFamily = new FontFamily("Lexend");
                 tSer.HorizontalAlignment = HorizontalAlignment.Center;
                 tSer.VerticalAlignment = VerticalAlignment.Center;
                 Grid.SetRow(tSer, i + 1);
                 Grid.SetColumn(tSer, 7);
                 Grid1.Children.Add(tSer);
-
+                */
                 
 
-                Pro = new Processus(i, r1.Next(0, 15), r2.Next(1, 15), r3.Next(1, 5));
+                Pro = new Processus(i, random.Next(0, 15), random.Next(1, 15), random.Next(1, 5));
                 P.Add(Pro);
 
+            }
+            ProcessusString proc;
+            for (int i= 0;i < P.Count;i++)
+            {
+                RowDefinition rowdef = new RowDefinition();
+                rowdef.Height = new GridLength(30);
+                Grid1.RowDefinitions.Insert(i, rowdef);
+                var item = new TreeViewItem();
+                proc = new ProcessusString()
+                {
+                    id = P[i].id.ToString(),
+                    tempsArriv = P[i].tempsArriv.ToString(),
+                    duree = P[i].duree.ToString(),
+                    tempsFin = P[i].tempsFin.ToString(),
+                    tempsAtt = P[i].tempsAtt.ToString(),
+                    tempsService = P[i].tempsService.ToString(),
+                    row = (i+1).ToString()
+                };
+                item.Header = proc;
+                
+                Grid1.Children.Insert(Grid1.Children.Count,item);
             }
         }
 
