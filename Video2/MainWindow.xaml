@@ -5,26 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Video2"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="MainWindow" Height="800" Width="800">
 
     <Border Padding="10">
-        <StackPanel>
+        <StackPanel x:Name="MainStackPanel">
             <TextBlock Text="Voici les algorithmes d'ordonnancement: " FontSize="16" FontWeight="Bold" Margin="10 10 0 0"/>
-            <ComboBox x:Name="MyComboBox" SelectedIndex="0" Margin="10 10 0 0">
-                <ComboBoxItem Content="PAPS" />
-                <ComboBoxItem Content="PCA" />
-                <ComboBoxItem Content="PSP" />
-                <ComboBoxItem Content="Round Robin" />
-                <ComboBoxItem Content="Multi Niveaux" />
-            </ComboBox>
             <Grid Margin="10 10 0 0">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="Votre choix est : " FontSize="14" FontWeight="DemiBold" Margin="0 0 10 0"/>
-                <TextBox x:Name="MyTextBox" Grid.Column="1" IsReadOnly="True" FontSize="14" Margin="10 0 0 0"/>
+                <ComboBox Grid.Column="1" x:Name="MyComboBox" SelectionChanged="MyComboBox_SelectionChanged" SelectedIndex="0" Margin="10 0">
+                    <ComboBoxItem Content="PAPS" />
+                    <ComboBoxItem Content="PCA" />
+                    <ComboBoxItem Content="PSP" />
+                    <ComboBoxItem Content="Round Robin" />
+                    <ComboBoxItem Content="Multi Niveaux" />
+                </ComboBox>
+                <Grid Grid.Column="2" x:Name="NumberEntry">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Name="MyTextBlock" Text="" TextAlignment="Right" FontSize="14" FontWeight="DemiBold" Margin="10 0"/>
+                    <TextBox  Grid.Column="1" FontSize="14" Margin="10 0 0 0" x:Name="QantumTextBox"/>
+                </Grid>
             </Grid>
+            <!--
             <Grid Margin="10 10 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
@@ -43,38 +53,53 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="Remarque : " FontSize="15" FontWeight="DemiBold" FontStyle="Italic"/>
                 <TextBlock Grid.Column="1" Text="Si vous choisissez Non , la génération des données des processus sera aléatoire" Margin="0 2 0 0" FontSize="13"/>
-            </Grid>
+            </Grid>-->
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Grid.Column="0" Text="Voulez-vous générer les données des processus aléatoirement?" FontSize="14" FontWeight="DemiBold" Margin="10 10 10 0"/>
+                <CheckBox Margin="10 13 0 0" x:Name="RandomizeCheckBox"></CheckBox>
+            </StackPanel>
             <Grid Margin="10 10 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="Combien de processus voulez-vous ajouter ?" FontSize="14" FontWeight="DemiBold" Margin="0 0 10 0"/>
-                <TextBox  Grid.Column="1" FontSize="14" Margin="10 0 0 0"/>
+                <TextBox  Grid.Column="1" FontSize="14" Margin="10 0 0 0" x:Name="ProcessusNumTextBox"/>
+                <Button Grid.Column="2" Margin="20 0" Content="Entrer" Height="21" VerticalAlignment="Top" x:Name="EnterButton" Click="EnterButton_Click"/>
             </Grid>
-            <DataGrid x:Name ="InitTab" Margin="0 10 0 0">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Processus ID" Width="*"/>
-                    <DataGridTextColumn Header="Temps D'arrivé" Width="*" />
-                    <DataGridTextColumn Header="Durée" Width="*"/>
-                    <DataGridTextColumn Header="Priorité" Width="*"/>
-                    <DataGridTextColumn Header="temps Fin" Width="*"/>
-                    <DataGridTextColumn Header="temps Service" Width="*"/>
-                </DataGrid.Columns>
-                <DataGrid.Resources>
-                    <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Background" Value="#45A29E"/>
-                        <Setter Property="FontWeight" Value="Bold" />
-                        <Setter Property="BorderThickness" Value="0,0,1,2"/>
-                        <Setter Property="BorderBrush" Value="Black" />
-                    </Style>
-                </DataGrid.Resources>
-            </DataGrid>
-            <TextBox x:Name="id" Text ="Test" Height="20" Width="150" HorizontalAlignment="Center" Margin="0 200 0 0" />
+            <Grid>
+                <DataGrid x:Name ="InitTab" Margin="0 10 0 0" CanUserSortColumns="True">
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#45A29E"/>
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                            <Setter Property="BorderBrush" Value="Black" />
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Processus ID" Binding="{Binding id}" Width="*"/>
+                        <DataGridTextColumn Header="Temps D'arrivé" Binding="{Binding tempsArriv}" Width="*" />
+                        <DataGridTextColumn Header="Durée" Binding="{Binding duree}" Width="*"/>
+                        <DataGridTextColumn Header="Priorité" Binding="{Binding Priorite}" Width="*"/>
+                    </DataGrid.Columns>
+                    <!--<Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>-->
+                </DataGrid>
+            </Grid>
+            <!--<TextBox x:Name="id" Text ="Test" Height="20" Width="150" HorizontalAlignment="Center" Margin="0 200 0 0" />
             <TextBox x:Name="tempsArriv" Text ="Test2" Height="20" Width="150" HorizontalAlignment="Center" Margin="0 10 0 0"/>
             <TextBox x:Name="duree" Text ="Test3" Height="20" Width="150" HorizontalAlignment="Center" Margin="0 10 0 0"/>
             <TextBox x:Name="priorite" Text ="Test4" Height="20" Width="150" HorizontalAlignment="Center"  Margin="0 10 0 0"/>
-            <Button x:Name="button" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Add new Button" FontWeight="Bold" Height="40" Width="150" Margin="0 10 0 0" Click="ButtonClick"/>
+            <Button x:Name="button" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Add new Button" FontWeight="Bold" Height="40" Width="150" Margin="0 10 0 0" Click="ButtonClick"/>-->
         </StackPanel>
     </Border>
 </Window>
