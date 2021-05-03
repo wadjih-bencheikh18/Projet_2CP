@@ -63,7 +63,14 @@ namespace ResultTable
     }
     class ProcessusString
     {
-        public string id, tempsArriv, duree, prio, tempsAtt, tempsFin, tempsService,row;
+        public string id { get; set; }
+        public string tempsArriv { get; set; }
+        public string duree { get; set; }
+        public string prio { get; set; }
+        public string tempsAtt { get; set; }
+        public string tempsFin { get; set; }
+        public string tempsService { get; set; }
+        public string Background { get; set; }
     }
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
@@ -175,7 +182,7 @@ namespace ResultTable
                 RowDefinition rowdef = new RowDefinition();
                 rowdef.Height = new GridLength(30);
                 Grid1.RowDefinitions.Insert(i, rowdef);
-                var item = new TreeViewItem();
+                var item = new TabItem();
                 proc = new ProcessusString()
                 {
                     id = P[i].id.ToString(),
@@ -184,10 +191,12 @@ namespace ResultTable
                     tempsFin = P[i].tempsFin.ToString(),
                     tempsAtt = P[i].tempsAtt.ToString(),
                     tempsService = P[i].tempsService.ToString(),
-                    row = i.ToString()
+                    prio= P[i].prio.ToString()
                 };
+                if (i % 2 == 0) proc.Background = "LightBlue";
+                else proc.Background = "lightGray";
                 item.Header = proc;
-                
+                Grid.SetRow(item, i + 1);
                 Grid1.Children.Add(item);
             }
         }

@@ -8,14 +8,10 @@
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" ScrollViewer.HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Stretch" Background="#FF2787A5">
     <ScrollViewer>
         <Grid x:Name="Grid1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#FFC2CBCA">
-           
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            <DataGridRowHeader Grid.ColumnSpan="8" Background="#FFB0B0B0"/>
-            <DataGridCell Grid.Row="2" Grid.ColumnSpan="8" Background="LightGray"/>
-            <DataGridCell Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="1" Background="LightGray"/>
-            <DataGridCell Grid.Row="4" Grid.ColumnSpan="8" Background="LightGray" BorderBrush="Black"/>
             <Grid Grid.Row="0" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -26,6 +22,7 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition  Width="2*"/>
                 </Grid.ColumnDefinitions>
+                <DataGridRowHeader Grid.ColumnSpan="8" Background="#FFB0B0B0"/>
                 <TextBlock Grid.Column="0"  Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                 <TextBlock Grid.Column="2" Text="Durée" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                 <TextBlock Grid.Column="1" Text="Temps D'arrivé" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
