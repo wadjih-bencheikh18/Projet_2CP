@@ -19,3 +19,24 @@ C:\Users\jw_be\source\repos\Simulation Test\Simulation Test\obj\Debug\ResultatFi
 C:\Users\jw_be\source\repos\Simulation Test\Simulation Test\obj\Debug\TableRowFinal.g.cs
 C:\Users\jw_be\source\repos\Simulation Test\Simulation Test\obj\Debug\ResultatFinal.baml
 C:\Users\jw_be\source\repos\Simulation Test\Simulation Test\obj\Debug\TableRowFinal.baml
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\bin\Debug\Simulation Test.exe.config
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\bin\Debug\Simulation Test.exe
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\bin\Debug\Simulation Test.pdb
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\MainWindow.g.cs
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\ProcessusDesign.g.cs
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\ResultatFinal.g.cs
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\TableRowFinal.g.cs
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\App.g.cs
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\Simulation Test_MarkupCompile.cache
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\Simulation Test_MarkupCompile.lref
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\MainWindow.baml
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\ProcessusDesign.baml
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\ResultatFinal.baml
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\TableRowFinal.baml
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.g.resources
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\Simulation_Test.Properties.Resources.resources
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.csproj.GenerateResource.cache
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.exe
+C:\Users\pc\Desktop\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.pdb
