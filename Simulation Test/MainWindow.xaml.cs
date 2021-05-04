@@ -16,38 +16,44 @@ namespace Simulation_Test
     /// </summary>
     public partial class MainWindow : Window
     {
+        int id;
         PAPS prgm = new PAPS();
         public MainWindow()
         {
-            //InitializeComponent();
+            InitializeComponent();
+            idTB.Text = id.ToString();
+            id++;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             bool Valid = true;
-            int id, duree, tempsArriv;
-            if (!Int32.TryParse(idTB.Text, out id))
-            {
-                idTB.Background = Brushes.Red;
-                Valid = false;
-            }
+            int  duree, tempsArriv;
+            var bc = new BrushConverter();
+
             if (!Int32.TryParse(dureeTB.Text, out duree))
             {
-                dureeTB.Background = Brushes.Red;
+                dureeTB.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                dureeTB.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 Valid = false;
             }
             if (!Int32.TryParse(tempsArrivTB.Text, out tempsArriv))
             {
-                tempsArrivTB.Background = Brushes.Red;
+                tempsArrivTB.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                tempsArrivTB.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C") ;
+
                 Valid = false;
             }
             if (Valid)
             {
-                Processus pro = new Processus(id, tempsArriv, duree);
+                idTB.Text = id.ToString();
+                
+                Processus pro = new Processus(id-1, tempsArriv, duree);
                 idTB.Background = Brushes.White;
                 dureeTB.Background = Brushes.White;
                 tempsArrivTB.Background = Brushes.White;
                 InitTab.Items.Add(pro);
                 prgm.Push(pro);
+                id++;
             }
            
         }

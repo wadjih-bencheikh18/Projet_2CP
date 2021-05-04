@@ -84,7 +84,7 @@
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="ID :" FontWeight="Bold" TextAlignment="Center"/>
-                        <TextBox Grid.Column="1" x:Name="idTB" Grid.Row="0" Margin="0" Grid.ColumnSpan="2" />
+                        <TextBox IsReadOnly="True" Grid.Column="1" x:Name="idTB" Grid.Row="0" Margin="0" Grid.ColumnSpan="2" />
                     </Grid>
                     <Grid Grid.Row="1"  Height="20" VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>
@@ -129,11 +129,11 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Temps :" FontWeight="Bold" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
-                <TextBlock  Grid.Column="1" x:Name="TempsView" HorizontalAlignment="Center" Text="" VerticalAlignment="Center" TextAlignment="Center" Margin="0"/>
+                <TextBlock Grid.Column="0" Text="Temps :" FontWeight="Bold" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="16" />
+                <TextBlock  Grid.Column="1" x:Name="TempsView" HorizontalAlignment="Center" Text="" VerticalAlignment="Center" TextAlignment="Center" Margin="0" FontSize="16"/>
             </Grid>
-            <TextBlock HorizontalAlignment="Center" Margin="0,0,0,100" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="16" FontWeight="Bold"><Run Text="List des processus pr"/><Run Text="é"/><Run Text="t"/><Run Text="s"/></TextBlock>
-            <TextBlock HorizontalAlignment="Center" Margin="0,150,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" FontSize="16"><Run Text="List des processus "/><Run Text="bloqués"/></TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0,0,0,100" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="16" FontWeight="Bold"><Run Text="Liste des processus pr"/><Run Text="é"/><Run Text="t"/><Run Text="s"/></TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0,150,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" FontSize="16"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
             <TextBlock HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="16" FontWeight="Bold" Text="Processeur"/>
         </Grid>
 

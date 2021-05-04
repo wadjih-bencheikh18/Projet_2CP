@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Simulation_Test"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="50">
+             d:DesignHeight="60" d:DesignWidth="60">
     <Grid>
-        <Border Width="50" Height="50" Background="#FFFF0A0A" Margin="5" CornerRadius="2">
+        <Border Width="50" Height="50" Background="#FFF52C2C" Margin="5" CornerRadius="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
