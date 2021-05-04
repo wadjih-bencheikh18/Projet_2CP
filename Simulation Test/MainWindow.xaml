@@ -99,7 +99,7 @@
 
             </StackPanel>
         </Border>
-        <Button x:Name="StartBtn" Content="Commancer la simulation" HorizontalAlignment="Center" Height="51" Margin="0,0,0,120" VerticalAlignment="Bottom" Width="324" Click="StartBtn_Click" FontWeight="Bold" FontSize="16"/>
+        <Button x:Name="StartBtn" Content="Commencer la simulation" HorizontalAlignment="Center" Height="51" Margin="0,0,0,120" VerticalAlignment="Bottom" Width="324" Click="StartBtn_Click" FontWeight="Bold" FontSize="16"/>
         <Button x:Name="ResultFinalBtn" Content="Afficher le resultat" HorizontalAlignment="Center" Height="51" Margin="0,0,0,50" VerticalAlignment="Bottom" Width="324" Click="ResultFinalBtn_Click" FontWeight="Bold" FontSize="16"/>
 
         <Grid Grid.Column="1">
