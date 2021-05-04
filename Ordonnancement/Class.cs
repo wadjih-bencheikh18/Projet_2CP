@@ -16,6 +16,7 @@ namespace Ordonnancement
         public int tempsAtt;
         public int tempsService;
         public int tempsRestant;
+        public int tempsReponse;
         public Processus(int id, int tempsArriv, int duree, int prio)  //constructeur pour l'algorithme de priorité
         {
             this.etat = 1;

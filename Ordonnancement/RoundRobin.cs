@@ -26,10 +26,12 @@ namespace Ordonnancement
                 }
                 else  // listePrets n'est pas vide 
                 {
+                    listePrets[0].etat = 2;
                     AfficheLigne(temps, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     temps++;  
                     q++;  // on incrémente le quantum
-                        listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps;
+                    listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     indice = AjouterTous(temps, indice);  // ajouter les processus arrivés à listePrets
 
                     if (listePrets[0].tempsRestant == 0) //fin d'exécution du processus 
@@ -70,10 +72,11 @@ namespace Ordonnancement
                 }
                 else  // listePrets n'est pas vide 
                 {
+                    listePrets[0].etat = 2;
                     AfficheLigne(tempsDebut, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     tempsDebut++;
                     indices[1]++;  // quantum++
-                    listePrets[0].etat = 2;
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = tempsDebut;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     indices[0] = AjouterTous(tempsDebut, indices[0], niveaux, listeGeneral, indiceNiveau);  // On rempli listePrets
 

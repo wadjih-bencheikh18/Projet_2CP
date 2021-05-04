@@ -23,6 +23,7 @@ namespace Ordonnancement
                 if (listePrets.Count != 0) //il y a des processus prêts
                 {
                     listePrets[0].etat = 2;
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps;
                     listePrets[0].tempsRestant--; //execution du 1er processus de listePrets et donc décrémenter le tempsRestant
                     AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     if (listePrets[0].tempsRestant == 0) //si l'execution du premier processus de listePrets est terminée
@@ -62,6 +63,7 @@ namespace Ordonnancement
                 if (listePrets.Count != 0) //il y a des processus prêts
                 {
                     listePrets[0].etat = 2;
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps;
                     listePrets[0].tempsRestant--; //le processus est entrain de s'exécuter donc on décrémente le tempsRestant
                     AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     if (listePrets[0].tempsRestant == 0) // fin d'exécution du processus 
