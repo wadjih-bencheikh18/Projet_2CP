@@ -164,24 +164,21 @@ namespace Ordonnancement
         public void AfficheLigne(int temps, List<Processus> listePrets, StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView) //affiche le temps actuel et l'ID du processus entrain d'être executé
         {
             ProcessusDesign item;
-            ProcessusString Proc;
             if (listePrets.Count != 0)
             {
                 item = new ProcessusDesign();
-                Proc = new ProcessusString(listePrets[0].id, listePrets[0].tempsRestant);
-                item.DataContext = Proc;
+                item.DataContext = listePrets[0];
                 Processeur.Children.Add(item);
             }
             for (int i = 1; i < listePrets.Count; i++)
             {
                 item = new ProcessusDesign();
-                Proc = new ProcessusString(listePrets[i].id, listePrets[i].tempsRestant);
-                item.DataContext = Proc;
+                item.DataContext = listePrets[i];
                 ListProcessusView.Children.Add(item);
             }
             TempsView.Text = temps.ToString();
             ListProcessusView.Dispatcher.Invoke(DispatcherPriority.Input, EmptyDelegate);
-            Thread.Sleep(400);
+            Thread.Sleep(500);
             ListProcessusView.Children.Clear();
             Processeur.Children.Clear();
 

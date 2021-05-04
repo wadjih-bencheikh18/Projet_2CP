@@ -46,9 +46,7 @@ namespace Simulation_Test
             if (Valid)
             {
                 idTB.Text = id.ToString();
-                
                 Processus pro = new Processus(id-1, tempsArriv, duree);
-                idTB.Background = Brushes.White;
                 dureeTB.Background = Brushes.White;
                 tempsArrivTB.Background = Brushes.White;
                 InitTab.Items.Add(pro);
