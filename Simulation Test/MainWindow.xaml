@@ -5,49 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Simulation_Test"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="MainWindow" WindowState="Maximized" Width="1366" Height="768">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Border Padding="10" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <StackPanel>
-                <TextBlock Text="Voici les algorithmes d'ordonnancement: " FontSize="16" FontWeight="Bold" Margin="10 10 0 0"/>
-                <ComboBox x:Name="MyComboBox" SelectedIndex="0" Margin="10 10 0 0">
-                    <ComboBoxItem Content="PAPS" />
-                    <ComboBoxItem Content="PCA" />
-                    <ComboBoxItem Content="PSP" />
-                    <ComboBoxItem Content="Round Robin" />
-                    <ComboBoxItem Content="Multi Niveaux" />
-                </ComboBox>
-                <Grid Margin="10 10 0 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Voulez-vous saisir les données des processus ?" FontSize="14" FontWeight="DemiBold" Margin="0 0 10 0"/>
-                    <ComboBox Grid.Column="1" SelectedIndex="1" Margin="10 0 0 0">
-                        <ComboBoxItem Content="Oui" />
-                        <ComboBoxItem Content="Non" />
-                    </ComboBox>
-                </Grid>
-                <Grid Margin="10 10 0 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="80"/>
-                        <ColumnDefinition Width="8*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Remarque : " FontSize="15" FontWeight="DemiBold" FontStyle="Italic"/>
-                    <TextBlock Margin="0" FontSize="13" HorizontalAlignment="Left" Grid.ColumnSpan="2"><Run Text="                     "/><Run Text=" "/><Run Text=" "/><Run Text="Si vous choisissez Non , la"/><Run Text=" "/><Run Text="génération des données des processus sera aléatoire "/></TextBlock>
-                </Grid>
+        <Border Padding="10" VerticalAlignment="Top">
+            <!--Left side-->
+            <StackPanel x:Name="MainStackPanel">
+                <TextBlock Text="PAGE DE SIMULATION" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                <!--Line 1-->
                 <Grid Margin="10 10 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Combien de processus voulez-vous ajouter ?" FontSize="14" FontWeight="DemiBold" Margin="0 0 10 0"/>
-                    <TextBox  Grid.Column="1" FontSize="14" Margin="10 0 0 0"/>
+                    <TextBlock Grid.Column="0" Text="Choisissez un algorithme à simuler: " FontSize="14" FontWeight="DemiBold" Margin="0 0 10 0"/>
+                    <ComboBox Grid.Column="1" x:Name="AlgoComboBox" SelectionChanged="AlgoComboBox_SelectionChanged" SelectedIndex="0">
+                        <ComboBoxItem Content="PAPS" />
+                        <ComboBoxItem Content="PCA" />
+                        <ComboBoxItem Content="PSP" />
+                        <ComboBoxItem Content="Round Robin" />
+                        <ComboBoxItem Content="Multi Niveaux" />
+                    </ComboBox>
+                    <Grid Grid.Column="2" x:Name="ParamEntryGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" x:Name="ParamTextBlock" Text="Nombre des niveaux: " TextAlignment="Right" FontSize="14" FontWeight="DemiBold" Margin="5 0"/>
+                        <TextBox  Grid.Column="1" FontSize="14" x:Name="ParamTextBox"/>
+                    </Grid>
                 </Grid>
+                <!--Line 2-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Text="Voulez-vous générer les données des processus aléatoirement?" FontSize="14" FontWeight="DemiBold" Margin="10 10 10 0"/>
+                    <CheckBox Margin="10 13 0 0" x:Name="RandomizeCheckBox" Click="RandomizeCheckBox_Click"></CheckBox>
+                </StackPanel>
+                <!--Line 3-->
+                <Grid Margin="10 10 0 0" x:Name="NbProcessusGrid" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Combien de processus voulez-vous ajouter ?" FontSize="14" FontWeight="DemiBold" Margin="0 0 10 0" TextAlignment="Right"/>
+                    <TextBox  Grid.Column="1" FontSize="14" Margin="10 0 0 0" x:Name="NbProcessusTextBox"/>
+                </Grid>
+                <!--The input Table-->
                 <DataGrid x:Name ="InitTab" Margin="0,10" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Processus ID" Binding="{Binding id}"  Width="*"/>
@@ -63,7 +70,8 @@
                         </Style>
                     </DataGrid.Resources>
                 </DataGrid>
-                <Grid Height="200" Width="300" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center">
+                <!--Input Fields-->
+                <Grid Height="200" Width="300" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" x:Name="InputFieldsGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
