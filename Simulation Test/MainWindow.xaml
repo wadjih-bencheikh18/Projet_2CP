@@ -70,6 +70,25 @@
                         </Style>
                     </DataGrid.Resources>
                 </DataGrid>
+                
+                <ScrollViewer MaxWidth="400">
+                    <Grid x:Name="Grid1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#FFC2CBCA">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <DataGridRowHeader Grid.ColumnSpan="8" Background="#FFB0B0B0"/>
+                            <TextBlock Grid.Column="0"  Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
+                            <TextBlock Grid.Column="1" Text="Temps D'arrivé" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
+                            <TextBlock Grid.Column="2" Text="Durée" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
                 <!--Input Fields-->
                 <Grid Height="200" Width="300" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" x:Name="InputFieldsGrid">
                     <Grid.RowDefinitions>
