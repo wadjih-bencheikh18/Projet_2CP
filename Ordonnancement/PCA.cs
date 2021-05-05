@@ -13,7 +13,7 @@ namespace Ordonnancement
             while ((indice < listeProcessus.Count || listePrets.Count != 0)) //s'il existe des processus non executés
             {
                 if (listePrets.Count == 0) sort = true; //les premiers processus arrivés => on fait un tri par durée (croissant)
-                indice = AjouterTous(temps, indice);  //remplir listePrets
+                indice = MAJListePrets(temps, indice);  //remplir listePrets
                 InterruptionExecute();
                 temps++; //incrementer le temps réel
 
@@ -61,7 +61,7 @@ namespace Ordonnancement
             niveaux[indiceNiveau].indice[2] = 1; //l'execution d'un processus de ce niveau commence
             while (listePrets.Count != 0 && (temps < tempsFin || tempsFin == -1)) //s'il existe des processus prêts et le temps < le temps de fin  ou il n'y a pas de temps fin
             {
-                niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau); //remplir la liste des processus prêts de chaque niveau
+                niveaux[indiceNiveau].indice[0] = MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau); //remplir la liste des processus prêts de chaque niveau
                 temps++; //incrementer le temps réel
                 InterruptionExecute();
                 if (listePrets.Count != 0 && niveaux[indiceNiveau].indice[1] == 1) //s'il y a des processus prêts et un tri par durée est necessaire

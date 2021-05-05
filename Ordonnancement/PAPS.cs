@@ -12,7 +12,7 @@ namespace Ordonnancement
             int temps = 0, indice = 0;
             while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0) //s'il existe des processus non executés
             {
-                indice = AjouterTous(temps, indice); //remplir listePrets
+                indice = MAJListePrets(temps, indice); //remplir listePrets
                 temps++; //incrementer le temps réel
                 InterruptionExecute();
                 if (listePrets.Count != 0) //s'il y a des processus prêts
@@ -43,7 +43,7 @@ namespace Ordonnancement
             int temps = tempsDebut;
             while (listePrets.Count != 0) //s'il existe des processus prêts 
             {
-                niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau); //remplir la liste des processus prêts de chaque niveau
+                niveaux[indiceNiveau].indice[0] = MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau); //remplir la liste des processus prêts de chaque niveau
                 temps++; //incrementer le temps réel
                 InterruptionExecute();
                 if (listePrets.Count != 0) //s'il y a des processus prêts

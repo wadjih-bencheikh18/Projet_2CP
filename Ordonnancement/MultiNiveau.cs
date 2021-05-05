@@ -3,78 +3,16 @@ using System.Collections.Generic;
 
 namespace Ordonnancement
 {
-    class Niveau
-    {
-        public List<Processus> listeProcessus = new List<Processus>();
-        public List<Processus> listePrets = new List<Processus>();
-        public List<Processus> listebloque = new List<Processus>();
-        public Ordonnancement algo;
-        public int numAlgo; //0:PAPS  1:PCA  2:Priorité  3:RoundRobin
-        public int[] indice = new int[4];
 
-        public Niveau(int numAlgo)
-        {
-            this.numAlgo = numAlgo;
-            switch (this.numAlgo)
-            {
-                case 0:
-                    algo = new PAPS();
-                    break;
-                case 1:
-                    algo = new PCA();
-                    break;
-                case 2:
-                    algo = new PSP();
-                    break;
-                case 3:
-                    Console.WriteLine("Il manque un quantum. Veuillez reessayer");
-                    break;
-                default:
-                    Console.WriteLine("ERREUR. Veuillez choisir un numero entre 0 et 3");
-                    break;
-            }
-        }
-        public Niveau(int numAlgo, int quantum)
-        {
-            this.numAlgo = numAlgo;
-            switch (this.numAlgo)
-            {
-                case 0:
-                    algo = new PAPS();
-                    break;
-                case 1:
-                    algo = new PCA();
-                    break;
-                case 2:
-                    algo = new PSP();
-                    break;
-                case 3:
-                    algo = new RoundRobin(quantum);
-                    break;
-                default:
-                    Console.WriteLine("ERREUR. Veuillez choisir un numero entre 0 et 3");
-                    break;
-            }
-        }
-    }
-    class ProcessusNiveau : Processus
-    {
-        public int niveau;
-        public ProcessusNiveau(int id, int tempsArriv, int duree, int prio, int niveau) : base(id, tempsArriv, duree, prio)
-        {
-            this.niveau = niveau;
-        }
-        public override void Affichage() //surdefinition : affiche les caracteristiques d'un processus en plus de son niveau
-        {
-            base.Affichage();
-            Console.Write("\tNiveau : " + niveau);
-        }
-    }
     class MultiNiveau : Ordonnancement
     {
         protected new List<ProcessusNiveau> listeProcessus = new List<ProcessusNiveau>();
         private int nbNiveau;
         private Niveau[] niveaux;
+        #region Constructeur
+        /// <summary>
+        /// initialisation
+        /// </summary>
 
         public MultiNiveau(int nbNiveau, Niveau[] niveaux)
         {
@@ -82,23 +20,50 @@ namespace Ordonnancement
             this.niveaux = new Niveau[nbNiveau];
             this.niveaux = niveaux;
         }
+        #endregion
+
+        #region Redefinition
+
+        /// <summary>
+        /// la redéfinition des modules déclarer dans la class ordannancement
+        /// </summary>
+
         public override void Affichage() //affiche les caracteristiques d'un processus et son niveau
         {
             for (int i = 0; i < listeProcessus.Count; i++) listeProcessus[i].Affichage();
         }
+
         public void InitNiveaux() //initialisation des niveaux
         {
             for (int i = 0; i < listeProcessus.Count; i++)
                 niveaux[listeProcessus[i].niveau].listeProcessus.Add(listeProcessus[i]); //on ajoute le processus à la liste des processus de son niveau
         }
+
         public void Push(ProcessusNiveau pro) //ajout d'un processus à la liste "listeProcessus"
         {
             listeProcessus.Add(pro);
         }
+
         public override void SortListeProcessus() //tri de listeProcessus par ordre d'arrivé
         {
             listeProcessus.Sort(delegate (ProcessusNiveau x, ProcessusNiveau y) { return x.tempsArriv.CompareTo(y.tempsArriv); });
         }
+
+        public override int MAJListePrets(int temps, int indice) //ajouter à la liste des processus prêts de chaque niveau tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
+        {
+            for (; indice < listeProcessus.Count; indice++) //parcours de listeProcessus à partir du processus d'indice "indice"
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break; //si le processus n'est pas encore arrivé on sort
+                else
+                {
+                    niveaux[listeProcessus[indice].niveau].listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts de son niveau
+                }
+            }
+            return indice;
+        }
+
+        #endregion
+
         public int Executer()
         {
             SortListeProcessus();  //trier la liste des processus
@@ -106,7 +71,7 @@ namespace Ordonnancement
             int temps = 0, indice = 0, indiceNiveau = 0, tempsFin;
             while (indice < listeProcessus.Count || indiceNiveau < nbNiveau) //tant que le processus est dans listeProcessus ou il existe un niveau non vide
             {
-                indice = AjouterTous(temps, indice);  //remplir la liste des processus prêts de chaque niveau
+                indice = MAJListePrets(temps, indice);  //remplir la liste des processus prêts de chaque niveau
                 for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listePrets.Count == 0; indiceNiveau++) ; //la recherche du permier niveau non vide
                 if (indiceNiveau < nbNiveau)  //il existe un niveau non vide
                 {
@@ -146,18 +111,7 @@ namespace Ordonnancement
             }
             return temps;
         }
-        public override int AjouterTous(int temps, int indice) //ajouter à la liste des processus prêts de chaque niveau tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
-        {
-            for (; indice < listeProcessus.Count; indice++) //parcours de listeProcessus à partir du processus d'indice "indice"
-            {
-                if (listeProcessus[indice].tempsArriv > temps) break; //si le processus n'est pas encore arrivé on sort
-                else
-                {
-                    niveaux[listeProcessus[indice].niveau].listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts de son niveau
-                }
-            }
-            return indice;
-        }
+
         public int TempsFin(int indice, int indiceNiveau) //calcul du temps de fin d'execution d'un niveau indiceNiveau (si il n'y a pas de temps de fin alors return -1)
         {
             for (; indice < listeProcessus.Count; indice++) //parcours de listeProcessus à partir du processus d'indice "indice"
