@@ -136,10 +136,10 @@ namespace Ordonnancement
         }
         public void ListBloqueExecute()
         {
-            for (int i=0; i<listebloque.Count;i++)
+            for (int i = 0; i < listebloque.Count; i++)
             {
                 listebloque[i].InterruptionExecute();
-                if (listebloque[i].indice[0]== listebloque[i].indice[1])
+                if (listebloque[i].indice[0] == listebloque[i].indice[1])
                 {
                     listebloque[i].etat = 1;
                     listePrets.Add(listebloque[i]);

@@ -75,7 +75,7 @@ namespace Ordonnancement
                        ); //tri des processus de listePrets par durée
                     niveaux[indiceNiveau].indice[1] = 0; //le tri par durée n'est plus necessaire (déja fait)
                 }
-                
+
                 if (listePrets.Count != 0) //il y a des processus prêts
                 {
                     listePrets[0].etat = 2;
