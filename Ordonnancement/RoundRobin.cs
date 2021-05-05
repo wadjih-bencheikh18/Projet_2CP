@@ -16,7 +16,7 @@ namespace Ordonnancement
             while (indice < listeProcessus.Count || listePrets.Count != 0)  //s'il existe des processus prêts
             {
                 if (indice < listeProcessus.Count && listePrets.Count == 0)  // Si il y a des processus dans listeProcessus et la listePrets est vide
-                {
+                    {
                     if (temps < listeProcessus[indice].tempsArriv)  // si aucun processus n'est arrivé
                     {
                         AfficheLigne(temps); //affiche le temps actuel et le mot "repos", i.e le processeur n'execute aucun processus

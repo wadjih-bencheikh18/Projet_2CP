@@ -8,7 +8,7 @@ namespace Ordonnancement
         public int Executer()  // executer la liste des processus 
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé
-            int temps = 0;
+            int temps = 0;  
             int indice = 0;
             while (listePrets.Count != 0 || indice < listeProcessus.Count) //Tant qu'il existe des processus prêts
             {

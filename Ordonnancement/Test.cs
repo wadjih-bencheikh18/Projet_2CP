@@ -152,17 +152,16 @@ namespace Ordonnancement
                         Pro = new ProcessusNiveau(id, temparriv, duree, prio, niveau);
                     }
                     else Pro = new(id, temparriv, duree, prio);
-                    /*
                     Console.Write(Pro.id + "=>");
                     for (int j = 0; j < 2; j++)
                     {
                         int intduree = random.Next(1, 4);
                         int intArriv = random.Next(1, duree);
                         interruption = new(intduree, intArriv);
-                        Console.Write(interruption.duree + " | " + interruption.tempsArriv + " => ");
+                        Console.Write(interruption.duree + " | " + interruption.tempsArriv+ " => ");
                         Pro.Push(interruption);
                     }
-                    Console.WriteLine();*/
+                    Console.WriteLine();
                 }
                 if (numAlgo != 5) prgm.Push(Pro);
                 else ((MultiNiveau)prgm).Push((ProcessusNiveau)Pro);
