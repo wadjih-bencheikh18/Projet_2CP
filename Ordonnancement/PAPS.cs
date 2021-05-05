@@ -10,14 +10,15 @@ namespace Ordonnancement
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = 0, indice = 0;
-            while (indice < listeProcessus.Count || listePrets.Count != 0) //s'il existe des processus non executés
+            while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0) //s'il existe des processus non executés
             {
                 indice = AjouterTous(temps, indice); //remplir listePrets
                 temps++; //incrementer le temps réel
+                InterruptionExecute();
                 if (listePrets.Count != 0) //s'il y a des processus prêts
                 {
                     listePrets[0].etat = 2;
-                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps;
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence
                     AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     if (listePrets[0].tempsRestant == 0) //si l'execution du premier processus de listePrets est terminée
@@ -28,14 +29,15 @@ namespace Ordonnancement
                         listePrets[0].etat = 3;
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                     }
+
                 }
-                else AfficheLigne(temps-1); //affiche le temps actuel et le mot "repos" ie le processeur n'execute aucun processus
+                else AfficheLigne(temps - 1); //affiche le temps actuel et le mot "repos" ie le processeur n'execute aucun processus
             }
             return temps;
         }
 
         // à utiliser dans MultiNiveaux
-        
+
         public int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
         {
             int temps = tempsDebut;
@@ -43,10 +45,11 @@ namespace Ordonnancement
             {
                 niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau); //remplir la liste des processus prêts de chaque niveau
                 temps++; //incrementer le temps réel
+                InterruptionExecute();
                 if (listePrets.Count != 0) //s'il y a des processus prêts
                 {
                     listePrets[0].etat = 2;
-                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps;
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence
                     AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     if (listePrets[0].tempsRestant == 0) //si l'execution du premier processus de listePrets est terminée
@@ -58,7 +61,7 @@ namespace Ordonnancement
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                     }
                 }
-                if (temps== tempsFin)
+                if (temps == tempsFin)
                 {
                     listePrets[0].etat = 1;
                     listePrets.Add(listePrets[0]);
