@@ -6,12 +6,12 @@ namespace Ordonnancement
     {
         static void Main(string[] args)
         {
-            Interruption interruption;
+
             bool test = false;
             Processus Pro;
             int numAlgo = 0, nbNiveau = 0;
             Ordonnancement prgm = new PAPS();
-            Random random = new Random();
+            Random r1, r2, r3, r4;
             while (!test)
             {
                 Console.WriteLine("Voici les algorithmes d'ordonnancement:\n");
@@ -58,7 +58,7 @@ namespace Ordonnancement
                     char rep = char.Parse(Console.ReadLine());
                     for (int i = 0; i < nbNiveau; i++)
                     {
-                        if (rep == 'n') a1 = random.Next(0, 4);
+                        if (rep == 'n') { r1 = new Random(); a1 = r1.Next(0, 4); }
                         else
                         {
                             Console.WriteLine("Entrer l'Algorithme du niveau " + (i) + ".\n1.PAPS | 2.PCA | 3.PSP | 4.Tourniquet");
@@ -66,7 +66,7 @@ namespace Ordonnancement
                         }
                         if (a1 == 3)
                         {
-                            if (rep == 'n') { a2 = random.Next(1, 20); }
+                            if (rep == 'n') { r2 = new Random(); a2 = r2.Next(1, 20); }
                             else
                             {
                                 Console.WriteLine("Entrer le quantum du niveau " + (i));
@@ -101,7 +101,7 @@ namespace Ordonnancement
 
                 }
                 else { Console.WriteLine("Votre choix n'est pas valide . Veuillez réesseyer "); }
-
+               
             }
             Console.WriteLine("Voulez-vous saisir les données des processus ? \n");
             Console.WriteLine("Remarque : Si vous choisissez Non , la génération des données des processus sera aléatoire \n");
@@ -123,13 +123,14 @@ namespace Ordonnancement
                     duree = Convert.ToInt32(Console.ReadLine());
                     Console.Write("Donner sa priorité : ");
                     prio = Convert.ToInt32(Console.ReadLine());
-                    // Pro = new(id, temparriv, duree, prio);
+                   // Pro = new(id, temparriv, duree, prio);
+
                     if (numAlgo == 5)
                     {
-                    error:
+                        error:
                         Console.Write("Donner son niveau : ");
                         niveau = int.Parse(Console.ReadLine());
-                        if (niveau < 0 || niveau >= nbNiveau)
+                        if(niveau<0 || niveau >= nbNiveau)
                         {
                             Console.WriteLine("Entrer un numero entre 0 et " + (nbNiveau - 1));
                             goto error;
@@ -137,37 +138,22 @@ namespace Ordonnancement
                         Pro = new ProcessusNiveau(id, temparriv, duree, prio, niveau);
                     }
                     else { Pro = new(id, temparriv, duree, prio); }
-                    Console.WriteLine();
+                    Console.WriteLine("");
                 }
                 else
                 {
-                    id = i;
-                    temparriv = random.Next(0, 4);
-                    duree = random.Next(1, 15);
-                    prio = random.Next(1, 15);
-
-                    if (numAlgo == 5)
-                    {
-                        niveau = random.Next(0, nbNiveau);
-                        Pro = new ProcessusNiveau(id, temparriv, duree, prio, niveau);
-                    }
-                    else Pro = new(id, temparriv, duree, prio);
-                    Console.Write(Pro.id + "=>");
-                    for (int j = 0; j < 2; j++)
-                    {
-                        int intduree = random.Next(1, 4);
-                        int intArriv = random.Next(1, duree);
-                        interruption = new(intduree, intArriv);
-                        Console.Write(interruption.duree + " | " + interruption.tempsArriv+ " => ");
-                        Pro.Push(interruption);
-                    }
-                    Console.WriteLine();
+                    r1 = new Random();
+                    r2 = new Random();
+                    r3 = new Random();
+                    r4 = new Random();
+                    if (numAlgo == 5) { Pro = new ProcessusNiveau(i, r2.Next(0, 15), r3.Next(1, 15), r4.Next(1, 15), r1.Next(0, nbNiveau)); }
+                    else { Pro = new(i, r2.Next(0, 15), r3.Next(1, 15), r4.Next(1, 5)); }
                 }
                 if (numAlgo != 5) prgm.Push(Pro);
                 else ((MultiNiveau)prgm).Push((ProcessusNiveau)Pro);
             }
             Console.WriteLine("**** Iniatialisation **** ");
-            if (numAlgo != 5) prgm.Affichage();
+            if(numAlgo!=5) prgm.Affichage();
             else ((MultiNiveau)prgm).Affichage();
             Console.WriteLine("\n\n*****************************************\n");
             Console.WriteLine("Le temps| Id de processus executer\t|\n");
@@ -231,7 +217,7 @@ namespace Ordonnancement
             prgm.Affichage();
             Console.WriteLine("\n\n\n");
             */
-        }
+        } 
     }
 
-}
+    }

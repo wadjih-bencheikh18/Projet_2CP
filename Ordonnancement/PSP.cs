@@ -14,7 +14,6 @@ namespace Ordonnancement
             {
                 indice = AjouterTous(temps, indice);  // Remplir listePrets
                 temps++;
-                InterruptionExecute();
                 if (listePrets.Count != 0) //S'il y a des processus prêts
                 {
                     listePrets.Sort(delegate (Processus x, Processus y)
@@ -24,7 +23,7 @@ namespace Ordonnancement
                                            }
                                         );
                     listePrets[0].etat = 2;
-                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps et l'ID du processus entrain d'être executé
                     if (listePrets[0].tempsRestant == 0)  // Si l'execution du premier processus de listePrets est terminée :
@@ -51,7 +50,6 @@ namespace Ordonnancement
             {
                 niveaux[indiceNiveau].indice[0] = AjouterTous(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau);  //remplir la liste des processus prêts de chaque niveau
                 temps++;
-                InterruptionExecute();
                 if (listePrets.Count != 0) //S'il y a des processus prêts
                 {
                     listePrets.Sort(
@@ -60,9 +58,9 @@ namespace Ordonnancement
                                                if (x.prio.CompareTo(y.prio) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont la même priorité, on les trie selon le temps d'arrivée
                                                else return x.prio.CompareTo(y.prio); //sinon, on fait le tri par priorité
                                            }
-                                    );
+                                        );
                     listePrets[0].etat = 2;
-                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps;
                     listePrets[0].tempsRestant--;//L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps et l'ID du processus entrain d'être executé
                     if (listePrets[0].tempsRestant == 0) // Si l'execution du premier processus de listePrets est terminée :

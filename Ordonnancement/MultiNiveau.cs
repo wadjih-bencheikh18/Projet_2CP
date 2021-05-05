@@ -3,11 +3,10 @@ using System.Collections.Generic;
 
 namespace Ordonnancement
 {
-    class Niveau
+    class Niveau 
     {
         public List<Processus> listeProcessus = new List<Processus>();
         public List<Processus> listePrets = new List<Processus>();
-        public List<Processus> listebloque = new List<Processus>();
         public Ordonnancement algo;
         public int numAlgo; //0:PAPS  1:PCA  2:Priorité  3:RoundRobin
         public int[] indice = new int[4];
@@ -125,7 +124,7 @@ namespace Ordonnancement
         }
         public int NiveauExecute(int temps, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeProcessus)  //executer le niveau "indiceNiveau"
         {
-            niveaux[indiceNiveau].algo.Init(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listePrets, niveaux[indiceNiveau].listebloque); //initialisation de algo avec la liste des processus et la liste des processus prêts du niveau
+            niveaux[indiceNiveau].algo.Init(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listePrets); //initialisation de algo avec la liste des processus et la liste des processus prêts du niveau
             switch (niveaux[indiceNiveau].numAlgo)
             {
                 case 0:
