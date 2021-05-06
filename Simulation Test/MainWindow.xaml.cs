@@ -33,30 +33,52 @@ namespace Simulation_Test
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             bool Valid = true;
-            int  duree, tempsArriv;
+            int  duree, tempsArriv, prio = 0, niv;
             var bc = new BrushConverter();
 
-            if (!Int32.TryParse(dureeTB.Text, out duree))
+            if (!Int32.TryParse(dureeTB.Text, out duree) && duree <= 0)
             {
                 dureeTB.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
                 dureeTB.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 Valid = false;
             }
-            if (!Int32.TryParse(tempsArrivTB.Text, out tempsArriv))
+            else dureeTB.Background = (Brush)bc.ConvertFrom("#00000000");
+
+            if (!Int32.TryParse(tempsArrivTB.Text, out tempsArriv) && tempsArriv <= 0)
             {
                 tempsArrivTB.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 tempsArrivTB.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C") ;
-
                 Valid = false;
             }
+            else tempsArrivTB.Background = (Brush)bc.ConvertFrom("#00000000");
+
+            if (!Int32.TryParse(prioTB.Text, out prio) && prio <= 0 && prio != -123456)
+            {
+                prioTB.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                prioTB.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                Valid = false;
+            }
+            else prioTB.Background = (Brush)bc.ConvertFrom("#00000000");
+
+            if (!Int32.TryParse(nivTB.Text, out niv) && niv <= 0 && niv != -123456)
+            {
+                nivTB.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                nivTB.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                Valid = false;
+            }
+            else nivTB.Background = (Brush)bc.ConvertFrom("#00000000");
+
             if (Valid)
             {
                 idTB.Text = id.ToString();
-                Processus pro = new Processus(id-1, tempsArriv, duree);
+                if (prio == -123456) prio = 0; 
+                Processus pro = new Processus(id-1, tempsArriv, duree, prio);
                 dureeTB.Background = Brushes.White;
                 tempsArrivTB.Background = Brushes.White;
-                InitTab.Items.Add(pro);
+                prioTB.Background = Brushes.White;
+                nivTB.Background = Brushes.White;
                 prgm.Push(pro);
+                pro.Affichage(Grid1, id, 0);
                 id++;
             }
            
@@ -84,15 +106,35 @@ namespace Simulation_Test
             {
                 this.ParamEntryGrid.Visibility = Visibility.Visible;
                 this.ParamTextBlock.Text = "Quantum:";
+                this.prioColumn.Width = new GridLength(0);
+                this.nivColumn.Width = new GridLength(0);
+                this.prioRow.Height = new GridLength(0);
+                this.nivRow.Height = new GridLength(0);
             }
             else if (this.AlgoComboBox.SelectedItem.ToString().EndsWith("Multi Niveaux"))
             {
                 this.ParamEntryGrid.Visibility = Visibility.Visible;
                 this.ParamTextBlock.Text = "Nombre des Niveaux:";
+                this.prioColumn.Width = new GridLength(1, GridUnitType.Star);
+                this.nivColumn.Width = new GridLength(1, GridUnitType.Star);
+                this.prioRow.Height = new GridLength(1, GridUnitType.Star);
+                this.nivRow.Height = new GridLength(1, GridUnitType.Star);
+            }
+            else if (this.AlgoComboBox.SelectedItem.ToString().EndsWith("PSP"))
+            {
+                this.ParamEntryGrid.Visibility = Visibility.Hidden;
+                this.prioColumn.Width = new GridLength(1, GridUnitType.Star);
+                this.nivColumn.Width = new GridLength(0);
+                this.prioRow.Height = new GridLength(1, GridUnitType.Star);
+                this.nivRow.Height = new GridLength(0);
             }
             else if (this.ParamEntryGrid != null)
             {
                 this.ParamEntryGrid.Visibility = Visibility.Hidden;
+                this.prioColumn.Width = new GridLength(0);
+                this.nivColumn.Width = new GridLength(0);
+                this.prioRow.Height = new GridLength(0);
+                this.nivRow.Height = new GridLength(0);
             }
         }
 

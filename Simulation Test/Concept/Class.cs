@@ -81,6 +81,23 @@ namespace Ordonnancement
             Grid.SetRow(item, i + 1);
             Table.Children.Add(item);
         }
+        public void Affichage(Grid Table, int i, int niveau)
+        {
+            ProcessusString proc;
+            TableRowInit item;
+            
+            RowDefinition rowdef = new RowDefinition();
+            rowdef.Height = new GridLength(30);
+            Table.RowDefinitions.Insert(i, rowdef);
+            item = new TableRowInit();
+            item.Name = "5";
+            proc = new ProcessusString(this);
+            if (i % 2 == 0) proc.Background = "LightBlue";
+            else proc.Background = "lightGray";
+            item.DataContext = proc;
+            Grid.SetRow(item, i + 1);
+            Table.Children.Add(item);
+        }
     }
     class ProcessusString
     {
@@ -93,6 +110,9 @@ namespace Ordonnancement
         public string tempsService { get; set; }
         public string Background { get; set; }
         public string tempsReponse { get; set; }
+        public string prio { set; get; }
+        public string niveau { set; get; }
+
         public ProcessusString(Processus processus)
         {
             this.id = processus.id.ToString();
@@ -102,7 +122,9 @@ namespace Ordonnancement
             this.tempsFin = processus.tempsFin.ToString();
             this.tempsService = processus.tempsService.ToString();
             this.tempsReponse = processus.tempsReponse.ToString();
+            
         }
+
         public ProcessusString(int id, int tempsRestant)
         {
             this.id = id.ToString();

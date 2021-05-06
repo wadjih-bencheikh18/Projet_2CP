@@ -1,5 +1,10 @@
-﻿using System;
+﻿using Simulation_Test;
+using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace Ordonnancement
 {
@@ -67,6 +72,21 @@ namespace Ordonnancement
         {
             base.Affichage();
             Console.Write("\tNiveau : " + niveau);
+        }
+        public new void Affichage(Grid Table, int i)
+        {
+            ProcessusString proc;
+            TableRowFinal item;
+            RowDefinition rowdef = new RowDefinition();
+            rowdef.Height = new GridLength(30);
+            Table.RowDefinitions.Insert(i, rowdef);
+            item = new TableRowFinal();
+            proc = new ProcessusString(this);
+            if (i % 2 == 0) proc.Background = "LightBlue";
+            else proc.Background = "lightGray";
+            item.DataContext = proc;
+            Grid.SetRow(item, i + 1);
+            Table.Children.Add(item);
         }
     }
     class MultiNiveau : Ordonnancement

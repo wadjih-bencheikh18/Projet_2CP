@@ -61,6 +61,9 @@
     <Compile Include="TableRowFinal.xaml.cs">
       <DependentUpon>TableRowFinal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TableRowInit.xaml.cs">
+      <DependentUpon>TableRowInit.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TableRowFinal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TableRowInit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

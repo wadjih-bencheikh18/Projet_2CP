@@ -82,3 +82,5 @@ E:\ESi\SEMESTRE 4\PROJECT 2CP\Coding\Projet_2CP\Simulation Test\obj\Debug\Simula
 E:\ESi\SEMESTRE 4\PROJECT 2CP\Coding\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.csproj.CoreCompileInputs.cache
 E:\ESi\SEMESTRE 4\PROJECT 2CP\Coding\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.exe
 E:\ESi\SEMESTRE 4\PROJECT 2CP\Coding\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.pdb
+E:\ESi\SEMESTRE 4\PROJECT 2CP\Coding\Projet_2CP\Simulation Test\obj\Debug\TableRowInit.g.cs
+E:\ESi\SEMESTRE 4\PROJECT 2CP\Coding\Projet_2CP\Simulation Test\obj\Debug\TableRowInit.baml
