@@ -155,9 +155,11 @@ namespace Ordonnancement
             Console.WriteLine("**** Iniatialisation **** ");
             if(numAlgo!=5) prgm.Affichage();
             else ((MultiNiveau)prgm).Affichage();
+            Console.WriteLine("\n\n");
+            Console.WriteLine("Remarque:\nSi dessous on affiche le processus actif (colonne 2) et la liste Préts (colonne 3) dans chaque unité de temps(colonne 1).");
             Console.WriteLine("\n\n*****************************************\n");
-            Console.WriteLine("Le temps| Id de processus executer\t|\n");
-            Console.WriteLine("*****************************************");
+            Console.WriteLine("Le temps| Id de processus actif   \t|           Liste Préts\n");
+            Console.WriteLine("****************************************************************************");
             switch (numAlgo)
             {
                 case 1:
