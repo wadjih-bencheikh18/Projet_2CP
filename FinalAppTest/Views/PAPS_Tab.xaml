@@ -37,9 +37,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="65"/>
                 <RowDefinition Height="6*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Margin="10,10,10,5">
+            <Grid Grid.Row="0" Margin="10,10,25,5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -55,8 +55,8 @@
                 <TextBlock Grid.Column="2" Text="Durée" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="10" Foreground="#FF49606B"/>
                 <TextBlock Grid.Column="3" Text="Actions" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="10" Foreground="#FF49606B"/>
             </Grid>
-            <ScrollViewer Grid.Row="1">
-            <Grid x:Name="ProcessusGrid" >
+            <ScrollViewer  Grid.Row="1">
+            <Grid VerticalAlignment="Top" x:Name="ProcessusGrid" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
