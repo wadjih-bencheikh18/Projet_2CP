@@ -6,8 +6,33 @@
              xmlns:local="clr-namespace:Simulation_Test"
              mc:Ignorable="d" 
              d:DesignHeight="60" d:DesignWidth="60">
+    <UserControl.Resources>
+        <Storyboard x:Key="AddAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-230.25"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-380.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource AddAnimation}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
     <Grid>
-        <Border Width="50" Height="50" Background="#FFF52C2C" Margin="5" CornerRadius="2">
+        <Border x:Name="border" Width="50" Height="50" Background="#FFF52C2C" Margin="5" CornerRadius="2" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>

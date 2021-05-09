@@ -134,6 +134,24 @@ namespace Ordonnancement
             }
             return indice;
         }
+        public virtual int AjouterTous(int temps, int indice, StackPanel ListProcessusView, StackPanel Processeur) //ajouter à la liste des processus prêts tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
+        {
+            for (; indice < listeProcessus.Count; indice++) //parcours de listeProcessus à partir du processus d'indice "indice"
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break; //si le processus n'est pas encore arrivé on sort
+                else
+                {
+                    var item = new ProcessusDesign();
+                    item.DataContext = listeProcessus[indice];
+                    if (listePrets.Count == 0)
+                        Processeur.Children.Add(item);
+                    else 
+                        ListProcessusView.Children.Add(item);
+                    listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts
+                }
+            }
+            return indice;
+        }
         public int AjouterTous(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau) //ajouter à la liste des processus prêts tous les processus de "listeGeneral" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution de MultiNiveaux
         {
             for (; indice < listeGeneral.Count; indice++) //parcours de listeGeneral à partir du processus d'indice "indice"
@@ -169,6 +187,7 @@ namespace Ordonnancement
                 item = new ProcessusDesign();
                 item.DataContext = listePrets[0];
                 Processeur.Children.Add(item);
+                //Processeur.Dispatcher.Invoke(DispatcherPriority.Input, EmptyDelegate);
             }
             for (int i = 1; i < listePrets.Count; i++)
             {
