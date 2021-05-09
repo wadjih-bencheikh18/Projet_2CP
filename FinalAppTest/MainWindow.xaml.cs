@@ -31,9 +31,9 @@ namespace FinalAppTest
             DataContext = new PAPS_ViewModel();
         }
 
-        private void StartPAPS_Button_Click(object sender, RoutedEventArgs e)
+        private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            Main.Content = new SimulationPage();
         }
     }
 }
