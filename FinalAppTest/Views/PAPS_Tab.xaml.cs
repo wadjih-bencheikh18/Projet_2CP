@@ -37,14 +37,14 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             if (!Int32.TryParse(NbProcessusTextBox.Text, out NbProcessus) && NbProcessus <= 0)
             {
-                NbProcessusTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                // NbProcessusTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                RandRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
             else
             {
-                NbProcessusTextBox.Text = "";
+                NbProcessusTextBox.Text = "0";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
-                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
+                RandRect.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
                 Random r = new Random();
                 for (int i = 0; i < NbProcessus; i++)
                 {
@@ -131,6 +131,11 @@ namespace FinalAppTest.Views
         {
             var bc = new BrushConverter();
             RandomButton.Fill = (Brush)bc.ConvertFrom("#FF000000");
+        }
+
+        private void NbProcessusTextBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NbProcessusTextBox.Text = "REDA";
         }
     }
 }

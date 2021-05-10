@@ -39,6 +39,7 @@ namespace Ordonnancement
                     break;
             }
         }
+
         public Niveau(int numAlgo, int quantum)
         {
             this.numAlgo = numAlgo;
@@ -73,7 +74,6 @@ namespace Ordonnancement
         {
             this.niveau = niveau;
         }
-        
         public override void Affichage() //surdefinition : affiche les caracteristiques d'un processus en plus de son niveau
         {
             base.Affichage();
