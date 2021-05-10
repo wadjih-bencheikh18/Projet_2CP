@@ -110,10 +110,8 @@
                 <TextBlock Grid.Column="3" Text="Actions" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
             </Grid>
             <ScrollViewer Margin="0,0,5,0" Grid.Row="1">
-                <Grid VerticalAlignment="Top" x:Name="ProcessusGrid" >
-                    <Grid.RowDefinitions>
-                    </Grid.RowDefinitions>
-                </Grid>
+                <StackPanel VerticalAlignment="Top" x:Name="ProcessusGrid" x:FieldModifier="public">
+                </StackPanel>
             </ScrollViewer>
             <Grid Margin="0,0,0,15" Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -162,7 +160,7 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FF359354" FontFamily="Lexend">Ajouter</TextBlock>
+                        <TextBlock x:Name="ajouterTB" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FF359354" FontFamily="Lexend">Ajouter</TextBlock>
 
                     </Grid>
                     <Rectangle Cursor="Hand" MouseEnter="AddProcessusButton_MouseEnter" MouseLeave="AddProcessusButton_MouseLeave" MouseLeftButtonDown="AddProcessusButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25"/>
