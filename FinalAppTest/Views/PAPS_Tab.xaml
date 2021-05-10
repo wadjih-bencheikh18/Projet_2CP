@@ -56,11 +56,8 @@
                 <TextBlock Grid.Column="3" Text="Actions" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="10" Foreground="#FF49606B"/>
             </Grid>
             <ScrollViewer  Grid.Row="1">
-            <Grid VerticalAlignment="Top" x:Name="ProcessusGrid" x:FieldModifier="public">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-            </Grid>
+                <StackPanel VerticalAlignment="Top" x:Name="ProcessusGrid" x:FieldModifier="public">
+                </StackPanel>
             </ScrollViewer>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>

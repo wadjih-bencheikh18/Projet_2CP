@@ -28,7 +28,7 @@ namespace FinalAppTest.Views
             IdTextBox.Text = indice.ToString();
             indice++;
         }
-        public static Boolean modifier = false;
+        public static bool modifier = false;
         public static PAPS_TabRow proModifier;
         private int indice=0;
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
@@ -52,7 +52,7 @@ namespace FinalAppTest.Views
                     pro.id = i;
                     pro.tempsArriv = r.Next(20);
                     pro.duree = r.Next(1, 20);
-                    pro.Inserer(ProcessusGrid, i,IdTextBox,TempsArrivTextBox,DureeTextBox, AddProcessusButton);
+                    pro.Inserer(ProcessusGrid,IdTextBox,TempsArrivTextBox,DureeTextBox, AddProcessusButton);
                 }
                 IdTextBox.Text = NbProcessus.ToString();
                 indice = NbProcessus;
@@ -64,7 +64,6 @@ namespace FinalAppTest.Views
             bool valide = true;
             int id , tempsArrive, duree;
             var bc = new BrushConverter();
- //           Int32.TryParse(IdTextBox.Text, out id);  // get id
             if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) && tempsArrive <= 0)  // get temps d'arrivé
             {
                 TempsArrivTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
@@ -90,7 +89,7 @@ namespace FinalAppTest.Views
                     tempsArriv = tempsArrive,
                     duree = duree
                 };
-                pro.Inserer(ProcessusGrid, id, IdTextBox, TempsArrivTextBox, DureeTextBox, AddProcessusButton) ;
+                pro.Inserer(ProcessusGrid,IdTextBox, TempsArrivTextBox, DureeTextBox, AddProcessusButton) ;
                 indice++;
             }
             else if (valide && modifier)

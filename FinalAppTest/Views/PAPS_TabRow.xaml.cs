@@ -28,8 +28,8 @@ namespace FinalAppTest.Views
         private TextBox tempsArriv;
         private TextBox duree;
         private Button Ajouter;
-        private Grid Table;
-        public PAPS_TabRow(TextBox id,TextBox tempsArriv,TextBox duree,Grid Table, Button Ajouter)
+        private StackPanel Table;
+        public PAPS_TabRow(TextBox id,TextBox tempsArriv,TextBox duree, StackPanel Table, Button Ajouter)
         {
             InitializeComponent();
             this.id = id;
