@@ -26,17 +26,53 @@ namespace FinalAppTest
         {
             InitializeComponent();
         }
-        
+
         private void PAPS_Button_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new PAPS_ViewModel();
+        }
+
+        private void PCA_Button_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new PCA_ViewModel();
+        }
+
+        private void PSP_Button_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new PSP_ViewModel();
+        }
+
+        private void RoundRobinButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new RoundRobinViewModel();
+        }
+
+        private void MultiNivButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new MultiNiveauViewModel();
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             if (ContentViewer.Content == null) return;  // no algo selected
             Ordonnancement.Ordonnancement prog = new PAPS();
-            if (ContentViewer.Content.GetType() == typeof(PAPS_ViewModel))  // paps
+            if (ContentViewer.Content.GetType() == typeof(PAPS_ViewModel))  // PAPS
+            {
+                Main.Content = new SimulationPage();
+            }
+            else if (ContentViewer.Content.GetType() == typeof(PCA_ViewModel))  // PCA
+            {
+                Main.Content = new SimulationPage();
+            }
+            else if (ContentViewer.Content.GetType() == typeof(PSP_ViewModel))  // PSP
+            {
+                Main.Content = new SimulationPage();
+            }
+            else if (ContentViewer.Content.GetType() == typeof(RoundRobinViewModel))  // RoundRobin
+            {
+                Main.Content = new SimulationPage();
+            }
+            else if (ContentViewer.Content.GetType() == typeof(MultiNiveauViewModel))  // MultiNiveaux
             {
                 Main.Content = new SimulationPage();
             }

@@ -64,12 +64,28 @@
     <Compile Include="SimulationPage.xaml.cs">
       <DependentUpon>SimulationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\MultiNiveauViewModel.cs" />
     <Compile Include="ViewModels\PAPS_ViewModel.cs" />
+    <Compile Include="ViewModels\PCA_ViewModel.cs" />
+    <Compile Include="ViewModels\PSP_ViewModel.cs" />
+    <Compile Include="ViewModels\RoundRobinViewModel.cs" />
+    <Compile Include="Views\Mult_Niv_Tab.xaml.cs">
+      <DependentUpon>Mult_Niv_Tab.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PAPS_Tab.xaml.cs">
       <DependentUpon>PAPS_Tab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PAPS_TabRow.xaml.cs">
       <DependentUpon>PAPS_TabRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PCA_Tab.xaml.cs">
+      <DependentUpon>PCA_Tab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PSP_Tab.xaml.cs">
+      <DependentUpon>PSP_Tab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RoundRobin_Tab.xaml.cs">
+      <DependentUpon>RoundRobin_Tab.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -87,11 +103,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Mult_Niv_Tab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PAPS_Tab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PAPS_TabRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PCA_Tab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PSP_Tab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RoundRobin_Tab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

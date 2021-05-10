@@ -12,6 +12,18 @@
         <DataTemplate x:Name="PAPS_ViewTemplate" DataType="{x:Type viewmodels:PAPS_ViewModel}">
             <views:PAPS_Tab DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="PCA_ViewTemplate" DataType="{x:Type viewmodels:PCA_ViewModel}">
+            <views:PCA_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="PSP_ViewTemplate" DataType="{x:Type viewmodels:PSP_ViewModel}">
+            <views:PSP_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="RoundRobin_ViewTemplate" DataType="{x:Type viewmodels:RoundRobinViewModel}">
+            <views:RoundRobin_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="MultiNiv_ViewTemplate" DataType="{x:Type viewmodels:MultiNiveauViewModel}">
+            <views:Mult_Niv_Tab DataContext="{Binding}"/>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <!--Layout-->
@@ -39,10 +51,10 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0" Margin="30 20" Content="PAPS" FontSize="25" FontWeight="Bold" x:Name="PAPS_Button" Click="PAPS_Button_Click"/>
-                <Button Grid.Row="1" Margin="30 20" Content="PCA" FontSize="25" FontWeight="Bold"/>
-                <Button Grid.Row="2" Margin="30 20" Content="PSP" FontSize="25" FontWeight="Bold"/>
-                <Button Grid.Row="3" Margin="30 20" Content="Round Robin" FontSize="20" FontWeight="Bold"/>
-                <Button Grid.Row="4" Margin="30 20" Content="Multi-Niveaux" FontSize="20" FontWeight="Bold"/>
+                <Button Grid.Row="1" Margin="30 20" Content="PCA" FontSize="25" FontWeight="Bold" x:Name="PCA_Button" Click="PCA_Button_Click"/>
+                <Button Grid.Row="2" Margin="30 20" Content="PSP" FontSize="25" FontWeight="Bold" x:Name="PSP_Button" Click="PSP_Button_Click"/>
+                <Button Grid.Row="3" Margin="30 20" Content="Round Robin" FontSize="20" FontWeight="Bold" x:Name="RoundRobinButton" Click="RoundRobinButton_Click"/>
+                <Button Grid.Row="4" Margin="30 20" Content="Multi-Niveaux" FontSize="20" FontWeight="Bold" x:Name="MultiNivButton" Click="MultiNivButton_Click"/>
             </Grid>
         </DockPanel>
         <!--the area of the simulation-->
