@@ -2,7 +2,7 @@
 
 namespace Ordonnancement
 {
-    class PCA : Ordonnancement
+    public class PCA : Ordonnancement
     {
         public PCA() { }
         public int Executer()

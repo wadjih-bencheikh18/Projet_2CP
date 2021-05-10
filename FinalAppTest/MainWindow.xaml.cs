@@ -72,7 +72,7 @@ namespace FinalAppTest
             }
             else if (ContentViewer.Content.GetType() == typeof(PCA_ViewModel))  // PCA
             {
-                if (PAPS_Tab.prog.listeProcessus.Count == 0)
+                if (PCA_Tab.prog.listeProcessus.Count == 0)
                 {
                     var bc = new BrushConverter();
                     StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
@@ -80,7 +80,7 @@ namespace FinalAppTest
                 }
                 else
                 {
-                    Main.Content = new SimulationPage(PAPS_Tab.prog);
+                    Main.Content = new SimulationPage(PCA_Tab.prog);
                 }
             }
             else if (ContentViewer.Content.GetType() == typeof(PSP_ViewModel))  // PSP

@@ -92,7 +92,7 @@ namespace FinalAppTest.Views
                     {
                         id = id,
                         tempsArriv = tempsArrive,
-                        duree = duree
+                        duree = duree,
                     };
                     pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
                     prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree));  // added to the program

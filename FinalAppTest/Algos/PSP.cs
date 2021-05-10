@@ -2,7 +2,7 @@
 
 namespace Ordonnancement
 {
-    class PSP : Ordonnancement
+    public class PSP : Ordonnancement
     {
         public PSP() { }
         public int Executer()  // executer la liste des processus 
