@@ -19,10 +19,8 @@ namespace Ordonnancement
             Processeur.Children.Clear();
             ProcessusDesign item = new ProcessusDesign();
             ProcessusString pro = new ProcessusString(listePrets[0]);
-           
             pro.X = -220;
             pro.Y = 295;
-            
             item.DataContext = pro;
             if(ListProcessusView.Children.Count!=0)
             {
@@ -32,6 +30,7 @@ namespace Ordonnancement
                 AnimeProc.Children.Add(ListProcessusView.FindResource("up") as Storyboard);
                 AnimeProc.Begin((FrameworkElement)ListProcessusView.Children[0]);
                 await Task.Delay(1000);
+                Processeur.Children.Add(item);
                 ListProcessusView.Children[0].Visibility = Visibility.Hidden;
                 AnimeList.Begin(ListProcessusView);
                 await Task.Delay(1000);
@@ -39,7 +38,8 @@ namespace Ordonnancement
                 AnimeList.Begin(ListProcessusView);
                 ListProcessusView.Children.RemoveAt(0);
             }
-            Processeur.Children.Add(item);
+            else 
+                Processeur.Children.Add(item);
             await Task.Delay(2000);
         }
         public async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur,TextBlock TempsView)
@@ -63,9 +63,11 @@ namespace Ordonnancement
                 {
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps-1 - listePrets[0].tempsArriv;
-                    //AfficheLigne(temps,listePrets, ListProcessusView, Processeur, TempsView); //affiche le temps actuel et l'ID du processus entrain d'être executé
-                    listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence
-                    //AfficheLigne(temps,listePrets, ListProcessusView, Processeur, TempsView); //affiche le temps actuel et l'ID du processus entrain d'être executé
+                    listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence               //AfficheLigne(temps,listePrets, ListProcessusView, Processeur, TempsView); //affiche le temps actuel et l'ID du processus entrain d'être executé
+                   /* ProcessusDesign item = new ProcessusDesign();
+                    ProcessusString pro = new ProcessusString(listePrets[0]);
+                    item.DataContext = pro;
+                    Processeur.Children.Clear();*/
                     if (listePrets[0].tempsRestant == 0) //si l'execution du premier processus de listePrets est terminée
                     {
                         listePrets[0].tempsFin = temps; //temps de fin d'execution = au temps actuel

@@ -58,7 +58,7 @@ namespace Simulation_Test
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            prgm.Executer(ListProcessusView, Processeur,TempsView);
+            _ = prgm.Executer(ListProcessusView, Processeur, TempsView);
         }
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)

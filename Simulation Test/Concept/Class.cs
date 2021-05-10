@@ -141,7 +141,7 @@ namespace Ordonnancement
                 {
                     ProcessusDesign item = new ProcessusDesign();
                     ProcessusString pro = new ProcessusString(listeProcessus[indice]);
-                    pro.X = 700;
+                    pro.X = 620;
                     pro.Y = 0;
                     item.DataContext = pro;
                     ListProcessusView.Children.Add(item);
