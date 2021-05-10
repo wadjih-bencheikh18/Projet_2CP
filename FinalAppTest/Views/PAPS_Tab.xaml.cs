@@ -37,19 +37,20 @@ namespace FinalAppTest.Views
             }
             else
             {
-                NbProcessusTextBox.Text = "";
-                ProcessusGrid.Children.RemoveRange(4, ProcessusGrid.Children.Count);
-                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
+               // ProcessusGrid.Children.RemoveRange(4, ProcessusGrid.Children.Count);
+                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#FFFFFFFF");
                 Random r = new Random();
                 for (int i = 0; i < NbProcessus; i++)
                 {
                     AffichageProcessus pro = new AffichageProcessus();
-                    pro.id = i;
+                    pro.id = ProcessusGrid.Children.Count;
                     pro.tempsArriv = r.Next(20);
                     pro.duree = r.Next(1, 20);
-                    pro.Inserer(ProcessusGrid, i);
+                    pro.Inserer(ProcessusGrid, ProcessusGrid.Children.Count);
                 }
             }
+            IdTextBox.Text = (ProcessusGrid.Children.Count).ToString();
+            NbProcessusTextBox.Text = "0";
         }
 
         private void AddProcessusButton_Click(object sender, RoutedEventArgs e)  // ajouter un processus
@@ -84,6 +85,30 @@ namespace FinalAppTest.Views
                 };
                 pro.Inserer(ProcessusGrid, id);
             }
+
+        }
+
+        private void AddProcessusButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var bc = new BrushConverter();
+            AddProcessusButton.Fill = (Brush)bc.ConvertFrom("#FFE9FFF0");
+        }
+
+        private void AddProcessusButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var bc = new BrushConverter();
+            AddProcessusButton.Fill = (Brush)bc.ConvertFrom("#FFCCFFDD");
+        }
+
+        private void RandomButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            var bc = new BrushConverter();
+            RandomButton.Fill = (Brush)bc.ConvertFrom("#FF575757");
+        }
+        private void RandomButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            var bc = new BrushConverter();
+            RandomButton.Fill = (Brush)bc.ConvertFrom("#FF000000");
         }
     }
 }

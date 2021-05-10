@@ -89,12 +89,11 @@ namespace Ordonnancement
         public void Inserer(Grid Table, int i)  // inserer un processus dans Table à la i'éme ligne
         {
             PAPS_TabRow item = new PAPS_TabRow();
-            RowDefinition rowdef = new RowDefinition(); rowdef.Height = new GridLength(50);
-            Table.RowDefinitions.Insert(i+1, rowdef);
-            if (i % 2 == 0) this.Background = "#FFEFF3F9";
-            else this.Background = "#FFEFF3F9";
+            RowDefinition rowdef = new RowDefinition(); rowdef.Height = new GridLength(70);
+            Table.RowDefinitions.Insert(i, rowdef);
+            this.Background = "#FFEFF3F9";
             item.DataContext = this;
-            Grid.SetRow(item, i + 1);
+            Grid.SetRow(item, i);
             Table.Children.Add(item);
         }
     }
