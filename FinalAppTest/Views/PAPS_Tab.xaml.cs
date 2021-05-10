@@ -64,13 +64,13 @@ namespace FinalAppTest.Views
             bool valide = true;
             int id , tempsArrive, duree;
             var bc = new BrushConverter();
-            if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) && tempsArrive <= 0)  // get temps d'arrivé
+            if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
                 TempsArrivTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
                 TempsArrivTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
-            if (!Int32.TryParse(DureeTextBox.Text, out duree) && duree <= 0)  // get durée
+            if (!Int32.TryParse(DureeTextBox.Text, out duree) || duree <= 0)  // get durée
             {
                 DureeTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
                 DureeTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
