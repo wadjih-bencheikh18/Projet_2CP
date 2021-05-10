@@ -1,5 +1,4 @@
 ﻿using FinalAppTest.ViewModels;
-using FinalAppTest.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,68 +58,23 @@ namespace FinalAppTest
             Ordonnancement.Ordonnancement prog = new PAPS();
             if (ContentViewer.Content.GetType() == typeof(PAPS_ViewModel))  // PAPS
             {
-                if (PAPS_Tab.prog.listeProcessus.Count == 0)
-                {
-                    var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
-                }
-                else
-                {
-                    Main.Content = new SimulationPage(PAPS_Tab.prog);
-                }
+                Main.Content = new SimulationPage();
             }
             else if (ContentViewer.Content.GetType() == typeof(PCA_ViewModel))  // PCA
             {
-                if (PCA_Tab.prog.listeProcessus.Count == 0)
-                {
-                    var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
-                }
-                else
-                {
-                    Main.Content = new SimulationPage(PCA_Tab.prog);
-                }
+                Main.Content = new SimulationPage();
             }
             else if (ContentViewer.Content.GetType() == typeof(PSP_ViewModel))  // PSP
             {
-                if (PAPS_Tab.prog.listeProcessus.Count == 0)
-                {
-                    var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
-                }
-                else
-                {
-                    Main.Content = new SimulationPage(PAPS_Tab.prog);
-                }
+                Main.Content = new SimulationPage();
             }
             else if (ContentViewer.Content.GetType() == typeof(RoundRobinViewModel))  // RoundRobin
             {
-                if (PAPS_Tab.prog.listeProcessus.Count == 0)
-                {
-                    var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
-                }
-                else
-                {
-                    Main.Content = new SimulationPage(PAPS_Tab.prog);
-                }
+                Main.Content = new SimulationPage();
             }
             else if (ContentViewer.Content.GetType() == typeof(MultiNiveauViewModel))  // MultiNiveaux
             {
-                if (PAPS_Tab.prog.listeProcessus.Count == 0)
-                {
-                    var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
-                }
-                else
-                {
-                    Main.Content = new SimulationPage(PAPS_Tab.prog);
-                }
+                Main.Content = new SimulationPage();
             }
         }
     }

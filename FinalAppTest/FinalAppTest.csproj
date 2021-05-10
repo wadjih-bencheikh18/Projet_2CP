@@ -84,9 +84,6 @@
     <Compile Include="Views\PSP_Tab.xaml.cs">
       <DependentUpon>PSP_Tab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PSP_TabRow.xaml.cs">
-      <DependentUpon>PSP_TabRow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\RoundRobin_Tab.xaml.cs">
       <DependentUpon>RoundRobin_Tab.xaml</DependentUpon>
     </Compile>
@@ -126,10 +123,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PSP_TabRow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\RoundRobin_Tab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -161,6 +154,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Views\Ajouter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Generate.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

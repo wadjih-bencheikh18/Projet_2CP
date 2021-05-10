@@ -29,7 +29,7 @@ namespace FinalAppTest.Views
         }
 
         public static bool modifier = false;
-        public static PSP_TabRow proModifier;
+        public static PAPS_TabRow proModifier;
         private int indice = 0;
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
@@ -52,8 +52,7 @@ namespace FinalAppTest.Views
                     pro.id = i;
                     pro.tempsArriv = r.Next(20);
                     pro.duree = r.Next(1, 20);
-                    pro.prio = r.Next(1, 20);
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
+                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
                 }
                 IdTextBox.Text = NbProcessus.ToString();
                 indice = NbProcessus;
@@ -63,7 +62,7 @@ namespace FinalAppTest.Views
         private void AddProcessusButton_Click(object sender, RoutedEventArgs e)  // ajouter un processus
         {
             bool valide = true;
-            int id, tempsArrive, duree,prio ;
+            int id, tempsArrive, duree;
             var bc = new BrushConverter();
             if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
@@ -77,28 +76,20 @@ namespace FinalAppTest.Views
                 DureeTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
-            if (!Int32.TryParse(PrioTextBox.Text, out prio) || prio <= 0)  // get durée
-            {
-                DureeTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                DureeTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
-                valide = false;
-            }
             if (valide && !modifier)  // si tous est correcte
             {
                 id = indice;
                 TempsArrivTextBox.Text = "0";
-                DureeTextBox.Text = "0";
+                DureeTextBox.Text = "1";
                 IdTextBox.Text = (id + 1).ToString();
-                PrioTextBox.Text = "0";
                 NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
                 AffichageProcessus pro = new AffichageProcessus
                 {
                     id = id,
                     tempsArriv = tempsArrive,
-                    duree = duree,
-                    prio = prio
+                    duree = duree
                 };
-                pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
+                pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
                 indice++;
             }
             else if (valide && modifier)
@@ -108,10 +99,9 @@ namespace FinalAppTest.Views
                     id = int.Parse(IdTextBox.Text),
                     tempsArriv = tempsArrive,
                     duree = duree,
-                    prio = prio,
                     Background = "#FFEFF3F9"
                 };
-                PSP_TabRow item = (PSP_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                PAPS_TabRow item = (PAPS_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                 item.DataContext = pro;
                 ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
