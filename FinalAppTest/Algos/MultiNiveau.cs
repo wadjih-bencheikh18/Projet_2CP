@@ -86,9 +86,9 @@ namespace Ordonnancement
         public string Background { get; set; }
         public AffichageProcessus() { }
 
-        public void Inserer(Grid Table, int i,TextBox id, TextBox tempsArriv ,TextBox duree)  // inserer un processus dans Table à la i'éme ligne
+        public void Inserer(Grid Table, int i,TextBox id, TextBox tempsArriv ,TextBox duree, Button Ajouter)  // inserer un processus dans Table à la i'éme ligne
         {
-            PAPS_TabRow item = new PAPS_TabRow(id,tempsArriv,duree,Table);
+            PAPS_TabRow item = new PAPS_TabRow(id,tempsArriv,duree,Table,Ajouter);
             RowDefinition rowdef = new RowDefinition(); rowdef.Height = new GridLength(50);
             Table.RowDefinitions.Insert(i+1, rowdef);
             this.Background = "#FFEFF3F9";

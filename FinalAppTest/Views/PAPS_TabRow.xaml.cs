@@ -27,16 +27,16 @@ namespace FinalAppTest.Views
         private TextBox id;
         private TextBox tempsArriv;
         private TextBox duree;
-
+        private Button Ajouter;
         private Grid Table;
-        public PAPS_TabRow(TextBox id,TextBox tempsArriv,TextBox duree,Grid Table)
+        public PAPS_TabRow(TextBox id,TextBox tempsArriv,TextBox duree,Grid Table, Button Ajouter)
         {
             InitializeComponent();
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
             this.Table = Table;
-
+            this.Ajouter = Ajouter;
         }
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -45,7 +45,7 @@ namespace FinalAppTest.Views
             duree.Text = dureeTest.Text;
             PAPS_Tab.modifier = true;
             PAPS_Tab.proModifier = this;
-
+            Ajouter.Content = "Modifer";
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)

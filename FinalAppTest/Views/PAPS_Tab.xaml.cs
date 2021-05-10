@@ -52,7 +52,7 @@ namespace FinalAppTest.Views
                     pro.id = i;
                     pro.tempsArriv = r.Next(20);
                     pro.duree = r.Next(1, 20);
-                    pro.Inserer(ProcessusGrid, i,IdTextBox,TempsArrivTextBox,DureeTextBox);
+                    pro.Inserer(ProcessusGrid, i,IdTextBox,TempsArrivTextBox,DureeTextBox, AddProcessusButton);
                 }
                 IdTextBox.Text = NbProcessus.ToString();
                 indice = NbProcessus;
@@ -90,7 +90,7 @@ namespace FinalAppTest.Views
                     tempsArriv = tempsArrive,
                     duree = duree
                 };
-                pro.Inserer(ProcessusGrid, id, IdTextBox, TempsArrivTextBox, DureeTextBox);
+                pro.Inserer(ProcessusGrid, id, IdTextBox, TempsArrivTextBox, DureeTextBox, AddProcessusButton) ;
                 indice++;
             }
             else if (valide && modifier)
@@ -107,7 +107,13 @@ namespace FinalAppTest.Views
                 ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
                 IdTextBox.Text = indice.ToString();
+                AddProcessusButton.Content = "Ajouter";
             }
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
