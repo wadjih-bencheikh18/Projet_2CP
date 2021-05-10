@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Ordonnancement;
 
 namespace FinalAppTest
 {
@@ -21,10 +20,9 @@ namespace FinalAppTest
     /// </summary>
     public partial class SimulationPage : Page
     {
-        public SimulationPage(Ordonnancement.Ordonnancement prog)
+        public SimulationPage()
         {
             InitializeComponent();
-            MessageBox.Show(prog.listeProcessus.Count.ToString());
         }
     }
 }
