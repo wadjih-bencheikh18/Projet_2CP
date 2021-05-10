@@ -25,12 +25,12 @@ namespace FinalAppTest.Views
         public PAPS_Tab()
         {
             InitializeComponent();
-            IdTextBox.Text = id.ToString();
-            id++;
+            IdTextBox.Text = indice.ToString();
+            indice++;
         }
         public static Boolean modifier = false;
         public static PAPS_TabRow proModifier;
-        private int id=0;
+        private int indice=0;
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             int NbProcessus;
@@ -55,7 +55,7 @@ namespace FinalAppTest.Views
                     pro.Inserer(ProcessusGrid, i,IdTextBox,TempsArrivTextBox,DureeTextBox);
                 }
                 IdTextBox.Text = NbProcessus.ToString();
-                id = NbProcessus;
+                indice = NbProcessus;
             }
         }
 
@@ -79,7 +79,7 @@ namespace FinalAppTest.Views
             }
             if (valide && !modifier)  // si tous est correcte
             {
-                id = this.id;
+                id = indice;
                 TempsArrivTextBox.Text = "0";
                 DureeTextBox.Text = "1";
                 IdTextBox.Text = (id + 1).ToString();
@@ -91,7 +91,7 @@ namespace FinalAppTest.Views
                     duree = duree
                 };
                 pro.Inserer(ProcessusGrid, id, IdTextBox, TempsArrivTextBox, DureeTextBox);
-                this.id++;
+                indice++;
             }
             else if (valide && modifier)
             {
@@ -99,13 +99,14 @@ namespace FinalAppTest.Views
                 {
                     id = int.Parse(IdTextBox.Text),
                     tempsArriv = tempsArrive,
-                    duree = duree
+                    duree = duree,
+                    Background = "#FFEFF3F9"
                 };
                 PAPS_TabRow item = (PAPS_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                 item.DataContext = pro;
                 ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
-                IdTextBox.Text = this.id.ToString();
+                IdTextBox.Text = indice.ToString();
             }
         }
     }

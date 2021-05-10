@@ -91,8 +91,7 @@ namespace Ordonnancement
             PAPS_TabRow item = new PAPS_TabRow(id,tempsArriv,duree,Table);
             RowDefinition rowdef = new RowDefinition(); rowdef.Height = new GridLength(50);
             Table.RowDefinitions.Insert(i+1, rowdef);
-            if (i % 2 == 0) this.Background = "#FFEFF3F9";
-            else this.Background = "#FFEFF3F9";
+            this.Background = "#FFEFF3F9";
             item.DataContext = this;
             Grid.SetRow(item, i + 1);
             Table.Children.Add(item);
