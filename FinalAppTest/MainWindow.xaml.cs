@@ -1,4 +1,5 @@
 ﻿using FinalAppTest.ViewModels;
+using FinalAppTest.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,7 @@ namespace FinalAppTest
             Ordonnancement.Ordonnancement prog = new PAPS();
             if (ContentViewer.Content.GetType() == typeof(PAPS_ViewModel))  // PAPS
             {
+                if (PAPS_Tab.processusSP == null) 
                 Main.Content = new SimulationPage();
             }
             else if (ContentViewer.Content.GetType() == typeof(PCA_ViewModel))  // PCA
