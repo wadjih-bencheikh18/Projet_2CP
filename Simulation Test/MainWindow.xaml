@@ -136,22 +136,6 @@
             </Border>
             <Border Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="2" Background="#FF5D5959" Margin="0" Grid.Row="0" Width="60">
                 <StackPanel x:Name="Processeur" Orientation="Horizontal">
-                    <StackPanel.Resources>
-                        <Storyboard x:Key="processusDone">
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="230.4"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
-                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-54.4"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="border">
-                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
-                            </DoubleAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </StackPanel.Resources>
                 </StackPanel>
             </Border>
             <Grid Margin="0,50,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="50">

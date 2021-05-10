@@ -61,7 +61,6 @@ C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Simulation Test\obj\Debug\Sim
 C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.pdb
 C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Simulation Test\obj\Debug\ProcessusDesign.g.cs
 C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Simulation Test\obj\Debug\ProcessusDesign.baml
-C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Simulation Test\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\user\Desktop\2CP-Projet 4-eq28\Github\Projet_2CP\Simulation Test\bin\Debug\Simulation Test.exe.config
 C:\Users\user\Desktop\2CP-Projet 4-eq28\Github\Projet_2CP\Simulation Test\bin\Debug\Simulation Test.exe
 C:\Users\user\Desktop\2CP-Projet 4-eq28\Github\Projet_2CP\Simulation Test\bin\Debug\Simulation Test.pdb

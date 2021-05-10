@@ -109,7 +109,7 @@ namespace Ordonnancement
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
 
                         Storyboard AnimeDone = new Storyboard();
-                        AnimeDone.Children.Add(Processeur.FindResource("processusDone") as Storyboard);
+                        AnimeDone.Children.Add(item.FindResource("processusDone") as Storyboard);
                         AnimeDone.Begin((FrameworkElement)Processeur.Children[0]);
                         await Task.Delay(1000);
 
