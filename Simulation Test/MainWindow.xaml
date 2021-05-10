@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:Simulation_Test"
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized" Width="1366" Height="768">
-    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -136,7 +135,24 @@
                 <StackPanel Orientation="Horizontal"/>
             </Border>
             <Border Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="2" Background="#FF5D5959" Margin="0" Grid.Row="0" Width="60">
-                <StackPanel x:Name="Processeur" Orientation="Horizontal"/>
+                <StackPanel x:Name="Processeur" Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Storyboard x:Key="processusDone">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="230.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-54.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </StackPanel.Resources>
+                </StackPanel>
             </Border>
             <Grid Margin="0,50,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="50">
                 <Grid.ColumnDefinitions>
@@ -148,7 +164,7 @@
             </Grid>
             <TextBlock HorizontalAlignment="Center" Margin="0,0,0,100" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="16" FontWeight="Bold"><Run Text="Liste des processus pr"/><Run Text="é"/><Run Text="t"/><Run Text="s"/></TextBlock>
             <TextBlock HorizontalAlignment="Center" Margin="0,150,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" FontSize="16"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
-            <TextBlock HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="16" FontWeight="Bold" Text="Processeur"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="16" FontWeight="Bold" Text="Processeur" Panel.ZIndex="-1" />
         </Grid>
 
     </Grid>

@@ -107,9 +107,15 @@ namespace Ordonnancement
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3;
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
+
+                        Storyboard AnimeDone = new Storyboard();
+                        AnimeDone.Children.Add(Processeur.FindResource("processusDone") as Storyboard);
+                        AnimeDone.Begin((FrameworkElement)Processeur.Children[0]);
+                        await Task.Delay(1000);
+
+                        Processeur.Children.Clear();
                         if (listePrets.Count != 0)
                         {
-                            Processeur.Children.Clear();
                             item = new ProcessusDesign();
                             pro = new ProcessusString(listePrets[0]);
                             pro.X = -220;
@@ -127,6 +133,7 @@ namespace Ordonnancement
                                 ListProcessusView.Children[0].Visibility = Visibility.Hidden;
                                 AnimeList.Begin(ListProcessusView);
                                 await Task.Delay(1000);
+                                AnimeList.Children.Clear();
                                 AnimeList.Children.Add(ListProcessusView.FindResource("Listback") as Storyboard);
                                 AnimeList.Begin(ListProcessusView);
                                 ListProcessusView.Children.RemoveAt(0);
