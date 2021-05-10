@@ -20,9 +20,10 @@ namespace FinalAppTest
     /// </summary>
     public partial class SimulationPage : Page
     {
-        public SimulationPage()
+        public SimulationPage(Ordonnancement.Ordonnancement prog)
         {
             InitializeComponent();
+            MessageBox.Show(prog.listeProcessus.Count.ToString());
         }
     }
 }

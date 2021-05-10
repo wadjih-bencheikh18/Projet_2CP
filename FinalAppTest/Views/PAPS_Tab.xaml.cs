@@ -28,6 +28,7 @@ namespace FinalAppTest.Views
             IdTextBox.Text = indice.ToString();
             indice++;
         }
+        public static PAPS prog = new PAPS();
         public static bool modifier = false;
         public static PAPS_TabRow proModifier;
         private int indice = 0;
@@ -42,6 +43,7 @@ namespace FinalAppTest.Views
             }
             else
             {
+                prog.listeProcessus.Clear();  // vider la liste pour l'ecraser
                 NbProcessusTextBox.Text = "";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
                 NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
@@ -53,6 +55,7 @@ namespace FinalAppTest.Views
                     pro.tempsArriv = r.Next(20);
                     pro.duree = r.Next(1, 20);
                     pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
+                    prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree));  // added to the program
                 }
                 IdTextBox.Text = NbProcessus.ToString();
                 indice = NbProcessus;
