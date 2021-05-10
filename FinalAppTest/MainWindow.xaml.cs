@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Ordonnancement;
 
 namespace FinalAppTest
 {
@@ -31,9 +32,14 @@ namespace FinalAppTest
             DataContext = new PAPS_ViewModel();
         }
 
-        private void StartPAPS_Button_Click(object sender, RoutedEventArgs e)
+        private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (ContentViewer.Content == null) return;  // no algo selected
+            Ordonnancement.Ordonnancement prog = new PAPS();
+            if (ContentViewer.Content.GetType() == typeof(PAPS_ViewModel))  // paps
+            {
+                Main.Content = new SimulationPage();
+            }
         }
     }
 }

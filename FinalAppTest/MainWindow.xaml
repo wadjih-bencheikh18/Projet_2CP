@@ -28,7 +28,6 @@
         </Grid.RowDefinitions>
         
         <!--Content-->
-        <Frame x:Name="Main" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5"/>
         <DockPanel Background="#FFE9F2FE" Grid.Row="0" Grid.Column="0">
             <!--This grid controls what init table to be shown-->
             <Grid>
@@ -47,11 +46,13 @@
             </Grid>
         </DockPanel>
         <!--the area of the simulation-->
-        <ContentControl Content="{Binding}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="4"/>
+        <ContentControl x:Name="ContentViewer" Content="{Binding}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="4"/>
         <!--This button changes the whole page-->
         <Grid Grid.Row="1" Background="#FFE9F2FE">
-            <Button x:Name="StartPAPS_Button" Click="StartPAPS_Button_Click" Grid.Row="1" Margin="30 50" Content="Simuler" FontSize="25" FontWeight="Bold" />
+            <Button x:Name="StartButton" Click="StartButton_Click" Grid.Row="1" Margin="30 50" Content="Simuler" FontSize="25" FontWeight="Bold" />
 
         </Grid>
+        <!--This to go to the simulation page-->
+        <Frame x:Name="Main" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5"/>
     </Grid>
 </Window>
