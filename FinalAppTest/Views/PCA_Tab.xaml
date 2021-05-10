@@ -16,14 +16,15 @@
             <RowDefinition Height="8*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="SIMULATION PCA" FontSize="50" FontWeight="SemiBold" TextAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Text="Tableau des processus" FontSize="50" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="Center"/>
         <!--Column0: Generer aleatoirement-->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel>
-                <TextBlock Margin="10,30,0,10 " Text="Simulation PCA" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,30,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,0,0,10 " Text="PCA" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,10,40 " Text="plus court d'abord." FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
