@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 using System.Windows.Threading;
 
 namespace Ordonnancement
@@ -12,17 +14,51 @@ namespace Ordonnancement
     {
 
         public PAPS() { }
+        public async void Processus_ListePretProcesseur(StackPanel ListProcessusView,StackPanel Processeur)
+        {
+            Processeur.Children.Clear();
+            ProcessusDesign item = new ProcessusDesign();
+            ProcessusString pro = new ProcessusString(listePrets[0]);
+           
+            pro.X = -220;
+            pro.Y = 295;
+            
+            item.DataContext = pro;
+            if(ListProcessusView.Children.Count!=0)
+            {
+                Storyboard AnimeProc = new Storyboard();
+                Storyboard AnimeList = new Storyboard();
+                AnimeList.Children.Add(ListProcessusView.FindResource("ListDecalage") as Storyboard);
+                AnimeProc.Children.Add(ListProcessusView.FindResource("up") as Storyboard);
+                AnimeProc.Begin((FrameworkElement)ListProcessusView.Children[0]);
+                await Task.Delay(1000);
+                ListProcessusView.Children[0].Visibility = Visibility.Hidden;
+                AnimeList.Begin(ListProcessusView);
+                await Task.Delay(1000);
+                AnimeList.Children.Add(ListProcessusView.FindResource("Listback") as Storyboard);
+                AnimeList.Begin(ListProcessusView);
+                ListProcessusView.Children.RemoveAt(0);
+            }
+            Processeur.Children.Add(item);
+            await Task.Delay(2000);
+        }
         public async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur,TextBlock TempsView)
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = 0, indice = 0;
-            Action EmptyDelegate = delegate () { };
+            bool anime = true;
             while (indice < listeProcessus.Count || listePrets.Count != 0) //s'il existe des processus non executés
             {
-                indice = AjouterTous(temps, indice, ListProcessusView, Processeur); //remplir listePrets
+                if (listePrets.Count == 0) anime = true;
+                indice = AjouterTous(temps, indice, ListProcessusView); //remplir listePrets
+                await Task.Delay(2000);
+                if (listePrets.Count!=0 && anime)
+                {
+                    Processus_ListePretProcesseur(ListProcessusView,Processeur);
+                    anime = false;
+                }
                 temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
-                await Task.Delay(2000);
                 if (listePrets.Count != 0) //s'il y a des processus prêts
                 {
                     listePrets[0].etat = 2;
@@ -36,17 +72,14 @@ namespace Ordonnancement
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3;
-                        Processeur.Children.Clear();
-                        if (listePrets.Count > 1)
-                        {
-                            var item = ListProcessusView.Children[0];
-                            ListProcessusView.Children.RemoveAt(0);
-                            Processeur.Children.Add(item);
-                        }
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
+                        if (listePrets.Count != 0)
+                        {
+                            Processus_ListePretProcesseur(ListProcessusView, Processeur);
+                        }
+                        else Processeur.Children.Clear();
                     }
                 }
-                else AfficheLigne(temps,listePrets, ListProcessusView, Processeur, TempsView);//affiche le temps actuel et le mot "repos" ie le processeur n'execute aucun processus
             }
             return temps;
         }

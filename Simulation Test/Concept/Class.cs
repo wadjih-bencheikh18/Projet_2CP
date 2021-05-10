@@ -93,6 +93,8 @@ namespace Ordonnancement
         public string tempsService { get; set; }
         public string Background { get; set; }
         public string tempsReponse { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         public ProcessusString(Processus processus)
         {
             this.id = processus.id.ToString();
@@ -102,11 +104,7 @@ namespace Ordonnancement
             this.tempsFin = processus.tempsFin.ToString();
             this.tempsService = processus.tempsService.ToString();
             this.tempsReponse = processus.tempsReponse.ToString();
-        }
-        public ProcessusString(int id, int tempsRestant)
-        {
-            this.id = id.ToString();
-            this.tempsRestant = tempsRestant.ToString();
+            this.tempsRestant = processus.tempsRestant.ToString();
         }
     }
     public abstract class Ordonnancement
@@ -134,19 +132,19 @@ namespace Ordonnancement
             }
             return indice;
         }
-        public virtual int AjouterTous(int temps, int indice, StackPanel ListProcessusView, StackPanel Processeur) //ajouter à la liste des processus prêts tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
+        public virtual int AjouterTous(int temps, int indice, StackPanel ListProcessusView) //ajouter à la liste des processus prêts tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
         {
             for (; indice < listeProcessus.Count; indice++) //parcours de listeProcessus à partir du processus d'indice "indice"
             {
                 if (listeProcessus[indice].tempsArriv > temps) break; //si le processus n'est pas encore arrivé on sort
                 else
                 {
-                    var item = new ProcessusDesign();
-                    item.DataContext = listeProcessus[indice];
-                    if (listePrets.Count == 0)
-                        Processeur.Children.Add(item);
-                    else 
-                        ListProcessusView.Children.Add(item);
+                    ProcessusDesign item = new ProcessusDesign();
+                    ProcessusString pro = new ProcessusString(listeProcessus[indice]);
+                    pro.X = 700;
+                    pro.Y = 0;
+                    item.DataContext = pro;
+                    ListProcessusView.Children.Add(item);
                     listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts
                 }
             }
@@ -187,7 +185,6 @@ namespace Ordonnancement
                 item = new ProcessusDesign();
                 item.DataContext = listePrets[0];
                 Processeur.Children.Add(item);
-                //Processeur.Dispatcher.Invoke(DispatcherPriority.Input, EmptyDelegate);
             }
             for (int i = 1; i < listePrets.Count; i++)
             {

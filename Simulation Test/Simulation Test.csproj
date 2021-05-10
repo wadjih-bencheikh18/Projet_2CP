@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ProcessusDesign.xaml.cs">
+      <DependentUpon>ProcessusDesign.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ResultatFinal.xaml.cs">
       <DependentUpon>ResultatFinal.xaml</DependentUpon>
     </Compile>
@@ -94,9 +97,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProcessusDesign.xaml.cs">
-      <DependentUpon>ProcessusDesign.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Simulation_Test"
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized" Width="1366" Height="768">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -108,7 +109,29 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Border Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="2" Background="#FF5D5959" Margin="0" Grid.Row="1" MinWidth="500">
-                <StackPanel x:Name="ListProcessusView" Orientation="Horizontal"/>
+                <StackPanel x:Name="ListProcessusView" Orientation="Horizontal" Margin="0" HorizontalAlignment="Left">
+                    <StackPanel.Resources>
+                        <Storyboard x:Key="ListDecalage">
+                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
+                                <EasingThicknessKeyFrame KeyTime="0:0:0" Value="0"/>
+                                <EasingThicknessKeyFrame KeyTime="0:0:1" Value="-60,0,0,0"/>
+                            </ThicknessAnimationUsingKeyFrames>
+
+                        </Storyboard>
+                        <Storyboard x:Key="Listback">
+                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
+                                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                            </ThicknessAnimationUsingKeyFrames>
+
+                        </Storyboard>
+                        <Storyboard x:Key="up">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-60"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </StackPanel.Resources>
+                </StackPanel>
             </Border>
             <Border Height="60" HorizontalAlignment="Center" VerticalAlignment="Bottom" CornerRadius="2" Background="#FF5D5959" Margin="0,0,0,30" Grid.Row="1" MinWidth="500">
                 <StackPanel Orientation="Horizontal"/>
