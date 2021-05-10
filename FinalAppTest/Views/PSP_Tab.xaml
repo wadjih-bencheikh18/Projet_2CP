@@ -23,9 +23,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel>
-                <TextBlock Margin="10,30,0,10 " Text="Simulation PAPS" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,30,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,0,0,10 " Text="PSP" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
-                <TextBlock Margin="10,0,10,40 " Text="premier arrive premier servi." FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,0,10,40 " FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F">avec priorité.</TextBlock>
                 <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
                 <Grid Height="240">
                     <Grid.ColumnDefinitions>
