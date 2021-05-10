@@ -113,7 +113,7 @@
                     <StackPanel.Resources>
                         <Storyboard x:Key="ListDecalage">
                             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
-                                <EasingThicknessKeyFrame KeyTime="0:0:0" Value="0"/>
+                                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
                                 <EasingThicknessKeyFrame KeyTime="0:0:1" Value="-60,0,0,0"/>
                             </ThicknessAnimationUsingKeyFrames>
 
@@ -122,7 +122,6 @@
                             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
                                 <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
                             </ThicknessAnimationUsingKeyFrames>
-
                         </Storyboard>
                         <Storyboard x:Key="up">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">

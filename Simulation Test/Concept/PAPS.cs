@@ -50,11 +50,42 @@ namespace Ordonnancement
             while (indice < listeProcessus.Count || listePrets.Count != 0) //s'il existe des processus non executés
             {
                 if (listePrets.Count == 0) anime = true;
+                int indiceDebut = indice;
                 indice = AjouterTous(temps, indice, ListProcessusView); //remplir listePrets
-                await Task.Delay(2000);
+                if (indiceDebut!=indice)
+                    await Task.Delay(2000);
+                else await Task.Delay(500);
                 if (listePrets.Count!=0 && anime)
                 {
-                    Processus_ListePretProcesseur(ListProcessusView,Processeur);
+                    Processeur.Children.Clear();
+                    ProcessusDesign item = new ProcessusDesign();
+                    ProcessusString pro = new ProcessusString(listePrets[0]);
+                    pro.X = -220;
+                    pro.Y = 295;
+                    item.DataContext = pro;
+                    if (ListProcessusView.Children.Count != 0)
+                    {
+                        Storyboard AnimeProc = new Storyboard();
+                        Storyboard AnimeList = new Storyboard();
+                        AnimeList.Children.Add(ListProcessusView.FindResource("ListDecalage") as Storyboard);
+                        AnimeProc.Children.Add(ListProcessusView.FindResource("up") as Storyboard);
+                        AnimeProc.Begin((FrameworkElement)ListProcessusView.Children[0]);
+                        await Task.Delay(1000);
+                        Processeur.Children.Add(item);
+                        ListProcessusView.Children[0].Visibility = Visibility.Hidden;
+                        AnimeList.Begin(ListProcessusView);
+                        await Task.Delay(1000);
+                        AnimeList.Children.Add(ListProcessusView.FindResource("Listback") as Storyboard);
+                        AnimeList.Begin(ListProcessusView);
+                        ListProcessusView.Children.RemoveAt(0);
+                        await Task.Delay(1000);
+                    }
+                    else
+                    {
+                        Processeur.Children.Add(item);
+                        await Task.Delay(2000);   
+                    }
+                       
                     anime = false;
                 }
                 temps++; //incrementer le temps réel
@@ -64,10 +95,11 @@ namespace Ordonnancement
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps-1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence               //AfficheLigne(temps,listePrets, ListProcessusView, Processeur, TempsView); //affiche le temps actuel et l'ID du processus entrain d'être executé
-                   /* ProcessusDesign item = new ProcessusDesign();
+                    ProcessusDesign item = new ProcessusDesign();
                     ProcessusString pro = new ProcessusString(listePrets[0]);
                     item.DataContext = pro;
-                    Processeur.Children.Clear();*/
+                    Processeur.Children.Clear();
+                    Processeur.Children.Add(item);
                     if (listePrets[0].tempsRestant == 0) //si l'execution du premier processus de listePrets est terminée
                     {
                         listePrets[0].tempsFin = temps; //temps de fin d'execution = au temps actuel
@@ -77,7 +109,34 @@ namespace Ordonnancement
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                         if (listePrets.Count != 0)
                         {
-                            Processus_ListePretProcesseur(ListProcessusView, Processeur);
+                            Processeur.Children.Clear();
+                            item = new ProcessusDesign();
+                            pro = new ProcessusString(listePrets[0]);
+                            pro.X = -220;
+                            pro.Y = 295;
+                            item.DataContext = pro;
+                            if (ListProcessusView.Children.Count != 0)
+                            {
+                                Storyboard AnimeProc = new Storyboard();
+                                Storyboard AnimeList = new Storyboard();
+                                AnimeList.Children.Add(ListProcessusView.FindResource("ListDecalage") as Storyboard);
+                                AnimeProc.Children.Add(ListProcessusView.FindResource("up") as Storyboard);
+                                AnimeProc.Begin((FrameworkElement)ListProcessusView.Children[0]);
+                                await Task.Delay(1000);
+                                Processeur.Children.Add(item);
+                                ListProcessusView.Children[0].Visibility = Visibility.Hidden;
+                                AnimeList.Begin(ListProcessusView);
+                                await Task.Delay(1000);
+                                AnimeList.Children.Add(ListProcessusView.FindResource("Listback") as Storyboard);
+                                AnimeList.Begin(ListProcessusView);
+                                ListProcessusView.Children.RemoveAt(0);
+                                await Task.Delay(1000);
+                            }
+                            else
+                            {
+                                Processeur.Children.Add(item);
+                                await Task.Delay(2000);
+                            }
                         }
                         else Processeur.Children.Clear();
                     }
