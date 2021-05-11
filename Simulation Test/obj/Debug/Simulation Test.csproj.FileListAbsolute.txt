@@ -82,3 +82,5 @@ C:\Users\user\Desktop\2CP-Projet 4-eq28\Github\Projet_2CP\Simulation Test\obj\De
 C:\Users\user\Desktop\2CP-Projet 4-eq28\Github\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\2CP-Projet 4-eq28\Github\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.exe
 C:\Users\user\Desktop\2CP-Projet 4-eq28\Github\Projet_2CP\Simulation Test\obj\Debug\Simulation Test.pdb
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Simulation Test\obj\Debug\SimulationPage.g.cs
+C:\Users\jw_be\Desktop\Project 2CP\Repo\Projet_2CP\Simulation Test\obj\Debug\SimulationPage.baml

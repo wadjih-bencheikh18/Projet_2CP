@@ -68,6 +68,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Height="20" VerticalAlignment="Center">
@@ -93,6 +94,14 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="Duree :" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <TextBox Grid.Column="1" x:Name="dureeTB" Grid.Row="0" Margin="0" Grid.ColumnSpan="2" />
+                    </Grid>
+                    <Grid Grid.Row="3" Height="20" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Prio :" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" x:Name="prioTB" Grid.Row="0" Margin="0" Grid.ColumnSpan="2" />
                     </Grid>
                     <Button x:Name="Button" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Ajouter un processus" FontWeight="Bold" Height="40" Width="150" Margin="0" Click="Button_Click"/>
                 </Grid>

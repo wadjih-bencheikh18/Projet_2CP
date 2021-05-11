@@ -85,6 +85,7 @@ namespace Ordonnancement
     class ProcessusString
     {
         public string id { get; set; }
+        public string prio { get; set; }
         public string tempsRestant { get; set; }
         public string tempsArriv { get; set; }
         public string duree { get; set; }
@@ -93,18 +94,21 @@ namespace Ordonnancement
         public string tempsService { get; set; }
         public string Background { get; set; }
         public string tempsReponse { get; set; }
+        public string tempsPasse { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public ProcessusString(Processus processus)
         {
             this.id = processus.id.ToString();
+            this.prio = processus.prio.ToString();
             this.tempsArriv = processus.tempsArriv.ToString();
             this.duree = processus.duree.ToString();
             this.tempsAtt = processus.tempsAtt.ToString();
             this.tempsFin = processus.tempsFin.ToString();
             this.tempsService = processus.tempsService.ToString();
             this.tempsReponse = processus.tempsReponse.ToString();
-            this.tempsRestant = processus.tempsRestant.ToString();
+            this.tempsRestant = (processus.tempsRestant).ToString();
+            this.tempsPasse= (processus.duree- processus.tempsRestant).ToString();
         }
     }
     public abstract class Ordonnancement

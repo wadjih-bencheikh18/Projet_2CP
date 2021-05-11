@@ -14,39 +14,11 @@ namespace Ordonnancement
     {
 
         public PAPS() { }
-        public async void Processus_ListePretProcesseur(StackPanel ListProcessusView,StackPanel Processeur)
-        {
-            Processeur.Children.Clear();
-            ProcessusDesign item = new ProcessusDesign();
-            ProcessusString pro = new ProcessusString(listePrets[0]);
-            pro.X = -220;
-            pro.Y = 295;
-            item.DataContext = pro;
-            if(ListProcessusView.Children.Count!=0)
-            {
-                Storyboard AnimeProc = new Storyboard();
-                Storyboard AnimeList = new Storyboard();
-                AnimeList.Children.Add(ListProcessusView.FindResource("ListDecalage") as Storyboard);
-                AnimeProc.Children.Add(ListProcessusView.FindResource("up") as Storyboard);
-                AnimeProc.Begin((FrameworkElement)ListProcessusView.Children[0]);
-                await Task.Delay(1000);
-                Processeur.Children.Add(item);
-                ListProcessusView.Children[0].Visibility = Visibility.Hidden;
-                AnimeList.Begin(ListProcessusView);
-                await Task.Delay(1000);
-                AnimeList.Children.Add(ListProcessusView.FindResource("Listback") as Storyboard);
-                AnimeList.Begin(ListProcessusView);
-                ListProcessusView.Children.RemoveAt(0);
-            }
-            else 
-                Processeur.Children.Add(item);
-            await Task.Delay(2000);
-        }
         public async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur,TextBlock TempsView)
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = 0, indice = 0;
-            bool anime = true;
+            bool anime = false;
             while (indice < listeProcessus.Count || listePrets.Count != 0) //s'il existe des processus non executés
             {
                 if (listePrets.Count == 0) anime = true;
@@ -60,8 +32,8 @@ namespace Ordonnancement
                     Processeur.Children.Clear();
                     ProcessusDesign item = new ProcessusDesign();
                     ProcessusString pro = new ProcessusString(listePrets[0]);
-                    pro.X = -220;
-                    pro.Y = 295;
+                    pro.X = -88;
+                    pro.Y = -130;
                     item.DataContext = pro;
                     if (ListProcessusView.Children.Count != 0)
                     {
@@ -116,34 +88,7 @@ namespace Ordonnancement
                         Processeur.Children.Clear();
                         if (listePrets.Count != 0)
                         {
-                            item = new ProcessusDesign();
-                            pro = new ProcessusString(listePrets[0]);
-                            pro.X = -220;
-                            pro.Y = 295;
-                            item.DataContext = pro;
-                            if (ListProcessusView.Children.Count != 0)
-                            {
-                                Storyboard AnimeProc = new Storyboard();
-                                Storyboard AnimeList = new Storyboard();
-                                AnimeList.Children.Add(ListProcessusView.FindResource("ListDecalage") as Storyboard);
-                                AnimeProc.Children.Add(ListProcessusView.FindResource("up") as Storyboard);
-                                AnimeProc.Begin((FrameworkElement)ListProcessusView.Children[0]);
-                                await Task.Delay(1000);
-                                Processeur.Children.Add(item);
-                                ListProcessusView.Children[0].Visibility = Visibility.Hidden;
-                                AnimeList.Begin(ListProcessusView);
-                                await Task.Delay(1000);
-                                AnimeList.Children.Clear();
-                                AnimeList.Children.Add(ListProcessusView.FindResource("Listback") as Storyboard);
-                                AnimeList.Begin(ListProcessusView);
-                                ListProcessusView.Children.RemoveAt(0);
-                                await Task.Delay(1000);
-                            }
-                            else
-                            {
-                                Processeur.Children.Add(item);
-                                await Task.Delay(2000);
-                            }
+                            anime = true;
                         }
                         else Processeur.Children.Clear();
                     }

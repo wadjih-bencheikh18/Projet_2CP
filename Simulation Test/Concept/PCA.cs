@@ -1,10 +1,108 @@
-﻿using System.Collections.Generic;
+﻿using Simulation_Test;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace Ordonnancement
 {
-    class PCA : Ordonnancement
+    public class PCA : Ordonnancement
     {
         public PCA() { }
+        public async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView)
+        {
+            ProcessusDesign item;
+            ProcessusString pro;
+            SortListeProcessus(); //tri des processus par ordre d'arrivé
+            int temps = 0, indice = 0;
+            bool sort = true; //est à vrai si un tri par durée est necessaire
+            while ((indice < listeProcessus.Count || listePrets.Count != 0)) //s'il existe des processus non executés
+            {
+                if (listePrets.Count == 0) sort = true; //les premiers processus arrivés => on fait un tri par durée (croissant)
+                int indiceDebut = indice;
+                indice = AjouterTous(temps, indice, ListProcessusView);  //remplir listePrets
+                if (indiceDebut != indice)
+                    await Task.Delay(2000);
+                else await Task.Delay(500);
+                if (sort == true && listePrets.Count != 0) //si un tri par durée est necessaire et il y a des processus prêts
+                {
+                    listePrets.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //tri des processus de listePrets par durée
+                    sort = false; //le tri par durée n'est plus necessaire (déja fait)
+                    ListProcessusView.Children.Clear();
+                    for (int i=0;i<listePrets.Count;i++)
+                    {
+                        item = new ProcessusDesign();
+                        pro = new ProcessusString(listePrets[i]);
+                        item.DataContext = pro;
+                        ListProcessusView.Children.Add(item);
+                    }
+                    await Task.Delay(500);
+                    Processeur.Children.Clear();
+                    item = new ProcessusDesign();
+                        pro = new ProcessusString(listePrets[0]);
+                    pro.X = -88;
+                    pro.Y = -130;
+                    item.DataContext = pro;
+                        if (ListProcessusView.Children.Count != 0)
+                        {
+                            Storyboard AnimeProc = new Storyboard();
+                            Storyboard AnimeList = new Storyboard();
+                            AnimeList.Children.Add(ListProcessusView.FindResource("ListDecalage") as Storyboard);
+                            AnimeProc.Children.Add(ListProcessusView.FindResource("up") as Storyboard);
+                            AnimeProc.Begin((FrameworkElement)ListProcessusView.Children[0]);
+                            await Task.Delay(1000);
+                            Processeur.Children.Add(item);
+                            ListProcessusView.Children[0].Visibility = Visibility.Hidden;
+                            AnimeList.Begin(ListProcessusView);
+                            await Task.Delay(1000);
+                            AnimeList.Children.Add(ListProcessusView.FindResource("Listback") as Storyboard);
+                            AnimeList.Begin(ListProcessusView);
+                            ListProcessusView.Children.RemoveAt(0);
+                            await Task.Delay(1000);
+                        }
+                        else
+                        {
+                            Processeur.Children.Add(item);
+                            await Task.Delay(2000);
+                        }
+
+                    
+                }
+
+                temps++; //incrementer le temps réel
+                TempsView.Text = temps.ToString();
+                if (listePrets.Count != 0) //il y a des processus prêts
+                {
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
+                    listePrets[0].etat = 2;
+                    listePrets[0].tempsRestant--; //execution du 1er processus de listePrets et donc décrémenter le tempsRestant
+                    item = new ProcessusDesign();
+                    pro = new ProcessusString(listePrets[0]);
+                    item.DataContext = pro;
+                    Processeur.Children.Clear();
+                    Processeur.Children.Add(item);
+                    if (listePrets[0].tempsRestant == 0) //si l'execution du premier processus de listePrets est terminée
+                    {
+                        listePrets[0].tempsFin = temps; //temps de fin d'execution = au temps actuel
+                        listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
+                        listePrets[0].etat = 3;
+                        listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
+                        listePrets.RemoveAt(0); //supprimer le premier processus executé
+                        Storyboard AnimeDone = new Storyboard();
+                        AnimeDone.Children.Add(item.FindResource("processusDone") as Storyboard);
+                        AnimeDone.Begin((FrameworkElement)Processeur.Children[0]);
+                        await Task.Delay(1000);
+                        Processeur.Children.Clear();
+                        sort = true; //donc il faut trier les processus restants dans listePrets
+                        
+                    }
+                    
+                }
+                else AfficheLigne(temps - 1);
+            }
+            return temps;
+       }
         public int Executer()
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé

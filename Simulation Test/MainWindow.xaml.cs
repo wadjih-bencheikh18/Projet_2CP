@@ -17,7 +17,7 @@ namespace Simulation_Test
     public partial class MainWindow : Window
     {
         int id;
-        PAPS prgm = new PAPS();
+        public RoundRobin prgm = new RoundRobin(2);
         public MainWindow()
         {
             InitializeComponent();
@@ -45,8 +45,9 @@ namespace Simulation_Test
             }
             if (Valid)
             {
+                int prio = int.Parse(prioTB.Text);
                 idTB.Text = id.ToString();
-                Processus pro = new Processus(id-1, tempsArriv, duree);
+                Processus pro = new Processus(id-1, tempsArriv, duree,prio);
                 dureeTB.Background = Brushes.White;
                 tempsArrivTB.Background = Brushes.White;
                 InitTab.Items.Add(pro);
@@ -58,7 +59,9 @@ namespace Simulation_Test
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            _ = prgm.Executer(ListProcessusView, Processeur, TempsView);
+            SimulationPage sim = new SimulationPage(prgm);
+            this.Content = sim;
+            //_ = prgm.Executer(ListProcessusView, Processeur, TempsView);
         }
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
