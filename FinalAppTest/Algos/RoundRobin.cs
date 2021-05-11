@@ -106,6 +106,7 @@ namespace Ordonnancement
                         Processeur.Children.Clear();
                         q = 0;  // un nouveau quantum va commencer
                     }
+                    else if (q == quantum && listePrets.Count == 1) q = 0;
                     else if (q == quantum)  // on a terminé ce quantum => il faut passer au processus suivant => on defile, et à la fin, on enfile le processus courant
                     {
                         listePrets[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
