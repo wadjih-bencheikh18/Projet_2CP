@@ -28,7 +28,7 @@ namespace FinalAppTest.Views
             indice++;
         }
 
-        public static PAPS prog = new PAPS();
+        public static RoundRobin prog = new RoundRobin(5);
         public static bool modifier = false;
         public static RoundRobin_TabRow proModifier;
         private int indice = 0;
@@ -53,7 +53,7 @@ namespace FinalAppTest.Views
                     pro.id = i;
                     pro.tempsArriv = r.Next(20);
                     pro.duree = r.Next(1, 20);
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
+                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB, 0);
                     prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree));  // added to the program
                 }
                 IdTextBox.Text = NbProcessus.ToString();
@@ -90,7 +90,7 @@ namespace FinalAppTest.Views
                         tempsArriv = tempsArrive,
                         duree = duree,
                     };
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
+                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB, 0);
                     prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree));  // added to the program
                     indice++;
                 }
@@ -103,7 +103,7 @@ namespace FinalAppTest.Views
                         duree = duree,
                         Background = "#FFEFF3F9"
                     };
-                    PAPS_TabRow item = (PAPS_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                    RoundRobin_TabRow item = (RoundRobin_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     prog.listeProcessus[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree);  // modifier le processus correspondant
@@ -163,6 +163,21 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             if (!int.TryParse(QuantumTxt.Text, out int i) || i <= 0) RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             else RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
+        }
+
+        private void QuantumTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var bc = new BrushConverter();
+            if (!int.TryParse(QuantumTxt.Text, out int i) || i <= 0)
+            {
+                prog.quantum = -1;
+                RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            }
+            else
+            {
+                prog.quantum = i;
+                RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
+            }
         }
     }
 }

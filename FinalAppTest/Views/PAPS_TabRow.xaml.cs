@@ -52,7 +52,7 @@ namespace FinalAppTest.Views
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            PAPS_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.id.Text) && p.tempsArriv.ToString().Equals(this.tempsArriv.Text));
+            PAPS_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }
     }

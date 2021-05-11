@@ -2,13 +2,15 @@
 
 namespace Ordonnancement
 {
-    class RoundRobin : Ordonnancement
+    public class RoundRobin : Ordonnancement
     {
-        private int quantum { get; }
+        public int quantum { get; set; }
+
         public RoundRobin(int q) // Constructeur 
         {
             quantum = q;
         }
+
         public int Executer()  // exécuter la liste des processus et retourner le temps total pour terminer l'exécution
         {
             SortListeProcessus(); //Tri de la liste des processus par temps d'arrivée

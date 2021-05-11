@@ -98,7 +98,7 @@ namespace FinalAppTest
             }
             else if (ContentViewer.Content.GetType() == typeof(RoundRobinViewModel))  // RoundRobin
             {
-                if (RoundRobin_Tab.prog.listeProcessus.Count == 0)
+                if (RoundRobin_Tab.prog.listeProcessus.Count == 0 || RoundRobin_Tab.prog.quantum <= 0)
                 {
                     var bc = new BrushConverter();
                     StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
