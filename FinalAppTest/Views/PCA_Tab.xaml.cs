@@ -39,16 +39,13 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             if (!Int32.TryParse(NbProcessusTextBox.Text, out NbProcessus) && NbProcessus <= 0)
             {
-                NbProcessusTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
             else
             {
                 prog.listeProcessus.Clear();  // vider la liste pour l'ecraser
                 NbProcessusTextBox.Text = "";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
-                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
-                Random r = new Random();
+                RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF"); Random r = new Random();
                 for (int i = 0; i < NbProcessus; i++)
                 {
                     AffichageProcessus pro = new AffichageProcessus();
@@ -70,14 +67,10 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
-                TempsArrivTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                TempsArrivTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
             if (!Int32.TryParse(DureeTextBox.Text, out duree) || duree <= 0)  // get durée
             {
-                DureeTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                DureeTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
             if (valide)  // si tous est correcte
@@ -88,6 +81,8 @@ namespace FinalAppTest.Views
                     TempsArrivTextBox.Text = "0";
                     DureeTextBox.Text = "1";
                     IdTextBox.Text = (id + 1).ToString();
+                    RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+                    RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                     NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
                     AffichageProcessus pro = new AffichageProcessus
                     {
@@ -140,6 +135,27 @@ namespace FinalAppTest.Views
         {
             var bc = new BrushConverter();
             RandomButton.Fill = (Brush)bc.ConvertFrom("#FF000000");
+        }
+
+        private void TempsArrivTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var bc = new BrushConverter();
+            if (!int.TryParse(TempsArrivTextBox.Text, out int i) || i < 0) RectTar.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            else RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+        }
+
+        private void DureeTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var bc = new BrushConverter();
+            if (!int.TryParse(DureeTextBox.Text, out int i) || i <= 0) RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            else RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+        }
+
+        private void NbProcessusTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var bc = new BrushConverter();
+            if (!int.TryParse(NbProcessusTextBox.Text, out int i) || i < 0) RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            else RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
         }
     }
 }
