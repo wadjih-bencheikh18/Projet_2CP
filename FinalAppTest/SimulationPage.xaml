@@ -7,6 +7,19 @@
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1366"
       Title="SimulationPage">
+  <Page.Resources>
+    <Style x:Key="MyButtonStyle" TargetType="Button">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+           <Grid Background="{TemplateBinding Background}">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+           </Grid>
+        </ControlTemplate>
+     </Setter.Value>
+  </Setter>
+</Style>
+  </Page.Resources>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="background.jpg"/>
@@ -77,7 +90,7 @@
             </Border>
             <TextBlock HorizontalAlignment="Center" Margin="0,0,0,70" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="24" FontFamily="Lexend"><Run Text="Liste des processus pr"/><Run Text="ê"/><Run Text="t"/><Run Text="s"/></TextBlock>
             <TextBlock HorizontalAlignment="Center" Margin="0,0,0,100" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
-            <Grid Grid.Row="3" Margin="150 0">
+            <Grid Grid.Row="3" Margin="100 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -96,7 +109,7 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button x:Name="StartBtn" Grid.Column="0" Background="#0D9330" BorderThickness="0" Width="45" Height="45" Click="StartBtn_Click">
+                    <Button x:Name="StartBtn" Style="{StaticResource MyButtonStyle}" Grid.Column="0" Background="#0D9330" BorderThickness="0" Width="45" Height="45" Click="StartBtn_Click">
                         <Button.Content>
                             <Image Source="Start.png" Width="30" Height="30" />
                         </Button.Content>
@@ -107,7 +120,7 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button x:Name="ExitButton" Click="ExitButton_Click" Grid.Column="1" Background="#B51F1F" BorderThickness="0" Width="45" Height="45">
+                    <Button x:Name="ExitButton" Click="ExitButton_Click" Style="{StaticResource MyButtonStyle}" Grid.Column="1" Background="#B51F1F" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
                             <Image Source="resume.png" Width="30" Height="30"/>
                         </Button.Content>
@@ -118,7 +131,7 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button Grid.Column="2" Background="#FFB53E" BorderThickness="0" Width="45" Height="45">
+                    <Button Grid.Column="2" Style="{StaticResource MyButtonStyle}" Background="#FFB53E" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
                             <Image Source="pause.png" Width="30" Height="30"/>
                         </Button.Content>
@@ -129,7 +142,7 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button Grid.Column="3" Background="#4974C8" BorderThickness="0" Width="45" Height="45">
+                    <Button Grid.Column="3" Style="{StaticResource MyButtonStyle}" Background="#4974C8" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
                             <Image Source="circle.png" Width="30" Height="30"/>
                         </Button.Content>
@@ -140,7 +153,7 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button x:Name="ResultFinalBtn" Grid.Column="4" Background="#666666" BorderThickness="0" Width="45" Height="45" Click="ResultFinalBtn_Click">
+                    <Button x:Name="ResultFinalBtn" Style="{StaticResource MyButtonStyle}" Grid.Column="4" Background="#666666" BorderThickness="0" Width="45" Height="45" Click="ResultFinalBtn_Click">
                         <Button.Content>
                             <Image Source="algos.png" Width="30" Height="30"/>
                         </Button.Content>
