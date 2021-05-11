@@ -136,8 +136,8 @@ namespace Ordonnancement
         public string Background { get; set; }
         public string tempsReponse { get; set; }
         public string tempsPasse { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
+        public string X { get; set; }
+        public string Y { get; set; }
         public ProcessusString(Processus processus)
         {
             this.id = processus.id.ToString();
@@ -175,8 +175,8 @@ namespace Ordonnancement
                 {
                     ProcessusDesign item = new ProcessusDesign();
                     ProcessusString pro = new ProcessusString(listeProcessus[indice]);
-                    pro.X = 700;
-                    pro.Y = 0;
+                    pro.X = "700";
+                    pro.Y = "0";
                     item.DataContext = pro;
                     ListProcessusView.Children.Add(item);
                     listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts

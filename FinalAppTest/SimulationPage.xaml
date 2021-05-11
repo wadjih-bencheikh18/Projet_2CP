@@ -58,11 +58,11 @@
                         <Storyboard x:Key="Disactive">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="507"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="511.2"/>
                             </DoubleAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-195"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-202.4"/>
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
 

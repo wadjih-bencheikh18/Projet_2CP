@@ -40,8 +40,8 @@ namespace Ordonnancement
                     Processeur.Children.Clear();
                     item = new ProcessusDesign();
                     pro = new ProcessusString(listePrets[0]);
-                    pro.X = -88;
-                    pro.Y = -130;
+                    pro.X = "-89.6";
+                    pro.Y = "-140.8";
                     item.DataContext = pro;
                     if (ListProcessusView.Children.Count != 0)
                     {

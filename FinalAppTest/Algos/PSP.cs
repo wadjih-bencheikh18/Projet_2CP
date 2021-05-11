@@ -55,7 +55,7 @@ namespace Ordonnancement
                             await Task.Delay(1000);
                             Processeur.Children.Clear();
                             pro = new ProcessusString(proc);
-                            pro.X = 600 - 60 * ListProcessusView.Children.Count;
+                            pro.X = (600 - 60 * ListProcessusView.Children.Count).ToString();
                             item = new ProcessusDesign();
                             item.DataContext = pro;
                             ListProcessusView.Children.Add(item);
@@ -85,8 +85,8 @@ namespace Ordonnancement
                     Processeur.Children.Clear();
                     item = new ProcessusDesign();
                     pro = new ProcessusString(listePrets[0]);
-                    pro.X = -88;
-                    pro.Y = -130;
+                    pro.X = "-89.6";
+                    pro.Y = "-140.8";
                     item.DataContext = pro;
                     if (ListProcessusView.Children.Count != 0)
                     {
