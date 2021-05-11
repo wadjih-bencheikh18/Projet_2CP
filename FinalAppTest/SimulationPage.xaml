@@ -75,7 +75,7 @@
             <Border Margin="10 0 0 0" Height="60" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Background="#FFCCDD" BorderBrush="Black" BorderThickness="1" Grid.Row="2" MinWidth="600">
                 <StackPanel Orientation="Horizontal"/>
             </Border>
-            <TextBlock HorizontalAlignment="Center" Margin="0,0,0,70" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="24" FontFamily="Lexend"><Run Text="Liste des processus pr"/><Run Text="é"/><Run Text="t"/><Run Text="s"/></TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0,0,0,70" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="24" FontFamily="Lexend"><Run Text="Liste des processus pr"/><Run Text="ê"/><Run Text="t"/><Run Text="s"/></TextBlock>
             <TextBlock HorizontalAlignment="Center" Margin="0,0,0,100" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
             <Grid Grid.Row="3" Margin="150 0">
                 <Grid.RowDefinitions>
