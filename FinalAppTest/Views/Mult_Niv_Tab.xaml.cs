@@ -29,7 +29,7 @@ namespace FinalAppTest.Views
         }
 
         public static bool modifier = false;
-        public static PAPS_TabRow proModifier;
+        public static Mult_Niv_TabRow proModifier;
         private int indice = 0;
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus

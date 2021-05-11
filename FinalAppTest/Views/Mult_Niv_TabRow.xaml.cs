@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PAPS_TabRow.xaml
+    /// Interaction logic for Mult_Niv_TabRow.xaml
     /// </summary>
-    public partial class PAPS_TabRow : UserControl
+    public partial class Mult_Niv_TabRow : UserControl
     {
-        public PAPS_TabRow()
+        public Mult_Niv_TabRow()
         {
             InitializeComponent();
         }
@@ -31,7 +31,7 @@ namespace FinalAppTest.Views
         private TextBlock Ajouter;
         private StackPanel Table;
 
-        public PAPS_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, StackPanel Table, TextBlock Ajouter)
+        public Mult_Niv_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
@@ -45,16 +45,15 @@ namespace FinalAppTest.Views
             id.Text = idTest.Text;
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
-            PAPS_Tab.modifier = true;
-            PAPS_Tab.proModifier = this;
+            Mult_Niv_Tab.modifier = true;
+            Mult_Niv_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            PAPS_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.id.Text) && p.tempsArriv.ToString().Equals(this.tempsArriv.Text));
+            // Mult_Niv_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.id.Text) && p.tempsArriv.ToString().Equals(this.tempsArriv.Text));
             Table.Children.Remove(this);
         }
     }
 }
-

@@ -53,6 +53,7 @@ namespace FinalAppTest.Views
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
+            PSP_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.id.Text) && p.tempsArriv.ToString().Equals(this.tempsArriv.Text));
             Table.Children.Remove(this);
         }
     }
