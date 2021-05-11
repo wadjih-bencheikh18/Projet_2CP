@@ -42,5 +42,10 @@ namespace FinalAppTest
             ResultatFinal resultatFinal = new ResultatFinal(P);
             resultatFinal.Show();
         }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.main.Content = new InitPage();
+        }
     }
 }

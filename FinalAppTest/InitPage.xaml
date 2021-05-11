@@ -1,0 +1,70 @@
+﻿<Page x:Class="FinalAppTest.InitPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FinalAppTest"
+      mc:Ignorable="d" 
+      xmlns:viewmodels="clr-namespace:FinalAppTest.ViewModels"
+      xmlns:views="clr-namespace:FinalAppTest.Views"
+        
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="InitPage">
+
+    <Page.Resources>
+        <DataTemplate x:Name="PAPS_ViewTemplate" DataType="{x:Type viewmodels:PAPS_ViewModel}">
+            <views:PAPS_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="PCA_ViewTemplate" DataType="{x:Type viewmodels:PCA_ViewModel}">
+            <views:PCA_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="PSP_ViewTemplate" DataType="{x:Type viewmodels:PSP_ViewModel}">
+            <views:PSP_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="RoundRobin_ViewTemplate" DataType="{x:Type viewmodels:RoundRobinViewModel}">
+            <views:RoundRobin_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="MultiNiv_ViewTemplate" DataType="{x:Type viewmodels:MultiNiveauViewModel}">
+            <views:Mult_Niv_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <!--Layout-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Content-->
+        <DockPanel Background="#FFE9F2FE" Grid.Row="0" Grid.Column="0">
+            <!--This grid controls what init table to be shown-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Margin="30 20" Content="PAPS" FontSize="25" FontWeight="Bold" x:Name="PAPS_Button" Click="PAPS_Button_Click"/>
+                <Button Grid.Row="1" Margin="30 20" Content="PCA" FontSize="25" FontWeight="Bold" x:Name="PCA_Button" Click="PCA_Button_Click"/>
+                <Button Grid.Row="2" Margin="30 20" Content="PSP" FontSize="25" FontWeight="Bold" x:Name="PSP_Button" Click="PSP_Button_Click"/>
+                <Button Grid.Row="3" Margin="30 20" Content="Round Robin" FontSize="20" FontWeight="Bold" x:Name="RoundRobinButton" Click="RoundRobinButton_Click"/>
+                <Button Grid.Row="4" Margin="30 20" Content="Multi-Niveaux" FontSize="20" FontWeight="Bold" x:Name="MultiNivButton" Click="MultiNivButton_Click"/>
+            </Grid>
+        </DockPanel>
+        <!--the area of the simulation-->
+        <ContentControl x:Name="ContentViewer" Content="{Binding}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="4"/>
+        <!--This button changes the whole page-->
+        <Grid Grid.Row="1" Background="#FFE9F2FE">
+            <Button x:Name="StartButton" Click="StartButton_Click" Grid.Row="1" Margin="30 50" Content="Simuler" FontSize="25" FontWeight="Bold" />
+        </Grid>
+    </Grid>
+</Page>

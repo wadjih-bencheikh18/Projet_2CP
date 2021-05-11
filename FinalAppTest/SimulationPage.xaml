@@ -107,7 +107,7 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button Grid.Column="1" Background="#B51F1F" BorderThickness="0" Width="45" Height="45">
+                    <Button x:Name="ExitButton" Click="ExitButton_Click" Grid.Column="1" Background="#B51F1F" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
                             <Image Source="resume.png" Width="30" Height="30"/>
                         </Button.Content>
