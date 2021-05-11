@@ -5,42 +5,160 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FinalAppTest"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="768" d:DesignWidth="1366"
       Title="SimulationPage">
-
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Border Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="2" Background="#FF5D5959" Margin="0" Grid.Row="0" Width="60">
-            <StackPanel x:Name="Processeur" Orientation="Horizontal"/>
-        </Border>
-        <Grid Grid.Row="1" Background="White">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="background.jpg"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Rectangle Fill="White" Height="600" Width="450" RadiusX="30" RadiusY="30" Stroke="Black" StrokeThickness="1"/>
+            <TextBlock Margin="0 0 0 100" Text="Diagramme de Gantt" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Column="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0" TextWrapping="Wrap" TextAlignment="Center" FontSize="16" FontWeight="Bold"><Run Text="Liste des processus pr"/><Run Text="é"/><Run Text="t"/><Run Text="s"/></TextBlock>
-            <Border Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="2" Background="#FF5D5959" Grid.Row="0" MinWidth="500">
-                <StackPanel x:Name="ListProcessusView" Orientation="Horizontal"/>
+            <Border Margin="10,0,0,20"  Height="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="0" MinWidth="600">
+                <StackPanel x:Name="ListProcessusView" Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Storyboard x:Key="ListDecalage">
+                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
+                                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                                <EasingThicknessKeyFrame KeyTime="0:0:1" Value="-60,0,0,0"/>
+                            </ThicknessAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Listback">
+                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
+                                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                            </ThicknessAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="up">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="+60"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </StackPanel.Resources>
+                </StackPanel>
             </Border>
-            
-            <Border Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="2" Background="#FF5D5959" Grid.Row="1" MinWidth="500">
+            <Border Height="180" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="2" Margin="40,0,0,0" Grid.Row="1" Width="180">
+                <Border.Background>
+                    <ImageBrush ImageSource="Processor.png"/>
+                </Border.Background>
+                <StackPanel x:Name="Processeur" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel.Resources>
+                        <Storyboard x:Key="Disactive">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="507"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-195"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+
+                    </StackPanel.Resources>
+
+                </StackPanel>
+            </Border>
+
+
+            <Border Margin="10 0 0 0" Height="60" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Background="#FFCCDD" BorderBrush="Black" BorderThickness="1" Grid.Row="2" MinWidth="600">
                 <StackPanel Orientation="Horizontal"/>
             </Border>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" FontSize="16"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
-        </Grid>
+            <TextBlock HorizontalAlignment="Center" Margin="0,0,0,70" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="24" FontFamily="Lexend"><Run Text="Liste des processus pr"/><Run Text="é"/><Run Text="t"/><Run Text="s"/></TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0,0,0,100" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
+            <Grid Grid.Row="3" Margin="150 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="50">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="Temps :" FontWeight="Bold" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="16" />
-            <TextBlock  Grid.Column="1" x:Name="TempsView" HorizontalAlignment="Center" Text="0" VerticalAlignment="Center" TextAlignment="Center" Margin="0" FontSize="16"/>
+                    <Ellipse Grid.Column="0" Height="65" Width="65" Fill="#0D9330">
+                        <Ellipse.Effect>
+                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Button x:Name="StartBtn" Grid.Column="0" Background="#0D9330" BorderThickness="0" Width="45" Height="45" Click="StartBtn_Click">
+                        <Button.Content>
+                            <Image Source="Start.png" Width="30" Height="30" />
+                        </Button.Content>
+                    </Button>
+
+                    <Ellipse Grid.Column="1" Height="65" Width="65" Fill="#B51F1F">
+                        <Ellipse.Effect>
+                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Button Grid.Column="1" Background="#B51F1F" BorderThickness="0" Width="45" Height="45">
+                        <Button.Content>
+                            <Image Source="resume.png" Width="30" Height="30"/>
+                        </Button.Content>
+                    </Button>
+
+                    <Ellipse Height="65" Width="65" Fill="#FFB53E" Grid.Column="2">
+                        <Ellipse.Effect>
+                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Button Grid.Column="2" Background="#FFB53E" BorderThickness="0" Width="45" Height="45">
+                        <Button.Content>
+                            <Image Source="pause.png" Width="30" Height="30"/>
+                        </Button.Content>
+                    </Button>
+
+                    <Ellipse Height="65" Width="65" Fill="#4974C8" Grid.Column="3">
+                        <Ellipse.Effect>
+                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Button Grid.Column="3" Background="#4974C8" BorderThickness="0" Width="45" Height="45">
+                        <Button.Content>
+                            <Image Source="circle.png" Width="30" Height="30"/>
+                        </Button.Content>
+                    </Button>
+
+                    <Ellipse Height="65" Width="65" Fill="#666666" Grid.Column="4">
+                        <Ellipse.Effect>
+                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Button x:Name="ResultFinalBtn" Grid.Column="4" Background="#666666" BorderThickness="0" Width="45" Height="45" Click="ResultFinalBtn_Click">
+                        <Button.Content>
+                            <Image Source="algos.png" Width="30" Height="30"/>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock Text="Vitesse :" Margin="20 0"  FontSize="30" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+
+            </Grid>
+            <Grid Margin="200,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Temps :" FontWeight="Bold" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="16" />
+                <TextBlock Grid.Column="1" x:Name="TempsView" HorizontalAlignment="Center" Text="0" VerticalAlignment="Center" TextAlignment="Center" Margin="0" FontSize="16"/>
+            </Grid>
         </Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="16" FontWeight="Bold" Text="Processeur"/>
     </Grid>
 </Page>

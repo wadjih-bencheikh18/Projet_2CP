@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -58,7 +59,21 @@ namespace Ordonnancement
             prio = 0;
             tempsRestant = duree;
         }
-
+        public void Affichage(Grid Table, int i)
+        {
+            ProcessusString proc;
+            TableRowFinal item;
+            RowDefinition rowdef = new RowDefinition();
+            rowdef.Height = new GridLength(30);
+            Table.RowDefinitions.Insert(i, rowdef);
+            item = new TableRowFinal();
+            proc = new ProcessusString(this);
+            if (i % 2 == 0) proc.Background = "LightBlue";
+            else proc.Background = "lightGray";
+            item.DataContext = proc;
+            Grid.SetRow(item, i + 1);
+            Table.Children.Add(item);
+        }
         public virtual void Affichage() //affiche les caracteristiques d'un processus
         {
             Console.WriteLine(" ");
@@ -111,6 +126,7 @@ namespace Ordonnancement
     class ProcessusString
     {
         public string id { get; set; }
+        public string prio { get; set; }
         public string tempsRestant { get; set; }
         public string tempsArriv { get; set; }
         public string duree { get; set; }
@@ -119,22 +135,24 @@ namespace Ordonnancement
         public string tempsService { get; set; }
         public string Background { get; set; }
         public string tempsReponse { get; set; }
-        public string prio { set; get; }
-        public string niveau { set; get; }
-
+        public string tempsPasse { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         public ProcessusString(Processus processus)
         {
             this.id = processus.id.ToString();
+            this.prio = processus.prio.ToString();
             this.tempsArriv = processus.tempsArriv.ToString();
             this.duree = processus.duree.ToString();
             this.tempsAtt = processus.tempsAtt.ToString();
             this.tempsFin = processus.tempsFin.ToString();
             this.tempsService = processus.tempsService.ToString();
             this.tempsReponse = processus.tempsReponse.ToString();
-
+            this.tempsRestant = (processus.tempsRestant).ToString();
+            this.tempsPasse = (processus.duree - processus.tempsRestant).ToString();
         }
 
-        public ProcessusString(int id, int tempsRestant)
+    public ProcessusString(int id, int tempsRestant)
         {
             this.id = id.ToString();
             this.tempsRestant = tempsRestant.ToString();
@@ -146,6 +164,26 @@ namespace Ordonnancement
     {
         public List<Processus> listeProcessus = new List<Processus>();  // liste des processus fournis par l'utilisateur
         public List<Processus> listePrets = new List<Processus>();  // liste des processus prêts
+
+        public abstract Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView);
+        public virtual int AjouterTous(int temps, int indice, StackPanel ListProcessusView) //ajouter à la liste des processus prêts tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
+        {
+            for (; indice < listeProcessus.Count; indice++) //parcours de listeProcessus à partir du processus d'indice "indice"
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break; //si le processus n'est pas encore arrivé on sort
+                else
+                {
+                    ProcessusDesign item = new ProcessusDesign();
+                    ProcessusString pro = new ProcessusString(listeProcessus[indice]);
+                    pro.X = 700;
+                    pro.Y = 0;
+                    item.DataContext = pro;
+                    ListProcessusView.Children.Add(item);
+                    listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts
+                }
+            }
+            return indice;
+        }
         public void Push(Processus pro) //ajout d'un processus à la liste listeProcessus
         {
             listeProcessus.Add(pro);

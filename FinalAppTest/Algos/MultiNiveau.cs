@@ -3,6 +3,7 @@ using FinalAppTest.Views;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -144,6 +145,10 @@ namespace Ordonnancement
         public override void SortListeProcessus() //tri de listeProcessus par ordre d'arrivé
         {
             listeProcessus.Sort(delegate (ProcessusNiveau x, ProcessusNiveau y) { return x.tempsArriv.CompareTo(y.tempsArriv); });
+        }
+        public override async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView)
+        {
+            return 0;
         }
         public int Executer()
         {
