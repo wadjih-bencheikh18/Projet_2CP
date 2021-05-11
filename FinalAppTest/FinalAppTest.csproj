@@ -84,6 +84,9 @@
     <Compile Include="Views\PSP_Tab.xaml.cs">
       <DependentUpon>PSP_Tab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PSP_TabRow.xaml.cs">
+      <DependentUpon>PSP_TabRow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RoundRobin_Tab.xaml.cs">
       <DependentUpon>RoundRobin_Tab.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PSP_Tab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PSP_TabRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

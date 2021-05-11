@@ -28,9 +28,11 @@ namespace FinalAppTest.Views
             indice++;
         }
 
+        public static PSP prog = new PSP();
         public static bool modifier = false;
-        public static PAPS_TabRow proModifier;
+        public static PSP_TabRow proModifier;
         private int indice = 0;
+
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             int NbProcessus;
@@ -42,17 +44,22 @@ namespace FinalAppTest.Views
             }
             else
             {
+                prog.listeProcessus.Clear();  // vider la liste pour l'ecraser
                 NbProcessusTextBox.Text = "";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
                 NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
                 Random r = new Random();
                 for (int i = 0; i < NbProcessus; i++)
                 {
-                    AffichageProcessus pro = new AffichageProcessus();
-                    pro.id = i;
-                    pro.tempsArriv = r.Next(20);
-                    pro.duree = r.Next(1, 20);
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
+                    AffichageProcessus pro = new AffichageProcessus
+                    {
+                        id = i,
+                        tempsArriv = r.Next(20),
+                        duree = r.Next(1, 20),
+                        prio = r.Next(1, 20)
+                    };
+                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
+                    prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio));  // added to the program
                 }
                 IdTextBox.Text = NbProcessus.ToString();
                 indice = NbProcessus;
@@ -62,7 +69,7 @@ namespace FinalAppTest.Views
         private void AddProcessusButton_Click(object sender, RoutedEventArgs e)  // ajouter un processus
         {
             bool valide = true;
-            int id, tempsArrive, duree;
+            int id, tempsArrive, duree,prio ;
             var bc = new BrushConverter();
             if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
@@ -76,37 +83,51 @@ namespace FinalAppTest.Views
                 DureeTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
-            if (valide && !modifier)  // si tous est correcte
+            if (!Int32.TryParse(PrioTextBox.Text, out prio) || prio <= 0)  // get priorité
             {
-                id = indice;
-                TempsArrivTextBox.Text = "0";
-                DureeTextBox.Text = "1";
-                IdTextBox.Text = (id + 1).ToString();
-                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
-                AffichageProcessus pro = new AffichageProcessus
-                {
-                    id = id,
-                    tempsArriv = tempsArrive,
-                    duree = duree
-                };
-                pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
-                indice++;
+                DureeTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                DureeTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                valide = false;
             }
-            else if (valide && modifier)
+            if (valide)  // si tous est correcte
             {
-                AffichageProcessus pro = new AffichageProcessus
+                if (!modifier)  // un nouveau processus
                 {
-                    id = int.Parse(IdTextBox.Text),
-                    tempsArriv = tempsArrive,
-                    duree = duree,
-                    Background = "#FFEFF3F9"
-                };
-                PAPS_TabRow item = (PAPS_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
-                item.DataContext = pro;
-                ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
-                modifier = false;
-                IdTextBox.Text = indice.ToString();
-                ajouterTB.Text = "Ajouter";
+                    id = indice;
+                    TempsArrivTextBox.Text = "0";
+                    DureeTextBox.Text = "0";
+                    IdTextBox.Text = (id + 1).ToString();
+                    PrioTextBox.Text = "0";
+                    NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
+                    AffichageProcessus pro = new AffichageProcessus
+                    {
+                        id = id,
+                        tempsArriv = tempsArrive,
+                        duree = duree,
+                        prio = prio
+                    };
+                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
+                    prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio));  // added to the program
+                    indice++;
+                }
+                else  // modifier un existant
+                {
+                    AffichageProcessus pro = new AffichageProcessus
+                    {
+                        id = int.Parse(IdTextBox.Text),
+                        tempsArriv = tempsArrive,
+                        duree = duree,
+                        prio = prio,
+                        Background = "#FFEFF3F9"
+                    };
+                    PSP_TabRow item = (PSP_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                    item.DataContext = pro;
+                    ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
+                    prog.listeProcessus[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);  // modifier le processus correspondant
+                    modifier = false;
+                    IdTextBox.Text = indice.ToString();
+                    ajouterTB.Text = "Ajouter";
+                }
             }
         }
 

@@ -16,26 +16,28 @@ using System.Windows.Shapes;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PAPS_TabRow.xaml
+    /// Interaction logic for PSP_TabRow.xaml
     /// </summary>
-    public partial class PAPS_TabRow : UserControl
+    public partial class PSP_TabRow : UserControl
     {
-        public PAPS_TabRow()
+        public PSP_TabRow()
         {
             InitializeComponent();
         }
         private TextBox id;
         private TextBox tempsArriv;
         private TextBox duree;
+        private TextBox prio;
         private TextBlock Ajouter;
         private StackPanel Table;
-        public PAPS_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, StackPanel Table, TextBlock Ajouter)
+        public PSP_TabRow(TextBox id, TextBox tempsArriv, TextBox duree,TextBox prio, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
             this.Table = Table;
+            this.prio = prio;
             this.Ajouter = Ajouter;
         }
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
@@ -43,8 +45,9 @@ namespace FinalAppTest.Views
             id.Text = idTest.Text;
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
-            PAPS_Tab.modifier = true;
-            PAPS_Tab.proModifier = this;
+            prio.Text = prioTest.Text;
+            PSP_Tab.modifier = true;
+            PSP_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
@@ -54,4 +57,3 @@ namespace FinalAppTest.Views
         }
     }
 }
-

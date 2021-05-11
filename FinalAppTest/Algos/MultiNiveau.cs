@@ -39,7 +39,6 @@ namespace Ordonnancement
                     break;
             }
         }
-
         public Niveau(int numAlgo, int quantum)
         {
             this.numAlgo = numAlgo;
@@ -74,6 +73,7 @@ namespace Ordonnancement
         {
             this.niveau = niveau;
         }
+        
         public override void Affichage() //surdefinition : affiche les caracteristiques d'un processus en plus de son niveau
         {
             base.Affichage();
@@ -89,6 +89,13 @@ namespace Ordonnancement
         public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne
         {
             PAPS_TabRow item = new PAPS_TabRow(id, tempsArriv, duree, Table, Ajouter);
+            Background = "#FFEFF3F9";
+            item.DataContext = this;
+            Table.Children.Add(item);
+        }
+        public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree,TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne
+        {
+            PSP_TabRow item = new PSP_TabRow(id, tempsArriv, duree, prio ,Table, Ajouter);
             Background = "#FFEFF3F9";
             item.DataContext = this;
             Table.Children.Add(item);
