@@ -217,25 +217,25 @@
     <Resource Include="Views\Generate.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="background.jpg" />
+    <Resource Include="Pics\background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Processor.png" />
+    <Resource Include="Pics\Processor.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Start.png" />
+    <Resource Include="Pics\Start.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resume.png" />
+    <Resource Include="Pics\resume.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="pause.png" />
+    <Resource Include="Pics\pause.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="circle.png" />
+    <Resource Include="Pics\circle.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="algos.png" />
+    <Resource Include="Pics\algos.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
