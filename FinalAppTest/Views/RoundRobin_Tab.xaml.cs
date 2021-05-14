@@ -38,9 +38,11 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             if (!Int32.TryParse(NbProcessusTextBox.Text, out NbProcessus) && NbProcessus <= 0)
             {
+                RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
             else
             {
+                RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
                 prog.listeProcessus.Clear();  // vider la liste pour l'ecraser
                 NbProcessusTextBox.Text = "";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
@@ -67,14 +69,18 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
+                RectTar.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
             if (!Int32.TryParse(DureeTextBox.Text, out duree) || duree <= 0)  // get durée
             {
+                RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
             if (valide)  // si tous est correcte
             {
+                RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+                RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 if (!modifier)  // un nouveau processus
                 {
                     id = indice;
