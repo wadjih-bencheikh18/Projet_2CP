@@ -37,11 +37,7 @@ namespace Ordonnancement
             while (listePrets.Count != 0 || indice < listeProcessus.Count) //Tant qu'il existe des processus prêts
             {
                 if (listePrets.Count == 0) anime = true;
-                int indiceDebut = indice;
-                indice = MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
-                if (indiceDebut != indice)
-                    await Task.Delay(1000);
-                else await Task.Delay(500);
+                indice = await MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
                 if (listePrets.Count != 0)
                 {
                     bool sort = false;
@@ -63,13 +59,15 @@ namespace Ordonnancement
                     }
                     if (sort)
                     {
-                        if (!debut && proc != listePrets[0])
+                        int i;
+                        if (debut)
+                        {
+                            i = 0;
+                            anime = true;
+                        }
+                        else if (proc != listePrets[0])
                         {
                             await Disactive(ListePretsView, Processeur, proc);
-                        }
-                        int i;
-                        if (proc != listePrets[0])
-                        {
                             i = 0;
                             anime = true;
                         }

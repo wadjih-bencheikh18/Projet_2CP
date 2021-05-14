@@ -37,11 +37,7 @@ namespace Ordonnancement
                     }
                     else
                     {
-                        int indiceDebut = indice;
-                        indice = MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
-                        if (indiceDebut != indice)
-                            await Task.Delay(1000);
-                        else await Task.Delay(500);
+                        indice = await MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
                         anime = true;
                     }  // sinon, on ajoute les processus arrivés à listePrets
                 }
@@ -90,11 +86,7 @@ namespace Ordonnancement
                     item.DataContext = pro;
                     Processeur.Children.Clear();
                     Processeur.Children.Add(item);
-                    int indiceDebut = indice;
-                    indice = MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
-                    if (indiceDebut != indice)
-                        await Task.Delay(1000);
-                    else await Task.Delay(500);
+                    indice = await MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
 
                     if (listePrets[0].tempsRestant == 0) //fin d'exécution du processus 
                     {

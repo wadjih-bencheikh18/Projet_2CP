@@ -25,7 +25,6 @@ namespace FinalAppTest.Views
         {
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
-            indice++;
         }
 
         public static PCA prog = new PCA();

@@ -23,18 +23,14 @@ namespace Ordonnancement
             while (indice < listeProcessus.Count || listePrets.Count != 0) //s'il existe des processus non executés
             {
                 if (listePrets.Count == 0) anime = true;
-                int indiceDebut = indice;
-                indice = MAJListePrets(temps, indice, ListePretsView); //remplir listePrets
-                if (indiceDebut != indice)
-                    await Task.Delay(1000);
-                else await Task.Delay(500);
+                indice = await MAJListePrets(temps, indice, ListePretsView); //remplir listePrets
                 if (listePrets.Count != 0 && anime)
                 {
                     await AnimeListPrets_Processeur(ListePretsView, Processeur);
                     anime = false;
                 }
                 temps++; //incrementer le temps réel
-                InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
+                //InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                 TempsView.Text = temps.ToString();
                 if (listePrets.Count != 0) //s'il y a des processus prêts
                 {

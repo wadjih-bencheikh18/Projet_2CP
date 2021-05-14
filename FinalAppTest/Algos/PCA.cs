@@ -22,11 +22,7 @@ namespace Ordonnancement
             while ((indice < listeProcessus.Count || listePrets.Count != 0)) //s'il existe des processus non executés
             {
                 if (listePrets.Count == 0) sort = true; //les premiers processus arrivés => on fait un tri par durée (croissant)
-                int indiceDebut = indice;
-                indice = MAJListePrets(temps, indice, ListePretsView);  //remplir listePrets
-                if (indiceDebut != indice)
-                    await Task.Delay(1000);
-                else await Task.Delay(500);
+                indice = await MAJListePrets(temps, indice, ListePretsView);  //remplir listePrets
                 if (sort == true && listePrets.Count != 0) //si un tri par durée est necessaire et il y a des processus prêts
                 {
                     listePrets.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //tri des processus de listePrets par durée

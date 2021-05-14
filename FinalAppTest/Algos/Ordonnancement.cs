@@ -21,13 +21,15 @@ namespace Ordonnancement
 
         public abstract Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView);
 
-        public int MAJListePrets(int temps, int indice, StackPanel ListePretsView) //ajouter à la liste des processus prêts tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
+        public async Task<int> MAJListePrets(int temps, int indice, StackPanel ListePretsView) //ajouter à la liste des processus prêts tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
         {
+            bool ajout = false;
             for (; indice < listeProcessus.Count; indice++) //parcours de listeProcessus à partir du processus d'indice "indice"
             {
                 if (listeProcessus[indice].tempsArriv > temps) break; //si le processus n'est pas encore arrivé on sort
                 else
                 {
+                    ajout = true;
                     ProcessusDesign item = new ProcessusDesign();
                     AffichageProcessus pro = new AffichageProcessus(listeProcessus[indice]);
                     pro.X = 700;
@@ -37,6 +39,8 @@ namespace Ordonnancement
                     listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts
                 }
             }
+            if (ajout) await Task.Delay(1000);
+            else await Task.Delay(500);
             return indice;
         }
         

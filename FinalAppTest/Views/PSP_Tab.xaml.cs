@@ -25,7 +25,6 @@ namespace FinalAppTest.Views
         {
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
-            indice++;
         }
 
         public static PSP prog = new PSP();
@@ -78,7 +77,7 @@ namespace FinalAppTest.Views
             {
                 valide = false;
             }
-            if (!Int32.TryParse(PrioTextBox.Text, out prio) || prio <= 0)  // get priorité
+            if (!Int32.TryParse(PrioTextBox.Text, out prio) || prio < 0)  // get priorité
             {
                 valide = false;
             }
