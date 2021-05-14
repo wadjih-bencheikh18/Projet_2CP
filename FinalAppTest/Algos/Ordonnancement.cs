@@ -146,7 +146,10 @@ namespace Ordonnancement
         {
             ProcessusDesign item = new ProcessusDesign();
             AffichageProcessus pro = new AffichageProcessus(listebloque[i]);
-            pro.X = 600 - 60 * ListePretsView.Children.Count;
+            pro.X = - 60 * ListePretsView.Children.Count + 60 * i;
+            pro.Y = 360;
+            pro.newX = 600 - 60 * ListePretsView.Children.Count;
+            pro.newY = 0;
             item.DataContext = pro; 
             Storyboard animeReveil = new Storyboard();
             animeReveil.Children.Add(ListeBloqueView.FindResource("up") as Storyboard);
@@ -166,7 +169,7 @@ namespace Ordonnancement
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
             
             ListePretsView.Children.Add(item);
-            await Task.Delay(1000);
+            await Task.Delay(3000);
         }
         public async Task Blocage(StackPanel ListeBloqueView, StackPanel Processeur)
         {

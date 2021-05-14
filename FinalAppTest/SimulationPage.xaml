@@ -19,26 +19,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Storyboard x:Key="Reviel">
-            <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Row)" Storyboard.TargetName="processusDesign">
-                <EasingInt32KeyFrame KeyTime="0" Value="2"/>
-                <EasingInt32KeyFrame KeyTime="0:0:1" Value="0"/>
-            </Int32AnimationUsingKeyFrames>
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="processusDesign">
-                <EasingThicknessKeyFrame KeyTime="0" Value="610,-40,0,0"/>
-                <EasingThicknessKeyFrame KeyTime="0:0:1" Value="610,0,0,20"/>
-            </ThicknessAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.VerticalAlignment)" Storyboard.TargetName="processusDesign">
-                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static VerticalAlignment.Top}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static VerticalAlignment.Bottom}"/>
-            </ObjectAnimationUsingKeyFrames>
-        </Storyboard>
     </Page.Resources>
-    <Page.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource Reviel}"/>
-        </EventTrigger>
-    </Page.Triggers>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Pics/background.jpg"/>
@@ -111,17 +92,6 @@
 
                 </StackPanel>
             </Border>
-            <local:ProcessusDesign x:Name="processusDesign" Width="60" Height="60" Margin="610,-40,0,0" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5">
-                <local:ProcessusDesign.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </local:ProcessusDesign.RenderTransform>
-            </local:ProcessusDesign>
-
             <Border Margin="10,20,0,0" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" CornerRadius="10" Background="#FFCCDD" BorderBrush="Black" BorderThickness="1" Grid.Row="2" MinWidth="600" Panel.ZIndex="-1">
                 <StackPanel x:Name="ListeBloqueView" Orientation="Horizontal" >
                     <StackPanel.Resources>
