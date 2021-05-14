@@ -27,9 +27,9 @@ namespace Ordonnancement
             bool anime = false;
             SortListeProcessus(); //Tri de la liste des processus par temps d'arrivée
             int indice = 0, temps = 0, q = 0;
-            while (indice < listeProcessus.Count || listePrets.Count != 0)  //s'il existe des processus prêts
+            while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0)  //s'il existe des processus prêts
             {
-                if (indice < listeProcessus.Count && listePrets.Count == 0)  // Si il y a des processus dans listeProcessus et la listePrets est vide
+                if ((indice < listeProcessus.Count || listebloque.Count != 0) && listePrets.Count == 0)  // Si il y a des processus dans listeProcessus et la listePrets est vide
                 {
                     if (temps < listeProcessus[indice].tempsArriv)  // si aucun processus n'est arrivé
                     {

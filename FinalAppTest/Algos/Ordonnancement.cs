@@ -69,6 +69,7 @@ namespace Ordonnancement
                 listePrets.RemoveAt(0);
                 if (listePrets.Count!=0) await Activation(ListePretsView, Processeur, 0);
             }
+            else if (listePrets.Count != 0) await Activation(ListePretsView, Processeur, 0);
         }
 
         #endregion
@@ -144,19 +145,19 @@ namespace Ordonnancement
             Storyboard animeReveil = new Storyboard();
             animeReveil.Children.Add(ListeBloqueView.FindResource("up") as Storyboard);
             animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[i]);
-            animeReveil = new Storyboard();
             await Task.Delay(1000);
-            for(int j=i+1;j< ListeBloqueView.Children.Count; j++)
+            animeReveil = new Storyboard();
+            animeReveil.Children.Add(ListeBloqueView.FindResource("decalage") as Storyboard);
+            for (int j=i+1;j< ListeBloqueView.Children.Count; j++)
             {
-                animeReveil.Children.Add(ListeBloqueView.FindResource("decalage") as Storyboard);
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
             }
             await Task.Delay(1000);
             ListeBloqueView.Children.RemoveAt(i);
             animeReveil = new Storyboard();
+            animeReveil.Children.Add(ListeBloqueView.FindResource("Retour") as Storyboard);
             for (int j = i; j < ListeBloqueView.Children.Count; j++)
             {
-                animeReveil.Children.Add(ListeBloqueView.FindResource("Retour") as Storyboard);
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
             }
             ListePretsView.Children.Add(item);
