@@ -27,11 +27,11 @@ namespace Ordonnancement
                 if (listePrets.Count != 0 && anime)
                 {
                     await Activation(ListePretsView, Processeur,0);
-                    anime = false;
                 }
+                await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
+                anime = false;
                 temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
-                await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                 if (listePrets.Count != 0) //s'il y a des processus prêts
                 {
                     listePrets[0].etat = 2;

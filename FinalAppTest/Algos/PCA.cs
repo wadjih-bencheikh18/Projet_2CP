@@ -34,6 +34,7 @@ namespace Ordonnancement
                 temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
                 await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
+                sort = false;
                 if (listePrets.Count != 0) //il y a des processus prêts
                 {
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;

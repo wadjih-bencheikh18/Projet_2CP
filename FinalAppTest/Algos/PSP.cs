@@ -66,10 +66,12 @@ namespace Ordonnancement
                     await Activation(ListePretsView, Processeur, 0);
                     anime = false;
                 }
+                await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
+                anime = false;
                 debut = false;
                 temps++;
                 TempsView.Text = temps.ToString();
-                await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
+                
                 if (listePrets.Count != 0) //S'il y a des processus prêts
                 {
                     listePrets[0].etat = 2;
