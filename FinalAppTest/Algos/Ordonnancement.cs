@@ -55,11 +55,14 @@ namespace Ordonnancement
                     listebloque[i].etat = 1;
                     listePrets.Add(listebloque[i]);
                     listebloque.RemoveAt(i);
+
                 }
             }
         }
         public async Task InterruptionExecute(StackPanel ListePretsView, StackPanel ListeBloqueView, StackPanel Processeur)
         {
+            //bool vide=false;
+            //if (listePrets.Count == 0) vide = true;
             await MAJListBloque(ListePretsView, ListeBloqueView);
             if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
@@ -69,7 +72,7 @@ namespace Ordonnancement
                 listePrets.RemoveAt(0);
                 if (listePrets.Count!=0) await Activation(ListePretsView, Processeur, 0);
             }
-            else if (listePrets.Count != 0) await Activation(ListePretsView, Processeur, 0);
+            //else if (listePrets.Count>0 && vide) await Activation(ListePretsView, Processeur, 0);
         }
 
         #endregion
