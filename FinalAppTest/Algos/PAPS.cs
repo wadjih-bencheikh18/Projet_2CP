@@ -30,8 +30,8 @@ namespace Ordonnancement
                     anime = false;
                 }
                 temps++; //incrementer le temps réel
-                //InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                 TempsView.Text = temps.ToString();
+                InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                 if (listePrets.Count != 0) //s'il y a des processus prêts
                 {
                     listePrets[0].etat = 2;

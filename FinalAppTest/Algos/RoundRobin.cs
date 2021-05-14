@@ -34,6 +34,7 @@ namespace Ordonnancement
                     if (temps < listeProcessus[indice].tempsArriv)  // si aucun processus n'est arrivé
                     {
                         temps++;
+                        InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                     }
                     else
                     {
@@ -78,6 +79,7 @@ namespace Ordonnancement
                     }
                     temps++;
                     TempsView.Text = temps.ToString();
+                    InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                     q++;  // on incrémente le quantum
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
