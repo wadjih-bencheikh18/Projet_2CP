@@ -53,7 +53,7 @@ namespace FinalAppTest.Views
                     AffichageProcessus pro = new AffichageProcessus();
                     pro.id = i;
                     pro.tempsArriv = r.Next(20);
-                    pro.duree = r.Next(1, 20);
+                    pro.duree = r.Next(1, 5);
                     pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
                     Processus Pro = new Processus(pro.id, pro.tempsArriv, pro.duree);
                     Interruption interruption;

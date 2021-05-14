@@ -94,7 +94,7 @@ namespace Ordonnancement
             AnimeList.Children.Add(ListePretsView.FindResource("ListDecalage") as Storyboard);
             AnimeProc.Children.Add(ListePretsView.FindResource("up") as Storyboard);
             AnimeProc.Begin((FrameworkElement)ListePretsView.Children[0]);
-            await Task.Delay(1000);
+            await Task.Delay(500);
             Processeur.Children.Add(item);
             ListePretsView.Children[0].Visibility = Visibility.Hidden;
             for(int j=i+1;j< ListePretsView.Children.Count;j++)
@@ -146,26 +146,27 @@ namespace Ordonnancement
         {
             ProcessusDesign item = new ProcessusDesign();
             AffichageProcessus pro = new AffichageProcessus(listebloque[i]);
-            item.DataContext = pro;
+            pro.X = 600 - 60 * ListePretsView.Children.Count;
+            item.DataContext = pro; 
             Storyboard animeReveil = new Storyboard();
             animeReveil.Children.Add(ListeBloqueView.FindResource("up") as Storyboard);
             animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[i]);
-            await Task.Delay(1000);
-            animeReveil = new Storyboard();
-            animeReveil.Children.Add(ListeBloqueView.FindResource("decalage") as Storyboard);
+            await Task.Delay(500);
+            DoubleAnimationUsingKeyFrames Anime = new DoubleAnimationUsingKeyFrames();
+            //Anime.TargetPropertyType.Name = "border";
+
+            animeReveil = (Storyboard)ListeBloqueView.FindResource("decalage");
             for (int j=i+1;j< ListeBloqueView.Children.Count; j++)
-            {
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
-            }
+
             await Task.Delay(1000);
             ListeBloqueView.Children.RemoveAt(i);
-            animeReveil = new Storyboard();
-            animeReveil.Children.Add(ListeBloqueView.FindResource("Retour") as Storyboard);
+            animeReveil = ListeBloqueView.FindResource("Retour") as Storyboard;
             for (int j = i; j < ListeBloqueView.Children.Count; j++)
-            {
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
-            }
+            
             ListePretsView.Children.Add(item);
+            await Task.Delay(1000);
         }
         public async Task Blocage(StackPanel ListeBloqueView, StackPanel Processeur)
         {

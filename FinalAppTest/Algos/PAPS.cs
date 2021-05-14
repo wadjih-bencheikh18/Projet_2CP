@@ -25,9 +25,8 @@ namespace Ordonnancement
                 if (listePrets.Count == 0) anime = true;
                 indice = await MAJListePrets(temps, indice, ListePretsView); //remplir listePrets
                 if (listePrets.Count != 0 && anime)
-                {
                     await Activation(ListePretsView, Processeur,0);
-                }
+
                 await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                 anime = false;
                 temps++; //incrementer le temps réel
