@@ -55,8 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Algos\Class.cs" />
+    <Compile Include="Algos\Niveau.cs" />
+    <Compile Include="Algos\Processus.cs" />
+    <Compile Include="Algos\Interruption.cs" />
     <Compile Include="Algos\MultiNiveau.cs" />
+    <Compile Include="Algos\Ordonnancement.cs" />
     <Compile Include="Algos\PAPS.cs" />
     <Compile Include="Algos\PCA.cs" />
     <Compile Include="Algos\PSP.cs" />

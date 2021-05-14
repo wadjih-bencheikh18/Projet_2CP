@@ -55,7 +55,18 @@ namespace FinalAppTest.Views
                     pro.tempsArriv = r.Next(20);
                     pro.duree = r.Next(1, 20);
                     pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
-                    prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree));  // added to the program
+                    Processus Pro = new Processus(pro.id, pro.tempsArriv, pro.duree);
+                    /*Interruption interruption;
+                    Console.Write(Pro.id + "=>");
+                    for (int j = 0; j < 2; j++)
+                    {
+                        int intduree = r.Next(1, 4);
+                        int intArriv = r.Next(1, pro.duree);
+                        interruption = new Interruption(intduree, intArriv);
+                        Console.Write(interruption.duree + " | " + interruption.tempsArriv + " => ");
+                        Pro.Push(interruption);
+                    }*/
+                    prog.Push(Pro);  // added to the program
                 }
                 IdTextBox.Text = NbProcessus.ToString();
                 indice = NbProcessus;

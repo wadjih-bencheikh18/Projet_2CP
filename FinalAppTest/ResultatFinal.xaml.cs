@@ -20,7 +20,7 @@ namespace FinalAppTest
     /// </summary>
     public partial class ResultatFinal : Window
     {
-        List<Processus> P = new List<Processus>();
+        List<Processus> P;
         public ResultatFinal(List<Processus> P)
         {
             this.P = P;

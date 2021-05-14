@@ -9,16 +9,21 @@ namespace Ordonnancement
 {
     public class RoundRobin : Ordonnancement
     {
+
+        #region Constructeur
         public int quantum { get; set; }
 
         public RoundRobin(int q) // Constructeur 
         {
             quantum = q;
         }
-        public override async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView)
+        #endregion
+
+        #region Visualisation
+        public override async Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
         {
             ProcessusDesign item;
-            ProcessusString pro;
+            AffichageProcessus pro;
             bool anime = false;
             SortListeProcessus(); //Tri de la liste des processus par temps d'arrivée
             int indice = 0, temps = 0, q = 0;
@@ -33,7 +38,7 @@ namespace Ordonnancement
                     else
                     {
                         int indiceDebut = indice;
-                        indice = AjouterTous(temps, indice, ListProcessusView);  // Remplir listePrets
+                        indice = MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
                         if (indiceDebut != indice)
                             await Task.Delay(1000);
                         else await Task.Delay(500);
@@ -46,26 +51,26 @@ namespace Ordonnancement
                     {
                         Processeur.Children.Clear();
                         item = new ProcessusDesign();
-                        pro = new ProcessusString(listePrets[0]);
-                        pro.X = "-89.6";
-                        pro.Y = "-140.8";
+                        pro = new AffichageProcessus(listePrets[0]);
+                        pro.X = -89.6;
+                        pro.Y = -140.8;
                         item.DataContext = pro;
-                        if (ListProcessusView.Children.Count != 0)
+                        if (ListePretsView.Children.Count != 0)
                         {
                             Storyboard AnimeProc = new Storyboard();
                             Storyboard AnimeList = new Storyboard();
-                            AnimeList.Children.Add(ListProcessusView.FindResource("ListDecalage") as Storyboard);
-                            AnimeProc.Children.Add(ListProcessusView.FindResource("up") as Storyboard);
-                            AnimeProc.Begin((FrameworkElement)ListProcessusView.Children[0]);
+                            AnimeList.Children.Add(ListePretsView.FindResource("ListDecalage") as Storyboard);
+                            AnimeProc.Children.Add(ListePretsView.FindResource("up") as Storyboard);
+                            AnimeProc.Begin((FrameworkElement)ListePretsView.Children[0]);
                             await Task.Delay(500);
                             Processeur.Children.Add(item);
-                            ListProcessusView.Children[0].Visibility = Visibility.Hidden;
-                            AnimeList.Begin(ListProcessusView);
+                            ListePretsView.Children[0].Visibility = Visibility.Hidden;
+                            AnimeList.Begin(ListePretsView);
                             await Task.Delay(1000);
                             AnimeList.Children.Clear();
-                            AnimeList.Children.Add(ListProcessusView.FindResource("Listback") as Storyboard);
-                            AnimeList.Begin(ListProcessusView);
-                            ListProcessusView.Children.RemoveAt(0);
+                            AnimeList.Children.Add(ListePretsView.FindResource("Listback") as Storyboard);
+                            AnimeList.Begin(ListePretsView);
+                            ListePretsView.Children.RemoveAt(0);
                             await Task.Delay(1000);
                         }
                         else
@@ -81,12 +86,12 @@ namespace Ordonnancement
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     item = new ProcessusDesign();
-                    pro = new ProcessusString(listePrets[0]);
+                    pro = new AffichageProcessus(listePrets[0]);
                     item.DataContext = pro;
                     Processeur.Children.Clear();
                     Processeur.Children.Add(item);
                     int indiceDebut = indice;
-                    indice = AjouterTous(temps, indice, ListProcessusView);  // Remplir listePrets
+                    indice = MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
                     if (indiceDebut != indice)
                         await Task.Delay(1000);
                     else await Task.Delay(500);
@@ -117,11 +122,11 @@ namespace Ordonnancement
                         animeDis.Begin((FrameworkElement)Processeur.Children[0]);
                         await Task.Delay(1000);
                         Processeur.Children.Clear();
-                        pro = new ProcessusString(listePrets[0]);
-                        pro.X = (600 - 60 * ListProcessusView.Children.Count).ToString();
+                        pro = new AffichageProcessus(listePrets[0]);
+                        pro.X = 600 - 60 * ListePretsView.Children.Count;
                         item = new ProcessusDesign();
                         item.DataContext = pro;
-                        ListProcessusView.Children.Add(item);
+                        ListePretsView.Children.Add(item);
                         await Task.Delay(1000);
                         listePrets.Add(listePrets[0]);  //Enfilement à la fin
                         listePrets.RemoveAt(0);  // defiler 
@@ -131,6 +136,9 @@ namespace Ordonnancement
             }
             return temps;
         }
+        #endregion
+
+        #region Test
         public int Executer()  // exécuter la liste des processus et retourner le temps total pour terminer l'exécution
         {
             SortListeProcessus(); //Tri de la liste des processus par temps d'arrivée
@@ -144,16 +152,18 @@ namespace Ordonnancement
                         AfficheLigne(temps); //affiche le temps actuel et le mot "repos", i.e le processeur n'execute aucun processus
                         temps++;
                     }
-                    else indice = AjouterTous(temps, indice);  // sinon, on ajoute les processus arrivés à listePrets
+                    else indice = MAJListePrets(temps, indice);  // sinon, on ajoute les processus arrivés à listePrets
                 }
                 else  // listePrets n'est pas vide 
                 {
+                    listePrets[0].etat = 2;
                     AfficheLigne(temps, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     temps++;
+                    InterruptionExecute();
                     q++;  // on incrémente le quantum
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
-                    indice = AjouterTous(temps, indice);  // ajouter les processus arrivés à listePrets
+                    indice = MAJListePrets(temps, indice);  // ajouter les processus arrivés à listePrets
 
                     if (listePrets[0].tempsRestant == 0) //fin d'exécution du processus 
                     {
@@ -177,29 +187,34 @@ namespace Ordonnancement
             return temps;
         }
 
+        #endregion
+
+        #region MultiNiveau
         // Des algorithmes nécessaires pour implémenter MultiNiveaux
 
-        public int Executer(int tempsDebut, int tempsFin, int[] indices, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral)
+        public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale)
         // executer l'algo pendant un intervalle de temps où :
         // indices[0] est l'indice de listeProcessus où on doit reprendre l'exécution
         // indices[1] est le quantum du temps de la derniére exécution
         {
-            while (indices[0] < listeProcessus.Count || listePrets.Count != 0)  //tant qu'il existe des processus prêts
+            while (niveaux[indiceNiveau].indice[0] < listeProcessus.Count || listePrets.Count != 0)  //tant qu'il existe des processus prêts
             {
-                if (indices[0] < listeProcessus.Count && listePrets.Count == 0)  // Si il y a des processus dans listProcessus et listePrets est vide
+                if (niveaux[indiceNiveau].indice[0] < listeProcessus.Count && listePrets.Count == 0)  // Si il y a des processus dans listProcessus et listePrets est vide
                 {
                     tempsDebut++;  // aucun processus n'est arrivé => on incrémente le temps
-                    indices[0] = AjouterTous(tempsDebut, indices[0], niveaux, listeGeneral, indiceNiveau);  // On rempli listePrets
+
+                    niveaux[indiceNiveau].indice[0] = MAJListePrets(tempsDebut, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau); // On rempli listePrets
                 }
                 else  // listePrets n'est pas vide 
                 {
+                    listePrets[0].etat = 2;
                     AfficheLigne(tempsDebut, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     tempsDebut++;
-                    indices[1]++;  // quantum++
-                    listePrets[0].etat = 2;
+                    InterruptionExecute(listebloqueGenerale);
+                    niveaux[indiceNiveau].indice[1]++;  // quantum++
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = tempsDebut - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
-                    indices[0] = AjouterTous(tempsDebut, indices[0], niveaux, listeGeneral, indiceNiveau);  // On rempli listePrets
+                    niveaux[indiceNiveau].indice[0] = MAJListePrets(tempsDebut, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau);  // On rempli listePrets
 
                     if (listePrets[0].tempsRestant == 0)  // fin d'exécution du processus 
                     {
@@ -208,12 +223,12 @@ namespace Ordonnancement
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;
                         listePrets[0].etat = 3;
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
-                        indices[1] = 0;  // un nouveau quantum va commencer
+                        niveaux[indiceNiveau].indice[1] = 0;  // un nouveau quantum va commencer
                     }
-                    else if (indices[1] == quantum)  // on a terminé ce quantum => il faut passer au processus suivant => on defile, et à la fin, on enfile le processus courant
+                    else if (niveaux[indiceNiveau].indice[1] == quantum)  // on a terminé ce quantum => il faut passer au processus suivant => on defile, et à la fin, on enfile le processus courant
                     {
                         listePrets[0].tempsFin = tempsDebut;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
-                        indices[1] = 0;  // nouveau quantum
+                        niveaux[indiceNiveau].indice[1] = 0;  // nouveau quantum
                         listePrets[0].etat = 1;
                         listePrets.Add(listePrets[0]);  // enfiler à la fin
                         listePrets.RemoveAt(0);  // defiler 
@@ -229,5 +244,7 @@ namespace Ordonnancement
             }
             return tempsDebut;
         }
+        #endregion
+
     }
 }

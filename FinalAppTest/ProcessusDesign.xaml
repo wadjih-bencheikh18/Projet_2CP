@@ -49,8 +49,8 @@
                         <DropShadowEffect BlurRadius="4" Direction="0" RenderingBias="Quality" ShadowDepth="0"/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBlock HorizontalAlignment="Right" FontSize="14" Background="{x:Null}" Foreground="White" Margin="0,0,5,5" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" Text="{Binding tempsRestant}" Grid.RowSpan="2" Panel.ZIndex="1"/>
-                <TextBlock HorizontalAlignment="Left" FontSize="14" Background="{x:Null}" Foreground="White" Margin="5,0,0,5" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" Text="{Binding prio}" Grid.RowSpan="2" Panel.ZIndex="1"/>
+                <TextBlock HorizontalAlignment="Right" FontSize="14" Background="{x:Null}" Foreground="White" Margin="0,0,5,5" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="{Binding tempsRestant}"/>
+                <TextBlock HorizontalAlignment="Left" FontSize="14" Background="{x:Null}" Foreground="White" Margin="5,0,0,5" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="{Binding prio}"/>
             </Grid>
         </Border>
     </Grid>

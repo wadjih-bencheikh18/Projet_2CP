@@ -29,17 +29,12 @@ namespace FinalAppTest
         }
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-              _ = prog.Executer(ListProcessusView, Processeur, TempsView);
+            prog.Executer(ListePretsView, Processeur, TempsView,ListeBloqueView);
         }
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
         {
-            List<Processus> P = new List<Processus>();
-            foreach (Processus Pro in prog.listeProcessus)
-            {
-                P.Add(new Processus(Pro));
-            }
-            ResultatFinal resultatFinal = new ResultatFinal(P);
+            ResultatFinal resultatFinal = new ResultatFinal(prog.listeProcessus);
             resultatFinal.Show();
         }
 

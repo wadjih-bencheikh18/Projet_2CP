@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:viewmodels="clr-namespace:FinalAppTest.ViewModels"
         xmlns:views="clr-namespace:FinalAppTest.Views"
-        Title="MainWindow" WindowState="Maximized" Width="1000" Height="600">
+        Title="MainWindow" WindowState="Maximized" Width="1366" Height="768">
 
     <Grid>
         <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>

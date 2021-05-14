@@ -8,7 +8,7 @@
       xmlns:viewmodels="clr-namespace:FinalAppTest.ViewModels"
       xmlns:views="clr-namespace:FinalAppTest.Views"
         
-      d:DesignHeight="600" d:DesignWidth="1000"
+      d:DesignHeight="768" d:DesignWidth="1366"
       Title="InitPage">
 
     <Page.Resources>
