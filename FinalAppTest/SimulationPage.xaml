@@ -43,15 +43,15 @@
                 <StackPanel x:Name="ListePretsView" Orientation="Horizontal">
                     <StackPanel.Resources>
                         <Storyboard x:Key="ListDecalage">
-                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListePretsView">
-                                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
-                                <EasingThicknessKeyFrame KeyTime="0:0:1" Value="-60,0,0,0"/>
-                            </ThicknessAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
+                            </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                         <Storyboard x:Key="Listback">
-                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListePretsView">
-                                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
-                            </ThicknessAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                         <Storyboard x:Key="up">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
@@ -78,15 +78,24 @@
                                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-202.4"/>
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
-
+                        <Storyboard x:Key="Blocage">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="511.2"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="+202.4"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
                     </StackPanel.Resources>
 
                 </StackPanel>
             </Border>
 
 
-            <Border Margin="10,20,0,0" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" CornerRadius="10" Background="#FFCCDD" BorderBrush="Black" BorderThickness="1" Grid.Row="2" MinWidth="600">
-                <StackPanel x:Name="ListeBloqueView" Orientation="Horizontal">
+            <Border Margin="10,20,0,0" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" CornerRadius="10" Background="#FFCCDD" BorderBrush="Black" BorderThickness="1" Grid.Row="2" MinWidth="600" Panel.ZIndex="-1">
+                <StackPanel x:Name="ListeBloqueView" Orientation="Horizontal" >
                     <StackPanel.Resources>
                         <Storyboard x:Key="up">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">

@@ -63,7 +63,7 @@ namespace Ordonnancement
                 }
                 if (anime && listePrets.Count != 0) //si un tri par durée est necessaire et il y a des processus prêts
                 {
-                    await Activation(ListePretsView, Processeur);
+                    await Activation(ListePretsView, Processeur, 0);
                     anime = false;
                 }
                 debut = false;

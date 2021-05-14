@@ -28,7 +28,7 @@ namespace Ordonnancement
                     listePrets.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //tri des processus de listePrets par durée
                     sort = false; //le tri par durée n'est plus necessaire (déja fait)
                     await MAJListePretsView(ListePretsView,0);
-                    await Activation(ListePretsView, Processeur);
+                    await Activation(ListePretsView, Processeur, 0);
                 }
 
                 temps++; //incrementer le temps réel
