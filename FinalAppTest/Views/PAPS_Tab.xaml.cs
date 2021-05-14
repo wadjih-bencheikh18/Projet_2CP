@@ -56,16 +56,16 @@ namespace FinalAppTest.Views
                     pro.duree = r.Next(1, 20);
                     pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
                     Processus Pro = new Processus(pro.id, pro.tempsArriv, pro.duree);
-                    /*Interruption interruption;
+                    Interruption interruption;
                     Console.Write(Pro.id + "=>");
                     for (int j = 0; j < 2; j++)
                     {
-                        int intduree = r.Next(1, 4);
+                        int intduree = r.Next(1, 20);
                         int intArriv = r.Next(1, pro.duree);
                         interruption = new Interruption(intduree, intArriv);
                         Console.Write(interruption.duree + " | " + interruption.tempsArriv + " => ");
                         Pro.Push(interruption);
-                    }*/
+                    }
                     prog.Push(Pro);  // added to the program
                 }
                 IdTextBox.Text = NbProcessus.ToString();

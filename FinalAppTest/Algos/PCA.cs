@@ -28,12 +28,12 @@ namespace Ordonnancement
                     listePrets.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //tri des processus de listePrets par durée
                     sort = false; //le tri par durée n'est plus necessaire (déja fait)
                     await MAJListePretsView(ListePretsView,0);
-                    await AnimeListPrets_Processeur(ListePretsView, Processeur);
+                    await Activation(ListePretsView, Processeur);
                 }
 
                 temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
-                InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
+                await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                 if (listePrets.Count != 0) //il y a des processus prêts
                 {
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;

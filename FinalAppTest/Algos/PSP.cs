@@ -8,20 +8,6 @@ namespace Ordonnancement
 {
     public class PSP : Ordonnancement
     {
-        public async Task Disactive(StackPanel ListePretsView, StackPanel Processeur,Processus proc)
-        {
-            Storyboard animeDis = new Storyboard();
-            animeDis.Children.Add(Processeur.FindResource("Disactive") as Storyboard);
-            animeDis.Begin((FrameworkElement)Processeur.Children[0]);
-            await Task.Delay(1000);
-            Processeur.Children.Clear();
-            AffichageProcessus pro = new AffichageProcessus(proc);
-            pro.X = 600 - 60 * ListePretsView.Children.Count;
-            ProcessusDesign item = new ProcessusDesign();
-            item.DataContext = pro;
-            ListePretsView.Children.Add(item);
-            await Task.Delay(1000);
-        }
         #region Constructeur
         public PSP() { }
         #endregion
@@ -67,7 +53,7 @@ namespace Ordonnancement
                         }
                         else if (proc != listePrets[0])
                         {
-                            await Disactive(ListePretsView, Processeur, proc);
+                            await Desactivation(ListePretsView, Processeur, proc);
                             i = 0;
                             anime = true;
                         }
@@ -77,13 +63,13 @@ namespace Ordonnancement
                 }
                 if (anime && listePrets.Count != 0) //si un tri par durée est necessaire et il y a des processus prêts
                 {
-                    await AnimeListPrets_Processeur(ListePretsView, Processeur);
+                    await Activation(ListePretsView, Processeur);
                     anime = false;
                 }
                 debut = false;
                 temps++;
                 TempsView.Text = temps.ToString();
-                InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
+                await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                 if (listePrets.Count != 0) //S'il y a des processus prêts
                 {
                     listePrets[0].etat = 2;
