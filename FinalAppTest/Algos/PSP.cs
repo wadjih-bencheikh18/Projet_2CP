@@ -103,7 +103,6 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
-                else AfficheLigne(temps - 1); //affiche le temps actuel et le mot "repos" ie le processeur n'execute aucun processus
             }
             return temps;
         }
