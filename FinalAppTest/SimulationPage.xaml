@@ -22,7 +22,7 @@
   </Page.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="background.jpg"/>
+            <ImageBrush ImageSource="Pics/background.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -64,7 +64,7 @@
             </Border>
             <Border Height="180" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="2" Margin="40,0,0,0" Grid.Row="1" Width="180">
                 <Border.Background>
-                    <ImageBrush ImageSource="Processor.png"/>
+                    <ImageBrush ImageSource="Pics/Processor.png"/>
                 </Border.Background>
                 <StackPanel x:Name="Processeur" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel.Resources>
@@ -111,7 +111,7 @@
                     </Ellipse>
                     <Button x:Name="StartBtn" Style="{StaticResource MyButtonStyle}" Grid.Column="0" Background="#0D9330" BorderThickness="0" Width="45" Height="45" Click="StartBtn_Click">
                         <Button.Content>
-                            <Image Source="Start.png" Width="30" Height="30" />
+                            <Image Source="Pics/Start.png" Width="30" Height="30" />
                         </Button.Content>
                     </Button>
 
@@ -122,7 +122,7 @@
                     </Ellipse>
                     <Button x:Name="ExitButton" Click="ExitButton_Click" Style="{StaticResource MyButtonStyle}" Grid.Column="1" Background="#B51F1F" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
-                            <Image Source="resume.png" Width="30" Height="30"/>
+                            <Image Source="Pics/resume.png" Width="30" Height="30"/>
                         </Button.Content>
                     </Button>
 
@@ -133,7 +133,7 @@
                     </Ellipse>
                     <Button Grid.Column="2" Style="{StaticResource MyButtonStyle}" Background="#FFB53E" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
-                            <Image Source="pause.png" Width="30" Height="30"/>
+                            <Image Source="Pics/pause.png" Width="30" Height="30"/>
                         </Button.Content>
                     </Button>
 
@@ -144,7 +144,7 @@
                     </Ellipse>
                     <Button Grid.Column="3" Style="{StaticResource MyButtonStyle}" Background="#4974C8" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
-                            <Image Source="circle.png" Width="30" Height="30"/>
+                            <Image Source="Pics/circle.png" Width="30" Height="30"/>
                         </Button.Content>
                     </Button>
 
@@ -155,7 +155,7 @@
                     </Ellipse>
                     <Button x:Name="ResultFinalBtn" Style="{StaticResource MyButtonStyle}" Grid.Column="4" Background="#666666" BorderThickness="0" Width="45" Height="45" Click="ResultFinalBtn_Click">
                         <Button.Content>
-                            <Image Source="algos.png" Width="30" Height="30"/>
+                            <Image Source="Pics/algos.png" Width="30" Height="30"/>
                         </Button.Content>
                     </Button>
                 </Grid>
