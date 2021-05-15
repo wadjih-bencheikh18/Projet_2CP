@@ -7,12 +7,23 @@
          mc:Ignorable="d"
         Title="ResultatFinal" Height="450" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <ScrollViewer>
-        <Grid x:Name="Grid1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="#FFC2CBCA">
-
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
+                <RowDefinition />
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" >
+            <Rectangle Grid.RowSpan="6" Fill="#FFFFFFFF" RadiusX="15" RadiusY="15" Stroke="#FFB3B3B3" StrokeThickness="0.5">
+                <Rectangle.Effect>
+                    <DropShadowEffect ShadowDepth="0" Opacity="0.2" BlurRadius="15" Direction="0"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Grid Grid.Row="0" x:Name="Grid1" Background="#00FFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
@@ -22,7 +33,10 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition  Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <DataGridRowHeader Grid.ColumnSpan="8" Background="#FFB0B0B0"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Rectangle Grid.ColumnSpan="7" Fill="#FFE6E6FC" RadiusX="7" RadiusY="7"></Rectangle>
                 <TextBlock Grid.Column="0"  Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                 <TextBlock Grid.Column="1" Text="Temps D'arrivé" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                 <TextBlock Grid.Column="2" Text="Durée" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
@@ -31,7 +45,15 @@
                 <TextBlock Grid.Column="5" Text="Temps De Reponse" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                 <TextBlock Grid.Column="6" Text="Temps De Fin" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
             </Grid>
-
+        </Grid>
+        <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle x:Name="TerminerButton" Margin="10" Cursor="Hand" MouseLeftButtonDown="Terminer_Click" Grid.Column="1" Fill="#5829AA" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25" MouseEnter="TerminerButton_MouseEnter" MouseLeave="TerminerButton_MouseLeave"/>
+              <TextBlock  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Terminer</TextBlock>
+        </Grid>
         </Grid>
     </ScrollViewer>
 </Window>

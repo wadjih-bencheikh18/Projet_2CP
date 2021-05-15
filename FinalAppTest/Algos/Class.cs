@@ -64,12 +64,10 @@ namespace Ordonnancement
             ProcessusString proc;
             TableRowFinal item;
             RowDefinition rowdef = new RowDefinition();
-            rowdef.Height = new GridLength(30);
+            rowdef.Height = new GridLength(60);
             Table.RowDefinitions.Insert(i, rowdef);
             item = new TableRowFinal();
             proc = new ProcessusString(this);
-            if (i % 2 == 0) proc.Background = "LightBlue";
-            else proc.Background = "lightGray";
             item.DataContext = proc;
             Grid.SetRow(item, i + 1);
             Table.Children.Add(item);
