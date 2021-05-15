@@ -141,7 +141,7 @@ namespace Ordonnancement
             while (listePrets.Count != 0 && (temps < tempsFin || tempsFin == -1))
             //s'il existe des processus prêts et ( On n'est pas encore arrivé à tempsFin ou il n'y a pas de temps fin )
             {
-                niveaux[indiceNiveau].indice[0] = MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau);  //remplir la liste des processus prêts de chaque niveau
+                niveaux[indiceNiveau].indice[0] = await MAJListePrets (temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);  //remplir la liste des processus prêts de chaque niveau
                 temps++;
                 InterruptionExecute(listebloqueGenerale);
                 if (listePrets.Count != 0) //S'il y a des processus prêts

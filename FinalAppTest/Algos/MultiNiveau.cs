@@ -10,7 +10,7 @@ using System.Windows.Threading;
 namespace Ordonnancement
 {
 
-    class MultiNiveau : Ordonnancement
+    public class MultiNiveau : Ordonnancement
     {
         #region Attributs
         protected new List<ProcessusNiveau> listeProcessus = new List<ProcessusNiveau>();
@@ -91,7 +91,7 @@ namespace Ordonnancement
             int temps = 0, indice = 0, indiceNiveau = 0, tempsFin;
             while (indice < listeProcessus.Count || indiceNiveau < nbNiveau) //tant que le processus est dans listeProcessus ou il existe un niveau non vide
             {
-                indice = MAJListePrets(temps, indice);  //remplir la liste des processus prêts de chaque niveau
+                indice = await MAJListePrets(temps, indice, ListesPretsViews);  //remplir la liste des processus prêts de chaque niveau
                 for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listePrets.Count == 0; indiceNiveau++) ; //la recherche du permier niveau non vide
                 if (indiceNiveau < nbNiveau)  //il existe un niveau non vide
                 {
@@ -102,7 +102,6 @@ namespace Ordonnancement
                 }
                 else
                 {
-                    if (indice < listeProcessus.Count) AfficheLigne(temps);  //affiche le temps actuel et le mot "repos" ie aucun niveau n'est executé
                     temps++;
                 }
             }
@@ -113,6 +112,31 @@ namespace Ordonnancement
             niveaux[indiceNiveau].algo.Init(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listePrets, niveaux[indiceNiveau].listebloque); //initialisation de algo avec la liste des processus et la liste des processus prêts du niveau
             temps = await niveaux[indiceNiveau].algo.Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus, listebloque, ListesPretsViews, Processeur, TempsView, ListeBloqueView);
             return temps;
+        }
+        public async Task<int> MAJListePrets(int temps, int indice,StackPanel[] ListesPretsViews) //ajouter à la liste des processus prêts de chaque niveau tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
+        {
+            bool ajout = false;
+            for (; indice < listeProcessus.Count; indice++) //parcours de listeProcessus à partir du processus d'indice "indice"
+            {
+                if (listeProcessus[indice].tempsArriv > temps) break; //si le processus n'est pas encore arrivé on sort
+                else
+                {
+                    ajout = true;
+                    niveaux[listeProcessus[indice].niveau].listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts de son niveau
+                    AffichageProcessus pro = new AffichageProcessus(listeProcessus[indice]);
+                    ProcessusDesign item = new ProcessusDesign();
+                    item.DataContext = pro;
+                    pro.X1 = 700;
+                    pro.Y1 = 0;
+                    pro.X2 = pro.X1 / 2;
+                    pro.Y2 = pro.Y1 / 2;
+                    item.DataContext = pro;
+                    ListesPretsViews[indice].Children.Add(item);
+                }
+            }
+            if (ajout) await Task.Delay(1000);
+            else await Task.Delay(500);
+            return indice;
         }
         #endregion
 
