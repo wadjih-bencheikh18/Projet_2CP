@@ -12,13 +12,13 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="{Binding Y}"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{Binding Y}"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="{Binding newY}"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
                 <EasingDoubleKeyFrame KeyTime="0" Value="{Binding X}"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{Binding newX}"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="{Binding newX}"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="processusDone">

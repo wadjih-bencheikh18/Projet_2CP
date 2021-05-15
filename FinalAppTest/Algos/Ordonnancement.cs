@@ -87,7 +87,9 @@ namespace Ordonnancement
             ProcessusDesign item = new ProcessusDesign();
             AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
             pro.X = -89.6;
+            pro.newX = pro.X;
             pro.Y = -140.8;
+            pro.newY = pro.Y;
             item.DataContext = pro;
             Storyboard AnimeProc = new Storyboard();
             Storyboard AnimeList = new Storyboard();
@@ -101,7 +103,7 @@ namespace Ordonnancement
             {
                 AnimeList.Begin((FrameworkElement)ListePretsView.Children[j]);
             }
-            await Task.Delay(1000);
+            await Task.Delay(2000);
             AnimeList = new Storyboard();
             AnimeList.Children.Add(ListePretsView.FindResource("Listback") as Storyboard);
             ListePretsView.Children.RemoveAt(0);
@@ -149,14 +151,11 @@ namespace Ordonnancement
             pro.X = - 60 * ListePretsView.Children.Count + 60 * i;
             pro.Y = 360;
             pro.newX = 600 - 60 * ListePretsView.Children.Count;
-            pro.newY = 0;
             item.DataContext = pro; 
             Storyboard animeReveil = new Storyboard();
             animeReveil.Children.Add(ListeBloqueView.FindResource("up") as Storyboard);
             animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[i]);
             await Task.Delay(500);
-            DoubleAnimationUsingKeyFrames Anime = new DoubleAnimationUsingKeyFrames();
-            //Anime.TargetPropertyType.Name = "border";
 
             animeReveil = (Storyboard)ListeBloqueView.FindResource("decalage");
             for (int j=i+1;j< ListeBloqueView.Children.Count; j++)
@@ -183,7 +182,6 @@ namespace Ordonnancement
             ProcessusDesign item = new ProcessusDesign();
             item.DataContext = pro;
             ListeBloqueView.Children.Add(item);
-            await Task.Delay(1000);
         }
         public async Task Desactivation(StackPanel ListePretsView, StackPanel Processeur, Processus proc)
         {
@@ -197,7 +195,7 @@ namespace Ordonnancement
             ProcessusDesign item = new ProcessusDesign();
             item.DataContext = pro;
             ListePretsView.Children.Add(item);
-            await Task.Delay(1000);
+            await Task.Delay(2000);
         }
         #endregion
 
