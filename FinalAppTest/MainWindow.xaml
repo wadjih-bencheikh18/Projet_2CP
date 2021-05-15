@@ -12,11 +12,20 @@
         <DataTemplate x:Name="PAPS_ViewTemplate" DataType="{x:Type viewmodels:PAPS_ViewModel}">
             <views:PAPS_Tab DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="PCA_ViewTemplate" DataType="{x:Type viewmodels:PCA_ViewModel}">
+            <views:PCA_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="PSP_ViewTemplate" DataType="{x:Type viewmodels:PSP_ViewModel}">
+            <views:PSP_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="RoundRobin_ViewTemplate" DataType="{x:Type viewmodels:RoundRobinViewModel}">
+            <views:RoundRobin_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="MultiNiv_ViewTemplate" DataType="{x:Type viewmodels:MultiNiveauViewModel}">
+            <views:Mult_Niv_Tab DataContext="{Binding}"/>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="Artboard 4.png"/>
-        </Grid.Background>
         <!--Layout-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -29,10 +38,9 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        
         <!--Content-->
-        <Frame x:Name="Main" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5"/>
-        <DockPanel Background="AliceBlue" Grid.Row="0" Grid.Column="0">
+        <DockPanel Background="#FFE9F2FE" Grid.Row="0" Grid.Column="0">
             <!--This grid controls what init table to be shown-->
             <Grid>
                 <Grid.RowDefinitions>
@@ -43,15 +51,20 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0" Margin="30 20" Content="PAPS" FontSize="25" FontWeight="Bold" x:Name="PAPS_Button" Click="PAPS_Button_Click"/>
-                <Button Grid.Row="1" Margin="30 20" Content="PCA" FontSize="25" FontWeight="Bold"/>
-                <Button Grid.Row="2" Margin="30 20" Content="PSP" FontSize="25" FontWeight="Bold"/>
-                <Button Grid.Row="3" Margin="30 20" Content="Round Robin" FontSize="20" FontWeight="Bold"/>
-                <Button Grid.Row="4" Margin="30 20" Content="Multi-Niveaux" FontSize="20" FontWeight="Bold"/>
+                <Button Grid.Row="1" Margin="30 20" Content="PCA" FontSize="25" FontWeight="Bold" x:Name="PCA_Button" Click="PCA_Button_Click"/>
+                <Button Grid.Row="2" Margin="30 20" Content="PSP" FontSize="25" FontWeight="Bold" x:Name="PSP_Button" Click="PSP_Button_Click"/>
+                <Button Grid.Row="3" Margin="30 20" Content="Round Robin" FontSize="20" FontWeight="Bold" x:Name="RoundRobinButton" Click="RoundRobinButton_Click"/>
+                <Button Grid.Row="4" Margin="30 20" Content="Multi-Niveaux" FontSize="20" FontWeight="Bold" x:Name="MultiNivButton" Click="MultiNivButton_Click"/>
             </Grid>
         </DockPanel>
         <!--the area of the simulation-->
-        <ContentControl Content="{Binding}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="4" Background="Black"/>
+        <ContentControl x:Name="ContentViewer" Content="{Binding}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="4"/>
         <!--This button changes the whole page-->
-        <Button x:Name="StartPAPS_Button" Click="StartPAPS_Button_Click" Grid.Row="1" Margin="30 50" Content="Simuler" FontSize="25" FontWeight="Bold"/>
+        <Grid Grid.Row="1" Background="#FFE9F2FE">
+            <Button x:Name="StartButton" Click="StartButton_Click" Grid.Row="1" Margin="30 50" Content="Simuler" FontSize="25" FontWeight="Bold" />
+
+        </Grid>
+        <!--This to go to the simulation page-->
+        <Frame x:Name="Main" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5"/>
     </Grid>
 </Window>

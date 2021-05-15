@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Ordonnancement;
 namespace FinalAppTest
 {
     /// <summary>
@@ -20,9 +20,27 @@ namespace FinalAppTest
     /// </summary>
     public partial class SimulationPage : Page
     {
-        public SimulationPage()
+        private Ordonnancement.Ordonnancement prog;
+
+        public SimulationPage(Ordonnancement.Ordonnancement prog)
         {
             InitializeComponent();
+            this.prog = prog;
+        }
+        private void StartBtn_Click(object sender, RoutedEventArgs e)
+        {
+              _ = prog.Executer(ListProcessusView, Processeur, TempsView);
+        }
+
+        private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
+        {
+            List<Processus> P = new List<Processus>();
+            foreach (Processus Pro in prog.listeProcessus)
+            {
+                P.Add(new Processus(Pro));
+            }
+            ResultatFinal resultatFinal = new ResultatFinal(P);
+            resultatFinal.Show();
         }
     }
 }

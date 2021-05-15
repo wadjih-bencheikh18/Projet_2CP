@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PAPS_TabRow.xaml
+    /// Interaction logic for RoundRobin_TabRow.xaml
     /// </summary>
-    public partial class PAPS_TabRow : UserControl
+    public partial class RoundRobin_TabRow : UserControl
     {
-        public PAPS_TabRow()
+        public RoundRobin_TabRow()
         {
             InitializeComponent();
         }
@@ -31,7 +31,7 @@ namespace FinalAppTest.Views
         private TextBlock Ajouter;
         private StackPanel Table;
 
-        public PAPS_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, StackPanel Table, TextBlock Ajouter)
+        public RoundRobin_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
@@ -40,21 +40,21 @@ namespace FinalAppTest.Views
             this.Table = Table;
             this.Ajouter = Ajouter;
         }
+
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
         {
             id.Text = idTest.Text;
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
-            PAPS_Tab.modifier = true;
-            PAPS_Tab.proModifier = this;
+            RoundRobin_Tab.modifier = true;
+            RoundRobin_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            PAPS_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
+            RoundRobin_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }
     }
 }
-

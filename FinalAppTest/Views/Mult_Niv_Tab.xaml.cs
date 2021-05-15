@@ -17,20 +17,19 @@ using Ordonnancement;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PAPS_Tab.xaml
+    /// Interaction logic for Mult_Niv_Tab.xaml
     /// </summary>
-    public partial class PAPS_Tab : UserControl
+    public partial class Mult_Niv_Tab : UserControl
     {
-        public PAPS_Tab()
+        public Mult_Niv_Tab()
         {
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
             indice++;
         }
-
         public static PAPS prog = new PAPS();
         public static bool modifier = false;
-        public static PAPS_TabRow proModifier;
+        public static Mult_Niv_TabRow proModifier;
         private int indice = 0;
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
@@ -39,14 +38,15 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             if (!Int32.TryParse(NbProcessusTextBox.Text, out NbProcessus) && NbProcessus <= 0)
             {
-
+                NbProcessusTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
             else
             {
-                prog.listeProcessus.Clear();  // vider la liste pour l'ecraser
+                prog.listeProcessus.Clear();
                 NbProcessusTextBox.Text = "";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
-                RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
+                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
                 Random r = new Random();
                 for (int i = 0; i < NbProcessus; i++)
                 {
@@ -69,50 +69,49 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
+                TempsArrivTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                TempsArrivTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
             if (!Int32.TryParse(DureeTextBox.Text, out duree) || duree <= 0)  // get durée
             {
+                DureeTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                DureeTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
-            if (valide)  // si tous est correcte
+            if (valide && !modifier)  // si tous est correcte
             {
-                if (!modifier)  // un nouveau processus
+                id = indice;
+                TempsArrivTextBox.Text = "0";
+                DureeTextBox.Text = "1";
+                IdTextBox.Text = (id + 1).ToString();
+                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
+                AffichageProcessus pro = new AffichageProcessus
                 {
-                    RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
-                    RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
-                    id = indice;
-                    TempsArrivTextBox.Text = "0";
-                    DureeTextBox.Text = "1";
-                    IdTextBox.Text = (id + 1).ToString();
-                    NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
-                    AffichageProcessus pro = new AffichageProcessus
-                    {
-                        id = id,
-                        tempsArriv = tempsArrive,
-                        duree = duree,
-                    };
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
-                    prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree));  // added to the program
-                    indice++;
-                }
-                else  // modifier un existant
+                    id = id,
+                    tempsArriv = tempsArrive,
+                    duree = duree
+                };
+                pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
+                prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree));  // added to the program
+                indice++;
+            }
+            else if (valide && modifier)
+            {
+                AffichageProcessus pro = new AffichageProcessus
                 {
-                    AffichageProcessus pro = new AffichageProcessus
-                    {
-                        id = int.Parse(IdTextBox.Text),
-                        tempsArriv = tempsArrive,
-                        duree = duree,
-                        Background = "#FFEFF3F9"
-                    };
-                    PAPS_TabRow item = (PAPS_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
-                    item.DataContext = pro;
-                    ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
-                    prog.listeProcessus[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree);  // modifier le processus correspondant
-                    modifier = false;
-                    IdTextBox.Text = indice.ToString();
-                    ajouterTB.Text = "Ajouter";
-                }
+                    id = int.Parse(IdTextBox.Text),
+                    tempsArriv = tempsArrive,
+                    duree = duree,
+                    Background = "#FFEFF3F9"
+                };
+                PAPS_TabRow item = (PAPS_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                item.DataContext = pro;
+                ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
+                prog.listeProcessus[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree);  // modifier le processus correspondant
+                modifier = false;
+                IdTextBox.Text = indice.ToString();
+                ajouterTB.Text = "Ajouter";
             }
         }
 
@@ -139,25 +138,32 @@ namespace FinalAppTest.Views
             RandomButton.Fill = (Brush)bc.ConvertFrom("#FF000000");
         }
 
-        private void TempsArrivTextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void RandomNivButton_MouseEnter(object sender, MouseEventArgs e)
         {
             var bc = new BrushConverter();
-            if (!int.TryParse(TempsArrivTextBox.Text, out int i) || i<0) RectTar.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            else RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9") ;
+            NiveauButton.Fill = (Brush)bc.ConvertFrom("#FF575757");
         }
 
-        private void DureeTextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void RandomNivButton_MouseLeave(object sender, MouseEventArgs e)
         {
             var bc = new BrushConverter();
-            if (!int.TryParse(DureeTextBox.Text, out int i) || i<=0) RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            else RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+            NiveauButton.Fill = (Brush)bc.ConvertFrom("#FF000000");
         }
 
-        private void NbProcessusTextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void RandomNivButton_Click(object sender, MouseButtonEventArgs e)
         {
+            int NbNiveaux;
             var bc = new BrushConverter();
-            if (!int.TryParse(NbProcessusTextBox.Text, out int i) || i < 0) RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            else RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
+            if (!Int32.TryParse(NiveauTextBox.Text, out NbNiveaux) && NbNiveaux <= 0)
+            {
+                NiveauTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                NiveauTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            }
+            else
+            {
+
+            }
         }
     }
 }
+
