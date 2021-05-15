@@ -22,7 +22,7 @@ namespace Ordonnancement
         #region Visualisation
         public override async Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
         {
-            bool anime = false;
+            bool anime = true;
             SortListeProcessus(); //Tri de la liste des processus par temps d'arrivée
             int indice = 0, temps = 0, q = 0;
             while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0)  //s'il existe des processus prêts
@@ -44,7 +44,7 @@ namespace Ordonnancement
                 else  // listePrets n'est pas vide 
                 {
                     if (anime)
-                        await Activation(ListePretsView, Processeur, 0);
+                        await Activation(ListePretsView, Processeur, listePrets[0]);
 
                     await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                     anime = false;

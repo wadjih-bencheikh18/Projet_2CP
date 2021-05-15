@@ -54,7 +54,7 @@ namespace Ordonnancement
                 listebloque[i].InterruptionExecute();
                 if (listebloque[i].indiceInterruptions[0] == listebloque[i].indiceInterruptions[1])
                 {
-                    await Reveil(ListePretsView, ListeBloqueView, i,i);
+                    await Reveil(ListePretsView, ListeBloqueView, i);
                     listebloque[i].etat = 1;
                     listePrets.Add(listebloque[i]);
                     listebloque.RemoveAt(i);
@@ -74,20 +74,20 @@ namespace Ordonnancement
                 listebloque.Add(listePrets[0]);
                 await Blocage(ListeBloqueView, Processeur);
                 listePrets.RemoveAt(0);
-                if (listePrets.Count!=0) await Activation(ListePretsView, Processeur, 0);
+                if (listePrets.Count!=0) await Activation(ListePretsView, Processeur, listePrets[0]);
             }
-            else if (Anime && vide) await Activation(ListePretsView, Processeur, 0);
+            else if (Anime && vide) await Activation(ListePretsView, Processeur, listePrets[0]);
         }
 
         #endregion
 
         #region Animation
 
-        public async Task Activation(StackPanel ListePretsView, StackPanel Processeur,int i)
+        public async Task Activation(StackPanel ListePretsView, StackPanel Processeur,Processus proc)
         {
             Processeur.Children.Clear();
             ProcessusDesign item = new ProcessusDesign();
-            AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
+            AffichageProcessus pro = new AffichageProcessus(proc);
             pro.X1 = -89.6;
             pro.X2 = pro.X1/2;
             pro.Y1 = -140.8;
@@ -101,7 +101,7 @@ namespace Ordonnancement
             await Task.Delay(500);
             Processeur.Children.Add(item);
             ListePretsView.Children[0].Visibility = Visibility.Hidden;
-            for(int j=i+1;j< ListePretsView.Children.Count;j++)
+            for(int j=1;j< ListePretsView.Children.Count;j++)
             {
                 AnimeList.Begin((FrameworkElement)ListePretsView.Children[j]);
             }
@@ -109,7 +109,7 @@ namespace Ordonnancement
             AnimeList = new Storyboard();
             AnimeList.Children.Add(ListePretsView.FindResource("Listback") as Storyboard);
             ListePretsView.Children.RemoveAt(0);
-            for (int j = i; j < ListePretsView.Children.Count; j++)
+            for (int j = 0; j < ListePretsView.Children.Count; j++)
             {
                 AnimeList.Begin((FrameworkElement)ListePretsView.Children[j]);
             }
@@ -146,11 +146,11 @@ namespace Ordonnancement
             }
             await Task.Delay(500);
         }
-        public async Task Reveil(StackPanel ListePretsView, StackPanel ListeBloqueView,int i,int k)
+        public async Task Reveil(StackPanel ListePretsView, StackPanel ListeBloqueView,int i)
         {
             ProcessusDesign item = new ProcessusDesign();
             AffichageProcessus pro = new AffichageProcessus(listebloque[i]);
-            pro.X1 = - 60 * ListePretsView.Children.Count + 60 * k;
+            pro.X1 = - 60 * ListePretsView.Children.Count + 60 * i;
             pro.Y1 = 360;
             pro.Y2 = 360;
             pro.X2 = 600 - 60 * ListePretsView.Children.Count;
@@ -158,17 +158,17 @@ namespace Ordonnancement
             item.DataContext = pro; 
             Storyboard animeReveil = new Storyboard();
             animeReveil.Children.Add(ListeBloqueView.FindResource("up") as Storyboard);
-            animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[k]);
+            animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[i]);
             await Task.Delay(500);
 
             animeReveil = (Storyboard)ListeBloqueView.FindResource("decalage");
-            for (int j=k+1;j< ListeBloqueView.Children.Count; j++)
+            for (int j=i+1;j< ListeBloqueView.Children.Count; j++)
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
 
             await Task.Delay(1000);
-            ListeBloqueView.Children.RemoveAt(k);
+            ListeBloqueView.Children.RemoveAt(i);
             animeReveil = ListeBloqueView.FindResource("Retour") as Storyboard;
-            for (int j = k; j < ListeBloqueView.Children.Count; j++)
+            for (int j = i; j < ListeBloqueView.Children.Count; j++)
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
             
             ListePretsView.Children.Add(item);
@@ -357,31 +357,29 @@ namespace Ordonnancement
             else await Task.Delay(500);
             return indice;
         }
-        public async Task<bool> MAJListBloque(List<ProcessusNiveau> listebloqueGenerale,StackPanel ListePretsView, StackPanel ListeBloqueView)
+        public async Task<bool> MAJListBloque(List<ProcessusNiveau> listebloqueGenerale,StackPanel[] ListesPretsViews, StackPanel ListeBloqueView)
         {
             bool Anime = false;
-            int j;
-            for (int i = 0; i < listebloque.Count; i++)
+            for (int i = 0; i < listebloqueGenerale.Count; i++)
             {
-                listebloque[i].InterruptionExecute();
-                if (listebloque[i].indiceInterruptions[0] == listebloque[i].indiceInterruptions[1])
+                listebloqueGenerale[i].InterruptionExecute();
+                if (listebloqueGenerale[i].indiceInterruptions[0] == listebloqueGenerale[i].indiceInterruptions[1])
                 {
-                    listebloque[i].etat = 1;
-                    listePrets.Add(listebloque[i]);
-                    j=listebloqueGenerale.FindIndex( p => p.id == listebloque[i].id);
-                    await Reveil(ListePretsView, ListeBloqueView, i, j);
-                    listebloqueGenerale.RemoveAt(j);
+                    listebloqueGenerale[i].etat = 1;
+                    listePrets.Add(listebloqueGenerale[i]);
+                    await Reveil(ListesPretsViews[listebloqueGenerale[i].niveau], ListeBloqueView, i);
+                    listebloqueGenerale.RemoveAt(i);
                     listebloque.RemoveAt(i);
                     Anime = true;
                 }
             }
             return Anime;
         }
-        public async Task InterruptionExecute(List<ProcessusNiveau> listebloqueGenerale, StackPanel ListePretsView, StackPanel ListeBloqueView, StackPanel Processeur)
+        public async Task InterruptionExecute(List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews,int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur)
         {
             bool vide = false;
             if (listePrets.Count == 0) vide = true;
-            bool Anime=await MAJListBloque(listebloqueGenerale,ListePretsView, ListeBloqueView);
+            bool Anime=await MAJListBloque(listebloqueGenerale,ListesPretsViews, ListeBloqueView);
             if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
                 listePrets[0].etat = 0;
@@ -389,9 +387,9 @@ namespace Ordonnancement
                 await Blocage(ListeBloqueView, Processeur);
                 listebloque.Add(listePrets[0]);
                 listePrets.RemoveAt(0);
-                if (listePrets.Count != 0) await Activation(ListePretsView, Processeur, 0);
+                if (listePrets.Count != 0) await Activation(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
             }
-            else if (Anime && vide) await Activation(ListePretsView, Processeur, 0);
+            else if (Anime && vide) await Activation(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
         }
         #endregion
         #endregion

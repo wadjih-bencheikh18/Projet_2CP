@@ -63,7 +63,7 @@ namespace Ordonnancement
                 }
                 if (anime && listePrets.Count != 0) //si un tri par durée est necessaire et il y a des processus prêts
                 {
-                    await Activation(ListePretsView, Processeur, 0);
+                    await Activation(ListePretsView, Processeur, listePrets[0]);
                     anime = false;
                 }
                 await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
@@ -136,39 +136,83 @@ namespace Ordonnancement
         // des algorithmes nécessaires pour implémenter MultiNiveaux
         public override async Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
         {
+            bool anime=false,debut=false;
+            Processus proc;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;  // initialisation du temps
             while (listePrets.Count != 0 && (temps < tempsFin || tempsFin == -1))
             //s'il existe des processus prêts et ( On n'est pas encore arrivé à tempsFin ou il n'y a pas de temps fin )
             {
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets (temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);  //remplir la liste des processus prêts de chaque niveau
-                temps++;
-                InterruptionExecute(listebloqueGenerale);
+                if (listePrets.Count != 0)
+                {
+                    bool sort = false;
+                    proc = listePrets[0];
+                    List<Processus> P = new List<Processus>();
+                    foreach (Processus Pro in listePrets)
+                    {
+                        P.Add(Pro);
+                    }
+                    listePrets.Sort(delegate (Processus x, Processus y)
+                    {
+                        if (x.prio.CompareTo(y.prio) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont la même priorité, on les trie selon le temps d'arrivée
+                        else return x.prio.CompareTo(y.prio); //sinon, on fait le tri par priorité
+                    }
+                                        );
+                    for (int i = 0; i < P.Count; i++)
+                    {
+                        if (P[i].id != listePrets[i].id) sort = true;
+                    }
+                    if (sort)
+                    {
+                        int i;
+                        if (debut)
+                        {
+                            i = 0;
+                            anime = true;
+                        }
+                        else if (proc != listePrets[0])
+                        {
+                            await Desactivation(ListePretsView, Processeur, proc);
+                            i = 0;
+                            anime = true;
+                        }
+                        else i = 1;
+                        await MAJListePretsView(ListePretsView, i);
+                    }
+                }
+                if (anime && listePrets.Count != 0) //si un tri par durée est necessaire et il y a des processus prêts
+                {
+                    await Activation(ListePretsView, Processeur, listePrets[0]);
+                    anime = false;
+                }
+                await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur);
+                temps++; 
+                TempsView.Text = temps.ToString();
+                anime = false;
+                debut = false;
                 if (listePrets.Count != 0) //S'il y a des processus prêts
                 {
-                    listePrets.Sort(
-                                           delegate (Processus x, Processus y)
-                                           {
-                                               if (x.prio.CompareTo(y.prio) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont la même priorité, on les trie selon le temps d'arrivée
-                                               else return x.prio.CompareTo(y.prio); //sinon, on fait le tri par priorité
-                                           }
-                                    );
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--;//L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
-                    AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps et l'ID du processus entrain d'être executé
+                    MAJProcesseur(Processeur);
                     if (listePrets[0].tempsRestant == 0) // Si l'execution du premier processus de listePrets est terminée :
                     {
                         listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3;
+                        await FinProcessus(Processeur);
+                        debut = true;
+                        anime = true;
                         listePrets.RemoveAt(0); //supprimer le processus dont la duree est écoulée
                     }
                 }
                 if (temps == tempsFin)
                 {
                     listePrets[0].etat = 1;
+                    await Desactivation(ListePretsView, Processeur, listePrets[0]);
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
                     return temps;

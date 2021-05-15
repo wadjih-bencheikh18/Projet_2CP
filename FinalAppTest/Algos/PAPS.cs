@@ -19,13 +19,13 @@ namespace Ordonnancement
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = 0, indice = 0;
-            bool anime = false;
+            bool anime = true;
             while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0) //s'il existe des processus non executés
             {
                 if (listePrets.Count == 0) anime = true;
                 indice = await MAJListePrets(temps, indice, ListePretsView); //remplir listePrets
                 if (listePrets.Count != 0 && anime)
-                    await Activation(ListePretsView, Processeur,0);
+                    await Activation(ListePretsView, Processeur, listePrets[0]);
 
                 await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                 anime = false;
@@ -95,15 +95,14 @@ namespace Ordonnancement
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;
             bool anime = false;
-            await Activation(ListePretsView, Processeur, 0);
-            while (listePrets.Count != 0) //s'il existe des processus prêts 
+            while (listePrets.Count != 0 && (temps < tempsFin || tempsFin == -1)) //s'il existe des processus prêts 
             {
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
                 if(anime)
                 {
-                    await Activation(ListePretsView, Processeur, 0);
+                    await Activation(ListePretsView, Processeur, listePrets[0]);
                 }
-                await InterruptionExecute(listebloqueGenerale, ListePretsView, ListeBloqueView, Processeur);
+                await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur);
                 anime = false;
                 temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
@@ -126,8 +125,8 @@ namespace Ordonnancement
                 if (temps == tempsFin)
                 {
                     listePrets[0].etat = 1;
-                    listePrets.Add(listePrets[0]);
                     await Desactivation(ListePretsView, Processeur, listePrets[0]);
+                    listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
                     return temps;
                 }

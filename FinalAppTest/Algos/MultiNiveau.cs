@@ -86,13 +86,21 @@ namespace Ordonnancement
         #region Visualisation
         public override async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView) 
         {
+            bool anime = false;
             SortListeProcessus();  //trier la liste des processus
             InitNiveaux();   //remplir les niveaux
-            int temps = 0, indice = 0, indiceNiveau = 0, tempsFin;
+            int temps = 0, indice = 0, indiceNiveau = nbNiveau, tempsFin;
             while (indice < listeProcessus.Count || indiceNiveau < nbNiveau) //tant que le processus est dans listeProcessus ou il existe un niveau non vide
             {
+                if (indiceNiveau == nbNiveau) anime = true;
                 indice = await MAJListePrets(temps, indice, ListesPretsViews);  //remplir la liste des processus prêts de chaque niveau
+                await InterruptionExecute(listebloque, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur);
                 for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listePrets.Count == 0; indiceNiveau++) ; //la recherche du permier niveau non vide
+                if (anime && indiceNiveau < nbNiveau)
+                {
+                    await Activation(ListesPretsViews[indiceNiveau], Processeur, niveaux[indiceNiveau].listePrets[0]);
+                }
+                anime = false;
                 if (indiceNiveau < nbNiveau)  //il existe un niveau non vide
                 {
                     tempsFin = TempsFin(indice, indiceNiveau);  //calcul du temps de fin d'execution

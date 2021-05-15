@@ -28,12 +28,11 @@ namespace Ordonnancement
                     listePrets.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //tri des processus de listePrets par durée
                     sort = false; //le tri par durée n'est plus necessaire (déja fait)
                     await MAJListePretsView(ListePretsView,0);
-                    await Activation(ListePretsView, Processeur, 0);
+                    await Activation(ListePretsView, Processeur, listePrets[0]);
                 }
-
+                await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                 temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
-                await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                 sort = false;
                 if (listePrets.Count != 0) //il y a des processus prêts
                 {
@@ -111,7 +110,6 @@ namespace Ordonnancement
         public override async Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
         {
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
-
             int temps = tempsDebut;
             if (niveaux[indiceNiveau].indice[2] == 0) niveaux[indiceNiveau].indice[1] = 1; //si aucun processus du niveau actuel n'a été executé alors il faut trier les processus de listePrets de ce niveau par durée
             niveaux[indiceNiveau].indice[2] = 1; //l'execution d'un processus de ce niveau commence
@@ -123,9 +121,9 @@ namespace Ordonnancement
                     listePrets.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //sinon, on fait le tri par durée
                     niveaux[indiceNiveau].indice[1] = 0; //le tri par durée n'est plus necessaire (déja fait)
                     await MAJListePretsView(ListePretsView, 0);
-                    await Activation(ListePretsView, Processeur, 0);
+                    await Activation(ListePretsView, Processeur, listePrets[0]);
                 }
-                await InterruptionExecute(listebloqueGenerale, ListePretsView, ListeBloqueView, Processeur);
+                await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur);
                 niveaux[indiceNiveau].indice[1] = 0;
                 temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
@@ -148,9 +146,10 @@ namespace Ordonnancement
                 }
                 if (temps == tempsFin)
                 {
+                    niveaux[indiceNiveau].indice[1] = 1;
                     listePrets[0].etat = 1;
-                    listePrets.Add(listePrets[0]);
                     await Desactivation(ListePretsView, Processeur, listePrets[0]);
+                    listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
                     return temps;
                 }
