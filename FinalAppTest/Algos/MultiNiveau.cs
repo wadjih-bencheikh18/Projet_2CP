@@ -17,6 +17,7 @@ namespace Ordonnancement
         protected new List<ProcessusNiveau> listebloque = new List<ProcessusNiveau>();
         private int nbNiveau;
         private Niveau[] niveaux;
+        public static StackPanel[] ListesPretsViews;
         #endregion
 
         #region Constructeur
@@ -28,6 +29,7 @@ namespace Ordonnancement
         {
             this.nbNiveau = nbNiveau;
             this.niveaux = new Niveau[nbNiveau];
+            ListesPretsViews = new StackPanel[nbNiveau];
             this.niveaux = niveaux;
         }
         #endregion
@@ -73,13 +75,44 @@ namespace Ordonnancement
         }
 
         public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale) { return 0; }
+        public override async Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView) 
+        {
+            await Task.CompletedTask;
+            return 0; 
+        }
+
         #endregion
 
         #region Visualisation
         public override async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView) 
         {
-            await Task.Delay(0);
-            return 0; 
+            SortListeProcessus();  //trier la liste des processus
+            InitNiveaux();   //remplir les niveaux
+            int temps = 0, indice = 0, indiceNiveau = 0, tempsFin;
+            while (indice < listeProcessus.Count || indiceNiveau < nbNiveau) //tant que le processus est dans listeProcessus ou il existe un niveau non vide
+            {
+                indice = MAJListePrets(temps, indice);  //remplir la liste des processus prêts de chaque niveau
+                for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listePrets.Count == 0; indiceNiveau++) ; //la recherche du permier niveau non vide
+                if (indiceNiveau < nbNiveau)  //il existe un niveau non vide
+                {
+                    tempsFin = TempsFin(indice, indiceNiveau);  //calcul du temps de fin d'execution
+                    niveaux[indiceNiveau].indice[0] = indice;   //pour sauvegarder l'indice "indice" (temporairement)
+                    temps = await NiveauExecute(temps, tempsFin, niveaux, indiceNiveau, listeProcessus,Processeur,TempsView,ListeBloqueView);  //temps de fin d'execution du niveau "indiceNiveau"
+                    indice = niveaux[indiceNiveau].indice[0];  //recuperer l'indice sauvegardé precedemment
+                }
+                else
+                {
+                    if (indice < listeProcessus.Count) AfficheLigne(temps);  //affiche le temps actuel et le mot "repos" ie aucun niveau n'est executé
+                    temps++;
+                }
+            }
+            return temps;
+        }
+        public async Task<int> NiveauExecute(int temps, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeProcessus, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)  //executer le niveau "indiceNiveau"
+        {
+            niveaux[indiceNiveau].algo.Init(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listePrets, niveaux[indiceNiveau].listebloque); //initialisation de algo avec la liste des processus et la liste des processus prêts du niveau
+            temps = await niveaux[indiceNiveau].algo.Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus, listebloque, ListesPretsViews, Processeur, TempsView, ListeBloqueView);
+            return temps;
         }
         #endregion
 

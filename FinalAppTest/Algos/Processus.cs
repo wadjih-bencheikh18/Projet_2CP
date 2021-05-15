@@ -11,6 +11,7 @@ namespace Ordonnancement
 {
     public class Processus
     {
+
         #region Abttributs
         //donnés
         public List<Interruption> listeInterruptions = new List<Interruption>();
@@ -137,6 +138,7 @@ namespace Ordonnancement
             Table.Children.Add(item);
         }
         #endregion
+
     }
 
     public class ProcessusNiveau : Processus

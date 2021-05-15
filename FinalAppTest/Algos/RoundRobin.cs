@@ -191,6 +191,56 @@ namespace Ordonnancement
 
         #region MultiNiveau
         // Des algorithmes nécessaires pour implémenter MultiNiveaux
+        public override async Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
+        {
+            StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
+            while (niveaux[indiceNiveau].indice[0] < listeProcessus.Count || listePrets.Count != 0)  //tant qu'il existe des processus prêts
+            {
+                if (niveaux[indiceNiveau].indice[0] < listeProcessus.Count && listePrets.Count == 0)  // Si il y a des processus dans listProcessus et listePrets est vide
+                {
+                    tempsDebut++;  // aucun processus n'est arrivé => on incrémente le temps
+
+                    niveaux[indiceNiveau].indice[0] = MAJListePrets(tempsDebut, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau); // On rempli listePrets
+                }
+                else  // listePrets n'est pas vide 
+                {
+                    listePrets[0].etat = 2;
+                    AfficheLigne(tempsDebut, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
+                    tempsDebut++;
+                    InterruptionExecute(listebloqueGenerale);
+                    niveaux[indiceNiveau].indice[1]++;  // quantum++
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = tempsDebut - 1 - listePrets[0].tempsArriv;
+                    listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
+                    niveaux[indiceNiveau].indice[0] = MAJListePrets(tempsDebut, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau);  // On rempli listePrets
+
+                    if (listePrets[0].tempsRestant == 0)  // fin d'exécution du processus 
+                    {
+                        listePrets[0].tempsFin = tempsDebut;
+                        listePrets[0].tempsService = tempsDebut - listePrets[0].tempsArriv;
+                        listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;
+                        listePrets[0].etat = 3;
+                        listePrets.RemoveAt(0); //supprimer le premier processus executé
+                        niveaux[indiceNiveau].indice[1] = 0;  // un nouveau quantum va commencer
+                    }
+                    else if (niveaux[indiceNiveau].indice[1] == quantum)  // on a terminé ce quantum => il faut passer au processus suivant => on defile, et à la fin, on enfile le processus courant
+                    {
+                        listePrets[0].tempsFin = tempsDebut;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
+                        niveaux[indiceNiveau].indice[1] = 0;  // nouveau quantum
+                        listePrets[0].etat = 1;
+                        listePrets.Add(listePrets[0]);  // enfiler à la fin
+                        listePrets.RemoveAt(0);  // defiler 
+                    }
+                }
+                if (tempsDebut == tempsFin)  // On est arrivé à tempsFin => la fin de l'exécution 
+                {
+                    listePrets[0].etat = 1;
+                    listePrets.Add(listePrets[0]);
+                    listePrets.RemoveAt(0);
+                    return tempsFin;
+                }
+            }
+            return tempsDebut;
+        }
 
         public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale)
         // executer l'algo pendant un intervalle de temps où :
