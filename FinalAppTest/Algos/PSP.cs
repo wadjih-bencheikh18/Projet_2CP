@@ -71,7 +71,6 @@ namespace Ordonnancement
                 debut = false;
                 temps++;
                 TempsView.Text = temps.ToString();
-                
                 if (listePrets.Count != 0) //S'il y a des processus prêts
                 {
                     listePrets[0].etat = 2;

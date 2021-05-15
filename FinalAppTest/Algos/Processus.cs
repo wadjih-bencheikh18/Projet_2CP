@@ -170,10 +170,12 @@ namespace Ordonnancement
         #region Attributs
         public int tempsPasse { get; set; }
         public string Background { get; set; }
-        public double X { get; set; }
-        public double Y { get; set; }
-        public double newX { get; set; }
-        public double newY { get; set; }
+        public double X1 { get; set; }
+        public double Y1 { get; set; }
+        public double X2 { get; set; }
+        public double Y2 { get; set; }
+        public double X3 { get; set; }
+        public double Y3 { get; set; }
         #endregion
 
         #region Constructeur

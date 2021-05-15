@@ -50,8 +50,10 @@ namespace Ordonnancement
                         Processeur.Children.Clear();
                         item = new ProcessusDesign();
                         pro = new AffichageProcessus(listePrets[0]);
-                        pro.X = -89.6;
-                        pro.Y = -140.8;
+                        pro.X1 = -89.6;
+                        pro.X2 = pro.X1 / 2;
+                        pro.Y1 = -140.8;
+                        pro.Y2 = pro.Y1 / 2;
                         item.DataContext = pro;
                         if (ListePretsView.Children.Count != 0)
                         {
@@ -120,7 +122,8 @@ namespace Ordonnancement
                         await Task.Delay(1000);
                         Processeur.Children.Clear();
                         pro = new AffichageProcessus(listePrets[0]);
-                        pro.X = 600 - 60 * ListePretsView.Children.Count;
+                        pro.X1 = 600 - 60 * ListePretsView.Children.Count;
+                        pro.X2 = pro.X1 / 2;
                         item = new ProcessusDesign();
                         item.DataContext = pro;
                         ListePretsView.Children.Add(item);

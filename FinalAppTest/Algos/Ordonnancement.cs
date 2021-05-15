@@ -32,8 +32,10 @@ namespace Ordonnancement
                     ajout = true;
                     ProcessusDesign item = new ProcessusDesign();
                     AffichageProcessus pro = new AffichageProcessus(listeProcessus[indice]);
-                    pro.X = 700;
-                    pro.Y = 0;
+                    pro.X1 = 700;
+                    pro.Y1 = 0;
+                    pro.X2 = pro.X1 / 2;
+                    pro.Y2 = pro.Y1 / 2;
                     item.DataContext = pro;
                     ListePretsView.Children.Add(item);
                     listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts
@@ -86,10 +88,10 @@ namespace Ordonnancement
             Processeur.Children.Clear();
             ProcessusDesign item = new ProcessusDesign();
             AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
-            pro.X = -89.6;
-            pro.newX = pro.X;
-            pro.Y = -140.8;
-            pro.newY = pro.Y;
+            pro.X1 = -89.6;
+            pro.X2 = pro.X1/2;
+            pro.Y1 = -140.8;
+            pro.Y2 = pro.Y1/2;
             item.DataContext = pro;
             Storyboard AnimeProc = new Storyboard();
             Storyboard AnimeList = new Storyboard();
@@ -103,7 +105,7 @@ namespace Ordonnancement
             {
                 AnimeList.Begin((FrameworkElement)ListePretsView.Children[j]);
             }
-            await Task.Delay(2000);
+            await Task.Delay(1000);
             AnimeList = new Storyboard();
             AnimeList.Children.Add(ListePretsView.FindResource("Listback") as Storyboard);
             ListePretsView.Children.RemoveAt(0);
@@ -148,9 +150,11 @@ namespace Ordonnancement
         {
             ProcessusDesign item = new ProcessusDesign();
             AffichageProcessus pro = new AffichageProcessus(listebloque[i]);
-            pro.X = - 60 * ListePretsView.Children.Count + 60 * i;
-            pro.Y = 360;
-            pro.newX = 600 - 60 * ListePretsView.Children.Count;
+            pro.X1 = - 60 * ListePretsView.Children.Count + 60 * i;
+            pro.Y1 = 360;
+            pro.Y2 = 360;
+            pro.X2 = 600 - 60 * ListePretsView.Children.Count;
+            pro.X3 = pro.X2;
             item.DataContext = pro; 
             Storyboard animeReveil = new Storyboard();
             animeReveil.Children.Add(ListeBloqueView.FindResource("up") as Storyboard);
@@ -178,7 +182,8 @@ namespace Ordonnancement
             await Task.Delay(1000);
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
-            pro.X = 600 - 60 * ListeBloqueView.Children.Count;
+            pro.X1 = 600 - 60 * ListeBloqueView.Children.Count;
+            pro.X2 = pro.X1 / 2;
             ProcessusDesign item = new ProcessusDesign();
             item.DataContext = pro;
             ListeBloqueView.Children.Add(item);
@@ -191,11 +196,12 @@ namespace Ordonnancement
             await Task.Delay(1000);
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(proc);
-            pro.X = 600 - 60 * ListePretsView.Children.Count;
+            pro.X1 = 600 - 60 * ListePretsView.Children.Count;
+            pro.X2 = pro.X1 / 2;
             ProcessusDesign item = new ProcessusDesign();
             item.DataContext = pro;
             ListePretsView.Children.Add(item);
-            await Task.Delay(2000);
+            await Task.Delay(1000);
         }
         #endregion
 
