@@ -226,12 +226,13 @@ namespace Ordonnancement
                 {
                     if (listebloque[0].transition == 3)
                     {
-                        deroulement.Text = $"Reveil du processus de l'ID = {listebloque[0].id}"
+                        deroulement.Text = $"Reveil du processus de l'ID = {listebloque[0].id}";
                     }
                 }
             }
             await Task.Delay(500);
         }
+
         #endregion
 
         #region Liste Processus

@@ -52,6 +52,7 @@ namespace Ordonnancement
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2; //Le 1er processus de listePrets est actif
                     temps++;
+                    await AfficherDeroulement(deroulement);
                     TempsView.Text = temps.ToString();
                     q++;  // on incrémente le quantum
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;

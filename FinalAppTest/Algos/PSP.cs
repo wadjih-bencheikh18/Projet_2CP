@@ -70,6 +70,7 @@ namespace Ordonnancement
                 anime = false;
                 debut = false;
                 temps++;
+                await AfficherDeroulement(deroulement);
                 TempsView.Text = temps.ToString();
                 if (listePrets.Count != 0) //S'il y a des processus prêts
                 {

@@ -32,7 +32,7 @@ namespace Ordonnancement
                 }
                 await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                 temps++; //incrementer le temps réel
-
+                await AfficherDeroulement(deroulement);
                 TempsView.Text = temps.ToString();
                 sort = false;
                 if (listePrets.Count != 0) //il y a des processus prêts
