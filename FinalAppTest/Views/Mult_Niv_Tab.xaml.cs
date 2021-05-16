@@ -21,6 +21,7 @@ namespace FinalAppTest.Views
     /// </summary>
     public partial class Mult_Niv_Tab : UserControl
     {
+        public static MultiNiveau prog;
         public Mult_Niv_Tab()
         {
             InitializeComponent();
@@ -34,6 +35,8 @@ namespace FinalAppTest.Views
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
+            Niveau[] niveaux = { new Niveau(3,2), new Niveau(3,4), new Niveau(0), new Niveau(2) };
+            prog = new MultiNiveau(4, niveaux);
             int NbProcessus;
             var bc = new BrushConverter();
             if (!Int32.TryParse(NbProcessusTextBox.Text, out NbProcessus) && NbProcessus <= 0)
@@ -53,7 +56,9 @@ namespace FinalAppTest.Views
                     pro.id = i;
                     pro.tempsArriv = r.Next(20);
                     pro.duree = r.Next(1, 20);
+                    pro.niveau = r.Next(0, 4);
                     pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
+                    prog.Push(new ProcessusNiveau(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.niveau));
                 }
                 IdTextBox.Text = NbProcessus.ToString();
                 indice = NbProcessus;

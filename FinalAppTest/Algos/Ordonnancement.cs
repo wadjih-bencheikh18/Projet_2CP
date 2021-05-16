@@ -330,6 +330,13 @@ namespace Ordonnancement
             }
         }
         #region Animation-Multi
+        public bool PrioNiveaux(Niveau[] niveaux,int indiceNiveau,int nbNiveau)
+        {
+            int i;
+            for (i = 0; i < nbNiveau && niveaux[i].listePrets.Count == 0; i++) ;
+            if (i < indiceNiveau) return false;
+            return true;
+        }
         public abstract Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListsPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView);
         public async Task<int> MAJListePrets(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau, StackPanel[] ListesPretsViews) //ajouter à la liste des processus prêts tous les processus de "listeGeneral" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution de MultiNiveaux
         {
@@ -347,10 +354,8 @@ namespace Ordonnancement
                     item.DataContext = pro;
                     pro.X1 = 700;
                     pro.Y1 = 0;
-                    pro.X2 = pro.X1 / 2;
-                    pro.Y2 = pro.Y1 / 2;
                     item.DataContext = pro;
-                    ListesPretsViews[indice].Children.Add(item);
+                    ListesPretsViews[listeGeneral[indice].niveau].Children.Add(item);
                 }
             }
             if (ajout) await Task.Delay(1000);

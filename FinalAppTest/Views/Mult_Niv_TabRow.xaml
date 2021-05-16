@@ -11,6 +11,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -20,7 +21,8 @@
         <TextBlock x:Name="idTest" Grid.Column="0" Text="{Binding id}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
         <TextBlock x:Name="tempsArrTest" Grid.Column="1" Text="{Binding tempsArriv}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
         <TextBlock x:Name="dureeTest" Grid.Column="2" Text="{Binding duree}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
-        <Grid Grid.Column="3">
+        <TextBlock x:Name="niveau" Grid.Column="3" Text="{Binding niveau}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
+        <Grid Grid.Column="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

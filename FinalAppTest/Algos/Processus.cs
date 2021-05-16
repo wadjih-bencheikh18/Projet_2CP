@@ -145,7 +145,7 @@ namespace Ordonnancement
     public class ProcessusNiveau : Processus
     {
         #region Attributs
-        public int niveau;
+        public int niveau { get; set; }
         #endregion
 
         #region Constructeur
@@ -215,7 +215,7 @@ namespace Ordonnancement
         #region Visualisation
         public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PAPS
         {
-            PAPS_TabRow item = new PAPS_TabRow(id, tempsArriv, duree, Table, Ajouter);
+            Mult_Niv_TabRow item = new Mult_Niv_TabRow(id, tempsArriv, duree, Table, Ajouter);
             Background = "#FFEFF3F9";
             item.DataContext = this;
             Table.Children.Add(item);

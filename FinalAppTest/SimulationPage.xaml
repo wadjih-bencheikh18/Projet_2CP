@@ -126,7 +126,7 @@
                 </StackPanel>
             </Border>
             <TextBlock HorizontalAlignment="Center" Margin="0,0,50,520" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="24" FontFamily="Lexend" Width="300"><Run Text="Liste des processus pr"/><Run Text="ê"/><Run Text="t"/><Run Text="s"/></TextBlock>
-            <TextBlock HorizontalAlignment="Center" Margin="0,520,50,0" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24" Width="300"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0,520,50,0" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
             <Grid Grid.Row="1" Margin="100 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>

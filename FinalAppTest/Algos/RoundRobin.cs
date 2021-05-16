@@ -144,22 +144,12 @@ namespace Ordonnancement
 
         #region MultiNiveau
         // Des algorithmes nécessaires pour implémenter MultiNiveaux
-        public override async Task<int> Executer(int temps, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
+        public override async Task<int> Executer(int temps, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
         {
             bool anime = true;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
-            while (niveaux[indiceNiveau].indice[0] < listeProcessus.Count || listePrets.Count != 0)  //tant qu'il existe des processus prêts
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))  //tant qu'il existe des processus prêts
             {
-                if (niveaux[indiceNiveau].indice[0] < listeProcessus.Count && listePrets.Count == 0)  // Si il y a des processus dans listProcessus et listePrets est vide
-                {
-                    anime = true;
-                    await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur);
-                    temps++;  // aucun processus n'est arrivé => on incrémente le temps
-                    TempsView.Text = temps.ToString();
-                    niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);
-                }
-                else  // listePrets n'est pas vide 
-                {
                     if (anime)
                         await Activation(ListePretsView, Processeur, listePrets[0]);
 
@@ -169,11 +159,11 @@ namespace Ordonnancement
                     listePrets[0].etat = 2;
                     temps++;
                     TempsView.Text = temps.ToString();
+                    niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);
                     niveaux[indiceNiveau].indice[1]++;  // quantum++
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     MAJProcesseur(Processeur);
-                    niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);
                     if (listePrets[0].tempsRestant == 0)  // fin d'exécution du processus 
                     {
                         listePrets[0].tempsFin = temps;
@@ -183,7 +173,9 @@ namespace Ordonnancement
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                         niveaux[indiceNiveau].indice[1] = 0;  // un nouveau quantum va commencer
                         await FinProcessus(Processeur);
+                        anime = true;
                     }
+                    else if (niveaux[indiceNiveau].indice[1] == quantum && listePrets.Count == 1) niveaux[indiceNiveau].indice[1] = 0;
                     else if (niveaux[indiceNiveau].indice[1] == quantum)  // on a terminé ce quantum => il faut passer au processus suivant => on defile, et à la fin, on enfile le processus courant
                     {
                         await Desactivation(ListePretsView, Processeur, listePrets[0]);
@@ -193,18 +185,20 @@ namespace Ordonnancement
                         listePrets[0].etat = 1;
                         listePrets.Add(listePrets[0]);  // enfiler à la fin
                         listePrets.RemoveAt(0);  // defiler 
+                        anime = true;
                     }
-                }
-                if (temps == tempsFin)  // On est arrivé à tempsFin => la fin de l'exécution 
+
+                
+            }
+            if (! PrioNiveaux(niveaux, indiceNiveau, nbNiveau))  // On est arrivé à tempsFin => la fin de l'exécution 
                 {
                     await Desactivation(ListePretsView, Processeur, listePrets[0]);
                     listePrets[0].Transition = 1; //Desactivation du 1er processus de listePrets
                     listePrets[0].etat = 1;
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
-                    return tempsFin;
+                    return temps;
                 }
-            }
             return temps;
         }
 

@@ -109,13 +109,13 @@ namespace Ordonnancement
 
         #region MultiNiveau
         // à utiliser dans MultiNiveaux
-        public override async Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
+        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
         {
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;
             if (niveaux[indiceNiveau].indice[2] == 0) niveaux[indiceNiveau].indice[1] = 1; //si aucun processus du niveau actuel n'a été executé alors il faut trier les processus de listePrets de ce niveau par durée
             niveaux[indiceNiveau].indice[2] = 1; //l'execution d'un processus de ce niveau commence
-            while (listePrets.Count != 0 && (temps < tempsFin || tempsFin == -1)) //s'il existe des processus prêts et le temps < le temps de fin  ou il n'y a pas de temps fin
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //s'il existe des processus prêts et le temps < le temps de fin  ou il n'y a pas de temps fin
             {
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
                 if (listePrets.Count != 0 && niveaux[indiceNiveau].indice[1] == 1) //s'il y a des processus prêts et un tri par durée est necessaire
@@ -147,7 +147,8 @@ namespace Ordonnancement
                         niveaux[indiceNiveau].indice[1] = 1; //il faut trier les processus restants dans listePrets par durée
                     }
                 }
-                if (temps == tempsFin)
+            }
+            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
                 {
                     niveaux[indiceNiveau].indice[1] = 1;
                     listePrets[0].Transition = 1; //Desactivation du 1er processus de listePrets
@@ -157,7 +158,6 @@ namespace Ordonnancement
                     listePrets.RemoveAt(0);
                     return temps;
                 }
-            }
             return temps;
         }
 
