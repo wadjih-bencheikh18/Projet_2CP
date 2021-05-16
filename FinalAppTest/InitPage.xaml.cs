@@ -110,19 +110,12 @@ namespace FinalAppTest
                     MainWindow.main.Content = new SimulationPage(RoundRobin_Tab.prog);
                 }
             }
-            /*else if (ContentViewer.Content.GetType() == typeof(MultiNiveauViewModel))  // MultiNiveaux
+            else if (ContentViewer.Content.GetType() == typeof(MultiNiveauViewModel))  // MultiNiveaux
             {
-                if (PAPS_Tab.prog.listeProcessus.Count == 0)
-                {
-                    var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
-                }
-                else
-                {
-                    Main.Content = new SimulationPage(PAPS_Tab.prog);
-                }
-            }*/
+                
+                    MainWindow.main.Content = new SimulationPage_MultiLvl(PAPS_Tab.prog);
+              
+            }
         }
     }
 }
