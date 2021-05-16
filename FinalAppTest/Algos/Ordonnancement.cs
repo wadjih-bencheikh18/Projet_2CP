@@ -55,6 +55,7 @@ namespace Ordonnancement
                 if (listebloque[i].indiceInterruptions[0] == listebloque[i].indiceInterruptions[1])
                 {
                     await Reveil(ListePretsView, ListeBloqueView, i);
+                    listebloque[i].Transition = 1; //Desactivation du ieme processus de listebloque
                     listebloque[i].etat = 1;
                     listePrets.Add(listebloque[i]);
                     listebloque.RemoveAt(i);
@@ -70,6 +71,7 @@ namespace Ordonnancement
             bool Anime=await MAJListBloque(ListePretsView, ListeBloqueView);
             if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
+                listePrets[0].Transition = 0; //Blocage du ieme processus de listebloque
                 listePrets[0].etat = 0;
                 listebloque.Add(listePrets[0]);
                 await Blocage(ListeBloqueView, Processeur);
@@ -258,6 +260,7 @@ namespace Ordonnancement
                 listebloque[i].InterruptionExecute();
                 if (listebloque[i].indiceInterruptions[0] == listebloque[i].indiceInterruptions[1])
                 {
+                    listebloque[i].Transition = 1; //Desactivation du ieme processus de listebloque
                     listebloque[i].etat = 1;
                     listePrets.Add(listebloque[i]);
                     listebloque.RemoveAt(i);
@@ -270,6 +273,7 @@ namespace Ordonnancement
             MAJListBloque();
             while (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
+                listePrets[0].Transition = 0; //Blocage du 1er processus de listePrets
                 listePrets[0].etat = 0;
                 listebloque.Add(listePrets[0]);
                 listePrets.RemoveAt(0);
@@ -311,6 +315,7 @@ namespace Ordonnancement
                 listebloque[i].InterruptionExecute();
                 if (listebloque[i].indiceInterruptions[0] == listebloque[i].indiceInterruptions[1])
                 {
+                    listebloque[i].Transition = 1; //Desactivation du ieme processus de listebloque
                     listebloque[i].etat = 1;
                     listePrets.Add(listebloque[i]);
                     listebloqueGenerale.RemoveAll(p => p.id == listebloque[i].id);
@@ -323,6 +328,7 @@ namespace Ordonnancement
             MAJListBloque(listebloqueGenerale);
             while (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
+                listePrets[0].Transition = 0; //Blocage du ieme processus de listePrets
                 listePrets[0].etat = 0;
                 listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
                 listebloque.Add(listePrets[0]);
@@ -365,6 +371,7 @@ namespace Ordonnancement
                 listebloqueGenerale[i].InterruptionExecute();
                 if (listebloqueGenerale[i].indiceInterruptions[0] == listebloqueGenerale[i].indiceInterruptions[1])
                 {
+                    listebloqueGenerale[i].Transition = 1; //Desactivation du ieme processus de listebloqueGenerale
                     listebloqueGenerale[i].etat = 1;
                     listePrets.Add(listebloqueGenerale[i]);
                     await Reveil(ListesPretsViews[listebloqueGenerale[i].niveau], ListeBloqueView, i);
@@ -382,6 +389,7 @@ namespace Ordonnancement
             bool Anime=await MAJListBloque(listebloqueGenerale,ListesPretsViews, ListeBloqueView);
             if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
+                listePrets[0].Transition = 0; //Blocage du ieme processus de listebloque
                 listePrets[0].etat = 0;
                 listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
                 await Blocage(ListeBloqueView, Processeur);

@@ -33,6 +33,7 @@ namespace Ordonnancement
                 TempsView.Text = temps.ToString();
                 if (listePrets.Count != 0) //s'il y a des processus prêts
                 {
+                    listePrets[0].Transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence               //AfficheLigne(temps,listePrets, ListProcessusView, Processeur, TempsView); //affiche le temps actuel et l'ID du processus entrain d'être executé
@@ -68,6 +69,7 @@ namespace Ordonnancement
                 InterruptionExecute();
                 if (listePrets.Count != 0) //s'il y a des processus prêts
                 {
+                    listePrets[0].Transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence
@@ -108,6 +110,7 @@ namespace Ordonnancement
                 TempsView.Text = temps.ToString();
                 if (listePrets.Count != 0) //s'il y a des processus prêts
                 {
+                    listePrets[0].Transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence
@@ -124,6 +127,7 @@ namespace Ordonnancement
                 }
                 if (temps == tempsFin)
                 {
+                    listePrets[0].Transition = 1; //Desactivation du 1er processus de listePrets
                     listePrets[0].etat = 1;
                     await Desactivation(ListePretsView, Processeur, listePrets[0]);
                     listePrets.Add(listePrets[0]);
@@ -143,6 +147,7 @@ namespace Ordonnancement
                 InterruptionExecute(listebloqueGenerale);
                 if (listePrets.Count != 0) //s'il y a des processus prêts
                 {
+                    listePrets[0].Transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence
@@ -158,6 +163,7 @@ namespace Ordonnancement
                 }
                 if (temps == tempsFin)
                 {
+                    listePrets[0].Transition = 1; //Desctivation du 1er processus de listePrets
                     listePrets[0].etat = 1;
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
