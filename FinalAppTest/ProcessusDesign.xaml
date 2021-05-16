@@ -10,15 +10,15 @@
         <Storyboard x:Key="AddAnimation">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
                 <EasingDoubleKeyFrame KeyTime="0" Value="{Binding Y1}"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{Binding Y2}"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="{Binding Y3}"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="{Binding Y2}"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="{Binding Y3}"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
                 <EasingDoubleKeyFrame KeyTime="0" Value="{Binding X1}"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="{Binding X2}"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="{Binding X3}"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="{Binding X2}"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="{Binding X3}"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="processusDone">
