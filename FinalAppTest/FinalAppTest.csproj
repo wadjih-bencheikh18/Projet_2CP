@@ -76,6 +76,9 @@
     <Compile Include="SimulationPage.xaml.cs">
       <DependentUpon>SimulationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SimulationPage_MultiLvl.xaml.cs">
+      <DependentUpon>SimulationPage_MultiLvl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TableRowFinal.xaml.cs">
       <DependentUpon>TableRowFinal.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SimulationPage_MultiLvl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TableRowFinal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -205,6 +212,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Design\projectGuides.guides" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -239,6 +247,27 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pics\algos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Processor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="algos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pause.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

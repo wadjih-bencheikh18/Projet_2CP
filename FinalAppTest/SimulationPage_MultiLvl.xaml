@@ -1,0 +1,257 @@
+﻿<Page x:Class="FinalAppTest.SimulationPage_MultiLvl"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FinalAppTest"
+      mc:Ignorable="d" Loaded="Page_Loaded"
+      d:DesignHeight="768" d:DesignWidth="1366"
+      Title="SimulationPage_MultiLvl">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="background.jpg"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Rectangle Fill="White" Height="600" Width="450" RadiusX="30" RadiusY="30" Stroke="Black" StrokeThickness="1"/>
+            <TextBlock Margin="0 0 0 100" Text="Diagramme de Gantt" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="GridMulti" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.6*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock HorizontalAlignment="Left" Margin="160,10,0,0" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="24" FontFamily="Lexend"><Run Text="Liste des processus pr"/><Run Text="é"/><Run Text="t"/><Run Text="s"/></TextBlock>
+                <Border Visibility="Hidden" x:Name="Border1" Margin="10,0,0,20"  Height="45" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="1" MinWidth="600">
+                    <StackPanel x:Name="ListProcessusView1" Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Storyboard x:Key="ListDecalage">
+                                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
+                                    <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingThicknessKeyFrame KeyTime="0:0:1" Value="-60,0,0,0"/>
+                                </ThicknessAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Listback">
+                                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
+                                    <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                                </ThicknessAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="up">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="+60"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </StackPanel.Resources>
+                    </StackPanel>
+                </Border>
+                <Border Visibility="Hidden" x:Name="Border2" Margin="10,0,0,20"  Height="45" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="2" MinWidth="600">
+                    <StackPanel x:Name="ListProcessusView2" Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Storyboard x:Key="ListDecalage">
+                                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
+                                    <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingThicknessKeyFrame KeyTime="0:0:1" Value="-60,0,0,0"/>
+                                </ThicknessAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Listback">
+                                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
+                                    <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                                </ThicknessAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="up">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="+60"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </StackPanel.Resources>
+                    </StackPanel>
+                </Border>
+                <Border Visibility="Hidden" x:Name="Border3" Margin="10,0,0,20"  Height="45" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="3" MinWidth="600">
+                    <StackPanel x:Name="ListProcessusView3" Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Storyboard x:Key="ListDecalage">
+                                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
+                                    <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingThicknessKeyFrame KeyTime="0:0:1" Value="-60,0,0,0"/>
+                                </ThicknessAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Listback">
+                                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
+                                    <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                                </ThicknessAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="up">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="+60"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </StackPanel.Resources>
+                    </StackPanel>
+                </Border>
+                <Border Visibility="Hidden" x:Name="Border4" Margin="10,0,0,20"  Height="45" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="4" MinWidth="600">
+                    <StackPanel x:Name="ListProcessusView4" Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Storyboard x:Key="ListDecalage">
+                                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
+                                    <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingThicknessKeyFrame KeyTime="0:0:1" Value="-60,0,0,0"/>
+                                </ThicknessAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Listback">
+                                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
+                                    <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                                </ThicknessAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="up">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="+60"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </StackPanel.Resources>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Border Height="135" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="2" Margin="0,0,0,0" Grid.Column="0" Width="135">
+                    <Border.Background>
+                        <ImageBrush ImageSource="Processor.png"/>
+                    </Border.Background>
+                    <StackPanel x:Name="Processeur" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel.Resources>
+                            <Storyboard x:Key="Disactive">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="507"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-195"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+
+                        </StackPanel.Resources>
+                    </StackPanel>
+                </Border>
+                <Grid Margin="50,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="50" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Temps :" FontWeight="Bold" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="16" />
+                    <TextBlock Grid.Column="1" x:Name="TempsView" HorizontalAlignment="Center" Text="0" VerticalAlignment="Center" TextAlignment="Center" Margin="0" FontSize="16"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="1" Margin="10 0 0 0"  Height="45" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Background="#FFCCDD" BorderBrush="Black" BorderThickness="1" MinWidth="600">
+                    <StackPanel Orientation="Horizontal">
+                    </StackPanel>
+
+                </Border>
+                <TextBlock Grid.Row ="0" HorizontalAlignment="Left" Margin="150,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
+            </Grid>
+
+
+            <Grid Grid.Row="3" Margin="100 0 0 0" HorizontalAlignment="Left" Width="400">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Ellipse Grid.Column="0" Height="65" Width="65" Fill="#0D9330">
+                        <Ellipse.Effect>
+                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Button x:Name="StartBtn" Grid.Column="0" Background="#0D9330" BorderThickness="0" Width="45" Height="45" >
+                        <Button.Content>
+                            <Image Source="Start.png" Width="30" Height="30" />
+                        </Button.Content>
+                    </Button>
+
+                    <Ellipse Grid.Column="1" Height="65" Width="65" Fill="#B51F1F">
+                        <Ellipse.Effect>
+                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Button Grid.Column="1" Background="#B51F1F" BorderThickness="0" Width="45" Height="45">
+                        <Button.Content>
+                            <Image Source="resume.png" Width="30" Height="30"/>
+                        </Button.Content>
+                    </Button>
+
+                    <Ellipse Height="65" Width="65" Fill="#FFB53E" Grid.Column="2">
+                        <Ellipse.Effect>
+                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Button Grid.Column="2" Background="#FFB53E" BorderThickness="0" Width="45" Height="45">
+                        <Button.Content>
+                            <Image Source="pause.png" Width="30" Height="30"/>
+                        </Button.Content>
+                    </Button>
+
+                    <Ellipse Height="65" Width="65" Fill="#4974C8" Grid.Column="3">
+                        <Ellipse.Effect>
+                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Button Grid.Column="3" Background="#4974C8" BorderThickness="0" Width="45" Height="45">
+                        <Button.Content>
+                            <Image Source="circle.png" Width="30" Height="30"/>
+                        </Button.Content>
+                    </Button>
+
+                    <Ellipse Height="65" Width="65" Fill="#666666" Grid.Column="4">
+                        <Ellipse.Effect>
+                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                        </Ellipse.Effect>
+                    </Ellipse>
+                    <Button x:Name="ResultFinalBtn" Grid.Column="4" Background="#666666" BorderThickness="0" Width="45" Height="45" >
+                        <Button.Content>
+                            <Image Source="algos.png" Width="30" Height="30"/>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock Text="Vitesse :" Margin="20 0"  FontSize="30" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Page>

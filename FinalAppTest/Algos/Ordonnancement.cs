@@ -34,8 +34,6 @@ namespace Ordonnancement
                     AffichageProcessus pro = new AffichageProcessus(listeProcessus[indice]);
                     pro.X1 = 700;
                     pro.Y1 = 0;
-                    pro.X2 = pro.X1 / 2;
-                    pro.Y2 = pro.Y1 / 2;
                     item.DataContext = pro;
                     ListePretsView.Children.Add(item);
                     listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts
@@ -90,10 +88,8 @@ namespace Ordonnancement
             Processeur.Children.Clear();
             ProcessusDesign item = new ProcessusDesign();
             AffichageProcessus pro = new AffichageProcessus(proc);
-            pro.X1 = -89.6;
-            pro.X2 = pro.X1/2;
-            pro.Y1 = -140.8;
-            pro.Y2 = pro.Y1/2;
+            pro.X1 = -100;
+            pro.Y1 = -140;
             item.DataContext = pro;
             Storyboard AnimeProc = new Storyboard();
             Storyboard AnimeList = new Storyboard();
@@ -153,8 +149,8 @@ namespace Ordonnancement
             ProcessusDesign item = new ProcessusDesign();
             AffichageProcessus pro = new AffichageProcessus(listebloque[i]);
             pro.X1 = - 60 * ListePretsView.Children.Count + 60 * i;
-            pro.Y1 = 360;
-            pro.Y2 = 360;
+            pro.Y1 = 340;
+            pro.Y2 = 340;
             pro.X2 = 600 - 60 * ListePretsView.Children.Count;
             pro.X3 = pro.X2;
             item.DataContext = pro; 
@@ -185,7 +181,6 @@ namespace Ordonnancement
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
             pro.X1 = 600 - 60 * ListeBloqueView.Children.Count;
-            pro.X2 = pro.X1 / 2;
             ProcessusDesign item = new ProcessusDesign();
             item.DataContext = pro;
             ListeBloqueView.Children.Add(item);
@@ -199,7 +194,6 @@ namespace Ordonnancement
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(proc);
             pro.X1 = 600 - 60 * ListePretsView.Children.Count;
-            pro.X2 = pro.X1 / 2;
             ProcessusDesign item = new ProcessusDesign();
             item.DataContext = pro;
             ListePretsView.Children.Add(item);
