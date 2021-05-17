@@ -32,6 +32,7 @@ namespace FinalAppTest.Views
         public static bool modifier = false;
         public static Mult_Niv_TabRow proModifier;
         private int indiceniv = 0;
+        private int indicepro = 0;
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
@@ -61,14 +62,14 @@ namespace FinalAppTest.Views
                     prog.Push(new ProcessusNiveau(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.niveau));
                 }
                 IdTextBox.Text = NbProcessus.ToString();
-                indiceniv = NbProcessus;
+                indicepro = NbProcessus;
             }
         }
 
         private void AddProcessusButton_Click(object sender, RoutedEventArgs e)  // ajouter un processus
         {
             bool valide = true;
-            int id, tempsArrive, duree;
+            int id, tempsArrive, duree,niv,prio;
             var bc = new BrushConverter();
             if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
@@ -76,44 +77,61 @@ namespace FinalAppTest.Views
                 TempsArrivTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
+            if (!Int32.TryParse(NivTextBox.Text, out niv) || niv > indiceniv || niv < 0 )  // get temps d'arrivé
+            {
+                NivTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                valide = false;
+            }
+
+            if (!Int32.TryParse(PrioTextBox.Text, out prio) || prio < 0 )  // get temps d'arrivé
+            {
+                PrioTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                PrioTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                valide = false;
+            }
+
             if (!Int32.TryParse(DureeTextBox.Text, out duree) || duree <= 0)  // get durée
             {
                 DureeTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
                 DureeTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
-            if (valide && !modifier)  // si tous est correcte
+            if (valide)  // si tous est correcte
             {
-                id = indiceniv;
-                TempsArrivTextBox.Text = "0";
-                DureeTextBox.Text = "1";
-                IdTextBox.Text = (id + 1).ToString();
-                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
-                AffichageProcessus pro = new AffichageProcessus
+
+                if (!modifier)
                 {
-                    id = id,
-                    tempsArriv = tempsArrive,
-                    duree = duree
-                };
-                pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
-                indiceniv++;
-            }
-            else if (valide && modifier)
-            {
-                AffichageProcessus pro = new AffichageProcessus
+                    id = indicepro;
+                    TempsArrivTextBox.Text = "0";
+                    DureeTextBox.Text = "1";
+                    IdTextBox.Text = (id + 1).ToString();
+                    AffichageProcessus pro = new AffichageProcessus
+                    {
+                        id = id,
+                        tempsArriv = tempsArrive,
+                        duree = duree
+                    };
+                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
+                    indicepro++;
+                }
+                else
                 {
-                    id = int.Parse(IdTextBox.Text),
-                    tempsArriv = tempsArrive,
-                    duree = duree,
-                    Background = "#FFEFF3F9"
-                };
-                PAPS_TabRow item = (PAPS_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
-                item.DataContext = pro;
-                ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
-                modifier = false;
-                IdTextBox.Text = indiceniv.ToString();
-                ajouterTB.Text = "Ajouter";
+                    AffichageProcessus pro = new AffichageProcessus
+                    {
+                        id = int.Parse(IdTextBox.Text),
+                        tempsArriv = tempsArrive,
+                        duree = duree,
+                        Background = "#FFEFF3F9"
+                    };
+                    PAPS_TabRow item = (PAPS_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                    item.DataContext = pro;
+                    ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
+                    modifier = false;
+                    IdTextBox.Text = indicepro.ToString();
+                    ajouterTB.Text = "Ajouter";
+                }
             }
+            
         }
 
         private void AddProcessusButton_MouseEnter(object sender, MouseEventArgs e)
@@ -252,7 +270,7 @@ namespace FinalAppTest.Views
             }
             indiceniv--;
             randNiv.Text = indiceniv.ToString();
-            NiveauGrid.Children.RemoveAt(NiveauGrid.Children.Count - 1);
+            NiveauGrid.Children.RemoveAt(indiceniv);
         }
     }
 }
