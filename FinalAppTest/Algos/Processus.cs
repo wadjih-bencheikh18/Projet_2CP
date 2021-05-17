@@ -21,7 +21,7 @@ namespace Ordonnancement
         public int prio { get; set; } //priorite du processus
         //à remplir
         public int etat { get; set; }// 0:bloqué  1:prêt  2:en cours  3:fini
-        public int transition { get; set; }// 0:blocage  1:désactivation  2:activation  3:reveil
+        public int Transition { get; set; }// 0:blocage  1:désactivation  2:activation  3:reveil
         public int tempsFin { get; set; }
         public int tempsAtt { get; set; }
         public int tempsService { get; set; }

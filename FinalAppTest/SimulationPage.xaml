@@ -29,7 +29,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Border VerticalAlignment="Top" Background="White" Margin="0 30 0 0"  Height="500" Width="450" CornerRadius="30" BorderBrush="Black" BorderThickness="1">
+            <Border VerticalAlignment="Top" Background="White" Margin="0 30 0 0"  Height="520" Width="450" CornerRadius="30" BorderBrush="Black" BorderThickness="1">
                 <TextBlock Margin="0 0 0 100" Text="Diagramme de Gantt" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Border>
             <Border VerticalAlignment="Bottom" Background="White" Margin="0 0 0 30" Height="150" Width="450" CornerRadius="30" BorderBrush="Black" BorderThickness="1">
@@ -39,7 +39,7 @@
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="Transition des états des processus" Margin="0 5 0 0" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <TextBlock Grid.Row="1" x:Name="deroulement" HorizontalAlignment="Center" FontSize="14"/>
+                    <TextBlock Grid.Row="1" x:Name="deroulement" FontSize="18"/>
                 </Grid>
             </Border>
         </Grid>
