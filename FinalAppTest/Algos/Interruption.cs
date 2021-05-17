@@ -2,10 +2,10 @@
 {
     public class Interruption
     {
-        public string type;
-        public int duree;
-        public int tempsRestant;
-        public int tempsArriv;
+        public string type { get; set; }
+        public int duree { get; set; }
+        public int tempsRestant { get; set; }
+        public int tempsArriv { get; set; }
 
         #region Contructeur
 

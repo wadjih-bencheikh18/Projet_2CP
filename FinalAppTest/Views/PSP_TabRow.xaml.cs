@@ -23,13 +23,20 @@ namespace FinalAppTest.Views
         public PSP_TabRow()
         {
             InitializeComponent();
+            TreeViewItem header = new TreeViewItem();
+            header.Header = processusHeader;
+            TreeViewParent.Items.Add(header);
         }
+
         private TextBox id;
         private TextBox tempsArriv;
         private TextBox duree;
         private TextBox prio;
         private TextBlock Ajouter;
         private StackPanel Table;
+
+        public TreeViewItem parent;
+
         public PSP_TabRow(TextBox id, TextBox tempsArriv, TextBox duree,TextBox prio, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
@@ -39,6 +46,10 @@ namespace FinalAppTest.Views
             this.Table = Table;
             this.prio = prio;
             this.Ajouter = Ajouter;
+
+            parent = TreeViewParent;
+
+            parent.Items.Add(new Interruption_Ajouter(this));
         }
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -55,6 +66,11 @@ namespace FinalAppTest.Views
         {
             PSP_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
+        }
+
+        private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
+        {
+            TreeViewParent.IsSelected = false;
         }
     }
 }

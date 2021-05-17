@@ -84,6 +84,12 @@
     <Compile Include="ViewModels\PCA_ViewModel.cs" />
     <Compile Include="ViewModels\PSP_ViewModel.cs" />
     <Compile Include="ViewModels\RoundRobinViewModel.cs" />
+    <Compile Include="Views\Interruption_Ajouter.xaml.cs">
+      <DependentUpon>Interruption_Ajouter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Interruption_TabRow.xaml.cs">
+      <DependentUpon>Interruption_TabRow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Mult_Niv_Tab.xaml.cs">
       <DependentUpon>Mult_Niv_Tab.xaml</DependentUpon>
     </Compile>
@@ -143,6 +149,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TableRowFinal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Interruption_Ajouter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Interruption_TabRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
