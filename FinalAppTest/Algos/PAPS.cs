@@ -103,7 +103,7 @@ namespace Ordonnancement
                 {
                     await Activation(ListePretsView, Processeur, listePrets[0]);
                 }
-                //await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur);
+                await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur);
                 anime = false;
                 temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
