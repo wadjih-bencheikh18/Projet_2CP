@@ -112,8 +112,12 @@ namespace FinalAppTest
             }
             else if (ContentViewer.Content.GetType() == typeof(MultiNiveauViewModel))  // MultiNiveaux
             {
-                
-                    MainWindow.main.Content = new SimulationPage_MultiLvl(Mult_Niv_Tab.prog);
+                Mult_Niv_Tab.prog = new MultiNiveau(Mult_Niv_Tab.indiceniv, Mult_Niv_Tab.niveaux);
+                foreach(ProcessusNiveau pro in Mult_Niv_Tab.ListPro)
+                {
+                    Mult_Niv_Tab.prog.Push(pro);
+                }
+                MainWindow.main.Content = new SimulationPage_MultiLvl(Mult_Niv_Tab.prog);
               
             }
         }

@@ -49,6 +49,5 @@ namespace FinalAppTest.Views
             Mult_Niv_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
-
     }
 }

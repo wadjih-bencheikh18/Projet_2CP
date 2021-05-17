@@ -56,7 +56,7 @@ namespace FinalAppTest.Views
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            Mult_Niv_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
+            Mult_Niv_Tab.ListPro.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }
     }

@@ -19,7 +19,7 @@
         <Rectangle Grid.ColumnSpan="4" Fill="#FFEFF3F9" RadiusX="5" RadiusY="5"></Rectangle>
         <TextBlock x:Name="nivtest" Grid.Column="0" Text="{Binding id}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
         <TextBlock x:Name="type" Grid.Column="1" Text="{Binding Background}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
-        <TextBlock x:Name="quantumTest" Grid.Column="2" Text="{Binding duree}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
+        <TextBlock x:Name="quantumTest" Grid.Column="2" Text="{Binding quantum}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
         <Grid Grid.Column="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
