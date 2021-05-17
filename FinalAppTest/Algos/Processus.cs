@@ -220,6 +220,12 @@ namespace Ordonnancement
             item.DataContext = this;
             Table.Children.Add(item);
         }
+        public void Inserer(StackPanel Table, TextBox nivId, ComboBox algo, TextBox quantum, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PAPS
+        {
+            Mult_Niv_TabRow item = new Mult_Niv_TabRow(nivId, algo, quantum, Table, Ajouter);
+            item.DataContext = this;
+            Table.Children.Add(item);
+        }
         public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, string s)  // inserer un processus dans Table à la i'éme ligne pour PCA
         {
             PCA_TabRow item = new PCA_TabRow(id, tempsArriv, duree, Table, Ajouter);
