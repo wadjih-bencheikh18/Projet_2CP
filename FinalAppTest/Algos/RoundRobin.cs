@@ -27,32 +27,27 @@ namespace Ordonnancement
             int indice = 0, temps = 0, q = 0;
             while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0)  //s'il existe des processus prêts
             {
-                if ((indice < listeProcessus.Count || listebloque.Count != 0) && listePrets.Count == 0)  // Si il y a des processus dans listeProcessus et la listePrets est vide
+                if (listePrets.Count == 0)  // Si il y a des processus dans listeProcessus et la listePrets est vide
                 {
-                    if (temps < listeProcessus[indice].tempsArriv)  // si aucun processus n'est arrivé
-                    {
-                        await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
-                        anime = false;
-                        await AfficherDeroulement(deroulement);
+                        await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur, deroulement);
                         temps++;
                         TempsView.Text = temps.ToString();
-                    }
-                    else
-                    {
                         indice = await MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
                         anime = true;
-                    }  // sinon, on ajoute les processus arrivés à listePrets
                 }
                 else  // listePrets n'est pas vide 
                 {
                     if (anime)
+                    {
+                        listePrets[0].transition = 2;
+                        await AfficherDeroulement(deroulement);
                         await Activation(ListePretsView, Processeur, listePrets[0]);
+                    }
+                        
 
-                    await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
+                    if (await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur, deroulement)) q=0;
                     anime = false;
-                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2; //Le 1er processus de listePrets est actif
-                    await AfficherDeroulement(deroulement);
                     temps++;
                     TempsView.Text = temps.ToString();
                     q++;  // on incrémente le quantum
@@ -60,13 +55,13 @@ namespace Ordonnancement
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     MAJProcesseur(Processeur);
                     indice = await MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
-
                     if (listePrets[0].tempsRestant == 0) //fin d'exécution du processus 
                     {
                         listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv;// temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;  //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3;
+                        await AfficherDeroulement(deroulement);
                         listePrets.RemoveAt(0);//supprimer le premier processus executé
                         anime = true;
                         await FinProcessus(Processeur);
@@ -79,6 +74,7 @@ namespace Ordonnancement
                         listePrets[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                         q = 0;  //Un nouveau quantum
                         listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
+                        await AfficherDeroulement(deroulement);
                         listePrets[0].etat = 1;
                         await Desactivation(ListePretsView, Processeur, listePrets[0]);
                         listePrets.Add(listePrets[0]);  //Enfilement à la fin
@@ -148,6 +144,7 @@ namespace Ordonnancement
         // Des algorithmes nécessaires pour implémenter MultiNiveaux
         public override async Task<int> Executer(int temps, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
         {
+            niveaux[indiceNiveau].indice[1] = 0;
             bool anime = true;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))  //tant qu'il existe des processus prêts
@@ -155,7 +152,7 @@ namespace Ordonnancement
                     if (anime)
                         await Activation(ListePretsView, Processeur, listePrets[0]);
 
-                    await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur);
+                    if(await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur)) niveaux[indiceNiveau].indice[1] = 0;
                     anime = false;
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;

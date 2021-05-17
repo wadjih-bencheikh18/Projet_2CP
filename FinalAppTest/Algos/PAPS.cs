@@ -26,17 +26,17 @@ namespace Ordonnancement
                 indice = await MAJListePrets(temps, indice, ListePretsView); //remplir listePrets
                 if (listePrets.Count != 0 && anime)
                 {
-                    await Activation(ListePretsView, Processeur, listePrets[0]);
                    listePrets[0].transition = 2;
+                   await AfficherDeroulement(deroulement);
+                   await Activation(ListePretsView, Processeur, listePrets[0]);
                 }
-                await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
+                await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur,deroulement);
                 anime = false;
-                await AfficherDeroulement(deroulement);
                 temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
                 if (listePrets.Count != 0) //s'il y a des processus prêts
                 {
-                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
+                    //listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence               //AfficheLigne(temps,listePrets, ListProcessusView, Processeur, TempsView); //affiche le temps actuel et l'ID du processus entrain d'être executé

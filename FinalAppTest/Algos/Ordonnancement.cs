@@ -44,7 +44,7 @@ namespace Ordonnancement
             return indice;
         }
         
-        public async Task<bool> MAJListBloque(StackPanel ListePretsView, StackPanel ListeBloqueView)
+        public async Task<bool> MAJListBloque(StackPanel ListePretsView, StackPanel ListeBloqueView, TextBlock deroulement)
         {
             bool Anime = false;
             for (int i = 0; i < listebloque.Count; i++)
@@ -52,8 +52,10 @@ namespace Ordonnancement
                 listebloque[i].InterruptionExecute();
                 if (listebloque[i].indiceInterruptions[0] == listebloque[i].indiceInterruptions[1])
                 {
+                    
+                    listebloque[i].transition = 3; //Reviel du ieme processus de listebloque
+                    await AfficherDeroulement(deroulement);
                     await Reveil(ListePretsView, ListeBloqueView, i);
-                    listebloque[i].transition = 1; //Desactivation du ieme processus de listebloque
                     listebloque[i].etat = 1;
                     listePrets.Add(listebloque[i]);
                     listebloque.RemoveAt(i);
@@ -62,21 +64,35 @@ namespace Ordonnancement
             }
             return Anime;
         }
-        public async Task InterruptionExecute(StackPanel ListePretsView, StackPanel ListeBloqueView, StackPanel Processeur)
+        public async Task<bool> InterruptionExecute(StackPanel ListePretsView, StackPanel ListeBloqueView, StackPanel Processeur, TextBlock deroulement)
         {
+            bool interupt = false;
             bool vide=false;
             if (listePrets.Count == 0) vide = true;
-            bool Anime=await MAJListBloque(ListePretsView, ListeBloqueView);
+            bool Anime=await MAJListBloque(ListePretsView, ListeBloqueView,deroulement);
             if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
+                interupt = true;
                 listePrets[0].transition = 0; //Blocage du ieme processus de listebloque
                 listePrets[0].etat = 0;
                 listebloque.Add(listePrets[0]);
+                await AfficherDeroulement(deroulement);
                 await Blocage(ListeBloqueView, Processeur);
                 listePrets.RemoveAt(0);
-                if (listePrets.Count!=0) await Activation(ListePretsView, Processeur, listePrets[0]);
+                if (listePrets.Count != 0)
+                {
+                    listePrets[0].transition = 2;
+                    await AfficherDeroulement(deroulement);
+                    await Activation(ListePretsView, Processeur, listePrets[0]);
+                }
             }
-            else if (Anime && vide) await Activation(ListePretsView, Processeur, listePrets[0]);
+            else if (Anime && vide)
+            {
+                listePrets[0].transition = 2;
+                await AfficherDeroulement(deroulement);
+                await Activation(ListePretsView, Processeur, listePrets[0]);
+            }
+            return interupt;
         }
 
         #endregion
@@ -206,30 +222,39 @@ namespace Ordonnancement
                 if (listePrets[0].etat == 3)
                 {
                     deroulement.Text = $"Fin du processus de l'ID = {listePrets[0].id}";
+                    await Task.Delay(500);
                 }
                 else if (listePrets[0].transition == 1)
                 {
                     deroulement.Text = $"Desctivation du processus de l'ID = {listePrets[0].id}";
+                    await Task.Delay(500);
                 }
                 else if (listePrets[0].transition == 2)
                     {
                         deroulement.Text = $"Activation du processus de l'ID = {listePrets[0].id}";
-                    }
+                    await Task.Delay(500);
+                }
             }
             if (listebloque.Count != 0)
             {
-                if (listebloque[0].transition == 0)
+                foreach (Processus pro in listebloque)
                 {
-                    deroulement.Text = $"Blocage du processus de l'ID = {listebloque[0].id}";
-                    listebloque[0].transition = -1;
-                }
-                else if (listebloque[0].transition == 3)
+                    if (pro.transition == 0)
                     {
-                        deroulement.Text = $"Reveil du processus de l'ID = {listebloque[0].id}";
-                        listebloque[0].transition = -1;
+                        deroulement.Text = $"Blocage du processus de l'ID = {pro.id}";
+                        pro.transition = -1;
+                        await Task.Delay(500);
                     }
+                    else if (pro.transition == 3)
+                        {
+                            deroulement.Text = $"Reveil du processus de l'ID = {pro.id}";
+                            pro.transition = -1;
+                        await Task.Delay(500);
+                    }
+                }
+                
             }
-            await Task.Delay(500);
+            
         }
         #endregion
 
@@ -413,13 +438,15 @@ namespace Ordonnancement
             }
             return Anime;
         }
-        public async Task InterruptionExecute(List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews,int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur)
+        public async Task<bool> InterruptionExecute(List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews,int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur)
         {
+            bool interupt = false;
             bool vide = false;
             if (listePrets.Count == 0) vide = true;
             bool Anime=await MAJListBloque(listebloqueGenerale,ListesPretsViews, ListeBloqueView);
             if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
+                interupt = true;
                 listePrets[0].transition = 0; //Blocage du ieme processus de listebloque
                 listePrets[0].etat = 0;
                 listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
@@ -429,6 +456,7 @@ namespace Ordonnancement
                 if (listePrets.Count != 0) await Activation(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
             }
             else if (Anime && vide) await Activation(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
+            return interupt;
         }
         #endregion
         #endregion
