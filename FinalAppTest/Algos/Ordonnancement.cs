@@ -19,7 +19,7 @@ namespace Ordonnancement
 
         #region Visualisation
 
-        public abstract Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement);
+        public abstract Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView);
 
         public async Task<int> MAJListePrets(int temps, int indice, StackPanel ListePretsView) //ajouter à la liste des processus prêts tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
         {
@@ -53,7 +53,7 @@ namespace Ordonnancement
                 if (listebloque[i].indiceInterruptions[0] == listebloque[i].indiceInterruptions[1])
                 {
                     await Reveil(ListePretsView, ListeBloqueView, i);
-                    listebloque[i].transition = 3; //Reveil du ieme processus de listebloque
+                    listebloque[i].Transition = 1; //Desactivation du ieme processus de listebloque
                     listebloque[i].etat = 1;
                     listePrets.Add(listebloque[i]);
                     listebloque.RemoveAt(i);
@@ -69,7 +69,7 @@ namespace Ordonnancement
             bool Anime=await MAJListBloque(ListePretsView, ListeBloqueView);
             if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
-                listePrets[0].transition = 0; //Blocage du ieme processus de listebloque
+                listePrets[0].Transition = 0; //Blocage du ieme processus de listebloque
                 listePrets[0].etat = 0;
                 listebloque.Add(listePrets[0]);
                 await Blocage(ListeBloqueView, Processeur);
@@ -199,40 +199,6 @@ namespace Ordonnancement
             ListePretsView.Children.Add(item);
             await Task.Delay(1000);
         }
-        public async Task AfficherDeroulement(TextBlock deroulement) 
-        {
-            if(listePrets[0] != null)
-            {
-                if (listePrets[0].transition == 1)
-                {
-                    deroulement.Text = $"Desctivation du processus de l'ID = {listePrets[0].id}";
-                }
-                else
-                {
-                    
-                    if (listePrets[0].transition == 2)
-                    {
-                        deroulement.Text = $"Activation du processus de l'ID = {listePrets[0].id}";
-                    }
-                }
-            }
-            if (listebloque.Count != 0)
-            {
-                if (listebloque[0].transition == 0)
-                {
-                    deroulement.Text = $"Blocage du processus de l'ID = {listebloque[0].id}";
-                }
-                else
-                {
-                    if (listebloque[0].transition == 3)
-                    {
-                        deroulement.Text = $"Reveil du processus de l'ID = {listebloque[0].id}";
-                    }
-                }
-            }
-            await Task.Delay(500);
-        }
-
         #endregion
 
         #region Liste Processus
@@ -288,7 +254,7 @@ namespace Ordonnancement
                 listebloque[i].InterruptionExecute();
                 if (listebloque[i].indiceInterruptions[0] == listebloque[i].indiceInterruptions[1])
                 {
-                    listebloque[i].transition = 1; //Desactivation du ieme processus de listebloque
+                    listebloque[i].Transition = 1; //Desactivation du ieme processus de listebloque
                     listebloque[i].etat = 1;
                     listePrets.Add(listebloque[i]);
                     listebloque.RemoveAt(i);
@@ -301,7 +267,7 @@ namespace Ordonnancement
             MAJListBloque();
             while (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
-                listePrets[0].transition = 0; //Blocage du 1er processus de listePrets
+                listePrets[0].Transition = 0; //Blocage du 1er processus de listePrets
                 listePrets[0].etat = 0;
                 listebloque.Add(listePrets[0]);
                 listePrets.RemoveAt(0);
@@ -343,7 +309,7 @@ namespace Ordonnancement
                 listebloque[i].InterruptionExecute();
                 if (listebloque[i].indiceInterruptions[0] == listebloque[i].indiceInterruptions[1])
                 {
-                    listebloque[i].transition = 1; //Desactivation du ieme processus de listebloque
+                    listebloque[i].Transition = 1; //Desactivation du ieme processus de listebloque
                     listebloque[i].etat = 1;
                     listePrets.Add(listebloque[i]);
                     listebloqueGenerale.RemoveAll(p => p.id == listebloque[i].id);
@@ -356,7 +322,7 @@ namespace Ordonnancement
             MAJListBloque(listebloqueGenerale);
             while (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
-                listePrets[0].transition = 0; //Blocage du ieme processus de listePrets
+                listePrets[0].Transition = 0; //Blocage du ieme processus de listePrets
                 listePrets[0].etat = 0;
                 listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
                 listebloque.Add(listePrets[0]);
@@ -364,6 +330,13 @@ namespace Ordonnancement
             }
         }
         #region Animation-Multi
+        public bool PrioNiveaux(Niveau[] niveaux,int indiceNiveau,int nbNiveau)
+        {
+            int i;
+            for (i = 0; i < nbNiveau && niveaux[i].listePrets.Count == 0; i++) ;
+            if (i < indiceNiveau) return false;
+            return true;
+        }
         public abstract Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListsPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView);
         public async Task<int> MAJListePrets(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau, StackPanel[] ListesPretsViews) //ajouter à la liste des processus prêts tous les processus de "listeGeneral" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution de MultiNiveaux
         {
@@ -381,10 +354,8 @@ namespace Ordonnancement
                     item.DataContext = pro;
                     pro.X1 = 700;
                     pro.Y1 = 0;
-                    pro.X2 = pro.X1 / 2;
-                    pro.Y2 = pro.Y1 / 2;
                     item.DataContext = pro;
-                    ListesPretsViews[indice].Children.Add(item);
+                    ListesPretsViews[listeGeneral[indice].niveau].Children.Add(item);
                 }
             }
             if (ajout) await Task.Delay(1000);
@@ -399,11 +370,10 @@ namespace Ordonnancement
                 listebloqueGenerale[i].InterruptionExecute();
                 if (listebloqueGenerale[i].indiceInterruptions[0] == listebloqueGenerale[i].indiceInterruptions[1])
                 {
-                    listebloqueGenerale[i].transition = 1; //Desactivation du ieme processus de listebloqueGenerale
+                    listebloqueGenerale[i].Transition = 1; //Desactivation du ieme processus de listebloqueGenerale
                     listebloqueGenerale[i].etat = 1;
                     listePrets.Add(listebloqueGenerale[i]);
                     await Reveil(ListesPretsViews[listebloqueGenerale[i].niveau], ListeBloqueView, i);
-                    listebloqueGenerale[i].transition = 3; //Reveil du ieme processus de listebloqueGenerale
                     listebloqueGenerale.RemoveAt(i);
                     listebloque.RemoveAt(i);
                     Anime = true;
@@ -418,7 +388,7 @@ namespace Ordonnancement
             bool Anime=await MAJListBloque(listebloqueGenerale,ListesPretsViews, ListeBloqueView);
             if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
-                listePrets[0].transition = 0; //Blocage du ieme processus de listebloque
+                listePrets[0].Transition = 0; //Blocage du ieme processus de listebloque
                 listePrets[0].etat = 0;
                 listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
                 await Blocage(ListeBloqueView, Processeur);

@@ -17,9 +17,12 @@ namespace Ordonnancement
         protected new List<ProcessusNiveau> listebloque = new List<ProcessusNiveau>();
         private int nbNiveau;
         private Niveau[] niveaux;
-        public static StackPanel[] ListesPretsViews;
+        public StackPanel[] ListesPretsViews;
         #endregion
-
+        public void InitVisualisation(StackPanel[] ListesPretsViews)
+        {
+            this.ListesPretsViews = ListesPretsViews;
+        }
         #region Constructeur
         /// <summary>
         /// initialisation
@@ -84,41 +87,34 @@ namespace Ordonnancement
         #endregion
 
         #region Visualisation
-        public override async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement) 
+        public override async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView) 
         {
-            bool anime = false;
             SortListeProcessus();  //trier la liste des processus
             InitNiveaux();   //remplir les niveaux
-            int temps = 0, indice = 0, indiceNiveau = nbNiveau, tempsFin;
-            while (indice < listeProcessus.Count || indiceNiveau < nbNiveau) //tant que le processus est dans listeProcessus ou il existe un niveau non vide
+            int temps = 0, indice = 0, indiceNiveau = nbNiveau;
+            while (indice < listeProcessus.Count || indiceNiveau < nbNiveau || listebloque.Count!=0) //tant que le processus est dans listeProcessus ou il existe un niveau non vide
             {
-                if (indiceNiveau == nbNiveau) anime = true;
                 indice = await MAJListePrets(temps, indice, ListesPretsViews);  //remplir la liste des processus prêts de chaque niveau
-                await InterruptionExecute(listebloque, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur);
+                //await InterruptionExecute(listebloque, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur);
                 for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listePrets.Count == 0; indiceNiveau++) ; //la recherche du permier niveau non vide
-                if (anime && indiceNiveau < nbNiveau)
-                {
-                    await Activation(ListesPretsViews[indiceNiveau], Processeur, niveaux[indiceNiveau].listePrets[0]);
-                }
-                anime = false;
                 if (indiceNiveau < nbNiveau)  //il existe un niveau non vide
                 {
-                    tempsFin = TempsFin(indice, indiceNiveau);  //calcul du temps de fin d'execution
                     niveaux[indiceNiveau].indice[0] = indice;   //pour sauvegarder l'indice "indice" (temporairement)
-                    temps = await NiveauExecute(temps, tempsFin, niveaux, indiceNiveau, listeProcessus,Processeur,TempsView,ListeBloqueView);  //temps de fin d'execution du niveau "indiceNiveau"
+                    temps = await NiveauExecute(temps, indiceNiveau,Processeur,TempsView,ListeBloqueView);  //temps de fin d'execution du niveau "indiceNiveau"
                     indice = niveaux[indiceNiveau].indice[0];  //recuperer l'indice sauvegardé precedemment
                 }
                 else
                 {
                     temps++;
+                    TempsView.Text = temps.ToString();
                 }
             }
             return temps;
         }
-        public async Task<int> NiveauExecute(int temps, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeProcessus, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)  //executer le niveau "indiceNiveau"
+        public async Task<int> NiveauExecute(int temps, int indiceNiveau, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)  //executer le niveau "indiceNiveau"
         {
             niveaux[indiceNiveau].algo.Init(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listePrets, niveaux[indiceNiveau].listebloque); //initialisation de algo avec la liste des processus et la liste des processus prêts du niveau
-            temps = await niveaux[indiceNiveau].algo.Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus, listebloque, ListesPretsViews, Processeur, TempsView, ListeBloqueView);
+            temps = await niveaux[indiceNiveau].algo.Executer(temps, nbNiveau, niveaux, indiceNiveau, listeProcessus, listebloque, ListesPretsViews, Processeur, TempsView, ListeBloqueView);
             return temps;
         }
         public async Task<int> MAJListePrets(int temps, int indice,StackPanel[] ListesPretsViews) //ajouter à la liste des processus prêts de chaque niveau tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
@@ -136,10 +132,8 @@ namespace Ordonnancement
                     item.DataContext = pro;
                     pro.X1 = 700;
                     pro.Y1 = 0;
-                    pro.X2 = pro.X1 / 2;
-                    pro.Y2 = pro.Y1 / 2;
                     item.DataContext = pro;
-                    ListesPretsViews[indice].Children.Add(item);
+                    ListesPretsViews[listeProcessus[indice].niveau].Children.Add(item);
                 }
             }
             if (ajout) await Task.Delay(1000);

@@ -113,7 +113,7 @@ namespace FinalAppTest
             else if (ContentViewer.Content.GetType() == typeof(MultiNiveauViewModel))  // MultiNiveaux
             {
                 
-                    MainWindow.main.Content = new SimulationPage_MultiLvl(PAPS_Tab.prog);
+                    MainWindow.main.Content = new SimulationPage_MultiLvl(Mult_Niv_Tab.prog);
               
             }
         }

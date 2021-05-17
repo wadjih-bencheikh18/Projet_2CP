@@ -13,7 +13,7 @@ namespace Ordonnancement
         #endregion
 
         #region Visualisation
-        public override async Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement)  // executer la liste des processus 
+        public override async Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)  // executer la liste des processus 
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = 0;
@@ -70,11 +70,10 @@ namespace Ordonnancement
                 anime = false;
                 debut = false;
                 temps++;
-                await AfficherDeroulement(deroulement);
                 TempsView.Text = temps.ToString();
                 if (listePrets.Count != 0) //S'il y a des processus prêts
                 {
-                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
+                    listePrets[0].Transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
@@ -115,7 +114,7 @@ namespace Ordonnancement
                         else return x.prio.CompareTo(y.prio); //sinon, on fait le tri par priorité
                     }
                                         );
-                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
+                    listePrets[0].Transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
@@ -137,16 +136,15 @@ namespace Ordonnancement
 
         #region MultiNiveau
         // des algorithmes nécessaires pour implémenter MultiNiveaux
-        public override async Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
+        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
         {
-            bool anime=false,debut=false;
+            bool anime=true,debut=true;
             Processus proc;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;  // initialisation du temps
-            while (listePrets.Count != 0 && (temps < tempsFin || tempsFin == -1))
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
             //s'il existe des processus prêts et ( On n'est pas encore arrivé à tempsFin ou il n'y a pas de temps fin )
             {
-                niveaux[indiceNiveau].indice[0] = await MAJListePrets (temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);  //remplir la liste des processus prêts de chaque niveau
                 if (listePrets.Count != 0)
                 {
                     bool sort = false;
@@ -192,11 +190,12 @@ namespace Ordonnancement
                 await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur);
                 temps++; 
                 TempsView.Text = temps.ToString();
+                niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
                 anime = false;
                 debut = false;
                 if (listePrets.Count != 0) //S'il y a des processus prêts
                 {
-                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
+                    listePrets[0].Transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--;//L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
@@ -213,16 +212,17 @@ namespace Ordonnancement
                         listePrets.RemoveAt(0); //supprimer le processus dont la duree est écoulée
                     }
                 }
-                if (temps == tempsFin)
+
+            }
+            if (! PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
                 {
-                    listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
+                    listePrets[0].Transition = 1; //Desactivation du 1er processus de listePrets
                     listePrets[0].etat = 1;
                     await Desactivation(ListePretsView, Processeur, listePrets[0]);
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
                     return temps;
                 }
-            }
             return temps;
         }
 
@@ -244,7 +244,7 @@ namespace Ordonnancement
                                                else return x.prio.CompareTo(y.prio); //sinon, on fait le tri par priorité
                                            }
                                     );
-                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
+                    listePrets[0].Transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--;//L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
@@ -260,7 +260,7 @@ namespace Ordonnancement
                 }
                 if (temps == tempsFin)
                 {
-                    listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
+                    listePrets[0].Transition = 1; //Desactivation du 1er processus de listePrets
                     listePrets[0].etat = 1;
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
