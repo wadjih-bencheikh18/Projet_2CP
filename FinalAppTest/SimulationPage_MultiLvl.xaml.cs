@@ -21,11 +21,12 @@ namespace FinalAppTest
     public partial class SimulationPage_MultiLvl : Page
     {
         public Ordonnancement.Ordonnancement prog;
-        private int nbNiveaux = 4;
+        private int nbNiveaux;
         public SimulationPage_MultiLvl(Ordonnancement.Ordonnancement prog)
         {
             InitializeComponent();
             this.prog = prog;
+            nbNiveaux = ((MultiNiveau)prog).nbNiveau;
             StackPanel[] ListesPretsViews = { ListProcessusView0,ListProcessusView1,ListProcessusView2,ListProcessusView3};
             ((MultiNiveau)prog).InitVisualisation(ListesPretsViews);
         }
@@ -69,7 +70,7 @@ namespace FinalAppTest
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            _ = prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView);
+            _ = prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView,deroulement);
         }
     }
 }

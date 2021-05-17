@@ -15,7 +15,7 @@ namespace Ordonnancement
         #region Attributs
         protected new List<ProcessusNiveau> listeProcessus = new List<ProcessusNiveau>();
         protected new List<ProcessusNiveau> listebloque = new List<ProcessusNiveau>();
-        private int nbNiveau;
+        public int nbNiveau;
         private Niveau[] niveaux;
         public StackPanel[] ListesPretsViews;
         #endregion
@@ -87,7 +87,7 @@ namespace Ordonnancement
         #endregion
 
         #region Visualisation
-        public override async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView) 
+        public override async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView,TextBlock deroulement) 
         {
             SortListeProcessus();  //trier la liste des processus
             InitNiveaux();   //remplir les niveaux

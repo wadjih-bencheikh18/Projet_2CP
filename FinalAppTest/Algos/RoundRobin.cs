@@ -20,7 +20,7 @@ namespace Ordonnancement
         #endregion
 
         #region Visualisation
-        public override async Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
+        public override async Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement)
         {
             bool anime = true;
             SortListeProcessus(); //Tri de la liste des processus par temps d'arrivée
@@ -33,6 +33,7 @@ namespace Ordonnancement
                     {
                         await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                         anime = false;
+                        await AfficherDeroulement(deroulement);
                         temps++;
                         TempsView.Text = temps.ToString();
                     }
@@ -49,8 +50,9 @@ namespace Ordonnancement
 
                     await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur);
                     anime = false;
-                    listePrets[0].Transition = 2; //Activation du 1er processus de listePrets
+                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2; //Le 1er processus de listePrets est actif
+                    await AfficherDeroulement(deroulement);
                     temps++;
                     TempsView.Text = temps.ToString();
                     q++;  // on incrémente le quantum
@@ -76,7 +78,7 @@ namespace Ordonnancement
                     {
                         listePrets[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                         q = 0;  //Un nouveau quantum
-                        listePrets[0].Transition = 1; //Desactivation du 1er processus de listePrets
+                        listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                         listePrets[0].etat = 1;
                         await Desactivation(ListePretsView, Processeur, listePrets[0]);
                         listePrets.Add(listePrets[0]);  //Enfilement à la fin
@@ -107,7 +109,7 @@ namespace Ordonnancement
                 }
                 else  // listePrets n'est pas vide 
                 {
-                    listePrets[0].Transition = 2; //Activation du 1er processus de listePrets
+                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
                     AfficheLigne(temps, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     temps++;
@@ -130,7 +132,7 @@ namespace Ordonnancement
                     {
                         listePrets[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                         q = 0;  //Un nouveau quantum
-                        listePrets[0].Transition = 1; //Desactivation du 1er processus de listePrets
+                        listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                         listePrets[0].etat = 1;
                         listePrets.Add(listePrets[0]);  //Enfilement à la fin
                         listePrets.RemoveAt(0);  // defiler 
@@ -155,7 +157,7 @@ namespace Ordonnancement
 
                     await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur);
                     anime = false;
-                    listePrets[0].Transition = 2; //Activation du 1er processus de listePrets
+                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
                     temps++;
                     TempsView.Text = temps.ToString();
@@ -181,7 +183,7 @@ namespace Ordonnancement
                         await Desactivation(ListePretsView, Processeur, listePrets[0]);
                         listePrets[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                         niveaux[indiceNiveau].indice[1] = 0;  // nouveau quantum
-                        listePrets[0].Transition = 1; //Desactivation du 1er processus de listePrets
+                        listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                         listePrets[0].etat = 1;
                         listePrets.Add(listePrets[0]);  // enfiler à la fin
                         listePrets.RemoveAt(0);  // defiler 
@@ -193,7 +195,7 @@ namespace Ordonnancement
             if (! PrioNiveaux(niveaux, indiceNiveau, nbNiveau))  // On est arrivé à tempsFin => la fin de l'exécution 
                 {
                     await Desactivation(ListePretsView, Processeur, listePrets[0]);
-                    listePrets[0].Transition = 1; //Desactivation du 1er processus de listePrets
+                    listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                     listePrets[0].etat = 1;
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
@@ -217,7 +219,7 @@ namespace Ordonnancement
                 }
                 else  // listePrets n'est pas vide 
                 {
-                    listePrets[0].Transition = 2; //Activation du 1er processus de listePrets
+                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
                     AfficheLigne(tempsDebut, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     tempsDebut++;
@@ -240,7 +242,7 @@ namespace Ordonnancement
                     {
                         listePrets[0].tempsFin = tempsDebut;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                         niveaux[indiceNiveau].indice[1] = 0;  // nouveau quantum
-                        listePrets[0].Transition = 1; //Desactivation du 1er processus de listePrets
+                        listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                         listePrets[0].etat = 1;
                         listePrets.Add(listePrets[0]);  // enfiler à la fin
                         listePrets.RemoveAt(0);  // defiler 
@@ -248,7 +250,7 @@ namespace Ordonnancement
                 }
                 if (tempsDebut == tempsFin)  // On est arrivé à tempsFin => la fin de l'exécution 
                 {
-                    listePrets[0].Transition = 1; //Desactivation du 1er processus de listePrets
+                    listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                     listePrets[0].etat = 1;
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
