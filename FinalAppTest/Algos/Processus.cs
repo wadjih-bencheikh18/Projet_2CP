@@ -21,6 +21,7 @@ namespace Ordonnancement
         public int prio { get; set; } //priorite du processus
         //à remplir
         public int etat { get; set; }// 0:bloqué  1:prêt  2:en cours  3:fini
+        public int transition { get; set; }// 0:blocage  1:désactivation  2:activation  3:reveil
         public int tempsFin { get; set; }
         public int tempsAtt { get; set; }
         public int tempsService { get; set; }
@@ -144,7 +145,7 @@ namespace Ordonnancement
     public class ProcessusNiveau : Processus
     {
         #region Attributs
-        public int niveau;
+        public int niveau { get; set; }
         #endregion
 
         #region Constructeur
@@ -171,6 +172,7 @@ namespace Ordonnancement
 
         #region Attributs
         public int tempsPasse { get; set; }
+        public string quantum { get; set; }
         public string Background { get; set; }
         public double X1 { get; set; }
         public double Y1 { get; set; }
@@ -220,7 +222,19 @@ namespace Ordonnancement
             Table.Children.Add(item);
             return item;
         }
-        public PCA_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, string s)  // inserer un processus dans Table à la i'éme ligne pour PCA
+        public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox niveau, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour Ml proc
+        {
+            Multi_Niv_TabRow_Proc item = new Multi_Niv_TabRow_Proc(id, tempsArriv, duree, prio, niveau, Table, Ajouter);
+            item.DataContext = this;
+            Table.Children.Add(item);
+        }
+        public void Inserer(StackPanel Table, TextBox nivId, ComboBox algo, TextBox quantum, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour ML nv
+        {
+            Mult_Niv_TabRow item = new Mult_Niv_TabRow(nivId, algo, quantum, Table, Ajouter);
+            item.DataContext = this;
+            Table.Children.Add(item);
+        }
+        public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, string s)  // inserer un processus dans Table à la i'éme ligne pour PCA
         {
             PCA_TabRow item = new PCA_TabRow(id, tempsArriv, duree, Table, Ajouter);
             Background = "#FFEFF3F9";

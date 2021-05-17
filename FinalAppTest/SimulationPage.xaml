@@ -29,23 +29,36 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Rectangle Fill="White" Height="600" Width="450" RadiusX="30" RadiusY="30" Stroke="Black" StrokeThickness="1"/>
-            <TextBlock Margin="0 0 0 100" Text="Diagramme de Gantt" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Background="White" Margin="0,40" Width="450" CornerRadius="30" BorderBrush="Black" BorderThickness="1">
+                <TextBlock Margin="0 0 0 100" Text="Diagramme de Gantt" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="1" Background="White" Margin="0,0,0,20" Width="450" CornerRadius="30" BorderBrush="Black" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Transition des états des processus" Margin="0 5 0 0" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="1" x:Name="deroulement" FontSize="18" TextAlignment="Center"/>
+                </Grid>
+            </Border>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Margin="10,0,0,20"  Height="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="0" MinWidth="600">
+            <Border Margin="0,0,60,400"  Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="0" MinWidth="600">
                 <StackPanel x:Name="ListePretsView" Orientation="Horizontal">
                     <StackPanel.Resources>
                         <Storyboard x:Key="ListDecalage">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-60"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                         <Storyboard x:Key="Listback">
@@ -62,7 +75,7 @@
                     </StackPanel.Resources>
                 </StackPanel>
             </Border>
-            <Border Height="180" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="2" Margin="40,0,0,0" Grid.Row="1" Width="180">
+            <Border Height="180" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="2" Margin="0,0,400,0" Grid.Row="0" Width="180">
                 <Border.Background>
                     <ImageBrush ImageSource="Pics/Processor.png"/>
                 </Border.Background>
@@ -71,28 +84,28 @@
                         <Storyboard x:Key="Disactive">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="511.2"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="500"/>
                             </DoubleAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-202.4"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-200"/>
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                         <Storyboard x:Key="Blocage">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="511.2"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="500"/>
                             </DoubleAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="+202.4"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="200"/>
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                     </StackPanel.Resources>
 
                 </StackPanel>
             </Border>
-            <Border Margin="10,20,0,0" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" CornerRadius="10" Background="#FFCCDD" BorderBrush="Black" BorderThickness="1" Grid.Row="2" MinWidth="600" Panel.ZIndex="-1">
+            <Border Margin="0,400,60,0" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FFCCDD" BorderBrush="Black" BorderThickness="1" Grid.Row="0" MinWidth="600" Panel.ZIndex="-1">
                 <StackPanel x:Name="ListeBloqueView" Orientation="Horizontal" >
                     <StackPanel.Resources>
                         <Storyboard x:Key="up">
@@ -104,7 +117,7 @@
                         <Storyboard x:Key="decalage">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-60"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                         <Storyboard x:Key="Retour">
@@ -116,9 +129,9 @@
 
                 </StackPanel>
             </Border>
-            <TextBlock HorizontalAlignment="Center" Margin="0,0,0,100" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="24" FontFamily="Lexend"><Run Text="Liste des processus pr"/><Run Text="ê"/><Run Text="t"/><Run Text="s"/></TextBlock>
-            <TextBlock HorizontalAlignment="Center" Margin="0,100,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
-            <Grid Grid.Row="3" Margin="100 0">
+            <TextBlock HorizontalAlignment="Center" Margin="0,0,50,520" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="24" FontFamily="Lexend" Width="300"><Run Text="Liste des processus pr"/><Run Text="ê"/><Run Text="t"/><Run Text="s"/></TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0,520,50,0" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
+            <Grid Grid.Row="1" Margin="100 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -192,7 +205,7 @@
                 </Grid>
 
             </Grid>
-            <Grid Margin="200,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50" Grid.Row="1">
+            <Grid Margin="250,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>

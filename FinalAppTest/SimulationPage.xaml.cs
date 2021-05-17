@@ -29,7 +29,7 @@ namespace FinalAppTest
         }
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            prog.Executer(ListePretsView, Processeur, TempsView,ListeBloqueView);
+            prog.Executer(ListePretsView, Processeur, TempsView,ListeBloqueView,deroulement);
         }
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
