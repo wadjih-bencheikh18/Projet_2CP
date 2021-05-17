@@ -127,8 +127,10 @@ namespace Ordonnancement
         {
             AffichageProcessus proc;
             TableRowFinal item;
-            RowDefinition rowdef = new RowDefinition();
-            rowdef.Height = new GridLength(30);
+            RowDefinition rowdef = new RowDefinition
+            {
+                Height = new GridLength(60)
+            };
             Table.RowDefinitions.Insert(i, rowdef);
             item = new TableRowFinal();
             proc = new AffichageProcessus(this);
@@ -234,7 +236,7 @@ namespace Ordonnancement
             item.DataContext = this;
             Table.Children.Add(item);
         }
-        public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, string s)  // inserer un processus dans Table à la i'éme ligne pour PCA
+        public PCA_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, string s)  // inserer un processus dans Table à la i'éme ligne pour PCA
         {
             PCA_TabRow item = new PCA_TabRow(id, tempsArriv, duree, Table, Ajouter);
             Background = "#FFEFF3F9";
