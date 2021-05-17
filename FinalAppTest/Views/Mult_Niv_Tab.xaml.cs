@@ -25,14 +25,15 @@ namespace FinalAppTest.Views
         public Mult_Niv_Tab()
         {
             InitializeComponent();
-            IdTextBox.Text = indiceniv.ToString();
+            IdTextBox.Text = indicepro.ToString();
             randNiv.Text = indiceniv.ToString();
+            nivId.Text = indiceniv.ToString();
         }
         public Niveau[] niveaux = new Niveau[4];
         public static bool modifier = false;
-        public static Mult_Niv_TabRow proModifier;
-        private int indiceniv = 0;
-
+        public static UserControl proModifier;
+        private int indiceniv = 0; 
+        private int indicepro = 0;
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             Niveau[] niveaux = { new Niveau(3,2), new Niveau(3,4), new Niveau(0), new Niveau(2) };
@@ -61,14 +62,14 @@ namespace FinalAppTest.Views
                     prog.Push(new ProcessusNiveau(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.niveau));
                 }
                 IdTextBox.Text = NbProcessus.ToString();
-                indiceniv = NbProcessus;
+                indicepro = NbProcessus;
             }
         }
 
         private void AddProcessusButton_Click(object sender, RoutedEventArgs e)  // ajouter un processus
         {
             bool valide = true;
-            int id, tempsArrive, duree;
+            int id, tempsArrive, duree=0,prio=0,niveau=0;
             var bc = new BrushConverter();
             if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
@@ -82,6 +83,7 @@ namespace FinalAppTest.Views
                 DureeTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
+            
             if (valide && !modifier)  // si tous est correcte
             {
                 id = indiceniv;
@@ -93,10 +95,12 @@ namespace FinalAppTest.Views
                 {
                     id = id,
                     tempsArriv = tempsArrive,
-                    duree = duree
+                    duree = duree,
+                    prio = prio,
+                    niveau = niveau,
                 };
-                pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
-                indiceniv++;
+                pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, NivTextBox, ajouterTB);
+                indicepro++;
             }
             else if (valide && modifier)
             {
@@ -105,13 +109,14 @@ namespace FinalAppTest.Views
                     id = int.Parse(IdTextBox.Text),
                     tempsArriv = tempsArrive,
                     duree = duree,
-                    Background = "#FFEFF3F9"
+                    prio = prio,
+                    niveau = niveau,
                 };
-                PAPS_TabRow item = (PAPS_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                Multi_Niv_TabRow_Proc item = (Multi_Niv_TabRow_Proc)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                 item.DataContext = pro;
                 ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
-                IdTextBox.Text = indiceniv.ToString();
+                IdTextBox.Text = indicepro.ToString();
                 ajouterTB.Text = "Ajouter";
             }
         }
@@ -141,7 +146,10 @@ namespace FinalAppTest.Views
 
         private void AddNiv(object sender, MouseButtonEventArgs e)
         {
-
+            if (indiceniv > 3)
+            {
+                return;
+            }
             bool valide = true;
             string type = algoSelect.Text;
             int niv, algo, quantum=0;
@@ -167,6 +175,8 @@ namespace FinalAppTest.Views
                     duree = quantum
                 };
                 pro.Inserer(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
+                if (algo == 3) niveaux[indiceniv] = new Niveau(algo, quantum);
+                else niveaux[indiceniv] = new Niveau(algo);
                 indiceniv++;
                 randNiv.Text = indiceniv.ToString();
             }
