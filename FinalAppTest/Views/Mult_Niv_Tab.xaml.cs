@@ -29,7 +29,6 @@ namespace FinalAppTest.Views
             randNiv.Text = indiceniv.ToString();
         }
         public Niveau[] niveaux = new Niveau[4];
-        public static MultiNiveau prog;
         public static bool modifier = false;
         public static Mult_Niv_TabRow proModifier;
         private int indiceniv = 0;
