@@ -70,8 +70,8 @@
     <Compile Include="ProcessusDesign.xaml.cs">
       <DependentUpon>ProcessusDesign.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ResultatFinal.xaml.cs">
-      <DependentUpon>ResultatFinal.xaml</DependentUpon>
+    <Compile Include="ResultFinal_Tab.xaml.cs">
+      <DependentUpon>ResultFinal_Tab.xaml</DependentUpon>
     </Compile>
     <Compile Include="SimulationPage.xaml.cs">
       <DependentUpon>SimulationPage.xaml</DependentUpon>
@@ -146,7 +146,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ResultatFinal.xaml">
+    <Page Include="ResultFinal_Tab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -267,27 +267,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pics\algos.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Start.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Processor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="resume.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="circle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="algos.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="pause.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Design\" />

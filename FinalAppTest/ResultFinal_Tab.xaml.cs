@@ -11,17 +11,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace FinalAppTest
 {
     /// <summary>
-    /// Interaction logic for ResultatFinal.xaml
+    /// Interaction logic for ResultFinal_Tab.xaml
     /// </summary>
-    public partial class ResultatFinal : Window
+    public partial class ResultFinal_Tab : Page
     {
         List<Processus> P = new List<Processus>();
-        public ResultatFinal(List<Processus> P)
+        public ResultFinal_Tab(List<Processus> P)
         {
             this.P = P;
             InitializeComponent();
@@ -40,16 +41,16 @@ namespace FinalAppTest
                 tempsReponseMoy += P[i].tempsReponse;
                 tempsFinMoy += P[i].tempsFin;
             }
-            TempsAttMoyTB.Text = Math.Round((double) tempsAttMoy / P.Count, 3).ToString();
-            TempsSerMoyTB.Text = Math.Round((double) tempsServiceMoy / P.Count, 3).ToString();
-            TempsRepMoyTB.Text = Math.Round((double) tempsReponseMoy / P.Count, 3).ToString();
-            TempsFinMoyTB.Text = Math.Round((double) tempsFinMoy / P.Count, 3).ToString();
+            TempsAttMoyTB.Text = Math.Round((double)tempsAttMoy / P.Count, 3).ToString();
+            TempsSerMoyTB.Text = Math.Round((double)tempsServiceMoy / P.Count, 3).ToString();
+            TempsRepMoyTB.Text = Math.Round((double)tempsReponseMoy / P.Count, 3).ToString();
+            TempsFinMoyTB.Text = Math.Round((double)tempsFinMoy / P.Count, 3).ToString();
 
         }
 
         private void Terminer_Click(object sender, MouseButtonEventArgs e)
         {
-            SystemCommands.CloseWindow(this);
+            MainWindow.main.Content = SimulationPage.save;
         }
 
         private void TerminerButton_MouseEnter(object sender, MouseEventArgs e)

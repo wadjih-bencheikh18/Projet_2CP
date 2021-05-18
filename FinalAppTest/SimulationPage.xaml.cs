@@ -21,11 +21,13 @@ namespace FinalAppTest
     public partial class SimulationPage : Page
     {
         public Ordonnancement.Ordonnancement prog;
+        public static SimulationPage save;
 
         public SimulationPage(Ordonnancement.Ordonnancement prog)
         {
             InitializeComponent();
             this.prog = prog;
+            save = this;
         }
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -34,8 +36,7 @@ namespace FinalAppTest
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
         {
-            ResultatFinal resultatFinal = new ResultatFinal(prog.listeProcessus);
-            resultatFinal.Show();
+            MainWindow.main.Content = new ResultFinal_Tab(prog.listeProcessus);
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
