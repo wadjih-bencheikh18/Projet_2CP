@@ -7,38 +7,64 @@
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1366"
       Title="SimulationPage">
+    <Page.Resources>
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="background.jpg"/>
+            <ImageBrush ImageSource="Pics/background.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Rectangle Fill="White" Height="600" Width="450" RadiusX="30" RadiusY="30" Stroke="Black" StrokeThickness="1"/>
-            <TextBlock Margin="0 0 0 100" Text="Diagramme de Gantt" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Background="White" Margin="0,40" Width="450" CornerRadius="30" BorderBrush="Black" BorderThickness="1">
+                <TextBlock Margin="0 0 0 100" Text="Diagramme de Gantt" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+            <Border Grid.Row="1" Background="White" Margin="0,0,0,20" Width="450" CornerRadius="30" BorderBrush="Black" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Transition des états des processus" Margin="0 5 0 0" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="1" x:Name="deroulement" FontSize="18" TextAlignment="Center"/>
+                </Grid>
+            </Border>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Margin="10,0,0,20"  Height="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="0" MinWidth="600">
-                <StackPanel x:Name="ListProcessusView" Orientation="Horizontal">
+            <Border Margin="0,0,60,400"  Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="0" MinWidth="600">
+                <StackPanel x:Name="ListePretsView" Orientation="Horizontal">
                     <StackPanel.Resources>
                         <Storyboard x:Key="ListDecalage">
-                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
-                                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
-                                <EasingThicknessKeyFrame KeyTime="0:0:1" Value="-60,0,0,0"/>
-                            </ThicknessAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
+                            </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                         <Storyboard x:Key="Listback">
-                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ListProcessusView">
-                                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
-                            </ThicknessAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                         <Storyboard x:Key="up">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
@@ -49,35 +75,63 @@
                     </StackPanel.Resources>
                 </StackPanel>
             </Border>
-            <Border Height="180" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="2" Margin="40,0,0,0" Grid.Row="1" Width="180">
+            <Border Height="180" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="2" Margin="0,0,400,0" Grid.Row="0" Width="180">
                 <Border.Background>
-                    <ImageBrush ImageSource="Processor.png"/>
+                    <ImageBrush ImageSource="Pics/Processor.png"/>
                 </Border.Background>
                 <StackPanel x:Name="Processeur" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel.Resources>
                         <Storyboard x:Key="Disactive">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="507"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="500"/>
                             </DoubleAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-195"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-200"/>
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
-
+                        <Storyboard x:Key="Blocage">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="500"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="200"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
                     </StackPanel.Resources>
 
                 </StackPanel>
             </Border>
+            <Border Margin="0,400,60,0" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FFCCDD" BorderBrush="Black" BorderThickness="1" Grid.Row="0" MinWidth="600" Panel.ZIndex="-1">
+                <StackPanel x:Name="ListeBloqueView" Orientation="Horizontal" >
+                    <StackPanel.Resources>
+                        <Storyboard x:Key="up">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="decalage">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Retour">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </StackPanel.Resources>
 
-
-            <Border Margin="10 0 0 0" Height="60" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Background="#FFCCDD" BorderBrush="Black" BorderThickness="1" Grid.Row="2" MinWidth="600">
-                <StackPanel Orientation="Horizontal"/>
+                </StackPanel>
             </Border>
-            <TextBlock HorizontalAlignment="Center" Margin="0,0,0,70" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="24" FontFamily="Lexend"><Run Text="Liste des processus pr"/><Run Text="é"/><Run Text="t"/><Run Text="s"/></TextBlock>
-            <TextBlock HorizontalAlignment="Center" Margin="0,0,0,100" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
-            <Grid Grid.Row="3" Margin="150 0">
+            <TextBlock HorizontalAlignment="Center" Margin="0,0,50,520" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="24" FontFamily="Lexend" Width="300"><Run Text="Liste des processus pr"/><Run Text="ê"/><Run Text="t"/><Run Text="s"/></TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0,520,50,0" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
+            <Grid Grid.Row="1" Margin="100 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -96,9 +150,9 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button x:Name="StartBtn" Grid.Column="0" Background="#0D9330" BorderThickness="0" Width="45" Height="45" Click="StartBtn_Click">
+                    <Button x:Name="StartBtn" Style="{StaticResource MyButtonStyle}" Grid.Column="0" Background="#0D9330" BorderThickness="0" Width="45" Height="45" Click="StartBtn_Click">
                         <Button.Content>
-                            <Image Source="Start.png" Width="30" Height="30" />
+                            <Image Source="Pics/Start.png" Width="30" Height="30" />
                         </Button.Content>
                     </Button>
 
@@ -107,9 +161,9 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button Grid.Column="1" Background="#B51F1F" BorderThickness="0" Width="45" Height="45">
+                    <Button x:Name="ExitButton" Click="ExitButton_Click" Style="{StaticResource MyButtonStyle}" Grid.Column="1" Background="#B51F1F" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
-                            <Image Source="resume.png" Width="30" Height="30"/>
+                            <Image Source="Pics/resume.png" Width="30" Height="30"/>
                         </Button.Content>
                     </Button>
 
@@ -118,9 +172,9 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button Grid.Column="2" Background="#FFB53E" BorderThickness="0" Width="45" Height="45">
+                    <Button Grid.Column="2" Style="{StaticResource MyButtonStyle}" Background="#FFB53E" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
-                            <Image Source="pause.png" Width="30" Height="30"/>
+                            <Image Source="Pics/pause.png" Width="30" Height="30"/>
                         </Button.Content>
                     </Button>
 
@@ -129,9 +183,9 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button Grid.Column="3" Background="#4974C8" BorderThickness="0" Width="45" Height="45">
+                    <Button Grid.Column="3" Style="{StaticResource MyButtonStyle}" Background="#4974C8" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
-                            <Image Source="circle.png" Width="30" Height="30"/>
+                            <Image Source="Pics/circle.png" Width="30" Height="30"/>
                         </Button.Content>
                     </Button>
 
@@ -140,9 +194,9 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button x:Name="ResultFinalBtn" Grid.Column="4" Background="#666666" BorderThickness="0" Width="45" Height="45" Click="ResultFinalBtn_Click">
+                    <Button x:Name="ResultFinalBtn" Style="{StaticResource MyButtonStyle}" Grid.Column="4" Background="#666666" BorderThickness="0" Width="45" Height="45" Click="ResultFinalBtn_Click">
                         <Button.Content>
-                            <Image Source="algos.png" Width="30" Height="30"/>
+                            <Image Source="Pics/algos.png" Width="30" Height="30"/>
                         </Button.Content>
                     </Button>
                 </Grid>
@@ -151,7 +205,7 @@
                 </Grid>
 
             </Grid>
-            <Grid Margin="200,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50" Grid.Row="1">
+            <Grid Margin="250,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>

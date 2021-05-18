@@ -25,35 +25,29 @@ namespace FinalAppTest.Views
             InitializeComponent();
         }
 
-        private TextBox id;
-        private TextBox tempsArriv;
-        private TextBox duree;
+        private TextBox nivId;
+        private ComboBox algoSelect;
+        private TextBox quantum;
         private TextBlock Ajouter;
         private StackPanel Table;
 
-        public Mult_Niv_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, StackPanel Table, TextBlock Ajouter)
+        public Mult_Niv_TabRow(TextBox nivId, ComboBox algoSelect, TextBox quantum, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
-            this.id = id;
-            this.tempsArriv = tempsArriv;
-            this.duree = duree;
+            this.nivId = nivId;
+            this.algoSelect = algoSelect;
+            this.quantum = quantum;
             this.Table = Table;
             this.Ajouter = Ajouter;
         }
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
         {
-            id.Text = idTest.Text;
-            tempsArriv.Text = tempsArrTest.Text;
-            duree.Text = dureeTest.Text;
+            nivId.Text = nivtest.Text;
+            algoSelect.Text = type.Text;
+            quantum.Text = quantumTest.Text;
             Mult_Niv_Tab.modifier = true;
             Mult_Niv_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
-        }
-
-        private void suprimer_Button_Click(object sender, RoutedEventArgs e)
-        {
-            // Mult_Niv_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.id.Text) && p.tempsArriv.ToString().Equals(this.tempsArriv.Text));
-            Table.Children.Remove(this);
         }
     }
 }
