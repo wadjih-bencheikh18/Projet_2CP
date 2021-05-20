@@ -41,15 +41,15 @@
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid x:Name="GridMulti" Grid.Row="0" Height="300" Margin="0,0,0,300" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid x:Name="GridMulti" Grid.Row="0" Height="297" Margin="0,0,0,300" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.6*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <Border Visibility="Hidden" x:Name="Border1" Margin="10,0,0,20"  Height="45" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="1" MinWidth="600">
+                <Border x:Name="Border1" Margin="0"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="1" MinWidth="600">
                     <StackPanel x:Name="ListProcessusView0" Orientation="Horizontal">
                         <StackPanel.Resources>
                             <Storyboard x:Key="ListDecalage">
@@ -68,11 +68,16 @@
                                     <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                                     <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
                                 </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="198"/>
+                                </DoubleAnimationUsingKeyFrames>
                             </Storyboard>
                         </StackPanel.Resources>
                     </StackPanel>
                 </Border>
-                <Border Visibility="Hidden" x:Name="Border2"  Margin="10,0,0,20"  Height="45" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="2" MinWidth="600">
+                <Border x:Name="Border2"  Margin="0"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="2" MinWidth="600">
                     <StackPanel x:Name="ListProcessusView1" Orientation="Horizontal">
                         <StackPanel.Resources>
                             <Storyboard x:Key="ListDecalage">
@@ -95,7 +100,7 @@
                         </StackPanel.Resources>
                     </StackPanel>
                 </Border>
-                <Border Visibility="Hidden" x:Name="Border3"  Margin="10,0,0,20"  Height="45" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="3" MinWidth="600">
+                <Border x:Name="Border3"  Margin="0"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="3" MinWidth="600">
                     <StackPanel x:Name="ListProcessusView2" Orientation="Horizontal">
                         <StackPanel.Resources>
                             <Storyboard x:Key="ListDecalage">
@@ -118,7 +123,7 @@
                         </StackPanel.Resources>
                     </StackPanel>
                 </Border>
-                <Border Visibility="Hidden" x:Name="Border4"  Margin="10,0,0,20"  Height="45" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="4" MinWidth="600">
+                <Border x:Name="Border4"  Margin="0"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" Grid.Row="4" MinWidth="600">
                     <StackPanel x:Name="ListProcessusView3" Orientation="Horizontal">
                         <StackPanel.Resources>
                             <Storyboard x:Key="ListDecalage">

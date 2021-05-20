@@ -179,17 +179,17 @@ namespace Ordonnancement
                         }
                         else if (proc != listePrets[0])
                         {
-                            await Desactivation(ListePretsView, Processeur, proc);
+                            await Desactivation_MultiLvl(ListePretsView, Processeur, proc);
                             i = 0;
                             anime = true;
                         }
                         else i = 1;
-                        await MAJListePretsView(ListePretsView, i);
+                        await MAJListePretsView_MultiLvl(ListePretsView, i);
                     }
                 }
                 if (anime && listePrets.Count != 0) //si un tri par durée est necessaire et il y a des processus prêts
                 {
-                    await Activation(ListePretsView, Processeur, listePrets[0]);
+                    await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                     anime = false;
                 }
                 await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur);
@@ -204,14 +204,14 @@ namespace Ordonnancement
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--;//L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
-                    MAJProcesseur(Processeur);
+                    MAJProcesseur_MultiLvl(Processeur);
                     if (listePrets[0].tempsRestant == 0) // Si l'execution du premier processus de listePrets est terminée :
                     {
                         listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3;
-                        await FinProcessus(Processeur);
+                        await FinProcessus_MultiLvl(Processeur);
                         debut = true;
                         anime = true;
                         listePrets.RemoveAt(0); //supprimer le processus dont la duree est écoulée
@@ -223,7 +223,7 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                     listePrets[0].etat = 1;
-                    await Desactivation(ListePretsView, Processeur, listePrets[0]);
+                    await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
                     return temps;

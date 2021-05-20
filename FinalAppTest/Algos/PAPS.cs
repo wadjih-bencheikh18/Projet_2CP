@@ -105,7 +105,7 @@ namespace Ordonnancement
             {
                 if(anime)
                 {
-                    await Activation(ListePretsView, Processeur, listePrets[0]);
+                    await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
                 await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur);
                 anime = false;
@@ -118,14 +118,14 @@ namespace Ordonnancement
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence
-                    MAJProcesseur(Processeur);
+                    MAJProcesseur_MultiLvl(Processeur);
                     if (listePrets[0].tempsRestant == 0) //si l'execution du premier processus de listePrets est terminée
                     {
                         listePrets[0].tempsFin = temps; //temps de fin d'execution = au temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;  //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3;
-                        await FinProcessus(Processeur);
+                        await FinProcessus_MultiLvl(Processeur);
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                         anime = true;
                     }
@@ -135,7 +135,7 @@ namespace Ordonnancement
             {
                 listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                 listePrets[0].etat = 1;
-                await Desactivation(ListePretsView, Processeur, listePrets[0]);
+                await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 listePrets.Add(listePrets[0]);
                 listePrets.RemoveAt(0);
                 return temps;

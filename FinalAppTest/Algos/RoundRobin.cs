@@ -150,7 +150,7 @@ namespace Ordonnancement
             while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))  //tant qu'il existe des processus prêts
             {
                     if (anime)
-                        await Activation(ListePretsView, Processeur, listePrets[0]);
+                        await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
 
                     if(await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur)) niveaux[indiceNiveau].indice[1] = 0;
                     anime = false;
@@ -162,7 +162,7 @@ namespace Ordonnancement
                     niveaux[indiceNiveau].indice[1]++;  // quantum++
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
-                    MAJProcesseur(Processeur);
+                    MAJProcesseur_MultiLvl(Processeur);
                     if (listePrets[0].tempsRestant == 0)  // fin d'exécution du processus 
                     {
                         listePrets[0].tempsFin = temps;
@@ -171,13 +171,13 @@ namespace Ordonnancement
                         listePrets[0].etat = 3;
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                         niveaux[indiceNiveau].indice[1] = 0;  // un nouveau quantum va commencer
-                        await FinProcessus(Processeur);
+                        await FinProcessus_MultiLvl(Processeur);
                         anime = true;
                     }
                     else if (niveaux[indiceNiveau].indice[1] == quantum && listePrets.Count == 1) niveaux[indiceNiveau].indice[1] = 0;
                     else if (niveaux[indiceNiveau].indice[1] == quantum)  // on a terminé ce quantum => il faut passer au processus suivant => on defile, et à la fin, on enfile le processus courant
                     {
-                        await Desactivation(ListePretsView, Processeur, listePrets[0]);
+                        await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                         listePrets[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                         niveaux[indiceNiveau].indice[1] = 0;  // nouveau quantum
                         listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
@@ -191,7 +191,7 @@ namespace Ordonnancement
             }
             if (! PrioNiveaux(niveaux, indiceNiveau, nbNiveau))  // On est arrivé à tempsFin => la fin de l'exécution 
                 {
-                    await Desactivation(ListePretsView, Processeur, listePrets[0]);
+                    await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                     listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                     listePrets[0].etat = 1;
                     listePrets.Add(listePrets[0]);

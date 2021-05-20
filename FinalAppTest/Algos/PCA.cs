@@ -124,8 +124,8 @@ namespace Ordonnancement
                 {
                     listePrets.Sort(delegate (Processus x, Processus y) { return x.duree.CompareTo(y.duree); }); //sinon, on fait le tri par durée
                     niveaux[indiceNiveau].indice[1] = 0; //le tri par durée n'est plus necessaire (déja fait)
-                    await MAJListePretsView(ListePretsView, 0);
-                    await Activation(ListePretsView, Processeur, listePrets[0]);
+                    await MAJListePretsView_MultiLvl(ListePretsView, 0);
+                    await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
                 await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur);
                 niveaux[indiceNiveau].indice[1] = 0;
@@ -137,7 +137,7 @@ namespace Ordonnancement
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //le processus est entrain de s'exécuter donc on décrémente le tempsRestant
-                    MAJProcesseur(Processeur);
+                    MAJProcesseur_MultiLvl(Processeur);
                     if (listePrets[0].tempsRestant == 0) // fin d'exécution du processus 
                     {
                         listePrets[0].tempsFin = temps; //temps de fin d'execution = au temps actuel
@@ -145,7 +145,7 @@ namespace Ordonnancement
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;  //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3;
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
-                        await FinProcessus(Processeur);
+                        await FinProcessus_MultiLvl(Processeur);
                         niveaux[indiceNiveau].indice[1] = 1; //il faut trier les processus restants dans listePrets par durée
                     }
                 }
@@ -155,7 +155,7 @@ namespace Ordonnancement
                     niveaux[indiceNiveau].indice[1] = 1;
                     listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                     listePrets[0].etat = 1;
-                    await Desactivation(ListePretsView, Processeur, listePrets[0]);
+                    await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
                     return temps;

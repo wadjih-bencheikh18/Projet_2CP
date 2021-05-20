@@ -129,6 +129,36 @@ namespace Ordonnancement
             }
         }
 
+        public async Task Activation_MultiLvl(StackPanel ListePretsView, StackPanel Processeur, Processus proc)
+        {
+            Processeur.Children.Clear();
+            ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
+            AffichageProcessus pro = new AffichageProcessus(proc);
+            pro.X1 = -100;
+            pro.Y1 = -140;
+            item.DataContext = pro;
+            Storyboard AnimeProc = new Storyboard();
+            Storyboard AnimeList = new Storyboard();
+            AnimeList.Children.Add(ListePretsView.FindResource("ListDecalage") as Storyboard);
+            AnimeProc.Children.Add(ListePretsView.FindResource("up") as Storyboard);
+            AnimeProc.Begin((FrameworkElement)ListePretsView.Children[0]);
+            await Task.Delay(1500);
+            Processeur.Children.Add(item);
+            ListePretsView.Children[0].Visibility = Visibility.Hidden;
+            for (int j = 1; j < ListePretsView.Children.Count; j++)
+            {
+                AnimeList.Begin((FrameworkElement)ListePretsView.Children[j]);
+            }
+            await Task.Delay(1000);
+            AnimeList = new Storyboard();
+            AnimeList.Children.Add(ListePretsView.FindResource("Listback") as Storyboard);
+            ListePretsView.Children.RemoveAt(0);
+            for (int j = 0; j < ListePretsView.Children.Count; j++)
+            {
+                AnimeList.Begin((FrameworkElement)ListePretsView.Children[j]);
+            }
+        }
+
         public void MAJProcesseur(StackPanel Processeur)
         {
             ProcessusDesign item = new ProcessusDesign();
@@ -138,9 +168,28 @@ namespace Ordonnancement
             Processeur.Children.Add(item);
         }
 
+        public void MAJProcesseur_MultiLvl(StackPanel Processeur)
+        {
+            ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
+            AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
+            item.DataContext = pro;
+            Processeur.Children.Clear();
+            Processeur.Children.Add(item);
+        }
+
         public async Task FinProcessus(StackPanel Processeur)
         {
             ProcessusDesign item = new ProcessusDesign();
+            Storyboard AnimeDone = new Storyboard();
+            AnimeDone.Children.Add(item.FindResource("processusDone") as Storyboard);
+            AnimeDone.Begin((FrameworkElement)Processeur.Children[0]);
+            await Task.Delay(1000);
+            Processeur.Children.Clear();
+        }
+
+        public async Task FinProcessus_MultiLvl(StackPanel Processeur)
+        {
+            ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
             Storyboard AnimeDone = new Storyboard();
             AnimeDone.Children.Add(item.FindResource("processusDone") as Storyboard);
             AnimeDone.Begin((FrameworkElement)Processeur.Children[0]);
@@ -160,6 +209,20 @@ namespace Ordonnancement
             }
             await Task.Delay(500);
         }
+
+        public async Task MAJListePretsView_MultiLvl(StackPanel ListePretsView, int i)
+        {
+            ListePretsView.Children.Clear();
+            for (; i < listePrets.Count; i++)
+            {
+                ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
+                AffichageProcessus pro = new AffichageProcessus(listePrets[i]);
+                item.DataContext = pro;
+                ListePretsView.Children.Add(item);
+            }
+            await Task.Delay(500);
+        }
+
         public async Task Reveil(StackPanel ListePretsView, StackPanel ListeBloqueView,int i)
         {
             ProcessusDesign item = new ProcessusDesign();
@@ -188,6 +251,36 @@ namespace Ordonnancement
             ListePretsView.Children.Add(item);
             await Task.Delay(3000);
         }
+
+        public async Task Reveil_MultiLvl(StackPanel ListePretsView, StackPanel ListeBloqueView, int i)
+        {
+            ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
+            AffichageProcessus pro = new AffichageProcessus(listebloque[i]);
+            pro.X1 = -60 * ListePretsView.Children.Count + 60 * i;
+            pro.Y1 = 340;
+            pro.Y2 = 340;
+            pro.X2 = 600 - 60 * ListePretsView.Children.Count;
+            pro.X3 = pro.X2;
+            item.DataContext = pro;
+            Storyboard animeReveil = new Storyboard();
+            animeReveil.Children.Add(ListeBloqueView.FindResource("up") as Storyboard);
+            animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[i]);
+            await Task.Delay(500);
+
+            animeReveil = (Storyboard)ListeBloqueView.FindResource("decalage");
+            for (int j = i + 1; j < ListeBloqueView.Children.Count; j++)
+                animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
+
+            await Task.Delay(1000);
+            ListeBloqueView.Children.RemoveAt(i);
+            animeReveil = ListeBloqueView.FindResource("Retour") as Storyboard;
+            for (int j = i; j < ListeBloqueView.Children.Count; j++)
+                animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
+
+            ListePretsView.Children.Add(item);
+            await Task.Delay(3000);
+        }
+
         public async Task Blocage(StackPanel ListeBloqueView, StackPanel Processeur)
         {
             Storyboard animeBloque = new Storyboard();
@@ -201,6 +294,21 @@ namespace Ordonnancement
             item.DataContext = pro;
             ListeBloqueView.Children.Add(item);
         }
+
+        public async Task Blocage_MultiLvl(StackPanel ListeBloqueView, StackPanel Processeur)
+        {
+            Storyboard animeBloque = new Storyboard();
+            animeBloque.Children.Add(Processeur.FindResource("Blocage") as Storyboard);
+            animeBloque.Begin((FrameworkElement)Processeur.Children[0]);
+            await Task.Delay(1000);
+            Processeur.Children.Clear();
+            AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
+            pro.X1 = 600 - 60 * ListeBloqueView.Children.Count;
+            ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
+            item.DataContext = pro;
+            ListeBloqueView.Children.Add(item);
+        }
+
         public async Task Desactivation(StackPanel ListePretsView, StackPanel Processeur, Processus proc)
         {
             Storyboard animeDis = new Storyboard();
@@ -215,6 +323,22 @@ namespace Ordonnancement
             ListePretsView.Children.Add(item);
             await Task.Delay(1000);
         }
+
+        public async Task Desactivation_MultiLvl(StackPanel ListePretsView, StackPanel Processeur, Processus proc)
+        {
+            Storyboard animeDis = new Storyboard();
+            animeDis.Children.Add(Processeur.FindResource("Disactive") as Storyboard);
+            animeDis.Begin((FrameworkElement)Processeur.Children[0]);
+            await Task.Delay(1000);
+            Processeur.Children.Clear();
+            AffichageProcessus pro = new AffichageProcessus(proc);
+            pro.X1 = 600 - 60 * ListePretsView.Children.Count;
+            ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
+            item.DataContext = pro;
+            ListePretsView.Children.Add(item);
+            await Task.Delay(1000);
+        }
+
         public async Task AfficherDeroulement(TextBlock deroulement)
         {
             if (listePrets.Count!=0)
@@ -407,7 +531,7 @@ namespace Ordonnancement
                     if (listeGeneral[indice].niveau == indiceNiveau) listePrets.Add(listeGeneral[indice]); //si le niveau du processus = indiceNiveau (niveau actuel) on ajoute ce processus à la liste des processus prêts de ce niveau
                     else niveaux[listeGeneral[indice].niveau].listePrets.Add(listeGeneral[indice]); //sinon on ajoute le processus à la liste des processus prêts de son niveau
                     AffichageProcessus pro = new AffichageProcessus(listeGeneral[indice]);
-                    ProcessusDesign item = new ProcessusDesign();
+                    ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
                     item.DataContext = pro;
                     pro.X1 = 700;
                     pro.Y1 = 0;
@@ -430,7 +554,7 @@ namespace Ordonnancement
                     listebloqueGenerale[i].transition = 1; //Desactivation du ieme processus de listebloqueGenerale
                     listebloqueGenerale[i].etat = 1;
                     listePrets.Add(listebloqueGenerale[i]);
-                    await Reveil(ListesPretsViews[listebloqueGenerale[i].niveau], ListeBloqueView, i);
+                    await Reveil_MultiLvl(ListesPretsViews[listebloqueGenerale[i].niveau], ListeBloqueView, i);
                     listebloqueGenerale.RemoveAt(i);
                     listebloque.RemoveAt(i);
                     Anime = true;
@@ -450,12 +574,12 @@ namespace Ordonnancement
                 listePrets[0].transition = 0; //Blocage du ieme processus de listebloque
                 listePrets[0].etat = 0;
                 listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
-                await Blocage(ListeBloqueView, Processeur);
+                await Blocage_MultiLvl(ListeBloqueView, Processeur);
                 listebloque.Add(listePrets[0]);
                 listePrets.RemoveAt(0);
-                if (listePrets.Count != 0) await Activation(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
+                if (listePrets.Count != 0) await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
             }
-            else if (Anime && vide) await Activation(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
+            else if (Anime && vide) await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
             return interupt;
         }
         #endregion

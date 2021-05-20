@@ -70,6 +70,9 @@
     <Compile Include="ProcessusDesign.xaml.cs">
       <DependentUpon>ProcessusDesign.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProcessusDesignMultiLvl.xaml.cs">
+      <DependentUpon>ProcessusDesignMultiLvl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ResultFinal_Tab.xaml.cs">
       <DependentUpon>ResultFinal_Tab.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ProcessusDesign.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProcessusDesignMultiLvl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
