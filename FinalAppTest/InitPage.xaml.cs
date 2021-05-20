@@ -112,12 +112,21 @@ namespace FinalAppTest
             }
             else if (ContentViewer.Content.GetType() == typeof(MultiNiveauViewModel))  // MultiNiveaux
             {
-                Mult_Niv_Tab.prog = new MultiNiveau(Mult_Niv_Tab.indiceniv, Mult_Niv_Tab.niveaux);
-                foreach(ProcessusNiveau pro in Mult_Niv_Tab.ListPro)
+                if (Mult_Niv_Tab.ListPro.Count==0 || Mult_Niv_Tab.indiceniv==0)
                 {
-                    Mult_Niv_Tab.prog.Push(pro);
+                    var bc = new BrushConverter();
+                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
-                MainWindow.main.Content = new SimulationPage_MultiLvl(Mult_Niv_Tab.prog);
+                else
+                {
+                    Mult_Niv_Tab.prog = new MultiNiveau(Mult_Niv_Tab.indiceniv, Mult_Niv_Tab.niveaux);
+                    foreach (ProcessusNiveau pro in Mult_Niv_Tab.ListPro)
+                    {
+                        Mult_Niv_Tab.prog.Push(pro);
+                    }
+                    MainWindow.main.Content = new SimulationPage_MultiLvl(Mult_Niv_Tab.prog);
+                }
               
             }
         }
