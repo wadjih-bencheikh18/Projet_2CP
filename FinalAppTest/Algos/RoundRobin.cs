@@ -177,7 +177,7 @@ namespace Ordonnancement
                     else if (niveaux[indiceNiveau].indice[1] == quantum && listePrets.Count == 1) niveaux[indiceNiveau].indice[1] = 0;
                     else if (niveaux[indiceNiveau].indice[1] == quantum)  // on a terminé ce quantum => il faut passer au processus suivant => on defile, et à la fin, on enfile le processus courant
                     {
-                        await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
+                        await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
                         listePrets[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                         niveaux[indiceNiveau].indice[1] = 0;  // nouveau quantum
                         listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
@@ -189,9 +189,9 @@ namespace Ordonnancement
 
                 
             }
-            if (! PrioNiveaux(niveaux, indiceNiveau, nbNiveau))  // On est arrivé à tempsFin => la fin de l'exécution 
+            if (! PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)  // On est arrivé à tempsFin => la fin de l'exécution 
                 {
-                    await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
+                    await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
                     listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                     listePrets[0].etat = 1;
                     listePrets.Add(listePrets[0]);

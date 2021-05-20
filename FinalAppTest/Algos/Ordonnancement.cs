@@ -134,8 +134,8 @@ namespace Ordonnancement
             Processeur.Children.Clear();
             ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
             AffichageProcessus pro = new AffichageProcessus(proc);
-            pro.X1 = -100;
-            pro.Y1 = -140;
+            pro.X1 = -136.5;
+            pro.Y1 = -58.5;
             item.DataContext = pro;
             Storyboard AnimeProc = new Storyboard();
             Storyboard AnimeList = new Storyboard();
@@ -324,7 +324,7 @@ namespace Ordonnancement
             await Task.Delay(1000);
         }
 
-        public async Task Desactivation_MultiLvl(StackPanel ListePretsView, StackPanel Processeur, Processus proc)
+        public async Task Desactivation_MultiLvl(StackPanel ListePretsView, StackPanel Processeur, Processus proc, int indiceNiveau)
         {
             Storyboard animeDis = new Storyboard();
             animeDis.Children.Add(Processeur.FindResource("Disactive") as Storyboard);
@@ -332,11 +332,13 @@ namespace Ordonnancement
             await Task.Delay(1000);
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(proc);
-            pro.X1 = 600 - 60 * ListePretsView.Children.Count;
+            pro.X1 = 600 - 45 * ListePretsView.Children.Count;
+            pro.X2 = pro.X1;
+            pro.Y1 = 66 * (3 - indiceNiveau) + 50;
             ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
             item.DataContext = pro;
             ListePretsView.Children.Add(item);
-            await Task.Delay(1000);
+            await Task.Delay(2500);
         }
 
         public async Task AfficherDeroulement(TextBlock deroulement)

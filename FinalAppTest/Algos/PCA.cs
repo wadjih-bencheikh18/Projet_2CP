@@ -150,12 +150,12 @@ namespace Ordonnancement
                     }
                 }
             }
-            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
+            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)
                 {
                     niveaux[indiceNiveau].indice[1] = 1;
                     listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                     listePrets[0].etat = 1;
-                    await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
+                    await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
                     return temps;
