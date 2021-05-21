@@ -40,10 +40,10 @@ namespace FinalAppTest
                 tempsReponseMoy += P[i].tempsReponse;
                 tempsFinMoy += P[i].tempsFin;
             }
-            TempsAttMoyTB.Text = ((double) tempsAttMoy / P.Count).ToString();
-            TempsSerMoyTB.Text = ((double) tempsServiceMoy / P.Count).ToString();
-            TempsRepMoyTB.Text = ((double) tempsReponseMoy / P.Count).ToString();
-            TempsFinMoyTB.Text = ((double) tempsFinMoy / P.Count).ToString();
+            TempsAttMoyTB.Text = Math.Round((double) tempsAttMoy / P.Count, 3).ToString();
+            TempsSerMoyTB.Text = Math.Round((double) tempsServiceMoy / P.Count, 3).ToString();
+            TempsRepMoyTB.Text = Math.Round((double) tempsReponseMoy / P.Count, 3).ToString();
+            TempsFinMoyTB.Text = Math.Round((double) tempsFinMoy / P.Count, 3).ToString();
 
         }
 

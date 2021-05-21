@@ -6,24 +6,25 @@
         xmlns:local="clr-namespace:FinalAppTest"
          mc:Ignorable="d"
         Title="ResultatFinal" Height="450" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
-    <ScrollViewer>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition Height="100"/>
-            </Grid.RowDefinitions>
-            <Rectangle Grid.RowSpan="6" Fill="#FFFFFFFF" RadiusX="15" RadiusY="15" Stroke="#FFB3B3B3" StrokeThickness="0.5">
-                <Rectangle.Effect>
-                    <DropShadowEffect ShadowDepth="0" Opacity="0.2" BlurRadius="15" Direction="0"/>
-                </Rectangle.Effect>
-            </Rectangle>
-            <Grid Grid.Row="0" x:Name="Grid1" Background="#00FFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition />
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.RowSpan="6" Fill="#FFFFFFFF" RadiusX="15" RadiusY="15" Stroke="#FFB3B3B3" StrokeThickness="0.5">
+            <Rectangle.Effect>
+                <DropShadowEffect ShadowDepth="0" Opacity="0.2" BlurRadius="15" Direction="0"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Grid Grid.Row="0" Background="#00FFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,2.976,0,97.024" Grid.RowSpan="2">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="6*"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
@@ -46,60 +47,62 @@
                 <TextBlock Grid.Column="6" Text="Temps De Fin" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Grid Margin="10 30 10 0" Grid.Column="1">
+        <ScrollViewer Grid.Row="1" Margin="10">
+            <StackPanel x:Name="Grid1"/>
+        </ScrollViewer>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Margin="10 30 10 0" Grid.Column="1">
                 <Rectangle x:Name="TerminerButton" Margin="10" Cursor="Hand" MouseLeftButtonDown="Terminer_Click" Grid.Column="1" Fill="#5829AA" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25" MouseEnter="TerminerButton_MouseEnter" MouseLeave="TerminerButton_MouseLeave"/>
-              <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Terminer</TextBlock>
-                </Grid>
+                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Terminer</TextBlock>
+            </Grid>
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Rectangle Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
-                        <TextBlock x:Name="TempsAttMoyTB" Grid.Row="1" FontSize="15" FontFamily="Lexend" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Row="0" FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Temps D'attente" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Rectangle Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
-                        <TextBlock x:Name="TempsSerMoyTB" Grid.Row="1" FontSize="15" FontFamily="Lexend" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Row="0" FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Temps De Service" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Rectangle Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
-                        <TextBlock x:Name="TempsRepMoyTB" Grid.Row="1" FontSize="15" FontFamily="Lexend" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Row="0" FontSize="15" FontFamily="Lexend" Text="Temps De Reponse" FontWeight="Medium" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid Grid.Column="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Rectangle Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
-                        <TextBlock x:Name="TempsFinMoyTB" Grid.Row="1" FontSize="15" FontFamily="Lexend" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Row="0" FontSize="15" FontFamily="Lexend" Text="Temps De Fin" FontWeight="Medium" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    </Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                    <TextBlock x:Name="TempsAttMoyTB" Grid.Row="1" FontSize="15" FontFamily="Lexend" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="0" FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Temps D'attente" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                    <TextBlock x:Name="TempsSerMoyTB" Grid.Row="1" FontSize="15" FontFamily="Lexend" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="0" FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Temps De Service" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                    <TextBlock x:Name="TempsRepMoyTB" Grid.Row="1" FontSize="15" FontFamily="Lexend" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="0" FontSize="15" FontFamily="Lexend" Text="Temps De Reponse" FontWeight="Medium" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                    <TextBlock x:Name="TempsFinMoyTB" Grid.Row="1" FontSize="15" FontFamily="Lexend" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="0" FontSize="15" FontFamily="Lexend" Text="Temps De Fin" FontWeight="Medium" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                 </Grid>
             </Grid>
         </Grid>
-    </ScrollViewer>
+    </Grid>
 </Window>

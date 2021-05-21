@@ -9,12 +9,16 @@
     <UserControl.Resources>
         <Storyboard x:Key="AddAnimation">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
-                <EasingDoubleKeyFrame KeyTime="0" Value="{Binding Y}"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="{Binding Y1}"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="{Binding Y2}"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="{Binding Y3}"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                <EasingDoubleKeyFrame KeyTime="0" Value="{Binding X}"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="{Binding X1}"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="{Binding X2}"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="{Binding X3}"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="processusDone">
@@ -49,8 +53,8 @@
                         <DropShadowEffect BlurRadius="4" Direction="0" RenderingBias="Quality" ShadowDepth="0"/>
                     </TextBlock.Effect>
                 </TextBlock>
-                <TextBlock HorizontalAlignment="Right" FontSize="14" Background="{x:Null}" Foreground="White" Margin="0,0,5,5" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" Text="{Binding tempsRestant}" Grid.RowSpan="2" Panel.ZIndex="1"/>
-                <TextBlock HorizontalAlignment="Left" FontSize="14" Background="{x:Null}" Foreground="White" Margin="5,0,0,5" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center" Text="{Binding prio}" Grid.RowSpan="2" Panel.ZIndex="1"/>
+                <TextBlock HorizontalAlignment="Right" FontSize="14" Background="{x:Null}" Foreground="White" Margin="0,0,5,5" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="{Binding tempsRestant}"/>
+                <TextBlock HorizontalAlignment="Left" FontSize="14" Background="{x:Null}" Foreground="White" Margin="5,0,0,5" TextWrapping="Wrap" VerticalAlignment="Bottom" Text="{Binding prio}"/>
             </Grid>
         </Border>
     </Grid>

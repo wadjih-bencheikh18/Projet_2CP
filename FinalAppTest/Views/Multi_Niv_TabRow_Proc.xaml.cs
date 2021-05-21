@@ -16,58 +16,48 @@ using System.Windows.Shapes;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PCA_TabRow.xaml
+    /// Interaction logic for Multi_Niv_TabRow_Proc.xaml
     /// </summary>
-    public partial class PCA_TabRow : UserControl
+    public partial class Multi_Niv_TabRow_Proc : UserControl
     {
-        public PCA_TabRow()
+        public Multi_Niv_TabRow_Proc()
         {
             InitializeComponent();
-            TreeViewItem header = new TreeViewItem();
-            header.Header = processusHeader;
-            TreeViewParent.Items.Add(header);
         }
-
         private TextBox id;
         private TextBox tempsArriv;
         private TextBox duree;
+        private TextBox prio;
+        private TextBox niveau;
         private TextBlock Ajouter;
         private StackPanel Table;
-
-        public TreeViewItem parent;
-
-        public PCA_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, StackPanel Table, TextBlock Ajouter)
+        public Multi_Niv_TabRow_Proc(TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox niveau, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
             this.Table = Table;
+            this.prio = prio;
+            this.niveau = niveau;
             this.Ajouter = Ajouter;
-
-            parent = TreeViewParent;
-
-            parent.Items.Add(new Interruption_Ajouter(this));
         }
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
         {
             id.Text = idTest.Text;
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
-            PCA_Tab.modifier = true;
-            PCA_Tab.proModifier = this;
+            prio.Text = prioTest.Text;
+            niveau.Text = niveauTest.Text;
+            Mult_Niv_Tab.modifier = true;
+            Mult_Niv_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            PCA_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
+            Mult_Niv_Tab.ListPro.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
-        }
-
-        private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
-        {
-            TreeViewParent.IsSelected = false;
         }
     }
 }

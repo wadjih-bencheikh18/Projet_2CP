@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FinalAppTest
+namespace simulation
 {
     /// <summary>
-    /// Interaction logic for ProcessusDesign.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class ProcessusDesign_MultiLvl : UserControl
+    public partial class MainWindow : Window
     {
-        public ProcessusDesign_MultiLvl()
+        public MainWindow()
         {
             InitializeComponent();
         }
-
     }
 }

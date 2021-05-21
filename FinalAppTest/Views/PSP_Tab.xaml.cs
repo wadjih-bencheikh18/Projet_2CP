@@ -25,7 +25,6 @@ namespace FinalAppTest.Views
         {
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
-            indice++;
         }
 
         public static PSP prog = new PSP();
@@ -39,26 +38,43 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             if (!Int32.TryParse(NbProcessusTextBox.Text, out NbProcessus) && NbProcessus <= 0)
             {
+                RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
             else
             {
                 prog.listeProcessus.Clear();  // vider la liste pour l'ecraser
-                NbProcessusTextBox.Text = "";
-                RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
+                NbProcessusTextBox.Text = "0";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
-                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
+                RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
                 Random r = new Random();
                 for (int i = 0; i < NbProcessus; i++)
                 {
-                    AffichageProcessus pro = new AffichageProcessus
+                    AffichageProcessus pro = new AffichageProcessus  // générer un processus
                     {
                         id = i,
                         tempsArriv = r.Next(20),
-                        duree = r.Next(1, 20),
+                        duree = r.Next(1, 5),
                         prio = r.Next(1, 20)
                     };
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
-                    prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio));  // added to the program
+                    PSP_TabRow processus = pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
+
+                    Processus proc = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);
+                    processus.parent.Items.RemoveAt(processus.parent.Items.Count - 1);  // remove the ajouter_row
+                    for (int j = 0; ((bool)RandomizeInterrup.IsChecked) && pro.duree > 1 && j < r.Next(0, 3); j++)  // générer des interruptions
+                    {
+                        Interruption inter;
+                        if (r.Next(0, 2) == 1) inter = new Interruption("Entrée/sortie", r.Next(1, 5), r.Next(1, pro.duree));
+                        else inter = new Interruption("appel methode", r.Next(1, 5), r.Next(1, pro.duree));
+                        proc.Push(inter);  // ajouter l'interruption au liste des interruptions du processus
+
+                        Interruption_TabRow row = new Interruption_TabRow(processus)  // créer une ligne interruption
+                        {
+                            DataContext = inter
+                        };
+                        processus.parent.Items.Add(row);  // inserer sa ligne dans les éléments de sa TreeViewItem
+                    }
+                    processus.parent.Items.Add(new Interruption_Ajouter(processus));  // append ajouter_row
+                    prog.Push(proc);  // added processus to the program
                 }
                 IdTextBox.Text = NbProcessus.ToString();
                 indice = NbProcessus;
@@ -72,18 +88,24 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
-               valide = false;
+                valide = false;
+                RectTar.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
             if (!Int32.TryParse(DureeTextBox.Text, out duree) || duree <= 0)  // get durée
             {
+                RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
-            if (!Int32.TryParse(PrioTextBox.Text, out prio) || prio <= 0)  // get priorité
+            if (!Int32.TryParse(PrioTextBox.Text, out prio) || prio < 0)  // get priorité
             {
+                RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
             if (valide)  // si tous est correcte
             {
+                RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+                RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+                RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 if (!modifier)  // un nouveau processus
                 {
                     id = indice;

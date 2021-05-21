@@ -21,26 +21,25 @@ namespace FinalAppTest
     public partial class SimulationPage_MultiLvl : Page
     {
         public Ordonnancement.Ordonnancement prog;
-        private int nbNiveaux = 1;
+        private int nbNiveaux;
         public SimulationPage_MultiLvl(Ordonnancement.Ordonnancement prog)
         {
             InitializeComponent();
             this.prog = prog;
-        }
-        private void StartBtn_Click(object sender, RoutedEventArgs e)
-        {
-              _ = prog.Executer(ListProcessusView1, Processeur, TempsView);
+            nbNiveaux = ((MultiNiveau)prog).nbNiveau;
+            StackPanel[] ListesPretsViews = { ListProcessusView0,ListProcessusView1,ListProcessusView2,ListProcessusView3};
+            ((MultiNiveau)prog).InitVisualisation(ListesPretsViews);
         }
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
         {
-            List<Processus> P = new List<Processus>();
-            foreach (Processus Pro in prog.listeProcessus)
+            List<ProcessusNiveau> P = new List<ProcessusNiveau>();
+            foreach (ProcessusNiveau Pro in prog.listeProcessus)
             {
-                P.Add(new Processus(Pro));
+                //P.Add(new ProcessusNiveau(Pro));
             }
-            ResultatFinal resultatFinal = new ResultatFinal(P);
-            resultatFinal.Show();
+            //ResultatFinal resultatFinal = new ResultatFinal(P);
+            //resultatFinal.Show();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -48,23 +47,17 @@ namespace FinalAppTest
             if (nbNiveaux == 1)
             {
                 Border1.Visibility = Visibility.Visible;
-                GridMulti.RowDefinitions.RemoveAt(4);
-                GridMulti.RowDefinitions.RemoveAt(3);
-                GridMulti.RowDefinitions.RemoveAt(2);
             }
             else if (nbNiveaux == 2)
             {
                 Border1.Visibility = Visibility.Visible;
                 Border2.Visibility = Visibility.Visible;
-                GridMulti.RowDefinitions.RemoveAt(4);
-                GridMulti.RowDefinitions.RemoveAt(3);
             }
             else if (nbNiveaux == 3)
             {
                 Border1.Visibility = Visibility.Visible;
                 Border2.Visibility = Visibility.Visible;
                 Border3.Visibility = Visibility.Visible;
-                GridMulti.RowDefinitions.RemoveAt(4);
             }
             else if (nbNiveaux == 4)
             {
@@ -73,6 +66,11 @@ namespace FinalAppTest
                 Border3.Visibility = Visibility.Visible;
                 Border4.Visibility = Visibility.Visible;
             }
+        }
+
+        private void StartBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _ = prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView,deroulement,GanttChart);
         }
     }
 }

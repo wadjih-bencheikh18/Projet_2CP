@@ -21,6 +21,7 @@ namespace Ordonnancement
         public int prio { get; set; } //priorite du processus
         //à remplir
         public int etat { get; set; }// 0:bloqué  1:prêt  2:en cours  3:fini
+        public int transition { get; set; }// 0:blocage  1:désactivation  2:activation  3:reveil
         public int tempsFin { get; set; }
         public int tempsAtt { get; set; }
         public int tempsService { get; set; }
@@ -37,7 +38,7 @@ namespace Ordonnancement
 
         public Processus(int id, int tempsArriv, int duree, int prio)  //constructeur pour l'algorithme de priorité
         {
-            this.etat = 1;
+            this.etat = 3;
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
@@ -46,7 +47,7 @@ namespace Ordonnancement
         }
         public Processus(int id, int tempsArriv, int duree) //constructeur pour les autres algorithmes
         {
-            this.etat = 1;
+            this.etat = 3;
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
@@ -122,20 +123,12 @@ namespace Ordonnancement
 
         #region Visualisation
 
-        public void Affichage(Grid Table, int i)
+        public void Affichage(StackPanel Table, int i)
         {
-            AffichageProcessus proc;
-            TableRowFinal item;
-            RowDefinition rowdef = new RowDefinition();
-            rowdef.Height = new GridLength(30);
-            Table.RowDefinitions.Insert(i, rowdef);
-            item = new TableRowFinal();
-            proc = new AffichageProcessus(this);
-            if (i % 2 == 0) proc.Background = "LightBlue";
-            else proc.Background = "lightGray";
-            item.DataContext = proc;
-            Grid.SetRow(item, i + 1);
+            TableRowFinal item = new TableRowFinal();
+            item.DataContext = this;
             Table.Children.Add(item);
+
         }
         #endregion
 
@@ -144,7 +137,7 @@ namespace Ordonnancement
     public class ProcessusNiveau : Processus
     {
         #region Attributs
-        public int niveau;
+        public int niveau { get; set; }
         #endregion
 
         #region Constructeur
@@ -171,6 +164,7 @@ namespace Ordonnancement
 
         #region Attributs
         public int tempsPasse { get; set; }
+        public string quantum { get; set; }
         public string Background { get; set; }
         public double X1 { get; set; }
         public double Y1 { get; set; }
@@ -212,33 +206,49 @@ namespace Ordonnancement
         #endregion
 
         #region Visualisation
-        public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PAPS
+        public PAPS_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PAPS
         {
             PAPS_TabRow item = new PAPS_TabRow(id, tempsArriv, duree, Table, Ajouter);
             Background = "#FFEFF3F9";
             item.DataContext = this;
             Table.Children.Add(item);
+            return item;
         }
-        public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, string s)  // inserer un processus dans Table à la i'éme ligne pour PCA
+        public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox niveau, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour Ml proc
+        {
+            Multi_Niv_TabRow_Proc item = new Multi_Niv_TabRow_Proc(id, tempsArriv, duree, prio, niveau, Table, Ajouter);
+            item.DataContext = this;
+            Table.Children.Add(item);
+        }
+        public void Inserer(StackPanel Table, TextBox nivId, ComboBox algo, TextBox quantum, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour ML nv
+        {
+            Mult_Niv_TabRow item = new Mult_Niv_TabRow(nivId, algo, quantum, Table, Ajouter);
+            item.DataContext = this;
+            Table.Children.Add(item);
+        }
+        public PCA_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, string s)  // inserer un processus dans Table à la i'éme ligne pour PCA
         {
             PCA_TabRow item = new PCA_TabRow(id, tempsArriv, duree, Table, Ajouter);
             Background = "#FFEFF3F9";
             item.DataContext = this;
             Table.Children.Add(item);
+            return item;
         }
-        public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PSP
+        public PSP_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PSP
         {
             PSP_TabRow item = new PSP_TabRow(id, tempsArriv, duree, prio, Table, Ajouter);
             Background = "#FFEFF3F9";
             item.DataContext = this;
             Table.Children.Add(item);
+            return item;
         }
-        public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, int i)  // inserer un processus dans Table à la i'éme ligne pour RR
+        public RoundRobin_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, int i)  // inserer un processus dans Table à la i'éme ligne pour RR
         {
             RoundRobin_TabRow item = new RoundRobin_TabRow(id, tempsArriv, duree, Table, Ajouter);
             Background = "#FFEFF3F9";
             item.DataContext = this;
             Table.Children.Add(item);
+            return item;
         }
         #endregion
 
