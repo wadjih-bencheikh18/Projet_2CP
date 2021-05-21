@@ -341,7 +341,7 @@ namespace Ordonnancement
             await Task.Delay(2500);
         }
 
-        public async Task AfficherDeroulement(TextBlock deroulement)
+        public async Task AfficherDeroulement(TextBlock deroulement) //Affiche les transitions des états des processus
         {
             if (listePrets.Count!=0)
             {   
@@ -352,7 +352,7 @@ namespace Ordonnancement
                 }
                 else if (listePrets[0].transition == 1)
                 {
-                    deroulement.Text = $"Desctivation du processus de l'ID = {listePrets[0].id}";
+                    deroulement.Text = $"Désactivation du processus de l'ID = {listePrets[0].id}";
                     await Task.Delay(500);
                 }
                 else if (listePrets[0].transition == 2)
@@ -373,7 +373,7 @@ namespace Ordonnancement
                     }
                     else if (pro.transition == 3)
                         {
-                            deroulement.Text = $"Reveil du processus de l'ID = {pro.id}";
+                            deroulement.Text = $"Réveil du processus de l'ID = {pro.id}";
                             pro.transition = -1;
                         await Task.Delay(500);
                     }
@@ -464,7 +464,7 @@ namespace Ordonnancement
         /// les algorithme utuliser pour implimenter Algo multi niveau
         /// </summary>
         
-        public abstract int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale);
+        public abstract int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, TextBlock deroulement);
         public int MAJListePrets(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau) //ajouter à la liste des processus prêts tous les processus de "listeGeneral" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution de MultiNiveaux
         {
             for (; indice < listeGeneral.Count; indice++) //parcours de listeGeneral à partir du processus d'indice "indice"
@@ -520,7 +520,7 @@ namespace Ordonnancement
             if (i < indiceNiveau) return false;
             return true;
         }
-        public abstract Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListsPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView);
+        public abstract Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListsPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement);
         public async Task<int> MAJListePrets(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau, StackPanel[] ListesPretsViews) //ajouter à la liste des processus prêts tous les processus de "listeGeneral" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution de MultiNiveaux
         {
             bool ajout = false;
@@ -545,7 +545,7 @@ namespace Ordonnancement
             else await Task.Delay(500);
             return indice;
         }
-        public async Task<bool> MAJListBloque(List<ProcessusNiveau> listebloqueGenerale,StackPanel[] ListesPretsViews, StackPanel ListeBloqueView)
+        public async Task<bool> MAJListBloque(List<ProcessusNiveau> listebloqueGenerale,StackPanel[] ListesPretsViews, StackPanel ListeBloqueView, TextBlock deroulement)
         {
             bool Anime = false;
             for (int i = 0; i < listebloqueGenerale.Count; i++)
@@ -553,9 +553,10 @@ namespace Ordonnancement
                 listebloqueGenerale[i].InterruptionExecute();
                 if (listebloqueGenerale[i].indiceInterruptions[0] == listebloqueGenerale[i].indiceInterruptions[1])
                 {
-                    listebloqueGenerale[i].transition = 1; //Desactivation du ieme processus de listebloqueGenerale
+                    listebloqueGenerale[i].transition = 3; //Réveil du ieme processus de listebloqueGenerale
                     listebloqueGenerale[i].etat = 1;
                     listePrets.Add(listebloqueGenerale[i]);
+                    await AfficherDeroulement(deroulement);
                     await Reveil_MultiLvl(ListesPretsViews[listebloqueGenerale[i].niveau], ListeBloqueView, i);
                     listebloqueGenerale.RemoveAt(i);
                     listebloque.RemoveAt(i);
@@ -564,24 +565,35 @@ namespace Ordonnancement
             }
             return Anime;
         }
-        public async Task<bool> InterruptionExecute(List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews,int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur)
+        public async Task<bool> InterruptionExecute(List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews,int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur, TextBlock deroulement)
         {
             bool interupt = false;
             bool vide = false;
             if (listePrets.Count == 0) vide = true;
-            bool Anime=await MAJListBloque(listebloqueGenerale,ListesPretsViews, ListeBloqueView);
+            bool Anime=await MAJListBloque(listebloqueGenerale,ListesPretsViews, ListeBloqueView, deroulement);
             if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
                 interupt = true;
-                listePrets[0].transition = 0; //Blocage du ieme processus de listebloque
+                listePrets[0].transition = 0; //Blocage du processus qui était entrain d'exécution
                 listePrets[0].etat = 0;
+                await AfficherDeroulement(deroulement);
                 listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
                 await Blocage_MultiLvl(ListeBloqueView, Processeur);
                 listebloque.Add(listePrets[0]);
                 listePrets.RemoveAt(0);
-                if (listePrets.Count != 0) await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
+                if (listePrets.Count != 0)
+                {
+                    listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
+                    await AfficherDeroulement(deroulement);
+                    await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
+                }
             }
-            else if (Anime && vide) await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
+            else if (Anime && vide)
+            {
+                listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
+                await AfficherDeroulement(deroulement);
+                await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
+            }
             return interupt;
         }
         #endregion

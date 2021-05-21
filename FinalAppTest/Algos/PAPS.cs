@@ -96,7 +96,7 @@ namespace Ordonnancement
 
         #region MultiNiveau
         // à utiliser dans MultiNiveaux
-        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
+        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement)
         {
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;
@@ -105,9 +105,11 @@ namespace Ordonnancement
             {
                 if(anime)
                 {
+                    listePrets[0].transition = 2; //Activation du 1er procussus dans ListePrets 
+                    await AfficherDeroulement(deroulement);
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
-                await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur);
+                await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur, deroulement);
                 anime = false;
                 temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
@@ -124,7 +126,8 @@ namespace Ordonnancement
                         listePrets[0].tempsFin = temps; //temps de fin d'execution = au temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;  //temps d'attente = temps de service - durée d'execution
-                        listePrets[0].etat = 3;
+                        listePrets[0].etat = 3; //Fin d'exécution du processus
+                        await AfficherDeroulement(deroulement);
                         await FinProcessus_MultiLvl(Processeur);
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                         anime = true;
@@ -133,8 +136,9 @@ namespace Ordonnancement
             }
             if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau)&& listePrets.Count!=0)
             {
-                listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
+                listePrets[0].transition = 1; //Désactivation du processus qui etait entrain d'exécution
                 listePrets[0].etat = 1;
+                await AfficherDeroulement(deroulement);
                 await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0],indiceNiveau);
                 listePrets.Add(listePrets[0]);
                 listePrets.RemoveAt(0);
@@ -142,7 +146,7 @@ namespace Ordonnancement
             }
             return temps;
         }
-        public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale)
+        public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, TextBlock deroulement)
         {
             int temps = tempsDebut;
             while (listePrets.Count != 0) //s'il existe des processus prêts 
@@ -162,13 +166,13 @@ namespace Ordonnancement
                         listePrets[0].tempsFin = temps; //temps de fin d'execution = au temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;  //temps d'attente = temps de service - durée d'execution
-                        listePrets[0].etat = 3;
+                        listePrets[0].etat = 3; //Fin d'exécution du processus
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                     }
                 }
                 if (temps == tempsFin)
                 {
-                    listePrets[0].transition = 1; //Desctivation du 1er processus de listePrets
+                    listePrets[0].transition = 1; //Désactivation du processus entrain d'exécution
                     listePrets[0].etat = 1;
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
