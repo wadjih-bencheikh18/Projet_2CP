@@ -141,7 +141,7 @@ namespace Ordonnancement
 
         #region MultiNiveau
         // des algorithmes nécessaires pour implémenter MultiNiveaux
-        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)
+        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement)
         {
             bool anime=true,debut=true;
             Processus proc;
@@ -179,6 +179,8 @@ namespace Ordonnancement
                         }
                         else if (proc != listePrets[0])
                         {
+                            listePrets[0].transition = 1; //désactivation du processus qui était entrain d'être exécuté 
+                            await AfficherDeroulement(deroulement);
                             await Desactivation_MultiLvl(ListePretsView, Processeur, proc, indiceNiveau);
                             i = 0;
                             anime = true;
@@ -189,10 +191,12 @@ namespace Ordonnancement
                 }
                 if (anime && listePrets.Count != 0) //si un tri par durée est necessaire et il y a des processus prêts
                 {
+                    listePrets[0].transition = 2; //Activation du 1er processus dans listePrets
+                    await AfficherDeroulement(deroulement);
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                     anime = false;
                 }
-                await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur);
+                await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur, deroulement);
                 temps++; 
                 TempsView.Text = temps.ToString();
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
@@ -210,7 +214,8 @@ namespace Ordonnancement
                         listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
-                        listePrets[0].etat = 3;
+                        listePrets[0].etat = 3; //Fin d'exécution du processus
+                        await AfficherDeroulement(deroulement);
                         await FinProcessus_MultiLvl(Processeur);
                         debut = true;
                         anime = true;
@@ -221,8 +226,9 @@ namespace Ordonnancement
             }
             if (! PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)
                 {
-                    listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
+                    listePrets[0].transition = 1; //Désactivation du processus qui était entrain d'être exécuté
                     listePrets[0].etat = 1;
+                    await AfficherDeroulement(deroulement);
                     await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);
@@ -231,7 +237,7 @@ namespace Ordonnancement
             return temps;
         }
 
-        public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale)
+        public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, TextBlock deroulement)
         {
             int temps = tempsDebut;  // initialisation du temps
             while (listePrets.Count != 0 && (temps < tempsFin || tempsFin == -1))
@@ -259,13 +265,13 @@ namespace Ordonnancement
                         listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
-                        listePrets[0].etat = 3;
+                        listePrets[0].etat = 3; //Fin d'exécution du processus
                         listePrets.RemoveAt(0); //supprimer le processus dont la duree est écoulée
                     }
                 }
                 if (temps == tempsFin)
                 {
-                    listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
+                    listePrets[0].transition = 1; //Désactivation du processus qui était entrain d'être exécuté
                     listePrets[0].etat = 1;
                     listePrets.Add(listePrets[0]);
                     listePrets.RemoveAt(0);

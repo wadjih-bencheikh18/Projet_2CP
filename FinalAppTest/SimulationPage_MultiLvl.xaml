@@ -7,7 +7,19 @@
       mc:Ignorable="d" Loaded="Page_Loaded"
       d:DesignHeight="768" d:DesignWidth="1366"
       Title="SimulationPage_MultiLvl">
-
+    <Page.Resources>
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Pics/background.jpg"/>
@@ -31,7 +43,7 @@
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="Transition des états des processus" Margin="0 5 0 0" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <TextBlock Grid.Row="1" x:Name="deroulement" FontSize="18"/>
+                    <TextBlock Grid.Row="1" x:Name="deroulement" FontSize="18" TextAlignment="Center"/>
                 </Grid>
             </Border>
         </Grid>
@@ -247,7 +259,7 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button x:Name="StartBtn" Grid.Column="0" Background="#0D9330" BorderThickness="0" Width="45" Height="45" Click="StartBtn_Click" >
+                    <Button x:Name="StartBtn" Style="{StaticResource MyButtonStyle}" Grid.Column="0" Background="#0D9330" BorderThickness="0" Width="45" Height="45" Click="StartBtn_Click" >
                         <Button.Content>
                             <Image Source="Pics/Start.png" Width="30" Height="30" />
                         </Button.Content>
@@ -258,7 +270,7 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button Grid.Column="1" Background="#B51F1F" BorderThickness="0" Width="45" Height="45">
+                    <Button Grid.Column="1" Style="{StaticResource MyButtonStyle}" Background="#B51F1F" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
                             <Image Source="Pics/resume.png" Width="30" Height="30"/>
                         </Button.Content>
@@ -269,7 +281,7 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button Grid.Column="2" Background="#FFB53E" BorderThickness="0" Width="45" Height="45">
+                    <Button Grid.Column="2" Style="{StaticResource MyButtonStyle}" Background="#FFB53E" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
                             <Image Source="Pics/pause.png" Width="30" Height="30"/>
                         </Button.Content>
@@ -280,7 +292,7 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button Grid.Column="3" Background="#4974C8" BorderThickness="0" Width="45" Height="45">
+                    <Button Grid.Column="3" Style="{StaticResource MyButtonStyle}" Background="#4974C8" BorderThickness="0" Width="45" Height="45">
                         <Button.Content>
                             <Image Source="Pics/circle.png" Width="30" Height="30"/>
                         </Button.Content>
@@ -291,7 +303,7 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button x:Name="ResultFinalBtn" Grid.Column="4" Background="#666666" BorderThickness="0" Width="45" Height="45" >
+                    <Button x:Name="ResultFinalBtn" Style="{StaticResource MyButtonStyle}" Grid.Column="4" Background="#666666" BorderThickness="0" Width="45" Height="45" >
                         <Button.Content>
                             <Image Source="Pics/algos.png" Width="30" Height="30"/>
                         </Button.Content>
