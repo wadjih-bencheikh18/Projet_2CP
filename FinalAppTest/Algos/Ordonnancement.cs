@@ -332,14 +332,14 @@ namespace Ordonnancement
             await Task.Delay(1000);
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(proc);
-            pro.X1 = -10; //dakhel processeur
-            pro.X2 = 300;
-            pro.X3 = 600 - 45 * ListePretsView.Children.Count;
-            pro.X4 = pro.X3;
-            pro.Y1 = 310; //dakhel processeur
-            pro.Y2 = 66 * (3 - indiceNiveau) + 50;
-            pro.Y3 = 66 * (3 - indiceNiveau) + 50;
+            pro.X4 = 0;
+            pro.X1 = 600 - 45 * ListePretsView.Children.Count;
+            pro.X2 = pro.X1;
+            pro.X3 = 0;
             pro.Y4 = 0;
+            pro.Y1 = 66 * (3 - indiceNiveau) + 50;
+            pro.Y2 = 0;
+            pro.Y3 = 0;
             ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
             item.DataContext = pro;
             ListePretsView.Children.Add(item);
