@@ -135,7 +135,7 @@ namespace Ordonnancement
             ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
             AffichageProcessus pro = new AffichageProcessus(proc);
             pro.X1 = -136.5;
-            pro.Y1 = -58.5;
+            pro.Y1 = -75;
             item.DataContext = pro;
             Storyboard AnimeProc = new Storyboard();
             Storyboard AnimeList = new Storyboard();
@@ -329,21 +329,15 @@ namespace Ordonnancement
             Storyboard animeDis = new Storyboard();
             animeDis.Children.Add(Processeur.FindResource("Disactive") as Storyboard);
             animeDis.Begin((FrameworkElement)Processeur.Children[0]);
-            await Task.Delay(1000);
+            await Task.Delay(1500);
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(proc);
-            pro.X4 = 0;
             pro.X1 = 600 - 45 * ListePretsView.Children.Count;
             pro.X2 = pro.X1;
-            pro.X3 = 0;
-            pro.Y4 = 0;
-            pro.Y1 = 66 * (3 - indiceNiveau) + 50;
-            pro.Y2 = 0;
-            pro.Y3 = 0;
+            pro.Y1 = 60 * (3 - indiceNiveau) + 50;
             ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
             item.DataContext = pro;
             ListePretsView.Children.Add(item);
-            await Task.Delay(2500);
         }
 
         public async Task AfficherDeroulement(TextBlock deroulement) //Affiche les transitions des états des processus
