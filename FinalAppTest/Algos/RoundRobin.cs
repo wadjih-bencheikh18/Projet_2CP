@@ -25,6 +25,7 @@ namespace Ordonnancement
             bool anime = true;
             SortListeProcessus(); //Tri de la liste des processus par temps d'arrivée
             int indice = 0, temps = 0, q = 0;
+            AfficherEtat(GanttChart, temps);
             while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0)  //s'il existe des processus prêts
             {
                 AfficherEtat(GanttChart, temps);
@@ -35,6 +36,7 @@ namespace Ordonnancement
                         TempsView.Text = temps.ToString();
                         indice = await MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
                         anime = true;
+                        AfficherEtat(GanttChart, temps);
                 }
                 else  // listePrets n'est pas vide 
                 {
@@ -48,9 +50,10 @@ namespace Ordonnancement
 
                     if (await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur, deroulement)) q=0;
                     anime = false;
-                    listePrets[0].etat = 2; //Le 1er processus de listePrets est actif
                     temps++;
                     TempsView.Text = temps.ToString();
+                    listePrets[0].etat = 2; //Le 1er processus de listePrets est actif
+                    AfficherEtat(GanttChart, temps);
                     q++;  // on incrémente le quantum
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant

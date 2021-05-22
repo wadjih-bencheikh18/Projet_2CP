@@ -20,9 +20,9 @@ namespace Ordonnancement
             int indice = 0;
             bool anime = true, debut = true;
             Processus proc;
+            AfficherEtat(GanttChart, temps);
             while (listePrets.Count != 0 || indice < listeProcessus.Count || listebloque.Count != 0) //Tant qu'il existe des processus prêts
             {
-                AfficherEtat(GanttChart, temps);
                 if (listePrets.Count == 0) anime = true;
                 indice = await MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
                 if (listePrets.Count != 0)
@@ -80,6 +80,7 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
+                    AfficherEtat(GanttChart, temps);
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     MAJProcesseur(Processeur);
@@ -96,6 +97,7 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
+                else AfficherEtat(GanttChart, temps);
             }
             return temps;
         }

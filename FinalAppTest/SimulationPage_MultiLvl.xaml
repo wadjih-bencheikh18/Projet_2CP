@@ -22,7 +22,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Border Height="400" Background="White" Margin="0,41.5,0,38.5" Width="450" CornerRadius="30" BorderBrush="Black" BorderThickness="1">
-                <ScrollViewer Margin="15 5" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Visible">
+                <ScrollViewer  x:Name="ScrollGantt" Margin="15 5" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <WrapPanel x:Name="GanttChart"/>
                 </ScrollViewer>
             </Border>

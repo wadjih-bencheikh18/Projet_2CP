@@ -34,7 +34,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Border Height="400"  Background="White" Margin="0,41.5,0,38.5" Width="450" CornerRadius="10" BorderBrush="Black" BorderThickness="1">
-                <ScrollViewer Margin="5 5" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                <ScrollViewer x:Name="ScrollGantt" Margin="5 5" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <WrapPanel x:Name="GanttChart"/>
                 </ScrollViewer>
             </Border>

@@ -35,11 +35,10 @@ namespace Ordonnancement
                 anime = false;
                 temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
-                AfficherEtat(GanttChart, temps);
                 if (listePrets.Count != 0) //s'il y a des processus prêts
                 {
-                    //listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
+                    AfficherEtat(GanttChart, temps);
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence               //AfficheLigne(temps,listePrets, ListProcessusView, Processeur, TempsView); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     MAJProcesseur(Processeur);
@@ -58,8 +57,9 @@ namespace Ordonnancement
                         }
                     }
                 }
-                
-                
+                else AfficherEtat(GanttChart, temps);
+
+
             }
             return temps;
         }

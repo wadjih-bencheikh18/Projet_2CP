@@ -25,6 +25,7 @@ namespace FinalAppTest
         public SimulationPage_MultiLvl(Ordonnancement.Ordonnancement prog)
         {
             InitializeComponent();
+            Ordonnancement.Ordonnancement.ScrollGantt = ScrollGantt;
             this.prog = prog;
             nbNiveaux = ((MultiNiveau)prog).nbNiveau;
             StackPanel[] ListesPretsViews = { ListProcessusView0,ListProcessusView1,ListProcessusView2,ListProcessusView3};

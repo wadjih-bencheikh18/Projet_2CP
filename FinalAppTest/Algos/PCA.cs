@@ -19,9 +19,9 @@ namespace Ordonnancement
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = 0, indice = 0;
             bool sort = true; //est à vrai si un tri par durée est necessaire
+            AfficherEtat(GanttChart, temps);
             while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0) //s'il existe des processus non executés
             {
-                 AfficherEtat(GanttChart, temps);
                 if (listePrets.Count == 0) sort = true; //les premiers processus arrivés => on fait un tri par durée (croissant)
                 indice = await MAJListePrets(temps, indice, ListePretsView);  //remplir listePrets
                 if (sort == true && listePrets.Count != 0) //si un tri par durée est necessaire et il y a des processus prêts
@@ -41,6 +41,7 @@ namespace Ordonnancement
                 {
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].etat = 2;
+                    AfficherEtat(GanttChart, temps);
                     listePrets[0].tempsRestant--; //execution du 1er processus de listePrets et donc décrémenter le tempsRestant
                     MAJProcesseur(Processeur);
                     if (listePrets[0].tempsRestant == 0) //si l'execution du premier processus de listePrets est terminée
@@ -57,7 +58,7 @@ namespace Ordonnancement
                     }
 
                 }
-                else AfficheLigne(temps - 1);
+                else AfficherEtat(GanttChart, temps);
             }
             return temps;
         }

@@ -25,6 +25,7 @@ namespace FinalAppTest
         public SimulationPage(Ordonnancement.Ordonnancement prog)
         {
             InitializeComponent();
+            Ordonnancement.Ordonnancement.ScrollGantt = ScrollGantt;
             this.prog = prog;
         }
         private void StartBtn_Click(object sender, RoutedEventArgs e)

@@ -17,6 +17,7 @@ namespace Ordonnancement
         public List<Processus> listeProcessus = new List<Processus>();  // liste des processus fournis par l'utilisateur
         public List<Processus> listePrets = new List<Processus>();  // liste des processus prêts
         public List<Processus> listebloque = new List<Processus>();
+        public static ScrollViewer ScrollGantt;
         #endregion
 
         #region Visualisation
@@ -203,6 +204,7 @@ namespace Ordonnancement
             ProcessusDesign item = new ProcessusDesign();
             item.DataContext = pro;
             ListeBloqueView.Children.Add(item);
+            await Task.Delay(1000);
         }
         public async Task Desactivation(StackPanel ListePretsView, StackPanel Processeur, Processus proc)
         {
@@ -262,7 +264,7 @@ namespace Ordonnancement
         public void AfficherEtat(WrapPanel GanttChart,int temps)
         {
             Grid coldef = new Grid();
-            coldef.Width = 60;
+            coldef.Width = 50;
             GanttChart.VerticalAlignment = VerticalAlignment.Bottom;
             GanttChart.Children.Insert(temps,coldef) ;
             for (int i = 0; i< listeProcessus.Count; i++)
@@ -286,13 +288,14 @@ namespace Ordonnancement
                 }
                 else if (listeProcessus[indice].etat == 3)
                 {
-                    item.Background = (Brush)bc.ConvertFrom("#DAF7A6");
+                    item.Background = (Brush)bc.ConvertFrom("#FFFFFF");
                 }
 
-                item.Margin = new Thickness(1);
+                item.Margin = new Thickness(0,5,0,5);
                 Grid.SetRow(item, i);
                 coldef.Children.Add(item);
             }
+            ScrollGantt.LineRight();
         }
         #endregion
 
