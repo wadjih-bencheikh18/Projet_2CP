@@ -188,12 +188,12 @@
                             </Storyboard>
                             <Storyboard x:Key="Blocage">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="500"/>
-                                </DoubleAnimationUsingKeyFrames>
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="522.5"/>
+                            </DoubleAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
                                     <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="200"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="125"/>
                                 </DoubleAnimationUsingKeyFrames>
                             </Storyboard>
                         </StackPanel.Resources>

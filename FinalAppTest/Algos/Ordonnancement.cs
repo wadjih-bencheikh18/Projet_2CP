@@ -289,7 +289,7 @@ namespace Ordonnancement
             await Task.Delay(1000);
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
-            pro.X1 = 600 - 60 * ListeBloqueView.Children.Count;
+            pro.X1 = 600 - 45 * ListeBloqueView.Children.Count;
             ProcessusDesign item = new ProcessusDesign();
             item.DataContext = pro;
             ListeBloqueView.Children.Add(item);
