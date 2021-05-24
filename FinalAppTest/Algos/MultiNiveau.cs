@@ -9,7 +9,6 @@ using System.Windows.Threading;
 
 namespace Ordonnancement
 {
-
     public class MultiNiveau : Ordonnancement
     {
         #region Attributs

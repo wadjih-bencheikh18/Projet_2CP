@@ -47,7 +47,10 @@ namespace FinalAppTest
         {
             DataContext = new RoundRobinViewModel();
         }
-
+        private void PSPDynamique_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new PSPDynamique_ViewModel();
+        }
         private void MultiNivButton_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new MultiNiveauViewModel();
@@ -108,6 +111,19 @@ namespace FinalAppTest
                 else
                 {
                     MainWindow.main.Content = new SimulationPage(RoundRobin_Tab.prog);
+                }
+            }
+            else if (ContentViewer.Content.GetType() == typeof(PSPDynamique_ViewModel))  // RoundRobin
+            {
+                if (PSPDynamique_Tab.prog.listeProcessus.Count == 0)
+                {
+                    var bc = new BrushConverter();
+                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                else
+                {
+                    MainWindow.main.Content = new SimulationPage(PSPDynamique_Tab.prog);
                 }
             }
             else if (ContentViewer.Content.GetType() == typeof(MultiNiveauViewModel))  // MultiNiveaux

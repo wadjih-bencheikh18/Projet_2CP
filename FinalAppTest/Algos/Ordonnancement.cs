@@ -619,5 +619,15 @@ namespace Ordonnancement
             Console.WriteLine();
         }
         #endregion
+
+        #region PrioDyn
+        public void UpdateStackTime(int temps)
+        {
+
+            foreach (Processus pro in listePrets)
+                pro.CalculeSlackTime(temps);
+
+        }
+        #endregion
     }
 }

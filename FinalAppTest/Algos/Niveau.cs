@@ -38,6 +38,9 @@ namespace Ordonnancement
                 case 3:
                     Console.WriteLine("Il manque un quantum. Veuillez reessayer");
                     break;
+                case 4:
+                    algo = new PSPDynamique();
+                    break;
                 default:
                     Console.WriteLine("ERREUR. Veuillez choisir un numero entre 0 et 3");
                     break;
@@ -59,6 +62,9 @@ namespace Ordonnancement
                     break;
                 case 3:
                     algo = new RoundRobin(quantum);
+                    break;
+                case 4:
+                    algo = new PSPDynamique();
                     break;
                 default:
                     Console.WriteLine("ERREUR. Veuillez choisir un numero entre 0 et 3");

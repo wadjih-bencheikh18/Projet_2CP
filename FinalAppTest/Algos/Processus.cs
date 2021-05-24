@@ -19,6 +19,7 @@ namespace Ordonnancement
         public int tempsArriv { get; set; } //temps d'arrivé
         public int duree { get; set; } //temps d'execution du processus (burst time)
         public int prio { get; set; } //priorite du processus
+        public int deadline { get; set; }
         //à remplir
         public int etat { get; set; }// 0:bloqué  1:prêt  2:en cours  3:fini
         public int transition { get; set; }// 0:blocage  1:désactivation  2:activation  3:reveil
@@ -27,6 +28,7 @@ namespace Ordonnancement
         public int tempsService { get; set; }
         public int tempsRestant { get; set; }
         public int tempsReponse { get; set; }
+        public int slackTime { get; set; }
         public int[] indiceInterruptions = new int[2];
         #endregion
 
@@ -44,6 +46,22 @@ namespace Ordonnancement
             this.duree = duree;
             this.prio = prio;
             tempsRestant = duree;
+        }
+        public void CalculeSlackTime(int temps)
+        {
+            slackTime = deadline - temps - tempsRestant;
+            prio = slackTime;
+        }
+        public Processus(int id, int tempsArriv, int duree, int prio,int deadline)  //constructeur pour l'algorithme de priorité
+        {
+            this.etat = 1;
+            this.id = id;
+            this.tempsArriv = tempsArriv;
+            this.duree = duree;
+            this.prio = prio;
+            tempsRestant = duree;
+            this.deadline = deadline;
+            slackTime = deadline - 0 - tempsRestant;
         }
         public Processus(int id, int tempsArriv, int duree) //constructeur pour les autres algorithmes
         {
@@ -257,6 +275,14 @@ namespace Ordonnancement
         public RoundRobin_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, int i)  // inserer un processus dans Table à la i'éme ligne pour RR
         {
             RoundRobin_TabRow item = new RoundRobin_TabRow(id, tempsArriv, duree, Table, Ajouter);
+            Background = "#FFEFF3F9";
+            item.DataContext = this;
+            Table.Children.Add(item);
+            return item;
+        }
+        public PSPDynamique_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, double i)  // inserer un processus dans Table à la i'éme ligne pour RR
+        {
+            PSPDynamique_TabRow item = new PSPDynamique_TabRow(id, tempsArriv, duree, Table, Ajouter);
             Background = "#FFEFF3F9";
             item.DataContext = this;
             Table.Children.Add(item);
