@@ -22,13 +22,22 @@ namespace FinalAppTest
     {
         public Ordonnancement.Ordonnancement prog;
         private int nbNiveaux;
-        public SimulationPage_MultiLvl(Ordonnancement.Ordonnancement prog)
+        public SimulationPage_MultiLvl(Ordonnancement.Ordonnancement prog,int i)
         {
             InitializeComponent();
             this.prog = prog;
-            nbNiveaux = ((MultiNiveau)prog).nbNiveau;
-            StackPanel[] ListesPretsViews = { ListProcessusView0,ListProcessusView1,ListProcessusView2,ListProcessusView3};
-            ((MultiNiveau)prog).InitVisualisation(ListesPretsViews);
+            StackPanel[] ListesPretsViews = { ListProcessusView0, ListProcessusView1, ListProcessusView2, ListProcessusView3 };
+            if (i==0)
+            {
+                nbNiveaux = ((MultiNiveau)prog).nbNiveau;
+                ((MultiNiveau)prog).InitVisualisation(ListesPretsViews);
+            }
+            else
+            {
+                nbNiveaux = ((MultiNiveauRecyclage)prog).nbNiveau;
+                ((MultiNiveauRecyclage)prog).InitVisualisation(ListesPretsViews);
+            }
+            
         }
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
