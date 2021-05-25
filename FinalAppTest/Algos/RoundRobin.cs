@@ -266,5 +266,90 @@ namespace Ordonnancement
         }
         #endregion
 
+        #region MultiNiveauRecyclage
+
+        public override async Task<int> Executer(int temps, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement,int i)
+        {
+            niveaux[indiceNiveau].indice[1] = 0;
+            bool anime = true;
+            StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))  //tant qu'il existe des processus prêts
+            {
+                if (anime)
+                {
+                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
+                    await AfficherDeroulement(deroulement);
+                    await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
+                }
+
+
+                if (await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
+                anime = false;
+                listePrets[0].transition = 2; //Activation du 1er processus de listePrets
+                listePrets[0].etat = 2;
+                temps++;
+                TempsView.Text = temps.ToString();
+                niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);
+                niveaux[indiceNiveau].indice[1]++;  // quantum++
+                if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
+                listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
+                MAJProcesseur_MultiLvl(Processeur);
+                if (listePrets[0].tempsRestant == 0)  // fin d'exécution du processus 
+                {
+                    listePrets[0].tempsFin = temps;
+                    listePrets[0].tempsService = temps - listePrets[0].tempsArriv;
+                    listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;
+                    listePrets[0].etat = 3; //Fin d'exécution du processus
+                    await AfficherDeroulement(deroulement);
+                    listePrets.RemoveAt(0); //supprimer le premier processus executé
+                    niveaux[indiceNiveau].indice[1] = 0;  // un nouveau quantum va commencer
+                    await FinProcessus_MultiLvl(Processeur);
+                    anime = true;
+                }
+                else if (niveaux[indiceNiveau].indice[1] == quantum)  // on a terminé ce quantum => il faut passer au processus suivant => on defile, et à la fin, on enfile le processus courant
+                {
+                    listePrets[0].transition = 1; //Désactivation du processus
+                    listePrets[0].etat = 1;
+                    await AfficherDeroulement(deroulement);
+                    listePrets[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
+                    niveaux[indiceNiveau].indice[1] = 0;  // nouveau quantum
+                    if (indiceNiveau + 1 < nbNiveau)
+                    {
+                        await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, listePrets[0], indiceNiveau + 1);
+                        niveaux[indiceNiveau + 1].listePrets.Add(listePrets[0]);
+                    }
+                    else
+                    {
+                        await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
+                        listePrets.Add(listePrets[0]);
+                    }
+                    listePrets.RemoveAt(0);  // defiler 
+                    anime = true;
+                }
+
+
+            }
+            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)  // On est arrivé à tempsFin => la fin de l'exécution 
+            {
+                listePrets[0].transition = 1;//Desactivation du 1er processus de listePrets
+                listePrets[0].etat = 1;
+                await AfficherDeroulement(deroulement);
+                if (indiceNiveau + 1 < nbNiveau)
+                {
+                    await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, listePrets[0], indiceNiveau + 1);
+                    niveaux[indiceNiveau + 1].listePrets.Add(listePrets[0]);
+                }
+                else
+                {
+                    await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
+                    listePrets.Add(listePrets[0]);
+                }
+                listePrets.RemoveAt(0);
+                return temps;
+            }
+            return temps;
+        }
+
+        #endregion
     }
 }

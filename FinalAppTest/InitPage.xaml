@@ -30,6 +30,9 @@
         <DataTemplate x:Name="MultiNiv_ViewTemplate" DataType="{x:Type viewmodels:MultiNiveauViewModel}">
             <views:Mult_Niv_Tab DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="MultiNivRecyclage_ViewTemplate" DataType="{x:Type viewmodels:MultiNiveauRecyclageViewModel}">
+            <views:Mult_Niv_Recyclage_Tab DataContext="{Binding}"/>
+        </DataTemplate>
     </Page.Resources>
     <Grid>
         <!--Layout-->
@@ -56,6 +59,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0" Margin="30 20" Content="PAPS" FontSize="25" FontWeight="Bold" x:Name="PAPS_Button" Click="PAPS_Button_Click"/>
                 <Button Grid.Row="1" Margin="30 20" Content="PCA" FontSize="25" FontWeight="Bold" x:Name="PCA_Button" Click="PCA_Button_Click"/>
@@ -63,6 +67,7 @@
                 <Button Grid.Row="3" Margin="30 20" Content="Round Robin" FontSize="20" FontWeight="Bold" x:Name="RoundRobinButton" Click="RoundRobinButton_Click"/>
                 <Button Grid.Row="4" Margin="30 20" Content="PSP Dynamique" FontSize="20" FontWeight="Bold" x:Name="PSPDynamiqueButton" Click="PSPDynamique_Click"/>
                 <Button Grid.Row="5" Margin="30 20" Content="Multi-Niveaux" FontSize="20" FontWeight="Bold" x:Name="MultiNivButton" Click="MultiNivButton_Click"/>
+                <Button Grid.Row="6" Margin="30 20" Content="Multi-Niveaux-Recyclage" FontSize="20" FontWeight="Bold" x:Name="MultiNivRecyclageButton" Click="MultiNivRecyclageButton_Click"/>
             </Grid>
         </DockPanel>
         <!--the area of the simulation-->

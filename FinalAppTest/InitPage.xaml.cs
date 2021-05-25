@@ -55,7 +55,10 @@ namespace FinalAppTest
         {
             DataContext = new MultiNiveauViewModel();
         }
-
+        private void MultiNivRecyclageButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new MultiNiveauRecyclageViewModel();
+        }
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             if (ContentViewer.Content == null) return;  // no algo selected
@@ -141,7 +144,26 @@ namespace FinalAppTest
                     {
                         Mult_Niv_Tab.prog.Push(pro);
                     }
-                    MainWindow.main.Content = new SimulationPage_MultiLvl(Mult_Niv_Tab.prog);
+                    MainWindow.main.Content = new SimulationPage_MultiLvl(Mult_Niv_Tab.prog,0);
+                }
+              
+            }
+            else if (ContentViewer.Content.GetType() == typeof(MultiNiveauRecyclageViewModel))  // MultiNiveaux
+            {
+                if (Mult_Niv_Recyclage_Tab.ListPro.Count==0 || Mult_Niv_Recyclage_Tab.indiceniv==0)
+                {
+                    var bc = new BrushConverter();
+                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                else
+                {
+                    Mult_Niv_Recyclage_Tab.prog = new MultiNiveauRecyclage(Mult_Niv_Recyclage_Tab.indiceniv, Mult_Niv_Recyclage_Tab.niveaux);
+                    foreach (ProcessusNiveau pro in Mult_Niv_Recyclage_Tab.ListPro)
+                    {
+                        Mult_Niv_Recyclage_Tab.prog.Push(pro);
+                    }
+                    MainWindow.main.Content = new SimulationPage_MultiLvl(Mult_Niv_Recyclage_Tab.prog,1);
                 }
               
             }

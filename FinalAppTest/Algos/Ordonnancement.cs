@@ -20,6 +20,7 @@ namespace Ordonnancement
         #region Visualisation
 
         public abstract Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView,TextBlock deroulement);
+        public abstract Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement, int i);
 
         public async Task<int> MAJListePrets(int temps, int indice, StackPanel ListePretsView) //ajouter à la liste des processus prêts tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
         {
@@ -338,6 +339,7 @@ namespace Ordonnancement
             ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
             item.DataContext = pro;
             ListePretsView.Children.Add(item);
+            await Task.Delay(2500);
         }
 
         public async Task AfficherDeroulement(TextBlock deroulement) //Affiche les transitions des états des processus

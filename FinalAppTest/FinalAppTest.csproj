@@ -86,6 +86,7 @@
     <Compile Include="TableRowFinal.xaml.cs">
       <DependentUpon>TableRowFinal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\MultiNiveauRecyclageViewModel.cs" />
     <Compile Include="ViewModels\MultiNiveauViewModel.cs" />
     <Compile Include="ViewModels\PAPS_ViewModel.cs" />
     <Compile Include="ViewModels\PCA_ViewModel.cs" />
@@ -100,6 +101,9 @@
     </Compile>
     <Compile Include="Views\Multi_Niv_TabRow_Proc.xaml.cs">
       <DependentUpon>Multi_Niv_TabRow_Proc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mult_Niv_Recyclage_Tab.xaml.cs">
+      <DependentUpon>Mult_Niv_Recyclage_Tab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Mult_Niv_Tab.xaml.cs">
       <DependentUpon>Mult_Niv_Tab.xaml</DependentUpon>
@@ -188,6 +192,10 @@
     <Page Include="Views\Multi_Niv_TabRow_Proc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Mult_Niv_Recyclage_Tab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Mult_Niv_Tab.xaml">
       <SubType>Designer</SubType>

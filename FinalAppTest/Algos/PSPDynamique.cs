@@ -241,6 +241,124 @@ namespace Ordonnancement
             return temps;
         }
         #endregion
+
+        #region MultiNiveauRecyclage
+
+        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement,int j)
+        {
+            bool anime = true, debut = true;
+            Processus proc;
+            StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
+            int temps = tempsDebut;  // initialisation du temps
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
+            //s'il existe des processus prêts et ( On n'est pas encore arrivé à tempsFin ou il n'y a pas de temps fin )
+            {
+                if (listePrets.Count != 0)
+                {
+                    bool sort = false;
+                    proc = listePrets[0];
+                    List<Processus> P = new List<Processus>();
+                    foreach (Processus Pro in listePrets)
+                    {
+                        P.Add(Pro);
+                    }
+                    listePrets.Sort(delegate (Processus x, Processus y)
+                    {
+                        if (x.slackTime.CompareTo(y.slackTime) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont la même priorité, on les trie selon le temps d'arrivée
+                        else return x.slackTime.CompareTo(y.slackTime); //sinon, on fait le tri par priorité
+                    }
+                                        );
+                    for (int i = 0; i < P.Count; i++)
+                    {
+                        if (P[i].id != listePrets[i].id) sort = true;
+                    }
+                    if (sort)
+                    {
+                        int i;
+                        if (debut)
+                        {
+                            i = 0;
+                            anime = true;
+                        }
+                        else if (proc != listePrets[0])
+                        {
+                            listePrets[0].transition = 1; //désactivation du processus qui était entrain d'être exécuté 
+                            await AfficherDeroulement(deroulement);
+                            if (indiceNiveau + 1 < nbNiveau)
+                            {
+                                await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, proc, indiceNiveau + 1);
+                                niveaux[indiceNiveau + 1].listePrets.Add(proc);
+                                listePrets.Remove(proc);
+                            }
+                            else
+                            {
+                                await Desactivation_MultiLvl(ListePretsView, Processeur, proc, indiceNiveau);
+                            }
+                            i = 0;
+                            anime = true;
+                        }
+                        else i = 1;
+                        await MAJListePretsView_MultiLvl(ListePretsView, i);
+                    }
+                }
+                if (anime && listePrets.Count != 0) //si un tri par durée est necessaire et il y a des processus prêts
+                {
+                    listePrets[0].transition = 2; //Activation du 1er processus dans listePrets
+                    await AfficherDeroulement(deroulement);
+                    await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
+                    anime = false;
+                }
+                await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
+                temps++;
+                UpdateStackTime(temps);
+                TempsView.Text = temps.ToString();
+                niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
+                anime = false;
+                debut = false;
+                if (listePrets.Count != 0) //S'il y a des processus prêts
+                {
+                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
+                    listePrets[0].etat = 2;
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
+                    listePrets[0].tempsRestant--;//L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
+                    MAJProcesseur_MultiLvl(Processeur);
+                    if (listePrets[0].tempsRestant == 0) // Si l'execution du premier processus de listePrets est terminée :
+                    {
+                        listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
+                        listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
+                        listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
+                        listePrets[0].etat = 3; //Fin d'exécution du processus
+                        await AfficherDeroulement(deroulement);
+                        await FinProcessus_MultiLvl(Processeur);
+                        debut = true;
+                        anime = true;
+                        listePrets.RemoveAt(0); //supprimer le processus dont la duree est écoulée
+                    }
+                }
+
+            }
+            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)
+            {
+                listePrets[0].transition = 1; //Désactivation du processus qui était entrain d'être exécuté
+                listePrets[0].etat = 1;
+                await AfficherDeroulement(deroulement);
+                if (indiceNiveau + 1 < nbNiveau)
+                {
+                    await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, listePrets[0], indiceNiveau + 1);
+                    niveaux[indiceNiveau + 1].listePrets.Add(listePrets[0]);
+                }
+                else
+                {
+                    await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
+                    listePrets.Add(listePrets[0]);
+                }
+                listePrets.RemoveAt(0);
+                return temps;
+            }
+            return temps;
+        }
+
+        #endregion
     }
 
 }
