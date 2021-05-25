@@ -59,6 +59,7 @@ namespace FinalAppTest
         {
             DataContext = new MultiNiveauRecyclageViewModel();
         }
+
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             if (ContentViewer.Content == null) return;  // no algo selected
@@ -68,8 +69,8 @@ namespace FinalAppTest
                 if (PAPS_Tab.prog.listeProcessus.Count == 0)
                 {
                     var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 else
                 {
@@ -82,8 +83,8 @@ namespace FinalAppTest
                 if (PCA_Tab.prog.listeProcessus.Count == 0)
                 {
                     var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    //StartButton. = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 else
                 {
@@ -95,8 +96,8 @@ namespace FinalAppTest
                 if (PSP_Tab.prog.listeProcessus.Count == 0)
                 {
                     var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 else
                 {
@@ -108,8 +109,8 @@ namespace FinalAppTest
                 if (RoundRobin_Tab.prog.listeProcessus.Count == 0 || RoundRobin_Tab.prog.quantum <= 0)
                 {
                     var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 else
                 {
@@ -121,8 +122,8 @@ namespace FinalAppTest
                 if (PSPDynamique_Tab.prog.listeProcessus.Count == 0)
                 {
                     var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 else
                 {
@@ -134,8 +135,8 @@ namespace FinalAppTest
                 if (Mult_Niv_Tab.ListPro.Count==0 || Mult_Niv_Tab.indiceniv==0)
                 {
                     var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 else
                 {
@@ -153,8 +154,8 @@ namespace FinalAppTest
                 if (Mult_Niv_Recyclage_Tab.ListPro.Count==0 || Mult_Niv_Recyclage_Tab.indiceniv==0)
                 {
                     var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 else
                 {

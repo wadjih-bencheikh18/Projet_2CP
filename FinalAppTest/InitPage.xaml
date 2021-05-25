@@ -44,37 +44,96 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="4*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--Content-->
         <DockPanel Background="#FFE9F2FE" Grid.Row="0" Grid.Column="0">
             <!--This grid controls what init table to be shown-->
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Button Grid.Row="0" Margin="30 20" Content="PAPS" FontSize="25" FontWeight="Bold" x:Name="PAPS_Button" Click="PAPS_Button_Click"/>
-                <Button Grid.Row="1" Margin="30 20" Content="PCA" FontSize="25" FontWeight="Bold" x:Name="PCA_Button" Click="PCA_Button_Click"/>
-                <Button Grid.Row="2" Margin="30 20" Content="PSP" FontSize="25" FontWeight="Bold" x:Name="PSP_Button" Click="PSP_Button_Click"/>
-                <Button Grid.Row="3" Margin="30 20" Content="Round Robin" FontSize="20" FontWeight="Bold" x:Name="RoundRobinButton" Click="RoundRobinButton_Click"/>
-                <Button Grid.Row="4" Margin="30 20" Content="PSP Dynamique" FontSize="20" FontWeight="Bold" x:Name="PSPDynamiqueButton" Click="PSPDynamique_Click"/>
-                <Button Grid.Row="5" Margin="30 20" Content="Multi-Niveaux" FontSize="20" FontWeight="Bold" x:Name="MultiNivButton" Click="MultiNivButton_Click"/>
-                <Button Grid.Row="6" Margin="30 20" Content="Multi-Niveaux-Recyclage" FontSize="20" FontWeight="Bold" x:Name="MultiNivRecyclageButton" Click="MultiNivRecyclageButton_Click"/>
-            </Grid>
+            <ScrollViewer>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+
+                    <Rectangle Grid.Row="0" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PAPS</TextBlock>
+                    <Rectangle Grid.Row="0" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PAPS_Button_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
+                    <Rectangle Grid.Row="1" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PCA</TextBlock>
+                    <Rectangle Grid.Row="1" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PCA_Button_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
+                    <Rectangle Grid.Row="2" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PSP</TextBlock>
+                    <Rectangle Grid.Row="2" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PSP_Button_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
+                    <Rectangle Grid.Row="3" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PSP Dynamique</TextBlock>
+                    <Rectangle Grid.Row="3" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PSPDynamique_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
+                    <Rectangle Grid.Row="4" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Round Robin</TextBlock>
+                    <Rectangle Grid.Row="4" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="RoundRobinButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
+                    <Rectangle Grid.Row="5" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Multi-Niveaux</TextBlock>
+                    <Rectangle Grid.Row="5" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="MultiNivButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
+                    <Rectangle Grid.Row="6" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock Grid.Row="6" Margin="0,25,0,0" HorizontalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Multi-Niveaux</TextBlock>
+                    <TextBlock Grid.Row="6" Margin="0,50,0,0" HorizontalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Avec Recyclage</TextBlock>
+                    <Rectangle Grid.Row="6" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="MultiNivRecyclageButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                </Grid>
+            </ScrollViewer>
         </DockPanel>
         <!--the area of the simulation-->
         <ContentControl x:Name="ContentViewer" Content="{Binding}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="4"/>
-        <!--This button changes the whole page-->
+        <!--Start Button-->
         <Grid Grid.Row="1" Background="#FFE9F2FE">
-            <Button x:Name="StartButton" Click="StartButton_Click" Grid.Row="1" Margin="30 50" Content="Simuler" FontSize="25" FontWeight="Bold" />
+            <Rectangle x:Name="StartButton" Grid.Row="1" Margin="25" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Simuler</TextBlock>
+            <Rectangle Grid.Row="1" Margin="25" Cursor="Hand" MouseLeftButtonDown="StartButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
         </Grid>
+        
     </Grid>
 </Page>
