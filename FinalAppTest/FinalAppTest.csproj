@@ -56,6 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Algos\Niveau.cs" />
+    <Compile Include="Algos\PCTR.cs" />
+    <Compile Include="Algos\PLA.cs" />
+    <Compile Include="Algos\PRIO.cs" />
     <Compile Include="Algos\Processus.cs" />
     <Compile Include="Algos\Interruption.cs" />
     <Compile Include="Algos\MultiNiveau.cs" />
@@ -118,6 +121,24 @@
     </Compile>
     <Compile Include="Views\PCA_TabRow.xaml.cs">
       <DependentUpon>PCA_TabRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PCTR.xaml.cs">
+      <DependentUpon>PCTR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PCTR_TabRow.xaml.cs">
+      <DependentUpon>PCTR_TabRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PLA_Tab.xaml.cs">
+      <DependentUpon>PLA_Tab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PLA_TabRow.xaml.cs">
+      <DependentUpon>PLA_TabRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PRIO_Tab.xaml.cs">
+      <DependentUpon>PRIO_Tab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PRIO_TabRow.xaml.cs">
+      <DependentUpon>PRIO_TabRow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PSP_Tab.xaml.cs">
       <DependentUpon>PSP_Tab.xaml</DependentUpon>
@@ -210,6 +231,30 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PCA_TabRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PCTR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PCTR_TabRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PLA_Tab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PLA_TabRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PRIO_Tab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PRIO_TabRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
