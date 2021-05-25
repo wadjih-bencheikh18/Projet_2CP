@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:FinalAppTest.Views"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280">
-    <Grid Background="#FFE9F2FE" Margin="-11.499,0,11.499,0">
+    <Grid Background="#FFE9F2FE">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="7*"/>
