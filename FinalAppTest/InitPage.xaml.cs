@@ -111,8 +111,8 @@ namespace FinalAppTest
                 if (PLA_Tab.prog.listeProcessus.Count == 0)
                 {
                     var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    StartButton.Stroke = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 else
                 {
@@ -124,8 +124,8 @@ namespace FinalAppTest
                 if (PCTR_Tab.prog.listeProcessus.Count == 0)
                 {
                     var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    StartButton.Stroke = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 else
                 {
@@ -176,8 +176,8 @@ namespace FinalAppTest
                 if (PRIO_Tab.prog.listeProcessus.Count == 0)
                 {
                     var bc = new BrushConverter();
-                    StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                    StartButton.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    StartButton.Stroke = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 else
                 {
