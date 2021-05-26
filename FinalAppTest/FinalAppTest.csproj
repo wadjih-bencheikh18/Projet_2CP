@@ -94,6 +94,9 @@
     <Compile Include="ViewModels\MultiNiveauViewModel.cs" />
     <Compile Include="ViewModels\PAPS_ViewModel.cs" />
     <Compile Include="ViewModels\PCA_ViewModel.cs" />
+    <Compile Include="ViewModels\PCTR_ViewModel.cs" />
+    <Compile Include="ViewModels\PLA_ViewModel.cs" />
+    <Compile Include="ViewModels\PRIO_ViewModel.cs" />
     <Compile Include="ViewModels\PSPDynamique_ViewModel.cs" />
     <Compile Include="ViewModels\PSP_ViewModel.cs" />
     <Compile Include="ViewModels\RoundRobinViewModel.cs" />

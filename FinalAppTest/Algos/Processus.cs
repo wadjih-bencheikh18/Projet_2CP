@@ -236,7 +236,7 @@ namespace Ordonnancement
         #endregion
 
         #region Visualisation
-        public PAPS_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PAPS
+        public PAPS_TabRow InsererPAPS(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PAPS
         {
             PAPS_TabRow item = new PAPS_TabRow(id, tempsArriv, duree, Table, Ajouter);
             Background = "#FFEFF3F9";
@@ -256,7 +256,7 @@ namespace Ordonnancement
             item.DataContext = this;
             Table.Children.Add(item);
         }
-        public PCA_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, string s)  // inserer un processus dans Table à la i'éme ligne pour PCA
+        public PCA_TabRow InsererPCA(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PCA
         {
             PCA_TabRow item = new PCA_TabRow(id, tempsArriv, duree, Table, Ajouter);
             Background = "#FFEFF3F9";
@@ -264,7 +264,23 @@ namespace Ordonnancement
             Table.Children.Add(item);
             return item;
         }
-        public PSP_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PSP
+        public PLA_TabRow InsererPLA(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PLA
+        {
+            PLA_TabRow item = new PLA_TabRow(id, tempsArriv, duree, Table, Ajouter);
+            Background = "#FFEFF3F9";
+            item.DataContext = this;
+            Table.Children.Add(item);
+            return item;
+        }
+        public PCTR_TabRow InsererPCTR(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PCTR
+        {
+            PCTR_TabRow item = new PCTR_TabRow(id, tempsArriv, duree, Table, Ajouter);
+            Background = "#FFEFF3F9";
+            item.DataContext = this;
+            Table.Children.Add(item);
+            return item;
+        }
+        public PSP_TabRow InsererPSP(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PSP
         {
             PSP_TabRow item = new PSP_TabRow(id, tempsArriv, duree, prio, Table, Ajouter);
             Background = "#FFEFF3F9";
@@ -272,7 +288,15 @@ namespace Ordonnancement
             Table.Children.Add(item);
             return item;
         }
-        public RoundRobin_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, int i)  // inserer un processus dans Table à la i'éme ligne pour RR
+        public PRIO_TabRow InsererPRIO(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PRIO
+        {
+            PRIO_TabRow item = new PRIO_TabRow(id, tempsArriv, duree, prio, Table, Ajouter);
+            Background = "#FFEFF3F9";
+            item.DataContext = this;
+            Table.Children.Add(item);
+            return item;
+        }
+        public RoundRobin_TabRow InsererRR(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour RR
         {
             RoundRobin_TabRow item = new RoundRobin_TabRow(id, tempsArriv, duree, Table, Ajouter);
             Background = "#FFEFF3F9";
@@ -280,7 +304,7 @@ namespace Ordonnancement
             Table.Children.Add(item);
             return item;
         }
-        public PSPDynamique_TabRow Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter, double i)  // inserer un processus dans Table à la i'éme ligne pour RR
+        public PSPDynamique_TabRow InsererPSPD(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PSPD
         {
             PSPDynamique_TabRow item = new PSPDynamique_TabRow(id, tempsArriv, duree, Table, Ajouter);
             Background = "#FFEFF3F9";

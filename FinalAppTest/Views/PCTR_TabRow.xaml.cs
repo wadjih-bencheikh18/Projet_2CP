@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PCA_TabRow.xaml
+    /// Interaction logic for PCTR_TabRow.xaml
     /// </summary>
     public partial class PCTR_TabRow : UserControl
     {
@@ -61,7 +61,7 @@ namespace FinalAppTest.Views
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            PCA_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
+            PCTR_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }
 
