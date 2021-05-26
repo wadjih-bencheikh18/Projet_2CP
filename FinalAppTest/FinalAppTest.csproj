@@ -72,6 +72,9 @@
     <Compile Include="InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoadingPage.xaml.cs">
+      <DependentUpon>LoadingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProcessusDesign.xaml.cs">
       <DependentUpon>ProcessusDesign.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
       <DependentUpon>RoundRobin_TabRow.xaml</DependentUpon>
     </Compile>
     <Page Include="InitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -349,6 +356,13 @@
   <ItemGroup>
     <Resource Include="Pics\algos.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Pics\BackgroundLoading.png" />
+    <Resource Include="Pics\Logo.png" />
+    <Resource Include="Pics\Loading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\Page d%27accueil.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
