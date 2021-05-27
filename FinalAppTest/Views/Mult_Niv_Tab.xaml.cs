@@ -250,17 +250,17 @@ namespace FinalAppTest.Views
 
         private void GenAddNiv(object sender, MouseButtonEventArgs e)
         {
-            if(indiceniv>3)
+            if(indiceniv>7)
             {
                 return;
             }
             var bc = new BrushConverter();
-            string[] algos = { "PAPS", "PCA", "PLA", "Round-Robin" , "PCTR", "PSP", "PSPDynamique", "PRIO" };
+            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PRIO", "PSPDynamique", "Round-Robin" };
             Random random = new Random();
-            int niv,algo= random.Next(0, 4), q = 0;
+            int niv,algo= random.Next(0, 8), q = 0;
             string type=algos[algo];
             niv = indiceniv;
-            if (algo == 3) 
+            if (algo == 7) 
             {
                 q= random.Next(1, 6);
                 niveaux[indiceniv] = new Niveau(algo, q);
@@ -270,7 +270,7 @@ namespace FinalAppTest.Views
             randNiv.Text = indiceniv.ToString();
             nivId.Text = indiceniv.ToString();
             string quan = q.ToString();
-            if (algo != 3) quan = "/";
+            if (algo != 7) quan = "/";
             AffichageProcessus pro = new AffichageProcessus
             {
                 id = niv,
