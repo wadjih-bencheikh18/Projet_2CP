@@ -249,7 +249,7 @@ namespace FinalAppTest.Views
 
         private void GenAddNiv(object sender, MouseButtonEventArgs e)
         {
-            if(indiceniv>3)
+            if(indiceniv>7)
             {
                 return;
             }
