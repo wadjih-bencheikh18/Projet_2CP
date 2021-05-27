@@ -211,7 +211,7 @@ namespace FinalAppTest.Views
                 };
                 Mult_Niv_TabRow item = (Mult_Niv_TabRow)NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)];
                 item.DataContext = pro;
-                if (algo == 3) niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo, q);
+                if (algo == 7) niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo, q);
                 else niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo);
                 NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
@@ -254,9 +254,9 @@ namespace FinalAppTest.Views
                 return;
             }
             var bc = new BrushConverter();
-            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PSPDynamique", "PRIO",  "Round-Robin" };
+            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PRIO", "PSPDynamique",  "Round-Robin" };
             Random random = new Random();
-            int niv,algo= random.Next(0, 4), q = 0;
+            int niv,algo= random.Next(0, 8), q = 0;
             string type=algos[algo];
             niv = indiceniv;
             if (algo == 7) 

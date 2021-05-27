@@ -254,9 +254,9 @@ namespace FinalAppTest.Views
                 return;
             }
             var bc = new BrushConverter();
-            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PSPDynamique", "PRIO", "Round-Robin" };
+            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PRIO", "PSPDynamique", "Round-Robin" };
             Random random = new Random();
-            int niv,algo= random.Next(0, 4), q = 0;
+            int niv,algo= random.Next(0, 8), q = 0;
             string type=algos[algo];
             niv = indiceniv;
             if (algo == 7) 
