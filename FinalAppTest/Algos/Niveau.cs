@@ -33,22 +33,22 @@ namespace Ordonnancement
                     algo = new PCA();
                     break;
                 case 2:
-                    algo = new PSP();
-                    break;
-                case 3:
-                    Console.WriteLine("Il manque un quantum. Veuillez reessayer");
-                    break;
-                case 4:
-                    algo = new SlackTime();
-                    break;
-                case 5:
                     algo = new PLA();
                     break;
-                case 6:
+                case 3:
                     algo = new PCTR();
                     break;
-                case 7:
+                case 4:
+                    algo = new PSP();
+                    break;
+                case 5:
                     algo = new PRIO();
+                    break;
+                case 6:
+                    algo = new SlackTime();
+                    break;
+                case 7:
+                    Console.WriteLine("Il manque un quantum. Veuillez reessayer");
                     break;
                 default:
                     Console.WriteLine("ERREUR. Veuillez choisir un numero entre 0 et 7");
@@ -67,22 +67,22 @@ namespace Ordonnancement
                     algo = new PCA();
                     break;
                 case 2:
-                    algo = new PSP();
-                    break;
-                case 3:
-                    algo = new RoundRobin(quantum);
-                    break;
-                case 4:
-                    algo = new SlackTime();
-                    break;
-                case 5:
                     algo = new PLA();
                     break;
-                case 6:
+                case 3:
                     algo = new PCTR();
                     break;
-                case 7:
+                case 4:
+                    algo = new PSP();
+                    break;
+                case 5:
                     algo = new PRIO();
+                    break;
+                case 6:
+                    algo = new SlackTime();
+                    break;
+                case 7:
+                    algo = new RoundRobin(quantum);
                     break;
                 default:
                     Console.WriteLine("ERREUR. Veuillez choisir un numero entre 0 et 7");
