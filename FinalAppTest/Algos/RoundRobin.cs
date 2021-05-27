@@ -27,7 +27,7 @@ namespace Ordonnancement
             int indice = 0, temps = 0, q = 0;
             while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0)  //s'il existe des processus prêts
             {
-                if (listePrets.Count == 0)  // Si il y a des processus dans listeProcessus et la listePrets est vide
+                if (listePrets.Count == 0 && !SimulationPage.paused)  // Si il y a des processus dans listeProcessus et la listePrets est vide
                 {
                         await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur, deroulement);
                         temps++;
@@ -35,7 +35,7 @@ namespace Ordonnancement
                         indice = await MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
                         anime = true;
                 }
-                else  // listePrets n'est pas vide 
+                else if (!SimulationPage.paused)  // listePrets n'est pas vide 
                 {
                     if (anime)
                     {
@@ -48,7 +48,7 @@ namespace Ordonnancement
                     if (await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur, deroulement)) q=0;
                     anime = false;
                     listePrets[0].etat = 2; //Le 1er processus de listePrets est actif
-                    temps++;
+                    if (!SimulationPage.paused) temps++;
                     TempsView.Text = temps.ToString();
                     q++;  // on incrémente le quantum
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;

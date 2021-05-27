@@ -33,10 +33,10 @@ namespace Ordonnancement
                     await Activation(ListePretsView, Processeur, listePrets[0]);
                 }
                 await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur, deroulement);
-                temps++; //incrementer le temps réel
+                if (!SimulationPage.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
                 sort = false;
-                if (listePrets.Count != 0) //il y a des processus prêts
+                if (listePrets.Count != 0 && !SimulationPage.paused) //il y a des processus prêts
                 {
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].etat = 2;

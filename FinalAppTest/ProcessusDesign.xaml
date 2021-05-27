@@ -8,13 +8,13 @@
              d:DesignHeight="60" d:DesignWidth="60">
     <UserControl.Resources>
         <Storyboard x:Key="AddAnimation">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+            <DoubleAnimationUsingKeyFrames SpeedRatio="{Binding Speed}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
                 <EasingDoubleKeyFrame KeyTime="0" Value="{Binding Y1}"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="{Binding Y2}"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="{Binding Y3}"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+            <DoubleAnimationUsingKeyFrames SpeedRatio="{Binding Speed}" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
                 <EasingDoubleKeyFrame KeyTime="0" Value="{Binding X1}"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="{Binding X2}"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="{Binding X3}"/>
@@ -22,11 +22,11 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="processusDone">
-            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border">
+            <ThicknessAnimationUsingKeyFrames SpeedRatio="{Binding Speed}" Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border">
                 <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
                 <EasingThicknessKeyFrame KeyTime="0:0:1" Value="130,-54,-130,54"/>
             </ThicknessAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="border">
+            <DoubleAnimationUsingKeyFrames SpeedRatio="{Binding Speed}" Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="border">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
             </DoubleAnimationUsingKeyFrames>

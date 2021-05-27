@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FinalAppTest;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 namespace Ordonnancement
@@ -70,10 +71,10 @@ namespace Ordonnancement
                 await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur, deroulement);
                 anime = false;
                 debut = false;
-                temps++;
+                if (!SimulationPage.paused) temps++;
                 UpdateStackTime(temps);
                 TempsView.Text = temps.ToString();
-                if (listePrets.Count != 0) //S'il y a des processus prêts
+                if (listePrets.Count != 0 && !SimulationPage.paused) //S'il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;

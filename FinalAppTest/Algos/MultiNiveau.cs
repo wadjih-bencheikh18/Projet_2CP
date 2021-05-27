@@ -136,6 +136,7 @@ namespace Ordonnancement
                     item.DataContext = pro;
                     pro.X1 = 700;
                     pro.Y1 = 0;
+                    pro.Speed = SimulationPage_MultiLvl.Speed;
                     item.DataContext = pro;
                     ListesPretsViews[listeProcessus[indice].niveau].Children.Add(item);
                 }

@@ -194,6 +194,7 @@ namespace Ordonnancement
         public int tempsPasse { get; set; }
         public string quantum { get; set; }
         public string Background { get; set; }
+        public double Speed { get; set; }
         public double X1 { get; set; }
         public double Y1 { get; set; }
         public double X2 { get; set; }
@@ -205,7 +206,7 @@ namespace Ordonnancement
         #endregion
 
         #region Constructeur
-        public AffichageProcessus() { }
+        public AffichageProcessus() { Speed = 1; }
         public AffichageProcessus(Processus processus)
         {
             this.id = processus.id;
@@ -218,6 +219,7 @@ namespace Ordonnancement
             this.tempsReponse = processus.tempsReponse;
             this.tempsRestant = processus.tempsRestant;
             this.tempsPasse = processus.duree - processus.tempsRestant;
+            Speed = 1;
         }
         public AffichageProcessus(ProcessusNiveau processus)
         {
@@ -232,6 +234,7 @@ namespace Ordonnancement
             this.tempsRestant = processus.tempsRestant;
             this.tempsPasse = processus.duree - processus.tempsRestant;
             this.niveau = processus.niveau;
+            Speed = 1;
         }
         #endregion
 

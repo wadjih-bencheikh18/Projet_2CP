@@ -172,7 +172,7 @@
                             <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
                         </Ellipse.Effect>
                     </Ellipse>
-                    <Button Grid.Column="2" Style="{StaticResource MyButtonStyle}" Background="#FFB53E" BorderThickness="0" Width="45" Height="45">
+                    <Button Grid.Column="2"  Style="{StaticResource MyButtonStyle}" Background="#FFB53E" BorderThickness="0" Width="45" Height="45" Click="Pause_Click">
                         <Button.Content>
                             <Image Source="Pics/pause.png" Width="30" Height="30"/>
                         </Button.Content>
