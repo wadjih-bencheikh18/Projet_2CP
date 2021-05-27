@@ -44,9 +44,12 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="Pics/background_rotated.jpg"/>
+        </Grid.Background>
 
         <!--Content-->
         <DockPanel Background="#FFE9F2FE" Grid.Row="0" Grid.Column="0">
@@ -63,6 +66,7 @@
                         <RowDefinition Height="100"/>
                     </Grid.RowDefinitions>
 
+                    
                     <Rectangle Grid.Row="0" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                         <Rectangle.Effect>
                             <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
@@ -126,13 +130,34 @@
         <ContentControl x:Name="ContentViewer" Content="{Binding}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="4"/>
         <!--Start Button-->
         <Grid Grid.Row="1" Background="#FFE9F2FE">
-            <Rectangle x:Name="StartButton" Grid.Row="1" Margin="25" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Rectangle x:Name="StartButton" Grid.Row="0" Margin="25" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                 <Rectangle.Effect>
                     <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
                 </Rectangle.Effect>
             </Rectangle>
-            <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Simuler</TextBlock>
-            <Rectangle Grid.Row="1" Margin="25" Cursor="Hand" MouseLeftButtonDown="StartButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Simuler</TextBlock>
+            <Rectangle Grid.Row="0" Margin="25" Cursor="Hand" MouseLeftButtonDown="StartButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
+            <Grid Grid.Row="1" Margin="10,15,100,15">
+                <Rectangle Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="10,0,0,0" Source="Pics/ArrowLeft.png"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Retour</TextBlock>
+                </Grid>
+                <Rectangle Cursor="Hand" x:Name="ReturnButton" MouseLeftButtonDown="ReturnButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+            </Grid>
         </Grid>
         
     </Grid>

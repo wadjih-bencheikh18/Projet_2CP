@@ -23,10 +23,16 @@ namespace FinalAppTest
     {
         DispatcherTimer timer = new DispatcherTimer();
 
+        public LoadingPage(int t)
+        {
+            InitializeComponent();
+            loading(t);
+        }
+
         public LoadingPage()
         {
             InitializeComponent();
-            loading();
+            loading(0);
         }
 
         private void timer_tick(object sender, EventArgs e)
@@ -35,10 +41,10 @@ namespace FinalAppTest
             MAIN_GRID.Children.Remove(BackgroundLoad);
         }
 
-        private void loading()
+        private void loading(int t)
         {
             timer.Tick += timer_tick;
-            timer.Interval = new TimeSpan(0, 0, 5);
+            timer.Interval = new TimeSpan(0, 0, t);
             timer.Start();
         }
 

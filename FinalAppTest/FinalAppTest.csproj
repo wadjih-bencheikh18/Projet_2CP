@@ -316,5 +316,11 @@
   <ItemGroup>
     <Resource Include="Pics\Page d%27accueil.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\background_rotated.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\ArrowLeft.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
