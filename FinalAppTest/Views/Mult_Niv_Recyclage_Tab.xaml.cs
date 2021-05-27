@@ -130,6 +130,7 @@ namespace FinalAppTest.Views
                     };
                     Multi_Niv_TabRow_Proc item = (Multi_Niv_TabRow_Proc)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
+                    ListPro[ProcessusGrid.Children.IndexOf(proModifier)] = new ProcessusNiveau(int.Parse(IdTextBox.Text), tempsArrive, duree, prio, niv);
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     modifier = false;
                     IdTextBox.Text = indicepro.ToString();
@@ -210,6 +211,8 @@ namespace FinalAppTest.Views
                 };
                 Mult_Niv_TabRow item = (Mult_Niv_TabRow)NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)];
                 item.DataContext = pro;
+                if (algo == 3) niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo, q);
+                else niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo);
                 NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
                 nivId.Text = indiceniv.ToString();

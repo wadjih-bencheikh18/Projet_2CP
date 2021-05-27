@@ -80,7 +80,7 @@ namespace FinalAppTest
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            _ = prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView,deroulement);
+            prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView,deroulement);
         }
     }
 }

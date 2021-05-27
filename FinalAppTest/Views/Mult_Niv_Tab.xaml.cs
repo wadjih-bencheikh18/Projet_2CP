@@ -37,7 +37,7 @@ namespace FinalAppTest.Views
         private int indicepro = 0;
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
-            
+            ListPro.Clear();
             int NbProcessus;
             var bc = new BrushConverter();
             if (!Int32.TryParse(NbProcessusTextBox.Text, out NbProcessus) && NbProcessus <= 0)
@@ -130,6 +130,7 @@ namespace FinalAppTest.Views
                     };
                     Multi_Niv_TabRow_Proc item = (Multi_Niv_TabRow_Proc)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
+                    ListPro[ProcessusGrid.Children.IndexOf(proModifier)] = new ProcessusNiveau(int.Parse(IdTextBox.Text), tempsArrive, duree, prio, niv);
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     modifier = false;
                     IdTextBox.Text = indicepro.ToString();
@@ -210,6 +211,8 @@ namespace FinalAppTest.Views
                 };
                 Mult_Niv_TabRow item = (Mult_Niv_TabRow)NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)];
                 item.DataContext = pro;
+                if (algo == 3) niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo, q);
+                else niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo);
                 NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
                 nivId.Text = indiceniv.ToString();

@@ -54,7 +54,7 @@
             </Grid.RowDefinitions>
             
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="24" FontFamily="Lexend" Grid.Column="1" Margin="0,0,0,560"><Run Text="Liste des processus prêts"/></TextBlock>
-            <Border  x:Name="Border1" Margin="0,0,0,460"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
+            <Border Visibility="Hidden"  x:Name="Border1" Margin="0,0,0,460"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
                     <StackPanel x:Name="ListProcessusView0" Orientation="Horizontal">
                         <StackPanel.Resources>
                             <Storyboard x:Key="ListDecalage">
@@ -82,7 +82,7 @@
                         </StackPanel.Resources>
                     </StackPanel>
                 </Border>
-            <Border  x:Name="Border2"  Margin="0,0,0,340"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
+            <Border Visibility="Hidden"  x:Name="Border2"  Margin="0,0,0,340"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
                     <StackPanel x:Name="ListProcessusView1" Orientation="Horizontal">
                         <StackPanel.Resources>
                             <Storyboard x:Key="ListDecalage">
@@ -110,7 +110,7 @@
                         </StackPanel.Resources>
                     </StackPanel>
                 </Border>
-            <Border  x:Name="Border3"  Margin="0,0,0,220"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
+            <Border Visibility="Hidden"  x:Name="Border3"  Margin="0,0,0,220"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
                     <StackPanel x:Name="ListProcessusView2" Orientation="Horizontal">
                         <StackPanel.Resources>
                             <Storyboard x:Key="ListDecalage">
@@ -138,7 +138,7 @@
                         </StackPanel.Resources>
                     </StackPanel>
                 </Border>
-            <Border x:Name="Border4"  Margin="0,0,0,100"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
+            <Border Visibility="Hidden" x:Name="Border4"  Margin="0,0,0,100"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
                 <StackPanel x:Name="ListProcessusView3" Orientation="Horizontal">
                     <StackPanel.Resources>
                         <Storyboard x:Key="ListDecalage">
