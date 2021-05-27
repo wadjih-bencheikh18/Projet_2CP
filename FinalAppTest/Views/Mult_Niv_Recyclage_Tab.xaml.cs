@@ -176,13 +176,13 @@ namespace FinalAppTest.Views
             niv = int.Parse(nivId.Text);
             algo = algoSelect.SelectedIndex;
 
-            if (algo==3 && (!Int32.TryParse(nivQuantum.Text, out q) || q<= 0))  // get durée
+            if (algo==7 && (!Int32.TryParse(nivQuantum.Text, out q) || q<= 0))  // get durée
             {
                 RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
             string quan = q.ToString();
-            if (algo != 3) quan = "/";
+            if (algo != 7) quan = "/";
             if (valide && !modifier)  // si tous est correcte
             {
                 niv = indiceniv;
@@ -195,7 +195,7 @@ namespace FinalAppTest.Views
                     quantum = quan
                 };
                 pro.Inserer(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
-                if (algo == 3) niveaux[indiceniv] = new Niveau(algo, q);
+                if (algo == 7) niveaux[indiceniv] = new Niveau(algo, q);
                 else niveaux[indiceniv] = new Niveau(algo);
                 indiceniv++;
                 randNiv.Text = indiceniv.ToString();
@@ -251,12 +251,12 @@ namespace FinalAppTest.Views
                 return;
             }
             var bc = new BrushConverter();
-            string[] algos = { "PAPS", "PCA", "PSP", "Round-Robin" };
+            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PSPDynamique", "PRIO",  "Round-Robin" };
             Random random = new Random();
             int niv,algo= random.Next(0, 4), q = 0;
             string type=algos[algo];
             niv = indiceniv;
-            if (algo == 3) 
+            if (algo == 7) 
             {
                 q= random.Next(1, 6);
                 niveaux[indiceniv] = new Niveau(algo, q);
@@ -266,7 +266,7 @@ namespace FinalAppTest.Views
             randNiv.Text = indiceniv.ToString();
             nivId.Text = indiceniv.ToString();
             string quan = q.ToString();
-            if (algo != 3) quan = "/";
+            if (algo != 7) quan = "/";
             AffichageProcessus pro = new AffichageProcessus
             {
                 id = niv,

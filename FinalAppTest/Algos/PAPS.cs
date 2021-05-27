@@ -20,7 +20,7 @@ namespace Ordonnancement
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = 0, indice = 0;
             bool anime = true;
-            while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0) //s'il existe des processus non executés
+            while ((indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0) && !SimulationPage.exit) //s'il existe des processus non executés
             {
                 if (listePrets.Count == 0) anime = true;
                 indice = await MAJListePrets(temps, indice, ListePretsView); //remplir listePrets
@@ -32,9 +32,9 @@ namespace Ordonnancement
                 }
                 await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur,deroulement);
                 anime = false;
-                temps++; //incrementer le temps réel
+                if (!SimulationPage.paused)  temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
-                if (listePrets.Count != 0) //s'il y a des processus prêts
+                if (listePrets.Count != 0 && !SimulationPage.paused) //s'il y a des processus prêts
                 {
                     //listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;

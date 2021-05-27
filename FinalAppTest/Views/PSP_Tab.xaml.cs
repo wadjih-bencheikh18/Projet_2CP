@@ -56,8 +56,7 @@ namespace FinalAppTest.Views
                         duree = r.Next(1, 5),
                         prio = r.Next(1, 20)
                     };
-                    PSP_TabRow processus = pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
-
+                    PSP_TabRow processus = pro.InsererPSP(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
                     Processus proc = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);
                     processus.parent.Items.RemoveAt(processus.parent.Items.Count - 1);  // remove the ajouter_row
                     for (int j = 0; ((bool)RandomizeInterrup.IsChecked) && pro.duree > 1 && j < r.Next(0, 3); j++)  // générer des interruptions
@@ -123,7 +122,7 @@ namespace FinalAppTest.Views
                         duree = duree,
                         prio = prio
                     };
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
+                    pro.InsererPSP(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
                     prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio));  // added to the program
                     indice++;
                 }

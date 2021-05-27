@@ -17,19 +17,19 @@ using Ordonnancement;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PCA_Tab.xaml
+    /// Interaction logic for PCTR_Tab.xaml
     /// </summary>
-    public partial class PCA_Tab : UserControl
+    public partial class PCTR_Tab : UserControl
     {
-        public PCA_Tab()
+        public PCTR_Tab()
         {
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
         }
 
-        public static PCA prog = new PCA();
+        public static PCTR prog = new PCTR();
         public static bool modifier = false;
-        public static PCA_TabRow proModifier;
+        public static PCTR_TabRow proModifier;
         private int indice = 0;
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
@@ -55,7 +55,7 @@ namespace FinalAppTest.Views
                         tempsArriv = r.Next(20),
                         duree = r.Next(1, 5)
                     };
-                    PCA_TabRow processus = pro.InsererPCA(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
+                    PCTR_TabRow processus = pro.InsererPCTR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
 
                     Processus proc = new Processus(pro.id, pro.tempsArriv, pro.duree);
                     processus.parent.Items.RemoveAt(processus.parent.Items.Count - 1);  // remove the ajouter_row
@@ -114,7 +114,7 @@ namespace FinalAppTest.Views
                         tempsArriv = tempsArrive,
                         duree = duree,
                     };
-                    pro.InsererPCA(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
+                    pro.InsererPCTR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
                     prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree));  // added to the program
                     indice++;
                 }
@@ -127,7 +127,7 @@ namespace FinalAppTest.Views
                         duree = duree,
                         Background = "#FFEFF3F9"
                     };
-                    PCA_TabRow item = (PCA_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                    PCTR_TabRow item = (PCTR_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     prog.listeProcessus[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree);  // modifier le processus correspondant

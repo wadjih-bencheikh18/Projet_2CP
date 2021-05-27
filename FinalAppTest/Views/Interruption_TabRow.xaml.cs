@@ -41,10 +41,30 @@ namespace FinalAppTest.Views
                 PCA_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PCA_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((PCA_TabRow)processus).parent.Items.Remove(this);
             }
+            if (processus.GetType() == typeof(PLA_TabRow))
+            {
+                PLA_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PLA_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PLA_TabRow)processus).parent.Items.Remove(this);
+            }
+            if (processus.GetType() == typeof(PCTR_TabRow))
+            {
+                PCTR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PCTR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PCTR_TabRow)processus).parent.Items.Remove(this);
+            }
             else if (processus.GetType() == typeof(PSP_TabRow))
             {
                 PSP_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSP_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((PSP_TabRow)processus).parent.Items.Remove(this);
+            }
+            else if (processus.GetType() == typeof(PSPDynamique_TabRow))
+            {
+                PSPDynamique_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSPDynamique_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PSPDynamique_TabRow)processus).parent.Items.Remove(this);
+            }
+            else if (processus.GetType() == typeof(PRIO_TabRow))
+            {
+                PRIO_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PRIO_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PRIO_TabRow)processus).parent.Items.Remove(this);
             }
             else if (processus.GetType() == typeof(RoundRobin_TabRow))
             {

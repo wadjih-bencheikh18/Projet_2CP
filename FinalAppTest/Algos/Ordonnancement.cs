@@ -35,6 +35,7 @@ namespace Ordonnancement
                     AffichageProcessus pro = new AffichageProcessus(listeProcessus[indice]);
                     pro.X1 = 700;
                     pro.Y1 = 0;
+                    pro.Speed = SimulationPage.Speed;
                     item.DataContext = pro;
                     ListePretsView.Children.Add(item);
                     listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts
@@ -107,11 +108,14 @@ namespace Ordonnancement
             AffichageProcessus pro = new AffichageProcessus(proc);
             pro.X1 = -100;
             pro.Y1 = -140;
+            pro.Speed = SimulationPage.Speed;
             item.DataContext = pro;
             Storyboard AnimeProc = new Storyboard();
             Storyboard AnimeList = new Storyboard();
             AnimeList.Children.Add(ListePretsView.FindResource("ListDecalage") as Storyboard);
+            AnimeList.SpeedRatio = SimulationPage.Speed;
             AnimeProc.Children.Add(ListePretsView.FindResource("up") as Storyboard);
+            AnimeList.SpeedRatio = SimulationPage.Speed;
             AnimeProc.Begin((FrameworkElement)ListePretsView.Children[0]);
             await Task.Delay(500);
             Processeur.Children.Add(item);
@@ -123,6 +127,7 @@ namespace Ordonnancement
             await Task.Delay(1000);
             AnimeList = new Storyboard();
             AnimeList.Children.Add(ListePretsView.FindResource("Listback") as Storyboard);
+            AnimeList.SpeedRatio = SimulationPage.Speed;
             ListePretsView.Children.RemoveAt(0);
             for (int j = 0; j < ListePretsView.Children.Count; j++)
             {
@@ -137,11 +142,14 @@ namespace Ordonnancement
             AffichageProcessus pro = new AffichageProcessus(proc);
             pro.X1 = -136.5;
             pro.Y1 = -75;
+            pro.Speed = SimulationPage_MultiLvl.Speed;
             item.DataContext = pro;
             Storyboard AnimeProc = new Storyboard();
             Storyboard AnimeList = new Storyboard();
             AnimeList.Children.Add(ListePretsView.FindResource("ListDecalage") as Storyboard);
+            AnimeList.SpeedRatio = SimulationPage_MultiLvl.Speed;
             AnimeProc.Children.Add(ListePretsView.FindResource("up") as Storyboard);
+            AnimeList.SpeedRatio = SimulationPage_MultiLvl.Speed;
             AnimeProc.Begin((FrameworkElement)ListePretsView.Children[0]);
             await Task.Delay(1500);
             Processeur.Children.Add(item);
@@ -150,9 +158,10 @@ namespace Ordonnancement
             {
                 AnimeList.Begin((FrameworkElement)ListePretsView.Children[j]);
             }
-            await Task.Delay(1000);
+            await Task.Delay(Convert.ToInt32(1000/ SimulationPage_MultiLvl.Speed));
             AnimeList = new Storyboard();
             AnimeList.Children.Add(ListePretsView.FindResource("Listback") as Storyboard);
+            AnimeList.SpeedRatio = SimulationPage_MultiLvl.Speed;
             ListePretsView.Children.RemoveAt(0);
             for (int j = 0; j < ListePretsView.Children.Count; j++)
             {
@@ -164,6 +173,7 @@ namespace Ordonnancement
         {
             ProcessusDesign item = new ProcessusDesign();
             AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
+            pro.Speed = SimulationPage.Speed;
             item.DataContext = pro;
             Processeur.Children.Clear();
             Processeur.Children.Add(item);
@@ -173,6 +183,7 @@ namespace Ordonnancement
         {
             ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
             AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
+            pro.Speed = SimulationPage_MultiLvl.Speed;
             item.DataContext = pro;
             Processeur.Children.Clear();
             Processeur.Children.Add(item);
@@ -183,6 +194,7 @@ namespace Ordonnancement
             ProcessusDesign item = new ProcessusDesign();
             Storyboard AnimeDone = new Storyboard();
             AnimeDone.Children.Add(item.FindResource("processusDone") as Storyboard);
+            AnimeDone.SpeedRatio = SimulationPage.Speed;
             AnimeDone.Begin((FrameworkElement)Processeur.Children[0]);
             await Task.Delay(1000);
             Processeur.Children.Clear();
@@ -193,6 +205,7 @@ namespace Ordonnancement
             ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
             Storyboard AnimeDone = new Storyboard();
             AnimeDone.Children.Add(item.FindResource("processusDone") as Storyboard);
+            AnimeDone.SpeedRatio = SimulationPage_MultiLvl.Speed;
             AnimeDone.Begin((FrameworkElement)Processeur.Children[0]);
             await Task.Delay(1000);
             Processeur.Children.Clear();
@@ -205,6 +218,7 @@ namespace Ordonnancement
             {
                 ProcessusDesign item = new ProcessusDesign();
                 AffichageProcessus pro = new AffichageProcessus(listePrets[i]);
+                pro.Speed = SimulationPage.Speed;
                 item.DataContext = pro;
                 ListePretsView.Children.Add(item);
             }
@@ -218,6 +232,7 @@ namespace Ordonnancement
             {
                 ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
                 AffichageProcessus pro = new AffichageProcessus(listePrets[i]);
+                pro.Speed = SimulationPage_MultiLvl.Speed;
                 item.DataContext = pro;
                 ListePretsView.Children.Add(item);
             }
@@ -233,19 +248,23 @@ namespace Ordonnancement
             pro.Y2 = 340;
             pro.X2 = 600 - 60 * ListePretsView.Children.Count;
             pro.X3 = pro.X2;
+            pro.Speed= SimulationPage.Speed;
             item.DataContext = pro; 
             Storyboard animeReveil = new Storyboard();
             animeReveil.Children.Add(ListeBloqueView.FindResource("up") as Storyboard);
+            animeReveil.SpeedRatio=  SimulationPage.Speed;
             animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[i]);
             await Task.Delay(500);
 
             animeReveil = (Storyboard)ListeBloqueView.FindResource("decalage");
+            animeReveil.SpeedRatio=  SimulationPage.Speed;
             for (int j=i+1;j< ListeBloqueView.Children.Count; j++)
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
 
             await Task.Delay(1000);
             ListeBloqueView.Children.RemoveAt(i);
             animeReveil = ListeBloqueView.FindResource("Retour") as Storyboard;
+            animeReveil.SpeedRatio=  SimulationPage.Speed;
             for (int j = i; j < ListeBloqueView.Children.Count; j++)
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
             
@@ -262,19 +281,23 @@ namespace Ordonnancement
             pro.Y2 = 340;
             pro.X2 = 600 - 60 * ListePretsView.Children.Count;
             pro.X3 = pro.X2;
+            pro.Speed = SimulationPage_MultiLvl.Speed;
             item.DataContext = pro;
             Storyboard animeReveil = new Storyboard();
             animeReveil.Children.Add(ListeBloqueView.FindResource("up") as Storyboard);
+            animeReveil.SpeedRatio = SimulationPage_MultiLvl.Speed;
             animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[i]);
             await Task.Delay(500);
 
-            animeReveil = (Storyboard)ListeBloqueView.FindResource("decalage");
+            animeReveil = (Storyboard)ListeBloqueView.FindResource("decalage"); 
+            animeReveil.SpeedRatio = SimulationPage_MultiLvl.Speed;
             for (int j = i + 1; j < ListeBloqueView.Children.Count; j++)
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
 
             await Task.Delay(1000);
             ListeBloqueView.Children.RemoveAt(i);
             animeReveil = ListeBloqueView.FindResource("Retour") as Storyboard;
+            animeReveil.SpeedRatio = SimulationPage_MultiLvl.Speed;
             for (int j = i; j < ListeBloqueView.Children.Count; j++)
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
 
@@ -286,12 +309,14 @@ namespace Ordonnancement
         {
             Storyboard animeBloque = new Storyboard();
             animeBloque.Children.Add(Processeur.FindResource("Blocage") as Storyboard);
+            animeBloque.SpeedRatio= SimulationPage.Speed;
             animeBloque.Begin((FrameworkElement)Processeur.Children[0]);
             await Task.Delay(1000);
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
             pro.X1 = 600 - 45 * ListeBloqueView.Children.Count;
             ProcessusDesign item = new ProcessusDesign();
+            pro.Speed = SimulationPage.Speed;
             item.DataContext = pro;
             ListeBloqueView.Children.Add(item);
         }
@@ -300,12 +325,14 @@ namespace Ordonnancement
         {
             Storyboard animeBloque = new Storyboard();
             animeBloque.Children.Add(Processeur.FindResource("Blocage") as Storyboard);
+            animeBloque.SpeedRatio = SimulationPage_MultiLvl.Speed;
             animeBloque.Begin((FrameworkElement)Processeur.Children[0]);
             await Task.Delay(1000);
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
             pro.X1 = 600 - 60 * ListeBloqueView.Children.Count;
             ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
+            pro.Speed= SimulationPage_MultiLvl.Speed;
             item.DataContext = pro;
             ListeBloqueView.Children.Add(item);
         }
@@ -314,11 +341,13 @@ namespace Ordonnancement
         {
             Storyboard animeDis = new Storyboard();
             animeDis.Children.Add(Processeur.FindResource("Disactive") as Storyboard);
+            animeDis.SpeedRatio = SimulationPage.Speed;
             animeDis.Begin((FrameworkElement)Processeur.Children[0]);
             await Task.Delay(1000);
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(proc);
             pro.X1 = 600 - 60 * ListePretsView.Children.Count;
+            pro.Speed= SimulationPage.Speed;
             ProcessusDesign item = new ProcessusDesign();
             item.DataContext = pro;
             ListePretsView.Children.Add(item);
@@ -329,6 +358,7 @@ namespace Ordonnancement
         {
             Storyboard animeDis = new Storyboard();
             animeDis.Children.Add(Processeur.FindResource("Disactive") as Storyboard);
+            animeDis.SpeedRatio = SimulationPage_MultiLvl.Speed;
             animeDis.Begin((FrameworkElement)Processeur.Children[0]);
             await Task.Delay(1500);
             Processeur.Children.Clear();
@@ -336,6 +366,7 @@ namespace Ordonnancement
             pro.X1 = 600 - 45 * ListePretsView.Children.Count;
             pro.X2 = pro.X1;
             pro.Y1 = 60 * (3 - indiceNiveau) + 50;
+            pro.Speed = SimulationPage_MultiLvl.Speed;
             ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
             item.DataContext = pro;
             ListePretsView.Children.Add(item);
@@ -538,6 +569,7 @@ namespace Ordonnancement
                     item.DataContext = pro;
                     pro.X1 = 700;
                     pro.Y1 = 0;
+                    pro.Speed = SimulationPage_MultiLvl.Speed;
                     item.DataContext = pro;
                     ListesPretsViews[listeGeneral[indice].niveau].Children.Add(item);
                 }

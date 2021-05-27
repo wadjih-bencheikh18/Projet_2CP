@@ -38,9 +38,24 @@ namespace FinalAppTest
             DataContext = new PCA_ViewModel();
         }
 
+        private void PLA_Button_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new PLA_ViewModel();
+        }
+
+        private void PCTR_Button_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new PCTR_ViewModel();
+        }
+
         private void PSP_Button_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new PSP_ViewModel();
+        }
+
+        private void PRIO_Button_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new PRIO_ViewModel();
         }
 
         private void RoundRobinButton_Click(object sender, RoutedEventArgs e)
@@ -91,6 +106,32 @@ namespace FinalAppTest
                     MainWindow.main.Content = new SimulationPage(PCA_Tab.prog);
                 }
             }
+            else if (ContentViewer.Content.GetType() == typeof(PLA_ViewModel))  // PLA
+            {
+                if (PLA_Tab.prog.listeProcessus.Count == 0)
+                {
+                    var bc = new BrushConverter();
+                    StartButton.Stroke = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                else
+                {
+                    MainWindow.main.Content = new SimulationPage(PLA_Tab.prog);
+                }
+            }
+            else if (ContentViewer.Content.GetType() == typeof(PCTR_ViewModel))  // PCTR
+            {
+                if (PCTR_Tab.prog.listeProcessus.Count == 0)
+                {
+                    var bc = new BrushConverter();
+                    StartButton.Stroke = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                else
+                {
+                    MainWindow.main.Content = new SimulationPage(PCTR_Tab.prog);
+                }
+            }
             else if (ContentViewer.Content.GetType() == typeof(PSP_ViewModel))  // PSP
             {
                 if (PSP_Tab.prog.listeProcessus.Count == 0)
@@ -117,7 +158,7 @@ namespace FinalAppTest
                     MainWindow.main.Content = new SimulationPage(RoundRobin_Tab.prog);
                 }
             }
-            else if (ContentViewer.Content.GetType() == typeof(PSPDynamique_ViewModel))  // RoundRobin
+            else if (ContentViewer.Content.GetType() == typeof(PSPDynamique_ViewModel))  // PSP dynamique
             {
                 if (PSPDynamique_Tab.prog.listeProcessus.Count == 0)
                 {
@@ -128,6 +169,19 @@ namespace FinalAppTest
                 else
                 {
                     MainWindow.main.Content = new SimulationPage(PSPDynamique_Tab.prog);
+                }
+            }
+            else if (ContentViewer.Content.GetType() == typeof(PRIO_ViewModel))  // priorité sans réquisition
+            {
+                if (PRIO_Tab.prog.listeProcessus.Count == 0)
+                {
+                    var bc = new BrushConverter();
+                    StartButton.Stroke = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                else
+                {
+                    MainWindow.main.Content = new SimulationPage(PRIO_Tab.prog);
                 }
             }
             else if (ContentViewer.Content.GetType() == typeof(MultiNiveauViewModel))  // MultiNiveaux

@@ -33,6 +33,15 @@
         <DataTemplate x:Name="MultiNivRecyclage_ViewTemplate" DataType="{x:Type viewmodels:MultiNiveauRecyclageViewModel}">
             <views:Mult_Niv_Recyclage_Tab DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="PLA_ViewTemplate" DataType="{x:Type viewmodels:PLA_ViewModel}">
+            <views:PLA_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="PCTR_ViewTemplate" DataType="{x:Type viewmodels:PCTR_ViewModel}">
+            <views:PCTR_Tab DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="PRIO_ViewTemplate" DataType="{x:Type viewmodels:PRIO_ViewModel}">
+            <views:PRIO_Tab DataContext="{Binding}"/>
+        </DataTemplate>
     </Page.Resources>
     <Grid>
         <!--Layout-->

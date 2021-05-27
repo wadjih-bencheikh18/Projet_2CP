@@ -22,6 +22,7 @@ namespace FinalAppTest
     {
         public Ordonnancement.Ordonnancement prog;
         private int nbNiveaux;
+        public static double Speed = 2;
         public SimulationPage_MultiLvl(Ordonnancement.Ordonnancement prog,int i)
         {
             InitializeComponent();

@@ -1,13 +1,15 @@
-﻿using FinalAppTest;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using FinalAppTest;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 namespace Ordonnancement
 {
-    public class PSPDynamique : Ordonnancement
+    public class PCTR : Ordonnancement
     {
         #region Constructeur
-        public PSPDynamique() { }
+        public PCTR() { }
         #endregion
 
         #region Visualisation
@@ -33,8 +35,8 @@ namespace Ordonnancement
                     }
                     listePrets.Sort(delegate (Processus x, Processus y)
                     {
-                        if (x.slackTime.CompareTo(y.slackTime) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont la même priorité, on les trie selon le temps d'arrivée
-                        else return x.slackTime.CompareTo(y.slackTime); //sinon, on fait le tri par priorité
+                        if (x.tempsRestant.CompareTo(y.tempsRestant) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont le même temps restant, on les trie selon le temps d'arrivée
+                        else return x.tempsRestant.CompareTo(y.tempsRestant); //sinon, on fait le tri par temps restant
                     }
                                         );
                     for (int i = 0; i < P.Count; i++)
@@ -72,7 +74,6 @@ namespace Ordonnancement
                 anime = false;
                 debut = false;
                 if (!SimulationPage.paused) temps++;
-                UpdateStackTime(temps);
                 TempsView.Text = temps.ToString();
                 if (listePrets.Count != 0 && !SimulationPage.paused) //S'il y a des processus prêts
                 {
@@ -94,6 +95,45 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
+            }
+            return temps;
+        }
+        #endregion
+
+        #region Test
+        public int Executer()  // executer la liste des processus 
+        {
+            SortListeProcessus(); //tri des processus par ordre d'arrivé
+            int temps = 0;
+            int indice = 0;
+            while (listePrets.Count != 0 || indice < listeProcessus.Count || listebloque.Count != 0) //Tant qu'il existe des processus prêts
+            {
+                indice = MAJListePrets(temps, indice);  // Remplir listePrets
+                temps++;
+                InterruptionExecute();
+                if (listePrets.Count != 0) //S'il y a des processus prêts
+                {
+                    listePrets.Sort(delegate (Processus x, Processus y)
+                    {
+                        if (x.tempsRestant.CompareTo(y.tempsRestant) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont le même temps restant, on les trie selon le temps d'arrivée
+                        else return x.tempsRestant.CompareTo(y.tempsRestant); //sinon, on fait le tri par temps restant
+                    }
+                                        );
+                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
+                    listePrets[0].etat = 2;
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
+                    listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
+                    AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps et l'ID du processus entrain d'être executé
+                    if (listePrets[0].tempsRestant == 0)  // Si l'execution du premier processus de listePrets est terminée :
+                    {
+                        listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
+                        listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
+                        listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
+                        listePrets[0].etat = 3;
+                        listePrets.RemoveAt(0); //supprimer le processus dont la duree est écoulée
+                    }
+                }
+                else AfficheLigne(temps - 1); //affiche le temps actuel et le mot "repos" ie le processeur n'execute aucun processus
             }
             return temps;
         }
@@ -121,8 +161,8 @@ namespace Ordonnancement
                     }
                     listePrets.Sort(delegate (Processus x, Processus y)
                     {
-                        if (x.slackTime.CompareTo(y.slackTime) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont la même priorité, on les trie selon le temps d'arrivée
-                        else return x.slackTime.CompareTo(y.slackTime); //sinon, on fait le tri par priorité
+                        if (x.tempsRestant.CompareTo(y.tempsRestant) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont le même temps restant, on les trie selon le temps d'arrivée
+                        else return x.tempsRestant.CompareTo(y.tempsRestant); //sinon, on fait le tri par temps restant
                     }
                                         );
                     for (int i = 0; i < P.Count; i++)
@@ -149,7 +189,7 @@ namespace Ordonnancement
                         await MAJListePretsView_MultiLvl(ListePretsView, i);
                     }
                 }
-                if (anime && listePrets.Count != 0) //si un tri par durée est necessaire et il y a des processus prêts
+                if (anime && listePrets.Count != 0) //si un tri par tempsRestant est necessaire et il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus dans listePrets
                     await AfficherDeroulement(deroulement);
@@ -158,7 +198,6 @@ namespace Ordonnancement
                 }
                 await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
                 temps++;
-                UpdateStackTime(temps);
                 TempsView.Text = temps.ToString();
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
                 anime = false;
@@ -212,8 +251,8 @@ namespace Ordonnancement
                     listePrets.Sort(
                                            delegate (Processus x, Processus y)
                                            {
-                                               if (x.prio.CompareTo(y.prio) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont la même priorité, on les trie selon le temps d'arrivée
-                                               else return x.prio.CompareTo(y.prio); //sinon, on fait le tri par priorité
+                                               if (x.tempsRestant.CompareTo(y.tempsRestant) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont le même tempsRestant, on les trie selon le temps d'arrivée
+                                               else return x.tempsRestant.CompareTo(y.tempsRestant); //sinon, on fait le tri par temps restant
                                            }
                                     );
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
@@ -242,10 +281,9 @@ namespace Ordonnancement
             return temps;
         }
         #endregion
-
         #region MultiNiveauRecyclage
 
-        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement,int j)
+        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement, int k)
         {
             bool anime = true, debut = true;
             Processus proc;
@@ -265,8 +303,8 @@ namespace Ordonnancement
                     }
                     listePrets.Sort(delegate (Processus x, Processus y)
                     {
-                        if (x.slackTime.CompareTo(y.slackTime) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont la même priorité, on les trie selon le temps d'arrivée
-                        else return x.slackTime.CompareTo(y.slackTime); //sinon, on fait le tri par priorité
+                        if (x.tempsRestant.CompareTo(y.tempsRestant) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont le même tempsRestant, on les trie selon le temps d'arrivée
+                        else return x.tempsRestant.CompareTo(y.tempsRestant); //sinon, on fait le tri par tempsRestant
                     }
                                         );
                     for (int i = 0; i < P.Count; i++)
@@ -302,7 +340,7 @@ namespace Ordonnancement
                         await MAJListePretsView_MultiLvl(ListePretsView, i);
                     }
                 }
-                if (anime && listePrets.Count != 0) //si un tri par durée est necessaire et il y a des processus prêts
+                if (anime && listePrets.Count != 0) //si un tri par tempsRestant est necessaire et il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus dans listePrets
                     await AfficherDeroulement(deroulement);
@@ -311,7 +349,6 @@ namespace Ordonnancement
                 }
                 await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
                 temps++;
-                UpdateStackTime(temps);
                 TempsView.Text = temps.ToString();
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
                 anime = false;

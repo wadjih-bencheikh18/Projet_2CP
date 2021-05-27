@@ -22,16 +22,24 @@ namespace FinalAppTest
     {
         public Ordonnancement.Ordonnancement prog;
         public static SimulationPage save;
-
+        public static bool activated = false;
+        public static bool paused = false;
+        public static bool exit = false;
+        public static double Speed = 2;
         public SimulationPage(Ordonnancement.Ordonnancement prog)
         {
             InitializeComponent();
             this.prog = prog;
             save = this;
+            activated = false;
+            paused = false;
+            exit = false;
         }
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            prog.Executer(ListePretsView, Processeur, TempsView,ListeBloqueView,deroulement);
+            if (!activated) prog.Executer(ListePretsView, Processeur, TempsView, ListeBloqueView, deroulement);
+            else if (paused) paused = false;
+            activated = true;
         }
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
@@ -41,7 +49,13 @@ namespace FinalAppTest
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
+            exit = true;
             MainWindow.main.Content = new InitPage();
+        }
+
+        private void Pause_Click(object sender, RoutedEventArgs e)
+        {
+            paused = true;
         }
     }
 }
