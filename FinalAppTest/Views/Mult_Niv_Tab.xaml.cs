@@ -120,9 +120,10 @@ namespace FinalAppTest.Views
                 }
                 else
                 {
+                    id = int.Parse(IdTextBox.Text);
                     AffichageProcessus pro = new AffichageProcessus
                     {
-                        id = int.Parse(IdTextBox.Text),
+                        id = id,
                         tempsArriv = tempsArrive,
                         duree = duree,
                         prio = prio,
@@ -130,7 +131,7 @@ namespace FinalAppTest.Views
                     };
                     Multi_Niv_TabRow_Proc item = (Multi_Niv_TabRow_Proc)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
-                    ListPro[ProcessusGrid.Children.IndexOf(proModifier)] = new ProcessusNiveau(int.Parse(IdTextBox.Text), tempsArrive, duree, prio, niv);
+                    ListPro[ProcessusGrid.Children.IndexOf(proModifier)] = new ProcessusNiveau(id, tempsArrive, duree, prio, niv);
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     modifier = false;
                     IdTextBox.Text = indicepro.ToString();
@@ -254,12 +255,12 @@ namespace FinalAppTest.Views
                 return;
             }
             var bc = new BrushConverter();
-            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PSPDynamique", "PRIO", "Round-Robin" };
+            string[] algos = { "PAPS", "PCA", "PLA", "Round-Robin" , "PCTR", "PSP", "PSPDynamique", "PRIO" };
             Random random = new Random();
             int niv,algo= random.Next(0, 4), q = 0;
             string type=algos[algo];
             niv = indiceniv;
-            if (algo == 7) 
+            if (algo == 3) 
             {
                 q= random.Next(1, 6);
                 niveaux[indiceniv] = new Niveau(algo, q);
@@ -269,7 +270,7 @@ namespace FinalAppTest.Views
             randNiv.Text = indiceniv.ToString();
             nivId.Text = indiceniv.ToString();
             string quan = q.ToString();
-            if (algo != 7) quan = "/";
+            if (algo != 3) quan = "/";
             AffichageProcessus pro = new AffichageProcessus
             {
                 id = niv,

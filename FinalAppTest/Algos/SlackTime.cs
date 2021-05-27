@@ -36,7 +36,7 @@ namespace Ordonnancement
                         if (x.slackTime.CompareTo(y.slackTime) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont la même priorité, on les trie selon le temps d'arrivée
                         else return x.slackTime.CompareTo(y.slackTime); //sinon, on fait le tri par priorité
                     }
-                                        );
+                    );
                     for (int i = 0; i < P.Count; i++)
                     {
                         if (P[i].id != listePrets[i].id) sort = true;
