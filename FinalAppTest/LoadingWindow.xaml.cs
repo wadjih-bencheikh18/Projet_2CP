@@ -40,7 +40,7 @@ namespace FinalAppTest
         private void loading()
         {
             timer.Tick += timer_tick;
-            timer.Interval = new TimeSpan(0, 0, 2);
+            timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
         }
     }
