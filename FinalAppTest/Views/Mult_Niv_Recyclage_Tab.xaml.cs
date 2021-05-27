@@ -120,17 +120,18 @@ namespace FinalAppTest.Views
                 }
                 else
                 {
+                    id = int.Parse(IdTextBox.Text);
                     AffichageProcessus pro = new AffichageProcessus
                     {
-                        id = int.Parse(IdTextBox.Text),
+                        id = id,
                         tempsArriv = tempsArrive,
                         duree = duree,
                         prio = prio,
-                        niveau = niv,
+                        niveau = niv
                     };
                     Multi_Niv_TabRow_Proc item = (Multi_Niv_TabRow_Proc)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
-                    ListPro[ProcessusGrid.Children.IndexOf(proModifier)] = new ProcessusNiveau(int.Parse(IdTextBox.Text), tempsArrive, duree, prio, niv);
+                    ListPro[id] = new ProcessusNiveau(id, tempsArrive, duree, prio, niv);
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     modifier = false;
                     IdTextBox.Text = indicepro.ToString();
@@ -211,7 +212,7 @@ namespace FinalAppTest.Views
                 };
                 Mult_Niv_TabRow item = (Mult_Niv_TabRow)NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)];
                 item.DataContext = pro;
-                if (algo == 7) niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo, q);
+                if (algo == 7) niveaux[niv] = new Niveau(algo, q);
                 else niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo);
                 NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
@@ -249,12 +250,12 @@ namespace FinalAppTest.Views
 
         private void GenAddNiv(object sender, MouseButtonEventArgs e)
         {
-            if(indiceniv>7)
+            if(indiceniv>3)
             {
                 return;
             }
             var bc = new BrushConverter();
-            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PRIO", "PSPDynamique",  "Round-Robin" };
+            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PRIO", "Slack-Time",  "Round-Robin" };
             Random random = new Random();
             int niv,algo= random.Next(0, 8), q = 0;
             string type=algos[algo];

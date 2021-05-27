@@ -131,7 +131,7 @@ namespace FinalAppTest.Views
                     };
                     Multi_Niv_TabRow_Proc item = (Multi_Niv_TabRow_Proc)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
-                    ListPro[ProcessusGrid.Children.IndexOf(proModifier)] = new ProcessusNiveau(id, tempsArrive, duree, prio, niv);
+                    ListPro[id] = new ProcessusNiveau(id, tempsArrive, duree, prio, niv);
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     modifier = false;
                     IdTextBox.Text = indicepro.ToString();
@@ -197,7 +197,7 @@ namespace FinalAppTest.Views
                     quantum = quan
                 };
                 pro.InsererNivML(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
-                if (algo == 3) niveaux[indiceniv] = new Niveau(algo, q);
+                if (algo == 7) niveaux[indiceniv] = new Niveau(algo, q);
                 else niveaux[indiceniv] = new Niveau(algo);
                 indiceniv++;
                 randNiv.Text = indiceniv.ToString();
@@ -212,8 +212,8 @@ namespace FinalAppTest.Views
                 };
                 Mult_Niv_TabRow item = (Mult_Niv_TabRow)NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)];
                 item.DataContext = pro;
-                if (algo == 3) niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo, q);
-                else niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo);
+                if (algo == 7) niveaux[niv] = new Niveau(algo, q);
+                else niveaux[niv] = new Niveau(algo);
                 NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
                 nivId.Text = indiceniv.ToString();
@@ -250,12 +250,12 @@ namespace FinalAppTest.Views
 
         private void GenAddNiv(object sender, MouseButtonEventArgs e)
         {
-            if(indiceniv>7)
+            if(indiceniv>3)
             {
                 return;
             }
             var bc = new BrushConverter();
-            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PRIO", "PSPDynamique", "Round-Robin" };
+            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PRIO", "Slack-Time", "Round-Robin" };
             Random random = new Random();
             int niv,algo= random.Next(0, 8), q = 0;
             string type=algos[algo];
