@@ -39,7 +39,7 @@ namespace Ordonnancement
                     Console.WriteLine("Il manque un quantum. Veuillez reessayer");
                     break;
                 case 4:
-                    algo = new PSPDynamique();
+                    algo = new SlackTime();
                     break;
                 case 5:
                     algo = new PLA();
@@ -73,7 +73,7 @@ namespace Ordonnancement
                     algo = new RoundRobin(quantum);
                     break;
                 case 4:
-                    algo = new PSPDynamique();
+                    algo = new SlackTime();
                     break;
                 case 5:
                     algo = new PLA();

@@ -59,7 +59,7 @@ namespace FinalAppTest.Views
                     pro.duree = r.Next(1, 20);
                     pro.prio = r.Next(0, 6);
                     pro.niveau = r.Next(0, indiceniv);
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, NivTextBox, ajouterTB);
+                    pro.InsererProcML(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, NivTextBox, ajouterTB);
                     ListPro.Add(new ProcessusNiveau(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.niveau));
                 }
                 IdTextBox.Text = NbProcessus.ToString();
@@ -114,7 +114,7 @@ namespace FinalAppTest.Views
                         prio = prio,
                         niveau = niv,
                     };
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox,PrioTextBox,NivTextBox, ajouterTB);
+                    pro.InsererProcML(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox,PrioTextBox,NivTextBox, ajouterTB);
                     ListPro.Add(new ProcessusNiveau(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.niveau));
                     indicepro++;
                 }
@@ -194,7 +194,7 @@ namespace FinalAppTest.Views
                     Background = type,
                     quantum = quan
                 };
-                pro.Inserer(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
+                pro.InsererNivML(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
                 if (algo == 3) niveaux[indiceniv] = new Niveau(algo, q);
                 else niveaux[indiceniv] = new Niveau(algo);
                 indiceniv++;
@@ -273,7 +273,7 @@ namespace FinalAppTest.Views
                 Background = type,
                 quantum = quan,
             };
-            pro.Inserer(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
+            pro.InsererNivML(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
         }
 
         private void DelNiv(object sender, MouseButtonEventArgs e)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalAppTest.ViewModels
 {
-    class PSPDynamique_ViewModel
+    class SlackTime_ViewModel
     {
     }
 }

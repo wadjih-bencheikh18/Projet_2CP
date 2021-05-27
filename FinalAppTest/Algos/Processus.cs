@@ -50,7 +50,6 @@ namespace Ordonnancement
         public void CalculeSlackTime(int temps)
         {
             slackTime = deadline - temps - tempsRestant;
-            prio = slackTime;
         }
         public Processus(int id, int tempsArriv, int duree, int prio,int deadline)  //constructeur pour l'algorithme de priorité
         {
@@ -247,13 +246,13 @@ namespace Ordonnancement
             Table.Children.Add(item);
             return item;
         }
-        public void Inserer(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox niveau, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour Ml proc
+        public void InsererProcML(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox niveau, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour Ml proc
         {
             Multi_Niv_TabRow_Proc item = new Multi_Niv_TabRow_Proc(id, tempsArriv, duree, prio, niveau, Table, Ajouter);
             item.DataContext = this;
             Table.Children.Add(item);
         }
-        public void Inserer(StackPanel Table, TextBox nivId, ComboBox algo, TextBox quantum, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour ML nv
+        public void InsererNivML(StackPanel Table, TextBox nivId, ComboBox algo, TextBox quantum, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour ML nv
         {
             Mult_Niv_TabRow item = new Mult_Niv_TabRow(nivId, algo, quantum, Table, Ajouter);
             item.DataContext = this;
@@ -307,9 +306,9 @@ namespace Ordonnancement
             Table.Children.Add(item);
             return item;
         }
-        public PSPDynamique_TabRow InsererPSPD(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PSPD
+        public SlackTime_TabRow InsererSlackTime(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree,TextBox deadline, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PSPD
         {
-            PSPDynamique_TabRow item = new PSPDynamique_TabRow(id, tempsArriv, duree, Table, Ajouter);
+            SlackTime_TabRow item = new SlackTime_TabRow(id, tempsArriv, duree,deadline, Table, Ajouter);
             Background = "#FFEFF3F9";
             item.DataContext = this;
             Table.Children.Add(item);

@@ -24,8 +24,8 @@
         <DataTemplate x:Name="RoundRobin_ViewTemplate" DataType="{x:Type viewmodels:RoundRobinViewModel}">
             <views:RoundRobin_Tab DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="PSPDynamique_ViewModel" DataType="{x:Type viewmodels:PSPDynamique_ViewModel}">
-            <views:PSPDynamique_Tab DataContext="{Binding}"/>
+        <DataTemplate x:Name="SlackTime_ViewModel" DataType="{x:Type viewmodels:SlackTime_ViewModel}">
+            <views:SlackTime_Tab DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate x:Name="MultiNiv_ViewTemplate" DataType="{x:Type viewmodels:MultiNiveauViewModel}">
             <views:Mult_Niv_Tab DataContext="{Binding}"/>
@@ -53,7 +53,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -63,6 +63,9 @@
             <ScrollViewer>
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="80"/>
@@ -101,33 +104,62 @@
                             <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
                         </Rectangle.Effect>
                     </Rectangle>
-                    <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PSP Dynamique</TextBlock>
-                    <Rectangle Grid.Row="3" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PSPDynamique_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
-
+                    <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Slack Time</TextBlock>
+                    <Rectangle Grid.Row="3" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="SlackTime_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    
+                    
+                    
                     <Rectangle Grid.Row="4" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                         <Rectangle.Effect>
                             <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
                         </Rectangle.Effect>
                     </Rectangle>
-                    <TextBlock Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Round Robin</TextBlock>
-                    <Rectangle Grid.Row="4" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="RoundRobinButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    <TextBlock Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PLA</TextBlock>
+                    <Rectangle Grid.Row="4" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PLA_Button_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
 
                     <Rectangle Grid.Row="5" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                         <Rectangle.Effect>
                             <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
                         </Rectangle.Effect>
                     </Rectangle>
-                    <TextBlock Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Multi-Niveaux</TextBlock>
-                    <Rectangle Grid.Row="5" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="MultiNivButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    <TextBlock Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PCTR</TextBlock>
+                    <Rectangle Grid.Row="5" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PCTR_Button_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
 
                     <Rectangle Grid.Row="6" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                         <Rectangle.Effect>
                             <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
                         </Rectangle.Effect>
                     </Rectangle>
-                    <TextBlock Grid.Row="6" Margin="0,25,0,0" HorizontalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Multi-Niveaux</TextBlock>
-                    <TextBlock Grid.Row="6" Margin="0,50,0,0" HorizontalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Avec Recyclage</TextBlock>
-                    <Rectangle Grid.Row="6" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="MultiNivRecyclageButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PRIO</TextBlock>
+                    <Rectangle Grid.Row="6" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PRIO_Button_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
+
+                    <Rectangle Grid.Row="7" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Round Robin</TextBlock>
+                    <Rectangle Grid.Row="7" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="RoundRobinButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
+                    <Rectangle Grid.Row="8" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Multi-Niveaux</TextBlock>
+                    <Rectangle Grid.Row="8" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="MultiNivButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
+                    <Rectangle Grid.Row="9" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock Grid.Row="9" Margin="0,20,0,0" HorizontalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Multi-Niveaux</TextBlock>
+                    <TextBlock Grid.Row="9" Margin="0,50,0,0" HorizontalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Avec Recyclage</TextBlock>
+                    <Rectangle Grid.Row="9" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="MultiNivRecyclageButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
                 </Grid>
             </ScrollViewer>
         </DockPanel>

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for RoundRobin_TabRow.xaml
+    /// Interaction logic for PSP_TabRow.xaml
     /// </summary>
-    public partial class PSPDynamique_TabRow : UserControl
+    public partial class SlackTime_TabRow : UserControl
     {
-        public PSPDynamique_TabRow()
+        public SlackTime_TabRow()
         {
             InitializeComponent();
             TreeViewItem header = new TreeViewItem();
@@ -31,38 +31,40 @@ namespace FinalAppTest.Views
         private TextBox id;
         private TextBox tempsArriv;
         private TextBox duree;
+        private TextBox deadline;
         private TextBlock Ajouter;
         private StackPanel Table;
 
         public TreeViewItem parent;
 
-        public PSPDynamique_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, StackPanel Table, TextBlock Ajouter)
+        public SlackTime_TabRow(TextBox id, TextBox tempsArriv, TextBox duree,TextBox deadline, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
             this.Table = Table;
+            this.deadline = deadline;
             this.Ajouter = Ajouter;
 
             parent = TreeViewParent;
 
             parent.Items.Add(new Interruption_Ajouter(this));
         }
-
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
         {
             id.Text = idTest.Text;
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
-            PSPDynamique_Tab.modifier = true;
-            PSPDynamique_Tab.proModifier = this;
+            deadline.Text = deadlineTest.Text;
+            SlackTime_Tab.modifier = true;
+            SlackTime_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            PSPDynamique_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
+            SlackTime_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }
 

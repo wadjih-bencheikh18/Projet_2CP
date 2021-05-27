@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 namespace Ordonnancement
 {
-    public class PSPDynamique : Ordonnancement
+    public class SlackTime : Ordonnancement
     {
         #region Constructeur
-        public PSPDynamique() { }
+        public SlackTime() { }
         #endregion
 
         #region Visualisation

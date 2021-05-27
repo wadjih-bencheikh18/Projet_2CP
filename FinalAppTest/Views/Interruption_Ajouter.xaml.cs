@@ -166,11 +166,11 @@ namespace FinalAppTest.Views
                     ((PSP_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PSP_TabRow)processus)));  // append ajouter_row
                 }
             }
-            if (processus.GetType() == typeof(PSPDynamique_TabRow))
+            if (processus.GetType() == typeof(PSP_TabRow))
             {
                 bool valide = true;
                 var bc = new BrushConverter();
-                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PSPDynamique_TabRow)processus).dureeTest.Text))
+                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PSP_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
                     tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
@@ -183,14 +183,14 @@ namespace FinalAppTest.Views
                 if (valide)
                 {
                     Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
-                    PSPDynamique_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSPDynamique_TabRow)processus).idTest.Text)).Push(inter);
-                    Interruption_TabRow row = new Interruption_TabRow((PSPDynamique_TabRow)processus)
+                    PSP_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSP_TabRow)processus).idTest.Text)).Push(inter);
+                    Interruption_TabRow row = new Interruption_TabRow((PSP_TabRow)processus)
                     {
                         DataContext = inter
                     };
-                    ((PSPDynamique_TabRow)processus).parent.Items.RemoveAt(((PSPDynamique_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
-                    ((PSPDynamique_TabRow)processus).parent.Items.Add(row);
-                    ((PSPDynamique_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PSPDynamique_TabRow)processus)));  // append ajouter_row
+                    ((PSP_TabRow)processus).parent.Items.RemoveAt(((PSP_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
+                    ((PSP_TabRow)processus).parent.Items.Add(row);
+                    ((PSP_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PSP_TabRow)processus)));  // append ajouter_row
                 }
             }
             if (processus.GetType() == typeof(PRIO_TabRow))

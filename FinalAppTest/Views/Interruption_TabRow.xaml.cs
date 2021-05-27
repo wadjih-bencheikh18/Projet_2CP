@@ -56,10 +56,10 @@ namespace FinalAppTest.Views
                 PSP_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSP_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((PSP_TabRow)processus).parent.Items.Remove(this);
             }
-            else if (processus.GetType() == typeof(PSPDynamique_TabRow))
+            else if (processus.GetType() == typeof(PSP_TabRow))
             {
-                PSPDynamique_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSPDynamique_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
-                ((PSPDynamique_TabRow)processus).parent.Items.Remove(this);
+                PSP_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSP_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PSP_TabRow)processus).parent.Items.Remove(this);
             }
             else if (processus.GetType() == typeof(PRIO_TabRow))
             {

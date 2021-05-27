@@ -1,5 +1,6 @@
 ﻿using FinalAppTest;
 using FinalAppTest.Views;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -141,8 +142,8 @@ namespace Ordonnancement
                     ListesPretsViews[listeProcessus[indice].niveau].Children.Add(item);
                 }
             }
-            if (ajout) await Task.Delay(1000);
-            else await Task.Delay(500);
+            if (ajout) await Task.Delay(Convert.ToInt32(1000 / SimulationPage_MultiLvl.Speed));
+            else await Task.Delay(Convert.ToInt32(500 / SimulationPage_MultiLvl.Speed));
             return indice;
         }
         #endregion

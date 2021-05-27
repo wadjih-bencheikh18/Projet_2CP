@@ -24,7 +24,6 @@ namespace FinalAppTest
         public static SimulationPage save;
         public static bool activated = false;
         public static bool paused = false;
-        public static bool exit = false;
         public static double Speed = 2;
         public SimulationPage(Ordonnancement.Ordonnancement prog)
         {
@@ -33,7 +32,6 @@ namespace FinalAppTest
             save = this;
             activated = false;
             paused = false;
-            exit = false;
         }
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -49,7 +47,9 @@ namespace FinalAppTest
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            exit = true;
+            prog.listePrets.Clear();
+            prog.listeProcessus.Clear();
+            prog.listebloque.Clear();
             MainWindow.main.Content = new InitPage();
         }
 

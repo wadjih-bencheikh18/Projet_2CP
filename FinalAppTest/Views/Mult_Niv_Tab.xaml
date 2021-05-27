@@ -190,7 +190,7 @@
                             <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PSP" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
                         </ComboBoxItem>
                         <ComboBoxItem VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,5">
-                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PSPDynamique" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Slack-Time" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                         </ComboBoxItem>
                         <ComboBoxItem VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,5">
                             <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PRIO" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
