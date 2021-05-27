@@ -30,7 +30,7 @@ namespace FinalAppTest
         public MainWindow()
         {
             InitializeComponent();
-            Main.Content = new LoadingPage();
+            Main.Content = new WelcomePage();
             main = Main;
         }
     }

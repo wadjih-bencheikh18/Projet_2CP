@@ -19,27 +19,11 @@ namespace FinalAppTest
     /// <summary>
     /// Interaction logic for LoadingPage.xaml
     /// </summary>
-    public partial class LoadingPage : Page
+    public partial class WelcomePage : Page
     {
-        DispatcherTimer timer = new DispatcherTimer();
-
-        public LoadingPage()
+        public WelcomePage()
         {
             InitializeComponent();
-            loading();
-        }
-
-        private void timer_tick(object sender, EventArgs e)
-        {
-            timer.Stop();
-            MAIN_GRID.Children.Remove(BackgroundLoad);
-        }
-
-        private void loading()
-        {
-            timer.Tick += timer_tick;
-            timer.Interval = new TimeSpan(0, 0, 5);
-            timer.Start();
         }
 
         private void SimulationButton_Click(object sender, MouseButtonEventArgs e)

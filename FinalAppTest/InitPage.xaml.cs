@@ -223,5 +223,10 @@ namespace FinalAppTest
               
             }
         }
+
+        private void ReturnButton_Click(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.main.Content = new WelcomePage();
+        }
     }
 }
