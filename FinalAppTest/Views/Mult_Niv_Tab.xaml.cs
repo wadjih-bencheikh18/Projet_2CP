@@ -120,9 +120,10 @@ namespace FinalAppTest.Views
                 }
                 else
                 {
+                    id = int.Parse(IdTextBox.Text);
                     AffichageProcessus pro = new AffichageProcessus
                     {
-                        id = int.Parse(IdTextBox.Text),
+                        id = id,
                         tempsArriv = tempsArrive,
                         duree = duree,
                         prio = prio,
@@ -130,7 +131,7 @@ namespace FinalAppTest.Views
                     };
                     Multi_Niv_TabRow_Proc item = (Multi_Niv_TabRow_Proc)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
-                    ListPro[ProcessusGrid.Children.IndexOf(proModifier)] = new ProcessusNiveau(int.Parse(IdTextBox.Text), tempsArrive, duree, prio, niv);
+                    ListPro[ProcessusGrid.Children.IndexOf(proModifier)] = new ProcessusNiveau(id, tempsArrive, duree, prio, niv);
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     modifier = false;
                     IdTextBox.Text = indicepro.ToString();
