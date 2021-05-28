@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
 using FinalAppTest;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Animation;
 namespace Ordonnancement
 {
-    public class PSP : Ordonnancement
+    public class PSPDynamique : Ordonnancement
     {
+        public int refrechTemps;
         #region Constructeur
-        public PSP() { }
+        public PSPDynamique(int refrechTemps) 
+        {
+            this.refrechTemps = refrechTemps;
+        }
         #endregion
 
         #region Visualisation
@@ -22,6 +24,16 @@ namespace Ordonnancement
             Processus proc;
             while (listePrets.Count != 0 || indice < listeProcessus.Count || listebloque.Count != 0) //Tant qu'il existe des processus prêts
             {
+                int key = 0;
+                foreach(Processus pro in listePrets)
+                {
+                    if (pro.Refrech(temps, refrechTemps,key)&& pro.prio!=0) pro.prio--;
+                    key++;
+                }
+
+                if (debut) await MAJListePretsView(ListePretsView, 0);
+                else await MAJListePretsView(ListePretsView, 1);
+
                 if (listePrets.Count == 0) anime = true;
                 indice = await MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
                 if (listePrets.Count != 0)
@@ -145,13 +157,21 @@ namespace Ordonnancement
         // des algorithmes nécessaires pour implémenter MultiNiveaux
         public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement)
         {
-            bool anime=true,debut=true;
+            bool anime = true, debut = true;
             Processus proc;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;  // initialisation du temps
             while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
             //s'il existe des processus prêts et ( On n'est pas encore arrivé à tempsFin ou il n'y a pas de temps fin )
             {
+                int key = 0;
+                foreach (Processus pro in listePrets)
+                {
+                    if (pro.Refrech(temps, refrechTemps,key) && pro.prio != 0) pro.prio--;
+                    key++;
+                }
+                if (debut) await MAJListePretsView_MultiLvl(ListePretsView, 0);
+                else await MAJListePretsView_MultiLvl(ListePretsView, 1);
                 if (listePrets.Count != 0)
                 {
                     bool sort = false;
@@ -198,8 +218,8 @@ namespace Ordonnancement
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                     anime = false;
                 }
-                await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur, deroulement);
-                temps++; 
+                await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
+                temps++;
                 TempsView.Text = temps.ToString();
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
                 anime = false;
@@ -226,16 +246,16 @@ namespace Ordonnancement
                 }
 
             }
-            if (! PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)
-                {
-                    listePrets[0].transition = 1; //Désactivation du processus qui était entrain d'être exécuté
-                    listePrets[0].etat = 1;
-                    await AfficherDeroulement(deroulement);
-                    await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
-                    listePrets.Add(listePrets[0]);
-                    listePrets.RemoveAt(0);
-                    return temps;
-                }
+            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)
+            {
+                listePrets[0].transition = 1; //Désactivation du processus qui était entrain d'être exécuté
+                listePrets[0].etat = 1;
+                await AfficherDeroulement(deroulement);
+                await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
+                listePrets.Add(listePrets[0]);
+                listePrets.RemoveAt(0);
+                return temps;
+            }
             return temps;
         }
 
@@ -286,7 +306,7 @@ namespace Ordonnancement
 
         #region MultiNiveauRecyclage
 
-        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement,int k)
+        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement, int k)
         {
             bool anime = true, debut = true;
             Processus proc;
@@ -295,6 +315,14 @@ namespace Ordonnancement
             while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
             //s'il existe des processus prêts et ( On n'est pas encore arrivé à tempsFin ou il n'y a pas de temps fin )
             {
+                int key = 0;
+                foreach (Processus pro in listePrets)
+                {
+                    if (pro.Refrech(temps, refrechTemps,key) && pro.prio != 0) pro.prio--;
+                    key++;
+                }
+                if (debut) await MAJListePretsView_MultiLvl(ListePretsView, 0);
+                else await MAJListePretsView_MultiLvl(ListePretsView, 1);
                 if (listePrets.Count != 0)
                 {
                     bool sort = false;
@@ -328,7 +356,7 @@ namespace Ordonnancement
                             await AfficherDeroulement(deroulement);
                             if (indiceNiveau + 1 < nbNiveau)
                             {
-                                await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur,proc, indiceNiveau+1);
+                                await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, proc, indiceNiveau + 1);
                                 niveaux[indiceNiveau + 1].listePrets.Add(proc);
                                 listePrets.Remove(proc);
                             }
@@ -360,7 +388,6 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
-                    
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--;//L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     MAJProcesseur_MultiLvl(Processeur);
@@ -386,7 +413,7 @@ namespace Ordonnancement
                 await AfficherDeroulement(deroulement);
                 if (indiceNiveau + 1 < nbNiveau)
                 {
-                    await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, listePrets[0], indiceNiveau+1);
+                    await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, listePrets[0], indiceNiveau + 1);
                     niveaux[indiceNiveau + 1].listePrets.Add(listePrets[0]);
                 }
                 else
