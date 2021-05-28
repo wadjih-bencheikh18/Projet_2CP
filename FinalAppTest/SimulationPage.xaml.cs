@@ -28,6 +28,7 @@ namespace FinalAppTest
         public SimulationPage(Ordonnancement.Ordonnancement prog)
         {
             InitializeComponent();
+            Ordonnancement.Ordonnancement.ScrollGantt = ScrollGantt;
             this.prog = prog;
             save = this;
             activated = false;
@@ -35,7 +36,7 @@ namespace FinalAppTest
         }
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (!activated) prog.Executer(ListePretsView, Processeur, TempsView, ListeBloqueView, deroulement);
+            if (!activated) prog.Executer(ListePretsView, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
             else if (paused) paused = false;
             activated = true;
         }
