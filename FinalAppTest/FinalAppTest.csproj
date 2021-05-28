@@ -139,8 +139,8 @@
     <Compile Include="Views\PCA_TabRow.xaml.cs">
       <DependentUpon>PCA_TabRow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PCTR.xaml.cs">
-      <DependentUpon>PCTR.xaml</DependentUpon>
+    <Compile Include="Views\PCTR_Tab.xaml.cs">
+      <DependentUpon>PCTR_Tab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PCTR_TabRow.xaml.cs">
       <DependentUpon>PCTR_TabRow.xaml</DependentUpon>
@@ -267,7 +267,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PCTR.xaml">
+    <Page Include="Views\PCTR_Tab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
