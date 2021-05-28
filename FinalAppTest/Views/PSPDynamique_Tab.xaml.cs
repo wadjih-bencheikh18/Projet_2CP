@@ -29,7 +29,7 @@ namespace FinalAppTest.Views
 
         public static PSPDynamique prog = new PSPDynamique(5);
         public static bool modifier = false;
-        public static PSP_TabRow proModifier;
+        public static PSPDynamique_TabRow proModifier;
         private int indice = 0;
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
@@ -136,7 +136,7 @@ namespace FinalAppTest.Views
                         prio = prio,
                         Background = "#FFEFF3F9"
                     };
-                    PSP_TabRow item = (PSP_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                    PSPDynamique_TabRow item = (PSPDynamique_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     prog.listeProcessus[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);  // modifier le processus correspondant

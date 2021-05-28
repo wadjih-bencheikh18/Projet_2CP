@@ -295,6 +295,14 @@ namespace Ordonnancement
             Table.Children.Add(item);
             return item;
         }
+        public PSPDynamique_TabRow InsererPSPDynamique(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PSP
+        {
+            PSPDynamique_TabRow item = new PSPDynamique_TabRow(id, tempsArriv, duree, prio, Table, Ajouter);
+            Background = "#FFEFF3F9";
+            item.DataContext = this;
+            Table.Children.Add(item);
+            return item;
+        }
         public PRIO_TabRow InsererPRIO(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PRIO
         {
             PRIO_TabRow item = new PRIO_TabRow(id, tempsArriv, duree, prio, Table, Ajouter);

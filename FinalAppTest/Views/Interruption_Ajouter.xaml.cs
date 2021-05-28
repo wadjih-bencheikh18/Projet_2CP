@@ -85,6 +85,60 @@ namespace FinalAppTest.Views
                     ((PCA_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PCA_TabRow)processus)));  // append ajouter_row*/
                 }
             }
+            else if (processus.GetType() == typeof(SlackTime_TabRow))
+            {
+                bool valide = true;
+                var bc = new BrushConverter();
+                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((SlackTime_TabRow)processus).dureeTest.Text))
+                {
+                    valide = false;
+                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
+                {
+                    valide = false;
+                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (valide)
+                {
+                    Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
+                    SlackTime_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((SlackTime_TabRow)processus).idTest.Text)).Push(inter);
+                    Interruption_TabRow row = new Interruption_TabRow((SlackTime_TabRow)processus)
+                    {
+                        DataContext = inter
+                    };
+                    ((SlackTime_TabRow)processus).parent.Items.RemoveAt(((SlackTime_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
+                    ((SlackTime_TabRow)processus).parent.Items.Add(row);
+                    ((SlackTime_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((SlackTime_TabRow)processus)));  // append ajouter_row*/
+                }
+            }
+            else if (processus.GetType() == typeof(PSPDynamique_TabRow))
+            {
+                bool valide = true;
+                var bc = new BrushConverter();
+                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((SlackTime_TabRow)processus).dureeTest.Text))
+                {
+                    valide = false;
+                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
+                {
+                    valide = false;
+                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (valide)
+                {
+                    Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
+                    PSPDynamique_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSPDynamique_TabRow)processus).idTest.Text)).Push(inter);
+                    Interruption_TabRow row = new Interruption_TabRow((PSPDynamique_TabRow)processus)
+                    {
+                        DataContext = inter
+                    };
+                    ((PSPDynamique_TabRow)processus).parent.Items.RemoveAt(((PSPDynamique_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
+                    ((PSPDynamique_TabRow)processus).parent.Items.Add(row);
+                    ((PSPDynamique_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PSPDynamique_TabRow)processus)));  // append ajouter_row*/
+                }
+            }
             if (processus.GetType() == typeof(PLA_TabRow))
             {
                 bool valide = true;

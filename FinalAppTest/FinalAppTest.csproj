@@ -83,6 +83,9 @@
     <Compile Include="Views\PSPDynamique_Tab.xaml.cs">
       <DependentUpon>PSPDynamique_Tab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PSPDynamique_TabRow.xaml.cs">
+      <DependentUpon>PSPDynamique_TabRow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
@@ -193,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PSPDynamique_Tab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PSPDynamique_TabRow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
