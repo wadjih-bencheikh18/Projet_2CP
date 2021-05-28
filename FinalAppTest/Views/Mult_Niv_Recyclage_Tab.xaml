@@ -199,7 +199,7 @@
                             <TextBlock FontSize="11" FontFamily="Lexend" FontWeight="Medium" Text="Round-Robin" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
                         </ComboBoxItem>
                         <ComboBoxItem VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="0,5">
-                            <TextBlock FontSize="11" FontFamily="Lexend" FontWeight="Medium" Text="PAR-Dynamique" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                            <TextBlock FontSize="11" FontFamily="Lexend" FontWeight="Medium" Text="PARD" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
                         </ComboBoxItem>
 
                     </ComboBox>
