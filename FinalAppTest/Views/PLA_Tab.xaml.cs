@@ -177,7 +177,7 @@ namespace FinalAppTest.Views
         private void NbProcessusTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             var bc = new BrushConverter();
-            if (!int.TryParse(NbProcessusTextBox.Text, out int i) || i < 0 || !NbProcessusTextBox.Text.Equals("")) RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            if (!int.TryParse(NbProcessusTextBox.Text, out int i) || i < 0 ) RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             else RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
         }
     }
