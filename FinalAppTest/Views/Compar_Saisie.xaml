@@ -16,7 +16,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="9*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.Background>
@@ -26,92 +26,90 @@
         <!--Content-->
         <DockPanel Background="#FFE9F2FE" Grid.Row="0" Grid.Column="0">
             <!--This grid controls what init table to be shown-->
-            <ScrollViewer>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="80"/>
-                    </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                </Grid.RowDefinitions>
 
 
-                    <Rectangle Grid.Row="0" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PAPS</TextBlock>
-                    <Rectangle Grid.Row="0" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle Grid.Row="0" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PAPS</TextBlock>
+                <Rectangle Grid.Row="0" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
-                    <Rectangle Grid.Row="1" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PCA</TextBlock>
-                    <Rectangle Grid.Row="1" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle Grid.Row="1" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PCA</TextBlock>
+                <Rectangle Grid.Row="1" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
-                    <Rectangle Grid.Row="2" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PSP</TextBlock>
-                    <Rectangle Grid.Row="2" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle Grid.Row="2" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PSP</TextBlock>
+                <Rectangle Grid.Row="2" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
-                    <Rectangle Grid.Row="3" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Slack Time</TextBlock>
-                    <Rectangle Grid.Row="3" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
-
-
-
-                    <Rectangle Grid.Row="4" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <TextBlock Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PLA</TextBlock>
-                    <Rectangle Grid.Row="4" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle Grid.Row="3" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Slack Time</TextBlock>
+                <Rectangle Grid.Row="3" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
 
-                    <Rectangle Grid.Row="5" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <TextBlock Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PCTR</TextBlock>
-                    <Rectangle Grid.Row="5" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
+                <Rectangle Grid.Row="4" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <TextBlock Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PLA</TextBlock>
+                <Rectangle Grid.Row="4" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
 
-                    <Rectangle Grid.Row="6" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PRIO</TextBlock>
-                    <Rectangle Grid.Row="6" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle Grid.Row="5" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <TextBlock Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PCTR</TextBlock>
+                <Rectangle Grid.Row="5" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
 
-                    <Rectangle Grid.Row="7" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <TextBlock Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Round Robin</TextBlock>
-                    <Rectangle Grid.Row="7" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle Grid.Row="6" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PRIO</TextBlock>
+                <Rectangle Grid.Row="6" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
-                    
-                </Grid>
-            </ScrollViewer>
+
+                <Rectangle Grid.Row="7" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <TextBlock Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Round Robin</TextBlock>
+                <Rectangle Grid.Row="7" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+
+
+            </Grid>
         </DockPanel>
         <!--the area of the simulation-->
         <Grid Background="#FFE9F2FE" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="4">
@@ -131,10 +129,10 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <StackPanel>
-                    <TextBlock Margin="10,30,0,0 " Text="Comparaison" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
-                    <TextBlock Margin="10,0,0,10 " Text="cc" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
-                    <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
-                    <TextBlock Margin="10,0,10,40 " FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F">avec priorité sans réquisition.</TextBlock>
+                    <TextBlock Margin="10,30,0,0 " Text="Comparaison" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                    <TextBlock Margin="10,0,0,10 " Text="*les algos à comparer (entre 2 et 3)*" FontSize="17" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                    <TextBlock Margin="10,0,10,0 " Text="" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
+                    <TextBlock Margin="10,0,10,40 " FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"></TextBlock>
                     <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
                     <Grid Height="240">
                         <Grid.ColumnDefinitions>
@@ -289,17 +287,9 @@
         <!--Start Button-->
         <Grid Grid.Row="1" Background="#FFE9F2FE">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Rectangle x:Name="StartButton" Grid.Row="0" Margin="25" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
-                <Rectangle.Effect>
-                    <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                </Rectangle.Effect>
-            </Rectangle>
-            <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Simuler</TextBlock>
-            <Rectangle Grid.Row="0" Margin="25" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
-
+            
             <Grid Grid.Row="1" Margin="10,15,100,15">
                 <Rectangle Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                     <Rectangle.Effect>
@@ -316,6 +306,16 @@
                 </Grid>
                 <Rectangle Cursor="Hand" x:Name="ReturnButton" MouseLeftButtonDown="ReturnButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
+        </Grid>
+
+        <Grid Grid.Column ="1" Grid.Row="0" Margin="25,0,-25,0" Height="100" VerticalAlignment="Bottom" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="250">
+            <Rectangle x:Name="StartButton" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                <Rectangle.Effect>
+                    <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Comparer</TextBlock>
+            <Rectangle Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
         </Grid>
     </Grid>
 </Page>
