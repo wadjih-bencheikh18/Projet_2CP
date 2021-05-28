@@ -6,11 +6,11 @@ using System.Windows.Controls;
 using System.Windows.Media.Animation;
 namespace Ordonnancement
 {
-    public class PRIO : Ordonnancement
+    public class PSR : Ordonnancement //Priorité Sans Réquisition
     {
 
         #region Constructeur
-        public PRIO() { }
+        public PSR() { }
         #endregion
 
         #region Visualisation

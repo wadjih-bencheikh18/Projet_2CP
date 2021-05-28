@@ -17,7 +17,7 @@ using Ordonnancement;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PSP_Tab.xaml
+    /// Interaction logic for PAR_Tab.xaml
     /// </summary>
     public partial class SlackTime_Tab : UserControl
     {

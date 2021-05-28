@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PSP_TabRow.xaml
+    /// Interaction logic for SlackTime_TabRow.xaml
     /// </summary>
     public partial class SlackTime_TabRow : UserControl
     {

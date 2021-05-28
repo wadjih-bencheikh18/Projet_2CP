@@ -4,11 +4,11 @@ using System.Windows.Controls;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PSP_TabRow.xaml
+    /// Interaction logic for PAR_TabRow.xaml
     /// </summary>
-    public partial class PSPDynamique_TabRow : UserControl
+    public partial class PAR_TabRow : UserControl
     {
-        public PSPDynamique_TabRow()
+        public PAR_TabRow()
         {
             InitializeComponent();
             TreeViewItem header = new TreeViewItem();
@@ -25,7 +25,7 @@ namespace FinalAppTest.Views
 
         public TreeViewItem parent;
 
-        public PSPDynamique_TabRow(TextBox id, TextBox tempsArriv, TextBox duree,TextBox prio, StackPanel Table, TextBlock Ajouter)
+        public PAR_TabRow(TextBox id, TextBox tempsArriv, TextBox duree,TextBox prio, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
@@ -45,14 +45,14 @@ namespace FinalAppTest.Views
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
             prio.Text = prioTest.Text;
-            PSPDynamique_Tab.modifier = true;
-            PSPDynamique_Tab.proModifier = this;
+            PAR_Tab.modifier = true;
+            PAR_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            PSP_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
+            PAR_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }
 

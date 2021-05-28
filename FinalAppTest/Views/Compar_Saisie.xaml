@@ -55,13 +55,13 @@
                 <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PCA</TextBlock>
                 <Rectangle MouseLeftButtonDown="PcaBtn_Click" Grid.Row="1" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
-                <Rectangle x:Name="PspBtn" Grid.Row="2" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                <Rectangle x:Name="ParBtn" Grid.Row="2" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                     <Rectangle.Effect>
                         <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
                     </Rectangle.Effect>
                 </Rectangle>
-                <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PSP</TextBlock>
-                <Rectangle MouseLeftButtonDown="PspBtn_Click" Grid.Row="2" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PAR</TextBlock>
+                <Rectangle MouseLeftButtonDown="ParBtn_Click" Grid.Row="2" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
                 <Rectangle x:Name="SlackBtn" Grid.Row="3" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                     <Rectangle.Effect>
@@ -91,13 +91,13 @@
                 <Rectangle MouseLeftButtonDown="PctrBtn_Click" Grid.Row="5" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
 
-                <Rectangle x:Name="PrioBtn" Grid.Row="6" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                <Rectangle x:Name="PsrBtn" Grid.Row="6" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                     <Rectangle.Effect>
                         <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
                     </Rectangle.Effect>
                 </Rectangle>
-                <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PRIO</TextBlock>
-                <Rectangle MouseLeftButtonDown="PrioBtn_Click" Grid.Row="6" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PSR</TextBlock>
+                <Rectangle MouseLeftButtonDown="PsrBtn_Click" Grid.Row="6" Margin="25,15" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
 
                 <Rectangle x:Name="RRBtn" Grid.Row="7" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">

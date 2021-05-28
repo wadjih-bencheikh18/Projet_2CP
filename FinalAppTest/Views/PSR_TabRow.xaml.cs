@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for RoundRobin_TabRow.xaml
+    /// Interaction logic for PSR_TabRow.xaml
     /// </summary>
-    public partial class RoundRobin_TabRow : UserControl
+    public partial class PSR_TabRow : UserControl
     {
-        public RoundRobin_TabRow()
+        public PSR_TabRow()
         {
             InitializeComponent();
             TreeViewItem header = new TreeViewItem();
@@ -31,38 +31,40 @@ namespace FinalAppTest.Views
         private TextBox id;
         private TextBox tempsArriv;
         private TextBox duree;
+        private TextBox prio;
         private TextBlock Ajouter;
         private StackPanel Table;
 
         public TreeViewItem parent;
 
-        public RoundRobin_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, StackPanel Table, TextBlock Ajouter)
+        public PSR_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
             this.Table = Table;
+            this.prio = prio;
             this.Ajouter = Ajouter;
 
             parent = TreeViewParent;
 
             parent.Items.Add(new Interruption_Ajouter(this));
         }
-
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
         {
             id.Text = idTest.Text;
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
-            RoundRobin_Tab.modifier = true;
-            RoundRobin_Tab.proModifier = this;
+            prio.Text = prioTest.Text;
+            PSR_Tab.modifier = true;
+            PSR_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            RoundRobin_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
+            PAR_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }
 

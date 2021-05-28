@@ -6,10 +6,10 @@ using System.Windows.Controls;
 using System.Windows.Media.Animation;
 namespace Ordonnancement
 {
-    public class PSP : Ordonnancement
+    public class PAR : Ordonnancement //Priorité Avec Réquisition
     {
         #region Constructeur
-        public PSP() { }
+        public PAR() { }
         #endregion
 
         #region Visualisation

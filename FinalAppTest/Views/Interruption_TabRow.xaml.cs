@@ -46,10 +46,10 @@ namespace FinalAppTest.Views
                 SlackTime_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((SlackTime_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((SlackTime_TabRow)processus).parent.Items.Remove(this);
             }
-            else if (processus.GetType() == typeof(PSPDynamique_TabRow))
+            else if (processus.GetType() == typeof(PARD_TabRow))
             {
-                PSPDynamique_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSPDynamique_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
-                ((PSPDynamique_TabRow)processus).parent.Items.Remove(this);
+                PARD_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PARD_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PARD_TabRow)processus).parent.Items.Remove(this);
             }
             if (processus.GetType() == typeof(PLA_TabRow))
             {
@@ -61,25 +61,25 @@ namespace FinalAppTest.Views
                 PCTR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PCTR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((PCTR_TabRow)processus).parent.Items.Remove(this);
             }
-            else if (processus.GetType() == typeof(PSP_TabRow))
+            else if (processus.GetType() == typeof(PAR_TabRow))
             {
-                PSP_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSP_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
-                ((PSP_TabRow)processus).parent.Items.Remove(this);
+                PAR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PAR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PAR_TabRow)processus).parent.Items.Remove(this);
             }
-            else if (processus.GetType() == typeof(PSP_TabRow))
+            else if (processus.GetType() == typeof(PAR_TabRow))
             {
-                PSP_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSP_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
-                ((PSP_TabRow)processus).parent.Items.Remove(this);
+                PAR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PAR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PAR_TabRow)processus).parent.Items.Remove(this);
             }
-            else if (processus.GetType() == typeof(PRIO_TabRow))
+            else if (processus.GetType() == typeof(PSR_TabRow))
             {
-                PRIO_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PRIO_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
-                ((PRIO_TabRow)processus).parent.Items.Remove(this);
+                PSR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PSR_TabRow)processus).parent.Items.Remove(this);
             }
-            else if (processus.GetType() == typeof(RoundRobin_TabRow))
+            else if (processus.GetType() == typeof(RR_TabRow))
             {
-                RoundRobin_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((RoundRobin_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
-                ((RoundRobin_TabRow)processus).parent.Items.Remove(this);
+                RR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((RR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((RR_TabRow)processus).parent.Items.Remove(this);
             }
             else
             {

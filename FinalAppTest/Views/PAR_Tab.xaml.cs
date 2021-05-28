@@ -17,19 +17,19 @@ using Ordonnancement;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PSPDynamique_Tab.xaml
+    /// Interaction logic for PAR_Tab.xaml
     /// </summary>
-    public partial class PSPDynamique_Tab : UserControl
+    public partial class PAR_Tab : UserControl
     {
-        public PSPDynamique_Tab()
+        public PAR_Tab()
         {
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
         }
 
-        public static PSPDynamique prog = new PSPDynamique(5);
+        public static PAR prog = new PAR();
         public static bool modifier = false;
-        public static PSPDynamique_TabRow proModifier;
+        public static PAR_TabRow proModifier;
         private int indice = 0;
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
@@ -56,7 +56,7 @@ namespace FinalAppTest.Views
                         duree = r.Next(1, 5),
                         prio = r.Next(1, 20)
                     };
-                    PSPDynamique_TabRow processus = pro.InsererPSPDynamique(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
+                    PAR_TabRow processus = pro.InsererPAR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
                     Processus proc = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);
                     processus.parent.Items.RemoveAt(processus.parent.Items.Count - 1);  // remove the ajouter_row
                     for (int j = 0; ((bool)RandomizeInterrup.IsChecked) && pro.duree > 1 && j < r.Next(0, 3); j++)  // générer des interruptions
@@ -122,7 +122,7 @@ namespace FinalAppTest.Views
                         duree = duree,
                         prio = prio
                     };
-                    pro.InsererPSPDynamique(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
+                    pro.InsererPAR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
                     prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio));  // added to the program
                     indice++;
                 }
@@ -136,7 +136,7 @@ namespace FinalAppTest.Views
                         prio = prio,
                         Background = "#FFEFF3F9"
                     };
-                    PSPDynamique_TabRow item = (PSPDynamique_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                    PAR_TabRow item = (PAR_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     prog.listeProcessus[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);  // modifier le processus correspondant
@@ -196,27 +196,6 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             if (!int.TryParse(PrioTextBox.Text, out int i) || i < 0) RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             else RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
-        }
-        private void Quantum_LostFocus(object sender, RoutedEventArgs e)
-        {
-            var bc = new BrushConverter();
-            if (!int.TryParse(QuantumTxt.Text, out int i) || i <= 0) RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            else RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
-        }
-
-        private void QuantumTxt_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var bc = new BrushConverter();
-            if (!int.TryParse(QuantumTxt.Text, out int i) || i <= 0)
-            {
-                prog.refrechTemps = -1;
-                RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            }
-            else
-            {
-                prog.refrechTemps = i;
-                RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
-            }
         }
     }
 }

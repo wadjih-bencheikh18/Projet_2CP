@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 namespace Ordonnancement
 {
-    public class PSPDynamique : Ordonnancement
+    public class PARD : Ordonnancement //Priorité Avec Réquisition Dynamique
     {
         public int refrechTemps;
         #region Constructeur
-        public PSPDynamique(int refrechTemps) 
+        public PARD(int refrechTemps) 
         {
             this.refrechTemps = refrechTemps;
         }

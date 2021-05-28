@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalAppTest.ViewModels
 {
-    public class PRIO_ViewModel
+    class PAR_ViewModel
     {
     }
 }

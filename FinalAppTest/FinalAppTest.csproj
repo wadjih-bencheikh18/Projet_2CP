@@ -59,32 +59,32 @@
     <Compile Include="Algos\Niveau.cs" />
     <Compile Include="Algos\PCTR.cs" />
     <Compile Include="Algos\PLA.cs" />
-    <Compile Include="Algos\PRIO.cs" />
+    <Compile Include="Algos\PSR.cs" />
     <Compile Include="Algos\Processus.cs" />
     <Compile Include="Algos\Interruption.cs" />
     <Compile Include="Algos\MultiNiveau.cs" />
     <Compile Include="Algos\Ordonnancement.cs" />
     <Compile Include="Algos\PAPS.cs" />
     <Compile Include="Algos\PCA.cs" />
-    <Compile Include="Algos\PSP.cs" />
-    <Compile Include="Algos\PSPDynamique.cs" />
+    <Compile Include="Algos\PAR.cs" />
+    <Compile Include="Algos\PARD.cs" />
     <Compile Include="Algos\SlackTime.cs" />
-    <Compile Include="Algos\RoundRobin.cs" />
+    <Compile Include="Algos\RR.cs" />
     <Compile Include="InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\PSPDynamique_ViewModel.cs" />
+    <Compile Include="ViewModels\PARD_ViewModel.cs" />
     <Compile Include="Views\Compar_Saisie.xaml.cs">
       <DependentUpon>Compar_Saisie.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PSPDynamique_Tab.xaml.cs">
-      <DependentUpon>PSPDynamique_Tab.xaml</DependentUpon>
+    <Compile Include="Views\PARD_Tab.xaml.cs">
+      <DependentUpon>PARD_Tab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PSPDynamique_TabRow.xaml.cs">
-      <DependentUpon>PSPDynamique_TabRow.xaml</DependentUpon>
+    <Compile Include="Views\PARD_TabRow.xaml.cs">
+      <DependentUpon>PARD_TabRow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
@@ -113,10 +113,10 @@
     <Compile Include="ViewModels\PCA_ViewModel.cs" />
     <Compile Include="ViewModels\PCTR_ViewModel.cs" />
     <Compile Include="ViewModels\PLA_ViewModel.cs" />
-    <Compile Include="ViewModels\PRIO_ViewModel.cs" />
+    <Compile Include="ViewModels\PSR_ViewModel.cs" />
     <Compile Include="ViewModels\SlackTime_ViewModel.cs" />
-    <Compile Include="ViewModels\PSP_ViewModel.cs" />
-    <Compile Include="ViewModels\RoundRobinViewModel.cs" />
+    <Compile Include="ViewModels\PAR_ViewModel.cs" />
+    <Compile Include="ViewModels\RR_ViewModel.cs" />
     <Compile Include="Views\Interruption_Ajouter.xaml.cs">
       <DependentUpon>Interruption_Ajouter.xaml</DependentUpon>
     </Compile>
@@ -159,29 +159,29 @@
     <Compile Include="Views\PLA_TabRow.xaml.cs">
       <DependentUpon>PLA_TabRow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PRIO_Tab.xaml.cs">
-      <DependentUpon>PRIO_Tab.xaml</DependentUpon>
+    <Compile Include="Views\PSR_Tab.xaml.cs">
+      <DependentUpon>PSR_Tab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PRIO_TabRow.xaml.cs">
-      <DependentUpon>PRIO_TabRow.xaml</DependentUpon>
+    <Compile Include="Views\PSR_TabRow.xaml.cs">
+      <DependentUpon>PSR_TabRow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SlackTime_Tab.xaml.cs">
       <DependentUpon>SlackTime_Tab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PSP_Tab.xaml.cs">
-      <DependentUpon>PSP_Tab.xaml</DependentUpon>
+    <Compile Include="Views\PAR_Tab.xaml.cs">
+      <DependentUpon>PAR_Tab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SlackTime_TabRow.xaml.cs">
       <DependentUpon>SlackTime_TabRow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PSP_TabRow.xaml.cs">
-      <DependentUpon>PSP_TabRow.xaml</DependentUpon>
+    <Compile Include="Views\PAR_TabRow.xaml.cs">
+      <DependentUpon>PAR_TabRow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RoundRobin_Tab.xaml.cs">
-      <DependentUpon>RoundRobin_Tab.xaml</DependentUpon>
+    <Compile Include="Views\RR_Tab.xaml.cs">
+      <DependentUpon>RR_Tab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RoundRobin_TabRow.xaml.cs">
-      <DependentUpon>RoundRobin_TabRow.xaml</DependentUpon>
+    <Compile Include="Views\RR_TabRow.xaml.cs">
+      <DependentUpon>RR_TabRow.xaml</DependentUpon>
     </Compile>
     <Page Include="InitPage.xaml">
       <SubType>Designer</SubType>
@@ -195,11 +195,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PSPDynamique_Tab.xaml">
+    <Page Include="Views\PARD_Tab.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\PSPDynamique_TabRow.xaml">
+    <Page Include="Views\PARD_TabRow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -299,11 +299,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PRIO_Tab.xaml">
+    <Page Include="Views\PSR_Tab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PRIO_TabRow.xaml">
+    <Page Include="Views\PSR_TabRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -311,7 +311,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\PSP_Tab.xaml">
+    <Page Include="Views\PAR_Tab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -319,15 +319,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\PSP_TabRow.xaml">
+    <Page Include="Views\PAR_TabRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RoundRobin_Tab.xaml">
+    <Page Include="Views\RR_Tab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RoundRobin_TabRow.xaml">
+    <Page Include="Views\RR_TabRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
