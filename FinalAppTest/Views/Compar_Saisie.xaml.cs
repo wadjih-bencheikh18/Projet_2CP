@@ -27,12 +27,14 @@ namespace FinalAppTest.Views
             IdTextBox.Text = indice.ToString();
             algos = new TextBlock[3] { algo1, algo2, algo3 };
         }
-        public static Ordonnancement.Ordonnancement prog;
         public static bool modifier = false;
         public static PRIO_TabRow proModifier;
         private int indice = 0;
         private List<int> comp = new List<int>();
         private TextBlock[] algos;
+        private int quantum = 5;
+        private int tempsMAJ = 5;
+        private List<Processus> listeProc = new List<Processus>();
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
@@ -44,7 +46,7 @@ namespace FinalAppTest.Views
             }
             else
             {
-                prog.listeProcessus.Clear();  // vider la liste pour l'ecraser
+                listeProc.Clear();  // vider la liste pour l'ecraser
                 NbProcessusTextBox.Text = "0";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
@@ -75,7 +77,7 @@ namespace FinalAppTest.Views
                         processus.parent.Items.Add(row);  // inserer sa ligne dans les éléments de sa TreeViewItem
                     }
                     processus.parent.Items.Add(new Interruption_Ajouter(processus));  // append ajouter_row
-                    prog.Push(proc);  // added processus to the program
+                    listeProc.Add(proc);  // added processus to the program
                 }
                 IdTextBox.Text = NbProcessus.ToString();
                 indice = NbProcessus;
@@ -125,7 +127,7 @@ namespace FinalAppTest.Views
                         prio = prio
                     };
                     pro.InsererPRIO(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
-                    prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio));  // added to the program
+                    listeProc.Add(new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio));  // added to the program
                     indice++;
                 }
                 else  // modifier un existant
@@ -141,7 +143,7 @@ namespace FinalAppTest.Views
                     PRIO_TabRow item = (PRIO_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
-                    prog.listeProcessus[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);  // modifier le processus correspondant
+                    listeProc[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);  // modifier le processus correspondant
                     modifier = false;
                     IdTextBox.Text = indice.ToString();
                     ajouterTB.Text = "Ajouter";
@@ -412,5 +414,14 @@ namespace FinalAppTest.Views
             }
         }
 
+        private void QuantumTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            quantum = int.Parse(QuantumTxt.Text);
+        }
+
+        private void TempsMAJtxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tempsMAJ = int.Parse(TempsMAJtxt.Text);
+        }
     }
 }

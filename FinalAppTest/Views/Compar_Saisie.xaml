@@ -138,21 +138,20 @@
                     <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
                     <Grid Height="240">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="185*"/>
-                            <ColumnDefinition Width="46*"/>
-                            <ColumnDefinition Width="154*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Column="2" Grid.RowSpan="2" Margin="0,50,0,70">
+                        <Grid Grid.Column="2" Grid.RowSpan="2" Margin="0,0,0,120">
                             <Grid Margin="5,12,5,70">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="6*"/>
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend">Interruptions ?</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend" Margin="0">Interruptions ?</TextBlock>
                                 <CheckBox x:Name="RandomizeInterrup" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
                             </Grid>
                             <Rectangle x:Name="RandomButton"  Fill="#FF000000" RadiusY="25" Height="Auto" Width="Auto" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
@@ -170,25 +169,34 @@
                             </Grid>
                             <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="RandomButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
                         </Grid>
-                        <Grid Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid Grid.Column="0" >
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition Height="2*"/>
                             </Grid.RowDefinitions>
                             <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
-                            <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des processus" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                            <TextBlock TextWrapping="Wrap" FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des processus" VerticalAlignment="Bottom" HorizontalAlignment="Center" TextAlignment="Center"/>
                             <TextBox LostFocus="NbProcessusTextBox_LostFocus" x:Name="NbProcessusTextBox" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
                             <Grid Grid.Column="1">
                             </Grid>
                         </Grid>
-                        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                        <Grid Grid.Row="1" Grid.ColumnSpan="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition Height="2*"/>
                             </Grid.RowDefinitions>
                             <Rectangle x:Name="RectQuantum" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
                             <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Quantum" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                            <TextBox x:Name="QuantumTxt" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="5" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="QuantumTxt" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="5" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center" TextChanged="QuantumTxt_TextChanged"/>
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle x:Name="RectTempsMAJ" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                            <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Temps de MAJ" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="TempsMAJtxt" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="5" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center" TextChanged="TempsMAJtxt_TextChanged"/>
                         </Grid>
                     </Grid>
                 </StackPanel>
