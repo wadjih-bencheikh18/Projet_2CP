@@ -57,8 +57,8 @@ namespace FinalAppTest.Views
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
             prio.Text = prioTest.Text;
-            PRIO_Tab.modifier = true;
-            PRIO_Tab.proModifier = this;
+            PSR_Tab.modifier = true;
+            PSR_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 

@@ -112,7 +112,7 @@ namespace FinalAppTest.Views
                     ((SlackTime_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((SlackTime_TabRow)processus)));  // append ajouter_row*/
                 }
             }
-            else if (processus.GetType() == typeof(PARDTabRow))
+            else if (processus.GetType() == typeof(PARD_TabRow))
             {
                 bool valide = true;
                 var bc = new BrushConverter();
@@ -220,7 +220,7 @@ namespace FinalAppTest.Views
                     ((PAR_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PAR_TabRow)processus)));  // append ajouter_row
                 }
             }
-            if (processus.GetType() == typeof(PRIO_TabRow))
+            if (processus.GetType() == typeof(PSR_TabRow))
             {
                 bool valide = true;
                 var bc = new BrushConverter();

@@ -6,9 +6,9 @@ namespace FinalAppTest.Views
     /// <summary>
     /// Interaction logic for PAR_TabRow.xaml
     /// </summary>
-    public partial class PARDynamique_TabRow : UserControl
+    public partial class PARD_TabRow : UserControl
     {
-        public PARDynamique_TabRow()
+        public PARD_TabRow()
         {
             InitializeComponent();
             TreeViewItem header = new TreeViewItem();
@@ -25,7 +25,7 @@ namespace FinalAppTest.Views
 
         public TreeViewItem parent;
 
-        public PARDynamique_TabRow(TextBox id, TextBox tempsArriv, TextBox duree,TextBox prio, StackPanel Table, TextBlock Ajouter)
+        public PARD_TabRow(TextBox id, TextBox tempsArriv, TextBox duree,TextBox prio, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
@@ -45,8 +45,8 @@ namespace FinalAppTest.Views
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
             prio.Text = prioTest.Text;
-            PARDynamique_Tab.modifier = true;
-            PARDynamique_Tab.proModifier = this;
+            PARD_Tab.modifier = true;
+            PARD_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 

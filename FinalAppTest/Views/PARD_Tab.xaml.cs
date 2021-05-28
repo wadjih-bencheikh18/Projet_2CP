@@ -17,19 +17,19 @@ using Ordonnancement;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PARDynamique_Tab.xaml
+    /// Interaction logic for PARD_Tab.xaml
     /// </summary>
-    public partial class PARDynamique_Tab : UserControl
+    public partial class PARD_Tab : UserControl
     {
-        public PARDynamique_Tab()
+        public PARD_Tab()
         {
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
         }
 
-        public static PARDynamique prog = new PARDynamique(5);
+        public static PARD prog = new PARD(5);
         public static bool modifier = false;
-        public static PARDynamique_TabRow proModifier;
+        public static PARD_TabRow proModifier;
         private int indice = 0;
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
@@ -136,7 +136,7 @@ namespace FinalAppTest.Views
                         prio = prio,
                         Background = "#FFEFF3F9"
                     };
-                    PARDynamique_TabRow item = (PARDynamique_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                    PARD_TabRow item = (PARD_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     prog.listeProcessus[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);  // modifier le processus correspondant

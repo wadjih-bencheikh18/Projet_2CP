@@ -62,7 +62,7 @@ namespace FinalAppTest
         {
             DataContext = new RR_ViewModel();
         }
-        private void PARDynamiqueButton_Click(object sender, RoutedEventArgs e)
+        private void PARDButton_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new PARD_ViewModel();
         }
@@ -177,7 +177,7 @@ namespace FinalAppTest
             }
             else if (ContentViewer.Content.GetType() == typeof(PARD_ViewModel))  // PAR dynamique
             {
-                if (PARDynamique_Tab.prog.listeProcessus.Count == 0)
+                if (PARD_Tab.prog.listeProcessus.Count == 0)
                 {
                     var bc = new BrushConverter();
                     //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
@@ -185,7 +185,7 @@ namespace FinalAppTest
                 }
                 else
                 {
-                    MainWindow.main.Content = new SimulationPage(PARDynamique_Tab.prog);
+                    MainWindow.main.Content = new SimulationPage(PARD_Tab.prog);
                 }
             }
             else if (ContentViewer.Content.GetType() == typeof(PSR_ViewModel))  // priorité sans réquisition

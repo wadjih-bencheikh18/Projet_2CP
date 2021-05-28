@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 namespace Ordonnancement
 {
-    public class PARDynamique : Ordonnancement //Priorité Avec Réquisition Dynamique
+    public class PARD : Ordonnancement //Priorité Avec Réquisition Dynamique
     {
         public int refrechTemps;
         #region Constructeur
-        public PARDynamique(int refrechTemps) 
+        public PARD(int refrechTemps) 
         {
             this.refrechTemps = refrechTemps;
         }

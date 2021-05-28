@@ -67,7 +67,7 @@
     <Compile Include="Algos\PAPS.cs" />
     <Compile Include="Algos\PCA.cs" />
     <Compile Include="Algos\PAR.cs" />
-    <Compile Include="Algos\PARDynamique.cs" />
+    <Compile Include="Algos\PARD.cs" />
     <Compile Include="Algos\SlackTime.cs" />
     <Compile Include="Algos\RR.cs" />
     <Compile Include="InitPage.xaml.cs">
@@ -80,11 +80,11 @@
     <Compile Include="Views\Compar_Saisie.xaml.cs">
       <DependentUpon>Compar_Saisie.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PARDynamique_Tab.xaml.cs">
-      <DependentUpon>PARDynamique_Tab.xaml</DependentUpon>
+    <Compile Include="Views\PARD_Tab.xaml.cs">
+      <DependentUpon>PARD_Tab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PARDynamique_TabRow.xaml.cs">
-      <DependentUpon>PARDynamique_TabRow.xaml</DependentUpon>
+    <Compile Include="Views\PARD_TabRow.xaml.cs">
+      <DependentUpon>PARD_TabRow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
@@ -195,11 +195,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PARDynamique_Tab.xaml">
+    <Page Include="Views\PARD_Tab.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\PARDynamique_TabRow.xaml">
+    <Page Include="Views\PARD_TabRow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

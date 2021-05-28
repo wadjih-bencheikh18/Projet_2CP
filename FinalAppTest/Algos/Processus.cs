@@ -295,15 +295,15 @@ namespace Ordonnancement
             Table.Children.Add(item);
             return item;
         }
-        public PARD_TabRow InsererPARDynamique(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PAR
+        public PARD_TabRow InsererPARD(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PAR
         {
-            PARDynamique_TabRow item = new PARDynamique_TabRow(id, tempsArriv, duree, prio, Table, Ajouter);
+            PARD_TabRow item = new PARD_TabRow(id, tempsArriv, duree, prio, Table, Ajouter);
             Background = "#FFEFF3F9";
             item.DataContext = this;
             Table.Children.Add(item);
             return item;
         }
-        public PSR_TabRow InsererPSR(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PRIO
+        public PSR_TabRow InsererPSR(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PSR
         {
             PSR_TabRow item = new PSR_TabRow(id, tempsArriv, duree, prio, Table, Ajouter);
             Background = "#FFEFF3F9";

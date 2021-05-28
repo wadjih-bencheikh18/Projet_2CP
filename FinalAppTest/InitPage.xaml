@@ -43,7 +43,7 @@
             <views:PSR_Tab DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate x:Name="PARDynamique_ViewTemplate" DataType="{x:Type viewmodels:PARD_ViewModel}">
-            <views:PARDynamique_Tab DataContext="{Binding}"/>
+            <views:PARD_Tab DataContext="{Binding}"/>
         </DataTemplate>
     </Page.Resources>
     <Grid>
@@ -140,7 +140,7 @@
                             <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
                         </Rectangle.Effect>
                     </Rectangle>
-                    <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PRIO</TextBlock>
+                    <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PSR</TextBlock>
                     <Rectangle Grid.Row="6" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PSR_Button_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
 

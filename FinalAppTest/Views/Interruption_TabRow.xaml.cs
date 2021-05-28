@@ -46,10 +46,10 @@ namespace FinalAppTest.Views
                 SlackTime_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((SlackTime_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((SlackTime_TabRow)processus).parent.Items.Remove(this);
             }
-            else if (processus.GetType() == typeof(PSPDynamique_TabRow))
+            else if (processus.GetType() == typeof(PARD_TabRow))
             {
-                PSPDynamique_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSPDynamique_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
-                ((PSPDynamique_TabRow)processus).parent.Items.Remove(this);
+                PARD_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PARD_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PARD_TabRow)processus).parent.Items.Remove(this);
             }
             if (processus.GetType() == typeof(PLA_TabRow))
             {
