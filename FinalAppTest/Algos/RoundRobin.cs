@@ -50,6 +50,7 @@ namespace Ordonnancement
                     listePrets[0].etat = 2; //Le 1er processus de listePrets est actif
                     if (!SimulationPage.paused) temps++;
                     TempsView.Text = temps.ToString();
+                    AfficherEtat(GanttChart, temps);
                     q++;  // on incrémente le quantum
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant

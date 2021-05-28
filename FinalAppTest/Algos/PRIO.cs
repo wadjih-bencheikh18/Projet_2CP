@@ -40,6 +40,7 @@ namespace Ordonnancement
                 {
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].etat = 2;
+                    AfficherEtat(GanttChart, temps);
                     listePrets[0].tempsRestant--; //execution du 1er processus de listePrets et donc décrémenter le tempsRestant
                     MAJProcesseur(Processeur);
                     if (listePrets[0].tempsRestant == 0) //si l'execution du premier processus de listePrets est terminée
@@ -56,9 +57,12 @@ namespace Ordonnancement
                     }
 
                 }
-                else AfficheLigne(temps - 1);
-            }
-            return temps;
+                else if (!SimulationPage.paused) {
+                    AfficheLigne(temps - 1);
+                    AfficherEtat(GanttChart, temps);
+                }
+                }
+                return temps;
         }
         #endregion
 

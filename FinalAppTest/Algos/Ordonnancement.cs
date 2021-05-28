@@ -422,6 +422,29 @@ namespace Ordonnancement
         }
         public void AfficherEtat(WrapPanel GanttChart, int temps)
         {
+            if (temps == 1)
+            {
+                Grid coldefinit = new Grid();
+                coldefinit.Width = 50;
+                GanttChart.VerticalAlignment = VerticalAlignment.Bottom;
+                GanttChart.Children.Insert(temps-1, coldefinit);
+                for (int i = 0; i < listeProcessus.Count; i++)
+                {
+                    TextBlock item = new TextBlock();
+                    RowDefinition rowdef = new RowDefinition { Height = new GridLength(60) };
+                    coldefinit.VerticalAlignment = VerticalAlignment.Bottom;
+                    coldefinit.RowDefinitions.Insert(i, rowdef);
+                    item.Text = $"ID = { i }";
+                    item.FontSize = 14;
+                    item.Foreground = Brushes.Black;
+                    item.Margin = new Thickness(0, 5, 0, 5);
+                    item.VerticalAlignment = VerticalAlignment.Center;
+                    item.FontFamily = new FontFamily("Lexend");
+                    item.FontWeight = FontWeights.Medium;
+                    Grid.SetRow(item, i);
+                    coldefinit.Children.Add(item);
+                }
+            }
             Grid coldef = new Grid();
             coldef.Width = 50;
             GanttChart.VerticalAlignment = VerticalAlignment.Bottom;
