@@ -11,7 +11,7 @@ namespace Ordonnancement
         public List<Processus> listebloque = new List<Processus>();
         public Ordonnancement algo;
 
-        public int numAlgo; //0:PAPS  1:PCA  2:PLA  3:PCTR    4:PSP   5:PrioritéSansRéq   6:PSPDynamique   7:RoundRobin
+        public int numAlgo; //0:PAPS  1:PCA  2:PLA  3:PCTR    4:PAR   5:PSR  6:PARDynamique   7:RR
         public int[] indice = new int[8];
         #endregion
 
@@ -39,10 +39,10 @@ namespace Ordonnancement
                     algo = new PCTR();
                     break;
                 case 4:
-                    algo = new PSP();
+                    algo = new PAR();
                     break;
                 case 5:
-                    algo = new PRIO();
+                    algo = new PSR();
                     break;
                 case 6:
                     algo = new SlackTime();
@@ -73,19 +73,19 @@ namespace Ordonnancement
                     algo = new PCTR();
                     break;
                 case 4:
-                    algo = new PSP();
+                    algo = new PAR();
                     break;
                 case 5:
-                    algo = new PRIO();
+                    algo = new PSR();
                     break;
                 case 6:
                     algo = new SlackTime();
                     break;
                 case 7:
-                    algo = new RoundRobin(quantum);
+                    algo = new RR(quantum);
                     break;
                 case 8:
-                    algo = new PSPDynamique(quantum);
+                    algo = new PARD(quantum);
                     break;
                 default:
                     Console.WriteLine("ERREUR. Veuillez choisir un numero entre 0 et 7");

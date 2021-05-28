@@ -17,19 +17,19 @@ using Ordonnancement;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PRIO_Tab.xaml
+    /// Interaction logic for PAR_Tab.xaml
     /// </summary>
-    public partial class PRIO_Tab : UserControl
+    public partial class PAR_Tab : UserControl
     {
-        public PRIO_Tab()
+        public PAR_Tab()
         {
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
         }
 
-        public static PRIO prog = new PRIO();
+        public static PAR prog = new PAR();
         public static bool modifier = false;
-        public static PRIO_TabRow proModifier;
+        public static PAR_TabRow proModifier;
         private int indice = 0;
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
@@ -56,7 +56,7 @@ namespace FinalAppTest.Views
                         duree = r.Next(1, 5),
                         prio = r.Next(1, 20)
                     };
-                    PRIO_TabRow processus = pro.InsererPRIO(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
+                    PAR_TabRow processus = pro.InsererPAR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
                     Processus proc = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);
                     processus.parent.Items.RemoveAt(processus.parent.Items.Count - 1);  // remove the ajouter_row
                     for (int j = 0; ((bool)RandomizeInterrup.IsChecked) && pro.duree > 1 && j < r.Next(0, 3); j++)  // générer des interruptions
@@ -83,7 +83,7 @@ namespace FinalAppTest.Views
         private void AddProcessusButton_Click(object sender, RoutedEventArgs e)  // ajouter un processus
         {
             bool valide = true;
-            int id, tempsArrive, duree, prio;
+            int id, tempsArrive, duree,prio ;
             var bc = new BrushConverter();
             if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
@@ -122,7 +122,7 @@ namespace FinalAppTest.Views
                         duree = duree,
                         prio = prio
                     };
-                    pro.InsererPRIO(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
+                    pro.InsererPAR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
                     prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio));  // added to the program
                     indice++;
                 }
@@ -136,7 +136,7 @@ namespace FinalAppTest.Views
                         prio = prio,
                         Background = "#FFEFF3F9"
                     };
-                    PRIO_TabRow item = (PRIO_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                    PAR_TabRow item = (PAR_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     prog.listeProcessus[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);  // modifier le processus correspondant

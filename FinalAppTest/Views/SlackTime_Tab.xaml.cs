@@ -17,7 +17,7 @@ using Ordonnancement;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PSP_Tab.xaml
+    /// Interaction logic for PAR_Tab.xaml
     /// </summary>
     public partial class SlackTime_Tab : UserControl
     {
@@ -122,7 +122,7 @@ namespace FinalAppTest.Views
                         duree = duree,
                         deadline = deadline
                     };
-                    pro.InsererPSP(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, DeadlineTextBox, ajouterTB);
+                    pro.InsererPAR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, DeadlineTextBox, ajouterTB);
                     prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree,0, pro.deadline));  // added to the program
                     indice++;
                 }
@@ -136,7 +136,7 @@ namespace FinalAppTest.Views
                         deadline = deadline,
                         Background = "#FFEFF3F9"
                     };
-                    PSP_TabRow item = (PSP_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                    PAR_TabRow item = (PAR_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     prog.listeProcessus[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree,0, pro.deadline);  // modifier le processus correspondant

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="FinalAppTest.Views.PSPDynamique_TabRow"
+﻿<UserControl x:Class="FinalAppTest.Views.RR_TabRow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -15,7 +15,6 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
@@ -25,8 +24,7 @@
                         <TextBlock x:Name="idTest" Grid.Column="0" Text="{Binding id}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                         <TextBlock x:Name="tempsArrTest" Grid.Column="1" Text="{Binding tempsArriv}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                         <TextBlock x:Name="dureeTest" Grid.Column="2" Text="{Binding duree}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
-                        <TextBlock x:Name="prioTest" Grid.Column="3" Text="{Binding prio}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
-                        <Grid Grid.Column="4">
+                        <Grid Grid.Column="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>

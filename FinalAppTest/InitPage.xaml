@@ -18,11 +18,11 @@
         <DataTemplate x:Name="PCA_ViewTemplate" DataType="{x:Type viewmodels:PCA_ViewModel}">
             <views:PCA_Tab DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="PSP_ViewTemplate" DataType="{x:Type viewmodels:PSP_ViewModel}">
-            <views:PSP_Tab DataContext="{Binding}"/>
+        <DataTemplate x:Name="PAR_ViewTemplate" DataType="{x:Type viewmodels:PAR_ViewModel}">
+            <views:PAR_Tab DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="RoundRobin_ViewTemplate" DataType="{x:Type viewmodels:RoundRobinViewModel}">
-            <views:RoundRobin_Tab DataContext="{Binding}"/>
+        <DataTemplate x:Name="RR_ViewTemplate" DataType="{x:Type viewmodels:RR_ViewModel}">
+            <views:RR_Tab DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate x:Name="SlackTime_ViewModel" DataType="{x:Type viewmodels:SlackTime_ViewModel}">
             <views:SlackTime_Tab DataContext="{Binding}"/>
@@ -39,11 +39,11 @@
         <DataTemplate x:Name="PCTR_ViewTemplate" DataType="{x:Type viewmodels:PCTR_ViewModel}">
             <views:PCTR_Tab DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="PRIO_ViewTemplate" DataType="{x:Type viewmodels:PRIO_ViewModel}">
-            <views:PRIO_Tab DataContext="{Binding}"/>
+        <DataTemplate x:Name="PSR_ViewTemplate" DataType="{x:Type viewmodels:PSR_ViewModel}">
+            <views:PSR_Tab DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="PSPDynamique_ViewTemplate" DataType="{x:Type viewmodels:PSPDynamique_ViewModel}">
-            <views:PSPDynamique_Tab DataContext="{Binding}"/>
+        <DataTemplate x:Name="PARDynamique_ViewTemplate" DataType="{x:Type viewmodels:PARD_ViewModel}">
+            <views:PARDynamique_Tab DataContext="{Binding}"/>
         </DataTemplate>
     </Page.Resources>
     <Grid>
@@ -104,8 +104,8 @@
                             <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
                         </Rectangle.Effect>
                     </Rectangle>
-                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PSP</TextBlock>
-                    <Rectangle Grid.Row="2" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PSP_Button_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PAR</TextBlock>
+                    <Rectangle Grid.Row="2" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PAR_Button_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
                     <Rectangle Grid.Row="3" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                         <Rectangle.Effect>
@@ -141,7 +141,7 @@
                         </Rectangle.Effect>
                     </Rectangle>
                     <TextBlock Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PRIO</TextBlock>
-                    <Rectangle Grid.Row="6" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PRIO_Button_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    <Rectangle Grid.Row="6" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PSR_Button_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
 
                     <Rectangle Grid.Row="7" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
@@ -150,15 +150,15 @@
                         </Rectangle.Effect>
                     </Rectangle>
                     <TextBlock Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Round Robin</TextBlock>
-                    <Rectangle Grid.Row="7" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="RoundRobinButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    <Rectangle Grid.Row="7" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="RRButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
                     
                     <Rectangle Grid.Row="8" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                         <Rectangle.Effect>
                             <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
                         </Rectangle.Effect>
                     </Rectangle>
-                    <TextBlock Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PSP Dynamique</TextBlock>
-                    <Rectangle Grid.Row="8" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PSPDynamiqueButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    <TextBlock Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PAR Dynamique</TextBlock>
+                    <Rectangle Grid.Row="8" Margin="25,15" Cursor="Hand" MouseLeftButtonDown="PARDynamiqueButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
 
                     <Rectangle Grid.Row="9" Margin="25,15" Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                         <Rectangle.Effect>

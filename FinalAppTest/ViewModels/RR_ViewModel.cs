@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalAppTest.ViewModels
 {
-    class PSP_ViewModel
+    class RR_ViewModel
     {
     }
 }

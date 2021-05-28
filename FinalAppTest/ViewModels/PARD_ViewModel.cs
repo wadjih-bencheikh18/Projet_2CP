@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalAppTest.ViewModels
 {
-    class RoundRobinViewModel
+    class PARD_ViewModel
     {
     }
 }

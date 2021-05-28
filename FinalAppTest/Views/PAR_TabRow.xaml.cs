@@ -1,26 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PRIO_TabRow.xaml
+    /// Interaction logic for PAR_TabRow.xaml
     /// </summary>
-    public partial class PRIO_TabRow : UserControl
+    public partial class PAR_TabRow : UserControl
     {
-        public PRIO_TabRow()
+        public PAR_TabRow()
         {
             InitializeComponent();
             TreeViewItem header = new TreeViewItem();
@@ -37,7 +25,7 @@ namespace FinalAppTest.Views
 
         public TreeViewItem parent;
 
-        public PRIO_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, StackPanel Table, TextBlock Ajouter)
+        public PAR_TabRow(TextBox id, TextBox tempsArriv, TextBox duree,TextBox prio, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
@@ -57,14 +45,14 @@ namespace FinalAppTest.Views
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
             prio.Text = prioTest.Text;
-            PRIO_Tab.modifier = true;
-            PRIO_Tab.proModifier = this;
+            PAR_Tab.modifier = true;
+            PAR_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            PSP_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
+            PAR_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }
 

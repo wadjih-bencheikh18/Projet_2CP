@@ -28,7 +28,7 @@ namespace FinalAppTest.Views
             algos = new TextBlock[3] { algo1, algo2, algo3 };
         }
         public static bool modifier = false;
-        public static PRIO_TabRow proModifier;
+        public static PSR_TabRow proModifier;
         private int indice = 0;
         private List<int> comp = new List<int>();
         private TextBlock[] algos;
@@ -60,7 +60,7 @@ namespace FinalAppTest.Views
                         duree = r.Next(1, 5),
                         prio = r.Next(1, 20)
                     };
-                    PRIO_TabRow processus = pro.InsererPRIO(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
+                    PSR_TabRow processus = pro.InsererPSR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
                     Processus proc = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);
                     processus.parent.Items.RemoveAt(processus.parent.Items.Count - 1);  // remove the ajouter_row
                     for (int j = 0; ((bool)RandomizeInterrup.IsChecked) && pro.duree > 1 && j < r.Next(0, 3); j++)  // générer des interruptions
@@ -126,7 +126,7 @@ namespace FinalAppTest.Views
                         duree = duree,
                         prio = prio
                     };
-                    pro.InsererPRIO(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
+                    pro.InsererPSR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
                     listeProc.Add(new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio));  // added to the program
                     indice++;
                 }
@@ -140,7 +140,7 @@ namespace FinalAppTest.Views
                         prio = prio,
                         Background = "#FFEFF3F9"
                     };
-                    PRIO_TabRow item = (PRIO_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                    PSR_TabRow item = (PSR_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     listeProc[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);  // modifier le processus correspondant
@@ -258,15 +258,15 @@ namespace FinalAppTest.Views
             }
         }
 
-        private void PspBtn_Click(object sender, MouseButtonEventArgs e)
+        private void ParBtn_Click(object sender, MouseButtonEventArgs e)
         {
             var bc = new BrushConverter();
 
             if (comp.IndexOf(2) < 0 && comp.Count < 3)
             {
                 comp.Add(2);
-                algos[comp.Count - 1].Text = "- PSP";
-                PspBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+                algos[comp.Count - 1].Text = "- PAR";
+                ParBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
             }
             else if (comp.IndexOf(2) >= 0)
             {
@@ -280,7 +280,7 @@ namespace FinalAppTest.Views
                     algos[comp.Count - 1].Text = "";
                 }
                 comp.Remove(2);
-                PspBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                ParBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
             }
         }
 
@@ -362,15 +362,15 @@ namespace FinalAppTest.Views
             }
         }
 
-        private void PrioBtn_Click(object sender, MouseButtonEventArgs e)
+        private void PsrBtn_Click(object sender, MouseButtonEventArgs e)
         {
             var bc = new BrushConverter();
 
             if (comp.IndexOf(6) < 0 && comp.Count < 3)
             {
                 comp.Add(6);
-                algos[comp.Count - 1].Text = "- Prio";
-                PrioBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+                algos[comp.Count - 1].Text = "- PSR";
+                PsrBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
             }
             else if (comp.IndexOf(6) >= 0)
             {
@@ -384,7 +384,7 @@ namespace FinalAppTest.Views
                     algos[comp.Count - 1].Text = "";
                 }
                 comp.Remove(6);
-                PrioBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                PsrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
             }
         }
 

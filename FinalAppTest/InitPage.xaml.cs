@@ -48,23 +48,23 @@ namespace FinalAppTest
             DataContext = new PCTR_ViewModel();
         }
 
-        private void PSP_Button_Click(object sender, RoutedEventArgs e)
+        private void PAR_Button_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new PSP_ViewModel();
+            DataContext = new PAR_ViewModel();
         }
 
-        private void PRIO_Button_Click(object sender, RoutedEventArgs e)
+        private void PSR_Button_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new PRIO_ViewModel();
+            DataContext = new PSR_ViewModel();
         }
 
-        private void RoundRobinButton_Click(object sender, RoutedEventArgs e)
+        private void RRButton_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new RoundRobinViewModel();
+            DataContext = new RR_ViewModel();
         }
-        private void PSPDynamiqueButton_Click(object sender, RoutedEventArgs e)
+        private void PARDynamiqueButton_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new PSPDynamique_ViewModel();
+            DataContext = new PARD_ViewModel();
         }
         private void SlackTime_Click(object sender, RoutedEventArgs e)
         {
@@ -136,9 +136,9 @@ namespace FinalAppTest
                     MainWindow.main.Content = new SimulationPage(PCTR_Tab.prog);
                 }
             }
-            else if (ContentViewer.Content.GetType() == typeof(PSP_ViewModel))  // PSP
+            else if (ContentViewer.Content.GetType() == typeof(PAR_ViewModel))  // PAR
             {
-                if (PSP_Tab.prog.listeProcessus.Count == 0)
+                if (PAR_Tab.prog.listeProcessus.Count == 0)
                 {
                     var bc = new BrushConverter();
                     //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
@@ -146,12 +146,12 @@ namespace FinalAppTest
                 }
                 else
                 {
-                    MainWindow.main.Content = new SimulationPage(PSP_Tab.prog);
+                    MainWindow.main.Content = new SimulationPage(PAR_Tab.prog);
                 }
             }
-            else if (ContentViewer.Content.GetType() == typeof(RoundRobinViewModel))  // RoundRobin
+            else if (ContentViewer.Content.GetType() == typeof(RR_ViewModel))  // RoundRobin
             {
-                if (RoundRobin_Tab.prog.listeProcessus.Count == 0 || RoundRobin_Tab.prog.quantum <= 0)
+                if (RR_Tab.prog.listeProcessus.Count == 0 || RR_Tab.prog.quantum <= 0)
                 {
                     var bc = new BrushConverter();
                     //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
@@ -159,10 +159,10 @@ namespace FinalAppTest
                 }
                 else
                 {
-                    MainWindow.main.Content = new SimulationPage(RoundRobin_Tab.prog);
+                    MainWindow.main.Content = new SimulationPage(RR_Tab.prog);
                 }
             }
-            else if (ContentViewer.Content.GetType() == typeof(SlackTime_ViewModel))  // PSP dynamique
+            else if (ContentViewer.Content.GetType() == typeof(SlackTime_ViewModel))  // PAR dynamique
             {
                 if (SlackTime_Tab.prog.listeProcessus.Count == 0)
                 {
@@ -175,9 +175,9 @@ namespace FinalAppTest
                     MainWindow.main.Content = new SimulationPage(SlackTime_Tab.prog);
                 }
             }
-            else if (ContentViewer.Content.GetType() == typeof(PSPDynamique_ViewModel))  // PSP dynamique
+            else if (ContentViewer.Content.GetType() == typeof(PARD_ViewModel))  // PAR dynamique
             {
-                if (PSPDynamique_Tab.prog.listeProcessus.Count == 0)
+                if (PARDynamique_Tab.prog.listeProcessus.Count == 0)
                 {
                     var bc = new BrushConverter();
                     //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
@@ -185,12 +185,12 @@ namespace FinalAppTest
                 }
                 else
                 {
-                    MainWindow.main.Content = new SimulationPage(PSPDynamique_Tab.prog);
+                    MainWindow.main.Content = new SimulationPage(PARDynamique_Tab.prog);
                 }
             }
-            else if (ContentViewer.Content.GetType() == typeof(PRIO_ViewModel))  // priorité sans réquisition
+            else if (ContentViewer.Content.GetType() == typeof(PSR_ViewModel))  // priorité sans réquisition
             {
-                if (PRIO_Tab.prog.listeProcessus.Count == 0)
+                if (PSR_Tab.prog.listeProcessus.Count == 0)
                 {
                     var bc = new BrushConverter();
                     StartButton.Stroke = (Brush)bc.ConvertFrom("#FFF52C2C");
@@ -198,7 +198,7 @@ namespace FinalAppTest
                 }
                 else
                 {
-                    MainWindow.main.Content = new SimulationPage(PRIO_Tab.prog);
+                    MainWindow.main.Content = new SimulationPage(PSR_Tab.prog);
                 }
             }
             else if (ContentViewer.Content.GetType() == typeof(MultiNiveauViewModel))  // MultiNiveaux

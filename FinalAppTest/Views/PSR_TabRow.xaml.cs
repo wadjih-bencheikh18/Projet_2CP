@@ -1,14 +1,26 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PSP_TabRow.xaml
+    /// Interaction logic for PSR_TabRow.xaml
     /// </summary>
-    public partial class PSPDynamique_TabRow : UserControl
+    public partial class PSR_TabRow : UserControl
     {
-        public PSPDynamique_TabRow()
+        public PSR_TabRow()
         {
             InitializeComponent();
             TreeViewItem header = new TreeViewItem();
@@ -25,7 +37,7 @@ namespace FinalAppTest.Views
 
         public TreeViewItem parent;
 
-        public PSPDynamique_TabRow(TextBox id, TextBox tempsArriv, TextBox duree,TextBox prio, StackPanel Table, TextBlock Ajouter)
+        public PSR_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
@@ -45,14 +57,14 @@ namespace FinalAppTest.Views
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
             prio.Text = prioTest.Text;
-            PSPDynamique_Tab.modifier = true;
-            PSPDynamique_Tab.proModifier = this;
+            PRIO_Tab.modifier = true;
+            PRIO_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            PSP_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
+            PAR_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }
 

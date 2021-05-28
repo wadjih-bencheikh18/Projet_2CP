@@ -7,13 +7,13 @@ using System.Windows.Media.Animation;
 
 namespace Ordonnancement
 {
-    public class RoundRobin : Ordonnancement
+    public class RR : Ordonnancement //Round Robin
     {
 
         #region Constructeur
         public int quantum { get; set; }
 
-        public RoundRobin(int q) // Constructeur 
+        public RR(int q) // Constructeur 
         {
             quantum = q;
         }
