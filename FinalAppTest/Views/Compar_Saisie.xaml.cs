@@ -25,11 +25,14 @@ namespace FinalAppTest.Views
         {
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
+            algos = new TextBlock[3] { algo1, algo2, algo3 };
         }
         public static Ordonnancement.Ordonnancement prog;
         public static bool modifier = false;
         public static PRIO_TabRow proModifier;
         private int indice = 0;
+        private List<int> comp = new List<int>();
+        private TextBlock[] algos;
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
@@ -201,5 +204,213 @@ namespace FinalAppTest.Views
         {
             MainWindow.main.Content = new WelcomePage();
         }
+
+        private void PapsBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            if (comp.IndexOf(0) < 0 && comp.Count < 3)
+            {
+                comp.Add(0);
+                algos[comp.Count - 1].Text = "- PAPS";
+                PapsBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+            }
+            else if(comp.IndexOf(0) >= 0)
+            {
+                if (comp.IndexOf(0) == comp.Count - 1) algos[comp.IndexOf(0)].Text = "";
+                else
+                {
+                    for (int i = comp.IndexOf(0) ; i < comp.Count - 1 ;  i++)
+                    {
+                        algos[i].Text = algos[i+1].Text;
+                    }
+                    algos[comp.Count - 1].Text = "";
+                }
+                comp.Remove(0);
+                PapsBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+        }
+
+        private void PcaBtn_Click (object sender, MouseButtonEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            if (comp.IndexOf(1) < 0 && comp.Count < 3)
+            {
+                comp.Add(1);
+                algos[comp.Count - 1].Text = "- PCA";
+                PcaBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+            }
+            else if (comp.IndexOf(1) >= 0)
+            {
+                if (comp.IndexOf(1) == comp.Count - 1) algos[comp.IndexOf(1)].Text = "";
+                else                {
+                    for (int i = comp.IndexOf(1); i < comp.Count - 1; i++)
+                    {
+                        algos[i].Text = algos[i + 1].Text;
+                    }
+                    algos[comp.Count - 1].Text = "";
+                }
+                comp.Remove(1);
+                PcaBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+        }
+
+        private void PspBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            if (comp.IndexOf(2) < 0 && comp.Count < 3)
+            {
+                comp.Add(2);
+                algos[comp.Count - 1].Text = "- PSP";
+                PspBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+            }
+            else if (comp.IndexOf(2) >= 0)
+            {
+                if (comp.IndexOf(2) == comp.Count - 1) algos[comp.IndexOf(2)].Text = "";
+                else
+                {
+                    for (int i = comp.IndexOf(2); i < comp.Count - 1; i++)
+                    {
+                        algos[i].Text = algos[i + 1].Text;
+                    }
+                    algos[comp.Count - 1].Text = "";
+                }
+                comp.Remove(2);
+                PspBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+        }
+
+        private void SlackBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            if (comp.IndexOf(3) < 0 && comp.Count < 3)
+            {
+                comp.Add(3);
+                algos[comp.Count - 1].Text = "- Slack Time";
+                SlackBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+            }
+            else if (comp.IndexOf(3) >= 0)
+            {
+                if (comp.IndexOf(3) == comp.Count - 1) algos[comp.IndexOf(3)].Text = "";
+                else
+                {
+                    for (int i = comp.IndexOf(3); i < comp.Count - 1; i++)
+                    {
+                        algos[i].Text = algos[i + 1].Text;
+                    }
+                    algos[comp.Count - 1].Text = "";
+                }
+                comp.Remove(3);
+                SlackBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+        }
+
+        private void PlaBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            if (comp.IndexOf(4) < 0 && comp.Count < 3)
+            {
+                comp.Add(4);
+                algos[comp.Count - 1].Text = "- PLA";
+                PlaBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+            }
+            else if (comp.IndexOf(4) >= 0)
+            {
+                if (comp.IndexOf(4) == comp.Count - 1) algos[comp.IndexOf(4)].Text = "";
+                else
+                {
+                    for (int i = comp.IndexOf(4); i < comp.Count - 1; i++)
+                    {
+                        algos[i].Text = algos[i + 1].Text;
+                    }
+                    algos[comp.Count - 1].Text = "";
+                }
+                comp.Remove(4);
+                PlaBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+        }
+
+        private void PctrBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            if (comp.IndexOf(5) < 0 && comp.Count < 3)
+            {
+                comp.Add(5);
+                algos[comp.Count - 1].Text = "- PCTR";
+                PctrBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+            }
+            else if (comp.IndexOf(5) >= 0)
+            {
+                if (comp.IndexOf(5) == comp.Count - 1) algos[comp.IndexOf(5)].Text = "";
+                else
+                {
+                    for (int i = comp.IndexOf(5); i < comp.Count - 1; i++)
+                    {
+                        algos[i].Text = algos[i + 1].Text;
+                    }
+                    algos[comp.Count - 1].Text = "";
+                }
+                comp.Remove(5);
+                PctrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+        }
+
+        private void PrioBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            if (comp.IndexOf(6) < 0 && comp.Count < 3)
+            {
+                comp.Add(6);
+                algos[comp.Count - 1].Text = "- Prio";
+                PrioBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+            }
+            else if (comp.IndexOf(6) >= 0)
+            {
+                if (comp.IndexOf(6) == comp.Count - 1) algos[comp.IndexOf(6)].Text = "";
+                else
+                {
+                    for (int i = comp.IndexOf(6); i < comp.Count - 1; i++)
+                    {
+                        algos[i].Text = algos[i + 1].Text;
+                    }
+                    algos[comp.Count - 1].Text = "";
+                }
+                comp.Remove(6);
+                PrioBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+        }
+
+        private void RRBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            if (comp.IndexOf(7) < 0 && comp.Count < 3)
+            {
+                comp.Add(7);
+                algos[comp.Count - 1].Text = "- Round Robin";
+                RRBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+            }
+            else if (comp.IndexOf(7) >= 0)
+            {
+                if (comp.IndexOf(7) == comp.Count - 1) algos[comp.IndexOf(7)].Text = "";
+                else
+                {
+                    for (int i = comp.IndexOf(7); i < comp.Count - 1; i++)
+                    {
+                        algos[i].Text = algos[i + 1].Text;
+                    }
+                    algos[comp.Count - 1].Text = "";
+                }
+                comp.Remove(7);
+                RRBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+        }
+
     }
 }

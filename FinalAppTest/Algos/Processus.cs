@@ -40,7 +40,7 @@ namespace Ordonnancement
 
         public Processus(int id, int tempsArriv, int duree, int prio)  //constructeur pour l'algorithme de priorité
         {
-            this.etat = 1;
+            this.etat = 3;
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
@@ -53,7 +53,7 @@ namespace Ordonnancement
         }
         public Processus(int id, int tempsArriv, int duree, int prio, int deadline)  //constructeur pour l'algorithme de priorité
         {
-            this.etat = 1;
+            this.etat = 3;
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
@@ -64,7 +64,7 @@ namespace Ordonnancement
         }
         public Processus(int id, int tempsArriv, int duree) //constructeur pour les autres algorithmes
         {
-            this.etat = 1;
+            this.etat = 3;
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;

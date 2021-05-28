@@ -13,7 +13,7 @@ namespace Ordonnancement
         #endregion
 
         #region Visualisation
-        public override async Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement)  // executer la liste des processus 
+        public override async Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement, WrapPanel GanttChart)  // executer la liste des processus 
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = 0;

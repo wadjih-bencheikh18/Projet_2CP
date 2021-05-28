@@ -92,7 +92,7 @@ namespace Ordonnancement
         #endregion
 
         #region Visualisation
-        public override async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView,TextBlock deroulement) 
+        public override async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView,TextBlock deroulement, WrapPanel GanttChart) 
         {
             SortListeProcessus();  //trier la liste des processus
             InitNiveaux();   //remplir les niveaux

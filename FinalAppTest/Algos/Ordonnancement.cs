@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using System.Windows.Media;
+using System.Windows.Shapes;
+using System.Windows.Controls.Primitives;
 
 namespace Ordonnancement
 {
@@ -15,11 +18,12 @@ namespace Ordonnancement
         public List<Processus> listeProcessus = new List<Processus>();  // liste des processus fournis par l'utilisateur
         public List<Processus> listePrets = new List<Processus>();  // liste des processus prêts
         public List<Processus> listebloque = new List<Processus>();
+        public static ScrollViewer ScrollGantt;
         #endregion
 
         #region Visualisation
 
-        public abstract Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView,TextBlock deroulement);
+        public abstract Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView,TextBlock deroulement, WrapPanel GanttChart);
         public abstract Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement, int i);
 
         public async Task<int> MAJListePrets(int temps, int indice, StackPanel ListePretsView) //ajouter à la liste des processus prêts tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
@@ -35,10 +39,11 @@ namespace Ordonnancement
                     AffichageProcessus pro = new AffichageProcessus(listeProcessus[indice]);
                     pro.X1 = 700;
                     pro.Y1 = 0;
+                    listeProcessus[indice].etat = 1;
                     pro.Speed = SimulationPage.Speed;
                     item.DataContext = pro;
                     ListePretsView.Children.Add(item);
-                    listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts
+                    listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts              
                 }
             }
             if (ajout) await Task.Delay(Convert.ToInt32(1000/ SimulationPage.Speed));
@@ -414,6 +419,47 @@ namespace Ordonnancement
                 
             }
             
+        }
+        public void AfficherEtat(WrapPanel GanttChart, int temps)
+        {
+            Grid coldef = new Grid();
+            coldef.Width = 50;
+            GanttChart.VerticalAlignment = VerticalAlignment.Bottom;
+            GanttChart.Children.Insert(temps, coldef);
+            for (int i = 0; i < listeProcessus.Count; i++)
+            {
+                Border item = new Border();
+                var bc = new BrushConverter();
+                RowDefinition rowdef = new RowDefinition { Height = new GridLength(60) };
+                coldef.VerticalAlignment = VerticalAlignment.Bottom;
+                coldef.RowDefinitions.Insert(i, rowdef);
+                var indice = listeProcessus.FindIndex(element => element.id == i);
+                if (listeProcessus[indice].etat == 0)
+                {
+                    item.Background = (Brush)bc.ConvertFrom("#EC2525");
+                }
+                else if (listeProcessus[indice].etat == 1)
+                {
+                    item.Background = (Brush)bc.ConvertFrom("#FFC300");
+                }
+                else if (listeProcessus[indice].etat == 2)
+                {
+                    item.Background = (Brush)bc.ConvertFrom("#2ECC71");
+                }
+                else if (listeProcessus[indice].etat == 3)
+                {
+                    item.Background = (Brush)bc.ConvertFrom("#D5F5E3");
+                }
+
+                item.Margin = new Thickness(0, 5, 0, 5);
+                Grid.SetRow(item, i);
+                coldef.Children.Add(item);
+            }
+            for (int j = 0; j < 4; j++)
+            {
+                ScrollGantt.LineRight();
+            }
+
         }
         #endregion
 
