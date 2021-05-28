@@ -139,7 +139,7 @@ namespace FinalAppTest.Views
                     ((PARD_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PARD_TabRow)processus)));  // append ajouter_row*/
                 }
             }
-            if (processus.GetType() == typeof(PLA_TabRow))
+            else if (processus.GetType() == typeof(PLA_TabRow))
             {
                 bool valide = true;
                 var bc = new BrushConverter();
@@ -166,7 +166,7 @@ namespace FinalAppTest.Views
                     ((PLA_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PLA_TabRow)processus)));  // append ajouter_row
                 }
             }
-            if (processus.GetType() == typeof(PCTR_TabRow))
+            else if (processus.GetType() == typeof(PCTR_TabRow))
             {
                 bool valide = true;
                 var bc = new BrushConverter();
@@ -220,7 +220,7 @@ namespace FinalAppTest.Views
                     ((PAR_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PAR_TabRow)processus)));  // append ajouter_row
                 }
             }
-            if (processus.GetType() == typeof(PSR_TabRow))
+            else if (processus.GetType() == typeof(PSR_TabRow))
             {
                 bool valide = true;
                 var bc = new BrushConverter();
