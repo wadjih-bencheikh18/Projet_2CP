@@ -311,6 +311,14 @@ namespace Ordonnancement
             Table.Children.Add(item);
             return item;
         }
+        public Comp_TabRow InsererComp(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PSR
+        {
+            Comp_TabRow item = new Comp_TabRow(id, tempsArriv, duree, prio, Table, Ajouter);
+            Background = "#FFEFF3F9";
+            item.DataContext = this;
+            Table.Children.Add(item);
+            return item;
+        }
         public RR_TabRow InsererRR(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour RR
         {
             RR_TabRow item = new RR_TabRow(id, tempsArriv, duree, Table, Ajouter);
