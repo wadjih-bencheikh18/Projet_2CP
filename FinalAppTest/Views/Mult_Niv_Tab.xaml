@@ -140,7 +140,7 @@
                 <Rectangle Grid.ColumnSpan="4" Fill="#FFE6E6FC" RadiusX="7" RadiusY="7"></Rectangle>
                 <TextBlock Grid.Column="0" Text="Niveau" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
                 <TextBlock Grid.Column="1" Text="Algorithme" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-                <TextBlock Grid.Column="2" Text="Quantum" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                <TextBlock Grid.Column="2" Text="Option" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
                 <TextBlock Grid.Column="3" Text="Actions" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
             </Grid>
             <ScrollViewer Margin="0,0,5,0" Grid.Row="1">
@@ -173,7 +173,7 @@
                     <Rectangle Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
                     <TextBox Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="Algo" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
                     <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Algorithme" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <ComboBox x:Name="algoSelect" SelectionChanged="algoSelect_SelectionChanged" SelectedIndex="0" Grid.Row="1" Height="40" Width="Auto" Margin="40,0"  Background="#FFEFF3F9" VerticalContentAlignment="Center">
+                    <ComboBox x:Name="algoSelect" SelectionChanged="algoSelect_SelectionChanged" SelectedIndex="0" Grid.Row="1" Height="40" Width="140"  Background="#FFEFF3F9" VerticalContentAlignment="Center">
                         <ComboBoxItem  VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="0,5">
                             <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PAPS" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                         </ComboBoxItem>
@@ -198,6 +198,9 @@
                         <ComboBoxItem VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="0,5">
                             <TextBlock FontSize="11" FontFamily="Lexend" FontWeight="Medium" Text="Round-Robin" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
                         </ComboBoxItem>
+                        <ComboBoxItem VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="0,5">
+                            <TextBlock FontSize="11" FontFamily="Lexend" FontWeight="Medium" Text="PSP-Dynamique" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                        </ComboBoxItem>
 
                     </ComboBox>
                 </Grid>
@@ -207,7 +210,7 @@
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <Rectangle x:Name="RectQuantum" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
-                    <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Quantum" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                    <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Option" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                     <TextBox Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="nivQuantum" Grid.Row="1" Text="/" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center" Margin="73,20,71,20"/>
                 </Grid>
                 <!-- <Button BorderThickness="0" Background="#0000"  x:Name="AddProcessusButton" Grid.Column="3" Content="Ajouter" Click="AddProcessusButton_Click" Margin="20,50,20,25"/>-->

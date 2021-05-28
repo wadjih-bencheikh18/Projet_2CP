@@ -51,7 +51,7 @@ namespace Ordonnancement
         {
             slackTime = deadline - temps - tempsRestant;
         }
-        public Processus(int id, int tempsArriv, int duree, int prio,int deadline)  //constructeur pour l'algorithme de priorité
+        public Processus(int id, int tempsArriv, int duree, int prio, int deadline)  //constructeur pour l'algorithme de priorité
         {
             this.etat = 1;
             this.id = id;
@@ -159,6 +159,11 @@ namespace Ordonnancement
         }
         #endregion
 
+        public bool Refrech(int temps,int refrechTemps,int key)
+        {
+            if (temps - tempsArriv + duree - tempsRestant != 0 && (temps - tempsArriv + duree - tempsRestant) % refrechTemps == 0 && key!=0) return true;
+            return false; 
+        }
     }
 
     public class ProcessusNiveau : Processus

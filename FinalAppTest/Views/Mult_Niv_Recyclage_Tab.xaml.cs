@@ -178,13 +178,13 @@ namespace FinalAppTest.Views
             niv = int.Parse(nivId.Text);
             algo = algoSelect.SelectedIndex;
 
-            if (algo==7 && (!Int32.TryParse(nivQuantum.Text, out q) || q<= 0))  // get durée
+            if ((algo==7 || algo==8) && (!Int32.TryParse(nivQuantum.Text, out q) || q<= 0))  // get durée
             {
                 RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
             string quan = q.ToString();
-            if (algo != 7) quan = "/";
+            if (algo != 7 && algo!=8) quan = "/";
             if (valide && !modifier)  // si tous est correcte
             {
                 niv = indiceniv;
@@ -197,7 +197,7 @@ namespace FinalAppTest.Views
                     quantum = quan
                 };
                 pro.InsererNivML(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
-                if (algo == 7) niveaux[indiceniv] = new Niveau(algo, q);
+                if (algo == 7 || algo==8) niveaux[indiceniv] = new Niveau(algo, q);
                 else niveaux[indiceniv] = new Niveau(algo);
                 indiceniv++;
                 randNiv.Text = indiceniv.ToString();
@@ -212,7 +212,7 @@ namespace FinalAppTest.Views
                 };
                 Mult_Niv_TabRow item = (Mult_Niv_TabRow)NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)];
                 item.DataContext = pro;
-                if (algo == 7) niveaux[niv] = new Niveau(algo, q);
+                if (algo == 7|| algo ==8) niveaux[niv] = new Niveau(algo, q);
                 else niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo);
                 NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
@@ -255,12 +255,12 @@ namespace FinalAppTest.Views
                 return;
             }
             var bc = new BrushConverter();
-            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PRIO", "Slack-Time",  "Round-Robin" };
+            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PSP", "PRIO", "Slack-Time",  "Round-Robin","PSP-Dynamique" };
             Random random = new Random();
-            int niv,algo= random.Next(0, 8), q = 0;
+            int niv,algo= random.Next(0, 9), q = 0;
             string type=algos[algo];
             niv = indiceniv;
-            if (algo == 7) 
+            if (algo == 7|| algo ==8) 
             {
                 q= random.Next(1, 6);
                 niveaux[indiceniv] = new Niveau(algo, q);
@@ -270,7 +270,7 @@ namespace FinalAppTest.Views
             randNiv.Text = indiceniv.ToString();
             nivId.Text = indiceniv.ToString();
             string quan = q.ToString();
-            if (algo != 7) quan = "/";
+            if (algo != 7 && algo !=8) quan = "/";
             AffichageProcessus pro = new AffichageProcessus
             {
                 id = niv,
