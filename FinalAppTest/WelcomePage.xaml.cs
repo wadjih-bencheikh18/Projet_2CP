@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalAppTest.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,7 +34,7 @@ namespace FinalAppTest
 
         private void ComparaisonButton_Click(object sender, MouseButtonEventArgs e)
         {
-
+            MainWindow.main.Content = new Compar_Saisie();
         }
 
         private void Rectangle1_MouseEnter(object sender, MouseEventArgs e)
