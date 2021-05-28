@@ -81,6 +81,11 @@ namespace FinalAppTest.Views
                 RR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((RR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((RR_TabRow)processus).parent.Items.Remove(this);
             }
+            else if (processus.GetType() == typeof(Comp_TabRow))
+            {
+                Compar_Saisie.listeProc.Find(p => p.id == int.Parse(((Comp_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((Comp_TabRow)processus).parent.Items.Remove(this);
+            }
             else
             {
                 //Mult_Niv_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((Mult_Niv_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);

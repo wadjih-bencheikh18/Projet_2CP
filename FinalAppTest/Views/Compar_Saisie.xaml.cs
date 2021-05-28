@@ -28,13 +28,13 @@ namespace FinalAppTest.Views
             algos = new TextBlock[3] { algo1, algo2, algo3 };
         }
         public static bool modifier = false;
-        public static PSR_TabRow proModifier;
+        public static Comp_TabRow proModifier;
         private int indice = 0;
         private List<int> comp = new List<int>();
         private TextBlock[] algos;
         private int quantum = 5;
         private int tempsMAJ = 5;
-        private List<Processus> listeProc = new List<Processus>();
+        public static List<Processus> listeProc = new List<Processus>();
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
@@ -60,7 +60,7 @@ namespace FinalAppTest.Views
                         duree = r.Next(1, 5),
                         prio = r.Next(1, 20)
                     };
-                    PSR_TabRow processus = pro.InsererPSR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
+                    Comp_TabRow processus = pro.InsererComp(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
                     Processus proc = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);
                     processus.parent.Items.RemoveAt(processus.parent.Items.Count - 1);  // remove the ajouter_row
                     for (int j = 0; ((bool)RandomizeInterrup.IsChecked) && pro.duree > 1 && j < r.Next(0, 3); j++)  // générer des interruptions
@@ -126,7 +126,7 @@ namespace FinalAppTest.Views
                         duree = duree,
                         prio = prio
                     };
-                    pro.InsererPSR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
+                    pro.InsererComp(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
                     listeProc.Add(new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio));  // added to the program
                     indice++;
                 }
@@ -140,7 +140,7 @@ namespace FinalAppTest.Views
                         prio = prio,
                         Background = "#FFEFF3F9"
                     };
-                    PSR_TabRow item = (PSR_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                    Comp_TabRow item = (Comp_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     listeProc[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);  // modifier le processus correspondant
@@ -416,12 +416,32 @@ namespace FinalAppTest.Views
 
         private void QuantumTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
-            quantum = int.Parse(QuantumTxt.Text);
+            var bc = new BrushConverter();
+            if (!int.TryParse(QuantumTxt.Text, out int i) || i <= 0)
+            {
+                quantum = -1;
+                RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            }
+            else
+            {
+                quantum = i;
+                RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
+            }
         }
 
         private void TempsMAJtxt_TextChanged(object sender, TextChangedEventArgs e)
         {
-            tempsMAJ = int.Parse(TempsMAJtxt.Text);
+            var bc = new BrushConverter();
+            if (!int.TryParse(TempsMAJtxt.Text, out int i) || i <= 0)
+            {
+                tempsMAJ = -1;
+                RectTempsMAJ.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            }
+            else
+            {
+                tempsMAJ = i;
+                RectTempsMAJ.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
+            }
         }
     }
 }
