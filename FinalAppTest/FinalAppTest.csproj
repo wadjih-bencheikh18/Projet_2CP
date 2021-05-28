@@ -67,6 +67,7 @@
     <Compile Include="Algos\PAPS.cs" />
     <Compile Include="Algos\PCA.cs" />
     <Compile Include="Algos\PSP.cs" />
+    <Compile Include="Algos\PSPDynamique.cs" />
     <Compile Include="Algos\SlackTime.cs" />
     <Compile Include="Algos\RoundRobin.cs" />
     <Compile Include="InitPage.xaml.cs">
@@ -75,8 +76,12 @@
     <Compile Include="LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\PSPDynamique_ViewModel.cs" />
     <Compile Include="Views\Compar_Saisie.xaml.cs">
       <DependentUpon>Compar_Saisie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PSPDynamique_Tab.xaml.cs">
+      <DependentUpon>PSPDynamique_Tab.xaml</DependentUpon>
     </Compile>
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
@@ -186,6 +191,10 @@
     <Page Include="Views\Compar_Saisie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PSPDynamique_Tab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="WelcomePage.xaml">
       <SubType>Designer</SubType>

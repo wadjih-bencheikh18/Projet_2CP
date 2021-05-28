@@ -84,6 +84,9 @@ namespace Ordonnancement
                 case 7:
                     algo = new RoundRobin(quantum);
                     break;
+                case 8:
+                    algo = new PSPDynamique(quantum);
+                    break;
                 default:
                     Console.WriteLine("ERREUR. Veuillez choisir un numero entre 0 et 7");
                     break;

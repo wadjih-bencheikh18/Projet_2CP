@@ -62,6 +62,10 @@ namespace FinalAppTest
         {
             DataContext = new RoundRobinViewModel();
         }
+        private void PSPDynamiqueButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new PSPDynamique_ViewModel();
+        }
         private void SlackTime_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new SlackTime_ViewModel();
@@ -169,6 +173,19 @@ namespace FinalAppTest
                 else
                 {
                     MainWindow.main.Content = new SimulationPage(SlackTime_Tab.prog);
+                }
+            }
+            else if (ContentViewer.Content.GetType() == typeof(PSPDynamique_ViewModel))  // PSP dynamique
+            {
+                if (PSPDynamique_Tab.prog.listeProcessus.Count == 0)
+                {
+                    var bc = new BrushConverter();
+                    //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                    StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                else
+                {
+                    MainWindow.main.Content = new SimulationPage(PSPDynamique_Tab.prog);
                 }
             }
             else if (ContentViewer.Content.GetType() == typeof(PRIO_ViewModel))  // priorité sans réquisition
