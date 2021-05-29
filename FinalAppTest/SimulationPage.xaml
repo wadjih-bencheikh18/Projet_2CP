@@ -45,7 +45,7 @@
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="Transition des états des processus" Margin="0 5 0 0" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <ScrollViewer Margin="10 0 10 10" Grid.Row="1">
+                    <ScrollViewer x:Name="ScrollDeroulement" CanContentScroll="True" Margin="10 0 10 10" Grid.Row="1">
                         <StackPanel x:Name="deroulement" />
                     </ScrollViewer>
                 </Grid>
@@ -205,7 +205,12 @@
                     </Button>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBlock Text="Vitesse :" Margin="20 0"  FontSize="30" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Vitesse :" Margin="20 0"  FontSize="30" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Slider Grid.Column="1" x:Name="VitesseSlider" VerticalAlignment="Center" Minimum="1" Maximum="6" ValueChanged="VitesseSlider_ValueChanged" Loaded="VitesseSlider_Loaded" />
                 </Grid>
 
             </Grid>
