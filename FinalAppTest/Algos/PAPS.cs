@@ -26,9 +26,10 @@ namespace Ordonnancement
                 indice = await MAJListePrets(temps, indice, ListePretsView); //remplir listePrets
                 if (listePrets.Count != 0 && anime)
                 {
-                   listePrets[0].transition = 2;
-                   await AfficherDeroulement(deroulement);
-                   await Activation(ListePretsView, Processeur, listePrets[0]);
+                    listePrets[0].transition = 2;
+                    await AfficherDeroulement(deroulement);
+                    listePrets[0].transition = 0;
+                    await Activation(ListePretsView, Processeur, listePrets[0]);
                 }
                 await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur,deroulement);
                 anime = false;
@@ -109,6 +110,7 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 2; //Activation du 1er procussus dans ListePrets 
                     await AfficherDeroulement(deroulement);
+                    listePrets[0].transition = 0;
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
                 await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur, deroulement);
@@ -202,6 +204,7 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 2; //Activation du 1er procussus dans ListePrets 
                     await AfficherDeroulement(deroulement);
+                    listePrets[0].transition = 0;
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
                 await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
