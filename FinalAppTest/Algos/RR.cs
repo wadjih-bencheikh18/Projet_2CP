@@ -27,35 +27,27 @@ namespace Ordonnancement
             int indice = 0, temps = 0, q = 0;
             while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0)  //s'il existe des processus prêts
             {
-                if (listePrets.Count == 0 && !SimulationPage.paused)  // Si il y a des processus dans listeProcessus et la listePrets est vide
+                if (listePrets.Count == 0) anime = true;
+                indice = await MAJListePrets(temps, indice, ListePretsView); //remplir listePrets
+                if (listePrets.Count != 0 && anime)
                 {
-                        await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur, deroulement);
-                        temps++;
-                        TempsView.Text = temps.ToString();
-                        indice = await MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
-                        anime = true;
+                    listePrets[0].transition = 2;
+                    await AfficherDeroulement(deroulement);
+                    listePrets[0].transition = 0;
+                    await Activation(ListePretsView, Processeur, listePrets[0]);
                 }
-                else if (!SimulationPage.paused)  // listePrets n'est pas vide 
+                if (await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur, deroulement)) q = 0;
+                anime = false;
+                if (!SimulationPage.paused) temps++; //incrementer le temps réel
+                TempsView.Text = temps.ToString();
+                if (listePrets.Count != 0 && !SimulationPage.paused)  // listePrets n'est pas vide 
                 {
-                    if (anime)
-                    {
-                        listePrets[0].transition = 2;
-                        await AfficherDeroulement(deroulement);
-                        await Activation(ListePretsView, Processeur, listePrets[0]);
-                    }
-                        
-
-                    if (await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur, deroulement)) q=0;
-                    anime = false;
                     listePrets[0].etat = 2; //Le 1er processus de listePrets est actif
-                    if (!SimulationPage.paused) temps++;
-                    TempsView.Text = temps.ToString();
                     AfficherEtat(GanttChart, temps);
                     q++;  // on incrémente le quantum
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     MAJProcesseur(Processeur);
-                    indice = await MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets
                     if (listePrets[0].tempsRestant == 0) //fin d'exécution du processus 
                     {
                         listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
@@ -84,6 +76,7 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
+                else if (!SimulationPage.paused) AfficherEtat(GanttChart, temps);
             }
             return temps;
         }
