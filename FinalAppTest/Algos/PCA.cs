@@ -30,6 +30,7 @@ namespace Ordonnancement
                     await MAJListePretsView(ListePretsView,0);
                     listePrets[0].transition = 2;
                     await AfficherDeroulement(deroulement);
+                    listePrets[0].transition = 0;
                     await Activation(ListePretsView, Processeur, listePrets[0]);
                 }
                 await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur, deroulement);
@@ -48,6 +49,7 @@ namespace Ordonnancement
                         listePrets[0].tempsFin = temps; //temps de fin d'execution = au temps actuel
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].etat = 3;
+                        listePrets[0].transition = 0;
                         await AfficherDeroulement(deroulement);
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
@@ -132,6 +134,7 @@ namespace Ordonnancement
                     await MAJListePretsView_MultiLvl(ListePretsView, 0);
                     listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
                     await AfficherDeroulement(deroulement);
+                    listePrets[0].transition = 0;
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
                 await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
@@ -151,6 +154,7 @@ namespace Ordonnancement
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;  //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3; //Fin d'exécution du processus
+                        listePrets[0].transition = 0;
                         await AfficherDeroulement(deroulement);
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                         await FinProcessus_MultiLvl(Processeur);
@@ -227,6 +231,7 @@ namespace Ordonnancement
             return temps;
         }
         #endregion
+
         #region MultiNiveauRecyclage
         public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement,int i)
         {
@@ -244,6 +249,7 @@ namespace Ordonnancement
                     await MAJListePretsView_MultiLvl(ListePretsView, 0);
                     listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
                     await AfficherDeroulement(deroulement);
+                    listePrets[0].transition = 0;
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
                 await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
@@ -263,6 +269,7 @@ namespace Ordonnancement
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;  //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3; //Fin d'exécution du processus
+                        listePrets[0].transition = 0;
                         await AfficherDeroulement(deroulement);
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                         await FinProcessus_MultiLvl(Processeur);

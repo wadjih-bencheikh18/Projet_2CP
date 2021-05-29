@@ -55,6 +55,7 @@ namespace Ordonnancement
                         {
                             listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                             await AfficherDeroulement(deroulement);
+                            listePrets[0].transition = 0;
                             await Desactivation(ListePretsView, Processeur, proc);
                             i = 0;
                             anime = true;

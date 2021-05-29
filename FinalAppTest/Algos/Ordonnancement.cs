@@ -385,12 +385,8 @@ namespace Ordonnancement
             TextBlock item = new TextBlock();
             if (listePrets.Count != 0)
             {
-                if (listePrets[0].etat == 3)
-                {
-                    item.Text = $"Fin du processus de l'ID = {listePrets[0].id}";
-                    await Task.Delay(100);
-                }
-                else if (listePrets[0].transition == 1)
+                
+                 if (listePrets[0].transition == 1)
                 {
                     item.Text = $"Désactivation du processus de l'ID = {listePrets[0].id}";
                     await Task.Delay(100);
@@ -398,6 +394,11 @@ namespace Ordonnancement
                 else if (listePrets[0].transition == 2)
                 {
                     item.Text = $"Activation du processus de l'ID = {listePrets[0].id}";
+                    await Task.Delay(100);
+                }
+                else if(listePrets[0].etat == 3)
+                {
+                    item.Text = $"Fin du processus de l'ID = {listePrets[0].id}";
                     await Task.Delay(100);
                 }
             }
