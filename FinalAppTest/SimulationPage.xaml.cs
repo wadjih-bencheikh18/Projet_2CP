@@ -29,6 +29,7 @@ namespace FinalAppTest
         {
             InitializeComponent();
             Ordonnancement.Ordonnancement.ScrollGantt = ScrollGantt;
+            Ordonnancement.Ordonnancement.ScrollDeroulement = ScrollDeroulement;
             this.prog = prog;
             save = this;
             activated = false;
@@ -57,6 +58,16 @@ namespace FinalAppTest
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
             paused = true;
+        }
+
+        private void VitesseSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+           Speed = VitesseSlider.Value / 2;
+        }
+
+        private void VitesseSlider_Loaded(object sender, RoutedEventArgs e)
+        {
+            VitesseSlider.Value = 3;
         }
     }
 }

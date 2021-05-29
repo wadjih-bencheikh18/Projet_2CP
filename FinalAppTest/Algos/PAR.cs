@@ -67,6 +67,7 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 2;
                     await AfficherDeroulement(deroulement);
+                    listePrets[0].transition = 0;
                     await Activation(ListePretsView, Processeur, listePrets[0]);
                     anime = false;
                 }
@@ -89,6 +90,7 @@ namespace Ordonnancement
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3;
+                        listePrets[0].transition = 0;
                         await AfficherDeroulement(deroulement);
                         listePrets.RemoveAt(0); //supprimer le processus dont la duree est écoulée
                         await FinProcessus(Processeur);
@@ -195,6 +197,7 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus dans listePrets
                     await AfficherDeroulement(deroulement);
+                    listePrets[0].transition = 0;
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                     anime = false;
                 }
@@ -217,6 +220,7 @@ namespace Ordonnancement
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3; //Fin d'exécution du processus
+                        listePrets[0].transition = 0;
                         await AfficherDeroulement(deroulement);
                         await FinProcessus_MultiLvl(Processeur);
                         debut = true;
@@ -370,6 +374,7 @@ namespace Ordonnancement
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3; //Fin d'exécution du processus
+                        listePrets[0].transition = 0;
                         await AfficherDeroulement(deroulement);
                         await FinProcessus_MultiLvl(Processeur);
                         debut = true;

@@ -83,5 +83,15 @@ namespace FinalAppTest
         {
             prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView,deroulement,GanttChart);
         }
+
+        private void VitesseSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Speed = VitesseSlider.Value / 2;
+        }
+
+        private void VitesseSlider_Loaded(object sender, RoutedEventArgs e)
+        {
+            VitesseSlider.Value = 3;
+        }
     }
 }

@@ -49,6 +49,7 @@ namespace Ordonnancement
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3;
+                        listePrets[0].transition = 0;
                         await AfficherDeroulement(deroulement);
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                         await FinProcessus(Processeur);
@@ -131,6 +132,7 @@ namespace Ordonnancement
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;  //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3; //Fin d'exécution du processus
+                        listePrets[0].transition = 0;
                         await AfficherDeroulement(deroulement);
                         await FinProcessus_MultiLvl(Processeur);
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
@@ -225,6 +227,7 @@ namespace Ordonnancement
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; //temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;  //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3; //Fin d'exécution du processus
+                        listePrets[0].transition = 0;
                         await AfficherDeroulement(deroulement);
                         await FinProcessus_MultiLvl(Processeur);
                         listePrets.RemoveAt(0); //supprimer le premier processus executé

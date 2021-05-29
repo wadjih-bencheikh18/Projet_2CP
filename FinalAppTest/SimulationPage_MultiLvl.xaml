@@ -308,7 +308,12 @@
                     </Button>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBlock Text="Vitesse :" Margin="20 0"  FontSize="30" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Vitesse :" Margin="20 0"  FontSize="30" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Slider Grid.Column="1" x:Name="VitesseSlider" VerticalAlignment="Center" Minimum="1" Maximum="6" Loaded="VitesseSlider_Loaded" ValueChanged="VitesseSlider_ValueChanged"/>
                 </Grid>
 
             </Grid>

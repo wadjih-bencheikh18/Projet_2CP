@@ -19,6 +19,7 @@ namespace Ordonnancement
         public List<Processus> listePrets = new List<Processus>();  // liste des processus prêts
         public List<Processus> listebloque = new List<Processus>();
         public static ScrollViewer ScrollGantt;
+        public static ScrollViewer ScrollDeroulement;
         #endregion
 
         #region Visualisation
@@ -423,6 +424,7 @@ namespace Ordonnancement
             item.FontSize = 18;
             item.TextAlignment = TextAlignment.Center;
             deroulement.Children.Add(item);
+            ScrollDeroulement.LineDown();
 
         }
         public void AfficherEtat(WrapPanel GanttChart, int temps)
