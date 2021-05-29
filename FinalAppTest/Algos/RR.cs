@@ -20,7 +20,7 @@ namespace Ordonnancement
         #endregion
 
         #region Visualisation
-        public override async Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement, WrapPanel GanttChart)
+        public override async Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, WrapPanel GanttChart)
         {
             bool anime = true;
             SortListeProcessus(); //Tri de la liste des processus par temps d'arrivée
@@ -143,7 +143,7 @@ namespace Ordonnancement
 
         #region MultiNiveau
         // Des algorithmes nécessaires pour implémenter MultiNiveaux
-        public override async Task<int> Executer(int temps, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement)
+        public override async Task<int> Executer(int temps, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement)
         {
             niveaux[indiceNiveau].indice[1] = 0;
             bool anime = true;
@@ -210,7 +210,7 @@ namespace Ordonnancement
             return temps;
         }
 
-        public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, TextBlock deroulement)
+        public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel deroulement)
         // executer l'algo pendant un intervalle de temps où :
         // indices[0] est l'indice de listeProcessus où on doit reprendre l'exécution
         // indices[1] est le quantum du temps de la derniére exécution
@@ -269,7 +269,7 @@ namespace Ordonnancement
 
         #region MultiNiveauRecyclage
 
-        public override async Task<int> Executer(int temps, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement,int i)
+        public override async Task<int> Executer(int temps, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement,int i)
         {
             niveaux[indiceNiveau].indice[1] = 0;
             bool anime = true;

@@ -23,8 +23,8 @@ namespace Ordonnancement
 
         #region Visualisation
 
-        public abstract Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView,TextBlock deroulement, WrapPanel GanttChart);
-        public abstract Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement, int i);
+        public abstract Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView,StackPanel deroulement, WrapPanel GanttChart);
+        public abstract Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, int i);
 
         public async Task<int> MAJListePrets(int temps, int indice, StackPanel ListePretsView) //ajouter à la liste des processus prêts tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
         {
@@ -51,7 +51,7 @@ namespace Ordonnancement
             return indice;
         }
         
-        public async Task<bool> MAJListBloque(StackPanel ListePretsView, StackPanel ListeBloqueView, TextBlock deroulement)
+        public async Task<bool> MAJListBloque(StackPanel ListePretsView, StackPanel ListeBloqueView, StackPanel deroulement)
         {
             bool Anime = false;
             for (int i = 0; i < listebloque.Count; i++)
@@ -71,7 +71,7 @@ namespace Ordonnancement
             }
             return Anime;
         }
-        public async Task<bool> InterruptionExecute(StackPanel ListePretsView, StackPanel ListeBloqueView, StackPanel Processeur, TextBlock deroulement)
+        public async Task<bool> InterruptionExecute(StackPanel ListePretsView, StackPanel ListeBloqueView, StackPanel Processeur, StackPanel deroulement)
         {
             bool interupt = false;
             bool vide=false;
@@ -379,23 +379,24 @@ namespace Ordonnancement
             await Task.Delay(Convert.ToInt32(2500 / SimulationPage_MultiLvl.Speed));
         }
 
-        public async Task AfficherDeroulement(TextBlock deroulement) //Affiche les transitions des états des processus
+        public async Task AfficherDeroulement(StackPanel deroulement) //Affiche les transitions des états des processus
         {
-            if (listePrets.Count!=0)
-            {   
+            TextBlock item = new TextBlock();
+            if (listePrets.Count != 0)
+            {
                 if (listePrets[0].etat == 3)
                 {
-                    deroulement.Text = $"Fin du processus de l'ID = {listePrets[0].id}";
+                    item.Text = $"Fin du processus de l'ID = {listePrets[0].id}";
                     await Task.Delay(100);
                 }
                 else if (listePrets[0].transition == 1)
                 {
-                    deroulement.Text = $"Désactivation du processus de l'ID = {listePrets[0].id}";
+                    item.Text = $"Désactivation du processus de l'ID = {listePrets[0].id}";
                     await Task.Delay(100);
                 }
                 else if (listePrets[0].transition == 2)
-                    {
-                        deroulement.Text = $"Activation du processus de l'ID = {listePrets[0].id}";
+                {
+                    item.Text = $"Activation du processus de l'ID = {listePrets[0].id}";
                     await Task.Delay(100);
                 }
             }
@@ -405,20 +406,23 @@ namespace Ordonnancement
                 {
                     if (pro.transition == 0)
                     {
-                        deroulement.Text = $"Blocage du processus de l'ID = {pro.id}";
+                        item.Text = $"Blocage du processus de l'ID = {pro.id}";
                         pro.transition = -1;
                         await Task.Delay(100);
                     }
                     else if (pro.transition == 3)
                     {
-                        deroulement.Text = $"Réveil du processus de l'ID = {pro.id}";
+                        item.Text = $"Réveil du processus de l'ID = {pro.id}";
                         pro.transition = -1;
                         await Task.Delay(100);
                     }
                 }
-                
+
             }
-            
+            item.FontSize = 18;
+            item.TextAlignment = TextAlignment.Center;
+            deroulement.Children.Add(item);
+
         }
         public void AfficherEtat(WrapPanel GanttChart, int temps)
         {
@@ -592,7 +596,7 @@ namespace Ordonnancement
         /// les algorithme utuliser pour implimenter Algo multi niveau
         /// </summary>
         
-        public abstract int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, TextBlock deroulement);
+        public abstract int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel deroulement);
         public int MAJListePrets(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau) //ajouter à la liste des processus prêts tous les processus de "listeGeneral" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution de MultiNiveaux
         {
             for (; indice < listeGeneral.Count; indice++) //parcours de listeGeneral à partir du processus d'indice "indice"
@@ -648,7 +652,7 @@ namespace Ordonnancement
             if (i < indiceNiveau) return false;
             return true;
         }
-        public abstract Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListsPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, TextBlock deroulement);
+        public abstract Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListsPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement);
         public async Task<int> MAJListePrets(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau, StackPanel[] ListesPretsViews) //ajouter à la liste des processus prêts tous les processus de "listeGeneral" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution de MultiNiveaux
         {
             bool ajout = false;
@@ -674,7 +678,7 @@ namespace Ordonnancement
             else await Task.Delay(Convert.ToInt32(500 / SimulationPage_MultiLvl.Speed));
             return indice;
         }
-        public async Task<bool> MAJListBloque(List<ProcessusNiveau> listebloqueGenerale,StackPanel[] ListesPretsViews, StackPanel ListeBloqueView, TextBlock deroulement)
+        public async Task<bool> MAJListBloque(List<ProcessusNiveau> listebloqueGenerale,StackPanel[] ListesPretsViews, StackPanel ListeBloqueView, StackPanel deroulement)
         {
             bool Anime = false;
             for (int i = 0; i < listebloqueGenerale.Count; i++)
@@ -694,7 +698,7 @@ namespace Ordonnancement
             }
             return Anime;
         }
-        public async Task<bool> InterruptionExecute(List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews,int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur, TextBlock deroulement)
+        public async Task<bool> InterruptionExecute(List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews,int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur, StackPanel deroulement)
         {
             bool interupt = false;
             bool vide = false;
