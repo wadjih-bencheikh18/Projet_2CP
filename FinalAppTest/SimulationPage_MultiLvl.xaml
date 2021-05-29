@@ -45,7 +45,7 @@
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="Transition des états des processus" Margin="0 5 0 0" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <ScrollViewer Margin="10 0 10 10" Grid.Row="1">
+                    <ScrollViewer x:Name="ScrollDeroulement" Margin="10 0 10 10" Grid.Row="1">
                         <StackPanel x:Name="deroulement" />
                     </ScrollViewer>
                 </Grid>
@@ -238,7 +238,7 @@
             <TextBlock HorizontalAlignment="Center" Margin="0,500,0,0" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
 
 
-            <Grid Grid.Row="1" Margin="100 0 0 0" HorizontalAlignment="Left" Width="550">
+            <Grid Grid.Row="1" Margin="100 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1.5*"/>
                     <RowDefinition Height="*"/>
