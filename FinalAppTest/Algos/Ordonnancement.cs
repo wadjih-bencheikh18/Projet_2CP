@@ -424,7 +424,7 @@ namespace Ordonnancement
             item.FontSize = 18;
             item.TextAlignment = TextAlignment.Center;
             deroulement.Children.Add(item);
-            ScrollDeroulement.LineDown();
+            for(int i=0; i < 4; i++) ScrollDeroulement.LineDown();
 
         }
         public void AfficherEtat(WrapPanel GanttChart, int temps)
