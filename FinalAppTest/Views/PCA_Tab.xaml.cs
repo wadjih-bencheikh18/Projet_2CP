@@ -55,7 +55,7 @@ namespace FinalAppTest.Views
                         tempsArriv = r.Next(20),
                         duree = r.Next(1, 5)
                     };
-                    PCA_TabRow processus = pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB, "PCA");  // inserer son ligne dans le tableau des processus
+                    PCA_TabRow processus = pro.InsererPCA(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
 
                     Processus proc = new Processus(pro.id, pro.tempsArriv, pro.duree);
                     processus.parent.Items.RemoveAt(processus.parent.Items.Count - 1);  // remove the ajouter_row
@@ -114,7 +114,7 @@ namespace FinalAppTest.Views
                         tempsArriv = tempsArrive,
                         duree = duree,
                     };
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB, "PCA");
+                    pro.InsererPCA(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
                     prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree));  // added to the program
                     indice++;
                 }
@@ -178,7 +178,7 @@ namespace FinalAppTest.Views
         private void NbProcessusTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             var bc = new BrushConverter();
-            if (!int.TryParse(NbProcessusTextBox.Text, out int i) || i < 0 || !NbProcessusTextBox.Text.Equals("")) RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            if (!int.TryParse(NbProcessusTextBox.Text, out int i) || i < 0 ) RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             else RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
         }
     }

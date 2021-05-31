@@ -22,25 +22,33 @@ namespace FinalAppTest
     {
         public Ordonnancement.Ordonnancement prog;
         private int nbNiveaux;
-        public SimulationPage_MultiLvl(Ordonnancement.Ordonnancement prog)
+        public static double Speed = 2;
+        public SimulationPage_MultiLvl(Ordonnancement.Ordonnancement prog,int i)
         {
             InitializeComponent();
-            Ordonnancement.Ordonnancement.ScrollGantt = ScrollGantt;
             this.prog = prog;
-            nbNiveaux = ((MultiNiveau)prog).nbNiveau;
-            StackPanel[] ListesPretsViews = { ListProcessusView0,ListProcessusView1,ListProcessusView2,ListProcessusView3};
-            ((MultiNiveau)prog).InitVisualisation(ListesPretsViews);
+            Ordonnancement.Ordonnancement.ScrollGantt = ScrollGantt;
+            Ordonnancement.Ordonnancement.ScrollDeroulement = ScrollDeroulement;
+            StackPanel[] ListesPretsViews = { ListProcessusView0, ListProcessusView1, ListProcessusView2, ListProcessusView3 };
+            if (i==0)
+            {
+                nbNiveaux = ((MultiNiveau)prog).nbNiveau;
+                ((MultiNiveau)prog).InitVisualisation(ListesPretsViews);
+            }
+            else
+            {
+                nbNiveaux = ((MultiNiveauRecyclage)prog).nbNiveau;
+                ((MultiNiveauRecyclage)prog).InitVisualisation(ListesPretsViews);
+            }
+            
         }
 
-        private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            List<ProcessusNiveau> P = new List<ProcessusNiveau>();
-            foreach (ProcessusNiveau Pro in prog.listeProcessus)
-            {
-                //P.Add(new ProcessusNiveau(Pro));
-            }
-            //ResultatFinal resultatFinal = new ResultatFinal(P);
-            //resultatFinal.Show();
+            prog.listePrets.Clear();
+            prog.listeProcessus.Clear();
+            prog.listebloque.Clear();
+            MainWindow.main.Content = new InitPage();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -71,7 +79,23 @@ namespace FinalAppTest
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            _ = prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView,deroulement,GanttChart);
+            prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView,deroulement,GanttChart);
+        }
+
+        private void VitesseSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Speed = VitesseSlider.Value / 2;
+        }
+
+        private void VitesseSlider_Loaded(object sender, RoutedEventArgs e)
+        {
+            VitesseSlider.Value = 3;
+        }
+        private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Ordonnancement.Ordonnancement proc = prog;
+            proc.listeProcessus.Sort(delegate (Processus x, Processus y) { return x.id.CompareTo(y.id); });
+            MainWindow.main.Content = new ResultFinal_Tab(proc.listeProcessus);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FinalAppTest;
 using FinalAppTest.Views;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,7 +10,6 @@ using System.Windows.Threading;
 
 namespace Ordonnancement
 {
-
     public class MultiNiveau : Ordonnancement
     {
         #region Attributs
@@ -18,6 +18,7 @@ namespace Ordonnancement
         public int nbNiveau;
         private Niveau[] niveaux;
         public StackPanel[] ListesPretsViews;
+        public StackPanel deroulement;
         #endregion
         public void InitVisualisation(StackPanel[] ListesPretsViews)
         {
@@ -77,16 +78,21 @@ namespace Ordonnancement
             return indice;
         }
 
-        public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale) { return 0; }
-        public override async Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView) 
+        public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel deroulement) { return 0; }
+        public override async Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement) 
         {
             await Task.CompletedTask;
             return 0; 
         }
-
+        public override async Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, int i)
+        {
+            await Task.CompletedTask;
+            return 0;
+        }
         #endregion
+
         #region Visualisation
-        public override async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView,TextBlock deroulement,WrapPanel GanttChart) 
+        public override async Task<int> Executer(StackPanel ListProcessusView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, WrapPanel GanttChart) 
         {
             SortListeProcessus();  //trier la liste des processus
             InitNiveaux();   //remplir les niveaux
@@ -99,7 +105,7 @@ namespace Ordonnancement
                 if (indiceNiveau < nbNiveau)  //il existe un niveau non vide
                 {
                     niveaux[indiceNiveau].indice[0] = indice;   //pour sauvegarder l'indice "indice" (temporairement)
-                    temps = await NiveauExecute(temps, indiceNiveau,Processeur,TempsView,ListeBloqueView);  //temps de fin d'execution du niveau "indiceNiveau"
+                    temps = await NiveauExecute(temps, indiceNiveau,Processeur,TempsView,ListeBloqueView,deroulement);  //temps de fin d'execution du niveau "indiceNiveau"
                     indice = niveaux[indiceNiveau].indice[0];  //recuperer l'indice sauvegardé precedemment
                 }
                 else
@@ -110,10 +116,10 @@ namespace Ordonnancement
             }
             return temps;
         }
-        public async Task<int> NiveauExecute(int temps, int indiceNiveau, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView)  //executer le niveau "indiceNiveau"
+        public async Task<int> NiveauExecute(int temps, int indiceNiveau, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement)  //executer le niveau "indiceNiveau"
         {
             niveaux[indiceNiveau].algo.Init(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listePrets, niveaux[indiceNiveau].listebloque); //initialisation de algo avec la liste des processus et la liste des processus prêts du niveau
-            temps = await niveaux[indiceNiveau].algo.Executer(temps, nbNiveau, niveaux, indiceNiveau, listeProcessus, listebloque, ListesPretsViews, Processeur, TempsView, ListeBloqueView);
+            temps = await niveaux[indiceNiveau].algo.Executer(temps, nbNiveau, niveaux, indiceNiveau, listeProcessus, listebloque, ListesPretsViews, Processeur, TempsView, ListeBloqueView, deroulement);
             return temps;
         }
         public async Task<int> MAJListePrets(int temps, int indice,StackPanel[] ListesPretsViews) //ajouter à la liste des processus prêts de chaque niveau tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
@@ -127,16 +133,17 @@ namespace Ordonnancement
                     ajout = true;
                     niveaux[listeProcessus[indice].niveau].listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts de son niveau
                     AffichageProcessus pro = new AffichageProcessus(listeProcessus[indice]);
-                    ProcessusDesign item = new ProcessusDesign();
+                    ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
                     item.DataContext = pro;
                     pro.X1 = 700;
                     pro.Y1 = 0;
+                    pro.Speed = SimulationPage_MultiLvl.Speed;
                     item.DataContext = pro;
                     ListesPretsViews[listeProcessus[indice].niveau].Children.Add(item);
                 }
             }
-            if (ajout) await Task.Delay(1000);
-            else await Task.Delay(500);
+            if (ajout) await Task.Delay(Convert.ToInt32(1000 / SimulationPage_MultiLvl.Speed));
+            else await Task.Delay(Convert.ToInt32(500 / SimulationPage_MultiLvl.Speed));
             return indice;
         }
         #endregion
@@ -155,7 +162,7 @@ namespace Ordonnancement
                 {
                     tempsFin = TempsFin(indice, indiceNiveau);  //calcul du temps de fin d'execution
                     niveaux[indiceNiveau].indice[0] = indice;   //pour sauvegarder l'indice "indice" (temporairement)
-                    temps = NiveauExecute(temps, tempsFin, niveaux, indiceNiveau, listeProcessus);  //temps de fin d'execution du niveau "indiceNiveau"
+                    temps = NiveauExecute(temps, tempsFin, niveaux, indiceNiveau, listeProcessus, deroulement);  //temps de fin d'execution du niveau "indiceNiveau"
                     indice = niveaux[indiceNiveau].indice[0];  //recuperer l'indice sauvegardé precedemment
                 }
                 else
@@ -166,10 +173,10 @@ namespace Ordonnancement
             }
             return temps;
         }
-        public int NiveauExecute(int temps, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeProcessus)  //executer le niveau "indiceNiveau"
+        public int NiveauExecute(int temps, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeProcessus, StackPanel deroulement)  //executer le niveau "indiceNiveau"
         {
             niveaux[indiceNiveau].algo.Init(niveaux[indiceNiveau].listeProcessus, niveaux[indiceNiveau].listePrets, niveaux[indiceNiveau].listebloque); //initialisation de algo avec la liste des processus et la liste des processus prêts du niveau
-            temps = niveaux[indiceNiveau].algo.Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus, listebloque);
+            temps = niveaux[indiceNiveau].algo.Executer(temps, tempsFin, niveaux, indiceNiveau, listeProcessus, listebloque, deroulement);
             return temps;
         }
 

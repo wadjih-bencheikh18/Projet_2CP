@@ -54,7 +54,7 @@ namespace FinalAppTest.Views
                         tempsArriv = r.Next(20),
                         duree = r.Next(1, 5)
                     };
-                    PAPS_TabRow processus = pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
+                    PAPS_TabRow processus = pro.InsererPAPS(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
 
                     Processus proc = new Processus(pro.id, pro.tempsArriv, pro.duree);
                     processus.parent.Items.RemoveAt(processus.parent.Items.Count - 1);  // remove the ajouter_row
@@ -111,7 +111,7 @@ namespace FinalAppTest.Views
                         tempsArriv = tempsArrive,
                         duree = duree,
                     };
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
+                    pro.InsererPAPS(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);
                     prog.Push(new Processus(pro.id, pro.tempsArriv, pro.duree));  // added to the program
                     indice++;
                 }

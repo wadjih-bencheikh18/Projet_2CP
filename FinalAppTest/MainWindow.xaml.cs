@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Ordonnancement;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace FinalAppTest
 {
@@ -24,10 +26,11 @@ namespace FinalAppTest
     public partial class MainWindow : Window
     {
         public static Frame main;
+        
         public MainWindow()
         {
             InitializeComponent();
-            Main.Content = new InitPage();
+            Main.Content = new WelcomePage();
             main = Main;
         }
     }

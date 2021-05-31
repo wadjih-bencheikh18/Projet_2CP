@@ -37,7 +37,7 @@ namespace FinalAppTest.Views
         private int indicepro = 0;
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
-            
+            ListPro.Clear();
             int NbProcessus;
             var bc = new BrushConverter();
             if (!Int32.TryParse(NbProcessusTextBox.Text, out NbProcessus) && NbProcessus <= 0)
@@ -59,7 +59,7 @@ namespace FinalAppTest.Views
                     pro.duree = r.Next(1, 20);
                     pro.prio = r.Next(0, 6);
                     pro.niveau = r.Next(0, indiceniv);
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, NivTextBox, ajouterTB);
+                    pro.InsererProcML(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, NivTextBox, ajouterTB);
                     ListPro.Add(new ProcessusNiveau(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.niveau));
                 }
                 IdTextBox.Text = NbProcessus.ToString();
@@ -114,15 +114,16 @@ namespace FinalAppTest.Views
                         prio = prio,
                         niveau = niv,
                     };
-                    pro.Inserer(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox,PrioTextBox,NivTextBox, ajouterTB);
+                    pro.InsererProcML(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox,PrioTextBox,NivTextBox, ajouterTB);
                     ListPro.Add(new ProcessusNiveau(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.niveau));
                     indicepro++;
                 }
                 else
                 {
+                    id = int.Parse(IdTextBox.Text);
                     AffichageProcessus pro = new AffichageProcessus
                     {
-                        id = int.Parse(IdTextBox.Text),
+                        id = id,
                         tempsArriv = tempsArrive,
                         duree = duree,
                         prio = prio,
@@ -130,6 +131,7 @@ namespace FinalAppTest.Views
                     };
                     Multi_Niv_TabRow_Proc item = (Multi_Niv_TabRow_Proc)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
+                    ListPro[id] = new ProcessusNiveau(id, tempsArrive, duree, prio, niv);
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
                     modifier = false;
                     IdTextBox.Text = indicepro.ToString();
@@ -176,13 +178,13 @@ namespace FinalAppTest.Views
             niv = int.Parse(nivId.Text);
             algo = algoSelect.SelectedIndex;
 
-            if (algo==3 && (!Int32.TryParse(nivQuantum.Text, out q) || q<= 0))  // get durée
+            if ((algo==7 || algo==8) && (!Int32.TryParse(nivQuantum.Text, out q) || q<= 0))  // get durée
             {
                 RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
             string quan = q.ToString();
-            if (algo != 3) quan = "/";
+            if (algo != 7 && algo != 8) quan = "/";
             if (valide && !modifier)  // si tous est correcte
             {
                 niv = indiceniv;
@@ -194,8 +196,8 @@ namespace FinalAppTest.Views
                     Background = type,
                     quantum = quan
                 };
-                pro.Inserer(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
-                if (algo == 3) niveaux[indiceniv] = new Niveau(algo, q);
+                pro.InsererNivML(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
+                if (algo == 7 || algo ==8) niveaux[indiceniv] = new Niveau(algo, q);
                 else niveaux[indiceniv] = new Niveau(algo);
                 indiceniv++;
                 randNiv.Text = indiceniv.ToString();
@@ -210,6 +212,8 @@ namespace FinalAppTest.Views
                 };
                 Mult_Niv_TabRow item = (Mult_Niv_TabRow)NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)];
                 item.DataContext = pro;
+                if (algo == 7 || algo ==8) niveaux[niv] = new Niveau(algo, q);
+                else niveaux[niv] = new Niveau(algo);
                 NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
                 nivId.Text = indiceniv.ToString();
@@ -251,12 +255,12 @@ namespace FinalAppTest.Views
                 return;
             }
             var bc = new BrushConverter();
-            string[] algos = { "PAPS", "PCA", "PSP", "Round-Robin" };
+            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PAR", "PSR", "Slack-Time", "RR" ,"PARD"};
             Random random = new Random();
-            int niv,algo= random.Next(0, 4), q = 0;
+            int niv,algo= random.Next(0, 9), q = 0;
             string type=algos[algo];
             niv = indiceniv;
-            if (algo == 3) 
+            if (algo == 7 || algo == 8) 
             {
                 q= random.Next(1, 6);
                 niveaux[indiceniv] = new Niveau(algo, q);
@@ -266,14 +270,14 @@ namespace FinalAppTest.Views
             randNiv.Text = indiceniv.ToString();
             nivId.Text = indiceniv.ToString();
             string quan = q.ToString();
-            if (algo != 3) quan = "/";
+            if (algo != 7 && algo != 8) quan = "/";
             AffichageProcessus pro = new AffichageProcessus
             {
                 id = niv,
                 Background = type,
                 quantum = quan,
             };
-            pro.Inserer(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
+            pro.InsererNivML(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
         }
 
         private void DelNiv(object sender, MouseButtonEventArgs e)

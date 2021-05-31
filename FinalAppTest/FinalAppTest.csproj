@@ -55,23 +55,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Algos\MultiNiveauRecyclage.cs" />
     <Compile Include="Algos\Niveau.cs" />
+    <Compile Include="Algos\PCTR.cs" />
+    <Compile Include="Algos\PLA.cs" />
+    <Compile Include="Algos\PSR.cs" />
     <Compile Include="Algos\Processus.cs" />
     <Compile Include="Algos\Interruption.cs" />
     <Compile Include="Algos\MultiNiveau.cs" />
     <Compile Include="Algos\Ordonnancement.cs" />
     <Compile Include="Algos\PAPS.cs" />
     <Compile Include="Algos\PCA.cs" />
-    <Compile Include="Algos\PSP.cs" />
-    <Compile Include="Algos\RoundRobin.cs" />
+    <Compile Include="Algos\PAR.cs" />
+    <Compile Include="Algos\PARD.cs" />
+    <Compile Include="Algos\SlackTime.cs" />
+    <Compile Include="Algos\RR.cs" />
     <Compile Include="InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\PARD_ViewModel.cs" />
+    <Compile Include="Views\Compar_Saisie.xaml.cs">
+      <DependentUpon>Compar_Saisie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PARD_Tab.xaml.cs">
+      <DependentUpon>PARD_Tab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PARD_TabRow.xaml.cs">
+      <DependentUpon>PARD_TabRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Comp_TabRow.xaml.cs">
+      <DependentUpon>Comp_TabRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomePage.xaml.cs">
+      <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProcessusDesign.xaml.cs">
       <DependentUpon>ProcessusDesign.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ResultatFinal.xaml.cs">
-      <DependentUpon>ResultatFinal.xaml</DependentUpon>
+    <Compile Include="ProcessusDesignMultiLvl.xaml.cs">
+      <DependentUpon>ProcessusDesignMultiLvl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ResultFinal_Tab.xaml.cs">
+      <DependentUpon>ResultFinal_Tab.xaml</DependentUpon>
     </Compile>
     <Compile Include="SimulationPage.xaml.cs">
       <DependentUpon>SimulationPage.xaml</DependentUpon>
@@ -82,11 +110,16 @@
     <Compile Include="TableRowFinal.xaml.cs">
       <DependentUpon>TableRowFinal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\MultiNiveauRecyclageViewModel.cs" />
     <Compile Include="ViewModels\MultiNiveauViewModel.cs" />
     <Compile Include="ViewModels\PAPS_ViewModel.cs" />
     <Compile Include="ViewModels\PCA_ViewModel.cs" />
-    <Compile Include="ViewModels\PSP_ViewModel.cs" />
-    <Compile Include="ViewModels\RoundRobinViewModel.cs" />
+    <Compile Include="ViewModels\PCTR_ViewModel.cs" />
+    <Compile Include="ViewModels\PLA_ViewModel.cs" />
+    <Compile Include="ViewModels\PSR_ViewModel.cs" />
+    <Compile Include="ViewModels\SlackTime_ViewModel.cs" />
+    <Compile Include="ViewModels\PAR_ViewModel.cs" />
+    <Compile Include="ViewModels\RR_ViewModel.cs" />
     <Compile Include="Views\Interruption_Ajouter.xaml.cs">
       <DependentUpon>Interruption_Ajouter.xaml</DependentUpon>
     </Compile>
@@ -95,6 +128,9 @@
     </Compile>
     <Compile Include="Views\Multi_Niv_TabRow_Proc.xaml.cs">
       <DependentUpon>Multi_Niv_TabRow_Proc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mult_Niv_Recyclage_Tab.xaml.cs">
+      <DependentUpon>Mult_Niv_Recyclage_Tab.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Mult_Niv_Tab.xaml.cs">
       <DependentUpon>Mult_Niv_Tab.xaml</DependentUpon>
@@ -114,19 +150,67 @@
     <Compile Include="Views\PCA_TabRow.xaml.cs">
       <DependentUpon>PCA_TabRow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PSP_Tab.xaml.cs">
-      <DependentUpon>PSP_Tab.xaml</DependentUpon>
+    <Compile Include="Views\PCTR_Tab.xaml.cs">
+      <DependentUpon>PCTR_Tab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PSP_TabRow.xaml.cs">
-      <DependentUpon>PSP_TabRow.xaml</DependentUpon>
+    <Compile Include="Views\PCTR_TabRow.xaml.cs">
+      <DependentUpon>PCTR_TabRow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RoundRobin_Tab.xaml.cs">
-      <DependentUpon>RoundRobin_Tab.xaml</DependentUpon>
+    <Compile Include="Views\PLA_Tab.xaml.cs">
+      <DependentUpon>PLA_Tab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RoundRobin_TabRow.xaml.cs">
-      <DependentUpon>RoundRobin_TabRow.xaml</DependentUpon>
+    <Compile Include="Views\PLA_TabRow.xaml.cs">
+      <DependentUpon>PLA_TabRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PSR_Tab.xaml.cs">
+      <DependentUpon>PSR_Tab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PSR_TabRow.xaml.cs">
+      <DependentUpon>PSR_TabRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SlackTime_Tab.xaml.cs">
+      <DependentUpon>SlackTime_Tab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PAR_Tab.xaml.cs">
+      <DependentUpon>PAR_Tab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SlackTime_TabRow.xaml.cs">
+      <DependentUpon>SlackTime_TabRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PAR_TabRow.xaml.cs">
+      <DependentUpon>PAR_TabRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RR_Tab.xaml.cs">
+      <DependentUpon>RR_Tab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RR_TabRow.xaml.cs">
+      <DependentUpon>RR_TabRow.xaml</DependentUpon>
     </Compile>
     <Page Include="InitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Compar_Saisie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PARD_Tab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PARD_TabRow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Comp_TabRow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WelcomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,7 +230,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ResultatFinal.xaml">
+    <Page Include="ProcessusDesignMultiLvl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResultFinal_Tab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,6 +262,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Mult_Niv_Recyclage_Tab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Mult_Niv_Tab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,19 +290,51 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PSP_Tab.xaml">
+    <Page Include="Views\PCTR_Tab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PSP_TabRow.xaml">
+    <Page Include="Views\PCTR_TabRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RoundRobin_Tab.xaml">
+    <Page Include="Views\PLA_Tab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RoundRobin_TabRow.xaml">
+    <Page Include="Views\PLA_TabRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PSR_Tab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PSR_TabRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SlackTime_Tab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PAR_Tab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SlackTime_TabRow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PAR_TabRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RR_Tab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RR_TabRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,6 +357,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Design\projectGuides.guides" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -269,28 +394,21 @@
     <Resource Include="Pics\algos.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="background.jpg" />
+    <Resource Include="Pics\BackgroundLoading.png" />
+    <Resource Include="Pics\Logo.png" />
+    <Resource Include="Pics\Loading.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Start.png" />
+    <Resource Include="Pics\Page d%27accueil.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Processor.png" />
+    <Resource Include="Pics\background_rotated.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resume.png" />
+    <Resource Include="Pics\ArrowLeft.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="circle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="algos.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="pause.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Design\" />
+    <Resource Include="Views\ArrowLeft.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

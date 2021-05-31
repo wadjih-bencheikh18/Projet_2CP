@@ -41,15 +41,45 @@ namespace FinalAppTest.Views
                 PCA_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PCA_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((PCA_TabRow)processus).parent.Items.Remove(this);
             }
-            else if (processus.GetType() == typeof(PSP_TabRow))
+            else if (processus.GetType() == typeof(SlackTime_TabRow))
             {
-                PSP_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSP_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
-                ((PSP_TabRow)processus).parent.Items.Remove(this);
+                SlackTime_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((SlackTime_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((SlackTime_TabRow)processus).parent.Items.Remove(this);
             }
-            else if (processus.GetType() == typeof(RoundRobin_TabRow))
+            else if (processus.GetType() == typeof(PARD_TabRow))
             {
-                RoundRobin_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((RoundRobin_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
-                ((RoundRobin_TabRow)processus).parent.Items.Remove(this);
+                PARD_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PARD_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PARD_TabRow)processus).parent.Items.Remove(this);
+            }
+            else if (processus.GetType() == typeof(PLA_TabRow))
+            {
+                PLA_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PLA_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PLA_TabRow)processus).parent.Items.Remove(this);
+            }
+            else if (processus.GetType() == typeof(PCTR_TabRow))
+            {
+                PCTR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PCTR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PCTR_TabRow)processus).parent.Items.Remove(this);
+            }
+            else if (processus.GetType() == typeof(PAR_TabRow))
+            {
+                PAR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PAR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PAR_TabRow)processus).parent.Items.Remove(this);
+            }
+            else if (processus.GetType() == typeof(PSR_TabRow))
+            {
+                PSR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((PSR_TabRow)processus).parent.Items.Remove(this);
+            }
+            else if (processus.GetType() == typeof(RR_TabRow))
+            {
+                RR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((RR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((RR_TabRow)processus).parent.Items.Remove(this);
+            }
+            else if (processus.GetType() == typeof(Comp_TabRow))
+            {
+                Compar_Saisie.listeProc.Find(p => p.id == int.Parse(((Comp_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((Comp_TabRow)processus).parent.Items.Remove(this);
             }
             else
             {

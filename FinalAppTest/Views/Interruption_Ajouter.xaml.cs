@@ -85,11 +85,11 @@ namespace FinalAppTest.Views
                     ((PCA_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PCA_TabRow)processus)));  // append ajouter_row*/
                 }
             }
-            else if (processus.GetType() == typeof(PSP_TabRow))
+            else if (processus.GetType() == typeof(SlackTime_TabRow))
             {
                 bool valide = true;
                 var bc = new BrushConverter();
-                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PSP_TabRow)processus).dureeTest.Text))
+                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((SlackTime_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
                     tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
@@ -102,21 +102,21 @@ namespace FinalAppTest.Views
                 if (valide)
                 {
                     Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
-                    PSP_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSP_TabRow)processus).idTest.Text)).Push(inter);
-                    Interruption_TabRow row = new Interruption_TabRow((PSP_TabRow)processus)
+                    SlackTime_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((SlackTime_TabRow)processus).idTest.Text)).Push(inter);
+                    Interruption_TabRow row = new Interruption_TabRow((SlackTime_TabRow)processus)
                     {
                         DataContext = inter
                     };
-                    ((PSP_TabRow)processus).parent.Items.RemoveAt(((PSP_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
-                    ((PSP_TabRow)processus).parent.Items.Add(row);
-                    ((PSP_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PSP_TabRow)processus)));  // append ajouter_row
+                    ((SlackTime_TabRow)processus).parent.Items.RemoveAt(((SlackTime_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
+                    ((SlackTime_TabRow)processus).parent.Items.Add(row);
+                    ((SlackTime_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((SlackTime_TabRow)processus)));  // append ajouter_row*/
                 }
             }
-            else if (processus.GetType() == typeof(RoundRobin_TabRow))
+            else if (processus.GetType() == typeof(PARD_TabRow))
             {
                 bool valide = true;
                 var bc = new BrushConverter();
-                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((RoundRobin_TabRow)processus).dureeTest.Text))
+                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PARD_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
                     tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
@@ -129,14 +129,176 @@ namespace FinalAppTest.Views
                 if (valide)
                 {
                     Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
-                    RoundRobin_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((RoundRobin_TabRow)processus).idTest.Text)).Push(inter);
-                    Interruption_TabRow row = new Interruption_TabRow((RoundRobin_TabRow)processus)
+                    PARD_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PARD_TabRow)processus).idTest.Text)).Push(inter);
+                    Interruption_TabRow row = new Interruption_TabRow((PARD_TabRow)processus)
                     {
                         DataContext = inter
                     };
-                    ((RoundRobin_TabRow)processus).parent.Items.RemoveAt(((RoundRobin_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
-                    ((RoundRobin_TabRow)processus).parent.Items.Add(row);
-                    ((RoundRobin_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((RoundRobin_TabRow)processus)));  // append ajouter_row
+                    ((PARD_TabRow)processus).parent.Items.RemoveAt(((PARD_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
+                    ((PARD_TabRow)processus).parent.Items.Add(row);
+                    ((PARD_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PARD_TabRow)processus)));  // append ajouter_row*/
+                }
+            }
+            else if (processus.GetType() == typeof(PLA_TabRow))
+            {
+                bool valide = true;
+                var bc = new BrushConverter();
+                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PLA_TabRow)processus).dureeTest.Text))
+                {
+                    valide = false;
+                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
+                {
+                    valide = false;
+                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (valide)
+                {
+                    Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
+                    PLA_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PLA_TabRow)processus).idTest.Text)).Push(inter);
+                    Interruption_TabRow row = new Interruption_TabRow((PLA_TabRow)processus)
+                    {
+                        DataContext = inter
+                    };
+                    ((PLA_TabRow)processus).parent.Items.RemoveAt(((PLA_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
+                    ((PLA_TabRow)processus).parent.Items.Add(row);
+                    ((PLA_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PLA_TabRow)processus)));  // append ajouter_row
+                }
+            }
+            else if (processus.GetType() == typeof(PCTR_TabRow))
+            {
+                bool valide = true;
+                var bc = new BrushConverter();
+                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PCTR_TabRow)processus).dureeTest.Text))
+                {
+                    valide = false;
+                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
+                {
+                    valide = false;
+                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (valide)
+                {
+                    Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
+                    PCTR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PCTR_TabRow)processus).idTest.Text)).Push(inter);
+                    Interruption_TabRow row = new Interruption_TabRow((PCTR_TabRow)processus)
+                    {
+                        DataContext = inter
+                    };
+                    ((PCTR_TabRow)processus).parent.Items.RemoveAt(((PCTR_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
+                    ((PCTR_TabRow)processus).parent.Items.Add(row);
+                    ((PCTR_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PCTR_TabRow)processus)));  // append ajouter_row
+                }
+            }
+            else if (processus.GetType() == typeof(PAR_TabRow))
+            {
+                bool valide = true;
+                var bc = new BrushConverter();
+                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PAR_TabRow)processus).dureeTest.Text))
+                {
+                    valide = false;
+                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
+                {
+                    valide = false;
+                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (valide)
+                {
+                    Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
+                    PAR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PAR_TabRow)processus).idTest.Text)).Push(inter);
+                    Interruption_TabRow row = new Interruption_TabRow((PAR_TabRow)processus)
+                    {
+                        DataContext = inter
+                    };
+                    ((PAR_TabRow)processus).parent.Items.RemoveAt(((PAR_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
+                    ((PAR_TabRow)processus).parent.Items.Add(row);
+                    ((PAR_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PAR_TabRow)processus)));  // append ajouter_row
+                }
+            }
+            else if (processus.GetType() == typeof(PSR_TabRow))
+            {
+                bool valide = true;
+                var bc = new BrushConverter();
+                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PSR_TabRow)processus).dureeTest.Text))
+                {
+                    valide = false;
+                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
+                {
+                    valide = false;
+                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (valide)
+                {
+                    Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
+                    PSR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSR_TabRow)processus).idTest.Text)).Push(inter);
+                    Interruption_TabRow row = new Interruption_TabRow((PSR_TabRow)processus)
+                    {
+                        DataContext = inter
+                    };
+                    ((PSR_TabRow)processus).parent.Items.RemoveAt(((PSR_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
+                    ((PSR_TabRow)processus).parent.Items.Add(row);
+                    ((PSR_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((PSR_TabRow)processus)));  // append ajouter_row
+                }
+            }
+            else if (processus.GetType() == typeof(RR_TabRow))
+            {
+                bool valide = true;
+                var bc = new BrushConverter();
+                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((RR_TabRow)processus).dureeTest.Text))
+                {
+                    valide = false;
+                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
+                {
+                    valide = false;
+                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (valide)
+                {
+                    Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
+                    RR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((RR_TabRow)processus).idTest.Text)).Push(inter);
+                    Interruption_TabRow row = new Interruption_TabRow((RR_TabRow)processus)
+                    {
+                        DataContext = inter
+                    };
+                    ((RR_TabRow)processus).parent.Items.RemoveAt(((RR_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
+                    ((RR_TabRow)processus).parent.Items.Add(row);
+                    ((RR_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((RR_TabRow)processus)));  // append ajouter_row
+                }
+            }
+            else if (processus.GetType() == typeof(Comp_TabRow))
+            {
+                bool valide = true;
+                var bc = new BrushConverter();
+                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((Comp_TabRow)processus).dureeTest.Text))
+                {
+                    valide = false;
+                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
+                {
+                    valide = false;
+                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (valide)
+                {
+                    Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
+                    Compar_Saisie.listeProc.Find(p => p.id == int.Parse(((Comp_TabRow)processus).idTest.Text)).Push(inter);
+                    Interruption_TabRow row = new Interruption_TabRow((Comp_TabRow)processus)
+                    {
+                        DataContext = inter
+                    };
+                    ((Comp_TabRow)processus).parent.Items.RemoveAt(((Comp_TabRow)processus).parent.Items.Count - 1);  // remove the ajouter_row
+                    ((Comp_TabRow)processus).parent.Items.Add(row);
+                    ((Comp_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((Comp_TabRow)processus)));  // append ajouter_row*/
                 }
             }
             else  // Mult_Niv_TabRow
