@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="FinalAppTest.Views.Interruption_Ajouter"
+﻿<UserControl x:Class="FinalAppTest.Views.Interruption_TabHeader"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,18 +11,15 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.8*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Rectangle Grid.ColumnSpan="4" Fill="BurlyWood" RadiusX="5" RadiusY="5"></Rectangle>
-        <ComboBox x:Name="interType" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend">
-            <ComboBoxItem IsSelected="True" Content="Entrée/sortie"/>
-            <ComboBoxItem Content="Appel méthode"/>
-        </ComboBox>
-        <TextBox x:Name="tempsArrTest" Grid.Column="1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
-        <TextBox x:Name="dureeTest" Grid.Column="2" Text="1" VerticalAlignment="Center" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Lexend"/>
-        <Button Grid.Column="3" Content="Ajouter" Margin="75,8,30,8" x:Name="ajouter_Button" Click="ajouter_Button_Click"/>
+        <TextBlock Grid.Column="0" Text="Type d'interruption" Margin="0,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" FontFamily="Lexend"/>
+        <TextBlock Grid.Column="1" Text="Temps d'Arrivée" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" FontFamily="Lexend"/>
+        <TextBlock Grid.Column="2" Text="Durée" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" FontFamily="Lexend"/>
+        <TextBlock Grid.Column="3" Text="Action" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" FontWeight="DemiBold" FontFamily="Lexend"/>
     </Grid>
 </UserControl>

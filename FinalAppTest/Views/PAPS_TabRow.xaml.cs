@@ -23,8 +23,10 @@ namespace FinalAppTest.Views
         public PAPS_TabRow()
         {
             InitializeComponent();
-            TreeViewItem header = new TreeViewItem();
-            header.Header = processusHeader;
+            TreeViewItem header = new TreeViewItem
+            {
+                Header = processusHeader
+            };
             TreeViewParent.Items.Add(header);
         }
 
@@ -47,6 +49,7 @@ namespace FinalAppTest.Views
 
             parent = TreeViewParent;
 
+            parent.Items.Add(new Interruption_TabHeader());
             parent.Items.Add(new Interruption_Ajouter(this));
         }
         private void modifier_Button_Click(object sender, RoutedEventArgs e)

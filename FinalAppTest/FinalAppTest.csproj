@@ -91,6 +91,9 @@
     <Compile Include="Views\Compar_Saisie.xaml.cs">
       <DependentUpon>Compar_Saisie.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Interruption_TabHeader.xaml.cs">
+      <DependentUpon>Interruption_TabHeader.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PARD_Tab.xaml.cs">
       <DependentUpon>PARD_Tab.xaml</DependentUpon>
     </Compile>
@@ -210,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Compar_Saisie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Interruption_TabHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
