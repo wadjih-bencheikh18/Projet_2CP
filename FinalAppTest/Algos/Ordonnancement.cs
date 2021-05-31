@@ -20,6 +20,7 @@ namespace Ordonnancement
         public List<Processus> listebloque = new List<Processus>();
         public static ScrollViewer ScrollGantt;
         public static ScrollViewer ScrollDeroulement;
+        public int nbFamine;
         #endregion
 
         #region Visualisation
@@ -757,13 +758,26 @@ namespace Ordonnancement
         }
         #endregion
 
-        #region PrioDyn
+        #region SlackTime
         public void UpdateStackTime(int temps)
         {
 
             foreach (Processus pro in listePrets)
                 pro.CalculeSlackTime(temps);
 
+        }
+        #endregion
+
+        #region  Famine
+        public void Famine(int tempsRestantMax)
+        {
+            foreach(Processus pro in listeProcessus)
+                if (pro.tempsRestant >= tempsRestantMax)
+                {
+                    pro.famine = true;
+                    nbFamine++;
+                }
+                    
         }
         #endregion
     }

@@ -20,10 +20,7 @@ namespace Ordonnancement
         public StackPanel[] ListesPretsViews;
         public StackPanel deroulement;
         #endregion
-        public void InitVisualisation(StackPanel[] ListesPretsViews)
-        {
-            this.ListesPretsViews = ListesPretsViews;
-        }
+       
         #region Constructeur
         /// <summary>
         /// initialisation
@@ -43,7 +40,20 @@ namespace Ordonnancement
         /// <summary>
         /// la redéfinition des modules déclarer dans la class ordannancement
         /// </summary>
-
+      
+        public void InitVisualisation(StackPanel[] ListesPretsViews)
+        {
+            this.ListesPretsViews = ListesPretsViews;
+        }
+        public new void Famine(int tempsRestantMax)
+        {
+            foreach (ProcessusNiveau pro in listeProcessus)
+                if (pro.tempsRestant >= tempsRestantMax)
+                {
+                    pro.famine = true;
+                    nbFamine++;
+                }
+        }
         public override void Affichage() //affiche les caracteristiques d'un processus et son niveau
         {
             for (int i = 0; i < listeProcessus.Count; i++) listeProcessus[i].Affichage();

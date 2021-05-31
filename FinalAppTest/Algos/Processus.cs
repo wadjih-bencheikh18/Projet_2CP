@@ -29,6 +29,7 @@ namespace Ordonnancement
         public int tempsRestant { get; set; }
         public int tempsReponse { get; set; }
         public int slackTime { get; set; }
+        public bool famine { get; set; }
         public int[] indiceInterruptions = new int[2];
         #endregion
 
@@ -40,6 +41,7 @@ namespace Ordonnancement
 
         public Processus(int id, int tempsArriv, int duree, int prio)  //constructeur pour l'algorithme de priorité
         {
+            famine = false;
             this.etat = 3;
             this.id = id;
             this.tempsArriv = tempsArriv;
@@ -53,6 +55,7 @@ namespace Ordonnancement
         }
         public Processus(int id, int tempsArriv, int duree, int prio, int deadline)  //constructeur pour l'algorithme de priorité
         {
+            famine = false;
             this.etat = 3;
             this.id = id;
             this.tempsArriv = tempsArriv;
@@ -64,6 +67,7 @@ namespace Ordonnancement
         }
         public Processus(int id, int tempsArriv, int duree) //constructeur pour les autres algorithmes
         {
+            famine = false;
             this.etat = 3;
             this.id = id;
             this.tempsArriv = tempsArriv;
