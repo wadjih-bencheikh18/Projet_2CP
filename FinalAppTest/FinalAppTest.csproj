@@ -78,6 +78,9 @@
     <Compile Include="Algos\PARD.cs" />
     <Compile Include="Algos\SlackTime.cs" />
     <Compile Include="Algos\RR.cs" />
+    <Compile Include="DashBoard.xaml.cs">
+      <DependentUpon>DashBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
     </Compile>
@@ -194,6 +197,10 @@
     <Compile Include="Views\RR_TabRow.xaml.cs">
       <DependentUpon>RR_TabRow.xaml</DependentUpon>
     </Compile>
+    <Page Include="DashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -417,6 +424,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\ArrowLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\DashBoard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\Home_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
