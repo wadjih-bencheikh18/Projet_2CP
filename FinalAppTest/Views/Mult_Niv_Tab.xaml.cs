@@ -287,6 +287,15 @@ namespace FinalAppTest.Views
                 return;
             }
             indiceniv--;
+            for(int i=0;i<ListPro.Count;i++)
+            {
+                if (ListPro[i].niveau == indiceniv)
+                {
+                    ListPro.RemoveAt(i);
+                    ProcessusGrid.Children.RemoveAt(i);
+                    i--;
+                }
+            }
             randNiv.Text = indiceniv.ToString();
             nivId.Text= indiceniv.ToString();
             NiveauGrid.Children.RemoveAt(indiceniv);
