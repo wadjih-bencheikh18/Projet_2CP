@@ -29,7 +29,8 @@ namespace FinalAppTest
 
         private void SimulationButton_Click(object sender, MouseButtonEventArgs e)
         {
-            MainWindow.main.Content = new InitPage();
+            //MainWindow.main.Content = new InitPage();
+            MainWindow.main.Content = new DashBoard();
         }
 
         private void ComparaisonButton_Click(object sender, MouseButtonEventArgs e)
