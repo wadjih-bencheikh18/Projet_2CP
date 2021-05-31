@@ -82,7 +82,6 @@ namespace FinalAppTest
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             if (ContentViewer.Content == null) return;  // no algo selected
-            Ordonnancement.Ordonnancement prog = new PAPS();
             if (ContentViewer.Content.GetType() == typeof(PAPS_ViewModel))  // PAPS
             {
                 if (PAPS_Tab.prog.listeProcessus.Count == 0)
@@ -93,7 +92,6 @@ namespace FinalAppTest
                 }
                 else
                 {
-                   
                     MainWindow.main.Content = new SimulationPage(PAPS_Tab.prog);
                 }
             }

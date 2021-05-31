@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FinalAppTest.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="720" d:DesignWidth="1280">
+             d:DesignHeight="768" d:DesignWidth="1205">
     <Grid Background="#FFE9F2FE">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -72,6 +72,15 @@
                         <Grid Grid.Column="1">
                         </Grid>
                     </Grid>
+                    <Grid Grid.Row="1" Grid.ColumnSpan="2" Width="250">
+                        <Rectangle x:Name="StartButton" Grid.Row="0" Margin="25" Fill="#F16022" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Simuler</TextBlock>
+                        <Rectangle Margin="25" Cursor="Hand" MouseLeftButtonDown="StartButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    </Grid>
                 </Grid>
             </StackPanel>
         </Grid>
@@ -92,18 +101,18 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1.8*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Rectangle Grid.ColumnSpan="4" Fill="#FFE6E6FC" RadiusX="7" RadiusY="7"></Rectangle>
-                <TextBlock Grid.Column="0" Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                <TextBlock Grid.Column="0" Text="ID" VerticalAlignment="Center" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
                 <TextBlock Grid.Column="1" Text="Temps D'arrivé" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-                <TextBlock Grid.Column="2" Text="Durée" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-                <TextBlock Grid.Column="3" Text="Actions" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                <TextBlock Grid.Column="2" Text="Durée" VerticalAlignment="Center" Margin="0,0,15,0" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                <TextBlock Grid.Column="3" Text="Actions" VerticalAlignment="Center" Margin="0,0,50,0" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
             </Grid>
-            <ScrollViewer Margin="0,0,5,0" Grid.Row="1" Width="680">
+            <ScrollViewer Margin="0,0,5,0" Grid.Row="1" Width="745">
                 <StackPanel VerticalAlignment="Top" x:Name="ProcessusGrid" x:FieldModifier="public">
                 </StackPanel>
             </ScrollViewer>

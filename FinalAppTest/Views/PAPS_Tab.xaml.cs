@@ -152,6 +152,7 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             RandomButton.Fill = (Brush)bc.ConvertFrom("#FF575757");
         }
+
         private void RandomButton_MouseLeave(object sender, MouseEventArgs e)
         {
             var bc = new BrushConverter();
@@ -177,6 +178,20 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             if (!int.TryParse(NbProcessusTextBox.Text, out int i) || i < 0) RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             else RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (prog.listeProcessus.Count == 0)
+            {
+                var bc = new BrushConverter();
+                //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            }
+            else
+            {
+                MainWindow.main.Content = new SimulationPage(prog);
+            }
         }
     }
 }
