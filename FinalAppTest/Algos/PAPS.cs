@@ -123,7 +123,7 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
-                    AfficherEtat( Ordonnancement.GanttChart, temps);
+                    AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence
                     MAJProcesseur_MultiLvl(Processeur);
@@ -140,7 +140,7 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
-                else { AfficherEtat(Ordonnancement.GanttChart, temps); }
+                else AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
             }
             if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau)&& listePrets.Count!=0)
             {

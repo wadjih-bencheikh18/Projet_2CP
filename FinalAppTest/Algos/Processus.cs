@@ -175,10 +175,17 @@ namespace Ordonnancement
         #region Constructeur
         public ProcessusNiveau(int id, int tempsArriv, int duree, int prio, int niveau) : base(id, tempsArriv, duree, prio)
         {
+            etat = 3;
             this.niveau = niveau;
         }
-        public ProcessusNiveau(int id, int tempsArriv, int duree, int prio) : base(id, tempsArriv, duree, prio) {}
-        public ProcessusNiveau() { }
+        public ProcessusNiveau(int id, int tempsArriv, int duree, int prio) : base(id, tempsArriv, duree, prio) 
+        {
+            etat = 3;
+        }
+        public ProcessusNiveau() 
+        {
+            etat = 3;
+        }
         #endregion
 
         #region Affichage

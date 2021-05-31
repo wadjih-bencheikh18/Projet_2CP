@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace Ordonnancement
@@ -43,7 +44,6 @@ namespace Ordonnancement
         /// <summary>
         /// la redéfinition des modules déclarer dans la class ordannancement
         /// </summary>
-
         public override void Affichage() //affiche les caracteristiques d'un processus et son niveau
         {
             for (int i = 0; i < listeProcessus.Count; i++) listeProcessus[i].Affichage();
@@ -108,9 +108,10 @@ namespace Ordonnancement
                     temps = await NiveauExecute(temps, indiceNiveau,Processeur,TempsView,ListeBloqueView,deroulement);  //temps de fin d'execution du niveau "indiceNiveau"
                     indice = niveaux[indiceNiveau].indice[0];  //recuperer l'indice sauvegardé precedemment
                 }
-                else
+                else if (indice < listeProcessus.Count || indiceNiveau < nbNiveau || listebloque.Count != 0)
                 {
                     temps++;
+                    AfficherEtat(listeProcessus,Ordonnancement.GanttChart, temps);
                     TempsView.Text = temps.ToString();
                 }
             }
