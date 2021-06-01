@@ -5,19 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FinalAppTest"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Width="400" Height="450">
+             d:DesignHeight="500" d:DesignWidth="400">
+    <Grid Width="400" Height="500">
         <Rectangle Fill="#b9c0d9" RadiusY="10" RadiusX="10"/>
-        <TextBlock x:Name="Title" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" Margin="25,25,0,0" FontWeight="DemiBold">Hello</TextBlock>
-        <TextBlock x:Name="Description" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Margin="25,100,20,0" FontSize="24">
-            Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit.
-            Nulla magna magna, porta quis
-            dictum et, gravida eget odio.
-            Aliquam ornare dolor libero,
-            non dignissim mi finibus in.
-        </TextBlock>
-        <Grid Height="50" Width="190" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,20" >
+        <Grid Margin="25,40,20,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBlock x:Name="Title" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" FontWeight="DemiBold"><Run Text="Hello"/></TextBlock>
+            <TextBlock x:Name="Description" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Margin="0,75,0,0" FontSize="24"><Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla magna magna, porta quis dictum et, gravida eget odio. Aliquam ornare dolor libero, non dignissim mi finibus in."/></TextBlock>
+        </Grid>
+        <Grid Height="50" Width="190" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,25" >
             <Rectangle Fill="Black"  RadiusY="10" RadiusX="10"/>
             <Rectangle Height="33" Width="19" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0">
                 <Rectangle.Fill>
