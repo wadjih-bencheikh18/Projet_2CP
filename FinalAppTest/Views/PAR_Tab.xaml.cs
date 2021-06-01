@@ -164,6 +164,7 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             RandomButton.Fill = (Brush)bc.ConvertFrom("#FF575757");
         }
+
         private void RandomButton_MouseLeave(object sender, MouseEventArgs e)
         {
             var bc = new BrushConverter();
