@@ -424,7 +424,8 @@ namespace Ordonnancement
                 }
 
             }
-            item.Foreground = Brushes.Green;
+            BrushConverter bc = new BrushConverter();
+            item.Foreground = (Brush)bc.ConvertFrom("#2ECC71");
             item.FontSize = 18;
             item.TextAlignment = TextAlignment.Center;
             if(deroulement.Children.Count!=0) ((TextBlock)deroulement.Children[deroulement.Children.Count - 1]).Foreground = Brushes.Black;

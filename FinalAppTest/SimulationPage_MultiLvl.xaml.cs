@@ -46,14 +46,9 @@ namespace FinalAppTest
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
         {
-            List<ProcessusNiveau> P = new List<ProcessusNiveau>();
-            foreach (ProcessusNiveau Pro in prog.listeProcessus)
-            {
-                //P.Add(new ProcessusNiveau(Pro));
-            }
-            //ResultatFinal resultatFinal = new ResultatFinal(P);
-            //resultatFinal.Show();
+            //MainWindow.main.Content = new ResultFinal_Tab((MultiNiveau)prog.listeProcessus);
         }
+        
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -94,6 +89,14 @@ namespace FinalAppTest
         private void VitesseSlider_Loaded(object sender, RoutedEventArgs e)
         {
             VitesseSlider.Value = 3;
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            prog.listePrets.Clear();
+            prog.listeProcessus.Clear();
+            prog.listebloque.Clear();
+            MainWindow.main.Content = new InitPage();
         }
     }
 }
