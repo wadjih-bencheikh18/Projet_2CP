@@ -30,6 +30,7 @@ namespace FinalAppTest
             InitializeComponent();
             Ordonnancement.Ordonnancement.ScrollGantt = ScrollGantt;
             Ordonnancement.Ordonnancement.ScrollDeroulement = ScrollDeroulement;
+            Ordonnancement.Ordonnancement.GanttChart = GanttChart;
             this.prog = prog;
             save = this;
             activated = false;

@@ -122,6 +122,7 @@ namespace Ordonnancement
                 {
                     temps++;
                     TempsView.Text = temps.ToString();
+                    AfficherEtat(listeProcessus,Ordonnancement.GanttChart, temps);
                 }
             }
             return temps;

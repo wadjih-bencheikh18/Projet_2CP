@@ -29,6 +29,7 @@ namespace FinalAppTest
             this.prog = prog;
             Ordonnancement.Ordonnancement.ScrollGantt = ScrollGantt;
             Ordonnancement.Ordonnancement.ScrollDeroulement = ScrollDeroulement;
+            Ordonnancement.Ordonnancement.GanttChart = GanttChart;
             StackPanel[] ListesPretsViews = { ListProcessusView0, ListProcessusView1, ListProcessusView2, ListProcessusView3 };
             if (i==0)
             {

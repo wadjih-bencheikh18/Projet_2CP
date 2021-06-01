@@ -123,6 +123,7 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
+                    AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence
                     MAJProcesseur_MultiLvl(Processeur);
@@ -139,6 +140,7 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
+                else AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
             }
             if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau)&& listePrets.Count!=0)
             {
@@ -168,6 +170,7 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
+                    AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence
                     AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
@@ -180,6 +183,7 @@ namespace Ordonnancement
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                     }
                 }
+                else AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                 if (temps == tempsFin)
                 {
                     listePrets[0].transition = 1; //Désactivation du processus entrain d'exécution
@@ -218,6 +222,7 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
+                    AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //l'execution du 1er processus de listePrets commence
                     MAJProcesseur_MultiLvl(Processeur);
@@ -234,6 +239,7 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
+                else AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
             }
             if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)
             {

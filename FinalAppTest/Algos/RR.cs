@@ -158,6 +158,7 @@ namespace Ordonnancement
                     listePrets[0].etat = 2;
                     temps++;
                     TempsView.Text = temps.ToString();
+                    AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                     niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);
                     niveaux[indiceNiveau].indice[1]++;  // quantum++
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
@@ -224,6 +225,7 @@ namespace Ordonnancement
                     listePrets[0].etat = 2;
                     AfficheLigne(tempsDebut, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     tempsDebut++;
+                    AfficherEtat(listeGeneral, Ordonnancement.GanttChart, tempsDebut);
                     InterruptionExecute(listebloqueGenerale);
                     niveaux[indiceNiveau].indice[1]++;  // quantum++
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = tempsDebut - 1 - listePrets[0].tempsArriv;
@@ -285,6 +287,7 @@ namespace Ordonnancement
                 listePrets[0].etat = 2;
                 temps++;
                 TempsView.Text = temps.ToString();
+                AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);
                 niveaux[indiceNiveau].indice[1]++;  // quantum++
                 if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;

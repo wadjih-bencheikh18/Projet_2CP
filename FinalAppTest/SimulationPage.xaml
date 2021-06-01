@@ -45,8 +45,8 @@
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Text="Transition des états des processus" Margin="0 5 0 0" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <ScrollViewer x:Name="ScrollDeroulement" CanContentScroll="True" Margin="10 0 10 10" Grid.Row="1">
-                        <StackPanel x:Name="deroulement" />
+                    <ScrollViewer x:Name="ScrollDeroulement" Height="72" CanContentScroll="True" Margin="10 0 10 10" Grid.Row="1" VerticalAlignment="Top">
+                        <StackPanel VerticalAlignment="Bottom" x:Name="deroulement" />
                     </ScrollViewer>
                 </Grid>
             </Border>
