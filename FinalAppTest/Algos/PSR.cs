@@ -58,12 +58,15 @@ namespace Ordonnancement
                     }
 
                 }
-                else if (!SimulationPage.paused) {
+                else if (!SimulationPage.paused)
+                {
                     AfficheLigne(temps - 1);
                     AfficherEtat(GanttChart, temps);
+                    tempsRepos++;
                 }
-                }
-                return temps;
+            }
+            TauxUtil(temps);
+            return temps;
         }
         #endregion
 

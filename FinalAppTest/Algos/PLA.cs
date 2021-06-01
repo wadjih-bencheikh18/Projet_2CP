@@ -62,8 +62,10 @@ namespace Ordonnancement
                 {
                     AfficherEtat(GanttChart, temps);
                     AfficheLigne(temps - 1);
+                    tempsRepos++;
                 }
             }
+            TauxUtil(temps);
             return temps;
         }
         #endregion

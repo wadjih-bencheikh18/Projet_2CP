@@ -118,8 +118,10 @@ namespace Ordonnancement
                     temps++;
                     TempsView.Text = temps.ToString();
                     AfficherEtat(listeProcessus, Ordonnancement.GanttChart, temps);
+                    tempsRepos++;
                 }
             }
+            TauxUtil(temps);
             return temps;
         }
         public async Task<int> NiveauExecute(int temps, int indiceNiveau, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement)  //executer le niveau "indiceNiveau"

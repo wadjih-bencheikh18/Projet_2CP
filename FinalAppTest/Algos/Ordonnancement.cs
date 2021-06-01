@@ -22,6 +22,7 @@ namespace Ordonnancement
         public static ScrollViewer ScrollDeroulement;
         public static WrapPanel GanttChart;
         public int nbFamine;
+        public int tempsRepos;
         #endregion
 
         #region Visualisation
@@ -872,6 +873,14 @@ namespace Ordonnancement
                     nbFamine++;
                 }
                     
+        }
+        #endregion
+
+        #region Taux d'utilisation du CPU
+        public double TauxUtil(int tempsfin) //tempsfin est l'attribut "temps" retourné dans les methodes "Executer"
+        {
+            //int util = tempsfin - tempsRepos; return (util / tempsfin);
+            return (1 - (tempsRepos / tempsfin));
         }
         #endregion
     }
