@@ -118,7 +118,7 @@ namespace Ordonnancement
                     temps = await NiveauExecute(temps, indiceNiveau,Processeur,TempsView,ListeBloqueView,deroulement);  //temps de fin d'execution du niveau "indiceNiveau"
                     indice = niveaux[indiceNiveau].indice[0];  //recuperer l'indice sauvegardé precedemment
                 }
-                else
+                else if (indice < listeProcessus.Count || indiceNiveau < nbNiveau || listebloque.Count != 0)
                 {
                     temps++;
                     TempsView.Text = temps.ToString();

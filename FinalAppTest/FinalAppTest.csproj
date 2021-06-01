@@ -81,6 +81,9 @@
     <Compile Include="DashBoard.xaml.cs">
       <DependentUpon>DashBoard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Hint.xaml.cs">
+      <DependentUpon>Hint.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
     </Compile>
@@ -201,6 +204,10 @@
       <DependentUpon>RR_TabRow.xaml</DependentUpon>
     </Compile>
     <Page Include="DashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Hint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -437,6 +444,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pics\Home_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Next.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Next.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

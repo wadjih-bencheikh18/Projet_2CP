@@ -33,8 +33,8 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Height="400"  Background="White" Margin="0,41.5,0,38.5" Width="450" CornerRadius="10" BorderBrush="Black" BorderThickness="1">
-                <ScrollViewer x:Name="ScrollGantt"  CanContentScroll="True"  Margin="5 5" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Border Height="500"  Background="White" Width="500" CornerRadius="10" BorderBrush="Black" BorderThickness="1">
+                <ScrollViewer x:Name="ScrollGantt"  CanContentScroll="True" Margin="5 5"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <WrapPanel x:Name="GanttChart"/>
                 </ScrollViewer>
             </Border>
