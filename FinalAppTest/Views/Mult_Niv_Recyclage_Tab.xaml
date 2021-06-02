@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FinalAppTest.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="720" d:DesignWidth="1280">
+             d:DesignHeight="768" d:DesignWidth="1205">
     <Grid Background="#FFE9F2FE">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -36,7 +36,7 @@
                 <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,10,40 " Text="Multi-Niveaux-Recyclage." FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
-                <Grid Height="0" x:Name="proGen" >
+                <Grid Height="120" x:Name="proGen" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="2*"/>

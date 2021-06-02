@@ -47,6 +47,7 @@ namespace FinalAppTest.Views
 
             parent = TreeViewParent;
 
+            parent.Items.Add(new Interruption_TabHeader());
             parent.Items.Add(new Interruption_Ajouter(this));
         }
 

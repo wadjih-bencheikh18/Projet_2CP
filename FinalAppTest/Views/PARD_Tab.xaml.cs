@@ -218,5 +218,19 @@ namespace FinalAppTest.Views
                 RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
             }
         }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (prog.listeProcessus.Count == 0)
+            {
+                var bc = new BrushConverter();
+                //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            }
+            else
+            {
+                MainWindow.main.Content = new SimulationPage(prog);
+            }
+        }
     }
 }
