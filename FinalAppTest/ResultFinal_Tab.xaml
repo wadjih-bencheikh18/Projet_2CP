@@ -53,8 +53,9 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Margin="10 30 10 0" Grid.Column="1">
-                    <Rectangle x:Name="TerminerButton" Margin="10" Cursor="Hand" MouseLeftButtonDown="Terminer_Click" Grid.Column="1" Fill="#5829AA" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25" MouseEnter="TerminerButton_MouseEnter" MouseLeave="TerminerButton_MouseLeave"/>
+                    <Rectangle x:Name="TerminerButton" Margin="10" Cursor="Hand" Grid.Column="1" Fill="#5829AA" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25"/>
                     <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Terminer</TextBlock>
+                    <Rectangle Margin="10" Cursor="Hand" Grid.Column="1" MouseLeftButtonDown="Terminer_Click" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25" MouseEnter="TerminerButton_MouseEnter" MouseLeave="TerminerButton_MouseLeave"/>
                 </Grid>
                 <Grid Grid.Column="0">
                     <Grid.ColumnDefinitions>
