@@ -62,9 +62,11 @@ namespace Ordonnancement
                 else if (!SimulationPage.paused)
                 { 
                   AfficheLigne(temps - 1);
-                  AfficherEtat(GanttChart, temps); 
+                  AfficherEtat(GanttChart, temps);
+                  tempsRepos++;
                 }
             }
+            TauxUtil(temps);
             return temps;
         }
         #endregion

@@ -97,8 +97,13 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
-                else if (!SimulationPage.paused) { AfficherEtat(GanttChart, temps);}
+                else if (!SimulationPage.paused)
+                { 
+                    AfficherEtat(GanttChart, temps);
+                    tempsRepos++; 
+                }
             }
+            TauxUtil(temps);
             return temps;
         }
         #endregion

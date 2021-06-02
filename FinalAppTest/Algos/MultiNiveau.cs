@@ -118,13 +118,15 @@ namespace Ordonnancement
                     temps = await NiveauExecute(temps, indiceNiveau,Processeur,TempsView,ListeBloqueView,deroulement);  //temps de fin d'execution du niveau "indiceNiveau"
                     indice = niveaux[indiceNiveau].indice[0];  //recuperer l'indice sauvegardé precedemment
                 }
-                else
+                else if (indice < listeProcessus.Count || indiceNiveau < nbNiveau || listebloque.Count != 0)
                 {
                     temps++;
                     TempsView.Text = temps.ToString();
                     AfficherEtat(listeProcessus,Ordonnancement.GanttChart, temps);
+                    tempsRepos++;
                 }
             }
+            TauxUtil(temps);
             return temps;
         }
         public async Task<int> NiveauExecute(int temps, int indiceNiveau, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement)  //executer le niveau "indiceNiveau"

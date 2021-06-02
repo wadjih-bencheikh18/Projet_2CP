@@ -45,7 +45,9 @@ namespace FinalAppTest
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.main.Content = new ResultFinal_Tab(prog.listeProcessus);
+            Ordonnancement.Ordonnancement proc = prog;
+            proc.listeProcessus.Sort(delegate (Processus x, Processus y) { return x.id.CompareTo(y.id); });
+            MainWindow.main.Content = new ResultFinal_Tab(proc.listeProcessus);
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

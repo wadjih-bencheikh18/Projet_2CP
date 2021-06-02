@@ -22,6 +22,7 @@ namespace Ordonnancement
         public static ScrollViewer ScrollDeroulement;
         public static WrapPanel GanttChart;
         public int nbFamine;
+        public int tempsRepos;
         #endregion
 
         #region Visualisation
@@ -423,7 +424,8 @@ namespace Ordonnancement
                 }
 
             }
-            item.Foreground = Brushes.Green;
+            BrushConverter bc = new BrushConverter();
+            item.Foreground = (Brush)bc.ConvertFrom("#2ECC71");
             item.FontSize = 18;
             item.TextAlignment = TextAlignment.Center;
             if(deroulement.Children.Count!=0) ((TextBlock)deroulement.Children[deroulement.Children.Count - 1]).Foreground = Brushes.Black;
@@ -872,6 +874,14 @@ namespace Ordonnancement
                     nbFamine++;
                 }
                     
+        }
+        #endregion
+
+        #region Taux d'utilisation du CPU
+        public double TauxUtil(int tempsfin) //tempsfin est l'attribut "temps" retourné dans les methodes "Executer"
+        {
+            //int util = tempsfin - tempsRepos; return (util / tempsfin);
+            return (1 - (tempsRepos / tempsfin));
         }
         #endregion
     }
