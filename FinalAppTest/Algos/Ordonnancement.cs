@@ -447,7 +447,7 @@ namespace Ordonnancement
                     RowDefinition rowdef = new RowDefinition { Height = new GridLength(60) };
                     coldefinit.VerticalAlignment = VerticalAlignment.Bottom;
                     coldefinit.RowDefinitions.Insert(i, rowdef);
-                    item.Text = $"ID = { i }";
+                    item.Text = $"ID = { listeProcessus[i].id }";
                     item.FontSize = 14;
                     item.Foreground = Brushes.Black;
                     item.Margin = new Thickness(0, 5, 0, 5);
@@ -482,7 +482,7 @@ namespace Ordonnancement
                 RowDefinition rowdef = new RowDefinition { Height = new GridLength(60) };
                 coldef.VerticalAlignment = VerticalAlignment.Bottom;
                 coldef.RowDefinitions.Insert(i, rowdef);
-                var indice = listeProcessus.FindIndex(element => element.id == i);
+                var indice = listeProcessus.FindIndex(element => element.id == listeProcessus[i].id);
                 if (listeProcessus[indice].etat == 0)
                 {
                     item.Background = (Brush)bc.ConvertFrom("#EC2525");
@@ -538,7 +538,7 @@ namespace Ordonnancement
                     RowDefinition rowdef = new RowDefinition { Height = new GridLength(60) };
                     coldefinit.VerticalAlignment = VerticalAlignment.Bottom;
                     coldefinit.RowDefinitions.Insert(i, rowdef);
-                    item.Text = $"ID = { i }";
+                    item.Text = $"ID = { listeProcessus[i].id }";
                     item.FontSize = 14;
                     item.Foreground = Brushes.Black;
                     item.Margin = new Thickness(0, 5, 0, 5);
@@ -573,7 +573,7 @@ namespace Ordonnancement
                 RowDefinition rowdef = new RowDefinition { Height = new GridLength(60) };
                 coldef.VerticalAlignment = VerticalAlignment.Bottom;
                 coldef.RowDefinitions.Insert(i, rowdef);
-                var indice = listeProcessus.FindIndex(element => element.id == i);
+                var indice = listeProcessus.FindIndex(element => element.id == listeProcessus[i].id);
                 if (listeProcessus[indice].etat == 0)
                 {
                     item.Background = (Brush)bc.ConvertFrom("#EC2525");
