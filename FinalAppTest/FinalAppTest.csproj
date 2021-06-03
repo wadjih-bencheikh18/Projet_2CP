@@ -417,5 +417,11 @@
   <ItemGroup>
     <Resource Include="Views\ArrowLeft.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Asset 1%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Asset 2%402x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

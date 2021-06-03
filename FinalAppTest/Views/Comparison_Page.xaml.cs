@@ -20,9 +20,42 @@ namespace FinalAppTest.Views
     /// </summary>
     public partial class Comparison_Page : Page
     {
+        private int pageIndex = 0;
         public Comparison_Page()
         {
             InitializeComponent();
+        }
+
+        private void Swipe(object sender, MouseButtonEventArgs e)
+        {
+            if (pageIndex == 0)
+            {
+                Page1.Visibility = Visibility.Hidden;
+                Page2.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Page2.Visibility = Visibility.Hidden;
+                Page1.Visibility = Visibility.Visible;
+            }
+            pageIndex = (pageIndex + 1) % 2;
+        }
+
+        private void RightHover(object sender, MouseEventArgs e)
+        {
+            RightEffect.ShadowDepth = 10;
+        }
+        private void RightLeave(object sender, MouseEventArgs e)
+        {
+            RightEffect.ShadowDepth = 6;
+        }
+        private void LeftHover(object sender, MouseEventArgs e)
+        {
+            LeftEffect.ShadowDepth = 10;
+        }
+        private void LeftLeave(object sender, MouseEventArgs e)
+        {
+            LeftEffect.ShadowDepth = 6;
         }
     }
 }

@@ -443,5 +443,10 @@ namespace FinalAppTest.Views
                 RectTempsMAJ.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
             }
         }
+
+        private void ComparerClick(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.main.Content = new Comparison_Page();
+        }
     }
 }
