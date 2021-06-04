@@ -67,7 +67,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                      
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Rectangle Grid.Column="0" Margin="5,20" Fill="#FFE9F2FE" RadiusX="20" RadiusY="20" Grid.ColumnSpan="4" >
                     </Rectangle>
@@ -97,6 +97,7 @@
                 </Grid>
                 <Grid  Margin="10">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
