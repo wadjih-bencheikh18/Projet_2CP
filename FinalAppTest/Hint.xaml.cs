@@ -29,6 +29,10 @@ namespace FinalAppTest
         {
 
         }
+         private void Skip_Button(object sender, MouseButtonEventArgs e)
+        {
+
+        }
 
         private void Previous_Button(object sender, MouseButtonEventArgs e)
         {

@@ -8,6 +8,11 @@
              d:DesignHeight="500" d:DesignWidth="400">
     <Grid Width="400" Height="500">
         <Rectangle Fill="#b9c0d9" RadiusY="10" RadiusX="10"/>
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0">
+            <Rectangle MouseLeftButtonDown="Skip_Button" x:Name="Skip"/>
+            <TextBlock FontFamily="Lexend" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center" TextDecorations="Underline">Skip</TextBlock>
+        </Grid>
+        
         <Grid Margin="25,40,20,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <TextBlock x:Name="Title" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" FontWeight="DemiBold"><Run Text="Hello"/></TextBlock>
             <TextBlock x:Name="Description" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Margin="0,75,0,0" FontSize="24"><Run Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla magna magna, porta quis dictum et, gravida eget odio. Aliquam ornare dolor libero, non dignissim mi finibus in."/></TextBlock>
