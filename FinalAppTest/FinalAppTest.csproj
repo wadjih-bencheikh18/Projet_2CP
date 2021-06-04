@@ -81,7 +81,7 @@
     <Compile Include="DashBoard.xaml.cs">
       <DependentUpon>DashBoard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Hint.xaml.cs">
+    <Compile Include="Views\Hint.xaml.cs">
       <DependentUpon>Hint.xaml</DependentUpon>
     </Compile>
     <Compile Include="InitPage.xaml.cs">
@@ -210,7 +210,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Hint.xaml">
+    <Page Include="Views\Hint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -453,7 +453,7 @@
     <Resource Include="Pics\Home_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Next.png" />
+    <Resource Include="Pics\Next.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Next.bmp" />
