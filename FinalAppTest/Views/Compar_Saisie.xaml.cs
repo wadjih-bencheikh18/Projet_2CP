@@ -151,6 +151,10 @@ namespace FinalAppTest.Views
             }
         }
 
+        private void Comparer_Click(object sender, MouseEventArgs e)
+        {
+            MainWindow.main.Content = new Comparison_Page();
+        }
         private void AddProcessusButton_MouseEnter(object sender, MouseEventArgs e)
         {
             var bc = new BrushConverter();
