@@ -138,16 +138,42 @@
                     </Rectangle>
                     <TextBlock TextWrapping="Wrap" Text="Taux d'usage du CPU (%)" FontSize="25" FontFamily="Lexend" FontWeight="Regular" Foreground="#FF333333" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Grid Grid.Column="1" Margin="30,50" >
-                        <Rectangle   Fill="#FFFFB162" Height="60" VerticalAlignment="Center" RadiusY="5" RadiusX="5" Width="200" HorizontalAlignment="Center" Panel.ZIndex="-60"/>
+                        <Rectangle   Fill="#FFFFB162" Height="60" VerticalAlignment="Center" RadiusY="5" RadiusX="5" Width="{Binding ActualWidth, ElementName=Repere, Mode=OneWay}" HorizontalAlignment="Center" Panel.ZIndex="-60"/>
                         <TextBlock Panel.ZIndex="1" Text="77,7" FontSize="30" FontFamily="Lexend" FontWeight="SemiBold" Foreground="#FF333333" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Grid>
                     <Grid Grid.Column="2" Margin="30,50" >
-                        <Rectangle   Fill="#FFFF9898" Height="60" VerticalAlignment="Center" RadiusY="5" RadiusX="5" Width="200" HorizontalAlignment="Center" Panel.ZIndex="-60"/>
+                        <Rectangle   Fill="#FFFF9898" Height="60" VerticalAlignment="Center" RadiusY="5" RadiusX="5" Width="{Binding ActualWidth, ElementName=Repere, Mode=OneWay}" HorizontalAlignment="Center" Panel.ZIndex="-60"/>
                         <TextBlock Panel.ZIndex="1" Text="50,1" FontSize="30" FontFamily="Lexend" FontWeight="SemiBold" Foreground="#FF333333" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Grid>
                     <Grid Grid.Column="3" Margin="30,50" >
-                        <Rectangle   Fill="#FF90F47B" Height="60" VerticalAlignment="Center" RadiusY="5" RadiusX="5" Width="200" HorizontalAlignment="Center" Panel.ZIndex="-60"/>
+                        <Rectangle   Fill="#FF90F47B" Height="60" VerticalAlignment="Center" RadiusY="5" RadiusX="5" Width="{Binding ActualWidth, ElementName=Repere, Mode=OneWay}" HorizontalAlignment="Center" Panel.ZIndex="-60"/>
                         <TextBlock Panel.ZIndex="1" Text="80,2" FontSize="30" FontFamily="Lexend" FontWeight="SemiBold" Foreground="#FF333333" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                </Grid>
+                <Grid  Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Grid.Column="0" Margin="5,20" Fill="#FFE9F2FE" RadiusX="20" RadiusY="20" Grid.ColumnSpan="4" >
+                        <Rectangle.Effect>
+                            <DropShadowEffect Color="#FF001673" Opacity="0.5" Direction="-90" BlurRadius="15" ShadowDepth="0"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock TextWrapping="Wrap" Text="Temps de service (s)" FontSize="25" FontFamily="Lexend" FontWeight="Regular" Foreground="#FF333333" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Grid Grid.Column="1" Margin="30,50" >
+                        <Rectangle   Fill="#FFFFB162" Height="60" VerticalAlignment="Center" RadiusY="5" RadiusX="5" Width="{Binding ActualWidth, ElementName=Repere, Mode=OneWay}" HorizontalAlignment="Center" Panel.ZIndex="-60"/>
+                        <TextBlock Panel.ZIndex="1" Text="27,7" FontSize="30" FontFamily="Lexend" FontWeight="SemiBold" Foreground="#FF333333" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                    <Grid Grid.Column="2" Margin="30,50" >
+                        <Rectangle   Fill="#FF90F47B" Height="60" VerticalAlignment="Center" RadiusY="5" RadiusX="5" Width="{Binding ActualWidth, ElementName=Repere, Mode=OneWay}" HorizontalAlignment="Center" Panel.ZIndex="-60"/>
+                        <TextBlock Panel.ZIndex="1" Text="9,1" FontSize="30" FontFamily="Lexend" FontWeight="SemiBold" Foreground="#FF333333" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                    <Grid Grid.Column="3" Margin="30,50" >
+                        <Rectangle   Fill="#FFFF9898" Height="60" VerticalAlignment="Center" RadiusY="5" RadiusX="5" Width="{Binding ActualWidth, ElementName=Repere, Mode=OneWay}" HorizontalAlignment="Center" Panel.ZIndex="-60"/>
+                        <TextBlock Panel.ZIndex="1" Text="10,8" FontSize="30" FontFamily="Lexend" FontWeight="SemiBold" Foreground="#FF333333" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Grid>
                 </Grid>
             </StackPanel>
