@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <!--Home button-->
         <Grid Grid.Column="0" Grid.Row="0" Panel.ZIndex="1">
-            <Image VerticalAlignment="Center" Source="FinalAppTest/Pics/Home_icon.png" Margin="30,0,0,0">
+            <Image VerticalAlignment="Center" Source="/Pics/Home_icon.png" Margin="30,0,0,0">
                 <Image.Effect>
                     <DropShadowEffect x:Name="shadowHome" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
                 </Image.Effect>
@@ -50,7 +50,7 @@
             <!--Titre-->
             <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Qu'est ce que CPU Simulator ?" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" Foreground="#505284" FontSize="60" FontWeight="Medium"/>
             <!--Logo-->
-            <Image Grid.Row="2" Grid.Column="1" Source="FinalAppTest/Pics/Logo.png" Width="180" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2">
+            <Image Grid.Row="2" Grid.Column="1" Source="/Pics/Logo.png" Width="180" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2">
                 <Image.Effect>
                     <DropShadowEffect x:Name="shaddowLogo" Opacity="0.025" ShadowDepth="0.25" BlurRadius="8"/>
                 </Image.Effect>
@@ -85,7 +85,7 @@
             <!--Titre-->
             <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Qui sommes-nous ?" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" Foreground="#505284" FontSize="60" FontWeight="Medium"/>
             <!--Logo-->
-            <Image Grid.Row="2" Grid.Column="2" Source="FinalAppTest/Pics/esi_logo.png" Width="160" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2" Margin="0,0,0,35">
+            <Image Grid.Row="2" Grid.Column="2" Source="/Pics/esi_logo.png" Width="160" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2" Margin="0,0,0,35">
                 <Image.Effect>
                     <DropShadowEffect x:Name="esishaddow" Opacity="0.25" ShadowDepth="0.25" BlurRadius="8"/>
                 </Image.Effect>
