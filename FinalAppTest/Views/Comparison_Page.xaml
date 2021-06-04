@@ -200,7 +200,7 @@
                     <DropShadowEffect x:Name="RightEffect" Color="#FF5829AA" Opacity="0.5" Direction="-90" BlurRadius="15" ShadowDepth="6"/>
                 </Rectangle.Effect>
             </Rectangle>
-            <Image VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="Asset 2@2x.png" Height="30" Margin="18,10,12,10" />
+            <Image VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="/Pics/Arrow.png" Height="30" Margin="18,10,12,10" />
             <Rectangle Cursor="Hand" MouseLeave="RightLeave" MouseEnter="RightHover" MouseLeftButtonDown="Swipe" Height="60" Width="60" RadiusX="30" RadiusY="30" Fill="#005829AA" VerticalAlignment="Center" />
         </Grid>
         <Grid Grid.Column="2" Height="60" Width="60" VerticalAlignment="Top" Margin="0,30">
