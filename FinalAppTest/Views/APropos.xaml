@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <!--Home button-->
         <Grid Grid.Column="0" Grid.Row="0" Panel.ZIndex="1">
-            <Image VerticalAlignment="Center" Source="/Pics/Home_icon.png" Margin="30,0,0,0">
+            <Image VerticalAlignment="Center" Source="/Pics/Home_icon.png" Margin="30,0,0,0" Width="100">
                 <Image.Effect>
                     <DropShadowEffect x:Name="shadowHome" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
                 </Image.Effect>
@@ -41,11 +41,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="2.5*"/>
                 <RowDefinition Height="4*"/>
-                <RowDefinition Height="2.5*"/>
-                <RowDefinition Height="4.25*"/>
-                <RowDefinition Height="4.25*"/>
-                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
             <!--Titre-->
             <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Qu'est ce que CPU Simulator ?" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" Foreground="#505284" FontSize="60" FontWeight="Medium"/>
@@ -81,11 +81,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="2.5*"/>
                 <RowDefinition Height="4*"/>
-                <RowDefinition Height="2.5*"/>
-                <RowDefinition Height="4.25*"/>
-                <RowDefinition Height="4.25*"/>
-                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
             <!--Titre-->
             <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Qui sommes-nous ?" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" Foreground="#505284" FontSize="60" FontWeight="Medium"/>
@@ -117,12 +117,12 @@
                 <ImageBrush ImageSource="aprop3.png" />
             </Grid.Background>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="1.25*"/>
-                <ColumnDefinition Width="2.75*"/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="1.25*"/>
-                <ColumnDefinition Width="3.25*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2.25*"/>
+                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="4.75*"/>
@@ -142,36 +142,36 @@
             <Image Source="Mounia.png" Grid.Column="3" Grid.Row="3" Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <!--Description-->
             <TextBlock TextWrapping="Wrap" Grid.Row="1" Grid.Column="2" FontFamily="Lexend" VerticalAlignment="Center">
-                <Run Foreground="#1d1d1b" FontSize="36" FontWeight="Regular" Text="Wadjih Bencheikh&#10;"/>
-                <Run Foreground="#505285" FontSize="28" FontWeight="Regular" Text="Chef d'équipe&#10;"/>
-                <Run Foreground="#1d1d1b" FontSize="24" FontWeight="Light" Text="jw_bencheikh@esi.dz"/>
+                <Run Foreground="#1d1d1b" FontSize="24" FontWeight="Regular" Text="Wadjih Bencheikh&#10;"/>
+                <Run Foreground="#505285" FontSize="18" FontWeight="Regular" Text="Chef d'équipe&#10;"/>
+                <Run Foreground="#1d1d1b" FontSize="16" FontWeight="Light" Text="jw_bencheikh@esi.dz"/>
             </TextBlock>
             <TextBlock TextWrapping="Wrap" Grid.Row="1" Grid.Column="4" FontFamily="Lexend" Foreground="#1d1d1b" VerticalAlignment="Center">
-                <Run FontSize="36" FontWeight="Regular" Text="Mounia Kias&#10;"/>
-                <Run Text="&#10;&#10;"/>
-                <Run FontSize="24" FontWeight="Light" Text="jm_kias@esi.dz"/>
+                <Run FontSize="24" FontWeight="Regular" Text="Mounia Kias&#10;"/>
+                <Run Text="&#10;"/>
+                <Run FontSize="16" FontWeight="Light" Text="jm_kias@esi.dz"/>
             </TextBlock>
             <TextBlock TextWrapping="Wrap" Grid.Row="2" Grid.Column="2" FontFamily="Lexend" Foreground="#1d1d1b" VerticalAlignment="Center">
-                <Run FontSize="36" FontWeight="Regular" Text="Aymen Bendakir&#10;"/>
-                <Run Text="&#10;&#10;"/>
-                <Run FontSize="24" FontWeight="Light" Text="ja_bendakir@esi.dz"/>
+                <Run FontSize="24" FontWeight="Regular" Text="Aymen Bendakir&#10;"/>
+                <Run Text="&#10;"/>
+                <Run FontSize="16" FontWeight="Light" Text="ja_bendakir@esi.dz"/>
             </TextBlock>
             <TextBlock TextWrapping="Wrap" Grid.Row="2" Grid.Column="4" FontFamily="Lexend" Foreground="#1d1d1b" VerticalAlignment="Center">
-                <Run FontSize="36" FontWeight="Regular" Text="Mohamed Nazim Keskes&#10;"/>
-                <Run Text="&#10;&#10;"/>
-                <Run FontSize="24" FontWeight="Light" Text="jm_keskes@esi.dz"/>
+                <Run FontSize="24" FontWeight="Regular" Text="Mohamed Nazim Keskes&#10;"/>
+                <Run Text="&#10;"/>
+                <Run FontSize="16" FontWeight="Light" Text="jm_keskes@esi.dz"/>
             </TextBlock>
             <TextBlock TextWrapping="Wrap" Grid.Row="3" Grid.Column="2" FontFamily="Lexend" Foreground="#1d1d1b" VerticalAlignment="Center">
-                <Run FontSize="36" FontWeight="Regular" Text="Meriem Afaf Haddou&#10;"/>
-                <Run Text="&#10;&#10;"/>
-                <Run FontSize="24" FontWeight="Light" Text="jm_haddou@esi.dz"/>
+                <Run FontSize="24" FontWeight="Regular" Text="Meriem Afaf Haddou&#10;"/>
+                <Run Text="&#10;"/>
+                <Run FontSize="16" FontWeight="Light" Text="jm_haddou@esi.dz"/>
             </TextBlock>
             <TextBlock TextWrapping="Wrap" Grid.Row="3" Grid.Column="4" FontFamily="Lexend" Foreground="#1d1d1b" VerticalAlignment="Center">
-                <Run FontSize="36" FontWeight="Regular" Text="Mohammed Reda Sbaihi&#10;"/>
-                <Run Text="&#10;&#10;"/>
-                <Run FontSize="24" FontWeight="Light" Text="jm_sbaihi@esi.dz"/>
+                <Run FontSize="24" FontWeight="Regular" Text="Mohammed Reda Sbaihi&#10;"/>
+                <Run Text="&#10;"/>
+                <Run FontSize="16" FontWeight="Light" Text="jm_sbaihi@esi.dz"/>
             </TextBlock>
-            <Image x:Name="go3to2" VerticalAlignment="Center" Source="goLeft.png" Grid.Column="0" Grid.Row="2" MouseLeftButtonDown="go3to2_Click" Width="80" Cursor="Hand">
+            <Image x:Name="go3to2" VerticalAlignment="Center" Source="goLeft.png" Grid.Column="0" Grid.Row="2" MouseLeftButtonDown="go3to2_Click" Width="80" Cursor="Hand" Margin="0,0,79.45,0">
                 <Image.Effect>
                     <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
                 </Image.Effect>
