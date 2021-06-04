@@ -19,8 +19,49 @@ namespace FinalAppTest.Views
     /// <summary>
     /// Interaction logic for PAPS_Tab.xaml
     /// </summary>
+    
     public partial class PAPS_Tab : UserControl
     {
+        public static int NbHint=0; 
+        public static bool NextHintCondition = true;
+        public void HintStart_Click(object sender, RoutedEventArgs e)  // ajouter un processus
+        {
+            Hint Test;
+            if (NbHint == 0)
+            {
+                hint.Margin = new Thickness(264, 120, 0, 0);
+                Test = new Hint(
+                                    "Generer les Processus",
+                                    "Vous pouvez generer les procesus aleatoirement",
+                                    this,
+                                    hint
+                                );
+                NextHintCondition = true;
+            }
+            else if (NbHint == 1)
+            {
+                hint.Margin = new Thickness(264, 300, 0, 0);
+                Test = new Hint(
+                                    "Generer les Processus",
+                                    "Entré un nombre aleatoire des processus a generer",
+                                    this,
+                                    hint
+                                );
+                NextHintCondition = false;
+            }
+            else
+            {
+                hint.Margin = new Thickness(264, 117, 0, 0);
+                Test = new Hint(
+                                    "Error",
+                                    "Error 404",
+                                    this,
+                                    hint
+                                );
+            }
+            Test.DataContext = Test;
+            hint.Child = Test;
+        }
         public PAPS_Tab()
         {
             InitializeComponent();
