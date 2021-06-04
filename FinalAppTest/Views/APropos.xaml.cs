@@ -42,6 +42,28 @@ namespace FinalAppTest.Views
             shadowHome.BlurRadius = 5;
         }
 
+        private void go1to2_Click(object sender, MouseButtonEventArgs e)
+        {
+            page1.Visibility = Visibility.Hidden;
+            page2.Visibility = Visibility.Visible;
+        }
 
+        private void go2to1_Click(object sender, MouseButtonEventArgs e)
+        {
+            page2.Visibility = Visibility.Hidden;
+            page1.Visibility = Visibility.Visible;
+        }
+
+        private void go2to3_Click(object sender, MouseButtonEventArgs e)
+        {
+            page2.Visibility = Visibility.Hidden;
+            page3.Visibility = Visibility.Visible;
+        }
+
+        private void go3to2_Click(object sender, MouseButtonEventArgs e)
+        {
+            page3.Visibility = Visibility.Hidden;
+            page2.Visibility = Visibility.Visible;
+        }
     }
 }
