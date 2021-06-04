@@ -487,5 +487,9 @@
   <ItemGroup>
     <Resource Include="Pics\Mounia.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\goLeft.png" />
+    <Resource Include="Views\goRight.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

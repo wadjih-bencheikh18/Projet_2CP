@@ -30,7 +30,7 @@
         <Grid Grid.Row="0" Grid.Column="2" Margin="40,35">
             <Rectangle x:Name="Rectangle1" Height="2" Fill="#000000" Margin="25,0" VerticalAlignment="Bottom"/>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#000000" FontFamily="Lexend">A propos</TextBlock>
-            <Rectangle MouseEnter="Rectangle1_MouseEnter" MouseLeave="Rectangle1_MouseLeave" Margin="25,10,25,0" Cursor="Hand" Fill="#00CCFFDD" Height="Auto" Width="Auto" StrokeThickness="0"/>
+            <Rectangle MouseEnter="Rectangle1_MouseEnter" MouseLeave="Rectangle1_MouseLeave" MouseLeftButtonDown="AproposButton_Click" Margin="25,10,25,0" Cursor="Hand" Fill="#00CCFFDD" Height="Auto" Width="Auto" StrokeThickness="0"/>
         </Grid>
 
         <Grid Grid.Row="0" Grid.Column="3" Margin="40,35">
