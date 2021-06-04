@@ -32,6 +32,10 @@ namespace FinalAppTest
             //MainWindow.main.Content = new InitPage();
             MainWindow.main.Content = new DashBoard();
         }
+        private void APropos_Click(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.main.Content = new APropos();
+        }
 
         private void ComparaisonButton_Click(object sender, MouseButtonEventArgs e)
         {

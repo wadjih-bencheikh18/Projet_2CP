@@ -335,7 +335,7 @@
                 </Rectangle.Effect>
             </Rectangle>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Comparer</TextBlock>
-            <Rectangle Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+            <Rectangle MouseLeftButtonDown="Comparer_Click" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
         </Grid>
     </Grid>
 </Page>
