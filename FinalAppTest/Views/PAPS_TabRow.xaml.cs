@@ -35,7 +35,6 @@ namespace FinalAppTest.Views
         public TextBox duree;
         public TextBlock Ajouter;
         public StackPanel Table;
-
         public TreeViewItem parent;
 
         public PAPS_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, StackPanel Table, TextBlock Ajouter)
@@ -46,7 +45,6 @@ namespace FinalAppTest.Views
             this.duree = duree;
             this.Table = Table;
             this.Ajouter = Ajouter;
-
             parent = TreeViewParent;
 
             parent.Items.Add(new Interruption_TabHeader());
@@ -61,17 +59,24 @@ namespace FinalAppTest.Views
             PAPS_Tab.modifier = true;
             PAPS_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
+            PAPS_Tab.HintSuivant();
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
             PAPS_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
+            PAPS_Tab.HintSuivant();
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
         {
             TreeViewParent.IsSelected = false;
+        }
+
+        private void TreeViewParent_Expanded(object sender, RoutedEventArgs e)
+        {
+            PAPS_Tab.HintSuivant();
         }
     }
 }
