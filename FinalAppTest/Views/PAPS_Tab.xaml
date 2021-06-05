@@ -7,7 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1205">
     <Grid x:Name="Page">
-        
+        <Viewbox x:Name="hint" Margin="20" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+        </Viewbox>
         <Grid Background="#FFE9F2FE">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
@@ -46,9 +48,6 @@
                             <DropShadowEffect x:Name="shadowHint" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
                         </Image.Effect>
                     </Image>
-                    <Viewbox x:Name="hint" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top">
-
-                    </Viewbox>
                 </Grid>
                 <Grid Grid.Column="3" Margin="10">
                     <Image VerticalAlignment="Center" Source="../Pics/VoirCoursButton.png" MouseLeftButtonDown="Cours_MouseLeftButtonDown" MouseEnter="Cours_MouseEnter" MouseLeave="Cours_MouseLeave">
