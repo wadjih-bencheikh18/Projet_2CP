@@ -235,7 +235,7 @@ namespace FinalAppTest.Views
             proGen.Height = 120;
             proGrid.Visibility = Visibility.Visible;
             nivGrid.Visibility = Visibility.Hidden;
-
+            SimulationButton.Height = 120;
         }
 
         private void nivTitle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -246,6 +246,7 @@ namespace FinalAppTest.Views
             proGen.Height = 0;
             nivGrid.Visibility = Visibility.Visible;
             proGrid.Visibility = Visibility.Hidden;
+            SimulationButton.Height = 0;
         }
 
         private void GenAddNiv(object sender, MouseButtonEventArgs e)
@@ -299,6 +300,128 @@ namespace FinalAppTest.Views
             randNiv.Text = indiceniv.ToString();
             nivId.Text= indiceniv.ToString();
             NiveauGrid.Children.RemoveAt(indiceniv);
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListPro.Count == 0 || indiceniv == 0)
+            {
+                var bc = new BrushConverter();
+                //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
+                StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            }
+            else
+            {
+                prog = new MultiNiveauRecyclage(indiceniv, niveaux);
+                foreach (ProcessusNiveau pro in ListPro)
+                {
+                    prog.Push(pro);
+                }
+                MainWindow.main.Content = new SimulationPage_MultiLvl(prog, 1);
+            }
+        }
+
+
+        private void Home_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.main.Content = new WelcomePage();
+        }
+
+        private void Home_MouseEnter(object sender, MouseEventArgs e)
+        {
+            shadowHome.ShadowDepth = 2;
+            shadowHome.BlurRadius = 7;
+        }
+
+        private void Home_MouseLeave(object sender, MouseEventArgs e)
+        {
+            shadowHome.ShadowDepth = 0;
+            shadowHome.BlurRadius = 5;
+        }
+
+        private void Return_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.main.Content = new DashBoard();
+        }
+
+        private void Return_MouseEnter(object sender, MouseEventArgs e)
+        {
+            shadowReturn.ShadowDepth = 2;
+            shadowReturn.BlurRadius = 7;
+        }
+
+        private void Return_MouseLeave(object sender, MouseEventArgs e)
+        {
+            shadowReturn.ShadowDepth = 0;
+            shadowReturn.BlurRadius = 5;
+        }
+
+        private void Cours_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //MainWindow.main.Content = new WelcomePage();
+        }
+
+        private void Cours_MouseEnter(object sender, MouseEventArgs e)
+        {
+            shadowCours.ShadowDepth = 2;
+            shadowCours.BlurRadius = 7;
+        }
+
+        private void Cours_MouseLeave(object sender, MouseEventArgs e)
+        {
+            shadowCours.ShadowDepth = 0;
+            shadowCours.BlurRadius = 5;
+        }
+
+        private void Hint_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) { }/*
+        {
+            Hint Test;
+            if (NbHint == 0)
+            {
+                hint.Margin = new Thickness(264, 120, 0, 0);
+                Test = new Hint(
+                                    "Generer les Processus",
+                                    "Vous pouvez generer les procesus aleatoirement",
+                                    this,
+                                    hint
+                                );
+                NextHintCondition = true;
+            }
+            else if (NbHint == 1)
+            {
+                hint.Margin = new Thickness(264, 300, 0, 0);
+                Test = new Hint(
+                                    "Generer les Processus",
+                                    "Entré un nombre aleatoire des processus a generer",
+                                    this,
+                                    hint
+                                );
+                NextHintCondition = false;
+            }
+            else
+            {
+                hint.Margin = new Thickness(264, 117, 0, 0);
+                Test = new Hint(
+                                    "Error",
+                                    "Error 404",
+                                    this,
+                                    hint
+                                );
+            }
+            Test.DataContext = Test;
+            hint.Child = Test;
+        }*/
+
+        private void Hint_MouseEnter(object sender, MouseEventArgs e)
+        {
+            shadowHint.ShadowDepth = 2;
+            shadowHint.BlurRadius = 7;
+        }
+
+        private void Hint_MouseLeave(object sender, MouseEventArgs e)
+        {
+            shadowHint.ShadowDepth = 0;
+            shadowHint.BlurRadius = 5;
         }
     }
 }

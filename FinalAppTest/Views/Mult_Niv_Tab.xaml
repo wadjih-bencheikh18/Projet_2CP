@@ -16,6 +16,42 @@
             <RowDefinition Height="8*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Grid Margin="0,30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Margin="10">
+                <Image VerticalAlignment="Center" Source="../Pics/ReturnButton.png" MouseLeftButtonDown="Return_MouseLeftButtonDown" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave">
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="shadowReturn" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                    </Image.Effect>
+                </Image>
+            </Grid>
+            <Grid Grid.Column="1" Margin="10">
+                <Image VerticalAlignment="Center" Source="../Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="shadowHome" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                    </Image.Effect>
+                </Image>
+            </Grid>
+            <Grid Grid.Column="2" Margin="10">
+                <Image VerticalAlignment="Center" Source="../Pics/HintButton.png" MouseLeftButtonDown="Hint_MouseLeftButtonDown" MouseEnter="Hint_MouseEnter" MouseLeave="Hint_MouseLeave">
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="shadowHint" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                    </Image.Effect>
+                </Image>
+            </Grid>
+            <Grid Grid.Column="3" Margin="10">
+                <Image VerticalAlignment="Center" Source="../Pics/VoirCoursButton.png" MouseLeftButtonDown="Cours_MouseLeftButtonDown" MouseEnter="Cours_MouseEnter" MouseLeave="Cours_MouseLeave">
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="shadowCours" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                    </Image.Effect>
+                </Image>
+            </Grid>
+        </Grid>
         <Grid Grid.Row="0" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -31,7 +67,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel>
-                <TextBlock Margin="10,30,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,20,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,0,10 " Text="MultiNiveaux" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,10,40 " Text="Multi-Niveaux." FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
@@ -111,7 +147,15 @@
                         <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des niveaux" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                         <TextBox IsReadOnly="True" x:Name="randNiv" Cursor="Hand" MaxLength="1" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
                     </Grid>
-
+                </Grid>
+                <Grid Height="0" Width="250" x:Name="SimulationButton">
+                    <Rectangle x:Name="StartButton" Grid.Row="0" Margin="25" Fill="#F16022" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Simuler</TextBlock>
+                    <Rectangle Margin="25" Cursor="Hand" MouseLeftButtonDown="StartButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
                 </Grid>
             </StackPanel>
         </Grid>
