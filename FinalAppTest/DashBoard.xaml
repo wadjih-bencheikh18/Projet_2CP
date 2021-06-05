@@ -25,13 +25,12 @@
             <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
         <!--Home button-->
-        <Grid>
-            <Image VerticalAlignment="Center" Source="Pics/HomeButton.png" Margin="30,0,0,0">
+        <Grid Margin="50,0,0,0">
+            <Image VerticalAlignment="Center" Source="Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
                 <Image.Effect>
                     <DropShadowEffect x:Name="shadowHome" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
                 </Image.Effect>
             </Image>
-            <Ellipse MouseLeftButtonDown="Ellipse_MouseLeftButtonDown" MouseEnter="Ellipse_MouseEnter" MouseLeave="Ellipse_MouseLeave" Margin="30,0,0,0" VerticalAlignment="Center" Height="76" Width="76" Cursor="Hand" Fill="#00CCFFDD"/>
         </Grid>
         <!--Title-->
         <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Veuillez choisir un algorithme" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold"/>

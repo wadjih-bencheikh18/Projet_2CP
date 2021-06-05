@@ -27,18 +27,18 @@ namespace FinalAppTest
             InitializeComponent();
         }
 
-        private void Ellipse_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Home_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MainWindow.main.Content = new WelcomePage();
         }
 
-        private void Ellipse_MouseEnter(object sender, MouseEventArgs e)
+        private void Home_MouseEnter(object sender, MouseEventArgs e)
         {
             shadowHome.ShadowDepth = 2;
             shadowHome.BlurRadius = 7;
         }
 
-        private void Ellipse_MouseLeave(object sender, MouseEventArgs e)
+        private void Home_MouseLeave(object sender, MouseEventArgs e)
         {
             shadowHome.ShadowDepth = 0;
             shadowHome.BlurRadius = 5;
