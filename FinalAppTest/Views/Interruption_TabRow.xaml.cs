@@ -81,10 +81,10 @@ namespace FinalAppTest.Views
                 Compar_Saisie.listeProc.Find(p => p.id == int.Parse(((Comp_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((Comp_TabRow)processus).parent.Items.Remove(this);
             }
-            else
+            else if (processus.GetType() == typeof(Multi_Niv_TabRow_Proc))
             {
                 //Mult_Niv_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((Mult_Niv_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
-                //processus.parent.Items.Remove(this);
+                ((Multi_Niv_TabRow_Proc)processus).parent.Items.Remove(this);
             }
         }
     }
