@@ -7,10 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1205">
     <Grid x:Name="Page">
-        <Rectangle MouseLeftButtonDown="HintStart_Click" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" Margin="20,20,0,0" Fill="Black" RadiusY="25" RadiusX="25"></Rectangle>
-        <Viewbox x:Name="hint" Width="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top">
-            
-        </Viewbox>
+        
         <Grid Background="#FFE9F2FE">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
@@ -21,6 +18,46 @@
                 <RowDefinition Height="8*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <!--buttons-->
+            <Grid Margin="0,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Margin="10">
+                    <Image VerticalAlignment="Center" Source="../Pics/ReturnButton.png" MouseLeftButtonDown="Return_MouseLeftButtonDown" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave">
+                        <Image.Effect>
+                            <DropShadowEffect x:Name="shadowReturn" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+                <Grid Grid.Column="1" Margin="10">
+                    <Image VerticalAlignment="Center" Source="../Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
+                        <Image.Effect>
+                            <DropShadowEffect x:Name="shadowHome" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+                <Grid Grid.Column="2" Margin="10">
+                    <Image VerticalAlignment="Center" Source="../Pics/HintButton.png" MouseLeftButtonDown="Hint_MouseLeftButtonDown" MouseEnter="Hint_MouseEnter" MouseLeave="Hint_MouseLeave">
+                        <Image.Effect>
+                            <DropShadowEffect x:Name="shadowHint" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                        </Image.Effect>
+                    </Image>
+                    <Viewbox x:Name="hint" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+                    </Viewbox>
+                </Grid>
+                <Grid Grid.Column="3" Margin="10">
+                    <Image VerticalAlignment="Center" Source="../Pics/VoirCoursButton.png" MouseLeftButtonDown="Cours_MouseLeftButtonDown" MouseEnter="Cours_MouseEnter" MouseLeave="Cours_MouseLeave">
+                        <Image.Effect>
+                            <DropShadowEffect x:Name="shadowCours" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+            </Grid>
             <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Text="Tableau des processus" FontSize="50" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="Center"/>
             <!--Column0: Generer aleatoirement-->
             <Grid Grid.Row="1">
