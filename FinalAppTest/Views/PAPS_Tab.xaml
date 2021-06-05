@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1205">
     <Grid x:Name="Page">
-        <Viewbox x:Name="hint" Margin="20" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Viewbox x:Name="hint" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top">
 
         </Viewbox>
         <Grid Background="#FFE9F2FE">

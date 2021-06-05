@@ -41,7 +41,7 @@ namespace FinalAppTest.Views
                 if(PAPS_Tab.NextHintCondition)
                 {
                     hint.Child = null;
-                    ((PAPS_Tab)Page).HintStart_Click(sender, e);
+                    ((PAPS_Tab)Page).Hint_MouseLeftButtonDown(sender, e);
                 }
             }
             
