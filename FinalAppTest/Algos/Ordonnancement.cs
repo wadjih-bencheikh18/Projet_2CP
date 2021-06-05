@@ -762,6 +762,7 @@ namespace Ordonnancement
                 else
                 {
                     ajout = true;
+                    listeProcessus[indice].etat = 1;
                     if (listeGeneral[indice].niveau == indiceNiveau) listePrets.Add(listeGeneral[indice]); //si le niveau du processus = indiceNiveau (niveau actuel) on ajoute ce processus à la liste des processus prêts de ce niveau
                     else niveaux[listeGeneral[indice].niveau].listePrets.Add(listeGeneral[indice]); //sinon on ajoute le processus à la liste des processus prêts de son niveau
                     AffichageProcessus pro = new AffichageProcessus(listeGeneral[indice]);
