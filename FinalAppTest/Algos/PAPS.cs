@@ -121,10 +121,10 @@ namespace Ordonnancement
                 }
                 await InterruptionExecute(listebloqueGenerale, ListesPretsViews,indiceNiveau, ListeBloqueView, Processeur, deroulement);
                 anime = false;
-                temps++; //incrementer le temps réel
+                if (!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
-                if (listePrets.Count != 0) //s'il y a des processus prêts
+                if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused) //s'il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
@@ -145,7 +145,7 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
-                else AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
+                else if (!SimulationPage_MultiLvl.paused) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
             }
             if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau)&& listePrets.Count!=0)
             {
@@ -169,9 +169,9 @@ namespace Ordonnancement
             while (listePrets.Count != 0) //s'il existe des processus prêts 
             {
                 niveaux[indiceNiveau].indice[0] = MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau); //remplir la liste des processus prêts de chaque niveau
-                temps++; //incrementer le temps réel
+                if (!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 InterruptionExecute(listebloqueGenerale);
-                if (listePrets.Count != 0) //s'il y a des processus prêts
+                if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused) //s'il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
@@ -188,7 +188,7 @@ namespace Ordonnancement
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                     }
                 }
-                else AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
+                else if(!SimulationPage_MultiLvl.paused) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                 if (temps == tempsFin)
                 {
                     listePrets[0].transition = 1; //Désactivation du processus entrain d'exécution
@@ -220,10 +220,10 @@ namespace Ordonnancement
                 }
                 await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
                 anime = false;
-                temps++; //incrementer le temps réel
+                if(!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
-                if (listePrets.Count != 0) //s'il y a des processus prêts
+                if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused) //s'il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
@@ -244,7 +244,7 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
-                else AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
+                else if (!SimulationPage_MultiLvl.paused) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
             }
             if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)
             {

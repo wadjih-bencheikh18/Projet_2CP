@@ -22,7 +22,8 @@ namespace FinalAppTest
     public partial class SimulationPage_MultiLvl : Page
     {
         public Ordonnancement.Ordonnancement prog;
-        public bool paused;
+        public static bool paused = false;
+        public static bool activated = false;
         private int nbNiveaux;
         public static double Speed = 2;
         public int previous_algo_num;
@@ -30,6 +31,8 @@ namespace FinalAppTest
         {
             InitializeComponent();
             this.prog = prog;
+            activated = false;
+            paused = false;
             Ordonnancement.Ordonnancement.ScrollGantt = ScrollGantt;
             Ordonnancement.Ordonnancement.ScrollDeroulement = ScrollDeroulement;
             Ordonnancement.Ordonnancement.GanttChart = GanttChart;
@@ -82,7 +85,9 @@ namespace FinalAppTest
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView,deroulement,GanttChart);
+            if (!activated)  prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView,deroulement,GanttChart);
+            else if (paused) paused = false;
+            activated = true;
         }
 
         private void VitesseSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
