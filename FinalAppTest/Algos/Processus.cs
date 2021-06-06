@@ -255,11 +255,12 @@ namespace Ordonnancement
             Table.Children.Add(item);
             return item;
         }
-        public void InsererProcML(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox niveau, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour Ml proc
+        public Multi_Niv_TabRow_Proc InsererProcML(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox niveau, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour Ml proc
         {
             Multi_Niv_TabRow_Proc item = new Multi_Niv_TabRow_Proc(id, tempsArriv, duree, prio, niveau, Table, Ajouter);
             item.DataContext = this;
             Table.Children.Add(item);
+            return item;
         }
         public void InsererNivML(StackPanel Table, TextBox nivId, ComboBox algo, TextBox quantum, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour ML nv
         {

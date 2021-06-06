@@ -318,7 +318,7 @@ namespace FinalAppTest.Views
                 if (valide)
                 {
                     Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
-                    //PAPS_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PAPS_TabRow)processus).idTest.Text)).Push(inter);
+                    Mult_Niv_Tab.ListPro.Find(p => p.id == int.Parse(((Multi_Niv_TabRow_Proc)processus).idTest.Text)).Push(inter);
                     Interruption_TabRow row = new Interruption_TabRow((Multi_Niv_TabRow_Proc)processus)
                     {
                         DataContext = inter

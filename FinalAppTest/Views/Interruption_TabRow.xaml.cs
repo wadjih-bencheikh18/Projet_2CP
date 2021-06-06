@@ -83,7 +83,7 @@ namespace FinalAppTest.Views
             }
             else if (processus.GetType() == typeof(Multi_Niv_TabRow_Proc))
             {
-                //Mult_Niv_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((Mult_Niv_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                Mult_Niv_Tab.ListPro.Find(p => p.id == int.Parse(((Multi_Niv_TabRow_Proc)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((Multi_Niv_TabRow_Proc)processus).parent.Items.Remove(this);
             }
         }

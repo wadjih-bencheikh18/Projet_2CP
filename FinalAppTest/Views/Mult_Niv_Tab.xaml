@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FinalAppTest.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="720" d:DesignWidth="1280">
+             d:DesignHeight="768" d:DesignWidth="1205">
     <Grid Background="#FFE9F2FE">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -77,13 +77,25 @@
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="1">
-                        <Rectangle x:Name="RandomButton"  Fill="#FF000000" RadiusY="25" Height="Auto" Width="Auto" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend">Interruptions ?</TextBlock>
+                        <CheckBox x:Name="RandomizeInterrup" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="1" Margin="5,15">
+                        <Rectangle x:Name="RandomButton"  Fill="#FF000000" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
                             </Rectangle.Effect>
                         </Rectangle>
-                        <Grid Margin="5,55,5,15">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="2*" />
@@ -91,9 +103,9 @@
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Générer</TextBlock>
                             <Image Grid.Column="1" Height="50" VerticalAlignment="Center" Source="Generate.png" HorizontalAlignment="Left" Width="20"/>
                         </Grid>
-                        <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="RandomButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
+                        <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="RandomButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto"  StrokeThickness="0" RadiusX="25"/>
                     </Grid>
-                    <Grid Grid.Column="0">
+                    <Grid Grid.Column="0" Grid.RowSpan="2">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="2*"/>
@@ -291,7 +303,7 @@
             </Rectangle>
             <Grid Grid.Row="0" Margin="10,20,25,5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>

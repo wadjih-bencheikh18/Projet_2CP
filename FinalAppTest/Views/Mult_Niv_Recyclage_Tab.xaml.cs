@@ -53,14 +53,33 @@ namespace FinalAppTest.Views
                 Random r = new Random();
                 for (int i = 0; i < NbProcessus; i++)
                 {
-                    AffichageProcessus pro = new AffichageProcessus();
-                    pro.id = i;
-                    pro.tempsArriv = r.Next(20);
-                    pro.duree = r.Next(1, 20);
-                    pro.prio = r.Next(0, 6);
-                    pro.niveau = r.Next(0, indiceniv);
-                    pro.InsererProcML(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, NivTextBox, ajouterTB);
-                    ListPro.Add(new ProcessusNiveau(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.niveau));
+                    AffichageProcessus pro = new AffichageProcessus
+                    {
+                        id = i,
+                        tempsArriv = r.Next(20),
+                        duree = r.Next(1, 20),
+                        prio = r.Next(0, 6),
+                        niveau = r.Next(0, indiceniv)
+                    };
+                    Multi_Niv_TabRow_Proc processus = pro.InsererProcML(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, NivTextBox, ajouterTB);
+                    ProcessusNiveau proc = new ProcessusNiveau(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.niveau);
+                    processus.parent.Items.RemoveAt(processus.parent.Items.Count - 1);  // remove the ajouter_row
+                    for (int j = 0; ((bool)RandomizeInterrup.IsChecked) && pro.duree > 1 && j < r.Next(0, 3); j++)  // générer des interruptions
+                    {
+                        Interruption inter;
+                        if (r.Next(0, 2) == 1) inter = new Interruption("Entrée/sortie", r.Next(1, 5), r.Next(1, pro.duree));
+                        else inter = new Interruption("appel methode", r.Next(1, 5), r.Next(1, pro.duree));
+                        proc.Push(inter);  // ajouter l'interruption au liste des interruptions du processus
+
+                        Interruption_TabRow row = new Interruption_TabRow(processus)  // créer une ligne interruption
+                        {
+                            DataContext = inter
+                        };
+                        processus.parent.Items.Add(row);  // inserer sa ligne dans les éléments de sa TreeViewItem
+                    }
+                    processus.parent.Items.Add(new Interruption_Ajouter(processus));  // append ajouter_row
+
+                    ListPro.Add(proc);
                 }
                 IdTextBox.Text = NbProcessus.ToString();
                 indicepro = NbProcessus;
