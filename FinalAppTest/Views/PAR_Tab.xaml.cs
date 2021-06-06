@@ -209,11 +209,10 @@ namespace FinalAppTest.Views
             }
             else
             {
-                MainWindow.main.Content = new SimulationPage(prog);
+
+                MainWindow.main.Content = new SimulationPage(prog, 3);
             }
         }
-
-
 
         private void Home_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

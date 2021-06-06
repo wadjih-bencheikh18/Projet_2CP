@@ -192,7 +192,7 @@ namespace FinalAppTest.Views
             else
             {
                 if (NbHint == 0)
-                    MainWindow.main.Content = new SimulationPage(prog);
+                    MainWindow.main.Content = new SimulationPage(prog, 0);
                 else
                     FinHint();
                

@@ -212,7 +212,7 @@ namespace FinalAppTest.Views
             }
             else
             {
-                MainWindow.main.Content = new SimulationPage(prog);
+                MainWindow.main.Content = new SimulationPage(prog, 1);
             }
         }
 

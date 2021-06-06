@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FinalAppTest.ViewModels;
 using Ordonnancement;
 namespace FinalAppTest
 {
@@ -21,8 +22,10 @@ namespace FinalAppTest
     public partial class SimulationPage_MultiLvl : Page
     {
         public Ordonnancement.Ordonnancement prog;
+        public bool paused;
         private int nbNiveaux;
         public static double Speed = 2;
+        public int previous_algo_num;
         public SimulationPage_MultiLvl(Ordonnancement.Ordonnancement prog,int i)
         {
             InitializeComponent();
@@ -31,6 +34,7 @@ namespace FinalAppTest
             Ordonnancement.Ordonnancement.ScrollDeroulement = ScrollDeroulement;
             Ordonnancement.Ordonnancement.GanttChart = GanttChart;
             StackPanel[] ListesPretsViews = { ListProcessusView0, ListProcessusView1, ListProcessusView2, ListProcessusView3 };
+            previous_algo_num = i;
             if (i==0)
             {
                 nbNiveaux = ((MultiNiveau)prog).nbNiveau;
@@ -97,6 +101,27 @@ namespace FinalAppTest
             prog.listeProcessus.Clear();
             prog.listebloque.Clear();
             MainWindow.main.Content = new InitPage();
+        }
+
+        private void Pause_Click(object sender, RoutedEventArgs e)
+        {
+            paused = true;
+        }
+
+        private void Repeat_Click(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Home_Click(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.main.Content = new WelcomePage();
+        }
+
+        private void Return_Click(object sender, MouseButtonEventArgs e)
+        {
+            if (previous_algo_num == 0) MainWindow.main.Content = new InitPage { DataContext = new MultiNiveauViewModel() };
+            else if (previous_algo_num == 1) MainWindow.main.Content = new InitPage { DataContext = new MultiNiveauRecyclageViewModel() };
         }
     }
 }
