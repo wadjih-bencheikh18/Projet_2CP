@@ -238,10 +238,10 @@
             <TextBlock HorizontalAlignment="Center" Margin="0,500,0,0" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
 
 
-            <Grid Grid.Row="1" Margin="100 0">
+            <Grid Grid.Row="1" Margin="50,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1.5*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.8*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
@@ -250,72 +250,73 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Ellipse Grid.Column="0" Height="65" Width="65" Fill="#0D9330">
-                        <Ellipse.Effect>
-                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
-                        </Ellipse.Effect>
-                    </Ellipse>
-                    <Button x:Name="StartBtn" Style="{StaticResource MyButtonStyle}" Grid.Column="0" Background="#0D9330" BorderThickness="0" Width="45" Height="45" Click="StartBtn_Click" >
-                        <Button.Content>
-                            <Image Source="Pics/Start.png" Width="30" Height="30" />
-                        </Button.Content>
-                    </Button>
+                    <Grid>
+                        <Ellipse Height="65" Width="65" Fill="#0D9330">
+                            <Ellipse.Effect>
+                                <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+                        <Image Source="Pics/Start.png" Width="30" Height="30"/>
+                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="StartBtn_Click"/>
+                    </Grid>
 
-                    <Ellipse Grid.Column="1" Height="65" Width="65" Fill="#B51F1F">
-                        <Ellipse.Effect>
-                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
-                        </Ellipse.Effect>
-                    </Ellipse>
-                    <Button Grid.Column="1" x:Name="ExitButton" Click="ExitButton_Click" Style="{StaticResource MyButtonStyle}" Background="#B51F1F" BorderThickness="0" Width="45" Height="45">
-                        <Button.Content>
-                            <Image Source="Pics/resume.png" Width="30" Height="30"/>
-                        </Button.Content>
-                    </Button>
+                    <Grid Grid.Column="1">
+                        <Ellipse Height="65" Width="65" Fill="#FFB53E">
+                            <Ellipse.Effect>
+                                <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+                        <Image Source="Pics/pause.png" Width="30" Height="30"/>
+                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Pause_Click"/>
+                    </Grid>
 
-                    <Ellipse Height="65" Width="65" Fill="#FFB53E" Grid.Column="2">
-                        <Ellipse.Effect>
-                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
-                        </Ellipse.Effect>
-                    </Ellipse>
-                    <Button Grid.Column="2" Style="{StaticResource MyButtonStyle}" Background="#FFB53E" BorderThickness="0" Width="45" Height="45">
-                        <Button.Content>
-                            <Image Source="Pics/pause.png" Width="30" Height="30"/>
-                        </Button.Content>
-                    </Button>
+                    <Grid Grid.Column="2">
+                        <Ellipse Height="65" Width="65" Fill="#B51F1F">
+                            <Ellipse.Effect>
+                                <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+                        <Image Source="Pics/circle.png" Width="30" Height="30"/>
+                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Repeat_Click"/>
+                    </Grid>
 
-                    <Ellipse Height="65" Width="65" Fill="#4974C8" Grid.Column="3">
-                        <Ellipse.Effect>
-                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
-                        </Ellipse.Effect>
-                    </Ellipse>
-                    <Button Grid.Column="3" Style="{StaticResource MyButtonStyle}" Background="#4974C8" BorderThickness="0" Width="45" Height="45">
-                        <Button.Content>
-                            <Image Source="Pics/circle.png" Width="30" Height="30"/>
-                        </Button.Content>
-                    </Button>
+                    <Grid Grid.Column="4">
+                        <Image Cursor="Hand" Source="Pics/ReturnButton.png" Width="65" Height="65" MouseLeftButtonDown="Return_Click">
+                            <Image.Effect>
+                                <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                            </Image.Effect>
+                        </Image>
+                    </Grid>
 
-                    <Ellipse Height="65" Width="65" Fill="#666666" Grid.Column="4">
-                        <Ellipse.Effect>
-                            <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
-                        </Ellipse.Effect>
-                    </Ellipse>
-                    <Button x:Name="ResultFinalBtn" Style="{StaticResource MyButtonStyle}" Grid.Column="4" Background="#666666" BorderThickness="0" Width="45" Height="45" Click="ResultFinalBtn_Click" >
-                        <Button.Content>
-                            <Image Source="Pics/algos.png" Width="30" Height="30"/>
-                        </Button.Content>
-                    </Button>
+                    <Grid Grid.Column="5">
+                        <Image Cursor="Hand" Source="Pics/HomeButton.png" Width="65" Height="65" MouseLeftButtonDown="Home_Click">
+                            <Image.Effect>
+                                <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                            </Image.Effect>
+                        </Image>
+                    </Grid>
+
+                    <Grid Grid.Column="3">
+                        <Ellipse Height="65" Width="65" Fill="#666666">
+                            <Ellipse.Effect>
+                                <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+                        <Image Source="Pics/algos.png" Width="30" Height="30"/>
+                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="ResultFinalBtn_Click"/>
+                    </Grid>
                 </Grid>
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" Margin="50,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2.5*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Vitesse :" Margin="20 0"  FontSize="30" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <Slider Grid.Column="1" x:Name="VitesseSlider" VerticalAlignment="Center" Minimum="1" Maximum="6" Loaded="VitesseSlider_Loaded" ValueChanged="VitesseSlider_ValueChanged"/>
+                    <Slider Grid.Column="1" x:Name="VitesseSlider" VerticalAlignment="Center" Minimum="1" Maximum="6" ValueChanged="VitesseSlider_ValueChanged" Loaded="VitesseSlider_Loaded" />
                 </Grid>
-
             </Grid>
 
         </Grid>

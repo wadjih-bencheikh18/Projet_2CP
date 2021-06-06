@@ -26,6 +26,7 @@ namespace FinalAppTest.Views
         {
             InitializeComponent();
             IdTextBox.Text = indicepro.ToString();
+            indiceniv = 0;
             randNiv.Text = indiceniv.ToString();
             nivId.Text = indiceniv.ToString();
         }
