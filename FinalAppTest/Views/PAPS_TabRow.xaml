@@ -8,7 +8,7 @@
              d:DesignHeight="50" d:DesignWidth="800">
     <Grid Margin="-10,10,10,0" x:Name="mainGrid">
         <TreeView BorderThickness="0">
-            <TreeViewItem x:Name="TreeViewParent" BorderThickness="0" Selected="TreeViewParent_Selected">
+            <TreeViewItem x:Name="TreeViewParent" BorderThickness="0" Selected="TreeViewParent_Selected" Expanded="TreeViewParent_Expanded">
                 <TreeViewItem.Header>
                     <Grid x:Name="processusHeader" Width="700">
                         <Grid.ColumnDefinitions>

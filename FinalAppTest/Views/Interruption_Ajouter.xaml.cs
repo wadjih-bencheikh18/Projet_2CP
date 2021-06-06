@@ -47,6 +47,7 @@ namespace FinalAppTest.Views
                 }
                 if (valide)
                 {
+                    PAPS_Tab.HintSuivant();
                     Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
                     PAPS_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PAPS_TabRow)processus).idTest.Text)).Push(inter);
                     Interruption_TabRow row = new Interruption_TabRow((PAPS_TabRow)processus)

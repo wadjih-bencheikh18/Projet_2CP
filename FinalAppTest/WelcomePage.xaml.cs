@@ -46,31 +46,37 @@ namespace FinalAppTest
         private void Rectangle1_MouseEnter(object sender, MouseEventArgs e)
         {
             Rectangle1.Fill = (Brush)new BrushConverter().ConvertFrom("#F16022");
+            Text1.Foreground = (Brush)new BrushConverter().ConvertFrom("#F16022");
         }
 
         private void Rectangle1_MouseLeave(object sender, MouseEventArgs e)
         {
             Rectangle1.Fill = (Brush)new BrushConverter().ConvertFrom("#000000");
+            Text1.Foreground = (Brush)new BrushConverter().ConvertFrom("#000000");
         }
 
         private void Rectangle2_MouseEnter(object sender, MouseEventArgs e)
         {
             Rectangle2.Fill = (Brush)new BrushConverter().ConvertFrom("#F16022");
+            Text2.Foreground = (Brush)new BrushConverter().ConvertFrom("#F16022");
         }
 
         private void Rectangle2_MouseLeave(object sender, MouseEventArgs e)
         {
             Rectangle2.Fill = (Brush)new BrushConverter().ConvertFrom("#000000");
+            Text2.Foreground = (Brush)new BrushConverter().ConvertFrom("#000000");
         }
 
         private void Rectangle3_MouseEnter(object sender, MouseEventArgs e)
         {
             Rectangle3.Fill = (Brush)new BrushConverter().ConvertFrom("#F16022");
+            Text3.Foreground = (Brush)new BrushConverter().ConvertFrom("#F16022");
         }
 
         private void Rectangle3_MouseLeave(object sender, MouseEventArgs e)
         {
             Rectangle3.Fill = (Brush)new BrushConverter().ConvertFrom("#000000");
+            Text3.Foreground = (Brush)new BrushConverter().ConvertFrom("#000000");
         }
 
         private void Rectangle4_MouseEnter(object sender, MouseEventArgs e)

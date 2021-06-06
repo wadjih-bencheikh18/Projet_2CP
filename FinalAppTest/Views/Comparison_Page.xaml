@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FinalAppTest.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1920"
+      d:DesignHeight="768" d:DesignWidth="1366"
       Title="Comparison_Page">
     <Grid  Background="#FFE9F2FE">
         <Grid.ColumnDefinitions>
