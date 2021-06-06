@@ -53,7 +53,8 @@ namespace FinalAppTest
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
         {
-            //MainWindow.main.Content = new ResultFinal_Tab((MultiNiveau)prog.listeProcessus);
+            if (previous_algo_num == 0) MainWindow.main.Content = new ResultFinal_Tab(((MultiNiveau)prog).listeProcessus);
+            else if (previous_algo_num == 1) MainWindow.main.Content = new ResultFinal_Tab(((MultiNiveauRecyclage)prog).listeProcessus);
         }
         
 
