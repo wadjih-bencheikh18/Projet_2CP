@@ -33,7 +33,7 @@ namespace FinalAppTest.Views
         {
             if (processus.GetType() == typeof(PAPS_TabRow))
             {
-                PAPS_Tab.HintSuivant();
+                if (PAPS_Tab.NbHint == 15) PAPS_Tab.HintSuivant();
                 PAPS_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PAPS_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((PAPS_TabRow)processus).parent.Items.Remove(this);
             }

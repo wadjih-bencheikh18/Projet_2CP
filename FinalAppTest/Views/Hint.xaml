@@ -87,7 +87,7 @@
                     <ImageBrush ImageSource="../Pics/Next.png"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Lexend" Foreground="#FFB9C0D9" Margin="0,0,36,5" FontSize="30" TextAlignment="Center">Suivant</TextBlock>
+            <TextBlock x:Name="Suivant" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Lexend" Foreground="#FFB9C0D9" Margin="0,0,36,5" FontSize="30" TextAlignment="Center">Suivant</TextBlock>
             <Rectangle Fill="#00CCFFDD" MouseLeftButtonDown="Next_Button" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="153" Height="50"></Rectangle>
             <Line HorizontalAlignment="Left" VerticalAlignment="Top" X1="37" Y2="50" X2="37" StrokeThickness="2" Stroke="#FFB9C0D9"/>
             <Rectangle Height="33" Width="19" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0">
