@@ -131,9 +131,9 @@
                 </TextBlock>
             </Grid>
             <Grid Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="1">
-                <Image Source="/Pics/Mounia.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
+                <Image Source="/Pics/Meriem.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
                 <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
-                     <Run FontSize="24" FontWeight="Regular" Text="Meriem Afaf Haddou&#10;"/>
+                    <Run FontSize="24" FontWeight="Regular" Text="Meriem Afaf Haddou&#10;"/>
                     <Run Text="&#10;"/>
                     <Run FontSize="16" FontWeight="Light" Text="jm_haddou@esi.dz"/>
                 </TextBlock>
@@ -143,13 +143,13 @@
                 <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
                      <Run FontSize="24" FontWeight="Regular" Text="Mounia Kias&#10;"/>
                      <Run Text="&#10;"/>
-                        <Run FontSize="16" FontWeight="Light" Text="jm_kias@esi.dz"/>
+                     <Run FontSize="16" FontWeight="Light" Text="jm_kias@esi.dz"/>
                 </TextBlock>
             </Grid>
             <Grid Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="1">
                 <Image Source="/Pics/Mounia.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
                 <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
-                     <Run FontSize="24" FontWeight="Regular" Text="Aymen Bendakir&#10;"/>
+                    <Run FontSize="24" FontWeight="Regular" Text="Aymen Bendakir&#10;"/>
                     <Run Text="&#10;"/>
                     <Run FontSize="16" FontWeight="Light" Text="ja_bendakir@esi.dz"/>
                 </TextBlock>
@@ -157,23 +157,21 @@
             <Grid Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="3">
                 <Image Source="/Pics/Mounia.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
                 <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
-                     <Run FontSize="24" FontWeight="Regular" Text="Mohamed Nazim Keskes&#10;"/>
-                <Run Text="&#10;"/>
-                <Run FontSize="16" FontWeight="Light" Text="jm_keskes@esi.dz"/>
+                    <Run FontSize="24" FontWeight="Regular" Text="Mohamed Nazim Keskes&#10;"/>
+                    <Run Text="&#10;"/>
+                    <Run FontSize="16" FontWeight="Light" Text="jm_keskes@esi.dz"/>
                 </TextBlock>
             </Grid>
             <Grid Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="3">
                 <Image Source="/Pics/Mounia.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
                 <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
-                     <Run FontSize="24" FontWeight="Regular" Text="Mohammed Reda Sbaihi&#10;"/>
-                <Run Text="&#10;"/>
-                <Run FontSize="16" FontWeight="Light" Text="jm_sbaihi@esi.dz"/>
+                    <Run FontSize="24" FontWeight="Regular" Text="Mohammed Reda Sbaihi&#10;"/>
+                    <Run Text="&#10;"/>
+                    <Run FontSize="16" FontWeight="Light" Text="jm_sbaihi@esi.dz"/>
                 </TextBlock>
             </Grid>
 
         </Grid>
-        <!-- <Rectangle x:Name="nextbtn" Grid.Column="2" Grid.Row="1" Fill="#505284" RadiusX="100" RadiusY="100" Width="50" Height="50" Margin="0,120,0,0"/>
-        <Rectangle Grid.Column="0" Grid.Row="1" Fill="#505284" Width="50" Height="50" RadiusX="100" RadiusY="100" Margin="0,120,0,0"/>-->
         <Image x:Name="Suiv" VerticalAlignment="Center" Source="goRight.png" Grid.Column="2" Grid.Row="1" MouseLeftButtonDown="Suiv_Click" Width="80" Cursor="Hand" Margin="0" HorizontalAlignment="Center">
             <Image.Effect>
                 <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>

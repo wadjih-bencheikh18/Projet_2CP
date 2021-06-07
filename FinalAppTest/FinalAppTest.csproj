@@ -501,5 +501,8 @@
     <Resource Include="Pics\ReturnButton.png" />
     <Resource Include="Pics\VoirCoursButton.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\Meriem.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
