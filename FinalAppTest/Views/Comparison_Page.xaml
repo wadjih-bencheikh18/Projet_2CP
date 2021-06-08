@@ -18,7 +18,7 @@
                 <DropShadowEffect ShadowDepth="0" Opacity="0.2" BlurRadius="15" Direction="0"/>
             </Rectangle.Effect>
         </Rectangle>
-        <Grid x:Name="Page1" Visibility="Hidden" Grid.Column="1" Margin="10,90" >
+        <Grid x:Name="Page1" Visibility="Visible" Grid.Column="1" Margin="10,90" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="3*" />
@@ -52,7 +52,7 @@
             </Grid>
             <Image Margin="80" Grid.Column="1"   OpacityMask="#FFFF0303" Source="/Pics/Arrow.png"/>
         </Grid>
-        <ScrollViewer x:Name="Page2"  Visibility="Visible" Grid.Column="1" Margin="10,140" Padding="20,-40" VerticalScrollBarVisibility="Visible" Grid.RowSpan="2" >
+        <ScrollViewer x:Name="Page2"  Visibility="Collapsed" Grid.Column="1" Margin="10,140" Padding="20,-40" VerticalScrollBarVisibility="Visible" Grid.RowSpan="2" >
             <ScrollViewer.OpacityMask>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="Transparent" Offset="1"/>
@@ -255,9 +255,9 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Rectangle Cursor="Hand" MouseLeave="LeftLeave" MouseEnter="LeftHover" MouseLeftButtonDown="Swipe" Height="60" Width="60" RadiusX="30" RadiusY="30" Fill="#005829AA" VerticalAlignment="Center" />
+            <Rectangle Cursor="Hand" MouseLeftButtonDown="Swipe" Height="60" Width="60" RadiusX="30" RadiusY="30" Fill="#005829AA" VerticalAlignment="Center" />
         </Grid>
-        <Grid Grid.Column="2" Height="60" Width="60" VerticalAlignment="Center">
+        <Grid x:Name="RightRect" Grid.Column="2" Height="60" Width="60" VerticalAlignment="Center">
             <Rectangle Height="60" Width="60" RadiusX="30" RadiusY="30" VerticalAlignment="Center" >
                 <Rectangle.Fill>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -266,11 +266,59 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
                 <Rectangle.Effect>
-                    <DropShadowEffect x:Name="RightEffect" Color="#FF5829AA" Opacity="0.5" Direction="-90" BlurRadius="15" ShadowDepth="6"/>
+                    <DropShadowEffect x:Name="RightEffect" Color="#FF5829AA" Opacity="0.5" Direction="-90" BlurRadius="10" ShadowDepth="6"/>
                 </Rectangle.Effect>
             </Rectangle>
             <Image VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="/Pics/Arrow.png" Height="30" Margin="18,10,12,10" />
-            <Rectangle Cursor="Hand" MouseLeave="RightLeave" MouseEnter="RightHover" MouseLeftButtonDown="Swipe" Height="60" Width="60" RadiusX="30" RadiusY="30" Fill="#005829AA" VerticalAlignment="Center" />
+            <Rectangle Cursor="Hand" MouseLeftButtonDown="Swipe" Height="60" Width="60" RadiusX="30" RadiusY="30" Fill="#005829AA" VerticalAlignment="Center" >
+                <Rectangle.Triggers>
+                    <!-- Animates the rectangle's opacity. -->
+                    <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="RightEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="10" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="RightEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="15" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="RightEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="RightEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="10" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Rectangle.Triggers>
+            </Rectangle>
         </Grid>
         <Grid Grid.Column="2" Height="60" Width="60" VerticalAlignment="Top" Margin="0,30">
             <Rectangle Height="60" Width="60" RadiusX="30" RadiusY="30" Fill="#FFBF0D20" VerticalAlignment="Center" >
@@ -279,7 +327,7 @@
                 </Rectangle.Effect>
             </Rectangle>
             <TextBlock Foreground="White" FontFamily="Franklin Gothic Heavy" Text="X" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Rectangle Cursor="Hand" MouseLeave="RightLeave" MouseEnter="RightHover" MouseLeftButtonDown="Swipe" Height="60" Width="60" RadiusX="30" RadiusY="30" Fill="#005829AA" VerticalAlignment="Center" />
+            <Rectangle Cursor="Hand" MouseLeftButtonDown="Exit" Height="60" Width="60" RadiusX="30" RadiusY="30" Fill="#005829AA" VerticalAlignment="Center" />
         </Grid>
 
     </Grid>
