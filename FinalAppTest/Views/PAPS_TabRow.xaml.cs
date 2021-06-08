@@ -59,14 +59,19 @@ namespace FinalAppTest.Views
             PAPS_Tab.modifier = true;
             PAPS_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
-            PAPS_Tab.HintSuivant();
+            if (PAPS_Tab.NbHint == 9) PAPS_Tab.HintSuivant();
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
             PAPS_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
-            PAPS_Tab.HintSuivant();
+            if (Table.Children.Count == 0)
+            {
+                PAPS_Tab.ThisPage.IdTextBox.Text = 0.ToString();
+                PAPS_Tab.indice = 0;
+            }
+            if(PAPS_Tab.NbHint==8) PAPS_Tab.HintSuivant();
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
@@ -76,7 +81,7 @@ namespace FinalAppTest.Views
 
         private void TreeViewParent_Expanded(object sender, RoutedEventArgs e)
         {
-            PAPS_Tab.HintSuivant();
+            if (PAPS_Tab.NbHint == 12) PAPS_Tab.HintSuivant();
         }
     }
 }

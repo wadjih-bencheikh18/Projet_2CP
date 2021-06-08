@@ -28,7 +28,7 @@ namespace FinalAppTest.Views
         public static PAPS prog = new PAPS();
         public static bool modifier = false;
         public static PAPS_TabRow proModifier;
-        private int indice = 0;
+        public static int indice = 0;
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
@@ -39,9 +39,8 @@ namespace FinalAppTest.Views
             }
             else
             {
-                HintSuivant();
+                if(NbHint==4) HintSuivant();
                 prog.listeProcessus.Clear();  // vider la liste pour l'ecraser
-                NbProcessusTextBox.Text = "0";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
                 Random r = new Random();
@@ -82,28 +81,30 @@ namespace FinalAppTest.Views
         private void AddProcessusButton_Click(object sender, RoutedEventArgs e)  // ajouter un processus
         {
             bool valide = true;
-            int id, tempsArrive, duree;
+            int id;
             var bc = new BrushConverter();
-            if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
+            if (!Int32.TryParse(TempsArrivTextBox.Text, out int tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
                 valide = false;
                 RectTar.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
-            if (!Int32.TryParse(DureeTextBox.Text, out duree) || duree <= 0)  // get durée
+            if (!Int32.TryParse(DureeTextBox.Text, out int duree) || duree <= 0)  // get durée
             {
                 valide = false;
                 RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
             if (valide)  // si tous est correcte
             {
-                HintSuivant();
+                
                 RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+                TempsArrivTextBox.Text = "0";
+                DureeTextBox.Text = "1";
                 if (!modifier)  // un nouveau processus
                 {
+                    if (NbHint == 7) HintSuivant();
                     id = indice;
-                    TempsArrivTextBox.Text = "0";
-                    DureeTextBox.Text = "1";
+                    
                     IdTextBox.Text = (id + 1).ToString();
                     NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
                     AffichageProcessus pro = new AffichageProcessus
@@ -118,6 +119,7 @@ namespace FinalAppTest.Views
                 }
                 else  // modifier un existant
                 {
+                    if (NbHint == 11) HintSuivant();
                     AffichageProcessus pro = new AffichageProcessus
                     {
                         id = int.Parse(IdTextBox.Text),
@@ -293,6 +295,7 @@ namespace FinalAppTest.Views
             Panel.SetZIndex(Random, 0);
             Panel.SetZIndex(Simuler, 0);
             Panel.SetZIndex(Tableau, 0);
+            hint.Child = null;
         }
         private void Hint_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -300,9 +303,8 @@ namespace FinalAppTest.Views
             ApplyEffect();
             Description.Effect = null;
             Panel.SetZIndex(Description, 1);
-            Hint Test;
             hint.Margin = new Thickness(264, 120, 0, 0);
-            Test = new Hint(
+            Hint Test = new Hint(
                                 "Simlation PAPS",
                                 "On va comancer une simulation PAPS",
                                 this,
@@ -316,8 +318,6 @@ namespace FinalAppTest.Views
         public void Hint()
         {
             Hint Test;
-            BlurEffect Effect = new BlurEffect();
-            Effect.Radius = 7;
             if (NextHintCondition)
             {
                 ApplyEffect();
@@ -338,7 +338,7 @@ namespace FinalAppTest.Views
                 {
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
-                    hint.Margin = new Thickness(38, 512, 0, 0);
+                    hint.Margin = new Thickness(196, 324, 0, 0);
                     Test = new Hint(
                                         "Generer les Processus",
                                         "Enter un nombre aleatoire des processus a generer",
@@ -351,10 +351,10 @@ namespace FinalAppTest.Views
                 {
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
-                    hint.Margin = new Thickness(38, 512, 0, 0);
+                    hint.Margin = new Thickness(364, 298, 0, 0);
                     Test = new Hint(
                                         "Generer les Processus",
-                                        "Vous pouvez generer des interruption en cliquant sur ici",
+                                        "Vous pouvez generer des interruption en cliquant ici",
                                         this,
                                         hint
                                     );
@@ -364,7 +364,7 @@ namespace FinalAppTest.Views
                 {
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(360, 352, 0, 0);
                     Test = new Hint(
                                         "Generer les Processus",
                                         "Clique sur le button Générer pour creer les procesus",
@@ -377,7 +377,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(676, 312, 0, 0);
                     Test = new Hint(
                                         "Tableau des procesus",
                                         "Voici le tableau des procesus vos pouvez changer les procesus comme vos voulez",
@@ -390,7 +390,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(936, 490, 0, 0);
                     Test = new Hint(
                                         "Ajouter un processus",
                                         "Changer les parametre de processus a inserer",
@@ -403,7 +403,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(778, 482, 0, 0);
                     Test = new Hint(
                                         "Ajouter un processus",
                                         "Clique sur Ajouter pour inserer le processus",
@@ -416,10 +416,10 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(670, 248, 0, 0);
                     Test = new Hint(
                                         "Supprimer un processus",
-                                        "Clique sur Supprimer pour supprimer ce processus",
+                                        "Clique sur Supprimer pour supprimer un processus",
                                         this,
                                         hint
                                     );
@@ -429,7 +429,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(670, 248, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
                                         "Clique sur Modifier pour commncer la modification sur ce processus",
@@ -442,7 +442,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(936, 490, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
                                         "Changer les parametre de processus",
@@ -455,7 +455,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(778, 482, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
                                         "Clique sur Modifier pour Confirmer votre modification",
@@ -468,7 +468,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(198, 210, 0, 0);
                     Test = new Hint(
                                         "Gerer les interuptions",
                                         "Click sur le petit triangle pour commancer a gerer les interruptions.",
@@ -481,7 +481,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(230, 272, 0, 0);
                     Test = new Hint(
                                         "Gerer les interuptions",
                                         "Changer les parametre de l'interruption a inserer.",
@@ -494,7 +494,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(686, 312, 0, 0);
                     Test = new Hint(
                                         "Gerer les interuptions",
                                         "Clique sur Ajouter pour inserer cette interruption.",
@@ -507,7 +507,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(686, 312, 0, 0);
                     Test = new Hint(
                                         "Gerer les interuptions",
                                         "Clique sur Supprimer pour supprimer une interruption.",
@@ -527,7 +527,8 @@ namespace FinalAppTest.Views
                                         this,
                                         hint
                                     );
-                    NextHintCondition = false;
+                    Test.Fin();
+                    NextHintCondition = true;
                 }
                 else
                 {
@@ -556,6 +557,11 @@ namespace FinalAppTest.Views
         {
             shadowHint.ShadowDepth = 0;
             shadowHint.BlurRadius = 5;
+        }
+
+        private void NbProcessusTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).Text = "";
         }
     }
 }

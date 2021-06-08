@@ -37,12 +37,20 @@ namespace FinalAppTest.Views
         {
             InitializeComponent();
         }
-
+        public void Fin()
+        {
+            Suivant.Text = "FIN";
+            Suivant.Margin = new Thickness(0, 0, 60, 5);
+        }
         private void Next_Button(object sender, MouseButtonEventArgs e)
         {
             if(Page.GetType()==typeof(PAPS_Tab))
             {
-                if(PAPS_Tab.NextHintCondition)
+                if(Suivant.Text=="FIN")
+                {
+                    ((PAPS_Tab)Page).FinHint();
+                }
+                else if(PAPS_Tab.NextHintCondition)
                 {
                     PAPS_Tab.NbHint++;
                     hint.Child = null;

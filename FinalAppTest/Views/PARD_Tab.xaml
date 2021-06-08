@@ -84,7 +84,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend">Interruptions ?</TextBlock>
-                            <CheckBox Margin="0,0,10,0" x:Name="RandomizeInterrup" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+                            <CheckBox Cursor="Hand" Margin="0,0,10,0" x:Name="RandomizeInterrup" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
                         </Grid>
                         <Rectangle Grid.Column="1" x:Name="RandomButton" Fill="#FF000000" RadiusY="25" Height="Auto" Width="Auto" Margin="5,22" StrokeThickness="0" RadiusX="25">
                             <Rectangle.Effect>
@@ -106,20 +106,18 @@
                             <RowDefinition/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
-                        <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                        <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Width="Auto" Margin="30,0" Height="40"/>
+                        <TextBox GotFocus="NbProcessusTextBox_GotFocus" x:Name="NbProcessusTextBox" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
                         <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des processus" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                        <TextBox LostFocus="NbProcessusTextBox_LostFocus" x:Name="NbProcessusTextBox" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                        <Grid Grid.Column="1">
-                        </Grid>
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
-                        <Rectangle x:Name="RectQuantum" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                        <Rectangle x:Name="RectQuantum" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Width="Auto" Margin="30,0" Height="40"/>
+                        <TextBox GotFocus="QuantumTxt_GotFocus" x:Name="QuantumTxt" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" TextChanged="QuantumTxt_TextChanged" Grid.Row="1" Text="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
                         <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Temps de mise à jour" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                        <TextBox LostFocus="Quantum_LostFocus" x:Name="QuantumTxt" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="5" TextChanged="QuantumTxt_TextChanged" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
                     </Grid>
                 </Grid>
                 <Grid Height="100" Width="250">
@@ -181,9 +179,9 @@
                         <RowDefinition/>
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
-                    <Rectangle Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                    <Rectangle Grid.Row="1" Fill="#FFFFFF" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
                     <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="ID " VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox  IsReadOnly="True" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="IdTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    <TextBox IsReadOnly="True" Cursor="Arrow" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="IdTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
@@ -192,7 +190,7 @@
                     </Grid.RowDefinitions>
                     <Rectangle x:Name="RectTar" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
                     <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Temps d'arrivée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox LostFocus="TempsArrivTextBox_LostFocus" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="TempsArrivTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    <TextBox GotFocus="NbProcessusTextBox_GotFocus" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="TempsArrivTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" Margin="30,0" TextAlignment="Center" VerticalContentAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
@@ -210,7 +208,7 @@
                     </Grid.RowDefinitions>
                     <Rectangle x:Name="RectPrio" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
                     <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Priorité" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox LostFocus="PrioTextBox_LostFocus" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="PrioTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    <TextBox GotFocus="NbProcessusTextBox_GotFocus" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="PrioTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" Margin="30,0" TextAlignment="Center" VerticalContentAlignment="Center"/>
                 </Grid>
                 <!-- <Button BorderThickness="0" Background="#0000"  x:Name="AddProcessusButton" Grid.Column="3" Content="Ajouter" Click="AddProcessusButton_Click" Margin="20,50,20,25"/>-->
                 <Grid Grid.Column="4">
