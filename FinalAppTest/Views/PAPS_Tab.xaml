@@ -218,7 +218,7 @@
             </Rectangle>
         </Grid>
         <Viewbox x:Name="hint" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="686,312,0,0">
-            <local:Hint></local:Hint>
+            
         </Viewbox>
         
     </Grid>
