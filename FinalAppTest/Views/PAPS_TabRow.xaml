@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:FinalAppTest.Views"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="800">
+<<<<<<< HEAD
     <Grid Loaded="GridScale" SizeChanged="GridScale" Margin="10,5,10,0" MouseLeftButtonDown="Afficher_Interrup"  x:Name="mainGrid">
         <Grid.Triggers>
             <!-- Animates the rectangle's opacity. -->
@@ -26,6 +27,11 @@
         </Grid.Triggers>
         <TreeView BorderThickness="0" HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <TreeViewItem x:Name="TreeViewParent" BorderThickness="0" Selected="TreeViewParent_Selected" HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="0" >
+=======
+    <Grid Margin="-10,10,10,0" x:Name="mainGrid">
+        <TreeView BorderThickness="0">
+            <TreeViewItem x:Name="TreeViewParent" BorderThickness="0" Selected="TreeViewParent_Selected" Expanded="TreeViewParent_Expanded">
+>>>>>>> 08d12a12dfb12b653ebcbde13794e100a8dbd33c
                 <TreeViewItem.Header>
                     <Grid x:Name="processusHeader"  HorizontalAlignment="Left" Margin="-18,0,0,0" >
                         <Grid.ColumnDefinitions>

@@ -19,6 +19,40 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="Error">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="Description">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Normal</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Normal</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Normal</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="Description">
+                <EasingColorKeyFrame KeyTime="0" Value="Black"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF0D0DDA"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.5" Value="Black"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="Description">
+                <EasingDoubleKeyFrame KeyTime="0" Value="24"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="26"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="24"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Description">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0,20"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
     </UserControl.Resources>
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
@@ -28,7 +62,7 @@
             <BeginStoryboard Storyboard="{StaticResource SuivantHoverRemove}" />
         </EventTrigger>
     </UserControl.Triggers>
-    <Grid Width="400" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid x:Name="HintPage" Width="400" HorizontalAlignment="Center" VerticalAlignment="Top">
         <Rectangle RadiusY="10" RadiusX="10">
             <Rectangle.Fill>
                 <SolidColorBrush x:Name="solidColorBrush" Color="#FFB9C0D9" Opacity="0.7"/>
@@ -39,10 +73,10 @@
             <TextBlock x:Name="textBlock" FontFamily="Lexend" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" TextDecorations="Underline">Skip</TextBlock>
         </Grid>
 
-        <WrapPanel x:Name="grid1" Margin="25,60,20,110" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <StackPanel x:Name="grid1" Margin="25,60,20,110" VerticalAlignment="Top" HorizontalAlignment="Left">
             <TextBlock x:Name="Title" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40"  TextWrapping="Wrap" FontWeight="DemiBold" Margin="0,0,0,12"><Run Text="{Binding TitleText}"/></TextBlock>
-            <TextBlock x:Name="Description" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="24"><Run Text="{Binding DescriptionText}"/></TextBlock>
-        </WrapPanel>
+            <TextBlock x:Name="Description" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="24" OpacityMask="{x:Null}"><Run Text="{Binding DescriptionText}"/></TextBlock>
+        </StackPanel>
         <Grid x:Name="grid" Height="50" Width="190" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,25" >
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="11" Opacity="0"/>
@@ -53,7 +87,7 @@
                     <ImageBrush ImageSource="../Pics/Next.png"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Lexend" Foreground="#FFB9C0D9" Margin="0,0,36,5" FontSize="30" TextAlignment="Center">Suivant</TextBlock>
+            <TextBlock x:Name="Suivant" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Lexend" Foreground="#FFB9C0D9" Margin="0,0,36,5" FontSize="30" TextAlignment="Center">Suivant</TextBlock>
             <Rectangle Fill="#00CCFFDD" MouseLeftButtonDown="Next_Button" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="153" Height="50"></Rectangle>
             <Line HorizontalAlignment="Left" VerticalAlignment="Top" X1="37" Y2="50" X2="37" StrokeThickness="2" Stroke="#FFB9C0D9"/>
             <Rectangle Height="33" Width="19" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0">

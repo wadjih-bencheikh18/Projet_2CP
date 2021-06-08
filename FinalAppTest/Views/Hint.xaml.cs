@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -32,16 +33,33 @@ namespace FinalAppTest.Views
             this.Page = Page;
             this.hint = hint;
         }
-
+        public Hint()
+        {
+            InitializeComponent();
+        }
+        public void Fin()
+        {
+            Suivant.Text = "FIN";
+            Suivant.Margin = new Thickness(0, 0, 60, 5);
+        }
         private void Next_Button(object sender, MouseButtonEventArgs e)
         {
             if(Page.GetType()==typeof(PAPS_Tab))
             {
-                PAPS_Tab.NbHint++;
-                if(PAPS_Tab.NextHintCondition)
+                if(Suivant.Text=="FIN")
                 {
+                    ((PAPS_Tab)Page).FinHint();
+                }
+                else if(PAPS_Tab.NextHintCondition)
+                {
+                    PAPS_Tab.NbHint++;
                     hint.Child = null;
-                    ((PAPS_Tab)Page).Hint_MouseLeftButtonDown(sender, e);
+                    ((PAPS_Tab)Page).Hint();
+                }
+                else
+                {
+                    Storyboard sb = this.FindResource("Error") as Storyboard;
+                    sb.Begin();
                 }
             }
             

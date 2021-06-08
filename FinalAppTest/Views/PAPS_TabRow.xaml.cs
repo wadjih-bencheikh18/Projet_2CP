@@ -35,7 +35,6 @@ namespace FinalAppTest.Views
         public TextBox duree;
         public TextBlock Ajouter;
         public StackPanel Table;
-
         public TreeViewItem parent;
 
         public PAPS_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, StackPanel Table, TextBlock Ajouter)
@@ -46,7 +45,6 @@ namespace FinalAppTest.Views
             this.duree = duree;
             this.Table = Table;
             this.Ajouter = Ajouter;
-
             parent = TreeViewParent;
 
             parent.Items.Add(new Interruption_TabHeader());
@@ -61,12 +59,19 @@ namespace FinalAppTest.Views
             PAPS_Tab.modifier = true;
             PAPS_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
+            if (PAPS_Tab.NbHint == 9) PAPS_Tab.HintSuivant();
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
             PAPS_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
+            if (Table.Children.Count == 0)
+            {
+                PAPS_Tab.ThisPage.IdTextBox.Text = 0.ToString();
+                PAPS_Tab.indice = 0;
+            }
+            if(PAPS_Tab.NbHint==8) PAPS_Tab.HintSuivant();
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
@@ -74,6 +79,7 @@ namespace FinalAppTest.Views
             TreeViewParent.IsSelected = false;
         }
 
+<<<<<<< HEAD
         private void GridScale(object sender, RoutedEventArgs e)
         {
             processusHeader.Width = mainGrid.ActualWidth-5;
@@ -84,6 +90,12 @@ namespace FinalAppTest.Views
             TreeViewParent.IsExpanded = (!TreeViewParent.IsExpanded);
         }
 
+=======
+        private void TreeViewParent_Expanded(object sender, RoutedEventArgs e)
+        {
+            if (PAPS_Tab.NbHint == 12) PAPS_Tab.HintSuivant();
+        }
+>>>>>>> 08d12a12dfb12b653ebcbde13794e100a8dbd33c
     }
 }
 

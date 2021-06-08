@@ -31,6 +31,9 @@ namespace FinalAppTest.Views
         private TextBox niveau;
         private TextBlock Ajouter;
         private StackPanel Table;
+
+        public TreeViewItem parent;
+
         public Multi_Niv_TabRow_Proc(TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox niveau, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
@@ -41,7 +44,13 @@ namespace FinalAppTest.Views
             this.prio = prio;
             this.niveau = niveau;
             this.Ajouter = Ajouter;
+
+            parent = TreeViewParent;
+
+            parent.Items.Add(new Interruption_TabHeader());
+            parent.Items.Add(new Interruption_Ajouter(this));
         }
+        
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
         {
             id.Text = idTest.Text;
@@ -58,6 +67,11 @@ namespace FinalAppTest.Views
         {
             Mult_Niv_Tab.ListPro.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
+        }
+
+        private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
+        {
+            TreeViewParent.IsSelected = false;
         }
     }
 }

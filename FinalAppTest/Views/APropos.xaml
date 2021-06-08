@@ -8,6 +8,7 @@
       d:DesignHeight="768" d:DesignWidth="1366"
       Title="APropos">
 
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -16,12 +17,12 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="11*"/>
-            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="10.5*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <!--Home button-->
         <Grid Grid.Column="0" Grid.Row="0" Panel.ZIndex="1">
-            <Image VerticalAlignment="Center" Source="/Pics/Home_icon.png" Margin="30,0,0,0" Width="100">
+            <Image VerticalAlignment="Center" Source="/Pics/HomeButton.png" Margin="30,0,0,0" Width="100">
                 <Image.Effect>
                     <DropShadowEffect x:Name="shadowHome" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
                 </Image.Effect>
@@ -37,7 +38,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="1.5*"/>
-                <ColumnDefinition Width="4.5*"/>
+                <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -50,23 +51,19 @@
             <!--Titre-->
             <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Qu'est ce que CPU Simulator ?" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" Foreground="#505284" FontSize="60" FontWeight="Medium"/>
             <!--Logo-->
-            <Image Grid.Row="2" Grid.Column="1" Source="/Pics/Logo.png" Width="180" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2">
+            <Image Grid.Row="2" Grid.Column="1" Source="/Pics/Logo.png" Width="180" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.RowSpan="2" Margin="25,0,0,0">
                 <Image.Effect>
                     <DropShadowEffect x:Name="shadowLogo" Opacity="0.025" ShadowDepth="0.25" BlurRadius="8"/>
                 </Image.Effect>
             </Image>
             <!--Texte-->
-            <TextBlock TextWrapping="Wrap" Grid.Row="2" Grid.Column="2" Grid.RowSpan="2" FontFamily="Lexend" FontSize="30" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Justify">
+            <TextBlock TextWrapping="Wrap" Grid.Row="2" Grid.Column="2" Grid.RowSpan="2" FontFamily="Lexend" FontSize="30" FontWeight="Medium" HorizontalAlignment="Right" VerticalAlignment="Center" TextAlignment="Justify" Margin="0,0,25,0">
             <Run Foreground="#1d1d1b" Text="CPU Simulator est une application Desktop réalisée en 2021 dans le cadre du Projet 2CP permettant une"/>
             <Run Foreground="#e9592f" Text="simulation visuelle"/>
             <Run Foreground="#1d1d1b" Text="des processus afin d'aider les étudiants à comprendre le fonctionnement des différents"/>
             <Run Foreground="#e9592f" Text="algorithmes d'ordonnancement."/>
             </TextBlock>
-            <Image x:Name="go1to2" VerticalAlignment="Center" Source="goRight.png" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" Width="80" MouseLeftButtonDown="go1to2_Click" Cursor="Hand">
-                <Image.Effect>
-                    <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
-                </Image.Effect>
-            </Image>
+
         </Grid>
 
         <!--Grid page 2-->
@@ -88,27 +85,18 @@
                 <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
             <!--Titre-->
-            <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Qui sommes-nous ?" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" Foreground="#505284" FontSize="60" FontWeight="Medium"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Qui sommes-nous ?" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" Foreground="#505284" FontSize="60" FontWeight="Medium" Margin="0"/>
             <!--Logo-->
-            <Image Grid.Row="2" Grid.Column="2" Source="/Pics/esi_logo.png" Width="160" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2" Margin="0,0,0,35">
+            <Image Grid.Row="2" Grid.Column="2" Source="/Pics/esi_logo.png" Width="180" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.RowSpan="2" Margin="0,0,25,0" Height="180">
                 <Image.Effect>
                     <DropShadowEffect x:Name="esishadow" Opacity="0.25" ShadowDepth="0.25" BlurRadius="8"/>
                 </Image.Effect>
             </Image>
             <!--Texte-->
-            <TextBlock TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" FontFamily="Lexend" FontSize="30" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Justify">
+            <TextBlock TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" FontFamily="Lexend" FontSize="30" FontWeight="Medium" HorizontalAlignment="Left" VerticalAlignment="Center" TextAlignment="Justify" Margin="25,0,0,0">
             <Run Foreground="#1d1d1b" Text="Notre équipe se compose de 6 étudiants de l'Ecole Nationale Supérieure d'Informatique d'Alger (ESI) de la promo 2019, encadrés par Mr Dahamni Foudil et Mme Charabi Leila."/>
             </TextBlock>
-            <Image x:Name="go2to1" VerticalAlignment="Center" Source="goLeft.png" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" MouseLeftButtonDown="go2to1_Click" Width="80" Cursor="Hand">
-                <Image.Effect>
-                    <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
-                </Image.Effect>
-            </Image>
-            <Image x:Name="go2to3" VerticalAlignment="Center" Source="goRight.png" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" MouseLeftButtonDown="go2to3_Click" Width="80" Cursor="Hand">
-                <Image.Effect>
-                    <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
-                </Image.Effect>
-            </Image>
+
         </Grid>
 
         <!--Grid page 3-->
@@ -117,12 +105,12 @@
                 <ImageBrush ImageSource="aprop3.png" />
             </Grid.Background>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2.2*"/>
                 <ColumnDefinition Width="1.25*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="1.25*"/>
                 <ColumnDefinition Width="2.25*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1.8*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="4.75*"/>
@@ -134,51 +122,65 @@
             <!--Titre-->
             <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Text="Nos membres" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" Foreground="#505284" FontSize="60" FontWeight="Medium"/>
             <!--Photos-->
-            <Image Source="Mounia.png" Grid.Column="1" Grid.Row="1" Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Image Source="Mounia.png" Grid.Column="1" Grid.Row="2" Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Image Source="Mounia.png" Grid.Column="1" Grid.Row="3" Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Image Source="Mounia.png" Grid.Column="3" Grid.Row="1" Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Image Source="Mounia.png" Grid.Column="3" Grid.Row="2" Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Image Source="Mounia.png" Grid.Column="3" Grid.Row="3" Width="500" Height="500" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <!--Description-->
-            <TextBlock TextWrapping="Wrap" Grid.Row="1" Grid.Column="2" FontFamily="Lexend" VerticalAlignment="Center">
-                <Run Foreground="#1d1d1b" FontSize="24" FontWeight="Regular" Text="Wadjih Bencheikh&#10;"/>
-                <Run Foreground="#505285" FontSize="18" FontWeight="Regular" Text="Chef d'équipe&#10;"/>
-                <Run Foreground="#1d1d1b" FontSize="16" FontWeight="Light" Text="jw_bencheikh@esi.dz"/>
-            </TextBlock>
-            <TextBlock TextWrapping="Wrap" Grid.Row="1" Grid.Column="4" FontFamily="Lexend" Foreground="#1d1d1b" VerticalAlignment="Center">
-                <Run FontSize="24" FontWeight="Regular" Text="Mounia Kias&#10;"/>
-                <Run Text="&#10;"/>
-                <Run FontSize="16" FontWeight="Light" Text="jm_kias@esi.dz"/>
-            </TextBlock>
-            <TextBlock TextWrapping="Wrap" Grid.Row="2" Grid.Column="2" FontFamily="Lexend" Foreground="#1d1d1b" VerticalAlignment="Center">
-                <Run FontSize="24" FontWeight="Regular" Text="Aymen Bendakir&#10;"/>
-                <Run Text="&#10;"/>
-                <Run FontSize="16" FontWeight="Light" Text="ja_bendakir@esi.dz"/>
-            </TextBlock>
-            <TextBlock TextWrapping="Wrap" Grid.Row="2" Grid.Column="4" FontFamily="Lexend" Foreground="#1d1d1b" VerticalAlignment="Center">
-                <Run FontSize="24" FontWeight="Regular" Text="Mohamed Nazim Keskes&#10;"/>
-                <Run Text="&#10;"/>
-                <Run FontSize="16" FontWeight="Light" Text="jm_keskes@esi.dz"/>
-            </TextBlock>
-            <TextBlock TextWrapping="Wrap" Grid.Row="3" Grid.Column="2" FontFamily="Lexend" Foreground="#1d1d1b" VerticalAlignment="Center">
-                <Run FontSize="24" FontWeight="Regular" Text="Meriem Afaf Haddou&#10;"/>
-                <Run Text="&#10;"/>
-                <Run FontSize="16" FontWeight="Light" Text="jm_haddou@esi.dz"/>
-            </TextBlock>
-            <TextBlock TextWrapping="Wrap" Grid.Row="3" Grid.Column="4" FontFamily="Lexend" Foreground="#1d1d1b" VerticalAlignment="Center">
-                <Run FontSize="24" FontWeight="Regular" Text="Mohammed Reda Sbaihi&#10;"/>
-                <Run Text="&#10;"/>
-                <Run FontSize="16" FontWeight="Light" Text="jm_sbaihi@esi.dz"/>
-            </TextBlock>
-            <Image x:Name="go3to2" VerticalAlignment="Center" Source="goLeft.png" Grid.Column="0" Grid.Row="2" MouseLeftButtonDown="go3to2_Click" Width="80" Cursor="Hand" Margin="0,0,79.45,0">
-                <Image.Effect>
-                    <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
-                </Image.Effect>
-            </Image>
+            <Grid Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1">
+                <Image Source="/Pics/Mounia.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
+                <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
+                    <Run Foreground="#1d1d1b" FontSize="24" FontWeight="Regular" Text="Wadjih Bencheikh&#xA;"/>
+                    <Run Text=" "/><Run Foreground="#505285" FontSize="18" FontWeight="Regular" Text="Chef d'équipe&#xA;"/><Run Text=" "/>
+                    <Run Foreground="#1d1d1b" FontSize="16" FontWeight="Light" Text="jw_bencheikh@esi.dz"/>
+                </TextBlock>
+            </Grid>
+            <Grid Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="1">
+                <Image Source="/Pics/Meriem.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
+                <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
+                    <Run FontSize="24" FontWeight="Regular" Text="Meriem Afaf Haddou&#10;"/>
+                    <Run Text="&#10;"/>
+                    <Run FontSize="16" FontWeight="Light" Text="jm_haddou@esi.dz"/>
+                </TextBlock>
+            </Grid>
+            <Grid Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="3">
+                <Image Source="/Pics/Mounia.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
+                <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
+                     <Run FontSize="24" FontWeight="Regular" Text="Mounia Kias&#10;"/>
+                     <Run Text="&#10;"/>
+                     <Run FontSize="16" FontWeight="Light" Text="jm_kias@esi.dz"/>
+                </TextBlock>
+            </Grid>
+            <Grid Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="1">
+                <Image Source="/Pics/Aymen.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
+                <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
+                    <Run FontSize="24" FontWeight="Regular" Text="Aymen Bendakir&#10;"/>
+                    <Run Text="&#10;"/>
+                    <Run FontSize="16" FontWeight="Light" Text="ja_bendakir@esi.dz"/>
+                </TextBlock>
+            </Grid>
+            <Grid Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="3">
+                <Image Source="/Pics/Mounia.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
+                <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
+                    <Run FontSize="24" FontWeight="Regular" Text="Mohamed Nazim Keskes&#10;"/>
+                    <Run Text="&#10;"/>
+                    <Run FontSize="16" FontWeight="Light" Text="jm_keskes@esi.dz"/>
+                </TextBlock>
+            </Grid>
+            <Grid Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="3">
+                <Image Source="/Pics/Mounia.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
+                <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
+                    <Run FontSize="24" FontWeight="Regular" Text="Mohammed Reda Sbaihi&#10;"/>
+                    <Run Text="&#10;"/>
+                    <Run FontSize="16" FontWeight="Light" Text="jm_sbaihi@esi.dz"/>
+                </TextBlock>
+            </Grid>
+
         </Grid>
-        <!-- <Rectangle x:Name="nextbtn" Grid.Column="2" Grid.Row="1" Fill="#505284" RadiusX="100" RadiusY="100" Width="50" Height="50" Margin="0,120,0,0"/>
-        <Rectangle Grid.Column="0" Grid.Row="1" Fill="#505284" Width="50" Height="50" RadiusX="100" RadiusY="100" Margin="0,120,0,0"/>-->
-        
+        <Image x:Name="Suiv" VerticalAlignment="Center" Source="goRight.png" Grid.Column="2" Grid.Row="1" MouseLeftButtonDown="Suiv_Click" Width="80" Cursor="Hand" Margin="0" HorizontalAlignment="Center">
+            <Image.Effect>
+                <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+            </Image.Effect>
+        </Image>
+        <Image Visibility="Hidden" x:Name="Prec" VerticalAlignment="Center" Source="goLeft.png" Grid.Column="0" Grid.Row="1" MouseLeftButtonDown="Prec_Click" Width="80" Cursor="Hand" Margin="0" HorizontalAlignment="Center">
+            <Image.Effect>
+                <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+            </Image.Effect>
+        </Image>
     </Grid>
 </Page>
