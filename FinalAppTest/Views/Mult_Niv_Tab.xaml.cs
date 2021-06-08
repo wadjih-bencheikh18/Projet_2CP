@@ -442,5 +442,10 @@ namespace FinalAppTest.Views
             shadowHint.ShadowDepth = 0;
             shadowHint.BlurRadius = 5;
         }
+
+        private void NbProcessusTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).Text = "";
+        }
     }
 }

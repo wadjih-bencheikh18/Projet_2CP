@@ -100,11 +100,9 @@
                                 <RowDefinition/>
                                 <RowDefinition Height="2*"/>
                             </Grid.RowDefinitions>
-                            <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                            <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Width="Auto" Margin="30,0" Height="40"/>
+                            <TextBox GotFocus="NbProcessusTextBox_GotFocus" x:Name="NbProcessusTextBox" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
                             <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des processus" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                            <TextBox LostFocus="NbProcessusTextBox_LostFocus" x:Name="NbProcessusTextBox" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            <Grid Grid.Column="1">
-                            </Grid>
                         </Grid>
                     </Grid>
                 </StackPanel>
