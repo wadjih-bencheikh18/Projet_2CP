@@ -66,6 +66,11 @@ namespace FinalAppTest.Views
         {
             PAPS_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
+            if (Table.Children.Count == 0)
+            {
+                PAPS_Tab.ThisPage.IdTextBox.Text = 0.ToString();
+                PAPS_Tab.indice = 0;
+            }
             if(PAPS_Tab.NbHint==8) PAPS_Tab.HintSuivant();
         }
 
