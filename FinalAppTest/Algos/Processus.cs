@@ -191,6 +191,23 @@ namespace Ordonnancement
             base.Affichage();
             Console.Write("\tNiveau : " + niveau);
         }
+        public new void Affichage(Grid Table, int i)
+        {
+            AffichageProcessus proc;
+            TableRowFinal item;
+            RowDefinition rowdef = new RowDefinition
+            {
+                Height = new GridLength(60)
+            };
+            Table.RowDefinitions.Insert(i, rowdef);
+            item = new TableRowFinal();
+            proc = new AffichageProcessus(this);
+            if (i % 2 == 0) proc.Background = "LightBlue";
+            else proc.Background = "lightGray";
+            item.DataContext = proc;
+            Grid.SetRow(item, i + 1);
+            Table.Children.Add(item);
+        }
         #endregion
 
     }

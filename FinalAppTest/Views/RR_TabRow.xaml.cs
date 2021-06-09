@@ -71,6 +71,11 @@ namespace FinalAppTest.Views
             }
             RR_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
+            if (Table.Children.Count == 0)
+            {
+                RR_Tab.ThisPage.IdTextBox.Text = 0.ToString();
+                RR_Tab.indice = 0;
+            }
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)

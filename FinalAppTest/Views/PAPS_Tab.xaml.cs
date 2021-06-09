@@ -20,6 +20,7 @@ namespace FinalAppTest.Views
 
         public PAPS_Tab()
         {
+            indice = 0;
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
             ThisPage = this;
@@ -45,7 +46,6 @@ namespace FinalAppTest.Views
             {
                 if(NbHint==4) HintSuivant();
                 prog.listeProcessus.Clear();  // vider la liste pour l'ecraser
-                NbProcessusTextBox.Text = "0";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
                 Random r = new Random();
@@ -86,14 +86,14 @@ namespace FinalAppTest.Views
         private void AddProcessusButton_Click(object sender, RoutedEventArgs e)  // ajouter un processus
         {
             bool valide = true;
-            int id, tempsArrive, duree;
+            int id;
             var bc = new BrushConverter();
-            if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
+            if (!Int32.TryParse(TempsArrivTextBox.Text, out int tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
                 valide = false;
                 RectTar.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
-            if (!Int32.TryParse(DureeTextBox.Text, out duree) || duree <= 0)  // get durée
+            if (!Int32.TryParse(DureeTextBox.Text, out int duree) || duree <= 0)  // get durée
             {
                 valide = false;
                 RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
@@ -103,12 +103,13 @@ namespace FinalAppTest.Views
                 
                 RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+                TempsArrivTextBox.Text = "0";
+                DureeTextBox.Text = "1";
                 if (!modifier)  // un nouveau processus
                 {
                     if (NbHint == 7) HintSuivant();
                     id = indice;
-                    TempsArrivTextBox.Text = "0";
-                    DureeTextBox.Text = "1";
+                    
                     IdTextBox.Text = (id + 1).ToString();
                     NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
                     AffichageProcessus pro = new AffichageProcessus
@@ -561,6 +562,11 @@ namespace FinalAppTest.Views
         {
             shadowHint.ShadowDepth = 0;
             shadowHint.BlurRadius = 5;
+        }
+
+        private void NbProcessusTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).Text = "";
         }
     }
 }

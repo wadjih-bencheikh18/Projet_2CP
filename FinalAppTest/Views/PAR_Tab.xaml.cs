@@ -23,6 +23,7 @@ namespace FinalAppTest.Views
     {
         public PAR_Tab()
         {
+            indice = 0;
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
             ThisPage = this;
@@ -38,16 +39,14 @@ namespace FinalAppTest.Views
         }
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
-            int NbProcessus;
             var bc = new BrushConverter();
-            if (!Int32.TryParse(NbProcessusTextBox.Text, out NbProcessus) && NbProcessus <= 0)
+            if (!Int32.TryParse(NbProcessusTextBox.Text, out int NbProcessus) && NbProcessus <= 0)
             {
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
             else
             {
                 prog.listeProcessus.Clear();  // vider la liste pour l'ecraser
-                NbProcessusTextBox.Text = "0";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
                 Random r = new Random();
@@ -109,13 +108,13 @@ namespace FinalAppTest.Views
                 RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+                PrioTextBox.Text = "0";
+                TempsArrivTextBox.Text = "0";
+                DureeTextBox.Text = "1";
                 if (!modifier)  // un nouveau processus
                 {
                     id = indice;
-                    TempsArrivTextBox.Text = "0";
-                    DureeTextBox.Text = "0";
                     IdTextBox.Text = (id + 1).ToString();
-                    PrioTextBox.Text = "0";
                     RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                     RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                     RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
@@ -318,6 +317,11 @@ namespace FinalAppTest.Views
         {
             shadowHint.ShadowDepth = 0;
             shadowHint.BlurRadius = 5;
+        }
+
+        private void NbProcessusTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).Text = "";
         }
     }
 }
