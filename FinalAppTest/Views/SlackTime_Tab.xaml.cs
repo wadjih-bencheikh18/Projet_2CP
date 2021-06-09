@@ -34,7 +34,10 @@ namespace FinalAppTest.Views
         public static SlackTime_TabRow proModifier;
         public static int indice = 0;
         public static SlackTime_Tab ThisPage;
-
+        public static void FixIndice()
+        {
+            ThisPage.IdTextBox.Text = indice.ToString();
+        }
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             var bc = new BrushConverter();

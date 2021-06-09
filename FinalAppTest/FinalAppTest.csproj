@@ -103,6 +103,12 @@
     <Compile Include="Views\Interruption_TabHeader.xaml.cs">
       <DependentUpon>Interruption_TabHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Multi_Niv_R_TabRow_Proc.xaml.cs">
+      <DependentUpon>Multi_Niv_R_TabRow_Proc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mult_Niv_R_TabRow.xaml.cs">
+      <DependentUpon>Mult_Niv_R_TabRow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PARD_Tab.xaml.cs">
       <DependentUpon>PARD_Tab.xaml</DependentUpon>
     </Compile>
@@ -240,6 +246,14 @@
     <Page Include="Views\Interruption_TabHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Multi_Niv_R_TabRow_Proc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Mult_Niv_R_TabRow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PARD_Tab.xaml">
       <Generator>MSBuild:Compile</Generator>

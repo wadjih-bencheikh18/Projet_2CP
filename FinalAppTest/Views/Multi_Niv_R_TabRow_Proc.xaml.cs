@@ -16,33 +16,33 @@ using System.Windows.Shapes;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PLA_TabRow.xaml
+    /// Interaction logic for Multi_Niv_TabRow_Proc.xaml
     /// </summary>
-    public partial class PLA_TabRow : UserControl
+    public partial class Multi_Niv_R_TabRow_Proc : UserControl
     {
-        public PLA_TabRow()
+        public Multi_Niv_R_TabRow_Proc()
         {
             InitializeComponent();
-            TreeViewItem header = new TreeViewItem();
-            header.Header = processusHeader;
-            TreeViewParent.Items.Add(header);
         }
-
         private TextBox id;
         private TextBox tempsArriv;
         private TextBox duree;
+        private TextBox prio;
+        private TextBox niveau;
         private TextBlock Ajouter;
         private StackPanel Table;
 
         public TreeViewItem parent;
 
-        public PLA_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, StackPanel Table, TextBlock Ajouter)
+        public Multi_Niv_R_TabRow_Proc(TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox niveau, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
             this.tempsArriv = tempsArriv;
             this.duree = duree;
             this.Table = Table;
+            this.prio = prio;
+            this.niveau = niveau;
             this.Ajouter = Ajouter;
 
             parent = TreeViewParent;
@@ -50,31 +50,29 @@ namespace FinalAppTest.Views
             parent.Items.Add(new Interruption_TabHeader());
             parent.Items.Add(new Interruption_Ajouter(this));
         }
+        
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
         {
             id.Text = idTest.Text;
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
-            PLA_Tab.modifier = true;
-            PLA_Tab.proModifier = this;
+            prio.Text = prioTest.Text;
+            niveau.Text = niveauTest.Text;
+            Mult_Niv_Recyclage_Tab.modifier = true;
+            Mult_Niv_Recyclage_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (PLA_Tab.modifier)
+            if (Mult_Niv_Recyclage_Tab.modifier)
             {
-                PLA_Tab.modifier = false;
+                Mult_Niv_Recyclage_Tab.modifier = false;
                 Ajouter.Text = "Ajouter";
-                PLA_Tab.FixIndice();
+                Mult_Niv_Recyclage_Tab.FixIndice();
             }
-            PLA_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
+            Mult_Niv_Recyclage_Tab.ListPro.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
-            if (Table.Children.Count == 0)
-            {
-                PLA_Tab.ThisPage.IdTextBox.Text = 0.ToString();
-                PLA_Tab.indice = 0;
-            }
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)

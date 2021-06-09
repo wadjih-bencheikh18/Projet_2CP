@@ -147,21 +147,22 @@ namespace Ordonnancement
             niveaux[indiceNiveau].indice[1] = 0;
             bool anime = true;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
-            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))  //tant qu'il existe des processus prêts
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) )  //tant qu'il existe des processus prêts
             {
-                if (anime)
+                if (!SimulationPage_MultiLvl.paused)
                 {
-                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
-                    await AfficherDeroulement(deroulement);
-                    await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
-                }
-                        
+                    if (anime)
+                    {
+                        listePrets[0].transition = 2; //Activation du 1er processus de listePrets
+                        await AfficherDeroulement(deroulement);
+                        await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
+                    }
 
-                    if(await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
+                    if (await InterruptionExecute(niveaux,listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
                     anime = false;
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
-                    if(!SimulationPage_MultiLvl.paused) temps++;
+                    if (!SimulationPage_MultiLvl.paused) temps++;
                     TempsView.Text = temps.ToString();
                     AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                     niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);
@@ -169,7 +170,7 @@ namespace Ordonnancement
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
                     MAJProcesseur_MultiLvl(Processeur);
-                    if (listePrets[0].tempsRestant == 0 && !SimulationPage_MultiLvl.paused)  // fin d'exécution du processus 
+                    if (listePrets[0].tempsRestant == 0)  // fin d'exécution du processus 
                     {
                         listePrets[0].tempsFin = temps;
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv;
@@ -182,8 +183,8 @@ namespace Ordonnancement
                         await FinProcessus_MultiLvl(Processeur);
                         anime = true;
                     }
-                    else if (niveaux[indiceNiveau].indice[1] == quantum && listePrets.Count == 1 && !SimulationPage_MultiLvl.paused) niveaux[indiceNiveau].indice[1] = 0;
-                    else if (niveaux[indiceNiveau].indice[1] == quantum && !SimulationPage_MultiLvl.paused)  // on a terminé ce quantum => il faut passer au processus suivant => on defile, et à la fin, on enfile le processus courant
+                    else if (niveaux[indiceNiveau].indice[1] == quantum && listePrets.Count == 1) niveaux[indiceNiveau].indice[1] = 0;
+                    else if (niveaux[indiceNiveau].indice[1] == quantum)  // on a terminé ce quantum => il faut passer au processus suivant => on defile, et à la fin, on enfile le processus courant
                     {
                         listePrets[0].transition = 1; //Désactivation du processus
                         listePrets[0].etat = 1;
@@ -196,7 +197,7 @@ namespace Ordonnancement
                         anime = true;
                     }
 
-                
+                }
             }
             if (! PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)  // On est arrivé à tempsFin => la fin de l'exécution 
                 {
@@ -286,7 +287,7 @@ namespace Ordonnancement
                 }
 
 
-                if (await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
+                if (await InterruptionExecute(niveaux,listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
                 anime = false;
                 listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                 listePrets[0].etat = 2;

@@ -191,6 +191,23 @@ namespace Ordonnancement
             base.Affichage();
             Console.Write("\tNiveau : " + niveau);
         }
+        public new void Affichage(Grid Table, int i)
+        {
+            AffichageProcessus proc;
+            TableRowFinal item;
+            RowDefinition rowdef = new RowDefinition
+            {
+                Height = new GridLength(60)
+            };
+            Table.RowDefinitions.Insert(i, rowdef);
+            item = new TableRowFinal();
+            proc = new AffichageProcessus(this);
+            if (i % 2 == 0) proc.Background = "LightBlue";
+            else proc.Background = "lightGray";
+            item.DataContext = proc;
+            Grid.SetRow(item, i + 1);
+            Table.Children.Add(item);
+        }
         #endregion
 
     }
@@ -265,6 +282,19 @@ namespace Ordonnancement
         public void InsererNivML(StackPanel Table, TextBox nivId, ComboBox algo, TextBox quantum, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour ML nv
         {
             Mult_Niv_TabRow item = new Mult_Niv_TabRow(nivId, algo, quantum, Table, Ajouter);
+            item.DataContext = this;
+            Table.Children.Add(item);
+        }
+        public Multi_Niv_R_TabRow_Proc InsererProcMLR(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox niveau, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour Ml proc
+        {
+            Multi_Niv_R_TabRow_Proc item = new Multi_Niv_R_TabRow_Proc(id, tempsArriv, duree, prio, niveau, Table, Ajouter);
+            item.DataContext = this;
+            Table.Children.Add(item);
+            return item;
+        }
+        public void InsererNivMLR(StackPanel Table, TextBox nivId, ComboBox algo, TextBox quantum, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour ML nv
+        {
+            Mult_Niv_R_TabRow item = new Mult_Niv_R_TabRow(nivId, algo, quantum, Table, Ajouter);
             item.DataContext = this;
             Table.Children.Add(item);
         }

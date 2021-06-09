@@ -99,11 +99,17 @@ namespace FinalAppTest
 
         private void Home_Click(object sender, MouseButtonEventArgs e)
         {
+            prog.listePrets.Clear();
+            prog.listeProcessus.Clear();
+            prog.listebloque.Clear();
             MainWindow.main.Content = new WelcomePage();
         }
 
         private void Return_Click(object sender, MouseButtonEventArgs e)
         {
+            prog.listePrets.Clear();
+            prog.listeProcessus.Clear();
+            prog.listebloque.Clear();
             if (previous_algo_num == 0) MainWindow.main.Content = new InitPage { DataContext = new PAPS_ViewModel() };
             else if (previous_algo_num == 1) MainWindow.main.Content = new InitPage { DataContext = new RR_ViewModel() };
             else if (previous_algo_num == 2) MainWindow.main.Content = new InitPage { DataContext = new PSR_ViewModel() };
@@ -113,6 +119,33 @@ namespace FinalAppTest
             else if (previous_algo_num == 6) MainWindow.main.Content = new InitPage { DataContext = new PCTR_ViewModel() };
             else if (previous_algo_num == 7) MainWindow.main.Content = new InitPage { DataContext = new PLA_ViewModel() };
             else if (previous_algo_num == 8) MainWindow.main.Content = new InitPage { DataContext = new SlackTime_ViewModel() };
+        }
+
+        private void Border_Loaded(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < prog.listeProcessus.Count; i++)
+            {
+                TextBlock item = new TextBlock();
+                RowDefinition rowdef = new RowDefinition { Height = new GridLength(60) };
+                IdGantt.VerticalAlignment = VerticalAlignment.Bottom;
+                IdGantt.RowDefinitions.Insert(i, rowdef);
+                item.Text = $"ID = { prog.listeProcessus[i].id }";
+                item.FontSize = 14;
+                item.Foreground = Brushes.Black;
+                item.Margin = new Thickness(0, 5, 0, 5);
+                item.VerticalAlignment = VerticalAlignment.Center;
+                item.FontFamily = new FontFamily("Lexend");
+                item.FontWeight = FontWeights.Medium;
+                Grid.SetRow(item, i);
+                IdGantt.Children.Add(item);
+            }
+            TextBlock item0 = new TextBlock();
+            RowDefinition rowdef0 = new RowDefinition { Height = new GridLength(60) };
+            IdGantt.VerticalAlignment = VerticalAlignment.Bottom;
+            IdGantt.RowDefinitions.Insert(prog.listeProcessus.Count, rowdef0);
+            item0.Text = "";
+            Grid.SetRow(item0, prog.listeProcessus.Count);
+            IdGantt.Children.Add(item0);
         }
     }
 }

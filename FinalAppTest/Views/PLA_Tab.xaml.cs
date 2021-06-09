@@ -34,7 +34,10 @@ namespace FinalAppTest.Views
         public static PLA_TabRow proModifier;
         public static int indice = 0;
         public static PLA_Tab ThisPage;
-
+        public static void FixIndice()
+        {
+            ThisPage.IdTextBox.Text = indice.ToString();
+        }
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             var bc = new BrushConverter();
