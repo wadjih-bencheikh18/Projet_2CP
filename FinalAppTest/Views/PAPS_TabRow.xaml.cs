@@ -79,10 +79,23 @@ namespace FinalAppTest.Views
             TreeViewParent.IsSelected = false;
         }
 
+<<<<<<< HEAD
+        private void GridScale(object sender, RoutedEventArgs e)
+        {
+            processusHeader.Width = mainGrid.ActualWidth-5;
+        }
+
+        private void Afficher_Interrup(object sender, MouseEventArgs e)
+        { 
+            TreeViewParent.IsExpanded = (!TreeViewParent.IsExpanded);
+        }
+
+=======
         private void TreeViewParent_Expanded(object sender, RoutedEventArgs e)
         {
             if (PAPS_Tab.NbHint == 12) PAPS_Tab.HintSuivant();
         }
+>>>>>>> 08d12a12dfb12b653ebcbde13794e100a8dbd33c
     }
 }
 
