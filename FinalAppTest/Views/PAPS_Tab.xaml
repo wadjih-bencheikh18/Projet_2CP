@@ -116,7 +116,7 @@
                 <Rectangle Margin="25" Cursor="Hand" MouseLeftButtonDown="StartButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
             <!--Column1: Processus Table-->
-            <Grid Background="#00FFFFFF" Margin="40,10" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <Grid x:Name="Tableau" Background="#00FFFFFF" Margin="40,10" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="85"/>
                     <RowDefinition Height="6*"/>
