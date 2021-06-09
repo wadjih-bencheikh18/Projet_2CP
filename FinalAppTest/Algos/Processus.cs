@@ -152,7 +152,7 @@ namespace Ordonnancement
             {
                 Height = new GridLength(60)
             };
-            Table.RowDefinitions.Insert(i, rowdef);
+            Table.RowDefinitions.Insert(i+1, rowdef);
             item = new TableRowFinal();
             proc = new AffichageProcessus(this);
             if (i % 2 == 0) proc.Background = "LightBlue";

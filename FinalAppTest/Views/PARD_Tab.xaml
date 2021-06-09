@@ -155,13 +155,13 @@
                     <RowDefinition Height="60"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Rectangle Grid.ColumnSpan="5" Fill="#FFE6E6FC" RadiusX="7" RadiusY="7"></Rectangle>
-                <TextBlock Grid.Column="0" Margin="30,0,0,0" Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                <TextBlock Grid.Column="0"  Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
                 <TextBlock Grid.Column="1" Text="Temps D'arrivé" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
                 <TextBlock Grid.Column="2" Text="Durée" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
                 <TextBlock Grid.Column="3" Text="Priorité" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-                <TextBlock Grid.Column="4" Margin="0,0,30,0" Text="Actions" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                <TextBlock Grid.Column="4" Text="Actions"  VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
             </Grid>
-            <ScrollViewer Margin="0,0,5,0" Grid.Row="1" Width="745">
+            <ScrollViewer Margin="0,0,5,0" Grid.Row="1" >
                 <StackPanel VerticalAlignment="Top" x:Name="ProcessusGrid" x:FieldModifier="public">
                 </StackPanel>
             </ScrollViewer>
@@ -181,7 +181,7 @@
                     </Grid.RowDefinitions>
                     <Rectangle Grid.Row="1" Fill="#FFFFFF" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
                     <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="ID " VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox IsReadOnly="True" Cursor="Arrow" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="IdTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    <TextBox  IsReadOnly="True" Cursor="Arrow" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="IdTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
@@ -199,7 +199,7 @@
                     </Grid.RowDefinitions>
                     <Rectangle x:Name="RectDuree" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
                     <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Durée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox LostFocus="DureeTextBox_LostFocus" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="DureeTextBox" Grid.Row="1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    <TextBox GotFocus="NbProcessusTextBox_GotFocus" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="DureeTextBox" Grid.Row="1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" Margin="30,0" TextAlignment="Center" VerticalContentAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Column="3">
                     <Grid.RowDefinitions>
@@ -212,20 +212,72 @@
                 </Grid>
                 <!-- <Button BorderThickness="0" Background="#0000"  x:Name="AddProcessusButton" Grid.Column="3" Content="Ajouter" Click="AddProcessusButton_Click" Margin="20,50,20,25"/>-->
                 <Grid Grid.Column="4">
-                    <Rectangle  x:Name="AddProcessusButton" Fill="#FFCCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25">
+                    <Rectangle  x:Name="AddProcessusButton"  RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF2E0B6B" Offset="1"/>
+                                <GradientStop Color="#FF5118B6"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
                         <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            <DropShadowEffect x:Name="AddEffect" Color="#FF5829AA" Opacity="0.5" Direction="-90" BlurRadius="10" ShadowDepth="2"/>
                         </Rectangle.Effect>
                     </Rectangle>
                     <Grid Margin="10,40,45,15">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="ajouterTB" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FF359354" FontFamily="Lexend">Ajouter</TextBlock>
-                        <Image Grid.Column="1" Height="50" VerticalAlignment="Center" Source="Ajouter.png" HorizontalAlignment="Center" Width="30"/>
+                        <TextBlock x:Name="ajouterTB" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Ajouter</TextBlock>
                     </Grid>
-                    <Rectangle Cursor="Hand" MouseEnter="AddProcessusButton_MouseEnter" MouseLeave="AddProcessusButton_MouseLeave" MouseLeftButtonDown="AddProcessusButton_Click" Grid.Column="4" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25"/>
+                    <Rectangle Cursor="Hand" MouseLeftButtonDown="AddProcessusButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25">
+                        <Rectangle.Triggers>
+                            <!-- Animates the rectangle's opacity. -->
+                            <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                    Storyboard.TargetName="AddEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation
+                                    Storyboard.TargetName="AddEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="15" Duration="0:0:1" >
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                    Storyboard.TargetName="AddEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="2" Duration="0:0:1" >
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation
+                                    Storyboard.TargetName="AddEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="10" Duration="0:0:1" >
+                                            <DoubleAnimation.EasingFunction>
+                                                <BackEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Rectangle.Triggers>
+                    </Rectangle>
                 </Grid>
 
             </Grid>

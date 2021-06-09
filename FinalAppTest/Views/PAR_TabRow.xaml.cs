@@ -1,5 +1,17 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace FinalAppTest.Views
 {
@@ -65,6 +77,16 @@ namespace FinalAppTest.Views
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
         {
             TreeViewParent.IsSelected = false;
+        }
+
+        private void GridScale(object sender, RoutedEventArgs e)
+        {
+            processusHeader.Width = mainGrid.ActualWidth - 5;
+        }
+
+        private void Afficher_Interrup(object sender, MouseEventArgs e)
+        {
+            TreeViewParent.IsExpanded = (!TreeViewParent.IsExpanded);
         }
     }
 }

@@ -75,5 +75,15 @@ namespace FinalAppTest.Views
         {
             TreeViewParent.IsSelected = false;
         }
+
+        private void GridScale(object sender, RoutedEventArgs e)
+        {
+            processusHeader.Width = mainGrid.ActualWidth - 5;
+        }
+
+        private void Afficher_Interrup(object sender, MouseEventArgs e)
+        {
+            TreeViewParent.IsExpanded = (!TreeViewParent.IsExpanded);
+        }
     }
 }

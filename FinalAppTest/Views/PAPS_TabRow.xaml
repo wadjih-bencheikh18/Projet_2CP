@@ -15,7 +15,7 @@
                         <DoubleAnimation
                                     Storyboard.TargetName="mainGrid" 
                                     Storyboard.TargetProperty="Opacity"
-                                    From="0" To="1" Duration="0:0:1" >
+                                    From="0" To="1" Duration="0:0:2" >
                             <DoubleAnimation.EasingFunction>
                                 <BackEase EasingMode="EaseOut" />
                             </DoubleAnimation.EasingFunction>
@@ -41,25 +41,126 @@
                         <TextBlock x:Name="idTest" Grid.Column="0" Text="{Binding id}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                         <TextBlock x:Name="tempsArrTest" Grid.Column="1" Text="{Binding tempsArriv}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                         <TextBlock x:Name="dureeTest" Grid.Column="2" Text="{Binding duree}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
-                        <Rectangle HorizontalAlignment="Left" Cursor="Hand" RadiusX="10" RadiusY="10" MouseLeftButtonDown="Afficher_Interrup" Margin="10" Height="20" Width="20" >
-                            <Rectangle.Fill>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#FF2E0B6B" Offset="1"/>
-                                    <GradientStop Color="#FF5118B6"/>
-                                </LinearGradientBrush>
-                            </Rectangle.Fill>
+                        <Rectangle x:Name="ExpandRect" Grid.ColumnSpan="3" Fill="#0000" RadiusX="5" RadiusY="5" Cursor="Hand" MouseLeftButtonDown="Afficher_Interrup" >
                         </Rectangle>
+                        <Rectangle x:Name="ColorRect" Fill="Indigo" RadiusX="5" RadiusY="5" Width="15" HorizontalAlignment="Left" ></Rectangle>
                         <Grid Grid.Column="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Visibility="Collapsed" Grid.Column="0" Content="Modifier" Margin="8 8 8 8" x:Name="modifier_Button" Click="modifier_Button_Click"/>
-                            <Rectangle Cursor="Hand" Margin="8,9" Fill="#FF314AD0" RadiusX="16" RadiusY="16" MouseLeftButtonDown="modifier_Button_Click" />
-                            <TextBlock Foreground="White" Cursor="Hand" MouseLeftButtonDown="modifier_Button_Click" FontSize="16" Text="{Binding Content, ElementName=modifier_Button, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold"/>
-                            <Button Visibility="Collapsed" Grid.Column="1" Content="Supprimer" Margin="8 8 8 8" x:Name="suprimer_Button" Click="suprimer_Button_Click"/>
-                            <Rectangle Cursor="Hand" Grid.Column="1" Margin="8,9" Fill="#FFD03131" RadiusX="16" RadiusY="16" MouseLeftButtonDown="suprimer_Button_Click" />
-                            <TextBlock Grid.Column="1" Foreground="White" Cursor="Hand" MouseLeftButtonDown="suprimer_Button_Click"  FontSize="16" Text="{Binding Content, ElementName=suprimer_Button, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold"/>
+                            <Rectangle  Margin="8,9" Fill="#FF314AD0" RadiusX="16" RadiusY="16" >
+                                <Rectangle.Effect>
+                                    <DropShadowEffect x:Name="ModEffect" Color="#FF314AD0" Opacity="0.5" Direction="-90" BlurRadius="0" ShadowDepth="0"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <TextBlock Foreground="White" Cursor="Hand" MouseLeftButtonDown="modifier_Button_Click" FontSize="16" Text="Modifier" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold"/>
+                            <Rectangle Grid.Column="1" Margin="8,9" Fill="#FFD03131" RadiusX="16" RadiusY="16">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect x:Name="SupEffect" Color="#FFD03131" Opacity="0.5" Direction="-90" BlurRadius="0" ShadowDepth="0"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <TextBlock Grid.Column="1" Foreground="White" Cursor="Hand" MouseLeftButtonDown="suprimer_Button_Click"  FontSize="16" Text="Supprimer" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold"/>
+                            <Rectangle Cursor="Hand" Margin="8,9" Fill="#0000" RadiusX="16" RadiusY="16" MouseLeftButtonDown="modifier_Button_Click">
+                                <Rectangle.Triggers>
+                                    <!-- Animates the rectangle's effect. -->
+                                    <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                    Storyboard.TargetName="ModEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="2" Duration="0:0:1" >
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <DoubleAnimation
+                                    Storyboard.TargetName="ModEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="5" Duration="0:0:1" >
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                    Storyboard.TargetName="ModEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="0" Duration="0:0:1" >
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <DoubleAnimation
+                                    Storyboard.TargetName="ModEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="0" Duration="0:0:1" >
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Rectangle.Triggers>
+                            </Rectangle>
+
+                            <Rectangle Cursor="Hand" Grid.Column="1" Margin="8,9" Fill="#0000" RadiusX="16" RadiusY="16" MouseLeftButtonDown="suprimer_Button_Click" >
+                                <Rectangle.Triggers>
+                                    <!-- Animates the rectangle's effect. -->
+                                    <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                    Storyboard.TargetName="SupEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="2" Duration="0:0:1" >
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <DoubleAnimation
+                                    Storyboard.TargetName="SupEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="5" Duration="0:0:1" >
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                    Storyboard.TargetName="SupEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="0" Duration="0:0:1" >
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <DoubleAnimation
+                                    Storyboard.TargetName="SupEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="0" Duration="0:0:1" >
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Rectangle.Triggers>
+                            </Rectangle>
+
                         </Grid>
                     </Grid>
                 </TreeViewItem.Header>
