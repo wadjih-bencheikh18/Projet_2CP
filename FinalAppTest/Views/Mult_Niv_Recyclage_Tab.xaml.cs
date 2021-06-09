@@ -240,7 +240,7 @@ namespace FinalAppTest.Views
                 else niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo);
                 NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
-                Mult_Niv_Tab.modifier = false;
+                modifier = false;
                 nivId.Text = indiceniv.ToString();
                 ajouterNV.Text = "Ajouter";
                 if (indiceniv == 4) ajouterButton.Visibility = Visibility.Hidden;
