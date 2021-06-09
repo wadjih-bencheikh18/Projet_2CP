@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1205">
     <Grid x:Name="Page">
-        <Grid Background="#FFE9F2FE">
+        <Grid Background="#FFE9F2FE" Margin="-1.5,0,1.5,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="7*"/>
@@ -116,8 +116,15 @@
                 <Rectangle Margin="25" Cursor="Hand" MouseLeftButtonDown="StartButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
             <!--Column1: Processus Table-->
-            <Grid Background="#00FFFFFF" Margin="40,10" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <Grid x:Name="Tableau" Background="#00FFFFFF" Grid.RowSpan="3" Grid.Column="1" Grid.Row="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Text="Tableau des processus" FontSize="50" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="Center"/>
+                <Grid Grid.Row="1"  Margin="40,10"  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <Grid.RowDefinitions>
                     <RowDefinition Height="85"/>
                     <RowDefinition Height="6*"/>
                     <RowDefinition Height="120"/>
@@ -253,6 +260,7 @@
                     </Grid>
                 </Grid>
             </Grid>
+        </Grid>
             <!--Row2: Add processus-->
             <Rectangle Visibility="Hidden" x:Name="Grey" Grid.RowSpan="3" Grid.ColumnSpan="2">
                 <Rectangle.Fill>
