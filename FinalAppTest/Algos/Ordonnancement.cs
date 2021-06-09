@@ -23,8 +23,8 @@ namespace Ordonnancement
         public static WrapPanel GanttChart;
         public int nbFamine;
         public int tempsRepos;
+        //public List<Processus> listePro = new List<Processus>();
         #endregion
-
         #region Visualisation
 
         public abstract Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView,StackPanel deroulement, WrapPanel GanttChart);
@@ -435,67 +435,33 @@ namespace Ordonnancement
         }
         public void AfficherEtat(WrapPanel GanttChart, int temps)
         {
-            if (temps == 1)
-            {
-                Grid coldefinit = new Grid();
-                coldefinit.Width = 50;
-                GanttChart.VerticalAlignment = VerticalAlignment.Bottom;
-                GanttChart.Children.Insert(temps - 1, coldefinit);
-                for (int i = 0; i < listeProcessus.Count; i++)
-                {
-                    TextBlock item = new TextBlock();
-                    RowDefinition rowdef = new RowDefinition { Height = new GridLength(60) };
-                    coldefinit.VerticalAlignment = VerticalAlignment.Bottom;
-                    coldefinit.RowDefinitions.Insert(i, rowdef);
-                    item.Text = $"ID = { listeProcessus[i].id }";
-                    item.FontSize = 14;
-                    item.Foreground = Brushes.Black;
-                    item.Margin = new Thickness(0, 5, 0, 5);
-                    item.VerticalAlignment = VerticalAlignment.Center;
-                    item.FontFamily = new FontFamily("Lexend");
-                    item.FontWeight = FontWeights.Medium;
-                    Grid.SetRow(item, i);
-                    coldefinit.Children.Add(item);
-                }
-                TextBlock item0 = new TextBlock();
-                RowDefinition rowdef0 = new RowDefinition { Height = new GridLength(60) };
-                coldefinit.VerticalAlignment = VerticalAlignment.Bottom;
-                coldefinit.RowDefinitions.Insert(listeProcessus.Count, rowdef0);
-                item0.Text = "0";
-                item0.FontSize = 14;
-                item0.Foreground = Brushes.Black;
-                item0.VerticalAlignment = VerticalAlignment.Center;
-                item0.HorizontalAlignment = HorizontalAlignment.Right;
-                item0.FontFamily = new FontFamily("Lexend");
-                item0.FontWeight = FontWeights.Medium;
-                Grid.SetRow(item0, listeProcessus.Count);
-                coldefinit.Children.Add(item0);
-            }
+            List<Processus> ListPro = listeProcessus;
+            ListPro.Sort(delegate (Processus x, Processus y) { return x.id.CompareTo(y.id); });
             Grid coldef = new Grid();
             coldef.Width = 50;
             GanttChart.VerticalAlignment = VerticalAlignment.Bottom;
-            GanttChart.Children.Insert(temps, coldef);
-            for (int i = 0; i < listeProcessus.Count; i++)
+            GanttChart.Children.Insert(temps-1, coldef);
+            for (int i = 0; i < ListPro.Count; i++)
             {
                 Border item = new Border();
                 var bc = new BrushConverter();
                 RowDefinition rowdef = new RowDefinition { Height = new GridLength(60) };
                 coldef.VerticalAlignment = VerticalAlignment.Bottom;
                 coldef.RowDefinitions.Insert(i, rowdef);
-                var indice = listeProcessus.FindIndex(element => element.id == listeProcessus[i].id);
-                if (listeProcessus[indice].etat == 0)
+                var indice = ListPro.FindIndex(element => element.id == ListPro[i].id);
+                if (ListPro[indice].etat == 0)
                 {
                     item.Background = (Brush)bc.ConvertFrom("#EC2525");
                 }
-                else if (listeProcessus[indice].etat == 1)
+                else if (ListPro[indice].etat == 1)
                 {
                     item.Background = (Brush)bc.ConvertFrom("#FFC300");
                 }
-                else if (listeProcessus[indice].etat == 2)
+                else if (ListPro[indice].etat == 2)
                 {
                     item.Background = (Brush)bc.ConvertFrom("#2ECC71");
                 }
-                else if (listeProcessus[indice].etat == 3)
+                else if (ListPro[indice].etat == 3)
                 {
                     item.Background = (Brush)bc.ConvertFrom("#D5F5E3");
                 }
@@ -507,7 +473,7 @@ namespace Ordonnancement
             TextBlock itemend = new TextBlock();
             RowDefinition rowdefend = new RowDefinition { Height = new GridLength(60) };
             coldef.VerticalAlignment = VerticalAlignment.Bottom;
-            coldef.RowDefinitions.Insert(listeProcessus.Count, rowdefend);
+            coldef.RowDefinitions.Insert(ListPro.Count, rowdefend);
             itemend.Text = $"{temps}";
             itemend.FontSize = 14;
             itemend.Foreground = Brushes.Black;
@@ -515,7 +481,7 @@ namespace Ordonnancement
             itemend.FontWeight = FontWeights.Medium;
             itemend.VerticalAlignment = VerticalAlignment.Center;
             itemend.HorizontalAlignment = HorizontalAlignment.Right;
-            Grid.SetRow(itemend, listeProcessus.Count);
+            Grid.SetRow(itemend, ListPro.Count);
             coldef.Children.Add(itemend);
             for (int j = 0; j < 4; j++)
             {
@@ -526,42 +492,6 @@ namespace Ordonnancement
 
         public void AfficherEtat(List<ProcessusNiveau> listeProcessus, WrapPanel GanttChart, int temps)
         {
-            if (temps == 1)
-            {
-                Grid coldefinit = new Grid();
-                coldefinit.Width = 50;
-                GanttChart.VerticalAlignment = VerticalAlignment.Bottom;
-                GanttChart.Children.Insert(temps - 1, coldefinit);
-                for (int i = 0; i < listeProcessus.Count; i++)
-                {
-                    TextBlock item = new TextBlock();
-                    RowDefinition rowdef = new RowDefinition { Height = new GridLength(60) };
-                    coldefinit.VerticalAlignment = VerticalAlignment.Bottom;
-                    coldefinit.RowDefinitions.Insert(i, rowdef);
-                    item.Text = $"ID = { listeProcessus[i].id }";
-                    item.FontSize = 14;
-                    item.Foreground = Brushes.Black;
-                    item.Margin = new Thickness(0, 5, 0, 5);
-                    item.VerticalAlignment = VerticalAlignment.Center;
-                    item.FontFamily = new FontFamily("Lexend");
-                    item.FontWeight = FontWeights.Medium;
-                    Grid.SetRow(item, i);
-                    coldefinit.Children.Add(item);
-                }
-                TextBlock item0 = new TextBlock();
-                RowDefinition rowdef0 = new RowDefinition { Height = new GridLength(60) };
-                coldefinit.VerticalAlignment = VerticalAlignment.Bottom;
-                coldefinit.RowDefinitions.Insert(listeProcessus.Count, rowdef0);
-                item0.Text = "0";
-                item0.FontSize = 14;
-                item0.Foreground = Brushes.Black;
-                item0.VerticalAlignment = VerticalAlignment.Center;
-                item0.HorizontalAlignment = HorizontalAlignment.Right;
-                item0.FontFamily = new FontFamily("Lexend");
-                item0.FontWeight = FontWeights.Medium;
-                Grid.SetRow(item0, listeProcessus.Count);
-                coldefinit.Children.Add(item0);
-            }
             Grid coldef = new Grid();
             coldef.Width = 50;
             GanttChart.VerticalAlignment = VerticalAlignment.Bottom;
