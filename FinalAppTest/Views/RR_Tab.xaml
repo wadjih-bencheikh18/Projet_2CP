@@ -116,7 +116,7 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Rectangle x:Name="RectQuantum" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Width="Auto" Margin="30,0" Height="40"/>
-                        <TextBox GotFocus="QuantumTxt_GotFocus" x:Name="QuantumTxt" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" TextChanged="QuantumTxt_TextChanged" Grid.Row="1" Text="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox GotFocus="QuantumTxt_GotFocus" x:Name="QuantumTxt" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
                         <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Quantum" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                     </Grid>
                 </Grid>
