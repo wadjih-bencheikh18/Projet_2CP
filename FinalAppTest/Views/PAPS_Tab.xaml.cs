@@ -20,6 +20,7 @@ namespace FinalAppTest.Views
 
         public PAPS_Tab()
         {
+            indice = 0;
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
             ThisPage = this;
@@ -95,7 +96,6 @@ namespace FinalAppTest.Views
             }
             if (valide)  // si tous est correcte
             {
-                
                 RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 TempsArrivTextBox.Text = "0";
@@ -162,27 +162,6 @@ namespace FinalAppTest.Views
             RandomButton.Fill = (Brush)bc.ConvertFrom("#FF000000");
         }
 
-        private void TempsArrivTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            var bc = new BrushConverter();
-            if (!int.TryParse(TempsArrivTextBox.Text, out int i) || i < 0) RectTar.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            else RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
-        }
-
-        private void DureeTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            var bc = new BrushConverter();
-            if (!int.TryParse(DureeTextBox.Text, out int i) || i <= 0) RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            else RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
-        }
-
-        private void NbProcessusTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            var bc = new BrushConverter();
-            if (!int.TryParse(NbProcessusTextBox.Text, out int i) || i < 0) RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            else RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
-        }
-
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             if (prog.listeProcessus.Count == 0)
@@ -197,7 +176,6 @@ namespace FinalAppTest.Views
                     MainWindow.main.Content = new SimulationPage(prog, 0);
                 else
                     FinHint();
-               
             }
         }
 

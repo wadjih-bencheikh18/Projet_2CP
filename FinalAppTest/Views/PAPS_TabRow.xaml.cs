@@ -71,7 +71,7 @@ namespace FinalAppTest.Views
                 PAPS_Tab.ThisPage.IdTextBox.Text = 0.ToString();
                 PAPS_Tab.indice = 0;
             }
-            if(PAPS_Tab.NbHint==8) PAPS_Tab.HintSuivant();
+            if (PAPS_Tab.NbHint == 8) PAPS_Tab.HintSuivant();
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
