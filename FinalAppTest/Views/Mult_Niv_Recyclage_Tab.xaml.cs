@@ -30,25 +30,24 @@ namespace FinalAppTest.Views
             randNiv.Text = indiceniv.ToString();
             nivId.Text = indiceniv.ToString();
         }
+        
         public static List<ProcessusNiveau> ListPro = new List<ProcessusNiveau>();
         public static Niveau[] niveaux = new Niveau[4];
         public static bool modifier = false;
         public static UserControl proModifier;
         public static int indiceniv = 0; 
         private int indicepro = 0;
+
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
-            
-            int NbProcessus;
             var bc = new BrushConverter();
-            if (!Int32.TryParse(NbProcessusTextBox.Text, out NbProcessus) && NbProcessus <= 0)
+            if (!Int32.TryParse(NbProcessusTextBox.Text, out int NbProcessus) && NbProcessus <= 0)
             {
                 NbProcessusTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
                 NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
             else
             {
-                NbProcessusTextBox.Text = "";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
                 NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
                 Random r = new Random();
@@ -178,6 +177,7 @@ namespace FinalAppTest.Views
             var bc = new BrushConverter();
             RandomButton.Fill = (Brush)bc.ConvertFrom("#FF575757");
         }
+
         private void RandomButton_MouseLeave(object sender, MouseEventArgs e)
         {
             var bc = new BrushConverter();
@@ -244,7 +244,24 @@ namespace FinalAppTest.Views
 
         private void algoSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (!IsLoaded) return;
+            if (algoSelect.SelectedIndex == 7 || algoSelect.SelectedIndex == 8)
+            {
+                RectQuantum.Fill = (Brush)new BrushConverter().ConvertFrom("#FFE9F2FE");
+                if (algoSelect.SelectedIndex == 8) OptionText.Text = "Temps de MAJ";
+                else OptionText.Text = "Quantum";
+                nivQuantum.Text = "5";
+                nivQuantum.IsReadOnly = false;
+                nivQuantum.Cursor = NbProcessusTextBox.Cursor;
+            }
+            else
+            {
+                RectQuantum.Fill = (Brush) new BrushConverter().ConvertFrom("#FFFFFF");
+                OptionText.Text = "Option";
+                nivQuantum.Text = "/";
+                nivQuantum.IsReadOnly = true;
+                nivQuantum.Cursor = nivId.Cursor;
+            }
         }
 
         private void proTitle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
