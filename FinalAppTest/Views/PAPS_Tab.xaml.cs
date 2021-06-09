@@ -20,6 +20,7 @@ namespace FinalAppTest.Views
 
         public PAPS_Tab()
         {
+            indice = 0;
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
             ThisPage = this;

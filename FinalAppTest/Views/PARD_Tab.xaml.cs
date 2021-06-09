@@ -23,6 +23,7 @@ namespace FinalAppTest.Views
     {
         public PARD_Tab()
         {
+            indice = 0;
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
             ThisPage = this;
