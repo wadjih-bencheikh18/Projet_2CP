@@ -63,6 +63,12 @@ namespace FinalAppTest.Views
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (RR_Tab.modifier)
+            {
+                RR_Tab.modifier = false;
+                Ajouter.Text = "Ajouter";
+                RR_Tab.FixIndice();
+            }
             RR_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }

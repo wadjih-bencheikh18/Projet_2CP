@@ -29,13 +29,19 @@ namespace FinalAppTest.Views
             indiceniv = 0;
             randNiv.Text = indiceniv.ToString();
             nivId.Text = indiceniv.ToString();
+            ThisPage = this;
         }
         public static List<ProcessusNiveau> ListPro = new List<ProcessusNiveau>();
         public static Niveau[] niveaux = new Niveau[4];
         public static bool modifier = false;
         public static UserControl proModifier;
-        public static int indiceniv = 0; 
-        private int indicepro = 0;
+        public static int indiceniv = 0;
+        public static int indicepro = 0;
+        public static Mult_Niv_Recyclage_Tab ThisPage;
+        public static void FixIndice()
+        {
+            ThisPage.IdTextBox.Text = indicepro.ToString();
+        }
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             
@@ -62,7 +68,7 @@ namespace FinalAppTest.Views
                         prio = r.Next(0, 6),
                         niveau = r.Next(0, indiceniv)
                     };
-                    Multi_Niv_TabRow_Proc processus = pro.InsererProcML(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, NivTextBox, ajouterTB);
+                    Multi_Niv_R_TabRow_Proc processus = pro.InsererProcMLR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, NivTextBox, ajouterTB);
                     ProcessusNiveau proc = new ProcessusNiveau(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.niveau);
                     processus.parent.Items.RemoveAt(processus.parent.Items.Count - 1);  // remove the ajouter_row
                     for (int j = 0; ((bool)RandomizeInterrup.IsChecked) && pro.duree > 1 && j < r.Next(0, 3); j++)  // générer des interruptions
@@ -134,7 +140,7 @@ namespace FinalAppTest.Views
                         prio = prio,
                         niveau = niv,
                     };
-                    pro.InsererProcML(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox,PrioTextBox,NivTextBox, ajouterTB);
+                    pro.InsererProcMLR(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox,PrioTextBox,NivTextBox, ajouterTB);
                     ListPro.Add(new ProcessusNiveau(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.niveau));
                     indicepro++;
                 }
@@ -149,7 +155,7 @@ namespace FinalAppTest.Views
                         prio = prio,
                         niveau = niv
                     };
-                    Multi_Niv_TabRow_Proc item = (Multi_Niv_TabRow_Proc)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
+                    Multi_Niv_R_TabRow_Proc item = (Multi_Niv_R_TabRow_Proc)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
                     ListPro[id] = new ProcessusNiveau(id, tempsArrive, duree, prio, niv);
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
@@ -216,7 +222,7 @@ namespace FinalAppTest.Views
                     Background = type,
                     quantum = quan
                 };
-                pro.InsererNivML(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
+                pro.InsererNivMLR(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
                 if (algo == 7 || algo==8) niveaux[indiceniv] = new Niveau(algo, q);
                 else niveaux[indiceniv] = new Niveau(algo);
                 indiceniv++;
@@ -230,7 +236,7 @@ namespace FinalAppTest.Views
                     Background = type,
                     quantum = quan,
                 };
-                Mult_Niv_TabRow item = (Mult_Niv_TabRow)NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)];
+                Mult_Niv_R_TabRow item = (Mult_Niv_R_TabRow)NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)];
                 item.DataContext = pro;
                 if (algo == 7|| algo ==8) niveaux[niv] = new Niveau(algo, q);
                 else niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo);
@@ -298,7 +304,7 @@ namespace FinalAppTest.Views
                 Background = type,
                 quantum = quan,
             };
-            pro.InsererNivML(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
+            pro.InsererNivMLR(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
         }
 
         private void DelNiv(object sender, MouseButtonEventArgs e)

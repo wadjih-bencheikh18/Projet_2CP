@@ -29,13 +29,19 @@ namespace FinalAppTest.Views
             indiceniv = 0;
             randNiv.Text = indiceniv.ToString();
             nivId.Text = indiceniv.ToString();
+            ThisPage = this;
         }
         public static List<ProcessusNiveau> ListPro = new List<ProcessusNiveau>();
         public static Niveau[] niveaux = new Niveau[4];
         public static bool modifier = false;
         public static UserControl proModifier;
-        public static int indiceniv = 0; 
-        private int indicepro = 0;
+        public static int indiceniv = 0;
+        public static int indicepro = 0;
+        public static Mult_Niv_Tab ThisPage;
+        public static void FixIndice()
+        {
+            ThisPage.IdTextBox.Text = indicepro.ToString();
+        }
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             ListPro.Clear();

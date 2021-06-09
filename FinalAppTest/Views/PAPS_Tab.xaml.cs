@@ -16,7 +16,7 @@ namespace FinalAppTest.Views
     {
         public static int NbHint = 0;
         public static bool NextHintCondition = true;
-        public static PAPS_Tab ThisPage;
+        
 
         public PAPS_Tab()
         {
@@ -24,12 +24,16 @@ namespace FinalAppTest.Views
             IdTextBox.Text = indice.ToString();
             ThisPage = this;
         }
-
+        
         public static PAPS prog = new PAPS();
         public static bool modifier = false;
         public static PAPS_TabRow proModifier;
-        private int indice = 0;
-
+        public static int indice = 0; 
+        public static PAPS_Tab ThisPage;
+        public static void FixIndice()
+        {
+            ThisPage.IdTextBox.Text = indice.ToString();
+        }
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             var bc = new BrushConverter();

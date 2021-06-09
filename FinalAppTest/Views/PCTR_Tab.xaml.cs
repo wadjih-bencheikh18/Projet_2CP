@@ -25,12 +25,18 @@ namespace FinalAppTest.Views
         {
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
+            ThisPage = this;
         }
 
         public static PCTR prog = new PCTR();
         public static bool modifier = false;
         public static PCTR_TabRow proModifier;
-        private int indice = 0;
+        public static int indice = 0;
+        public static PCTR_Tab ThisPage;
+        public static void FixIndice()
+        {
+            ThisPage.IdTextBox.Text = indice.ToString();
+        }
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {

@@ -62,6 +62,12 @@ namespace FinalAppTest.Views
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (PLA_Tab.modifier)
+            {
+                PLA_Tab.modifier = false;
+                Ajouter.Text = "Ajouter";
+                PLA_Tab.FixIndice();
+            }
             PLA_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }

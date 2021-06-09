@@ -65,6 +65,12 @@ namespace FinalAppTest.Views
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (SlackTime_Tab.modifier)
+            {
+                SlackTime_Tab.modifier = false;
+                Ajouter.Text = "Ajouter";
+                SlackTime_Tab.FixIndice();
+            }
             SlackTime_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }

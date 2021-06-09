@@ -157,7 +157,7 @@ namespace Ordonnancement
                 }
                         
 
-                    if(await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
+                    if(await InterruptionExecute(niveaux,listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
                     anime = false;
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
@@ -286,7 +286,7 @@ namespace Ordonnancement
                 }
 
 
-                if (await InterruptionExecute(listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
+                if (await InterruptionExecute(niveaux,listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
                 anime = false;
                 listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                 listePrets[0].etat = 2;

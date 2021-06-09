@@ -65,6 +65,12 @@ namespace FinalAppTest.Views
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (PAPS_Tab.modifier)
+            {
+                Mult_Niv_Tab.modifier = false;
+                Ajouter.Text = "Ajouter";
+                Mult_Niv_Tab.FixIndice();
+            }
             Mult_Niv_Tab.ListPro.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
         }
