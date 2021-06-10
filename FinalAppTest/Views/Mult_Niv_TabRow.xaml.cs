@@ -46,10 +46,8 @@ namespace FinalAppTest.Views
             algoSelect.Text = type.Text;
             quantum.Text = quantumTest.Text;
             Mult_Niv_Tab.modifier = true;
-            Mult_Niv_Recyclage_Tab.modifier = true;
             Mult_Niv_Tab.proModifier = this;
-            Mult_Niv_Recyclage_Tab.proModifier = this;
-            if (Mult_Niv_Recyclage_Tab.ThisPage != null) Mult_Niv_Recyclage_Tab.ThisPage.ajouterButton.Visibility = Visibility.Visible;
+            // if (Mult_Niv_Tab.ThisPage != null) Mult_Niv_Tab.ThisPage.ajouterButton.Visibility = Visibility.Visible;
             Ajouter.Text = "Modifier";
         }
     }

@@ -67,7 +67,7 @@ namespace FinalAppTest.Views
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (PAPS_Tab.modifier)
+            if (Mult_Niv_Tab.modifier)
             {
                 Mult_Niv_Tab.modifier = false;
                 Ajouter.Text = "Ajouter";

@@ -33,6 +33,7 @@ namespace FinalAppTest.Views
             nivId.Text = indiceniv.ToString();
             ThisPage = this;
         }
+
         public static List<ProcessusNiveau> ListPro = new List<ProcessusNiveau>();
         public static Niveau[] niveaux = new Niveau[4];
         public static bool modifier = false;
@@ -40,6 +41,7 @@ namespace FinalAppTest.Views
         public static int indiceniv = 0;
         public static int indicepro = 0;
         public static Mult_Niv_Recyclage_Tab ThisPage;
+
         public static void FixIndice()
         {
             ThisPage.IdTextBox.Text = indicepro.ToString();
@@ -125,6 +127,7 @@ namespace FinalAppTest.Views
                 DureeTextBox.Text = "1";
                 PrioTextBox.Text = "0";
                 NivTextBox.Text = "0";
+                algoSelect.SelectedIndex = 0;
                 if (!modifier)
                 {
                     id = indicepro;
@@ -263,7 +266,6 @@ namespace FinalAppTest.Views
             else
             {
                 RectQuantum.Fill = (Brush) new BrushConverter().ConvertFrom("#FFFFFF");
-
                 OptionText.Text = "Option";
                 nivQuantum.Text = "/";
                 nivQuantum.IsReadOnly = true;
@@ -273,6 +275,11 @@ namespace FinalAppTest.Views
 
         private void proTitle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (indiceniv == 0)
+            {
+                nivIndexRectangle.Fill = (Brush)new BrushConverter().ConvertFrom("#FFEEBEBE");
+                return;
+            }
             proTitle.FontSize = 50;
             nivTitle.FontSize = 30;
             nivGen.Height = 0;
@@ -299,7 +306,6 @@ namespace FinalAppTest.Views
             {
                 return;
             }
-            var bc = new BrushConverter();
             string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PAR", "PSR", "Slack-Time",  "RR", "PARD" };
             Random random = new Random();
             int niv,algo= random.Next(0, 9), q = 0;
@@ -495,6 +501,7 @@ namespace FinalAppTest.Views
             }
             else
             {
+                nivIndexRectangle.Fill = (Brush)new BrushConverter().ConvertFrom("#FFE9F2FE");
                 minusButton.Visibility = Visibility.Visible;
                 plusButton.Visibility = Visibility.Visible;
                 ajouterButton.Visibility = Visibility.Visible;

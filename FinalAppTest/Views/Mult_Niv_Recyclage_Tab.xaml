@@ -154,7 +154,7 @@
                             <RowDefinition/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
-                        <Rectangle Grid.Row="1" Fill="#FFE9F2FE" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                        <Rectangle Grid.Row="1" x:Name="nivIndexRectangle" Fill="#FFE9F2FE" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
                         <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des niveaux" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                         <TextBox TextChanged="randNiv_TextChanged" IsReadOnly="True" x:Name="randNiv" Cursor="Arrow" MaxLength="1" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
                     </Grid>

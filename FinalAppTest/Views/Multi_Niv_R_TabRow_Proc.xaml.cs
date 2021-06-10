@@ -73,6 +73,11 @@ namespace FinalAppTest.Views
             }
             Mult_Niv_Recyclage_Tab.ListPro.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
+            if (Mult_Niv_Recyclage_Tab.ListPro.Count == 0)
+            {
+                Mult_Niv_Recyclage_Tab.indicepro = 0;
+                Mult_Niv_Recyclage_Tab.ThisPage.IdTextBox.Text = "0";
+            }
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
