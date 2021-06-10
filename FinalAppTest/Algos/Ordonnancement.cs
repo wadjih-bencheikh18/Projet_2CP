@@ -279,14 +279,14 @@ namespace Ordonnancement
             await Task.Delay(Convert.ToInt32(3000 / SimulationPage.Speed));
         }
 
-        public async Task Reveil_MultiLvl(StackPanel ListePretsView, StackPanel ListeBloqueView, int i)
+        public async Task Reveil_MultiLvl(StackPanel ListePretsView, StackPanel ListeBloqueView, int i,List<ProcessusNiveau> listebloqueGenerale)
         {
             ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
-            AffichageProcessus pro = new AffichageProcessus(listebloque[i]);
-            pro.X1 = -60 * ListePretsView.Children.Count + 60 * i;
-            pro.Y1 = 340;
-            pro.Y2 = 340;
-            pro.X2 = 600 - 60 * ListePretsView.Children.Count;
+            AffichageProcessus pro = new AffichageProcessus(listebloqueGenerale[i]);
+            pro.X1 = -45 * ListePretsView.Children.Count + 45 * i;
+            pro.Y1 = 230+(3 - listebloqueGenerale[i].niveau)*60;
+            pro.Y2 = 230 + (3 - listebloqueGenerale[i].niveau) * 60;
+            pro.X2 = 600 - 45 * ListePretsView.Children.Count;
             pro.X3 = pro.X2;
             pro.Speed = SimulationPage_MultiLvl.Speed;
             item.DataContext = pro;
@@ -321,7 +321,7 @@ namespace Ordonnancement
             await Task.Delay(Convert.ToInt32(1000 / SimulationPage.Speed));
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
-            pro.X1 = 600 - 45 * ListeBloqueView.Children.Count;
+            pro.X1 = 600 - 60 * ListeBloqueView.Children.Count;
             ProcessusDesign item = new ProcessusDesign();
             pro.Speed = SimulationPage.Speed;
             item.DataContext = pro;
@@ -331,6 +331,7 @@ namespace Ordonnancement
 
         public async Task Blocage_MultiLvl(StackPanel ListeBloqueView, StackPanel Processeur)
         {
+            ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
             Storyboard animeBloque = new Storyboard();
             animeBloque.Children.Add(Processeur.FindResource("Blocage") as Storyboard);
             animeBloque.SpeedRatio = SimulationPage_MultiLvl.Speed;
@@ -338,11 +339,11 @@ namespace Ordonnancement
             await Task.Delay(Convert.ToInt32(1000 / SimulationPage_MultiLvl.Speed));
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
-            pro.X1 = 600 - 60 * ListeBloqueView.Children.Count;
-            ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
+            pro.X1 = 600 - 45 * ListeBloqueView.Children.Count;
             pro.Speed= SimulationPage_MultiLvl.Speed;
             item.DataContext = pro;
             ListeBloqueView.Children.Add(item);
+            await Task.Delay(Convert.ToInt32(1000 / SimulationPage_MultiLvl.Speed));
         }
 
         public async Task Desactivation(StackPanel ListePretsView, StackPanel Processeur, Processus proc)
@@ -490,31 +491,33 @@ namespace Ordonnancement
 
         public void AfficherEtat(List<ProcessusNiveau> listeProcessus, WrapPanel GanttChart, int temps)
         {
+            List<ProcessusNiveau> ListPro = listeProcessus;
+            ListPro.Sort(delegate (ProcessusNiveau x, ProcessusNiveau y) { return x.id.CompareTo(y.id); });
             Grid coldef = new Grid();
             coldef.Width = 50;
             GanttChart.VerticalAlignment = VerticalAlignment.Bottom;
-            GanttChart.Children.Insert(temps, coldef);
-            for (int i = 0; i < listeProcessus.Count; i++)
+            GanttChart.Children.Insert(temps - 1, coldef);
+            for (int i = 0; i < ListPro.Count; i++)
             {
                 Border item = new Border();
                 var bc = new BrushConverter();
                 RowDefinition rowdef = new RowDefinition { Height = new GridLength(60) };
                 coldef.VerticalAlignment = VerticalAlignment.Bottom;
                 coldef.RowDefinitions.Insert(i, rowdef);
-                var indice = listeProcessus.FindIndex(element => element.id == listeProcessus[i].id);
-                if (listeProcessus[indice].etat == 0)
+                var indice = ListPro.FindIndex(element => element.id == ListPro[i].id);
+                if (ListPro[indice].etat == 0)
                 {
                     item.Background = (Brush)bc.ConvertFrom("#EC2525");
                 }
-                else if (listeProcessus[indice].etat == 1)
+                else if (ListPro[indice].etat == 1)
                 {
                     item.Background = (Brush)bc.ConvertFrom("#FFC300");
                 }
-                else if (listeProcessus[indice].etat == 2)
+                else if (ListPro[indice].etat == 2)
                 {
                     item.Background = (Brush)bc.ConvertFrom("#2ECC71");
                 }
-                else if (listeProcessus[indice].etat == 3)
+                else if (ListPro[indice].etat == 3)
                 {
                     item.Background = (Brush)bc.ConvertFrom("#D5F5E3");
                 }
@@ -526,7 +529,7 @@ namespace Ordonnancement
             TextBlock itemend = new TextBlock();
             RowDefinition rowdefend = new RowDefinition { Height = new GridLength(60) };
             coldef.VerticalAlignment = VerticalAlignment.Bottom;
-            coldef.RowDefinitions.Insert(listeProcessus.Count, rowdefend);
+            coldef.RowDefinitions.Insert(ListPro.Count, rowdefend);
             itemend.Text = $"{temps}";
             itemend.FontSize = 14;
             itemend.Foreground = Brushes.Black;
@@ -534,7 +537,7 @@ namespace Ordonnancement
             itemend.FontWeight = FontWeights.Medium;
             itemend.VerticalAlignment = VerticalAlignment.Center;
             itemend.HorizontalAlignment = HorizontalAlignment.Right;
-            Grid.SetRow(itemend, listeProcessus.Count);
+            Grid.SetRow(itemend, ListPro.Count);
             coldef.Children.Add(itemend);
             for (int j = 0; j < 4; j++)
             {
@@ -717,9 +720,9 @@ namespace Ordonnancement
                 {
                     listebloqueGenerale[i].transition = 3; //Réveil du ieme processus de listebloqueGenerale
                     listebloqueGenerale[i].etat = 1;
-                    niveaux[listebloqueGenerale[i].niveau].listePrets.Add(listebloqueGenerale[i]);
+                    niveaux[listebloqueGenerale[i].niveau].listePrets.Add((Processus)listebloqueGenerale[i]);
                     await AfficherDeroulement(deroulement);
-                    await Reveil_MultiLvl(ListesPretsViews[listebloqueGenerale[i].niveau], ListeBloqueView, i);
+                    await Reveil_MultiLvl(ListesPretsViews[listebloqueGenerale[i].niveau], ListeBloqueView, i, listebloqueGenerale);
                     listebloqueGenerale.RemoveAt(i);
                     Anime = true;
                 }
@@ -740,8 +743,8 @@ namespace Ordonnancement
                     listePrets[0].transition = 0; //Blocage du processus qui était entrain d'exécution
                     listePrets[0].etat = 0;
                     await AfficherDeroulement(deroulement);
-                    listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
                     await Blocage_MultiLvl(ListeBloqueView, Processeur);
+                    listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
                     listePrets.RemoveAt(0);
                     if (listePrets.Count != 0)
                     {

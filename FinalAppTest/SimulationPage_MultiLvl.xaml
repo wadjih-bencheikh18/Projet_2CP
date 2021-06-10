@@ -56,92 +56,92 @@
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="24" FontFamily="Lexend" Grid.Column="1" Margin="0,0,0,560"><Run Text="Liste des processus prêts"/></TextBlock>
             <Border Visibility="Hidden"  x:Name="Border1" Margin="0,0,0,460"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
-                    <StackPanel x:Name="ListProcessusView0" Orientation="Horizontal">
-                        <StackPanel.Resources>
-                            <Storyboard x:Key="ListDecalage">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-45"/>
-                                </DoubleAnimationUsingKeyFrames>
-                            </Storyboard>
-                            <Storyboard x:Key="Listback">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                </DoubleAnimationUsingKeyFrames>
-                            </Storyboard>
-                            <Storyboard x:Key="up">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
-                                </DoubleAnimationUsingKeyFrames>
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="230"/>
-                                </DoubleAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </StackPanel.Resources>
-                    </StackPanel>
-                </Border>
+                <StackPanel x:Name="ListProcessusView0" Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Storyboard x:Key="ListDecalage">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-45"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Listback">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="up">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="230"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </StackPanel.Resources>
+                </StackPanel>
+            </Border>
             <Border Visibility="Hidden"  x:Name="Border2"  Margin="0,0,0,340"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
-                    <StackPanel x:Name="ListProcessusView1" Orientation="Horizontal">
-                        <StackPanel.Resources>
-                            <Storyboard x:Key="ListDecalage">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-45"/>
-                                </DoubleAnimationUsingKeyFrames>
-                            </Storyboard>
-                            <Storyboard x:Key="Listback">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                </DoubleAnimationUsingKeyFrames>
-                            </Storyboard>
-                            <Storyboard x:Key="up">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
-                                </DoubleAnimationUsingKeyFrames>
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="170"/>
-                                </DoubleAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </StackPanel.Resources>
-                    </StackPanel>
-                </Border>
+                <StackPanel x:Name="ListProcessusView1" Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Storyboard x:Key="ListDecalage">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-45"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Listback">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="up">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="170"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </StackPanel.Resources>
+                </StackPanel>
+            </Border>
             <Border Visibility="Hidden"  x:Name="Border3"  Margin="0,0,0,220"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
-                    <StackPanel x:Name="ListProcessusView2" Orientation="Horizontal">
-                        <StackPanel.Resources>
-                            <Storyboard x:Key="ListDecalage">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-45"/>
-                                </DoubleAnimationUsingKeyFrames>
-                            </Storyboard>
-                            <Storyboard x:Key="Listback">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                </DoubleAnimationUsingKeyFrames>
-                            </Storyboard>
-                            <Storyboard x:Key="up">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
-                                </DoubleAnimationUsingKeyFrames>
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="110"/>
-                                </DoubleAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </StackPanel.Resources>
-                    </StackPanel>
-                </Border>
+                <StackPanel x:Name="ListProcessusView2" Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Storyboard x:Key="ListDecalage">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-45"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Listback">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="up">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="110"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </StackPanel.Resources>
+                </StackPanel>
+            </Border>
             <Border Visibility="Hidden" x:Name="Border4"  Margin="0,0,0,100"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
                 <StackPanel x:Name="ListProcessusView3" Orientation="Horizontal">
                     <StackPanel.Resources>
@@ -170,54 +170,13 @@
                     </StackPanel.Resources>
                 </StackPanel>
             </Border>
-
-            <Border Height="135" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="2" Margin="0,150,400,0" Width="135" Panel.ZIndex="-1">
-                    <Border.Background>
-                        <ImageBrush ImageSource="Pics/Processor.png"/>
-                    </Border.Background>
-                    <StackPanel x:Name="Processeur" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    
-                    <StackPanel.Resources>
-                            <Storyboard x:Key="Disactive">
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="300"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="522.5"/>
-                            </DoubleAnimationUsingKeyFrames>
-                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-75"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="-75"/>
-                                </DoubleAnimationUsingKeyFrames>
-                            </Storyboard>
-                            <Storyboard x:Key="Blocage">
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
-                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="522.5"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="125"/>
-                                </DoubleAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </StackPanel.Resources>
-                    </StackPanel>
-                </Border>
-            <Grid Margin="300,150,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Temps :" FontWeight="Bold" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="16" />
-                <TextBlock Grid.Column="1" x:Name="TempsView" HorizontalAlignment="Center" Text="0" VerticalAlignment="Center" TextAlignment="Center" Margin="0" FontSize="16"/>
-            </Grid>
-            <Border Grid.Row="0" Margin="0,400,0,0"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FFCCDD" BorderBrush="Black" BorderThickness="1" MinWidth="600">
+            <Border Grid.Row="0" Margin="0,450,0,0"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FFCCDD" BorderBrush="Black" BorderThickness="1" MinWidth="600">
                 <StackPanel x:Name="ListeBloqueView" Orientation="Horizontal">
                     <StackPanel.Resources>
                         <Storyboard x:Key="up">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-45"/>
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                         <Storyboard x:Key="decalage">
@@ -235,7 +194,48 @@
                 </StackPanel>
 
             </Border>
-            <TextBlock HorizontalAlignment="Center" Margin="0,500,0,0" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
+
+            <Border Height="135" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="2" Margin="0,150,400,0" Width="135">
+                <Border.Background>
+                    <ImageBrush ImageSource="Pics/Processor.png"/>
+                </Border.Background>
+                <StackPanel x:Name="Processeur" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <local:ProcessusDesignMultiLvl></local:ProcessusDesignMultiLvl>
+                    <StackPanel.Resources>
+                        <Storyboard x:Key="Disactive">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="300"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="522.5"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-75"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="-75"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Blocage">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="522.5"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="150"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </StackPanel.Resources>
+                </StackPanel>
+            </Border>
+            <Grid Margin="300,150,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Temps :" FontWeight="Bold" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="16" />
+                <TextBlock Grid.Column="1" x:Name="TempsView" HorizontalAlignment="Center" Text="0" VerticalAlignment="Center" TextAlignment="Center" Margin="0" FontSize="16"/>
+            </Grid>
+            <TextBlock HorizontalAlignment="Center" Margin="0,550,0,0" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
 
 
             <Grid Grid.Row="1" Margin="50,0">
