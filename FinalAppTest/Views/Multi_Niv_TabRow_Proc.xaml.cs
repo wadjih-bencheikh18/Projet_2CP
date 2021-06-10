@@ -24,6 +24,7 @@ namespace FinalAppTest.Views
         {
             InitializeComponent();
         }
+
         private TextBox id;
         private TextBox tempsArriv;
         private TextBox duree;
@@ -59,9 +60,7 @@ namespace FinalAppTest.Views
             prio.Text = prioTest.Text;
             niveau.Text = niveauTest.Text;
             Mult_Niv_Tab.modifier = true;
-            Mult_Niv_Recyclage_Tab.modifier = true;
             Mult_Niv_Tab.proModifier = this;
-            Mult_Niv_Recyclage_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
@@ -75,6 +74,11 @@ namespace FinalAppTest.Views
             }
             Mult_Niv_Tab.ListPro.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
+            if (Mult_Niv_Tab.ListPro.Count == 0)
+            {
+                Mult_Niv_Tab.indicepro = 0;
+                Mult_Niv_Tab.ThisPage.IdTextBox.Text = "0";
+            }
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)

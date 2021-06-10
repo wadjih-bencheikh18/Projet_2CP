@@ -47,7 +47,7 @@ namespace FinalAppTest.Views
             quantum.Text = quantumTest.Text;
             Mult_Niv_Tab.modifier = true;
             Mult_Niv_Tab.proModifier = this;
-            // if (Mult_Niv_Tab.ThisPage != null) Mult_Niv_Tab.ThisPage.ajouterButton.Visibility = Visibility.Visible;
+            if (Mult_Niv_Tab.ThisPage != null) Mult_Niv_Tab.ThisPage.ajouterButton.Visibility = Visibility.Visible;
             Ajouter.Text = "Modifier";
         }
     }
