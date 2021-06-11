@@ -50,5 +50,7 @@ namespace FinalAppTest.Views
             if (Mult_Niv_Tab.ThisPage != null) Mult_Niv_Tab.ThisPage.ajouterButton.Visibility = Visibility.Visible;
             Ajouter.Text = "Modifier";
         }
+
+
     }
 }

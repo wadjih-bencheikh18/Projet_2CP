@@ -24,5 +24,10 @@ namespace FinalAppTest.Views
         {
             InitializeComponent();
         }
+
+        private void interruptionRow_Loaded(object sender, RoutedEventArgs e)
+        {
+            mainUC.Width = ((TreeViewItem)mainUC.Parent).ActualWidth - 150;
+        }
     }
 }

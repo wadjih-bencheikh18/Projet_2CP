@@ -93,5 +93,10 @@ namespace FinalAppTest.Views
                 ((Multi_Niv_R_TabRow_Proc)processus).parent.Items.Remove(this);
             }
         }
+
+        private void interruptionRow_Loaded(object sender, RoutedEventArgs e)
+        {
+            mainUC.Width = ((TreeViewItem)mainUC.Parent).ActualWidth - 150;
+        }
     }
 }
