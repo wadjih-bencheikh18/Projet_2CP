@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Animation;
 using System.Windows.Media;
-using System.Windows.Shapes;
-using System.Windows.Controls.Primitives;
+using System.Windows.Media.Animation;
 
 namespace Ordonnancement
 {
@@ -709,7 +707,7 @@ namespace Ordonnancement
             else await Task.Delay(Convert.ToInt32(500 / SimulationPage_MultiLvl.Speed));
             return indice;
         }
-        public async Task<bool> MAJListBloque(List<ProcessusNiveau> listebloqueGenerale,StackPanel[] ListesPretsViews, StackPanel ListeBloqueView, StackPanel deroulement)
+        public async Task<bool> MAJListBloque(Niveau[] niveaux,List<ProcessusNiveau> listebloqueGenerale,StackPanel[] ListesPretsViews, StackPanel ListeBloqueView, StackPanel deroulement)
         {
             bool Anime = false;
             for (int i = 0; i < listebloqueGenerale.Count; i++)
@@ -719,45 +717,48 @@ namespace Ordonnancement
                 {
                     listebloqueGenerale[i].transition = 3; //Réveil du ieme processus de listebloqueGenerale
                     listebloqueGenerale[i].etat = 1;
-                    listePrets.Add(listebloqueGenerale[i]);
+                    niveaux[listebloqueGenerale[i].niveau].listePrets.Add(listebloqueGenerale[i]);
                     await AfficherDeroulement(deroulement);
                     await Reveil_MultiLvl(ListesPretsViews[listebloqueGenerale[i].niveau], ListeBloqueView, i);
                     listebloqueGenerale.RemoveAt(i);
-                    listebloque.RemoveAt(i);
                     Anime = true;
                 }
             }
             return Anime;
         }
-        public async Task<bool> InterruptionExecute(List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews,int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur, StackPanel deroulement)
+        public async Task<bool> InterruptionExecute(Niveau[] niveaux,List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews,int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur, StackPanel deroulement)
         {
             bool interupt = false;
             bool vide = false;
-            if (listePrets.Count == 0) vide = true;
-            bool Anime=await MAJListBloque(listebloqueGenerale,ListesPretsViews, ListeBloqueView, deroulement);
-            if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
+            if (indiceNiveau != -1 && listePrets.Count == 0) vide = true;
+            bool Anime=await MAJListBloque(niveaux,listebloqueGenerale,ListesPretsViews, ListeBloqueView, deroulement);
+            if(indiceNiveau != -1)
             {
-                interupt = true;
-                listePrets[0].transition = 0; //Blocage du processus qui était entrain d'exécution
-                listePrets[0].etat = 0;
-                await AfficherDeroulement(deroulement);
-                listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
-                await Blocage_MultiLvl(ListeBloqueView, Processeur);
-                listebloque.Add(listePrets[0]);
-                listePrets.RemoveAt(0);
-                if (listePrets.Count != 0)
+                if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
+                {
+                    interupt = true;
+                    listePrets[0].transition = 0; //Blocage du processus qui était entrain d'exécution
+                    listePrets[0].etat = 0;
+                    await AfficherDeroulement(deroulement);
+                    listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
+                    await Blocage_MultiLvl(ListeBloqueView, Processeur);
+                    listePrets.RemoveAt(0);
+                    if (listePrets.Count != 0)
+                    {
+                        listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
+                        await AfficherDeroulement(deroulement);
+                        await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
+                    }
+                }
+                if (Anime && vide)
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
                     await AfficherDeroulement(deroulement);
                     await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
                 }
             }
-            else if (Anime && vide)
-            {
-                listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
-                await AfficherDeroulement(deroulement);
-                await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
-            }
+            
+            
             return interupt;
         }
         #endregion

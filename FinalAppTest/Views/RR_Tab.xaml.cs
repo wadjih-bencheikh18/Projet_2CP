@@ -23,6 +23,7 @@ namespace FinalAppTest.Views
     {
         public RR_Tab()
         {
+            indice = 0;
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
             ThisPage = this;
@@ -33,6 +34,10 @@ namespace FinalAppTest.Views
         public static RR_TabRow proModifier;
         public static int indice = 0;
         public static RR_Tab ThisPage;
+        public static void FixIndice()
+        {
+            ThisPage.IdTextBox.Text = indice.ToString();
+        }
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {

@@ -23,17 +23,20 @@ namespace FinalAppTest.Views
     {
         public PCA_Tab()
         {
+            indice = 0;
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
             ThisPage = this;
         }
-
+        public static PCA_Tab ThisPage;
         public static PCA prog = new PCA();
         public static bool modifier = false;
         public static PCA_TabRow proModifier;
         public static int indice = 0;
-        public static PCA_Tab ThisPage;
-
+        public static void FixIndice()
+        {
+            ThisPage.IdTextBox.Text = indice.ToString();
+        }
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             var bc = new BrushConverter();

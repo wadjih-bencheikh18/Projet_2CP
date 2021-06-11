@@ -23,17 +23,20 @@ namespace FinalAppTest.Views
     {
         public PARD_Tab()
         {
+            indice = 0;
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
             ThisPage = this;
         }
-
+        public static PARD_Tab ThisPage;
         public static PARD prog = new PARD(5);
         public static bool modifier = false;
         public static PARD_TabRow proModifier;
         public static int indice = 0;
-        public static PARD_Tab ThisPage;
-
+        public static void FixIndice()
+        {
+            ThisPage.IdTextBox.Text = indice.ToString();
+        }
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             var bc = new BrushConverter();

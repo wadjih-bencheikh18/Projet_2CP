@@ -285,6 +285,19 @@ namespace Ordonnancement
             item.DataContext = this;
             Table.Children.Add(item);
         }
+        public Multi_Niv_R_TabRow_Proc InsererProcMLR(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox niveau, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour Ml proc
+        {
+            Multi_Niv_R_TabRow_Proc item = new Multi_Niv_R_TabRow_Proc(id, tempsArriv, duree, prio, niveau, Table, Ajouter);
+            item.DataContext = this;
+            Table.Children.Add(item);
+            return item;
+        }
+        public void InsererNivMLR(StackPanel Table, TextBox nivId, ComboBox algo, TextBox quantum, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour ML nv
+        {
+            Mult_Niv_R_TabRow item = new Mult_Niv_R_TabRow(nivId, algo, quantum, Table, Ajouter);
+            item.DataContext = this;
+            Table.Children.Add(item);
+        }
         public PCA_TabRow InsererPCA(StackPanel Table, TextBox id, TextBox tempsArriv, TextBox duree, TextBlock Ajouter)  // inserer un processus dans Table à la i'éme ligne pour PCA
         {
             PCA_TabRow item = new PCA_TabRow(id, tempsArriv, duree, Table, Ajouter);

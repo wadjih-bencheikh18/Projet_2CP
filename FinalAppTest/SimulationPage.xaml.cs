@@ -99,11 +99,17 @@ namespace FinalAppTest
 
         private void Home_Click(object sender, MouseButtonEventArgs e)
         {
+            prog.listePrets.Clear();
+            prog.listeProcessus.Clear();
+            prog.listebloque.Clear();
             MainWindow.main.Content = new WelcomePage();
         }
 
         private void Return_Click(object sender, MouseButtonEventArgs e)
         {
+            prog.listePrets.Clear();
+            prog.listeProcessus.Clear();
+            prog.listebloque.Clear();
             if (previous_algo_num == 0) MainWindow.main.Content = new InitPage { DataContext = new PAPS_ViewModel() };
             else if (previous_algo_num == 1) MainWindow.main.Content = new InitPage { DataContext = new RR_ViewModel() };
             else if (previous_algo_num == 2) MainWindow.main.Content = new InitPage { DataContext = new PSR_ViewModel() };

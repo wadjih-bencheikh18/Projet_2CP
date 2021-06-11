@@ -16,28 +16,25 @@ using System.Windows.Shapes;
 namespace FinalAppTest.Views
 {
     /// <summary>
-    /// Interaction logic for PSR_TabRow.xaml
+    /// Interaction logic for Multi_Niv_TabRow_Proc.xaml
     /// </summary>
-    public partial class PSR_TabRow : UserControl
+    public partial class Multi_Niv_R_TabRow_Proc : UserControl
     {
-        public PSR_TabRow()
+        public Multi_Niv_R_TabRow_Proc()
         {
             InitializeComponent();
-            TreeViewItem header = new TreeViewItem();
-            header.Header = processusHeader;
-            TreeViewParent.Items.Add(header);
         }
-
         private TextBox id;
         private TextBox tempsArriv;
         private TextBox duree;
         private TextBox prio;
+        private TextBox niveau;
         private TextBlock Ajouter;
         private StackPanel Table;
 
         public TreeViewItem parent;
 
-        public PSR_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, StackPanel Table, TextBlock Ajouter)
+        public Multi_Niv_R_TabRow_Proc(TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox niveau, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
@@ -45,6 +42,7 @@ namespace FinalAppTest.Views
             this.duree = duree;
             this.Table = Table;
             this.prio = prio;
+            this.niveau = niveau;
             this.Ajouter = Ajouter;
 
             parent = TreeViewParent;
@@ -52,47 +50,34 @@ namespace FinalAppTest.Views
             parent.Items.Add(new Interruption_TabHeader());
             parent.Items.Add(new Interruption_Ajouter(this));
         }
+        
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
         {
             id.Text = idTest.Text;
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
             prio.Text = prioTest.Text;
-            PSR_Tab.modifier = true;
-            PSR_Tab.proModifier = this;
+            niveau.Text = niveauTest.Text;
+            Mult_Niv_Recyclage_Tab.modifier = true;
+            Mult_Niv_Recyclage_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (PSR_Tab.modifier)
+            if (Mult_Niv_Recyclage_Tab.modifier)
             {
-                PSR_Tab.modifier = false;
+                Mult_Niv_Recyclage_Tab.modifier = false;
                 Ajouter.Text = "Ajouter";
-                PSR_Tab.FixIndice();
+                Mult_Niv_Recyclage_Tab.FixIndice();
             }
-            PSR_Tab.prog.listeProcessus.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
+            Mult_Niv_Recyclage_Tab.ListPro.RemoveAll(p => p.id.ToString().Equals(this.idTest.Text) && p.tempsArriv.ToString().Equals(this.tempsArrTest.Text));
             Table.Children.Remove(this);
-            if (Table.Children.Count == 0)
-            {
-                PSR_Tab.ThisPage.IdTextBox.Text = 0.ToString();
-                PSR_Tab.indice = 0;
-            }
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
         {
             TreeViewParent.IsSelected = false;
-        }
-
-        private void GridScale(object sender, RoutedEventArgs e)
-        {
-            processusHeader.Width = mainGrid.ActualWidth - 5;
-        }
-
-        private void Afficher_Interrup(object sender, MouseEventArgs e)
-        {
-            TreeViewParent.IsExpanded = (!TreeViewParent.IsExpanded);
         }
     }
 }

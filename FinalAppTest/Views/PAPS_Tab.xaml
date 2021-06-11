@@ -177,7 +177,7 @@
                         </Grid.RowDefinitions>
                         <Rectangle x:Name="RectTar" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
                         <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Temps d'arrivée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                        <TextBox LostFocus="TempsArrivTextBox_LostFocus" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="TempsArrivTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="TempsArrivTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" Margin="50,0" TextAlignment="Center" VerticalContentAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.RowDefinitions>
@@ -186,7 +186,7 @@
                         </Grid.RowDefinitions>
                         <Rectangle x:Name="RectDuree" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
                         <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Durée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                        <TextBox LostFocus="DureeTextBox_LostFocus" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="DureeTextBox" Grid.Row="1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="DureeTextBox" Grid.Row="1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" Margin="50,0" TextAlignment="Center" VerticalContentAlignment="Center"/>
                     </Grid>
                     <!-- <Button BorderThickness="0" Background="#0000"  x:Name="AddProcessusButton" Grid.Column="3" Content="Ajouter" Click="AddProcessusButton_Click" Margin="20,50,20,25"/>-->
                     <Grid Grid.Column="3">
@@ -267,8 +267,7 @@
                 </Rectangle.Fill>
             </Rectangle>
         </Grid>
-        <Viewbox x:Name="hint" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="686,312,0,0">
-            
+        <Viewbox x:Name="hint" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="604,352,0,0">
         </Viewbox>
         
     </Grid>

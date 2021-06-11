@@ -24,7 +24,7 @@ namespace FinalAppTest
         public Ordonnancement.Ordonnancement prog;
         public static bool paused = false;
         public static bool activated = false;
-        private int nbNiveaux;
+        private int nbNiveaux=0;
         public static double Speed = 2;
         public int previous_algo_num;
         public SimulationPage_MultiLvl(Ordonnancement.Ordonnancement prog,int i)
@@ -103,9 +103,7 @@ namespace FinalAppTest
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            prog.listePrets.Clear();
-            prog.listeProcessus.Clear();
-            prog.listebloque.Clear();
+           
             MainWindow.main.Content = new InitPage();
         }
 
@@ -121,13 +119,39 @@ namespace FinalAppTest
 
         private void Home_Click(object sender, MouseButtonEventArgs e)
         {
+
+            prog.listeProcessus.Clear();
+            prog.listebloque.Clear();
+            if (previous_algo_num == 0)
+            {
+                ((MultiNiveau)prog).nbNiveau = 0;
+                ((MultiNiveau)prog).niveaux = null;
+            }
+            else if (previous_algo_num == 1)
+            {
+                ((MultiNiveauRecyclage)prog).nbNiveau = 0;
+                ((MultiNiveauRecyclage)prog).niveaux = null;
+            }
             MainWindow.main.Content = new WelcomePage();
         }
 
         private void Return_Click(object sender, MouseButtonEventArgs e)
         {
-            if (previous_algo_num == 0) MainWindow.main.Content = new InitPage { DataContext = new MultiNiveauViewModel() };
-            else if (previous_algo_num == 1) MainWindow.main.Content = new InitPage { DataContext = new MultiNiveauRecyclageViewModel() };
+            prog.listeProcessus.Clear();
+            prog.listebloque.Clear();
+
+            if (previous_algo_num == 0)
+            {
+                ((MultiNiveau)prog).nbNiveau = 0;
+                ((MultiNiveau)prog).niveaux = null;
+                MainWindow.main.Content = new InitPage { DataContext = new MultiNiveauViewModel() };
+            }
+            else if (previous_algo_num == 1)
+            {
+                ((MultiNiveauRecyclage)prog).nbNiveau = 0;
+                ((MultiNiveauRecyclage)prog).niveaux = null;
+                MainWindow.main.Content = new InitPage { DataContext = new MultiNiveauRecyclageViewModel() };
+            }
         }
     }
 }
