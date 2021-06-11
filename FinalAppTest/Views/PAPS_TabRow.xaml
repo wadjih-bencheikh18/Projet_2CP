@@ -25,7 +25,7 @@
             </EventTrigger>
         </Grid.Triggers>
         <TreeView BorderThickness="0" HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
-            <TreeViewItem x:Name="TreeViewParent" BorderThickness="0" Selected="TreeViewParent_Selected" HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="0" >
+            <TreeViewItem x:Name="TreeViewParent" BorderThickness="0" Selected="TreeViewParent_Selected" HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="0" Expanded="TreeViewParent_Expanded" >
                 <TreeViewItem.Header>
                     <Grid x:Name="processusHeader"  HorizontalAlignment="Left" Margin="-18,0,0,0" >
                         <Grid.ColumnDefinitions>
