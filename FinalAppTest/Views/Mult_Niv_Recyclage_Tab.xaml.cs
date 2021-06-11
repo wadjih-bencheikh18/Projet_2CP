@@ -251,13 +251,14 @@ namespace FinalAppTest.Views
         {
             if (!IsLoaded) return;
             if (algoSelect.SelectedIndex == 7 || algoSelect.SelectedIndex == 8)
+
             {
-                RectQuantum.Fill = (Brush)new BrushConverter().ConvertFrom("#FFE9F2FE");
+                RectQuantum.Fill = (Brush)new BrushConverter().ConvertFrom("#FFEFF3F9");
                 if (algoSelect.SelectedIndex == 8) OptionText.Text = "Temps de MAJ";
                 else OptionText.Text = "Quantum";
                 nivQuantum.Text = "5";
                 nivQuantum.IsReadOnly = false;
-                nivQuantum.Cursor = NbProcessusTextBox.Cursor;
+                nivQuantum.Cursor = Cursors.Hand;
             }
             else
             {
@@ -265,7 +266,7 @@ namespace FinalAppTest.Views
                 OptionText.Text = "Option";
                 nivQuantum.Text = "/";
                 nivQuantum.IsReadOnly = true;
-                nivQuantum.Cursor = nivId.Cursor;
+                nivQuantum.Cursor = Cursors.Arrow;
             }
         }
 

@@ -38,12 +38,12 @@ namespace FinalAppTest.Views
                 if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PAPS_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
-                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    TArrRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
                 {
                     valide = false;
-                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    DureeRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (valide)
                 {
@@ -66,12 +66,12 @@ namespace FinalAppTest.Views
                 if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PCA_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
-                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    TArrRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
                 {
                     valide = false;
-                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    DureeRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (valide)
                 {
@@ -93,12 +93,12 @@ namespace FinalAppTest.Views
                 if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((SlackTime_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
-                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    TArrRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
                 {
                     valide = false;
-                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    DureeRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (valide)
                 {
@@ -120,12 +120,12 @@ namespace FinalAppTest.Views
                 if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PARD_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
-                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    TArrRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
                 {
                     valide = false;
-                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    DureeRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (valide)
                 {
@@ -147,12 +147,12 @@ namespace FinalAppTest.Views
                 if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PLA_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
-                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    TArrRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
                 {
                     valide = false;
-                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    DureeRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (valide)
                 {
@@ -174,12 +174,12 @@ namespace FinalAppTest.Views
                 if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PCTR_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
-                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    TArrRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
                 {
                     valide = false;
-                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    DureeRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (valide)
                 {
@@ -201,12 +201,12 @@ namespace FinalAppTest.Views
                 if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PAR_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
-                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    TArrRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
                 {
                     valide = false;
-                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    DureeRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (valide)
                 {
@@ -228,12 +228,12 @@ namespace FinalAppTest.Views
                 if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((PSR_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
-                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    TArrRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
                 {
                     valide = false;
-                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    DureeRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (valide)
                 {
@@ -255,12 +255,12 @@ namespace FinalAppTest.Views
                 if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((RR_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
-                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    TArrRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
                 {
                     valide = false;
-                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    DureeRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (valide)
                 {
@@ -282,12 +282,12 @@ namespace FinalAppTest.Views
                 if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((Comp_TabRow)processus).dureeTest.Text))
                 {
                     valide = false;
-                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    TArrRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
                 {
                     valide = false;
-                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    DureeRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (valide)
                 {
@@ -309,12 +309,12 @@ namespace FinalAppTest.Views
                 if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((Multi_Niv_TabRow_Proc)processus).dureeTest.Text))
                 {
                     valide = false;
-                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    TArrRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
                 {
                     valide = false;
-                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                    DureeRect.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 }
                 if (valide)
                 {
@@ -329,6 +329,11 @@ namespace FinalAppTest.Views
                     ((Multi_Niv_TabRow_Proc)processus).parent.Items.Add(new Interruption_Ajouter(((Multi_Niv_TabRow_Proc)processus)));  // append ajouter_row
                 }
             }
+        }
+
+        private void interruptionRow_Loaded(object sender, RoutedEventArgs e)
+        {
+            mainUC.Width = ((TreeViewItem)mainUC.Parent).ActualWidth-150;
         }
     }
 }

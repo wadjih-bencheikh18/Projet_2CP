@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:FinalAppTest.Views"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="800">
-    <Grid Loaded="GridScale" SizeChanged="GridScale" Margin="10,5,10,0" MouseLeftButtonDown="Afficher_Interrup"  x:Name="mainGrid">
+    <Grid Loaded="GridScale" SizeChanged="GridScale" Margin="10,5,10,0"  x:Name="mainGrid" Grid.IsSharedSizeScope="True">
         <Grid.Triggers>
             <!-- Animates the rectangle's opacity. -->
             <EventTrigger RoutedEvent="Grid.Loaded">

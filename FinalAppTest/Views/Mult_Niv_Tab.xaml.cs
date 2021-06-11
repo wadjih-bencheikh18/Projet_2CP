@@ -250,7 +250,24 @@ namespace FinalAppTest.Views
 
         private void algoSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (!IsLoaded) return;
+            if (algoSelect.SelectedIndex == 7 || algoSelect.SelectedIndex == 8)
+            {
+                RectQuantum.Fill = (Brush)new BrushConverter().ConvertFrom("#FFEFF3F9");
+                if (algoSelect.SelectedIndex == 8) OptionText.Text = "Temps de MAJ";
+                else OptionText.Text = "Quantum";
+                nivQuantum.Text = "5";
+                nivQuantum.IsReadOnly = false;
+                nivQuantum.Cursor = Cursors.Hand;
+            }
+            else
+            {
+                RectQuantum.Fill = (Brush)new BrushConverter().ConvertFrom("#FFFFFF");
+                OptionText.Text = "Option";
+                nivQuantum.Text = "/";
+                nivQuantum.IsReadOnly = true;
+                nivQuantum.Cursor = Cursors.Arrow;
+            }
         }
 
         private void proTitle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
