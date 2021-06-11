@@ -22,16 +22,17 @@ namespace FinalAppTest.Views
     public partial class Mult_Niv_Recyclage_Tab : UserControl
     {
         public static MultiNiveauRecyclage prog;
+
         public Mult_Niv_Recyclage_Tab()
         {
+            indicepro = 0;
+            indiceniv = 0;
             InitializeComponent();
             IdTextBox.Text = indicepro.ToString();
-            indiceniv = 0;
             randNiv.Text = indiceniv.ToString();
             nivId.Text = indiceniv.ToString();
             ThisPage = this;
         }
-        
         public static List<ProcessusNiveau> ListPro = new List<ProcessusNiveau>();
         public static Niveau[] niveaux = new Niveau[4];
         public static bool modifier = false;
@@ -43,18 +44,18 @@ namespace FinalAppTest.Views
         {
             ThisPage.IdTextBox.Text = indicepro.ToString();
         }
+
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             var bc = new BrushConverter();
             if (!Int32.TryParse(NbProcessusTextBox.Text, out int NbProcessus) && NbProcessus <= 0)
             {
-                NbProcessusTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
             else
             {
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
-                NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
+                RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFF");
                 Random r = new Random();
                 for (int i = 0; i < NbProcessus; i++)
                 {
@@ -94,41 +95,39 @@ namespace FinalAppTest.Views
         private void AddProcessusButton_Click(object sender, RoutedEventArgs e)  // ajouter un processus
         {
             bool valide = true;
-            int id, tempsArrive, duree,niv,prio;
+            int id;
             var bc = new BrushConverter();
-            if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
+            if (!Int32.TryParse(TempsArrivTextBox.Text, out int tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
-                TempsArrivTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                TempsArrivTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
+                RectProTar.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
-            if (!Int32.TryParse(NivTextBox.Text, out niv) || niv > indiceniv || niv < 0 )  // get temps d'arrivé
+            if (!Int32.TryParse(NivTextBox.Text, out int niv) || niv >= indiceniv || niv < 0 )  // get temps d'arrivé
             {
-                NivTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
-            }
-
-            if (!Int32.TryParse(PrioTextBox.Text, out prio) || prio < 0 )  // get temps d'arrivé
-            {
-                PrioTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                PrioTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
-                valide = false;
+                RectProNiv.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
 
-            if (!Int32.TryParse(DureeTextBox.Text, out duree) || duree <= 0)  // get durée
+            if (!Int32.TryParse(PrioTextBox.Text, out int prio) || prio < 0 )  // get temps d'arrivé
             {
-                DureeTextBox.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                DureeTextBox.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
+                RectProPrio.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+            }
+
+            if (!Int32.TryParse(DureeTextBox.Text, out int duree) || duree <= 0)  // get durée
+            {
+                valide = false;
+                RectProDuree.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
             if (valide)  // si tous est correcte
             {
-
+                TempsArrivTextBox.Text = "0";
+                DureeTextBox.Text = "1";
+                PrioTextBox.Text = "0";
+                NivTextBox.Text = "0";
                 if (!modifier)
                 {
                     id = indicepro;
-                    TempsArrivTextBox.Text = "0";
-                    DureeTextBox.Text = "1";
                     IdTextBox.Text = (id + 1).ToString();
                     AffichageProcessus pro = new AffichageProcessus
                     {
@@ -241,8 +240,10 @@ namespace FinalAppTest.Views
                 else niveaux[NiveauGrid.Children.IndexOf(proModifier)] = new Niveau(algo);
                 NiveauGrid.Children[NiveauGrid.Children.IndexOf(proModifier)] = item;
                 modifier = false;
+                modifier = false;
                 nivId.Text = indiceniv.ToString();
                 ajouterNV.Text = "Ajouter";
+                if (indiceniv == 4) ajouterButton.Visibility = Visibility.Hidden;
             }
 
         }
@@ -263,6 +264,7 @@ namespace FinalAppTest.Views
             else
             {
                 RectQuantum.Fill = (Brush) new BrushConverter().ConvertFrom("#FFFFFF");
+
                 OptionText.Text = "Option";
                 nivQuantum.Text = "/";
                 nivQuantum.IsReadOnly = true;
@@ -470,6 +472,34 @@ namespace FinalAppTest.Views
         private void NbProcessusTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             ((TextBox)sender).Text = "";
+        }
+
+        private void NbProcessusTextBoxx_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (!IsLoaded) return;
+            if (algoSelect.SelectedIndex == 7 || algoSelect.SelectedIndex == 8)
+            {
+                ((TextBox)sender).Text = "";
+            }
+        }
+
+        private void randNiv_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (randNiv.Text == "0")
+            {
+                minusButton.Visibility = Visibility.Hidden;
+            }
+            else if (randNiv.Text == "4")
+            {
+                plusButton.Visibility = Visibility.Hidden;
+                ajouterButton.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                minusButton.Visibility = Visibility.Visible;
+                plusButton.Visibility = Visibility.Visible;
+                ajouterButton.Visibility = Visibility.Visible;
+            }
         }
     }
 }

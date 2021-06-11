@@ -302,7 +302,7 @@ namespace FinalAppTest.Views
                     ((Comp_TabRow)processus).parent.Items.Add(new Interruption_Ajouter(((Comp_TabRow)processus)));  // append ajouter_row*/
                 }
             }
-            else  // Mult_Niv_TabRow
+            else if (processus.GetType() == typeof(Multi_Niv_TabRow_Proc))
             {
                 bool valide = true;
                 var bc = new BrushConverter();
@@ -327,6 +327,33 @@ namespace FinalAppTest.Views
                     ((Multi_Niv_TabRow_Proc)processus).parent.Items.RemoveAt(((Multi_Niv_TabRow_Proc)processus).parent.Items.Count - 1);  // remove the ajouter_row
                     ((Multi_Niv_TabRow_Proc)processus).parent.Items.Add(row);
                     ((Multi_Niv_TabRow_Proc)processus).parent.Items.Add(new Interruption_Ajouter(((Multi_Niv_TabRow_Proc)processus)));  // append ajouter_row
+                }
+            }
+            else if (processus.GetType() == typeof(Multi_Niv_R_TabRow_Proc))
+            {
+                bool valide = true;
+                var bc = new BrushConverter();
+                if (!Int32.TryParse(tempsArrTest.Text, out int tempsArriv) || tempsArriv <= 0 || tempsArriv >= Int32.Parse(((Multi_Niv_R_TabRow_Proc)processus).dureeTest.Text))
+                {
+                    valide = false;
+                    tempsArrTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (!Int32.TryParse(dureeTest.Text, out int duree) || duree <= 0)
+                {
+                    valide = false;
+                    dureeTest.Background = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                if (valide)
+                {
+                    Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
+                    Mult_Niv_Recyclage_Tab.ListPro.Find(p => p.id == int.Parse(((Multi_Niv_R_TabRow_Proc)processus).idTest.Text)).Push(inter);
+                    Interruption_TabRow row = new Interruption_TabRow((Multi_Niv_R_TabRow_Proc)processus)
+                    {
+                        DataContext = inter
+                    };
+                    ((Multi_Niv_R_TabRow_Proc)processus).parent.Items.RemoveAt(((Multi_Niv_TabRow_Proc)processus).parent.Items.Count - 1);  // remove the ajouter_row
+                    ((Multi_Niv_R_TabRow_Proc)processus).parent.Items.Add(row);
+                    ((Multi_Niv_R_TabRow_Proc)processus).parent.Items.Add(new Interruption_Ajouter(((Multi_Niv_R_TabRow_Proc)processus)));  // append ajouter_row
                 }
             }
         }

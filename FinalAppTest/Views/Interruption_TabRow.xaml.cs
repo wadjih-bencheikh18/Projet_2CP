@@ -87,6 +87,11 @@ namespace FinalAppTest.Views
                 Mult_Niv_Tab.ListPro.Find(p => p.id == int.Parse(((Multi_Niv_TabRow_Proc)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((Multi_Niv_TabRow_Proc)processus).parent.Items.Remove(this);
             }
+            else if (processus.GetType() == typeof(Multi_Niv_R_TabRow_Proc))
+            {
+                Mult_Niv_Recyclage_Tab.ListPro.Find(p => p.id == int.Parse(((Multi_Niv_R_TabRow_Proc)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
+                ((Multi_Niv_R_TabRow_Proc)processus).parent.Items.Remove(this);
+            }
         }
 
         private void interruptionRow_Loaded(object sender, RoutedEventArgs e)

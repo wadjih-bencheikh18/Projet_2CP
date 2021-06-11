@@ -54,6 +54,7 @@
                     </Image>
                 </Grid>
             </Grid>
+            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Text="Tableau des processus" FontSize="50" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="Center"/>
             <!--Column0: Generer aleatoirement-->
                 <StackPanel x:Name="Description" Grid.Row="1" >
                     <TextBlock Margin="10,30,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
@@ -117,6 +118,7 @@
             </Grid>
             <!--Column1: Processus Table-->
             <Grid x:Name="Tableau" Background="#00FFFFFF" Grid.RowSpan="3" Grid.Column="1" Grid.Row="0">
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*" />
                     <RowDefinition Height="8*"/>
@@ -178,6 +180,7 @@
                         <Rectangle x:Name="RectTar" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
                         <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Temps d'arrivée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                             <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="TempsArrivTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" Margin="50,0" TextAlignment="Center" VerticalContentAlignment="Center"/>
+
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.RowDefinitions>
@@ -186,7 +189,9 @@
                         </Grid.RowDefinitions>
                         <Rectangle x:Name="RectDuree" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
                         <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Durée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                            <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="DureeTextBox" Grid.Row="1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" Margin="50,0" TextAlignment="Center" VerticalContentAlignment="Center"/>
+
+                        <TextBox GotFocus="NbProcessusTextBox_GotFocus" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="DureeTextBox" Grid.Row="1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" Margin="50,0" TextAlignment="Center" VerticalContentAlignment="Center"/>
+
                     </Grid>
                     <!-- <Button BorderThickness="0" Background="#0000"  x:Name="AddProcessusButton" Grid.Column="3" Content="Ajouter" Click="AddProcessusButton_Click" Margin="20,50,20,25"/>-->
                     <Grid Grid.Column="3">

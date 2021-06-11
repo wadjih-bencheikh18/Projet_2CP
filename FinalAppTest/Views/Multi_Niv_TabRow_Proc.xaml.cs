@@ -59,7 +59,9 @@ namespace FinalAppTest.Views
             prio.Text = prioTest.Text;
             niveau.Text = niveauTest.Text;
             Mult_Niv_Tab.modifier = true;
+            Mult_Niv_Recyclage_Tab.modifier = true;
             Mult_Niv_Tab.proModifier = this;
+            Mult_Niv_Recyclage_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
         }
 
