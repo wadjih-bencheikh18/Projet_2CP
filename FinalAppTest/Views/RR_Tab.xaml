@@ -17,14 +17,14 @@
                 <RowDefinition Height="8*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Margin="0,30">
+            <Grid x:Name="buttons" Margin="0,30">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Grid x:Name="buttons" Margin="10">
+                <Grid Margin="10">
                     <Image VerticalAlignment="Center" Source="../Pics/ReturnButton.png" MouseLeftButtonDown="Return_MouseLeftButtonDown" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave">
                         <Image.Effect>
                             <DropShadowEffect x:Name="shadowReturn" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
@@ -55,10 +55,6 @@
             </Grid>
             <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Text="Tableau des processus" FontSize="50" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="Center"/>
             <!--Column0: Generer aleatoirement-->
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
                 <StackPanel x:Name="Description" Grid.Row="1">
                     <TextBlock Margin="10,10,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
                     <TextBlock Margin="10,0,0,10 " Text="Round Robin" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
@@ -123,7 +119,8 @@
                             <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Quantum" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                         </Grid>
                     </Grid>
-                    <Grid x:Name="Simuler" Height="100" Width="250">
+                </StackPanel>
+                <Grid x:Name="Simuler" Height="100" Width="250" Margin="0,430,0,0" Grid.Row="1">
                         <Rectangle x:Name="StartButton" Margin="10" Grid.Row="0" Fill="#F16022" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
@@ -131,9 +128,7 @@
                         </Rectangle>
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Simuler</TextBlock>
                         <Rectangle Cursor="Hand" MouseLeftButtonDown="StartButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
-                    </Grid>
-                </StackPanel>
-            </Grid>
+                </Grid>
             <!--Column1: Processus Table-->
             <Grid x:Name="Tableau" Background="#00FFFFFF" Margin="40,10" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <Grid.RowDefinitions>

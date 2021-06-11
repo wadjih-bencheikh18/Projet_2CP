@@ -339,7 +339,7 @@ namespace FinalAppTest.Views
                 {
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
-                    hint.Margin = new Thickness(196, 324, 0, 0);
+                    hint.Margin = new Thickness(364, 298, 0, 0);
                     Test = new Hint(
                                         "Generer les processus",
                                         "Entrez le quantum",
