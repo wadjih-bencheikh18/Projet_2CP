@@ -62,8 +62,44 @@ namespace FinalAppTest.Views
                     sb.Begin();
                 }
             }
-            
-            
+            else if (Page.GetType() == typeof(RR_Tab))
+            {
+                if (Suivant.Text == "FIN")
+                {
+                    ((RR_Tab)Page).FinHint();
+                }
+                else if (RR_Tab.NextHintCondition)
+                {
+                    RR_Tab.NbHint++;
+                    hint.Child = null;
+                    ((RR_Tab)Page).Hint();
+                }
+                else
+                {
+                    Storyboard sb = this.FindResource("Error") as Storyboard;
+                    sb.Begin();
+                }
+            }
+            /*else if (Page.GetType() == typeof(PARD_Tab))
+            {
+                if (Suivant.Text == "FIN")
+                {
+                    ((PARD_Tab)Page).FinHint();
+                }
+                else if (PARD_Tab.NextHintCondition)
+                {
+                    PARD_Tab.NbHint++;
+                    hint.Child = null;
+                    ((PARD_Tab)Page).Hint();
+                }
+                else
+                {
+                    Storyboard sb = this.FindResource("Error") as Storyboard;
+                    sb.Begin();
+                }
+            }*/
+
+
         }
          private void Skip_Button(object sender, MouseButtonEventArgs e)
         {

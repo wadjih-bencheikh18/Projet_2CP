@@ -59,6 +59,7 @@ namespace FinalAppTest.Views
             RR_Tab.modifier = true;
             RR_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
+            if (RR_Tab.NbHint == 10) RR_Tab.HintSuivant();
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
@@ -76,6 +77,7 @@ namespace FinalAppTest.Views
                 RR_Tab.ThisPage.IdTextBox.Text = 0.ToString();
                 RR_Tab.indice = 0;
             }
+            if (RR_Tab.NbHint == 9) RR_Tab.HintSuivant();
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
