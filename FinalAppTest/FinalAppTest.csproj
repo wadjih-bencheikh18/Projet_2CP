@@ -521,5 +521,11 @@
   <ItemGroup>
     <Resource Include="Pics\Aymen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\Wadjih.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\Nazim.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
