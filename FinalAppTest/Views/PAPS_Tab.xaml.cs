@@ -284,7 +284,7 @@ namespace FinalAppTest.Views
             ApplyEffect();
             Description.Effect = null;
             Panel.SetZIndex(Description, 1);
-            hint.Margin = new Thickness(264, 120, 0, 0);
+            hint.Margin = new Thickness(300, 180, 0, 0);
             Hint Test = new Hint(
                                 "Simulation PAPS",
                                 "Commençons la simulation de l'algorithme PAPS",
@@ -306,7 +306,7 @@ namespace FinalAppTest.Views
                 {
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
-                    hint.Margin = new Thickness(348, 276, 0, 0);
+                    hint.Margin = new Thickness(450, 370, 0, 0);
                     Test = new Hint(
                                         "Générer les processus",
                                         "Vous pouvez générer les processus aléatoirement",
@@ -319,7 +319,7 @@ namespace FinalAppTest.Views
                 {
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
-                    hint.Margin = new Thickness(196, 324, 0, 0);
+                    hint.Margin = new Thickness(30, 235, 0, 0);
                     Test = new Hint(
                                         "Générer les processus",
                                         "Entrez le nombre des processus à générer",
@@ -332,7 +332,7 @@ namespace FinalAppTest.Views
                 {
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
-                    hint.Margin = new Thickness(364, 298, 0, 0);
+                    hint.Margin = new Thickness(280, 235, 0, 0);
                     Test = new Hint(
                                         "Générer les processus",
                                         "Vous pouvez générer des interruptions en cochant cette case",
@@ -345,7 +345,7 @@ namespace FinalAppTest.Views
                 {
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
-                    hint.Margin = new Thickness(360, 352, 0, 0);
+                    hint.Margin = new Thickness(420, 415, 0, 0);
                     Test = new Hint(
                                         "Générer les processus",
                                         "Cliquez sur le button 'Générer' pour créer les processus",
@@ -358,7 +358,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(676, 312, 0, 0);
+                    hint.Margin = new Thickness(675, 345, 0, 0);
                     Test = new Hint(
                                         "Tableau des processus",
                                         "Voici le tableau des processus générés",
@@ -371,7 +371,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(936, 490, 0, 0);
+                    hint.Margin = new Thickness(690, 435, 0, 0);
                     Test = new Hint(
                                         "Ajouter un processus",
                                         "Entrer les paramètres du processus à insérer",
@@ -384,7 +384,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(778, 482, 0, 0);
+                    hint.Margin = new Thickness(1125, 460, 0, 0);
                     Test = new Hint(
                                         "Ajouter un processus",
                                         "Cliquez sur 'Ajouter' pour insérer ce processus",
@@ -397,7 +397,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(670, 248, 0, 0);
+                    hint.Margin = new Thickness(750, 248, 0, 0);
                     Test = new Hint(
                                         "Supprimer un processus",
                                         "Cliquez sur 'Supprimer' pour supprimer un processus",
@@ -410,7 +410,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(670, 248, 0, 0);
+                    hint.Margin = new Thickness(750, 248, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
                                         "Cliquez sur 'Modifier' pour modifier les paramètres d'un processus",
@@ -423,7 +423,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(936, 490, 0, 0);
+                    hint.Margin = new Thickness(690, 435, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
                                         "Changez les paramètres du processus",
@@ -436,7 +436,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(778, 482, 0, 0);
+                    hint.Margin = new Thickness(1125, 460, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
                                         "Cliquez sur 'Modifier' pour confirmer votre modification",
@@ -449,7 +449,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(198, 210, 0, 0);
+                    hint.Margin = new Thickness(220, 240, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
                                         "Cliquez sur un processus pour gérer ses interruptions",
@@ -462,7 +462,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(230, 272, 0, 0);
+                    hint.Margin = new Thickness(220, 240, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
                                         "Changez les paramètres de l'interruption à insérer",
@@ -475,7 +475,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(686, 312, 0, 0);
+                    hint.Margin = new Thickness(220, 240, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
                                         "Cliquez sur '+' pour insérer cette interruption",
@@ -488,7 +488,7 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(686, 312, 0, 0);
+                    hint.Margin = new Thickness(220, 240, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
                                         "Cliquez sur 'x' pour supprimer une interruption",
@@ -501,10 +501,10 @@ namespace FinalAppTest.Views
                 {
                     Simuler.Effect = null;
                     Panel.SetZIndex(Simuler, 1);
-                    hint.Margin = new Thickness(370, 328, 0, 0);
+                    hint.Margin = new Thickness(360, 505, 0, 0);
                     Test = new Hint(
-                                        "Gérer les interruptions",
-                                        "Cliquez sur 'x' pour supprimer une interruption",
+                                        "Simulation",
+                                        "Cliquez sur le button 'Simuler' pour commencer la simulation",
                                         this,
                                         hint
                                     );
