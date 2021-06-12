@@ -52,6 +52,7 @@ namespace FinalAppTest.Views
             }
             else
             {
+                if (NbHint == 5) HintSuivant();
                 prog.listeProcessus.Clear();  // vider la liste pour l'ecraser
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
@@ -112,6 +113,7 @@ namespace FinalAppTest.Views
                 DureeTextBox.Text = "1";
                 if (!modifier)  // un nouveau processus
                 {
+                    if (NbHint == 8) HintSuivant();
                     id = indice;
                     IdTextBox.Text = (id + 1).ToString();
                     RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
@@ -128,6 +130,7 @@ namespace FinalAppTest.Views
                 }
                 else  // modifier un existant
                 {
+                    if (NbHint == 12) HintSuivant();
                     AffichageProcessus pro = new AffichageProcessus
                     {
                         id = int.Parse(IdTextBox.Text),

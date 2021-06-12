@@ -108,7 +108,6 @@ namespace FinalAppTest.Views
                 {
                     if (NbHint == 7) HintSuivant();
                     id = indice;
-                    
                     IdTextBox.Text = (id + 1).ToString();
                     NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
                     AffichageProcessus pro = new AffichageProcessus
