@@ -44,6 +44,7 @@ namespace FinalAppTest.Views
             }
             else if (processus.GetType() == typeof(SlackTime_TabRow))
             {
+                if (SlackTime_Tab.NbHint == 15) SlackTime_Tab.HintSuivant();
                 SlackTime_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((SlackTime_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((SlackTime_TabRow)processus).parent.Items.Remove(this);
             }
@@ -65,11 +66,13 @@ namespace FinalAppTest.Views
             }
             else if (processus.GetType() == typeof(PAR_TabRow))
             {
+                if (PAR_Tab.NbHint == 15) PAR_Tab.HintSuivant();
                 PAR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PAR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((PAR_TabRow)processus).parent.Items.Remove(this);
             }
             else if (processus.GetType() == typeof(PSR_TabRow))
             {
+                if (PSR_Tab.NbHint == 15) PSR_Tab.HintSuivant();
                 PSR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PSR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((PSR_TabRow)processus).parent.Items.Remove(this);
             }

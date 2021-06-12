@@ -98,6 +98,60 @@ namespace FinalAppTest.Views
                     sb.Begin();
                 }
             }
+            else if (Page.GetType() == typeof(PSR_Tab))
+            {
+                if (Suivant.Text == "FIN")
+                {
+                    ((PSR_Tab)Page).FinHint();
+                }
+                else if (PSR_Tab.NextHintCondition)
+                {
+                    PSR_Tab.NbHint++;
+                    hint.Child = null;
+                    ((PSR_Tab)Page).Hint();
+                }
+                else
+                {
+                    Storyboard sb = this.FindResource("Error") as Storyboard;
+                    sb.Begin();
+                }
+            }
+            else if (Page.GetType() == typeof(PAR_Tab))
+            {
+                if (Suivant.Text == "FIN")
+                {
+                    ((PAR_Tab)Page).FinHint();
+                }
+                else if (PAR_Tab.NextHintCondition)
+                {
+                    PAR_Tab.NbHint++;
+                    hint.Child = null;
+                    ((PAR_Tab)Page).Hint();
+                }
+                else
+                {
+                    Storyboard sb = this.FindResource("Error") as Storyboard;
+                    sb.Begin();
+                }
+            }
+            else if (Page.GetType() == typeof(SlackTime_Tab))
+            {
+                if (Suivant.Text == "FIN")
+                {
+                    ((SlackTime_Tab)Page).FinHint();
+                }
+                else if (SlackTime_Tab.NextHintCondition)
+                {
+                    SlackTime_Tab.NbHint++;
+                    hint.Child = null;
+                    ((SlackTime_Tab)Page).Hint();
+                }
+                else
+                {
+                    Storyboard sb = this.FindResource("Error") as Storyboard;
+                    sb.Begin();
+                }
+            }
 
 
         }
