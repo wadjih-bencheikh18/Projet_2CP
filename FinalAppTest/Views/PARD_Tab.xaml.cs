@@ -495,7 +495,9 @@ namespace FinalAppTest.Views
                     hint.Margin = new Thickness(190, 240, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
-                                        "Changez les paramètres de l'interruption à insérer",
+                                        "Changez les paramètres de l'interruption à insérer" +
+                                        "\n\nNB: le temps d'arrivé de l'interruption doit être " +
+                                        "inférieur à la durée du processus",
                                         this,
                                         hint
                                     );
