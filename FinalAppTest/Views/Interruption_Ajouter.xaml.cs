@@ -129,7 +129,7 @@ namespace FinalAppTest.Views
                 }
                 if (valide)
                 {
-                    //if (PARD_Tab.NbHint == 15) PARD_Tab.HintSuivant();
+                    if (PARD_Tab.NbHint == 15) PARD_Tab.HintSuivant();
                     Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
                     PARD_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PARD_TabRow)processus).idTest.Text)).Push(inter);
                     Interruption_TabRow row = new Interruption_TabRow((PARD_TabRow)processus)

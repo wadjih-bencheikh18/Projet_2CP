@@ -50,6 +50,7 @@ namespace FinalAppTest.Views
             PARD_Tab.modifier = true;
             PARD_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
+            if (PARD_Tab.NbHint == 10) PARD_Tab.HintSuivant();
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
@@ -67,6 +68,7 @@ namespace FinalAppTest.Views
                 PARD_Tab.ThisPage.IdTextBox.Text = 0.ToString();
                 PARD_Tab.indice = 0;
             }
+            if (PARD_Tab.NbHint == 9) PARD_Tab.HintSuivant();
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
@@ -82,6 +84,11 @@ namespace FinalAppTest.Views
         private void Afficher_Interrup(object sender, MouseEventArgs e)
         {
             TreeViewParent.IsExpanded = (!TreeViewParent.IsExpanded);
+        }
+
+        private void TreeViewParent_Expanded(object sender, RoutedEventArgs e)
+        {
+            if (PARD_Tab.NbHint == 13) PARD_Tab.HintSuivant();
         }
 
     }

@@ -275,14 +275,12 @@ namespace FinalAppTest.Views
             buttons.Effect = null;
             Description.Effect = null;
             Random.Effect = null;
-            Quantum.Effect = null;
             Simuler.Effect = null;
             Tableau.Effect = null;
             Grey.Visibility = Visibility.Hidden;
             Panel.SetZIndex(buttons, 0);
             Panel.SetZIndex(Description, 0);
             Panel.SetZIndex(Random, 0);
-            Panel.SetZIndex(Quantum, 0);
             Panel.SetZIndex(Simuler, 0);
             Panel.SetZIndex(Tableau, 0);
             hint.Child = null;
