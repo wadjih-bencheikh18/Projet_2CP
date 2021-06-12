@@ -379,7 +379,7 @@ namespace FinalAppTest.Views
                     hint.Margin = new Thickness(936, 490, 0, 0);
                     Test = new Hint(
                                         "Ajouter un processus",
-                                        "Entrer les paramètres du processus à insérer",
+                                        "Entrer les paramètres du processus à insérer, Le deadline doit être superieur à la durée.",
                                         this,
                                         hint
                                     );
