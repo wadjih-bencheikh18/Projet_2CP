@@ -261,7 +261,7 @@ namespace FinalAppTest.Views
                 else OptionText.Text = "Quantum";
                 nivQuantum.Text = "5";
                 nivQuantum.IsReadOnly = false;
-                nivQuantum.Cursor = Cursors.Hand;
+                nivQuantum.Cursor = Cursors.IBeam;
             }
             else
             {
@@ -306,7 +306,6 @@ namespace FinalAppTest.Views
             {
                 return;
             }
-            var bc = new BrushConverter();
             string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PAR", "PSR", "Slack-Time", "RR" ,"PARD"};
             Random random = new Random();
             int niv,algo= random.Next(0, 9), q = 0;
@@ -497,12 +496,14 @@ namespace FinalAppTest.Views
             else if (randNiv.Text == "4")
             {
                 ajouterButton.Visibility = Visibility.Hidden;
+                plusButton.Visibility = Visibility.Hidden;
             }
             else
             {
                 nivIndexRectangle.Fill = (Brush)new BrushConverter().ConvertFrom("#FFE9F2FE");
                 minusButton.Visibility = Visibility.Visible;
                 ajouterButton.Visibility = Visibility.Visible;
+                plusButton.Visibility = Visibility.Visible;
             }
         }
     }

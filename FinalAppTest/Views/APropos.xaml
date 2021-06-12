@@ -123,7 +123,7 @@
             <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Text="Nos membres" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" Foreground="#505284" FontSize="60" FontWeight="Medium"/>
             <!--Photos-->
             <Grid Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="1">
-                <Image Source="/Pics/Mounia.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
+                <Image Source="/Pics/Wadjih.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
                 <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
                     <Run Foreground="#1d1d1b" FontSize="24" FontWeight="Regular" Text="Wadjih Bencheikh&#xA;"/>
                     <Run Text=" "/><Run Foreground="#505285" FontSize="18" FontWeight="Regular" Text="Chef d'équipe&#xA;"/><Run Text=" "/>
@@ -155,7 +155,7 @@
                 </TextBlock>
             </Grid>
             <Grid Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="3">
-                <Image Source="/Pics/Mounia.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
+                <Image Source="/Pics/Nazim.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
                 <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
                     <Run FontSize="24" FontWeight="Regular" Text="Mohamed Nazim Keskes&#10;"/>
                     <Run Text="&#10;"/>
