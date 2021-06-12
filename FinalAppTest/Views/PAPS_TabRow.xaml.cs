@@ -95,6 +95,10 @@ namespace FinalAppTest.Views
             TreeViewParent.IsExpanded = (!TreeViewParent.IsExpanded);
         }
 
+        private void TreeViewParent_Expanded(object sender, RoutedEventArgs e)
+        {
+            if (PAPS_Tab.NbHint == 12) PAPS_Tab.HintSuivant();
+        }
     }
 }
 
