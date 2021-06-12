@@ -109,7 +109,7 @@
                             <TextBox GotFocus="NbProcessusTextBox_GotFocus" x:Name="NbProcessusTextBox" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
                             <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des processus" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                         </Grid>
-                        <Grid x:Name="Quantum" Grid.Column="1">
+                        <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition Height="2*"/>

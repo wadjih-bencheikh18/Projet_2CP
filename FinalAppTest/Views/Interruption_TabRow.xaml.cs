@@ -49,7 +49,7 @@ namespace FinalAppTest.Views
             }
             else if (processus.GetType() == typeof(PARD_TabRow))
             {
-                //if (PARD_Tab.NbHint == 16) PARD_Tab.HintSuivant();
+                if (PARD_Tab.NbHint == 16) PARD_Tab.HintSuivant();
                 PARD_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PARD_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((PARD_TabRow)processus).parent.Items.Remove(this);
             }

@@ -80,7 +80,7 @@ namespace FinalAppTest.Views
                     sb.Begin();
                 }
             }
-            /*else if (Page.GetType() == typeof(PARD_Tab))
+            else if (Page.GetType() == typeof(PARD_Tab))
             {
                 if (Suivant.Text == "FIN")
                 {
@@ -97,7 +97,7 @@ namespace FinalAppTest.Views
                     Storyboard sb = this.FindResource("Error") as Storyboard;
                     sb.Begin();
                 }
-            }*/
+            }
 
 
         }
