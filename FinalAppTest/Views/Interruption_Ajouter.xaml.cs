@@ -159,6 +159,7 @@ namespace FinalAppTest.Views
                 }
                 if (valide)
                 {
+                    if (PLA_Tab.NbHint == 12) PLA_Tab.HintSuivant();
                     Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
                     PLA_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PLA_TabRow)processus).idTest.Text)).Push(inter);
                     Interruption_TabRow row = new Interruption_TabRow((PLA_TabRow)processus)
@@ -186,6 +187,7 @@ namespace FinalAppTest.Views
                 }
                 if (valide)
                 {
+                    if (PCTR_Tab.NbHint == 12) PCTR_Tab.HintSuivant();
                     Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
                     PCTR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PCTR_TabRow)processus).idTest.Text)).Push(inter);
                     Interruption_TabRow row = new Interruption_TabRow((PCTR_TabRow)processus)

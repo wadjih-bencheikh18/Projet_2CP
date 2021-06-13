@@ -170,8 +170,42 @@ namespace FinalAppTest.Views
                     sb.Begin();
                 }
             }
-
-
+            else if (Page.GetType() == typeof(PCTR_Tab))
+            {
+                if (Suivant.Text == "FIN")
+                {
+                    ((PCTR_Tab)Page).FinHint();
+                }
+                else if (PCTR_Tab.NextHintCondition)
+                {
+                    PCTR_Tab.NbHint++;
+                    hint.Child = null;
+                    ((PCTR_Tab)Page).Hint();
+                }
+                else
+                {
+                    Storyboard sb = this.FindResource("Error") as Storyboard;
+                    sb.Begin();
+                }
+            }
+            else if (Page.GetType() == typeof(PLA_Tab))
+            {
+                if (Suivant.Text == "FIN")
+                {
+                    ((PLA_Tab)Page).FinHint();
+                }
+                else if (PLA_Tab.NextHintCondition)
+                {
+                    PLA_Tab.NbHint++;
+                    hint.Child = null;
+                    ((PLA_Tab)Page).Hint();
+                }
+                else
+                {
+                    Storyboard sb = this.FindResource("Error") as Storyboard;
+                    sb.Begin();
+                }
+            }
         }
          private void Skip_Button(object sender, MouseButtonEventArgs e)
         {
@@ -214,6 +248,18 @@ namespace FinalAppTest.Views
             {
 
                 ((PCA_Tab)Page).FinHint();
+
+            }
+            else if (Page.GetType() == typeof(PCTR_Tab))
+            {
+
+                ((PCTR_Tab)Page).FinHint();
+
+            }
+            else if (Page.GetType() == typeof(PLA_Tab))
+            {
+
+                ((PLA_Tab)Page).FinHint();
 
             }
         }
@@ -286,6 +332,26 @@ namespace FinalAppTest.Views
                     PCA_Tab.NbHint++;
                     hint.Child = null;
                     ((PCA_Tab)Page).Hint();
+                }
+
+            }
+            else if (Page.GetType() == typeof(PCTR_Tab))
+            {
+                if (PCTR_Tab.NbHint > 0)
+                {
+                    PCTR_Tab.NbHint++;
+                    hint.Child = null;
+                    ((PCTR_Tab)Page).Hint();
+                }
+
+            }
+            else if (Page.GetType() == typeof(PLA_Tab))
+            {
+                if (PLA_Tab.NbHint > 0)
+                {
+                    PLA_Tab.NbHint++;
+                    hint.Child = null;
+                    ((PLA_Tab)Page).Hint();
                 }
 
             }

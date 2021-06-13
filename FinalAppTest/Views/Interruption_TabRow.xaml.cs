@@ -57,11 +57,13 @@ namespace FinalAppTest.Views
             }
             else if (processus.GetType() == typeof(PLA_TabRow))
             {
+                if (PLA_Tab.NbHint == 13) PLA_Tab.HintSuivant();
                 PLA_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PLA_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((PLA_TabRow)processus).parent.Items.Remove(this);
             }
             else if (processus.GetType() == typeof(PCTR_TabRow))
             {
+                if (PCTR_Tab.NbHint == 13) PCTR_Tab.HintSuivant();
                 PCTR_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PCTR_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((PCTR_TabRow)processus).parent.Items.Remove(this);
             }

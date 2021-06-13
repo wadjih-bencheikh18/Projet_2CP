@@ -185,7 +185,10 @@ namespace FinalAppTest.Views
             }
             else
             {
-                MainWindow.main.Content = new SimulationPage(prog, 5);
+                if (NbHint == 0)
+                    MainWindow.main.Content = new SimulationPage(prog, 5);
+                else
+                    FinHint();
             }
         }
 
@@ -419,7 +422,7 @@ namespace FinalAppTest.Views
                     hint.Margin = new Thickness(281, 0, 0, 10);
                     Test = new Hint(
                                         "Ajouter un processus",
-                                        "Entrer les paramètres du processus à insérer manuellement",
+                                        "Entrez les paramètres du processus à insérer manuellement",
                                         this,
                                         hint
                                     );
