@@ -248,7 +248,7 @@ namespace FinalAppTest.Views
             }
         }
 
-        public void ApplyEffect() 
+        public void ApplyEffect()
         {
             BlurEffect Effect = new BlurEffect();
             Effect.Radius = 8;
@@ -257,7 +257,9 @@ namespace FinalAppTest.Views
             Random.Effect = Effect;
             Simuler.Effect = Effect;
             Tableau.Effect = Effect;
+            InitPage.navigation.Effect = Effect;
             Grey.Visibility = Visibility.Visible;
+            InitPage.grey.Visibility = Visibility.Visible;
             Panel.SetZIndex(buttons, 0);
             Panel.SetZIndex(Description, 0);
             Panel.SetZIndex(Random, 0);
@@ -265,7 +267,7 @@ namespace FinalAppTest.Views
             Panel.SetZIndex(Tableau, 0);
         }
 
-        public void FinHint() 
+        public void FinHint()
         {
             NbHint = 0;
             buttons.Effect = null;
@@ -273,7 +275,9 @@ namespace FinalAppTest.Views
             Random.Effect = null;
             Simuler.Effect = null;
             Tableau.Effect = null;
+            InitPage.navigation.Effect = null;
             Grey.Visibility = Visibility.Hidden;
+            InitPage.grey.Visibility = Visibility.Hidden;
             Panel.SetZIndex(buttons, 0);
             Panel.SetZIndex(Description, 0);
             Panel.SetZIndex(Random, 0);

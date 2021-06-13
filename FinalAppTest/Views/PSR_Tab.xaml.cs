@@ -266,6 +266,7 @@ namespace FinalAppTest.Views
             }
 
         }
+
         public void ApplyEffect()
         {
             BlurEffect Effect = new BlurEffect();
@@ -275,13 +276,16 @@ namespace FinalAppTest.Views
             Random.Effect = Effect;
             Simuler.Effect = Effect;
             Tableau.Effect = Effect;
+            InitPage.navigation.Effect = Effect;
             Grey.Visibility = Visibility.Visible;
+            InitPage.grey.Visibility = Visibility.Visible;
             Panel.SetZIndex(buttons, 0);
             Panel.SetZIndex(Description, 0);
             Panel.SetZIndex(Random, 0);
             Panel.SetZIndex(Simuler, 0);
             Panel.SetZIndex(Tableau, 0);
         }
+
         public void FinHint()
         {
             NbHint = 0;
@@ -290,7 +294,9 @@ namespace FinalAppTest.Views
             Random.Effect = null;
             Simuler.Effect = null;
             Tableau.Effect = null;
+            InitPage.navigation.Effect = null;
             Grey.Visibility = Visibility.Hidden;
+            InitPage.grey.Visibility = Visibility.Hidden;
             Panel.SetZIndex(buttons, 0);
             Panel.SetZIndex(Description, 0);
             Panel.SetZIndex(Random, 0);
@@ -298,6 +304,7 @@ namespace FinalAppTest.Views
             Panel.SetZIndex(Tableau, 0);
             hint.Child = null;
         }
+
         private void Hint_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             NbHint = 0;

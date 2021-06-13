@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1241">
     <Grid x:Name="Page">
-        <Grid Background="#FFE9F2FE" Margin="-1.5,0,1.5,0">
+        <Grid Background="#FFE9F2FE">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="7*"/>
