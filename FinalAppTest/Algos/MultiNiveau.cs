@@ -107,7 +107,7 @@ namespace Ordonnancement
             SortListeProcessus();  //trier la liste des processus
             InitNiveaux();   //remplir les niveaux
             int temps = 0, indice = 0, indiceNiveau = nbNiveau;
-            while (indice < listeProcessus.Count || indiceNiveau < nbNiveau || listebloque.Count!=0) //tant que le processus est dans listeProcessus ou il existe un niveau non vide
+            while ((indice < listeProcessus.Count || indiceNiveau < nbNiveau || listebloque.Count!=0) && !SimulationPage_MultiLvl.stop) //tant que le processus est dans listeProcessus ou il existe un niveau non vide
             {
                 indice = await MAJListePrets(temps, indice, ListesPretsViews);  //remplir la liste des processus prêts de chaque niveau
                 await InterruptionExecute(niveaux,listebloque, ListesPretsViews,-1,ListeBloqueView,Processeur,deroulement); 

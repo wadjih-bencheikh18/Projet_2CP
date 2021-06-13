@@ -22,7 +22,7 @@ namespace Ordonnancement
             int indice = 0;
             bool anime = true, debut = true;
             Processus proc;
-            while (listePrets.Count != 0 || indice < listeProcessus.Count || listebloque.Count != 0) //Tant qu'il existe des processus prêts
+            while ((listePrets.Count != 0 || indice < listeProcessus.Count || listebloque.Count != 0) && !SimulationPage.stop) //Tant qu'il existe des processus prêts
             {
                 int key = 0;
                 foreach(Processus pro in listePrets)

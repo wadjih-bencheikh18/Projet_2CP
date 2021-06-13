@@ -24,6 +24,7 @@ namespace FinalAppTest
         public Ordonnancement.Ordonnancement prog;
         public static bool paused = false;
         public static bool activated = false;
+        public static bool stop = false;
         private int nbNiveaux=0;
         public static double Speed = 2;
         public int previous_algo_num;
@@ -112,9 +113,28 @@ namespace FinalAppTest
             paused = true;
         }
 
-        private void Repeat_Click(object sender, MouseButtonEventArgs e)
+        private async void Repeat_Click(object sender, MouseButtonEventArgs e)
         {
-
+            stop = true;
+            prog.listebloque.Clear();
+            prog.listePrets.Clear();
+            for (int i = 0; i < prog.listeProcessus.Count(); i++)
+            {
+                prog.listeProcessus[i].tempsRestant = prog.listeProcessus[i].duree;
+                prog.listeProcessus[i].etat = 3;
+            }
+            ListProcessusView0.Children.Clear();
+            ListProcessusView1.Children.Clear();
+            ListProcessusView2.Children.Clear();
+            ListProcessusView3.Children.Clear();
+            ListeBloqueView.Children.Clear();
+            Processeur.Children.Clear();
+            deroulement.Children.Clear();
+            GanttChart.Children.Clear();
+            await Task.Delay(2000);
+            stop = false;
+            TempsView.Text = "0";
+            prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
         }
 
         private void Home_Click(object sender, MouseButtonEventArgs e)

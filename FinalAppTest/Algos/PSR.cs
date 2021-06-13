@@ -19,7 +19,7 @@ namespace Ordonnancement
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = 0, indice = 0;
             bool sort = true; //est à vrai si un tri par priorité est necessaire
-            while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0) //s'il existe des processus non executés
+            while ((indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0) && !SimulationPage.stop) //s'il existe des processus non executés
             {
                 if (listePrets.Count == 0) sort = true; //les premiers processus arrivés => on fait un tri par priorité
                 indice = await MAJListePrets(temps, indice, ListePretsView);  //remplir listePrets

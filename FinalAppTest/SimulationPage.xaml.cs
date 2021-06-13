@@ -28,6 +28,7 @@ namespace FinalAppTest
         public static SimulationPage save;
         public static bool activated = false;
         public static bool paused = false;
+        public static bool stop = false;
         public static double Speed = 2;
 
         public SimulationPage(Ordonnancement.Ordonnancement prog)
@@ -92,9 +93,25 @@ namespace FinalAppTest
             VitesseSlider.Value = 3;
         }
 
-        private void Repeat_Click(object sender, MouseButtonEventArgs e)
+        private async void Repeat_Click(object sender, MouseButtonEventArgs e)
         {
-
+            stop = true;
+            prog.listebloque.Clear();
+            prog.listePrets.Clear();
+            for (int i = 0; i < prog.listeProcessus.Count(); i++)
+            {
+                prog.listeProcessus[i].tempsRestant = prog.listeProcessus[i].duree;
+                prog.listeProcessus[i].etat = 3;
+            }
+            ListePretsView.Children.Clear();
+            ListeBloqueView.Children.Clear();
+            Processeur.Children.Clear();
+            deroulement.Children.Clear();
+            GanttChart.Children.Clear();
+            await Task.Delay(2000);
+            stop = false;
+            TempsView.Text = "0";
+            prog.Executer(ListePretsView, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
         }
 
         private void Home_Click(object sender, MouseButtonEventArgs e)

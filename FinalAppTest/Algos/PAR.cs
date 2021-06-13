@@ -20,7 +20,7 @@ namespace Ordonnancement
             int indice = 0;
             bool anime = true, debut = true;
             Processus proc;
-            while (listePrets.Count != 0 || indice < listeProcessus.Count || listebloque.Count != 0) //Tant qu'il existe des processus prêts
+            while ((listePrets.Count != 0 || indice < listeProcessus.Count || listebloque.Count != 0) && !SimulationPage.stop) //Tant qu'il existe des processus prêts
             {
                 if (listePrets.Count == 0) anime = true;
                 indice = await MAJListePrets(temps, indice, ListePretsView);  // Remplir listePrets

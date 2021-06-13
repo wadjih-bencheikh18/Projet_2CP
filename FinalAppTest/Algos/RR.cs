@@ -25,7 +25,7 @@ namespace Ordonnancement
             bool anime = true;
             SortListeProcessus(); //Tri de la liste des processus par temps d'arrivée
             int indice = 0, temps = 0, q = 0;
-            while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0)  //s'il existe des processus prêts
+            while ((indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0) && !SimulationPage.stop)  //s'il existe des processus prêts
             {
                 if (listePrets.Count == 0) anime = true;
                 indice = await MAJListePrets(temps, indice, ListePretsView); //remplir listePrets

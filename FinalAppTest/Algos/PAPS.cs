@@ -20,7 +20,7 @@ namespace Ordonnancement
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = 0, indice = 0;
             bool anime = true;
-            while (indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0) //s'il existe des processus non executés
+            while ((indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0)&& !SimulationPage.stop )//s'il existe des processus non executés
             {
                 if (listePrets.Count == 0) anime = true;
                 indice = await MAJListePrets(temps, indice, ListePretsView); //remplir listePrets
@@ -110,7 +110,7 @@ namespace Ordonnancement
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;
             bool anime = true;
-            while (listePrets.Count != 0 && PrioNiveaux(niveaux,indiceNiveau,nbNiveau)) //s'il existe des processus prêts 
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux,indiceNiveau,nbNiveau) && !SimulationPage_MultiLvl.stop) //s'il existe des processus prêts 
             {
                 if(anime)
                 {
@@ -166,7 +166,7 @@ namespace Ordonnancement
         public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel deroulement)
         {
             int temps = tempsDebut;
-            while (listePrets.Count != 0) //s'il existe des processus prêts 
+            while (listePrets.Count != 0 && !SimulationPage_MultiLvl.stop ) //s'il existe des processus prêts 
             {
                 niveaux[indiceNiveau].indice[0] = MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau); //remplir la liste des processus prêts de chaque niveau
                 if (!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
@@ -209,7 +209,7 @@ namespace Ordonnancement
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;
             bool anime = true;
-            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //s'il existe des processus prêts 
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) ) //s'il existe des processus prêts 
             {
                 if (anime)
                 {
