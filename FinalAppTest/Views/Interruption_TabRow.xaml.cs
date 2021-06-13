@@ -92,6 +92,7 @@ namespace FinalAppTest.Views
             }
             else if (processus.GetType() == typeof(Multi_Niv_R_TabRow_Proc))
             {
+                if (Mult_Niv_Recyclage_Tab.NbHint == 24) Mult_Niv_Recyclage_Tab.HintSuivant();
                 Mult_Niv_Recyclage_Tab.ListPro.Find(p => p.id == int.Parse(((Multi_Niv_R_TabRow_Proc)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((Multi_Niv_R_TabRow_Proc)processus).parent.Items.Remove(this);
             }

@@ -6,501 +6,504 @@
              xmlns:local="clr-namespace:FinalAppTest.Views"
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1205">
-    <Grid Background="#FFE9F2FE">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="7*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="8*"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid Margin="0,30">
+    <Grid>
+        <Grid Background="#FFE9F2FE">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
-            <Grid Margin="10">
-                <Image VerticalAlignment="Center" Source="../Pics/ReturnButton.png" MouseLeftButtonDown="Return_MouseLeftButtonDown" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave">
-                    <Image.Effect>
-                        <DropShadowEffect x:Name="shadowReturn" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
-                    </Image.Effect>
-                </Image>
-            </Grid>
-            <Grid Grid.Column="1" Margin="10">
-                <Image VerticalAlignment="Center" Source="../Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
-                    <Image.Effect>
-                        <DropShadowEffect x:Name="shadowHome" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
-                    </Image.Effect>
-                </Image>
-            </Grid>
-            <Grid Grid.Column="2" Margin="10">
-                <Image VerticalAlignment="Center" Source="../Pics/HintButton.png" MouseLeftButtonDown="Hint_MouseLeftButtonDown" MouseEnter="Hint_MouseEnter" MouseLeave="Hint_MouseLeave">
-                    <Image.Effect>
-                        <DropShadowEffect x:Name="shadowHint" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
-                    </Image.Effect>
-                </Image>
-            </Grid>
-            <Grid Grid.Column="3" Margin="10">
-                <Image VerticalAlignment="Center" Source="../Pics/VoirCoursButton.png" MouseLeftButtonDown="Cours_MouseLeftButtonDown" MouseEnter="Cours_MouseEnter" MouseLeave="Cours_MouseLeave">
-                    <Image.Effect>
-                        <DropShadowEffect x:Name="shadowCours" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
-                    </Image.Effect>
-                </Image>
-            </Grid>
-        </Grid>
-        <Grid Grid.Row="0" Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Cursor="Hand" MouseLeftButtonDown="nivTitle_MouseLeftButtonDown" x:Name="nivTitle" Text="Niveaux" FontSize="50" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="right" Padding="10"/>
-            <TextBlock Cursor="Hand" MouseLeftButtonDown="proTitle_MouseLeftButtonDown" x:Name="proTitle" Grid.Column="1" Text="Processus" FontSize="30" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="left" Padding="10"/>
-
-        </Grid>
-        <!--Column0: Generer aleatoirement-->
-        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="8*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <StackPanel>
+            <Grid x:Name="buttons" Margin="0,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Margin="10">
+                    <Image VerticalAlignment="Center" Source="../Pics/ReturnButton.png" MouseLeftButtonDown="Return_MouseLeftButtonDown" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave" SnapsToDevicePixels="True">
+                        <Image.Effect>
+                            <DropShadowEffect x:Name="shadowReturn" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+                <Grid Grid.Column="1" Margin="10">
+                    <Image VerticalAlignment="Center" Source="../Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
+                        <Image.Effect>
+                            <DropShadowEffect x:Name="shadowHome" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+                <Grid Grid.Column="2" Margin="10">
+                    <Image VerticalAlignment="Center" Source="../Pics/HintButton.png" MouseLeftButtonDown="Hint_MouseLeftButtonDown" MouseEnter="Hint_MouseEnter" MouseLeave="Hint_MouseLeave">
+                        <Image.Effect>
+                            <DropShadowEffect x:Name="shadowHint" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+                <Grid Grid.Column="3" Margin="10">
+                    <Image VerticalAlignment="Center" Source="../Pics/VoirCoursButton.png" MouseLeftButtonDown="Cours_MouseLeftButtonDown" MouseEnter="Cours_MouseEnter" MouseLeave="Cours_MouseLeave">
+                        <Image.Effect>
+                            <DropShadowEffect x:Name="shadowCours" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+            </Grid>
+            <Grid x:Name="Change" Grid.Row="0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Cursor="Hand" MouseLeftButtonDown="nivTitle_MouseLeftButtonDown" x:Name="nivTitle" Text="Niveaux" FontSize="50" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="right" Padding="10"/>
+                <TextBlock Cursor="Hand" MouseLeftButtonDown="proTitle_MouseLeftButtonDown" x:Name="proTitle" Grid.Column="1" Text="Processus" FontSize="30" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="left" Padding="10"/>
+
+            </Grid>
+            <StackPanel x:Name="Description" Grid.Row="1">
                 <TextBlock Margin="10,20,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
-                <TextBlock Margin="10,0,0,10 " Text="MultiNiveaux  Avec Recyclage" TextWrapping="Wrap" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,0,0,0 " Text="MultiNiveaux Avec " FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,0,0,0 " Text="Recyclage" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
-                <TextBlock Margin="10,0,10,20 " Text="Multi-Niveaux-Recyclage." FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,0,10,10 " Text="Multi-Niveaux." FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
-                <Grid Height="0" x:Name="proGen" >
+            </StackPanel>
+            <Grid Height="0" x:Name="proGen" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend">Interruptions ?</TextBlock>
+                    <CheckBox x:Name="RandomizeInterrup" Cursor="Hand" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0"></CheckBox>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="1" Margin="5,15">
+                    <Rectangle x:Name="RandomButton"  Fill="#FF000000" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Générer</TextBlock>
+                        <Image Grid.Column="1" Height="50" VerticalAlignment="Center" Source="Generate.png" HorizontalAlignment="Left" Width="20"/>
+                    </Grid>
+                    <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="RandomButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto"  StrokeThickness="0" RadiusX="25"/>
+                </Grid>
+                <Grid Grid.Column="0" Grid.RowSpan="2">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                    <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Width="Auto" Margin="30,0" Height="40"/>
+                    <TextBox GotFocus="NbProcessusTextBox_GotFocus" x:Name="NbProcessusTextBox" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des processus" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                </Grid>
+
+            </Grid>
+            <Grid Height="120" x:Name="nivGen" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="2" x:Name="plusButton">
+                    <Rectangle x:Name="gf"  Fill="#FF359354" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <Grid Margin="5,55,5,15">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="6*"/>
-                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend">Interruptions ?</TextBlock>
-                        <CheckBox Cursor="Hand" x:Name="RandomizeInterrup" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">+</TextBlock>
                     </Grid>
-                    <Grid Grid.Column="1" Grid.Row="1" Margin="5,15">
-                        <Rectangle x:Name="RandomButton"  Fill="#FF000000" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25">
-                            <Rectangle.Effect>
-                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                            </Rectangle.Effect>
-                        </Rectangle>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="6*"/>
-                                <ColumnDefinition Width="2*" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Générer</TextBlock>
-                            <Image Grid.Column="1" Height="50" VerticalAlignment="Center" Source="Generate.png" HorizontalAlignment="Left" Width="20"/>
-                        </Grid>
-                        <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="RandomButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25"/>
+                    <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="GenAddNiv" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
+                </Grid>
+                <Grid Grid.Column="0" x:Name="minusButton" Visibility="Hidden">
+                    <Rectangle x:Name="af"  Fill="#FFB63829" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <Grid Margin="5,55,5,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">-</TextBlock>
                     </Grid>
-                    <Grid Grid.Column="0" Grid.RowSpan="2">
+                    <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="DelNiv" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.Row="1" x:Name="nivIndexRectangle" Fill="#FFE9F2FE" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"/>
+                    <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des niveaux" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                    <TextBox TextChanged="randNiv_TextChanged" IsReadOnly="True" x:Name="randNiv" Cursor="Arrow" MaxLength="1" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Height="0" Width="250" Margin="0,310,0,0" x:Name="SimulationButton" Grid.Row="1">
+                <Rectangle x:Name="StartButton" Grid.Row="0" Margin="25" Fill="#F16022" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Simuler</TextBlock>
+                <Rectangle Margin="25" Cursor="Hand" MouseLeftButtonDown="StartButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+            </Grid>
+            <!--Column1: Processus Table-->
+            <Grid x:Name="nivGrid" Visibility="Visible" Background="#00FFFFFF" Margin="40,10" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+                <Rectangle Grid.RowSpan="3" Fill="#FFFFFFFF" RadiusX="12" RadiusY="12" Stroke="#FFB3B3B3" StrokeThickness="0.5" Margin="3,0,-3,0" >
+                    <Rectangle.Effect>
+                        <DropShadowEffect ShadowDepth="0" Opacity="0.2" BlurRadius="15" Direction="0"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid Grid.Row="0" Margin="10,20,25,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.ColumnSpan="4" Fill="#FFE6E6FC" RadiusX="7" RadiusY="7"></Rectangle>
+                    <TextBlock Grid.Column="0" Text="Niveau" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                    <TextBlock Grid.Column="1" Text="Algorithme" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                    <TextBlock Grid.Column="2" Text="Option" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                    <TextBlock Grid.Column="3" Text="Actions" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                </Grid>
+                <ScrollViewer Margin="0,0,5,0" Grid.Row="1">
+                    <StackPanel VerticalAlignment="Top" x:Name="NiveauGrid" x:FieldModifier="public">
+                    </StackPanel>
+                </ScrollViewer>
+                <Grid Margin="0,0,0,15" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Grid.ColumnSpan="4" Margin="80,5,80,5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Fill="#FF999999" Height="1"/>
+                    <Grid Grid.Column="0">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
-                        <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Width="Auto" Margin="30,0" Height="40"/>
-                        <TextBox GotFocus="NbProcessusTextBox_GotFocus" x:Name="NbProcessusTextBox" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                        <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des processus" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    </Grid>
-                </Grid>
-                <Grid Height="120" x:Name="nivGen">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="4*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid x:Name="plusButton" Grid.Column="2">
-                        <Rectangle x:Name="gf"  Fill="#FF359354" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
-                            <Rectangle.Effect>
-                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                            </Rectangle.Effect>
-                        </Rectangle>
-                        <Grid Margin="5,55,5,15">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="6*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">+</TextBlock>
-                        </Grid>
-                        <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="GenAddNiv" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
-                    </Grid>
-                    <Grid Grid.Column="0" x:Name="minusButton" Visibility="Hidden">
-                        <Rectangle x:Name="af"  Fill="#FFB63829" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
-                            <Rectangle.Effect>
-                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                            </Rectangle.Effect>
-                        </Rectangle>
-                        <Grid Margin="5,55,5,15">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="6*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">-</TextBlock>
-                        </Grid>
-                        <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="DelNiv" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
+                        <Rectangle Grid.Row="1" Fill="#FFFFFF" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
+                        <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Niveau" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                        <TextBox  IsReadOnly="True" Cursor="Arrow" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="nivId" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center" />
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
-                        <Rectangle Grid.Row="1" x:Name="nivIndexRectangle" Fill="#FFE9F2FE" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
-                        <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des niveaux" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                        <TextBox TextChanged="randNiv_TextChanged" IsReadOnly="True" x:Name="randNiv" Cursor="Arrow" MaxLength="1" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                    </Grid>
-                </Grid>
-                <Grid Height="0" Width="250" x:Name="SimulationButton">
-                    <Rectangle x:Name="StartButton" Grid.Row="0" Margin="25" Fill="#F16022" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Simuler</TextBlock>
-                    <Rectangle Margin="25" Cursor="Hand" MouseLeftButtonDown="StartButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
-                </Grid>
-            </StackPanel>
-        </Grid>
-        <!--Column1: Processus Table-->
-        <Grid x:Name="nivGrid" Visibility="Visible" Background="#00FFFFFF" Margin="40,10" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="85"/>
-                <RowDefinition Height="6*"/>
-                <RowDefinition Height="120"/>
-            </Grid.RowDefinitions>
-            <Rectangle Grid.RowSpan="3" Fill="#FFFFFFFF" RadiusX="12" RadiusY="12" Stroke="#FFB3B3B3" StrokeThickness="0.5" Margin="3,0,-3,0" >
-                <Rectangle.Effect>
-                    <DropShadowEffect ShadowDepth="0" Opacity="0.2" BlurRadius="15" Direction="0"/>
-                </Rectangle.Effect>
-            </Rectangle>
-            <Grid Grid.Row="0" Margin="10,20,25,5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Rectangle Grid.ColumnSpan="4" Fill="#FFE6E6FC" RadiusX="7" RadiusY="7"></Rectangle>
-                <TextBlock Grid.Column="0" Text="Niveau" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-                <TextBlock Grid.Column="1" Text="Algorithme" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-                <TextBlock Grid.Column="2" Text="Option" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-                <TextBlock Grid.Column="3" Text="Actions" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-            </Grid>
-            <ScrollViewer Margin="0,0,5,0" Grid.Row="1">
-                <StackPanel VerticalAlignment="Top" x:Name="NiveauGrid" x:FieldModifier="public">
-                </StackPanel>
-            </ScrollViewer>
-            <Grid Margin="0,0,0,15" Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Rectangle Grid.ColumnSpan="4" Margin="80,5,80,5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Fill="#FF999999" Height="1"/>
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
-                    <Rectangle Grid.Row="1" Fill="#FFFFFF" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
-                    <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Niveau" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox  IsReadOnly="True" Cursor="Arrow" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="nivId" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center" />
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
 
-                    <Rectangle Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
-                    <TextBox Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="Algo" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                    <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Algorithme" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <ComboBox  Cursor="Hand" x:Name="algoSelect" SelectionChanged="algoSelect_SelectionChanged" SelectedIndex="0" Grid.Row="1" Height="40" Width="140" Background="#FFEFF3F9" VerticalContentAlignment="Center">
-                       <ComboBoxItem  VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="0,5">
-                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PAPS" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,5">
-                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PCA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,5">
-                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PLA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,5">
-                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PCTR" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="0,5">
-                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PAR" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,5">
-                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PSR" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,5">
-                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Slack-Time" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="0,5">
-                            <TextBlock FontSize="11" FontFamily="Lexend" FontWeight="Medium" Text="RR" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="0,5">
-                            <TextBlock FontSize="11" FontFamily="Lexend" FontWeight="Medium" Text="PARD" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                        </ComboBoxItem>
+                        <Rectangle Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
+                        <TextBox Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="Algo" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Algorithme" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                        <ComboBox  Cursor="Hand" x:Name="algoSelect" SelectionChanged="algoSelect_SelectionChanged" SelectedIndex="0" Grid.Row="1" Height="40" Width="140" Background="#FFEFF3F9" VerticalContentAlignment="Center">
+                            <ComboBoxItem  VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="0,5">
+                                <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PAPS" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,5">
+                                <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PCA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,5">
+                                <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PLA" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,5">
+                                <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PCTR" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="0,5">
+                                <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PAR" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,5">
+                                <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="PSR" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,5">
+                                <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Slack-Time" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="0,5">
+                                <TextBlock FontSize="11" FontFamily="Lexend" FontWeight="Medium" Text="RR" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="0,5">
+                                <TextBlock FontSize="11" FontFamily="Lexend" FontWeight="Medium" Text="PARD" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                            </ComboBoxItem>
 
-                    </ComboBox>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
-                    <Rectangle x:Name="RectQuantum" Grid.Row="1" Fill="#FFFFFF" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
-                    <TextBlock x:Name="OptionText" FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Option" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox IsReadOnly="True" GotFocus="NbProcessusTextBoxx_GotFocus" Cursor="Arrow" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="nivQuantum" Grid.Row="1" Text="/" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" TextAlignment="Center" VerticalContentAlignment="Center" Margin="50,20"/>
-                </Grid>
-                <Grid Grid.Column="4" x:Name="ajouterButton">
-                    <Rectangle  x:Name="AddNivButton"  RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25">
-                        <Rectangle.Fill>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF2E0B6B" Offset="1"/>
-                                <GradientStop Color="#FF5118B6"/>
-                            </LinearGradientBrush>
-                        </Rectangle.Fill>
-                        <Rectangle.Effect>
-                            <DropShadowEffect x:Name="AddEffect" Color="#FF5829AA" Opacity="0.5" Direction="-90" BlurRadius="10" ShadowDepth="2"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <Grid Margin="10,40,45,15">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="ajouterNV" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Ajouter</TextBlock>
+                        </ComboBox>
                     </Grid>
-                    <Rectangle Cursor="Hand" MouseLeftButtonDown="AddNiv" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25">
-                        <Rectangle.Triggers>
-                            <!-- Animates the rectangle's opacity. -->
-                            <EventTrigger RoutedEvent="Rectangle.MouseEnter">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle x:Name="RectQuantum" Grid.Row="1" Fill="#FFFFFF" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
+                        <TextBlock x:Name="OptionText" FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Option" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                        <TextBox IsReadOnly="True" GotFocus="NbProcessusTextBoxx_GotFocus" Cursor="Arrow" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="nivQuantum" Grid.Row="1" Text="/" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" Margin="50,0" TextAlignment="Center" VerticalContentAlignment="Center" />
+                    </Grid>
+                    <Grid Grid.Column="4" x:Name="ajouterButton">
+                        <Rectangle  x:Name="AddNivButton"  RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FF2E0B6B" Offset="1"/>
+                                    <GradientStop Color="#FF5118B6"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                            <Rectangle.Effect>
+                                <DropShadowEffect x:Name="AddEffect" Color="#FF5829AA" Opacity="0.5" Direction="-90" BlurRadius="10" ShadowDepth="2"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="10,40,45,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="ajouterNV" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Ajouter</TextBlock>
+                        </Grid>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="AddNiv" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25">
+                            <Rectangle.Triggers>
+                                <!-- Animates the rectangle's opacity. -->
+                                <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
                                     Storyboard.TargetName="AddEffect" 
                                     Storyboard.TargetProperty="ShadowDepth"
                                     To="6" Duration="0:0:1" >
-                                            <DoubleAnimation.EasingFunction>
-                                                <BackEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                        <DoubleAnimation
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation
                                     Storyboard.TargetName="AddEffect" 
                                     Storyboard.TargetProperty="BlurRadius"
                                     To="15" Duration="0:0:1" >
-                                            <DoubleAnimation.EasingFunction>
-                                                <BackEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="Rectangle.MouseLeave">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
                                     Storyboard.TargetName="AddEffect" 
                                     Storyboard.TargetProperty="ShadowDepth"
                                     To="2" Duration="0:0:1" >
-                                            <DoubleAnimation.EasingFunction>
-                                                <BackEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                        <DoubleAnimation
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation
                                     Storyboard.TargetName="AddEffect" 
                                     Storyboard.TargetProperty="BlurRadius"
                                     To="10" Duration="0:0:1" >
-                                            <DoubleAnimation.EasingFunction>
-                                                <BackEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </Rectangle.Triggers>
-                    </Rectangle>
-                </Grid>
-
-            </Grid>
-        </Grid>
-
-        <Grid x:Name="proGrid" Visibility="Hidden" Background="#00FFFFFF" Margin="40,10" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="85"/>
-                <RowDefinition Height="6*"/>
-                <RowDefinition Height="120"/>
-            </Grid.RowDefinitions>
-            <Rectangle Grid.RowSpan="3" Fill="#FFFFFFFF" RadiusX="12" RadiusY="12" Stroke="#FFB3B3B3" StrokeThickness="0.5" >
-                <Rectangle.Effect>
-                    <DropShadowEffect ShadowDepth="0" Opacity="0.2" BlurRadius="15" Direction="0"/>
-                </Rectangle.Effect>
-            </Rectangle>
-            <Grid Grid.Row="0" Margin="10,20,25,5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Rectangle Grid.ColumnSpan="6" Fill="#FFE6E6FC" RadiusX="7" RadiusY="7"></Rectangle>
-                <TextBlock Grid.Column="0" Margin="30,0,0,0" Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-                <TextBlock Grid.Column="1" Margin="9,0,0,0" Text="Temps D'arrivé" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-                <TextBlock Grid.Column="2" Margin="5,0,0,0" Text="Durée" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-                <TextBlock Grid.Column="3" Text="Priorité" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-                <TextBlock Grid.Column="4" Text="Niveau" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-                <TextBlock Grid.Column="5" Text="Actions" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
-            </Grid>
-            <ScrollViewer Margin="0,0,5,0" Grid.Row="1">
-                <StackPanel VerticalAlignment="Top" x:Name="ProcessusGrid" x:FieldModifier="public">
-                </StackPanel>
-            </ScrollViewer>
-            <Grid Margin="0,0,0,15" Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="5*"/>
-                </Grid.ColumnDefinitions>
-                <Rectangle  Grid.ColumnSpan="6" Margin="80,5,80,5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Fill="#FF999999" Height="1"/>
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
-                    <Rectangle x:Name="RectProId" Grid.Row="1" Fill="#FFFFFF" RadiusX="7" RadiusY="7" Height="40" Width="70" ></Rectangle>
-                    <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="ID " VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox IsReadOnly="True" Cursor="Arrow" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="IdTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
-                    <Rectangle  x:Name="RectProTar"  Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="70" ></Rectangle>
-                    <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Temps d'arrivée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="TempsArrivTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="70" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
-                    <Rectangle  x:Name="RectProDuree"  Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="70" ></Rectangle>
-                    <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Durée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="DureeTextBox" Grid.Row="1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="70" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                </Grid>
-                <Grid Grid.Column="3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
-                    <Rectangle  x:Name="RectProPrio"  Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="70" ></Rectangle>
-                    <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Priorité" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="PrioTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="70" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                </Grid>
-                <Grid Grid.Column="4">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
-                    <Rectangle  x:Name="RectProNiv"  Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="70" ></Rectangle>
-                    <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Niveau" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="NivTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="70" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                </Grid>
-                <Grid Grid.Column="5">
-                    <Rectangle  x:Name="AddProcessusButton"  RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25">
-                        <Rectangle.Fill>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF2E0B6B" Offset="1"/>
-                                <GradientStop Color="#FF5118B6"/>
-                            </LinearGradientBrush>
-                        </Rectangle.Fill>
-                        <Rectangle.Effect>
-                            <DropShadowEffect x:Name="AddProEffect" Color="#FF5829AA" Opacity="0.5" Direction="-90" BlurRadius="10" ShadowDepth="2"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <Grid Margin="10,40,45,15">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="ajouterTB" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Ajouter</TextBlock>
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Rectangle.Triggers>
+                        </Rectangle>
                     </Grid>
-                    <Rectangle Cursor="Hand" MouseLeftButtonDown="AddProcessusButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25">
-                        <Rectangle.Triggers>
-                            <!-- Animates the rectangle's opacity. -->
-                            <EventTrigger RoutedEvent="Rectangle.MouseEnter">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
+
+                </Grid>
+            </Grid>
+
+            <Grid x:Name="proGrid" Visibility="Hidden" Background="#00FFFFFF" Margin="40,10" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="120"/>
+                </Grid.RowDefinitions>
+                <Rectangle Grid.RowSpan="3" Fill="#FFFFFFFF" RadiusX="12" RadiusY="12" Stroke="#FFB3B3B3" StrokeThickness="0.5" >
+                    <Rectangle.Effect>
+                        <DropShadowEffect ShadowDepth="0" Opacity="0.2" BlurRadius="15" Direction="0"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid Grid.Row="0" Margin="10,20,25,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.ColumnSpan="6" Fill="#FFE6E6FC" RadiusX="7" RadiusY="7"></Rectangle>
+                    <TextBlock Grid.Column="0" Margin="30,0,0,0" Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                    <TextBlock Grid.Column="1" Margin="9,0,0,0" Text="Temps D'arrivé" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                    <TextBlock Grid.Column="2" Margin="5,0,0,0" Text="Durée" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                    <TextBlock Grid.Column="3" Text="Priorité" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                    <TextBlock Grid.Column="4" Text="Niveau" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                    <TextBlock Grid.Column="5" Text="Actions" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                </Grid>
+                <ScrollViewer Margin="0,0,5,0" Grid.Row="1">
+                    <StackPanel VerticalAlignment="Top" x:Name="ProcessusGrid" x:FieldModifier="public">
+                    </StackPanel>
+                </ScrollViewer>
+                <Grid Margin="0,0,0,15" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle  Grid.ColumnSpan="6" Margin="80,5,80,5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Fill="#FF999999" Height="1"/>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle x:Name="RectProId" Grid.Row="1" Fill="#FFFFFF" RadiusX="7" RadiusY="7" Height="40" Width="70" ></Rectangle>
+                        <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="ID " VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                        <TextBox IsReadOnly="True" Cursor="Arrow" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="IdTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle  x:Name="RectProTar"  Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="70" ></Rectangle>
+                        <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Temps d'arrivée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                        <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="TempsArrivTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="70" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle  x:Name="RectProDuree"  Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="70" ></Rectangle>
+                        <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Durée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                        <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="DureeTextBox" Grid.Row="1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="70" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle  x:Name="RectProPrio"  Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="70" ></Rectangle>
+                        <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Priorité" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                        <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="PrioTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="70" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Column="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle  x:Name="RectProNiv"  Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="70" ></Rectangle>
+                        <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Niveau" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                        <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="NivTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="70" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Column="5">
+                        <Rectangle  x:Name="AddProcessusButton"  RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FF2E0B6B" Offset="1"/>
+                                    <GradientStop Color="#FF5118B6"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                            <Rectangle.Effect>
+                                <DropShadowEffect x:Name="AddProEffect" Color="#FF5829AA" Opacity="0.5" Direction="-90" BlurRadius="10" ShadowDepth="2"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="10,40,45,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="ajouterTB" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Ajouter</TextBlock>
+                        </Grid>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="AddProcessusButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25">
+                            <Rectangle.Triggers>
+                                <!-- Animates the rectangle's opacity. -->
+                                <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
                                     Storyboard.TargetName="AddProEffect" 
                                     Storyboard.TargetProperty="ShadowDepth"
                                     To="6" Duration="0:0:1" >
-                                            <DoubleAnimation.EasingFunction>
-                                                <BackEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                        <DoubleAnimation
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation
                                     Storyboard.TargetName="AddProEffect" 
                                     Storyboard.TargetProperty="BlurRadius"
                                     To="15" Duration="0:0:1" >
-                                            <DoubleAnimation.EasingFunction>
-                                                <BackEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="Rectangle.MouseLeave">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
                                     Storyboard.TargetName="AddProEffect" 
                                     Storyboard.TargetProperty="ShadowDepth"
                                     To="2" Duration="0:0:1" >
-                                            <DoubleAnimation.EasingFunction>
-                                                <BackEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                        <DoubleAnimation
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation
                                     Storyboard.TargetName="AddProEffect" 
                                     Storyboard.TargetProperty="BlurRadius"
                                     To="10" Duration="0:0:1" >
-                                            <DoubleAnimation.EasingFunction>
-                                                <BackEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </Rectangle.Triggers>
-                    </Rectangle>
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Rectangle.Triggers>
+                        </Rectangle>
+                    </Grid>
                 </Grid>
             </Grid>
+            <!--Row2: Add processus-->
+            <Rectangle Visibility="Hidden" x:Name="Grey" Grid.RowSpan="3" Grid.ColumnSpan="2">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#FF444444" Opacity="0.3"/>
+                </Rectangle.Fill>
+            </Rectangle>
         </Grid>
-        <!--Row2: Add processus-->
-
+        <Viewbox x:Name="hint" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="604,352,0,0"/>
     </Grid>
 </UserControl>

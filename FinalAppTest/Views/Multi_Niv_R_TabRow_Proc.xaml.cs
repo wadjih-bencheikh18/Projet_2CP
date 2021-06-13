@@ -61,6 +61,7 @@ namespace FinalAppTest.Views
             Mult_Niv_Recyclage_Tab.modifier = true;
             Mult_Niv_Recyclage_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
+            if (Mult_Niv_Recyclage_Tab.NbHint == 18) Mult_Niv_Recyclage_Tab.HintSuivant();
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
@@ -78,6 +79,7 @@ namespace FinalAppTest.Views
                 Mult_Niv_Recyclage_Tab.indicepro = 0;
                 Mult_Niv_Recyclage_Tab.ThisPage.IdTextBox.Text = "0";
             }
+            if (Mult_Niv_Recyclage_Tab.NbHint == 17) Mult_Niv_Recyclage_Tab.HintSuivant();
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
@@ -93,6 +95,10 @@ namespace FinalAppTest.Views
         private void Afficher_Interrup(object sender, MouseEventArgs e)
         {
             TreeViewParent.IsExpanded = (!TreeViewParent.IsExpanded);
+        }
+        private void TreeViewParent_Expanded(object sender, RoutedEventArgs e)
+        {
+            if (Mult_Niv_Recyclage_Tab.NbHint == 21) Mult_Niv_Recyclage_Tab.HintSuivant();
         }
     }
 }
