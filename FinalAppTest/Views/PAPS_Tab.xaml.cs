@@ -306,7 +306,8 @@ namespace FinalAppTest.Views
                 {
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
-                    hint.Margin = new Thickness(450, 370, 0, 0);
+                    if (MainWindow.PageWidth() > 1500)  hint.Margin = new Thickness(450, 370, 0, 0);
+                    else hint.Margin = new Thickness(0, 0, 0, 0);
                     Test = new Hint(
                                         "Générer les processus",
                                         "Vous pouvez générer les processus aléatoirement",
@@ -462,7 +463,8 @@ namespace FinalAppTest.Views
                 {
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
-                    hint.Margin = new Thickness(220, 240, 0, 0);
+                    if(MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(220, 240, 0, 0);
+                    else hint.Margin = new Thickness(220, 240, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
                                         "Changez les paramètres de l'interruption à insérer" +
