@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:FinalAppTest.Views"
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1205">
+    <Grid>
     <Grid Background="#FFE9F2FE">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -16,7 +17,7 @@
             <RowDefinition Height="8*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Margin="0,30">
+        <Grid x:Name="buttons" Margin="0,30">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -52,7 +53,7 @@
                 </Image>
             </Grid>
         </Grid>
-        <Grid Grid.Row="0" Grid.Column="1">
+        <Grid x:Name="Change" Grid.Row="0" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -62,17 +63,14 @@
 
         </Grid>
         <!--Column0: Generer aleatoirement-->
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <StackPanel>
-                <TextBlock Margin="10,20,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
-                <TextBlock Margin="10,0,0,10 " Text="MultiNiveaux" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
-                <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
-                <TextBlock Margin="10,0,10,40 " Text="Multi-Niveaux." FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
-                <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
-                <Grid Height="0" x:Name="proGen" >
+                <StackPanel x:Name="Description" Grid.Row="1">
+                    <TextBlock Margin="10,20,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                    <TextBlock Margin="10,0,0,10 " Text="MultiNiveaux" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                    <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
+                    <TextBlock Margin="10,0,10,40 " Text="Multi-Niveaux." FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
+                    <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
+                </StackPanel>
+            <Grid Height="0" x:Name="proGen" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="2*"/>
@@ -116,7 +114,7 @@
                     </Grid>
 
                 </Grid>
-                <Grid Height="120" x:Name="nivGen">
+            <Grid Height="120" x:Name="nivGen" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="4*"/>
@@ -150,17 +148,17 @@
                         </Grid>
                         <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="DelNiv" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
                     </Grid>
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <Rectangle Grid.Row="1" x:Name="nivIndexRectangle" Fill="#FFE9F2FE" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
-                        <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des niveaux" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                        <TextBox TextChanged="randNiv_TextChanged" IsReadOnly="True" x:Name="randNiv" Cursor="Arrow" MaxLength="1" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle Grid.Row="1" x:Name="nivIndexRectangle" Fill="#FFE9F2FE" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"/>
+                            <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des niveaux" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                            <TextBox TextChanged="randNiv_TextChanged" IsReadOnly="True" x:Name="randNiv" Cursor="Arrow" MaxLength="1" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        </Grid>
                     </Grid>
-                </Grid>
-                <Grid Height="0" Width="250" x:Name="SimulationButton">
+            <Grid Height="0" Width="250" Margin="0,310,0,0" x:Name="SimulationButton" Grid.Row="1">
                     <Rectangle x:Name="StartButton" Grid.Row="0" Margin="25" Fill="#F16022" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                         <Rectangle.Effect>
                             <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
@@ -169,9 +167,7 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Simuler</TextBlock>
                     <Rectangle Margin="25" Cursor="Hand" MouseLeftButtonDown="StartButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
                 </Grid>
-            </StackPanel>
-        </Grid>
-        <!--Column1: Processus Table-->
+                <!--Column1: Processus Table-->
         <Grid x:Name="nivGrid" Visibility="Visible" Background="#00FFFFFF" Margin="40,10" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <Grid.RowDefinitions>
                 <RowDefinition Height="85"/>
@@ -502,6 +498,12 @@
             </Grid>
         </Grid>
         <!--Row2: Add processus-->
-
+        <Rectangle Visibility="Hidden" x:Name="Grey" Grid.RowSpan="3" Grid.ColumnSpan="2">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FF444444" Opacity="0.3"/>
+            </Rectangle.Fill>
+        </Rectangle>
+    </Grid>
+    <Viewbox x:Name="hint" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="604,352,0,0"/>
     </Grid>
 </UserControl>

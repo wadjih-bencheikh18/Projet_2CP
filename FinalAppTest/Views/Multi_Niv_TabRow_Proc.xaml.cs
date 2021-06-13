@@ -62,6 +62,7 @@ namespace FinalAppTest.Views
             Mult_Niv_Tab.modifier = true;
             Mult_Niv_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
+            if (Mult_Niv_Tab.NbHint == 18) Mult_Niv_Tab.HintSuivant();
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
@@ -79,6 +80,7 @@ namespace FinalAppTest.Views
                 Mult_Niv_Tab.indicepro = 0;
                 Mult_Niv_Tab.ThisPage.IdTextBox.Text = "0";
             }
+            if (Mult_Niv_Tab.NbHint == 17) Mult_Niv_Tab.HintSuivant();
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
@@ -97,5 +99,9 @@ namespace FinalAppTest.Views
             TreeViewParent.IsExpanded = (!TreeViewParent.IsExpanded);
         }
 
+        private void TreeViewParent_Expanded(object sender, RoutedEventArgs e)
+        {
+            if (Mult_Niv_Tab.NbHint == 21) Mult_Niv_Tab.HintSuivant();
+        }
     }
 }

@@ -49,6 +49,7 @@ namespace FinalAppTest.Views
             Mult_Niv_Tab.proModifier = this;
             if (Mult_Niv_Tab.ThisPage != null) Mult_Niv_Tab.ThisPage.ajouterButton.Visibility = Visibility.Visible;
             Ajouter.Text = "Modifier";
+            if (Mult_Niv_Tab.NbHint == 7) Mult_Niv_Tab.HintSuivant();
         }
 
 

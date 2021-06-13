@@ -42,6 +42,7 @@ namespace FinalAppTest.Views
         }
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
         {
+            //if (Mult_Niv_Recyclage_Tab.NbHint == 7) Mult_Niv_Recyclage_Tab.HintSuivant();
             nivId.Text = nivtest.Text;
             algoSelect.Text = type.Text;
             quantum.Text = quantumTest.Text;

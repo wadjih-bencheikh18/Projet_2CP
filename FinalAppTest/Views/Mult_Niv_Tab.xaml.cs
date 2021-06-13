@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Ordonnancement;
+using System.Windows.Media.Effects;
 
 namespace FinalAppTest.Views
 {
@@ -22,7 +23,8 @@ namespace FinalAppTest.Views
     public partial class Mult_Niv_Tab : UserControl
     {
         public static MultiNiveau prog;
-
+        public static int NbHint = 0;
+        public static bool NextHintCondition = true;
         public Mult_Niv_Tab()
         {
             indiceniv = 0;
@@ -57,6 +59,7 @@ namespace FinalAppTest.Views
             }
             else
             {
+                if (NbHint == 13) HintSuivant();
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFF");
                 Random r = new Random();
@@ -131,6 +134,7 @@ namespace FinalAppTest.Views
                 algoSelect.SelectedIndex = 0;
                 if (!modifier)
                 {
+                    if (NbHint == 16) HintSuivant();
                     id = indicepro;
                     IdTextBox.Text = (id + 1).ToString();
                     AffichageProcessus pro = new AffichageProcessus
@@ -147,6 +151,7 @@ namespace FinalAppTest.Views
                 }
                 else
                 {
+                    if (NbHint == 20) HintSuivant();
                     id = int.Parse(IdTextBox.Text);
                     AffichageProcessus pro = new AffichageProcessus
                     {
@@ -215,6 +220,7 @@ namespace FinalAppTest.Views
             if (algo != 7 && algo != 8) quan = "/";
             if (valide && !modifier)  // si tous est correcte
             {
+                if (NbHint == 6 ) HintSuivant();
                 niv = indiceniv;
                 nivId.Text = (niv + 1).ToString();
                 NbProcessusTextBox.Background = (Brush)bc.ConvertFrom("#00000000");
@@ -224,7 +230,7 @@ namespace FinalAppTest.Views
                     Background = type,
                     quantum = quan
                 };
-                pro.InsererNivMLR(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
+                pro.InsererNivML(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
                 if (algo == 7 || algo == 8) niveaux[indiceniv] = new Niveau(algo, q);
                 else niveaux[indiceniv] = new Niveau(algo);
                 indiceniv++;
@@ -232,6 +238,7 @@ namespace FinalAppTest.Views
             }
             else if (valide && modifier)
             {
+                if (NbHint == 9 ) HintSuivant();
                 AffichageProcessus pro = new AffichageProcessus
                 {
                     id = niv,
@@ -248,7 +255,6 @@ namespace FinalAppTest.Views
                 ajouterNV.Text = "Ajouter";
                 if (indiceniv == 4) ajouterButton.Visibility = Visibility.Hidden;
             }
-
         }
 
         private void algoSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -287,6 +293,7 @@ namespace FinalAppTest.Views
             proGrid.Visibility = Visibility.Visible;
             nivGrid.Visibility = Visibility.Hidden;
             SimulationButton.Height = 120;
+            if (NbHint == 10) HintSuivant();
         }
 
         private void nivTitle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -329,6 +336,7 @@ namespace FinalAppTest.Views
                 quantum = quan,
             };
             pro.InsererNivML(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
+            if (NbHint == 2) HintSuivant();
         }
 
         private void DelNiv(object sender, MouseButtonEventArgs e)
@@ -350,6 +358,7 @@ namespace FinalAppTest.Views
             randNiv.Text = indiceniv.ToString();
             nivId.Text= indiceniv.ToString();
             NiveauGrid.Children.RemoveAt(indiceniv);
+            if (NbHint == 3) HintSuivant();
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -422,44 +431,430 @@ namespace FinalAppTest.Views
             shadowCours.BlurRadius = 5;
         }
 
-        private void Hint_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) { }/*
+        public static void HintSuivant()
         {
-            Hint Test;
-            if (NbHint == 0)
+            if (NbHint != 0)
             {
-                hint.Margin = new Thickness(264, 120, 0, 0);
-                Test = new Hint(
-                                    "Generer les Processus",
-                                    "Vous pouvez generer les procesus aleatoirement",
-                                    this,
-                                    hint
-                                );
                 NextHintCondition = true;
+                NbHint++;
+                ThisPage.Hint();
             }
-            else if (NbHint == 1)
-            {
-                hint.Margin = new Thickness(264, 300, 0, 0);
-                Test = new Hint(
-                                    "Generer les Processus",
-                                    "Entré un nombre aleatoire des processus a generer",
-                                    this,
-                                    hint
-                                );
-                NextHintCondition = false;
-            }
-            else
-            {
-                hint.Margin = new Thickness(264, 117, 0, 0);
-                Test = new Hint(
-                                    "Error",
-                                    "Error 404",
-                                    this,
-                                    hint
-                                );
-            }
+
+        }
+        public void ApplyEffect()
+        {
+            BlurEffect Effect = new BlurEffect();
+            Effect.Radius = 8;
+            buttons.Effect = Effect;
+            nivGen.Effect = Effect;
+            Description.Effect = Effect;
+            nivGrid.Effect = Effect;
+            Change.Effect = Effect;
+            SimulationButton.Effect = Effect;
+            proGen.Effect = Effect;
+            proGrid.Effect = Effect;
+            Grey.Visibility = Visibility.Visible;
+            Panel.SetZIndex(buttons, 0);
+            Panel.SetZIndex(nivGen, 0);
+            Panel.SetZIndex(Description, 0);
+            Panel.SetZIndex(nivGrid, 0);
+            Panel.SetZIndex(Change, 0);
+            Panel.SetZIndex(SimulationButton, 0);
+            Panel.SetZIndex(proGen, 0);
+            Panel.SetZIndex(proGrid, 0);
+        }
+        public void FinHint()
+        {
+            NbHint = 0;
+            buttons.Effect = null;
+            nivGen.Effect = null;
+            Description.Effect = null;
+            nivGrid.Effect = null;
+            Change.Effect = null;
+            SimulationButton.Effect = null;
+            proGrid.Effect = null;
+            proGen.Effect = null;
+            Grey.Visibility = Visibility.Hidden;
+            Panel.SetZIndex(buttons, 0);
+            Panel.SetZIndex(nivGen, 0);
+            Panel.SetZIndex(Description, 0);
+            Panel.SetZIndex(nivGrid, 0);
+            Panel.SetZIndex(Change, 0);
+            Panel.SetZIndex(SimulationButton, 0);
+            Panel.SetZIndex(proGen, 0);
+            Panel.SetZIndex(proGrid, 0);
+            hint.Child = null;
+        }
+        private void Hint_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NbHint = 0;
+            ApplyEffect();
+            Description.Effect = null;
+            Panel.SetZIndex(Description, 1);
+            hint.Margin = new Thickness(300, 180, 0, 0);
+            Hint Test = new Hint(
+                                "Simulation Multi Niveaux",
+                                "Commençons la simulation de l'algorithme Multi Niveaux",
+                                this,
+                                hint
+                            );
+
+            NextHintCondition = true;
             Test.DataContext = Test;
             hint.Child = Test;
-        }*/
+        }
+        public void Hint()
+        {
+            Hint Test;
+            if (NextHintCondition)
+            {
+                ApplyEffect();
+                if (NbHint == 1)
+                {
+                    nivGen.Effect = null;
+                    Panel.SetZIndex(nivGen, 1);
+                    hint.Margin = new Thickness(450, 370, 0, 0);
+                    Test = new Hint(
+                                        "Générer les niveaux",
+                                        "Vous pouvez générer les niveaux manuellement en cliquant sur +/-",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 2)
+                {
+                    nivGen.Effect = null;
+                    Panel.SetZIndex(nivGen, 1);
+                    hint.Margin = new Thickness(340, 290, 0, 0);
+                    Test = new Hint(
+                                        "Ajouter un niveau",
+                                        "Cliquez pour ajouter un niveau",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 3)
+                {
+                    nivGen.Effect = null;
+                    Panel.SetZIndex(nivGen, 1);
+                    hint.Margin = new Thickness(0, 290, 0, 0);
+                    Test = new Hint(
+                                        "Suprimer un niveau",
+                                        "Cliquez pour suprimer un niveau",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                
+                else if (NbHint == 4)
+                {
+                    nivGrid.Effect = null;
+                    Panel.SetZIndex(nivGrid, 1);
+                    hint.Margin = new Thickness(240, 140, 0, 0);
+                    Test = new Hint(
+                                        "Tableau des niveaux",
+                                        "Voici le tableau des niveaux générés",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                
+                else if (NbHint == 5)
+                {
+                    nivGrid.Effect = null;
+                    Panel.SetZIndex(nivGrid, 1);
+                    hint.Margin = new Thickness(690, 435, 0, 0);
+                    Test = new Hint(
+                                        "Ajouter un niveau",
+                                        "Entrer les paramètres du niveau à insérer",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 6)
+                {
+                    nivGrid.Effect = null;
+                    Panel.SetZIndex(nivGrid, 1);
+                    hint.Margin = new Thickness(1125, 460, 0, 0);
+                    Test = new Hint(
+                                        "Ajouter un niveau",
+                                        "Cliquez sur 'Ajouter' pour insérer ce niveau",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 7)
+                {
+                    nivGrid.Effect = null;
+                    Panel.SetZIndex(nivGrid, 1);
+                    hint.Margin = new Thickness(750, 248, 0, 0);
+                    Test = new Hint(
+                                        "Modifier un niveau",
+                                        "Cliquez sur 'Modifier' pour modifier les paramètres d'un processus",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 8)
+                {
+                    nivGrid.Effect = null;
+                    Panel.SetZIndex(nivGrid, 1);
+                    hint.Margin = new Thickness(690, 435, 0, 0);
+                    Test = new Hint(
+                                        "Modifier un niveau",
+                                        "Changez les paramètres du niveau",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 9)
+                {
+                    nivGrid.Effect = null;
+                    Panel.SetZIndex(nivGrid, 1);
+                    hint.Margin = new Thickness(1125, 460, 0, 0);
+                    Test = new Hint(
+                                        "Modifier un niveau",
+                                        "Cliquez sur 'Modifier' pour confirmer votre modification",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 10)
+                {
+                    Change.Effect = null;
+                    Panel.SetZIndex(Change, 1);
+                    hint.Margin = new Thickness(905, 105, 0, 0);
+                    Test = new Hint(
+                                        "Gestion des Processus",
+                                        "Cliquez sur 'Processus' pour faire les modifications sur les processus",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 11)
+                {
+                    proGen.Effect = null;
+                    Panel.SetZIndex(proGen, 1);
+                    hint.Margin = new Thickness(30, 235, 0, 0);
+                    Test = new Hint(
+                                        "Générer les processus",
+                                        "Entrez le nombre des processus à générer",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 12)
+                {
+                    proGen.Effect = null;
+                    Panel.SetZIndex(proGen, 1);
+                    hint.Margin = new Thickness(280, 200, 0, 0);
+                    Test = new Hint(
+                                        "Générer les processus",
+                                        "Vous pouvez générer des interruptions en cochant cette case",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 13)
+                {
+                    proGen.Effect = null;
+                    Panel.SetZIndex(proGen, 1);
+                    hint.Margin = new Thickness(420, 415, 0, 0);
+                    Test = new Hint(
+                                        "Générer les processus",
+                                        "Cliquez sur le button 'Générer' pour créer les processus",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 14)
+                {
+                    proGrid.Effect = null;
+                    Panel.SetZIndex(proGrid, 1);
+                    hint.Margin = new Thickness(675, 345, 0, 0);
+                    Test = new Hint(
+                                        "Tableau des processus",
+                                        "Voici le tableau des processus générés",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 15)
+                {
+                    proGrid.Effect = null;
+                    Panel.SetZIndex(proGrid, 1);
+                    hint.Margin = new Thickness(690, 435, 0, 0);
+                    Test = new Hint(
+                                        "Ajouter un processus",
+                                        "Entrer les paramètres du processus à insérer",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 16)
+                {
+                    proGrid.Effect = null;
+                    Panel.SetZIndex(proGrid, 1);
+                    hint.Margin = new Thickness(1125, 460, 0, 0);
+                    Test = new Hint(
+                                        "Ajouter un processus",
+                                        "Cliquez sur 'Ajouter' pour insérer ce processus",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 17)
+                {
+                    proGrid.Effect = null;
+                    Panel.SetZIndex(proGrid, 1);
+                    hint.Margin = new Thickness(750, 248, 0, 0);
+                    Test = new Hint(
+                                        "Supprimer un processus",
+                                        "Cliquez sur 'Supprimer' pour supprimer un processus",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 18)
+                {
+                    proGrid.Effect = null;
+                    Panel.SetZIndex(proGrid, 1);
+                    hint.Margin = new Thickness(750, 248, 0, 0);
+                    Test = new Hint(
+                                        "Modifier un processus",
+                                        "Cliquez sur 'Modifier' pour modifier les paramètres d'un processus",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 19)
+                {
+                    proGrid.Effect = null;
+                    Panel.SetZIndex(proGrid, 1);
+                    hint.Margin = new Thickness(690, 435, 0, 0);
+                    Test = new Hint(
+                                        "Modifier un processus",
+                                        "Changez les paramètres du processus",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 20)
+                {
+                    proGrid.Effect = null;
+                    Panel.SetZIndex(proGrid, 1);
+                    hint.Margin = new Thickness(1125, 460, 0, 0);
+                    Test = new Hint(
+                                        "Modifier un processus",
+                                        "Cliquez sur 'Modifier' pour confirmer votre modification",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 21)
+                {
+                    proGrid.Effect = null;
+                    Panel.SetZIndex(proGrid, 1);
+                    hint.Margin = new Thickness(220, 240, 0, 0);
+                    Test = new Hint(
+                                        "Gérer les interruptions",
+                                        "Cliquez sur un processus pour gérer ses interruptions",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 22)
+                {
+                    proGrid.Effect = null;
+                    Panel.SetZIndex(proGrid, 1);
+                    hint.Margin = new Thickness(220, 240, 0, 0);
+                    Test = new Hint(
+                                        "Gérer les interruptions",
+                                        "Changez les paramètres de l'interruption à insérer" +
+                                        "\n\nNB: le temps d'arrivé de l'interruption doit être " +
+                                        "inférieur à la durée du processus",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 23)
+                {
+                    proGrid.Effect = null;
+                    Panel.SetZIndex(proGrid, 1);
+                    hint.Margin = new Thickness(220, 240, 0, 0);
+                    Test = new Hint(
+                                        "Gérer les interruptions",
+                                        "Cliquez sur '+' pour insérer cette interruption",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 24)
+                {
+                    proGrid.Effect = null;
+                    Panel.SetZIndex(proGrid, 1);
+                    hint.Margin = new Thickness(220, 240, 0, 0);
+                    Test = new Hint(
+                                        "Gérer les interruptions",
+                                        "Cliquez sur 'x' pour supprimer une interruption",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 25)
+                {
+                    SimulationButton.Effect = null;
+                    Panel.SetZIndex(SimulationButton, 1);
+                    hint.Margin = new Thickness(360, 505, 0, 0);
+                    Test = new Hint(
+                                        "Simulation",
+                                        "Cliquez sur le button 'Simuler' pour commencer la simulation",
+                                        this,
+                                        hint
+                                    );
+                    Test.Fin();
+                    NextHintCondition = true;
+                }
+                else
+                {
+                    hint.Margin = new Thickness(264, 117, 0, 0);
+                    Test = new Hint(
+                                        "Error",
+                                        "Error 404",
+                                        this,
+                                        hint
+                                    );
+                }
+                Test.DataContext = Test;
+                hint.Child = Test;
+            }
+
+
+        }
 
         private void Hint_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -472,6 +867,7 @@ namespace FinalAppTest.Views
             shadowHint.ShadowDepth = 0;
             shadowHint.BlurRadius = 5;
         }
+
 
         private void NbProcessusTextBox_GotFocus(object sender, RoutedEventArgs e)
         {

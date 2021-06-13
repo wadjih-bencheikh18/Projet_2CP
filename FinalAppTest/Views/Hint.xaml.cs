@@ -98,6 +98,24 @@ namespace FinalAppTest.Views
                     sb.Begin();
                 }
             }
+            else if (Page.GetType() == typeof(Mult_Niv_Tab))
+            {
+                if (Suivant.Text == "FIN")
+                {
+                    ((Mult_Niv_Tab)Page).FinHint();
+                }
+                else if (Mult_Niv_Tab.NextHintCondition)
+                {
+                    Mult_Niv_Tab.NbHint++;
+                    hint.Child = null;
+                    ((Mult_Niv_Tab)Page).Hint();
+                }
+                else
+                {
+                    Storyboard sb = this.FindResource("Error") as Storyboard;
+                    sb.Begin();
+                }
+            }
 
 
         }

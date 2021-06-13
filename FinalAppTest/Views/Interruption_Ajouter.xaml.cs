@@ -320,6 +320,7 @@ namespace FinalAppTest.Views
                 }
                 if (valide)
                 {
+                    if (Mult_Niv_Tab.NbHint == 23) Mult_Niv_Tab.HintSuivant();
                     Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
                     Mult_Niv_Tab.ListPro.Find(p => p.id == int.Parse(((Multi_Niv_TabRow_Proc)processus).idTest.Text)).Push(inter);
                     Interruption_TabRow row = new Interruption_TabRow((Multi_Niv_TabRow_Proc)processus)
