@@ -54,7 +54,6 @@
                     </Image>
                 </Grid>
             </Grid>
-            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Text="Tableau des processus" FontSize="50" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="Center"/>
             <!--Column0: Generer aleatoirement-->
                 <StackPanel x:Name="Description" Grid.Row="1" >
                     <TextBlock Margin="10,30,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
@@ -117,7 +116,7 @@
                 <Rectangle Margin="25" Cursor="Hand" MouseLeftButtonDown="StartButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
             <!--Column1: Processus Table-->
-            <Grid x:Name="Tableau" Background="#00FFFFFF" Grid.RowSpan="3" Grid.Column="1" Grid.Row="0">
+            <Grid x:Name="Tableau" Grid.RowSpan="3" Grid.Column="1">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*" />
@@ -272,7 +271,8 @@
                 </Rectangle.Fill>
             </Rectangle>
         </Grid>
-        <Viewbox x:Name="hint" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="604,352,0,0">
+        <Viewbox x:Name="hint" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+            
         </Viewbox>
         
     </Grid>
