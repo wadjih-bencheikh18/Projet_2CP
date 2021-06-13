@@ -174,6 +174,24 @@ namespace FinalAppTest.Views
                     ((PARD_Tab)Page).FinHint();
                
             }
+            else if (Page.GetType() == typeof(PSR_Tab))
+            {
+               
+                    ((PSR_Tab)Page).FinHint();
+               
+            }
+            else if (Page.GetType() == typeof(PAR_Tab))
+            {
+                
+                    ((PAR_Tab)Page).FinHint();
+               
+            }
+            else if (Page.GetType() == typeof(SlackTime_Tab))
+            {
+                
+                    ((SlackTime_Tab)Page).FinHint();
+                
+            }
         }
 
         private void Previous_Button(object sender, MouseButtonEventArgs e)
@@ -204,6 +222,38 @@ namespace FinalAppTest.Views
                     hint.Child = null;
                     ((PARD_Tab)Page).Hint();
                 }
+            }
+            else if (Page.GetType() == typeof(PSR_Tab))
+            {
+                
+                if (PSR_Tab.NbHint>0)
+                {
+                    PSR_Tab.NbHint--;
+                    hint.Child = null;
+                    ((PSR_Tab)Page).Hint();
+                }
+                
+            }
+            else if (Page.GetType() == typeof(PAR_Tab))
+            {
+                
+                if (PAR_Tab.NbHint>0)
+                {
+                    PAR_Tab.NbHint--;
+                    hint.Child = null;
+                    ((PAR_Tab)Page).Hint();
+                }
+                
+            }
+            else if (Page.GetType() == typeof(SlackTime_Tab))
+            {
+                if (SlackTime_Tab.NbHint>0)
+                {
+                    SlackTime_Tab.NbHint++;
+                    hint.Child = null;
+                    ((SlackTime_Tab)Page).Hint();
+                }
+                
             }
         }
     }
