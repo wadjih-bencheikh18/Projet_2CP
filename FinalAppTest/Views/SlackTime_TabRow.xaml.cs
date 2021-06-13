@@ -61,6 +61,7 @@ namespace FinalAppTest.Views
             SlackTime_Tab.modifier = true;
             SlackTime_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
+            if (SlackTime_Tab.NbHint == 9) SlackTime_Tab.HintSuivant();
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
@@ -78,6 +79,7 @@ namespace FinalAppTest.Views
                 SlackTime_Tab.ThisPage.IdTextBox.Text = 0.ToString();
                 SlackTime_Tab.indice = 0;
             }
+            if (SlackTime_Tab.NbHint == 8) SlackTime_Tab.HintSuivant();
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
@@ -93,6 +95,10 @@ namespace FinalAppTest.Views
         private void Afficher_Interrup(object sender, MouseEventArgs e)
         {
             TreeViewParent.IsExpanded = (!TreeViewParent.IsExpanded);
+        }
+        private void TreeViewParent_Expanded(object sender, RoutedEventArgs e)
+        {
+            if (SlackTime_Tab.NbHint == 12) SlackTime_Tab.HintSuivant();
         }
     }
 }
