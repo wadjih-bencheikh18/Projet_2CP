@@ -103,12 +103,54 @@ namespace FinalAppTest.Views
         }
          private void Skip_Button(object sender, MouseButtonEventArgs e)
         {
-
+            if (Page.GetType() == typeof(PAPS_Tab))
+            {
+              
+                    ((PAPS_Tab)Page).FinHint();
+               
+            }
+            else if (Page.GetType() == typeof(RR_Tab))
+            {
+                    ((RR_Tab)Page).FinHint();
+                
+            }
+            else if (Page.GetType() == typeof(PARD_Tab))
+            {
+                
+                    ((PARD_Tab)Page).FinHint();
+               
+            }
         }
 
         private void Previous_Button(object sender, MouseButtonEventArgs e)
         {
-
+            if (Page.GetType() == typeof(PAPS_Tab))
+            {
+                if(PAPS_Tab.NbHint>0)
+                {
+                    PAPS_Tab.NbHint--;
+                    hint.Child = null;
+                    ((PAPS_Tab)Page).Hint();
+                }
+            }
+            else if (Page.GetType() == typeof(RR_Tab))
+            {
+                if (RR_Tab.NbHint > 0)
+                {
+                    RR_Tab.NbHint--;
+                    hint.Child = null;
+                    ((RR_Tab)Page).Hint();
+                }
+            }
+            else if (Page.GetType() == typeof(PARD_Tab))
+            {
+                if (PARD_Tab.NbHint > 0)
+                {
+                    PARD_Tab.NbHint--;
+                    hint.Child = null;
+                    ((PARD_Tab)Page).Hint();
+                }
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FinalAppTest.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="768" d:DesignWidth="1205">
+             d:DesignHeight="768" d:DesignWidth="1241">
     <Grid x:Name="Page">
         <Grid Background="#FFE9F2FE" Margin="-1.5,0,1.5,0">
             <Grid.ColumnDefinitions>
@@ -271,8 +271,7 @@
                 </Rectangle.Fill>
             </Rectangle>
         </Grid>
-        <Viewbox x:Name="hint" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top">
-            
+        <Viewbox x:Name="hint" Width="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top">
         </Viewbox>
         
     </Grid>

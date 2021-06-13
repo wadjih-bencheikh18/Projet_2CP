@@ -311,7 +311,21 @@ namespace FinalAppTest.Views
             if (NextHintCondition)
             {
                 ApplyEffect();
-                if (NbHint == 1)
+                if (NbHint == 0)
+                {
+                    Description.Effect = null;
+                    Panel.SetZIndex(Description, 1);
+                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(315, 175, 0, 0);
+                    else hint.Margin = new Thickness(295, 145, 0, 0);
+                    Test = new Hint(
+                                        "Simulation RR",
+                                        "Commençons la simulation de l'algorithme Round-Robin",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 1)
                 {
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
