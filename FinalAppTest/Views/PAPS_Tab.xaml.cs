@@ -246,7 +246,6 @@ namespace FinalAppTest.Views
                 NbHint++;
                 ThisPage.Hint();
             }
-           
         }
 
         public void ApplyEffect() 

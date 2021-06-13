@@ -39,6 +39,7 @@ namespace FinalAppTest.Views
             }
             else if (processus.GetType() == typeof(PCA_TabRow))
             {
+                if (PCA_Tab.NbHint == 13) PCA_Tab.HintSuivant();
                 PCA_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PCA_TabRow)processus).idTest.Text)).listeInterruptions.Remove((Interruption)this.DataContext);
                 ((PCA_TabRow)processus).parent.Items.Remove(this);
             }

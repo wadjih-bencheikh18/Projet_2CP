@@ -23,9 +23,14 @@ namespace FinalAppTest
     /// </summary>
     public partial class InitPage : Page
     {
+        public static Rectangle grey;
+        public static DockPanel navigation;
+
         public InitPage()
         {
             InitializeComponent();
+            grey = Grey;
+            navigation = Navigation;
         }
 
         private void PAPS_Button_Click(object sender, RoutedEventArgs e)

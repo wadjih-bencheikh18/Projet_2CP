@@ -58,6 +58,7 @@ namespace FinalAppTest.Views
             PCA_Tab.modifier = true;
             PCA_Tab.proModifier = this;
             Ajouter.Text = "Modifier";
+            if (PCA_Tab.NbHint == 9) PCA_Tab.HintSuivant();
         }
 
         private void suprimer_Button_Click(object sender, RoutedEventArgs e)
@@ -75,6 +76,7 @@ namespace FinalAppTest.Views
                 PCA_Tab.ThisPage.IdTextBox.Text = 0.ToString();
                 PCA_Tab.indice = 0;
             }
+            if (PCA_Tab.NbHint == 8) PCA_Tab.HintSuivant();
         }
 
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
@@ -90,6 +92,11 @@ namespace FinalAppTest.Views
         private void Afficher_Interrup(object sender, MouseEventArgs e)
         {
             TreeViewParent.IsExpanded = (!TreeViewParent.IsExpanded);
+        }
+
+        private void TreeViewParent_Expanded(object sender, RoutedEventArgs e)
+        {
+            if (PCA_Tab.NbHint == 11) PCA_Tab.HintSuivant();
         }
     }
 }

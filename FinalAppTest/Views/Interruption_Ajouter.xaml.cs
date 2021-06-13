@@ -75,6 +75,7 @@ namespace FinalAppTest.Views
                 }
                 if (valide)
                 {
+                    if (PCA_Tab.NbHint == 12) PCA_Tab.HintSuivant();
                     Interruption inter = new Interruption(interType.Text, duree, tempsArriv);
                     PCA_Tab.prog.listeProcessus.Find(p => p.id == int.Parse(((PCA_TabRow)processus).idTest.Text)).Push(inter);
                     Interruption_TabRow row = new Interruption_TabRow((PCA_TabRow)processus)

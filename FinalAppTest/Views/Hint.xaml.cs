@@ -152,6 +152,24 @@ namespace FinalAppTest.Views
                     sb.Begin();
                 }
             }
+            else if (Page.GetType() == typeof(PCA_Tab))
+            {
+                if (Suivant.Text == "FIN")
+                {
+                    ((PCA_Tab)Page).FinHint();
+                }
+                else if (PCA_Tab.NextHintCondition)
+                {
+                    PCA_Tab.NbHint++;
+                    hint.Child = null;
+                    ((PCA_Tab)Page).Hint();
+                }
+                else
+                {
+                    Storyboard sb = this.FindResource("Error") as Storyboard;
+                    sb.Begin();
+                }
+            }
 
 
         }
@@ -191,6 +209,12 @@ namespace FinalAppTest.Views
                 
                     ((SlackTime_Tab)Page).FinHint();
                 
+            }
+            else if (Page.GetType() == typeof(PCA_Tab))
+            {
+
+                ((PCA_Tab)Page).FinHint();
+
             }
         }
 
@@ -254,6 +278,16 @@ namespace FinalAppTest.Views
                     ((SlackTime_Tab)Page).Hint();
                 }
                 
+            }
+            else if (Page.GetType() == typeof(PCA_Tab))
+            {
+                if (PCA_Tab.NbHint > 0)
+                {
+                    PCA_Tab.NbHint++;
+                    hint.Child = null;
+                    ((PCA_Tab)Page).Hint();
+                }
+
             }
         }
     }
