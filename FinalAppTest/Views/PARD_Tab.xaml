@@ -130,7 +130,11 @@
              </Grid>
             <!--Column1: Processus Table-->
             <Grid x:Name="Tableau"  Grid.Column="1" Grid.RowSpan="3">
-               
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Text="Tableau des processus" FontSize="50" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="Center"/>
                 <Grid Grid.Row="1"   Background="#00FFFFFF" Margin="40,10" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <Grid.RowDefinitions>
