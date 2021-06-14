@@ -8,7 +8,7 @@
       xmlns:viewmodels="clr-namespace:FinalAppTest.ViewModels"
       xmlns:views="clr-namespace:FinalAppTest.Views"
         
-      d:DesignHeight="768" d:DesignWidth="1366"
+      d:DesignHeight="705" d:DesignWidth="1366"
       Title="InitPage">
 
     <Page.Resources>
@@ -62,7 +62,7 @@
 
         <!--Content-->
         <DockPanel Background="#FFE9F2FE" Grid.Column="0" x:Name="Navigation">
-            <ScrollViewer>
+            <!--<ScrollViewer>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80"/>
@@ -192,7 +192,179 @@
                     </Grid>
 
                 </Grid>
-            </ScrollViewer>
+            </ScrollViewer>-->
+            <Grid>
+                <Grid Visibility="Visible" x:Name="Algos1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+                
+                    <Grid Grid.Row="1" Margin="20,15">
+                        <Rectangle  Fill="Red" Opacity="0.7" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">PAPS</TextBlock>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="PAPS_Button_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Margin="20,15">
+                        <Rectangle Fill="OrangeRed" Opacity="0.7" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">RR</TextBlock>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="RRButton_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
+                    </Grid>
+
+                    <Grid Grid.Row="3" Margin="20,15">
+                        <Rectangle Fill="BlueViolet" Opacity="0.7" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">PSR</TextBlock>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="PSR_Button_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
+                    </Grid>
+
+                    <Grid Grid.Row="4" Margin="20,15">
+                        <Rectangle Fill="Blue" Opacity="0.7" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">PAR</TextBlock>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="PAR_Button_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
+                    </Grid>
+
+                    <Grid Grid.Row="5" Margin="20,15">
+                        <Rectangle Fill="DarkBlue" Opacity="0.7" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">PARD</TextBlock>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="PARDButton_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
+                    </Grid>
+
+                    <Grid Grid.Row="6" Margin="20,15">
+                        <Rectangle Fill="Gray" Opacity="0.7" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" Margin="0,7" FontSize="15" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">Slack</TextBlock>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,7" FontSize="15" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">Time</TextBlock>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="SlackTime_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
+                    </Grid>
+
+                    <Grid Grid.Row="7" Margin="20">
+                        <Image Source="Views/goLeft.png" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="Image1_MouseLeftButtonDown">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                            <Image.Effect>
+                                <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="5" Direction="-90"/>
+                            </Image.Effect>
+                        </Image>
+                    </Grid>
+                </Grid>
+                <Grid Visibility="Hidden" x:Name="Algos2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="0.4*"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="1.1*"/>
+                        <RowDefinition Height="1.1*"/>
+                        <RowDefinition Height="0.4*"/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="2" Margin="20,15">
+                        <Rectangle Fill="Green" Opacity="0.7" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">PCA</TextBlock>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="PCA_Button_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
+                    </Grid>
+
+                    <Grid Grid.Row="3" Margin="20,15">
+                        <Rectangle Fill="YellowGreen" Opacity="0.7" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">PCRT</TextBlock>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="PCTR_Button_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
+                    </Grid>
+
+                    <Grid Grid.Row="4" Margin="20,15">
+                        <Rectangle Fill="DarkGreen" Opacity="0.7" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">PLA</TextBlock>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="PLA_Button_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
+                    </Grid>
+
+                    <Grid Grid.Row="5" Margin="20,15">
+                        <Rectangle Fill="Yellow" Opacity="0.7" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" Margin="0,12" FontSize="15" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">Multi</TextBlock>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,12" FontSize="15" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">Niveaux</TextBlock>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="MultiNivButton_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
+                    </Grid>
+
+                    <Grid Grid.Row="6" Margin="20,15">
+                        <Rectangle Fill="DarkGoldenrod" Opacity="0.7" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock HorizontalAlignment="Center" Margin="0,12" FontSize="15" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">Mul-Niv</TextBlock>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,12" FontSize="15" FontWeight="DemiBold" Foreground="Black" FontFamily="Lexend">Recycle</TextBlock>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="MultiNivRecyclageButton_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
+                    </Grid>
+
+                    <Grid Grid.Row="0" Margin="20">
+                        <Image Source="Views/goLeft.png" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="Image2_MouseLeftButtonDown">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                            <Image.Effect>
+                                <DropShadowEffect Opacity="0.5" ShadowDepth="0" BlurRadius="5" Direction="90"/>
+                            </Image.Effect>
+                        </Image>
+                    </Grid>
+                </Grid>
+            </Grid>
         </DockPanel>
         <Rectangle Visibility="Hidden" x:Name="Grey" Grid.ColumnSpan="5">
             <Rectangle.Fill>

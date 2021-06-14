@@ -83,5 +83,17 @@ namespace FinalAppTest
         {
             DataContext = new MultiNiveauRecyclageViewModel();
         }
+
+        public void Image1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Algos1.Visibility = Visibility.Hidden;
+            Algos2.Visibility = Visibility.Visible;
+        }
+
+        public void Image2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Algos1.Visibility = Visibility.Visible;
+            Algos2.Visibility = Visibility.Hidden;
+        }
     }
 }
