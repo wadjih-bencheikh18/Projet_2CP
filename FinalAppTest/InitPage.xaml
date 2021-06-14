@@ -268,7 +268,7 @@
                     </Grid>
 
                     <Grid Grid.Row="7" Height="50">
-                        <Image Source="Pics/goLeft.png" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="Image1_MouseLeftButtonDown">
+                        <Image Source="Pics/goLeft.png" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MouseEnter="Image1_MouseEnter">
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -349,7 +349,7 @@
                     </Grid>
 
                     <Grid Grid.Row="0" Grid.RowSpan="2" Height="50">
-                        <Image Source="Pics/goLeft.png" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="Image2_MouseLeftButtonDown">
+                        <Image Source="Pics/goLeft.png" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MouseEnter="Image2_MouseEnter">
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>

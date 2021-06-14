@@ -95,5 +95,17 @@ namespace FinalAppTest
             Algos1.Visibility = Visibility.Visible;
             Algos2.Visibility = Visibility.Hidden;
         }
+
+        private void Image1_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Algos1.Visibility = Visibility.Hidden;
+            Algos2.Visibility = Visibility.Visible;
+        }
+
+        private void Image2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Algos1.Visibility = Visibility.Visible;
+            Algos2.Visibility = Visibility.Hidden;
+        }
     }
 }
