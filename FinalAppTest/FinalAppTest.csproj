@@ -527,5 +527,8 @@
   <ItemGroup>
     <Resource Include="Pics\Nazim.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\goLeft.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

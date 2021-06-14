@@ -267,8 +267,8 @@
                         <Rectangle Cursor="Hand" MouseLeftButtonDown="SlackTime_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
                     </Grid>
 
-                    <Grid Grid.Row="7" Margin="20">
-                        <Image Source="Views/goLeft.png" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="Image1_MouseLeftButtonDown">
+                    <Grid Grid.Row="7" Height="50">
+                        <Image Source="Pics/goLeft.png" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="Image1_MouseLeftButtonDown">
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -285,8 +285,8 @@
                 </Grid>
                 <Grid Visibility="Hidden" x:Name="Algos2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
                         <RowDefinition Height="0.4*"/>
+                        <RowDefinition Height="100"/>
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -348,8 +348,8 @@
                         <Rectangle Cursor="Hand" MouseLeftButtonDown="MultiNivRecyclageButton_Click" Fill="#00CCFFDD" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15"/>
                     </Grid>
 
-                    <Grid Grid.Row="0" Margin="20">
-                        <Image Source="Views/goLeft.png" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="Image2_MouseLeftButtonDown">
+                    <Grid Grid.Row="0" Grid.RowSpan="2" Height="50">
+                        <Image Source="Pics/goLeft.png" Cursor="Hand" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="Image2_MouseLeftButtonDown">
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
