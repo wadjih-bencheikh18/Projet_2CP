@@ -102,15 +102,22 @@ namespace FinalAppTest
             {
                 prog.listeProcessus[i].tempsRestant = prog.listeProcessus[i].duree;
                 prog.listeProcessus[i].etat = 3;
+                prog.listeProcessus[i].indiceInterruptions[1] = 0;
+                prog.listeProcessus[i].indiceInterruptions[0] = prog.listeProcessus[i].indiceInterruptions[1];
+                for (int j = 0; j < prog.listeProcessus[i].listeInterruptions.Count(); j++)
+                {
+                    prog.listeProcessus[i].listeInterruptions[j].tempsRestant = prog.listeProcessus[i].listeInterruptions[j].duree;
+                }
             }
             ListePretsView.Children.Clear();
             ListeBloqueView.Children.Clear();
             Processeur.Children.Clear();
             deroulement.Children.Clear();
             GanttChart.Children.Clear();
+            TempsView.Text = "0";
             await Task.Delay(2000);
             stop = false;
-            TempsView.Text = "0";
+            
             prog.Executer(ListePretsView, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
         }
 

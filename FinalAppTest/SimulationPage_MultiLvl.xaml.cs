@@ -1,19 +1,11 @@
-﻿using System;
+﻿using FinalAppTest.ViewModels;
+using Ordonnancement;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using FinalAppTest.ViewModels;
-using Ordonnancement;
 namespace FinalAppTest
 {
     /// <summary>
@@ -27,10 +19,10 @@ namespace FinalAppTest
 
         public static SimulationPage_MultiLvl save;
         public static bool stop = false;
-        private int nbNiveaux=0;
+        private int nbNiveaux = 0;
         public static double Speed = 2;
         public int previous_algo_num;
-        public SimulationPage_MultiLvl(Ordonnancement.Ordonnancement prog,int i)
+        public SimulationPage_MultiLvl(Ordonnancement.Ordonnancement prog, int i)
         {
             InitializeComponent();
             this.prog = prog;
@@ -42,7 +34,7 @@ namespace FinalAppTest
             Ordonnancement.Ordonnancement.GanttChart = GanttChart;
             StackPanel[] ListesPretsViews = { ListProcessusView0, ListProcessusView1, ListProcessusView2, ListProcessusView3 };
             previous_algo_num = i;
-            if (i==0)
+            if (i == 0)
             {
                 nbNiveaux = ((MultiNiveau)prog).nbNiveau;
                 ((MultiNiveau)prog).InitVisualisation(ListesPretsViews);
@@ -52,7 +44,7 @@ namespace FinalAppTest
                 nbNiveaux = ((MultiNiveauRecyclage)prog).nbNiveau;
                 ((MultiNiveauRecyclage)prog).InitVisualisation(ListesPretsViews);
             }
-            
+
         }
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
@@ -60,7 +52,7 @@ namespace FinalAppTest
             if (previous_algo_num == 0) MainWindow.main.Content = new ResultFinal_Tab((List<ProcessusNiveau>)((MultiNiveau)prog).listeProcessus);
             else if (previous_algo_num == 1) MainWindow.main.Content = new ResultFinal_Tab((List<ProcessusNiveau>)((MultiNiveauRecyclage)prog).listeProcessus);
         }
-        
+
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -90,7 +82,7 @@ namespace FinalAppTest
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (!activated)  prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView,deroulement,GanttChart);
+            if (!activated) prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
             else if (paused) paused = false;
             activated = true;
         }
@@ -107,7 +99,7 @@ namespace FinalAppTest
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-           
+
             MainWindow.main.Content = new InitPage();
         }
 
@@ -119,8 +111,9 @@ namespace FinalAppTest
         private async void Repeat_Click(object sender, MouseButtonEventArgs e)
         {
             stop = true;
+
+            await Task.Delay(2000);
             prog.listebloque.Clear();
-            prog.listePrets.Clear();
             if (previous_algo_num == 0)
             {
                 for (int i = 0; i < ((MultiNiveau)prog).nbNiveau; i++)
@@ -130,18 +123,46 @@ namespace FinalAppTest
                     ((MultiNiveau)prog).niveaux[i].listebloque.Clear();
                 }
             }
-            else
+            else if (previous_algo_num == 1)
             {
-              for (int i=0;i< ((MultiNiveauRecyclage)prog).nbNiveau;i++)
+                for (int i = 0; i < ((MultiNiveauRecyclage)prog).nbNiveau; i++)
                 {
                     ((MultiNiveauRecyclage)prog).niveaux[i].listePrets.Clear();
                     ((MultiNiveauRecyclage)prog).niveaux[i].listeProcessus.Clear();
                     ((MultiNiveauRecyclage)prog).niveaux[i].listebloque.Clear();
-                }            }
-            for (int i = 0; i < prog.listeProcessus.Count(); i++)
+                }
+            }
+            
+            
+
+            if (previous_algo_num == 0)
             {
-                prog.listeProcessus[i].tempsRestant = prog.listeProcessus[i].duree;
-                prog.listeProcessus[i].etat = 3;
+                for (int i = 0; i < ((MultiNiveau)prog).listeProcessus.Count(); i++)
+                {
+                    ((MultiNiveau)prog).listeProcessus[i].tempsRestant = ((MultiNiveau)prog).listeProcessus[i].duree;
+                    ((MultiNiveau)prog).listeProcessus[i].etat = 3;
+                    ((MultiNiveau)prog).listeProcessus[i].indiceInterruptions[1] = 0;
+                    ((MultiNiveau)prog).listeProcessus[i].indiceInterruptions[0] = ((MultiNiveau)prog).listeProcessus[i].indiceInterruptions[1];
+                    for (int j = 0; j < ((MultiNiveau)prog).listeProcessus[i].listeInterruptions.Count(); j++)
+                    {
+                        ((MultiNiveau)prog).listeProcessus[i].listeInterruptions[j].tempsRestant = ((MultiNiveau)prog).listeProcessus[i].listeInterruptions[j].duree;
+                    }
+                }
+            }
+            else if (previous_algo_num == 1)
+            {
+                for (int i = 0; i < ((MultiNiveauRecyclage)prog).listeProcessus.Count(); i++)
+                {
+                    ((MultiNiveauRecyclage)prog).listeProcessus[i].tempsRestant = ((MultiNiveauRecyclage)prog).listeProcessus[i].duree;
+                    ((MultiNiveauRecyclage)prog).listeProcessus[i].indiceInterruptions[1] = 0;
+                    ((MultiNiveauRecyclage)prog).listeProcessus[i].indiceInterruptions[0] = ((MultiNiveauRecyclage)prog).listeProcessus[i].indiceInterruptions[1];
+                    ((MultiNiveauRecyclage)prog).listeProcessus[i].etat = 3;
+
+                    for (int j = 0; j < ((MultiNiveauRecyclage)prog).listeProcessus[i].listeInterruptions.Count(); j++)
+                    {
+                        ((MultiNiveauRecyclage)prog).listeProcessus[i].listeInterruptions[j].tempsRestant = ((MultiNiveauRecyclage)prog).listeProcessus[i].listeInterruptions[j].duree;
+                    }
+                }
             }
             ListProcessusView0.Children.Clear();
             ListProcessusView1.Children.Clear();
@@ -151,9 +172,9 @@ namespace FinalAppTest
             Processeur.Children.Clear();
             deroulement.Children.Clear();
             GanttChart.Children.Clear();
-            await Task.Delay(2000);
-            stop = false;
             TempsView.Text = "0";
+            stop = false;
+
             prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
         }
 
