@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FinalAppTest.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="768" d:DesignWidth="1205">
+             d:DesignHeight="705" d:DesignWidth="1241">
     <Grid x:Name="Page">
         <Grid Background="#FFE9F2FE" Margin="-1.5,0,1.5,0">
             <Grid.ColumnDefinitions>
@@ -55,57 +55,57 @@
                 </Grid>
             </Grid>
             <!--Column0: Generer aleatoirement-->
-                <StackPanel x:Name="Description" Grid.Row="1" >
-                    <TextBlock Margin="10,30,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
-                    <TextBlock Margin="10,0,0,10 " Text="PLA" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
-                    <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
-                    <TextBlock Margin="10,0,10,40 " FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"><Run Text="plus long d'abord."/></TextBlock>
-                </StackPanel>
-                <StackPanel x:Name="Random" Grid.Row="1" Margin="0,200,0,0" >
-                    <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
-                    <Grid Height="120">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Column="1">
-                            <Grid Margin="5,12,5,70">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="6*"/>
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend">Interruptions ?</TextBlock>
-                                <CheckBox Cursor="Hand" x:Name="RandomizeInterrup" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
-                            </Grid>
-                            <Rectangle x:Name="RandomButton"  Fill="#FF000000" RadiusY="25" Height="Auto" Width="Auto" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
-                                <Rectangle.Effect>
-                                    <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                                </Rectangle.Effect>
-                            </Rectangle>
-                            <Grid Margin="5,55,5,15">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="6*"/>
-                                    <ColumnDefinition Width="2*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Générer</TextBlock>
-                                <Image Grid.Column="1" Height="50" VerticalAlignment="Center" Source="Generate.png" HorizontalAlignment="Left" Width="20"/>
-                            </Grid>
-                            <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="RandomButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
+            <StackPanel x:Name="Description" Grid.Row="1" >
+                <TextBlock Margin="10,30,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,0,0,10 " Text="PLA" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,0,10,40 " FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"><Run Text="plus long d'abord."/></TextBlock>
+            </StackPanel>
+            <StackPanel x:Name="Random" Grid.Row="1" Margin="0,200,0,0" >
+                <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
+                <Grid Height="120">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid Margin="5,12,5,70">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend">Interruptions ?</TextBlock>
+                            <CheckBox Cursor="Hand" x:Name="RandomizeInterrup" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
                         </Grid>
-                        <Grid Grid.Column="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition Height="2*"/>
-                            </Grid.RowDefinitions>
-                            <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Width="Auto" Margin="30,0" Height="40"/>
-                            <TextBox GotFocus="NbProcessusTextBox_GotFocus" x:Name="NbProcessusTextBox" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des processus" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                        <Rectangle x:Name="RandomButton"  Fill="#FF000000" RadiusY="25" Height="Auto" Width="Auto" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="5,55,5,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Générer</TextBlock>
+                            <Image Grid.Column="1" Height="50" VerticalAlignment="Center" Source="Generate.png" HorizontalAlignment="Left" Width="20"/>
                         </Grid>
+                        <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="RandomButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
                     </Grid>
-                </StackPanel>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Width="Auto" Margin="30,0" Height="40"/>
+                        <TextBox GotFocus="NbProcessusTextBox_GotFocus" x:Name="NbProcessusTextBox" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des processus" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                    </Grid>
+                </Grid>
+            </StackPanel>
             <Grid x:Name="Simuler"  Width="250" Height="120" Grid.Row="1" Margin="0,310,0,0">
                 <Rectangle x:Name="StartButton" Margin="25" Fill="#F16022" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                     <Rectangle.Effect>
@@ -168,7 +168,7 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="ID " VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                        <TextBox IsReadOnly="True" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="IdTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox IsReadOnly="True" Cursor="Arrow" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="IdTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
@@ -177,7 +177,7 @@
                         </Grid.RowDefinitions>
                         <Rectangle x:Name="RectTar" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
                         <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Temps d'arrivée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                        <TextBox Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="TempsArrivTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="TempsArrivTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" Margin="50,0" TextAlignment="Center" VerticalContentAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.RowDefinitions>
@@ -186,7 +186,7 @@
                         </Grid.RowDefinitions>
                         <Rectangle x:Name="RectDuree" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="50,0"></Rectangle>
                         <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Durée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                        <TextBox Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="DureeTextBox" Grid.Row="1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBox Cursor="IBeam" GotFocus="NbProcessusTextBox_GotFocus" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="DureeTextBox" Grid.Row="1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" Margin="50,0" TextAlignment="Center" VerticalContentAlignment="Center"/>
                     </Grid>
                     <!-- <Button BorderThickness="0" Background="#0000"  x:Name="AddProcessusButton" Grid.Column="3" Content="Ajouter" Click="AddProcessusButton_Click" Margin="20,50,20,25"/>-->
                     <Grid Grid.Column="3">
@@ -267,7 +267,7 @@
                 </Rectangle.Fill>
             </Rectangle>
         </Grid>
-        <Viewbox x:Name="hint" Width="200" Height="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="686,312,0,0">
+        <Viewbox x:Name="hint" Width="200" Height="300" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="686,312,0,0">
             
         </Viewbox>
         

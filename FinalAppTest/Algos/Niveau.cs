@@ -10,7 +10,6 @@ namespace Ordonnancement
         public List<Processus> listePrets = new List<Processus>();
         public List<Processus> listebloque = new List<Processus>();
         public Ordonnancement algo;
-
         public int numAlgo; //0:PAPS  1:PCA  2:PLA  3:PCTR    4:PAR   5:PSR  6:PARDynamique   7:RR
         public int[] indice = new int[8];
         #endregion

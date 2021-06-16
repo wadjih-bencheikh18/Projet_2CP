@@ -65,12 +65,13 @@
     <Grid x:Name="HintPage" Width="400" HorizontalAlignment="Center" VerticalAlignment="Top">
         <Rectangle RadiusY="10" RadiusX="10">
             <Rectangle.Fill>
-                <SolidColorBrush x:Name="solidColorBrush" Color="#FFB9C0D9" Opacity="0.7"/>
+                <SolidColorBrush x:Name="solidColorBrush" Color="#FFB9C0D9" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
         <Grid x:Name="Skip" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,30,0">
-            <Rectangle MouseLeftButtonDown="Skip_Button"/>
+            
             <TextBlock x:Name="textBlock" FontFamily="Lexend" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" TextDecorations="Underline">Skip</TextBlock>
+            <Rectangle Fill="#00CCFFDD" Cursor="Hand" MouseLeftButtonDown="Skip_Button"/>
         </Grid>
 
         <StackPanel x:Name="grid1" Margin="25,60,20,110" VerticalAlignment="Top" HorizontalAlignment="Left">

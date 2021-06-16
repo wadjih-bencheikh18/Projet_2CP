@@ -23,9 +23,14 @@ namespace FinalAppTest
     /// </summary>
     public partial class InitPage : Page
     {
+        public static Rectangle grey;
+        public static DockPanel navigation;
+
         public InitPage()
         {
             InitializeComponent();
+            grey = Grey;
+            navigation = Navigation;
         }
 
         private void PAPS_Button_Click(object sender, RoutedEventArgs e)
@@ -77,6 +82,30 @@ namespace FinalAppTest
         private void MultiNivRecyclageButton_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new MultiNiveauRecyclageViewModel();
+        }
+
+        public void Image1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Algos1.Visibility = Visibility.Hidden;
+            Algos2.Visibility = Visibility.Visible;
+        }
+
+        public void Image2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Algos1.Visibility = Visibility.Visible;
+            Algos2.Visibility = Visibility.Hidden;
+        }
+
+        private void Image1_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Algos1.Visibility = Visibility.Hidden;
+            Algos2.Visibility = Visibility.Visible;
+        }
+
+        private void Image2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Algos1.Visibility = Visibility.Visible;
+            Algos2.Visibility = Visibility.Hidden;
         }
     }
 }

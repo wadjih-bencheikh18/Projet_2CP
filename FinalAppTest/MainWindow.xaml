@@ -9,7 +9,7 @@
         xmlns:views="clr-namespace:FinalAppTest.Views"
         Title="MainWindow" WindowState="Maximized" Width="1366" Height="768">
 
-    <Grid>
+    <Grid x:Name="Window">
         <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

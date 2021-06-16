@@ -111,16 +111,16 @@ namespace FinalAppTest
         private async void Repeat_Click(object sender, MouseButtonEventArgs e)
         {
             stop = true;
-
             await Task.Delay(2000);
-            prog.listebloque.Clear();
             if (previous_algo_num == 0)
             {
                 for (int i = 0; i < ((MultiNiveau)prog).nbNiveau; i++)
                 {
                     ((MultiNiveau)prog).niveaux[i].listePrets.Clear();
                     ((MultiNiveau)prog).niveaux[i].listeProcessus.Clear();
+                    ((MultiNiveau)prog).niveaux[i].indice = new int[8];
                     ((MultiNiveau)prog).niveaux[i].listebloque.Clear();
+
                 }
             }
             else if (previous_algo_num == 1)
@@ -129,11 +129,12 @@ namespace FinalAppTest
                 {
                     ((MultiNiveauRecyclage)prog).niveaux[i].listePrets.Clear();
                     ((MultiNiveauRecyclage)prog).niveaux[i].listeProcessus.Clear();
+                    ((MultiNiveauRecyclage)prog).niveaux[i].indice = new int[8];
                     ((MultiNiveauRecyclage)prog).niveaux[i].listebloque.Clear();
                 }
             }
-            
-            
+
+
 
             if (previous_algo_num == 0)
             {
@@ -174,8 +175,8 @@ namespace FinalAppTest
             GanttChart.Children.Clear();
             TempsView.Text = "0";
             stop = false;
-
-            prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
+            await Task.Delay(2000);
+            _ = prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
         }
 
         private void Home_Click(object sender, MouseButtonEventArgs e)
@@ -186,30 +187,33 @@ namespace FinalAppTest
             if (previous_algo_num == 0)
             {
                 ((MultiNiveau)prog).nbNiveau = 0;
-                ((MultiNiveau)prog).niveaux = null;
+                ((MultiNiveau)prog).niveaux = new Niveau[4];
             }
             else if (previous_algo_num == 1)
             {
                 ((MultiNiveauRecyclage)prog).nbNiveau = 0;
-                ((MultiNiveauRecyclage)prog).niveaux = null;
+                ((MultiNiveauRecyclage)prog).niveaux = new Niveau[4];
             }
             MainWindow.main.Content = new WelcomePage();
         }
 
-        private void Return_Click(object sender, MouseButtonEventArgs e)
+        private async void Return_Click(object sender, MouseButtonEventArgs e)
         {
+
             prog.listeProcessus.Clear();
             prog.listebloque.Clear();
 
             if (previous_algo_num == 0)
             {
                 ((MultiNiveau)prog).nbNiveau = 0;
+                await Task.Delay(1000);
                 ((MultiNiveau)prog).niveaux = null;
                 MainWindow.main.Content = new InitPage { DataContext = new MultiNiveauViewModel() };
             }
             else if (previous_algo_num == 1)
             {
                 ((MultiNiveauRecyclage)prog).nbNiveau = 0;
+                await Task.Delay(1000);
                 ((MultiNiveauRecyclage)prog).niveaux = null;
                 MainWindow.main.Content = new InitPage { DataContext = new MultiNiveauRecyclageViewModel() };
             }

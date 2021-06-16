@@ -23,8 +23,10 @@ namespace FinalAppTest
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window
     {
+        public static MainWindow thisPage;
         public static Frame main;
         
         public MainWindow()
@@ -32,6 +34,11 @@ namespace FinalAppTest
             InitializeComponent();
             Main.Content = new WelcomePage();
             main = Main;
+            thisPage = this;
+        }
+        public static double PageWidth()
+        {
+            return thisPage.Window.ActualWidth;
         }
     }
 }

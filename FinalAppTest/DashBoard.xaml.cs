@@ -264,6 +264,22 @@ namespace FinalAppTest
             Shadow11.Opacity = 0.17;
         }
 
+        private void Algos2Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Algos2.Visibility = Visibility.Hidden;
+            Algos2Button.Visibility = Visibility.Hidden;
+            Algos1.Visibility = Visibility.Visible;
+            Algos1Button.Visibility = Visibility.Visible;
+        }
+
+        private void Algos1Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Algos1.Visibility = Visibility.Hidden;
+            Algos1Button.Visibility = Visibility.Hidden;
+            Algos2.Visibility = Visibility.Visible;
+            Algos2Button.Visibility = Visibility.Visible;
+        }
+
         /*private void Rectangle_MouseLeftButtonDown12(object sender, MouseButtonEventArgs e)
         {
             MainWindow.main.Content = new InitPage
