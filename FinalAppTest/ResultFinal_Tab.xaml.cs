@@ -26,15 +26,17 @@ namespace FinalAppTest
         public int h ;
         public ResultFinal_Tab(List<Processus> P)
         {
+            
+            InitializeComponent();
             this.P = P;
             this.h = 0;
-            InitializeComponent();
         }
         public ResultFinal_Tab(List<ProcessusNiveau> PN)
         {
+           
+            InitializeComponent();
             this.PN = PN;
             this.h = 1;
-            InitializeComponent();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -76,7 +78,10 @@ namespace FinalAppTest
 
         private void Terminer_Click(object sender, MouseButtonEventArgs e)
         {
-            MainWindow.main.Content = SimulationPage.save;
+            if(h==0)
+                MainWindow.main.Content = SimulationPage.save;
+            else if (h==1)
+                MainWindow.main.Content = SimulationPage_MultiLvl.save;
         }
 
         private void TerminerButton_MouseEnter(object sender, MouseEventArgs e)

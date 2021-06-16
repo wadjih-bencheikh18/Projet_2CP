@@ -24,6 +24,8 @@ namespace FinalAppTest
         public Ordonnancement.Ordonnancement prog;
         public static bool paused = false;
         public static bool activated = false;
+
+        public static SimulationPage_MultiLvl save;
         public static bool stop = false;
         private int nbNiveaux=0;
         public static double Speed = 2;
@@ -34,6 +36,7 @@ namespace FinalAppTest
             this.prog = prog;
             activated = false;
             paused = false;
+            save = this;
             Ordonnancement.Ordonnancement.ScrollGantt = ScrollGantt;
             Ordonnancement.Ordonnancement.ScrollDeroulement = ScrollDeroulement;
             Ordonnancement.Ordonnancement.GanttChart = GanttChart;
@@ -54,8 +57,8 @@ namespace FinalAppTest
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (previous_algo_num == 0) MainWindow.main.Content = new ResultFinal_Tab(((MultiNiveau)prog).listeProcessus);
-            else if (previous_algo_num == 1) MainWindow.main.Content = new ResultFinal_Tab(((MultiNiveauRecyclage)prog).listeProcessus);
+            if (previous_algo_num == 0) MainWindow.main.Content = new ResultFinal_Tab((List<ProcessusNiveau>)((MultiNiveau)prog).listeProcessus);
+            else if (previous_algo_num == 1) MainWindow.main.Content = new ResultFinal_Tab((List<ProcessusNiveau>)((MultiNiveauRecyclage)prog).listeProcessus);
         }
         
 

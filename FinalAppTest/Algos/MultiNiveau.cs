@@ -13,8 +13,8 @@ namespace Ordonnancement
     public class MultiNiveau : Ordonnancement
     {
         #region Attributs
-        protected new List<ProcessusNiveau> listeProcessus = new List<ProcessusNiveau>();
-        protected new List<ProcessusNiveau> listebloque = new List<ProcessusNiveau>();
+        public new List<ProcessusNiveau> listeProcessus = new List<ProcessusNiveau>();
+        public new List<ProcessusNiveau> listebloque = new List<ProcessusNiveau>();
         public int nbNiveau;
         public Niveau[] niveaux;
         public StackPanel[] ListesPretsViews;
