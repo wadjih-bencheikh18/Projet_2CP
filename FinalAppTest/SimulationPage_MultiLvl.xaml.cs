@@ -118,6 +118,23 @@ namespace FinalAppTest
             stop = true;
             prog.listebloque.Clear();
             prog.listePrets.Clear();
+            if (previous_algo_num == 0)
+            {
+                for (int i = 0; i < ((MultiNiveau)prog).nbNiveau; i++)
+                {
+                    ((MultiNiveau)prog).niveaux[i].listePrets.Clear();
+                    ((MultiNiveau)prog).niveaux[i].listeProcessus.Clear();
+                    ((MultiNiveau)prog).niveaux[i].listebloque.Clear();
+                }
+            }
+            else
+            {
+              for (int i=0;i< ((MultiNiveauRecyclage)prog).nbNiveau;i++)
+                {
+                    ((MultiNiveauRecyclage)prog).niveaux[i].listePrets.Clear();
+                    ((MultiNiveauRecyclage)prog).niveaux[i].listeProcessus.Clear();
+                    ((MultiNiveauRecyclage)prog).niveaux[i].listebloque.Clear();
+                }            }
             for (int i = 0; i < prog.listeProcessus.Count(); i++)
             {
                 prog.listeProcessus[i].tempsRestant = prog.listeProcessus[i].duree;

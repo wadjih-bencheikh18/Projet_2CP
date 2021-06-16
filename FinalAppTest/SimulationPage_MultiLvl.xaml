@@ -200,7 +200,6 @@
                     <ImageBrush ImageSource="Pics/Processor.png"/>
                 </Border.Background>
                 <StackPanel x:Name="Processeur" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <local:ProcessusDesignMultiLvl></local:ProcessusDesignMultiLvl>
                     <StackPanel.Resources>
                         <Storyboard x:Key="Disactive">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
