@@ -209,7 +209,7 @@ namespace Ordonnancement
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;
             bool anime = true;
-            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) ) //s'il existe des processus prêts 
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop) //s'il existe des processus prêts 
             {
                 if (anime)
                 {

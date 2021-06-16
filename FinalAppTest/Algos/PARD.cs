@@ -168,7 +168,7 @@ namespace Ordonnancement
             Processus proc;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;  // initialisation du temps
-            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop)
             //s'il existe des processus prêts et ( On n'est pas encore arrivé à tempsFin ou il n'y a pas de temps fin )
             {
                 int key = 0;
@@ -273,7 +273,7 @@ namespace Ordonnancement
         public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel deroulement)
         {
             int temps = tempsDebut;  // initialisation du temps
-            while (listePrets.Count != 0 && (temps < tempsFin || tempsFin == -1))
+            while (listePrets.Count != 0 && (temps < tempsFin || tempsFin == -1) && !SimulationPage_MultiLvl.stop)
             //s'il existe des processus prêts et ( On n'est pas encore arrivé à tempsFin ou il n'y a pas de temps fin )
             {
                 niveaux[indiceNiveau].indice[0] = MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau);  //remplir la liste des processus prêts de chaque niveau
@@ -325,7 +325,7 @@ namespace Ordonnancement
             Processus proc;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;  // initialisation du temps
-            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop)
             //s'il existe des processus prêts et ( On n'est pas encore arrivé à tempsFin ou il n'y a pas de temps fin )
             {
                 int key = 0;

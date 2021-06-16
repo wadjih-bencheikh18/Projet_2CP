@@ -147,7 +147,7 @@ namespace Ordonnancement
             niveaux[indiceNiveau].indice[1] = 0;
             bool anime = true;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
-            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) )  //tant qu'il existe des processus prêts
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop)  //tant qu'il existe des processus prêts
             {
                 if (!SimulationPage_MultiLvl.paused)
                 {
@@ -217,7 +217,7 @@ namespace Ordonnancement
         // indices[0] est l'indice de listeProcessus où on doit reprendre l'exécution
         // indices[1] est le quantum du temps de la derniére exécution
         {
-            while (niveaux[indiceNiveau].indice[0] < listeProcessus.Count || listePrets.Count != 0)  //tant qu'il existe des processus prêts
+            while ((niveaux[indiceNiveau].indice[0] < listeProcessus.Count || listePrets.Count != 0) && !SimulationPage_MultiLvl.stop) //tant qu'il existe des processus prêts
             {
                 if (niveaux[indiceNiveau].indice[0] < listeProcessus.Count && listePrets.Count == 0)  // Si il y a des processus dans listProcessus et listePrets est vide
                 {
@@ -277,7 +277,7 @@ namespace Ordonnancement
             niveaux[indiceNiveau].indice[1] = 0;
             bool anime = true;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
-            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))  //tant qu'il existe des processus prêts
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop)  //tant qu'il existe des processus prêts
             {
                 if (anime)
                 {

@@ -125,7 +125,7 @@ namespace Ordonnancement
             int temps = tempsDebut;
             if (niveaux[indiceNiveau].indice[2] == 0) niveaux[indiceNiveau].indice[1] = 1; //si aucun processus du niveau actuel n'a été executé alors il faut trier les processus de listePrets de ce niveau par durée
             niveaux[indiceNiveau].indice[2] = 1; //l'execution d'un processus de ce niveau commence
-            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //s'il existe des processus prêts et le temps < le temps de fin  ou il n'y a pas de temps fin
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop) //s'il existe des processus prêts et le temps < le temps de fin  ou il n'y a pas de temps fin
             {
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
                 if (listePrets.Count != 0 && niveaux[indiceNiveau].indice[1] == 1) //s'il y a des processus prêts et un tri par durée est necessaire
@@ -187,7 +187,7 @@ namespace Ordonnancement
             int temps = tempsDebut;
             if (niveaux[indiceNiveau].indice[2] == 0) niveaux[indiceNiveau].indice[1] = 1; //si aucun processus du niveau actuel n'a été executé alors il faut trier les processus de listePrets de ce niveau par durée
             niveaux[indiceNiveau].indice[2] = 1; //l'execution d'un processus de ce niveau commence
-            while (listePrets.Count != 0 && (temps < tempsFin || tempsFin == -1)) //s'il existe des processus prêts et le temps < le temps de fin  ou il n'y a pas de temps fin
+            while (listePrets.Count != 0 && (temps < tempsFin || tempsFin == -1) && !SimulationPage_MultiLvl.stop) //s'il existe des processus prêts et le temps < le temps de fin  ou il n'y a pas de temps fin
             {
                 niveaux[indiceNiveau].indice[0] = MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau); //remplir la liste des processus prêts de chaque niveau
                 if(!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
@@ -242,7 +242,7 @@ namespace Ordonnancement
             int temps = tempsDebut;
             if (niveaux[indiceNiveau].indice[2] == 0) niveaux[indiceNiveau].indice[1] = 1; //si aucun processus du niveau actuel n'a été executé alors il faut trier les processus de listePrets de ce niveau par durée
             niveaux[indiceNiveau].indice[2] = 1; //l'execution d'un processus de ce niveau commence
-            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //s'il existe des processus prêts et le temps < le temps de fin  ou il n'y a pas de temps fin
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop) //s'il existe des processus prêts et le temps < le temps de fin  ou il n'y a pas de temps fin
             {
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
                 if (listePrets.Count != 0 && niveaux[indiceNiveau].indice[1] == 1) //s'il y a des processus prêts et un tri par durée est necessaire (décroissant)
