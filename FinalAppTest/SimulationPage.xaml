@@ -33,17 +33,10 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Height="500"  Background="White" Width="500" CornerRadius="10" BorderBrush="Black" BorderThickness="1" Loaded="Border_Loaded">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid x:Name="IdGantt" Grid.Column="0" Margin="0 0 0 20"/>
-                    <ScrollViewer Grid.Column="1" x:Name="ScrollGantt" CanContentScroll="True" Margin="5 5"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Visible">
+            <Border Height="500"  Background="White"  Width="500" CornerRadius="10" BorderBrush="Black" BorderThickness="1">
+                <ScrollViewer x:Name="ScrollGantt"  CanContentScroll="True"  Margin="5 5" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <WrapPanel x:Name="GanttChart"/>
-                    </ScrollViewer>
-                </Grid>
+                </ScrollViewer>
             </Border>
             <Border Grid.Row="1" Background="White" Margin="0,0,0,20" Width="450" CornerRadius="30" BorderBrush="Black" BorderThickness="1">
                 <Grid>
