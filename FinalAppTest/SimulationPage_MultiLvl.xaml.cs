@@ -135,20 +135,23 @@ namespace FinalAppTest
             MainWindow.main.Content = new WelcomePage();
         }
 
-        private void Return_Click(object sender, MouseButtonEventArgs e)
-        {
+        private async void Return_Click(object sender, MouseButtonEventArgs e)
+        { 
+            
             prog.listeProcessus.Clear();
             prog.listebloque.Clear();
 
             if (previous_algo_num == 0)
             {
                 ((MultiNiveau)prog).nbNiveau = 0;
+                await Task.Delay(1000);
                 ((MultiNiveau)prog).niveaux = null;
                 MainWindow.main.Content = new InitPage { DataContext = new MultiNiveauViewModel() };
             }
             else if (previous_algo_num == 1)
             {
                 ((MultiNiveauRecyclage)prog).nbNiveau = 0;
+                await Task.Delay(1000);
                 ((MultiNiveauRecyclage)prog).niveaux = null;
                 MainWindow.main.Content = new InitPage { DataContext = new MultiNiveauRecyclageViewModel() };
             }

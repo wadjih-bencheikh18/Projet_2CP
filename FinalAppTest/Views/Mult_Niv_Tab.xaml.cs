@@ -224,7 +224,7 @@ namespace FinalAppTest.Views
                     Background = type,
                     quantum = quan
                 };
-                pro.InsererNivMLR(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
+                pro.InsererNivML(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
                 if (algo == 7 || algo == 8) niveaux[indiceniv] = new Niveau(algo, q);
                 else niveaux[indiceniv] = new Niveau(algo);
                 indiceniv++;
