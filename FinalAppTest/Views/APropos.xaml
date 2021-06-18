@@ -163,7 +163,7 @@
                 </TextBlock>
             </Grid>
             <Grid Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="3">
-                <Image Source="/Pics/Mounia.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
+                <Image Source="/Pics/Reda.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="185" Margin="-25,0,0,0"/>
                 <TextBlock TextWrapping="Wrap" FontFamily="Lexend" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0">
                     <Run FontSize="24" FontWeight="Regular" Text="Mohammed Reda Sbaihi&#10;"/>
                     <Run Text="&#10;"/>
