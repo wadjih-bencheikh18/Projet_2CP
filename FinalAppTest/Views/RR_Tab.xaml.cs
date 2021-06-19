@@ -296,8 +296,8 @@ namespace FinalAppTest.Views
             ApplyEffect();
             Description.Effect = null;
             Panel.SetZIndex(Description, 1);
-            if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(315, 175, 0, 0);
-            else hint.Margin = new Thickness(295, 145, 0, 0);
+            if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(300, 180, 0, 0);
+            else hint.Margin = new Thickness(290, 165, 0, 0);
             Hint Test = new Hint(
                                 "Simulation RR",
                                 "Commençons la simulation de l'algorithme Round-Robin",

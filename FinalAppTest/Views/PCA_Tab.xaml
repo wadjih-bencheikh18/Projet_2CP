@@ -267,7 +267,7 @@
                 </Rectangle.Fill>
             </Rectangle>
         </Grid>
-        <Viewbox x:Name="hint" Width="200" Height="300" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="814,227,0,0">
+        <Viewbox x:Name="hint" Width="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top" >
 
         </Viewbox>
 
