@@ -461,7 +461,7 @@ namespace Ordonnancement
                     item.VerticalAlignment = VerticalAlignment.Center;
                     item.FontFamily = new FontFamily("Lexend");
                     item.FontWeight = FontWeights.Medium;
-                    Grid.SetRow(item, i);
+                    Grid.SetRow(item, listeProcessus.Count-i-1);
                     coldefinit.Children.Add(item);
                     cpt++;
                 }
@@ -515,7 +515,7 @@ namespace Ordonnancement
                 }
 
                 item.Margin = new Thickness(0, 5, 0, 5);
-                Grid.SetRow(item, i);
+                Grid.SetRow(item, listeProcessus.Count - i - 1);
                 coldef.Children.Add(item);
                 cpt++;
             }
@@ -536,6 +536,11 @@ namespace Ordonnancement
             {
                 ScrollGantt.LineRight();
             }
+            for (int j = 0; j < 50; j++)
+            {
+                ScrollGantt.LineDown();
+            }
+
 
 
         }
@@ -569,7 +574,7 @@ namespace Ordonnancement
                     item.VerticalAlignment = VerticalAlignment.Center;
                     item.FontFamily = new FontFamily("Lexend");
                     item.FontWeight = FontWeights.Medium;
-                    Grid.SetRow(item, i);
+                    Grid.SetRow(item, listeProcessus.Count - i - 1);
                     coldefinit.Children.Add(item);
                     cpt++;
                 }
@@ -623,7 +628,7 @@ namespace Ordonnancement
                 }
 
                 item.Margin = new Thickness(0, 5, 0, 5);
-                Grid.SetRow(item, i);
+                Grid.SetRow(item, listeProcessus.Count - i - 1);
                 coldef.Children.Add(item);
                 cpt++;
             }
@@ -644,7 +649,10 @@ namespace Ordonnancement
             {
                 ScrollGantt.LineRight();
             }
-
+            for (int j = 0; j < 50; j++)
+            {
+                ScrollGantt.LineDown();
+            }
 
         }
         #endregion
