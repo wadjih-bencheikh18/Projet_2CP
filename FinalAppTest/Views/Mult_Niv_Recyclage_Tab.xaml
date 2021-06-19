@@ -64,101 +64,108 @@
             </Grid>
             <StackPanel x:Name="Description" Grid.Row="1">
                 <TextBlock Margin="10,20,0,0 " Text="Simulation" FontSize="30" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
-                <TextBlock Margin="10,0,0,0 " Text="MultiNiveaux Avec " FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
-                <TextBlock Margin="10,0,0,0 " Text="Recyclage" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,0,0,0 " Text="MultiNiveaux" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock Margin="10,0,0,0 " Text="Avec Recyclage" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,10,10 " Text="Multi-Niveaux." FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
-                <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
             </StackPanel>
-            <Grid Height="0" x:Name="proGen" Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="2*"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <StackPanel  x:Name="proGen" Grid.Row="1" VerticalAlignment="Top" Margin="0,230,0,0">
+                <TextBlock Visibility="Hidden" x:Name="proAffText" Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
+                <Grid Height="0" x:Name="proAff">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="4*"/>
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend">Interruptions ?</TextBlock>
-                    <CheckBox x:Name="RandomizeInterrup" Cursor="Hand" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0"></CheckBox>
-                </Grid>
-                <Grid Grid.Column="1" Grid.Row="1" Margin="5,15">
-                    <Rectangle x:Name="RandomButton"  Fill="#FF000000" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="6*"/>
-                            <ColumnDefinition Width="2*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Générer</TextBlock>
-                        <Image Grid.Column="1" Height="50" VerticalAlignment="Center" Source="Generate.png" HorizontalAlignment="Left" Width="20"/>
-                    </Grid>
-                    <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="RandomButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto"  StrokeThickness="0" RadiusX="25"/>
-                </Grid>
-                <Grid Grid.Column="0" Grid.RowSpan="2">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
-                    <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Width="Auto" Margin="30,0" Height="40"/>
-                    <TextBox GotFocus="NbProcessusTextBox_GotFocus" x:Name="NbProcessusTextBox" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                    <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des processus" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                    <Grid Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend">Interruptions ?</TextBlock>
+                        <CheckBox x:Name="RandomizeInterrup" Cursor="Hand" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0"></CheckBox>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="1" Margin="5,15">
+                        <Rectangle x:Name="RandomButton"  Fill="#FF000000" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Générer</TextBlock>
+                            <Image Grid.Column="1" Height="50" VerticalAlignment="Center" Source="Generate.png" HorizontalAlignment="Left" Width="20"/>
+                        </Grid>
+                        <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="RandomButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto"  StrokeThickness="0" RadiusX="25"/>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Width="Auto" Margin="30,0" Height="40"/>
+                        <TextBox GotFocus="NbProcessusTextBox_GotFocus" x:Name="NbProcessusTextBox" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des processus" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                    </Grid>
+
                 </Grid>
 
-            </Grid>
-            <Grid Height="120" x:Name="nivGen" Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="2" x:Name="plusButton">
-                    <Rectangle x:Name="gf"  Fill="#FF359354" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <Grid Margin="5,55,5,15">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="6*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">+</TextBlock>
+            </StackPanel>
+            <StackPanel x:Name="nivGen" Grid.Row="1" VerticalAlignment="Top" Margin="0,230,0,0">
+                <TextBlock x:Name="nivAffText" Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
+                <Grid Height="120" x:Name="nivAff">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="2" x:Name="plusButton">
+                        <Rectangle x:Name="gf"  Fill="#FF359354" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="5,55,5,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">+</TextBlock>
+                        </Grid>
+                        <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="GenAddNiv" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
                     </Grid>
-                    <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="GenAddNiv" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
-                </Grid>
-                <Grid Grid.Column="0" x:Name="minusButton" Visibility="Hidden">
-                    <Rectangle x:Name="af"  Fill="#FFB63829" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
-                        <Rectangle.Effect>
-                            <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
-                        </Rectangle.Effect>
-                    </Rectangle>
-                    <Grid Margin="5,55,5,15">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="6*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">-</TextBlock>
+                    <Grid Grid.Column="0" x:Name="minusButton" Visibility="Hidden">
+                        <Rectangle x:Name="af"  Fill="#FFB63829" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="5,55,5,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">-</TextBlock>
+                        </Grid>
+                        <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="DelNiv" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
                     </Grid>
-                    <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="DelNiv" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="50" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25"/>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle Grid.Row="1" x:Name="nivIndexRectangle" Fill="#FFE9F2FE" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"/>
+                        <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des niveaux" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                        <TextBox TextChanged="randNiv_TextChanged" IsReadOnly="True" x:Name="randNiv" Cursor="Arrow" MaxLength="1" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
                 </Grid>
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
-                    <Rectangle Grid.Row="1" x:Name="nivIndexRectangle" Fill="#FFE9F2FE" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"/>
-                    <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des niveaux" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBox TextChanged="randNiv_TextChanged" IsReadOnly="True" x:Name="randNiv" Cursor="Arrow" MaxLength="1" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                </Grid>
-            </Grid>
-            <Grid Height="0" Width="250" Margin="0,310,0,0" x:Name="SimulationButton" Grid.Row="1">
+
+            </StackPanel>
+            <Grid Height="0" Width="250" Margin="0,400,0,0" x:Name="SimulationButton" Grid.Row="1" VerticalAlignment="Top">
                 <Rectangle x:Name="StartButton" Grid.Row="0" Margin="25" Fill="#F16022" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                     <Rectangle.Effect>
                         <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>

@@ -291,8 +291,10 @@ namespace FinalAppTest.Views
             }
             proTitle.FontSize = 50;
             nivTitle.FontSize = 30;
-            nivGen.Height = 0;
-            proGen.Height = 120;
+            nivAff.Height = 0;
+            nivAffText.Visibility = Visibility.Hidden;
+            proAff.Height = 120;
+            proAffText.Visibility = Visibility.Visible;
             proGrid.Visibility = Visibility.Visible;
             nivGrid.Visibility = Visibility.Hidden;
             SimulationButton.Height = 120;
@@ -303,8 +305,10 @@ namespace FinalAppTest.Views
         {
             proTitle.FontSize = 30;
             nivTitle.FontSize = 50;
-            nivGen.Height = 120;
-            proGen.Height = 0;
+            nivAff.Height = 120;
+            nivAffText.Visibility = Visibility.Visible;
+            proAff.Height = 0;
+            proAffText.Visibility = Visibility.Hidden;
             nivGrid.Visibility = Visibility.Visible;
             proGrid.Visibility = Visibility.Hidden;
             SimulationButton.Height = 0;
