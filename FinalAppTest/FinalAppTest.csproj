@@ -530,5 +530,8 @@
   <ItemGroup>
     <Resource Include="Pics\goLeft.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\Reda.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
