@@ -453,7 +453,9 @@ namespace FinalAppTest.Views
             SimulationButton.Effect = Effect;
             proGen.Effect = Effect;
             proGrid.Effect = Effect;
+            InitPage.navigation.Effect = Effect;
             Grey.Visibility = Visibility.Visible;
+            InitPage.grey.Visibility = Visibility.Visible;
             Panel.SetZIndex(buttons, 0);
             Panel.SetZIndex(nivGen, 0);
             Panel.SetZIndex(Description, 0);
@@ -474,7 +476,9 @@ namespace FinalAppTest.Views
             SimulationButton.Effect = null;
             proGrid.Effect = null;
             proGen.Effect = null;
+            InitPage.navigation.Effect = null;
             Grey.Visibility = Visibility.Hidden;
+            InitPage.grey.Visibility = Visibility.Hidden;
             Panel.SetZIndex(buttons, 0);
             Panel.SetZIndex(nivGen, 0);
             Panel.SetZIndex(Description, 0);

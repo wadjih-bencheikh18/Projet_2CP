@@ -87,37 +87,37 @@ namespace FinalAppTest.Views
         {
             if (nbPros > 2)
             {
-                if (Crit(prog1,i) > Crit(prog2, i) && Crit(prog2, i) > Crit(prog3, i))
+                if (Crit(prog1,i) >= Crit(prog2, i) && Crit(prog2, i) >= Crit(prog3, i))
                 {
                     algo1Rects[i].Fill = rectColors[2];
                     algo2Rects[i].Fill = rectColors[1];
                     algo3Rects[i].Fill = rectColors[0];
                 }
-                else if (Crit(prog1, i) > Crit(prog3, i) && Crit(prog3, i) > Crit(prog2, i))
+                else if (Crit(prog1, i) >= Crit(prog3, i) && Crit(prog3, i) >= Crit(prog2, i))
                 {
                     algo1Rects[i].Fill = rectColors[2];
                     algo2Rects[i].Fill = rectColors[0];
                     algo3Rects[i].Fill = rectColors[1];
                 }
-                else if (Crit(prog2, i) > Crit(prog1, i) && Crit(prog1, i) > prog3.tempsAtt)
+                else if (Crit(prog2, i) >= Crit(prog1, i) && Crit(prog1, i) >= prog3.tempsAtt)
                 {
                     algo1Rects[i].Fill = rectColors[1];
                     algo2Rects[i].Fill = rectColors[2];
                     algo3Rects[i].Fill = rectColors[0];
                 }
-                else if (Crit(prog2, i) > Crit(prog3, i)  && Crit(prog3, i) > Crit(prog1, i))
+                else if (Crit(prog2, i) >= Crit(prog3, i)  && Crit(prog3, i) >= Crit(prog1, i))
                 {
                     algo1Rects[i].Fill = rectColors[0];
                     algo2Rects[i].Fill = rectColors[2];
                     algo3Rects[i].Fill = rectColors[1];
                 }
-                else if (Crit(prog3, i) > Crit(prog1, i) && Crit(prog1, i) > Crit(prog2, i))
+                else if (Crit(prog3, i) >= Crit(prog1, i) && Crit(prog1, i) >= Crit(prog2, i))
                 {
                     algo1Rects[i].Fill = rectColors[1];
                     algo2Rects[i].Fill = rectColors[0];
                     algo3Rects[i].Fill = rectColors[2];
                 }
-                else
+                else if (Crit(prog3, i) >= Crit(prog2, i) && Crit(prog2, i) >= Crit(prog1, i))
                 {
                     algo1Rects[i].Fill = rectColors[0];
                     algo2Rects[i].Fill = rectColors[1];

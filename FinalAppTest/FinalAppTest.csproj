@@ -539,5 +539,14 @@
       <Name>WpfCharts</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\Arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\esi_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
