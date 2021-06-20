@@ -539,7 +539,7 @@ namespace FinalAppTest.Views
                 {
                     Simuler.Effect = null;
                     Panel.SetZIndex(Simuler, 1);
-                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(190, 240, 0, 0);
+                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(360, 505, 0, 0);
                     else hint.Margin = new Thickness(300, 480, 0, 0);
                     Test = new Hint(
                                         "Commencer la simulation",

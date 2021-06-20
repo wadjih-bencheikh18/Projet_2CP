@@ -536,7 +536,7 @@ namespace Ordonnancement
             {
                 ScrollGantt.LineRight();
             }
-            for (int j = 0; j < 50; j++)
+            for (int k = 0; k < 2; k++)
             {
                 ScrollGantt.LineDown();
             }
@@ -649,7 +649,7 @@ namespace Ordonnancement
             {
                 ScrollGantt.LineRight();
             }
-            for (int j = 0; j < 50; j++)
+            for (int k = 0; k < 2; k++)
             {
                 ScrollGantt.LineDown();
             }
