@@ -254,8 +254,8 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <TextBlock Text="PAPS" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
-                <TextBlock Grid.Row="1" Text="Ordonnecement Premier" HorizontalAlignment="Center" FontSize="22"/>
-                <TextBlock Grid.Row="1" Text="Arrivée Premier Servie" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Ordonnancement Premier" HorizontalAlignment="Center" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Arrivé Premier Servi" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
                 <Rectangle MouseEnter="Rectangle_MouseEnter1" MouseLeave="Rectangle_MouseLeave1" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown1" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
 
@@ -269,8 +269,8 @@
                         <DropShadowEffect x:Name="Shadow2" Opacity="0.17" ShadowDepth="4" BlurRadius="4"/>
                     </Rectangle.Effect>
                 </Rectangle>
-                <TextBlock Text="Round Robin" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="37" FontWeight="DemiBold" FontFamily="Lexend"/>
-                <TextBlock Grid.Row="1" Text="Ordonnecement avec le" HorizontalAlignment="Center" FontSize="22"/>
+                <TextBlock Text="Round-Robin" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="37" FontWeight="DemiBold" FontFamily="Lexend"/>
+                <TextBlock Grid.Row="1" Text="Ordonnancement" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Tourniquet" Margin="0,30,0,0" HorizontalAlignment="Center" FontSize="22"/>
                 <Rectangle MouseEnter="Rectangle_MouseEnter2" MouseLeave="Rectangle_MouseLeave2" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown2" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
@@ -286,8 +286,8 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <TextBlock Text="PSR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
-                <TextBlock Grid.Row="1" Text="Ordonnecement avec" HorizontalAlignment="Center" FontSize="22"/>
-                <TextBlock Grid.Row="1" Text="Prioritè Sans Réquisition" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Ordonnancement" HorizontalAlignment="Center" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Priorité Sans Réquisition" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
                 <Rectangle MouseEnter="Rectangle_MouseEnter3" MouseLeave="Rectangle_MouseLeave3" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown3" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
 
@@ -302,8 +302,8 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <TextBlock Text="PAR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
-                <TextBlock Grid.Row="1" Text="Ordonnecement avec" HorizontalAlignment="Center" FontSize="22"/>
-                <TextBlock Grid.Row="1" Text="Prioritè Avec Réquisition" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Ordonnancement" HorizontalAlignment="Center" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Priorité Avec Réquisition" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
                 <Rectangle MouseEnter="Rectangle_MouseEnter4" MouseLeave="Rectangle_MouseLeave4" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown4" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
 
@@ -318,8 +318,8 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <TextBlock Text="PARD" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
-                <TextBlock Grid.Row="1" Text="Ordonnecement avec" HorizontalAlignment="Center" FontSize="22"/>
-                <TextBlock Grid.Row="1" Text="Prioritè Avec Réquisition" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Ordonnancement" HorizontalAlignment="Center" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Priorité Avec Réquisition" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Dynamique" Margin="0,60,0,0" HorizontalAlignment="Center" FontSize="22"/>
                 <Rectangle MouseEnter="Rectangle_MouseEnter5" MouseLeave="Rectangle_MouseLeave5" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown5" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
@@ -334,8 +334,8 @@
                         <DropShadowEffect x:Name="Shadow11" Opacity="0.17" ShadowDepth="4" BlurRadius="4"/>
                     </Rectangle.Effect>
                 </Rectangle>
-                <TextBlock Text="Slack Time" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
-                <TextBlock Grid.Row="1" Text="Ordonnecement avec" HorizontalAlignment="Center" FontSize="22"/>
+                <TextBlock Text="Slack-Time" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
+                <TextBlock Grid.Row="1" Text="Ordonnancement" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Temps Mort" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
                 <Rectangle MouseEnter="Rectangle_MouseEnter11" MouseLeave="Rectangle_MouseLeave11" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown11" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
@@ -374,7 +374,7 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <TextBlock Text="PCA" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
-                <TextBlock Grid.Row="1" Text="Ordonnecement Plus" HorizontalAlignment="Center" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Ordonnancement Plus" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Court d'Abord" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
                 <Rectangle MouseEnter="Rectangle_MouseEnter6" MouseLeave="Rectangle_MouseLeave6" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown6" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
@@ -390,7 +390,7 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <TextBlock Text="PCTR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
-                <TextBlock Grid.Row="1" Text="Ordonnecement avec" HorizontalAlignment="Center" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Ordonnancement" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Plus Court Temps Restant" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
                 <Rectangle MouseEnter="Rectangle_MouseEnter7" MouseLeave="Rectangle_MouseLeave7" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown7" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
@@ -406,7 +406,7 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <TextBlock Text="PLA" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
-                <TextBlock Grid.Row="1" Text="Ordonnecement Plus" HorizontalAlignment="Center" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Ordonnancement Plus" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Long d'Abord" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
                 <Rectangle MouseEnter="Rectangle_MouseEnter8" MouseLeave="Rectangle_MouseLeave8" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown8" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
@@ -422,7 +422,7 @@
                     </Rectangle.Effect>
                 </Rectangle>
                 <TextBlock Text="Multi-Niveaux" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="DemiBold" FontFamily="Lexend"/>
-                <TextBlock Grid.Row="1" Text="Ordonnecement avec" HorizontalAlignment="Center" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Ordonnancement à" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Plusieurs Niveaux" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
                 <Rectangle MouseEnter="Rectangle_MouseEnter9" MouseLeave="Rectangle_MouseLeave9" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown9" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
             </Grid>
@@ -439,7 +439,7 @@
                 </Rectangle>
                 <TextBlock Text="Multi-Niveaux" Margin="0,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="30" FontWeight="DemiBold" FontFamily="Lexend"/>
                 <TextBlock Text="Avec Recyclage" Margin="0,0,0,5" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="30" FontWeight="DemiBold" FontFamily="Lexend"/>
-                <TextBlock Grid.Row="1" Text="Ordonnecement avec" HorizontalAlignment="Center" FontSize="22"/>
+                <TextBlock Grid.Row="1" Text="Ordonnancement à" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Plusieurs Niveaux Avec" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Recyclage entre eux" HorizontalAlignment="Center" Margin="0,60,0,0" FontSize="22"/>
                 <Rectangle MouseEnter="Rectangle_MouseEnter10" MouseLeave="Rectangle_MouseLeave10" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown10" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>

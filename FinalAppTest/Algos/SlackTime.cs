@@ -106,7 +106,45 @@ namespace Ordonnancement
             return temps;
         }
         #endregion
-
+        #region Test
+        public override int Executer()  // executer la liste des processus 
+        {
+            SortListeProcessus(); //tri des processus par ordre d'arrivé
+            int temps = 0;
+            int indice = 0;
+            while (listePrets.Count != 0 || indice < listeProcessus.Count || listebloque.Count != 0) //Tant qu'il existe des processus prêts
+            {
+                indice = MAJListePrets(temps, indice);  // Remplir listePrets
+                temps++;
+                UpdateStackTime(temps);
+                InterruptionExecute();
+                if (listePrets.Count != 0) //S'il y a des processus prêts
+                {
+                    listePrets.Sort(delegate (Processus x, Processus y)
+                    {
+                        if (x.slackTime.CompareTo(y.slackTime) == 0) return x.tempsArriv.CompareTo(y.tempsArriv); //si les processus ont le même temps restant, on les trie selon le temps d'arrivée
+                        else return x.slackTime.CompareTo(y.slackTime); //sinon, on fait le tri par temps restant
+                    }
+                                        );
+                    listePrets[0].transition = 2; //Activation du 1er processus de listePrets
+                    listePrets[0].etat = 2;
+                    if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
+                    listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
+                    if (listePrets[0].tempsRestant == 0)  // Si l'execution du premier processus de listePrets est terminée :
+                    {
+                        listePrets[0].tempsFin = temps; // temps de fin d'execution = temps actuel
+                        listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
+                        listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
+                        listePrets[0].etat = 3;
+                        listePrets.RemoveAt(0); //supprimer le processus dont la duree est écoulée
+                    }
+                }
+                else tempsRepos++;
+            }
+            TauxUtil(temps);
+            return temps;
+        }
+        #endregion
         #region MultiNiveau
         // des algorithmes nécessaires pour implémenter MultiNiveaux
         public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement)

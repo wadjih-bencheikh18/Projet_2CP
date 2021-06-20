@@ -153,7 +153,8 @@ namespace FinalAppTest.Views
 
         private void Comparer_Click(object sender, MouseEventArgs e)
         {
-            MainWindow.main.Content = new Comparison_Page();
+            if(comp.Count>1)
+                MainWindow.main.Content = new Comparison_Page(comp,quantum,tempsMAJ);
         }
         private void AddProcessusButton_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -266,63 +267,11 @@ namespace FinalAppTest.Views
         {
             var bc = new BrushConverter();
 
-            if (comp.IndexOf(2) < 0 && comp.Count < 3)
-            {
-                comp.Add(2);
-                algos[comp.Count - 1].Text = "- PAR";
-                ParBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
-            }
-            else if (comp.IndexOf(2) >= 0)
-            {
-                if (comp.IndexOf(2) == comp.Count - 1) algos[comp.IndexOf(2)].Text = "";
-                else
-                {
-                    for (int i = comp.IndexOf(2); i < comp.Count - 1; i++)
-                    {
-                        algos[i].Text = algos[i + 1].Text;
-                    }
-                    algos[comp.Count - 1].Text = "";
-                }
-                comp.Remove(2);
-                ParBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
-            }
-        }
-
-        private void SlackBtn_Click(object sender, MouseButtonEventArgs e)
-        {
-            var bc = new BrushConverter();
-
-            if (comp.IndexOf(3) < 0 && comp.Count < 3)
-            {
-                comp.Add(3);
-                algos[comp.Count - 1].Text = "- Slack Time";
-                SlackBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
-            }
-            else if (comp.IndexOf(3) >= 0)
-            {
-                if (comp.IndexOf(3) == comp.Count - 1) algos[comp.IndexOf(3)].Text = "";
-                else
-                {
-                    for (int i = comp.IndexOf(3); i < comp.Count - 1; i++)
-                    {
-                        algos[i].Text = algos[i + 1].Text;
-                    }
-                    algos[comp.Count - 1].Text = "";
-                }
-                comp.Remove(3);
-                SlackBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
-            }
-        }
-
-        private void PlaBtn_Click(object sender, MouseButtonEventArgs e)
-        {
-            var bc = new BrushConverter();
-
             if (comp.IndexOf(4) < 0 && comp.Count < 3)
             {
                 comp.Add(4);
-                algos[comp.Count - 1].Text = "- PLA";
-                PlaBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+                algos[comp.Count - 1].Text = "- PAR";
+                ParBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
             }
             else if (comp.IndexOf(4) >= 0)
             {
@@ -336,45 +285,19 @@ namespace FinalAppTest.Views
                     algos[comp.Count - 1].Text = "";
                 }
                 comp.Remove(4);
-                PlaBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                ParBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
             }
         }
 
-        private void PctrBtn_Click(object sender, MouseButtonEventArgs e)
-        {
-            var bc = new BrushConverter();
-
-            if (comp.IndexOf(5) < 0 && comp.Count < 3)
-            {
-                comp.Add(5);
-                algos[comp.Count - 1].Text = "- PCTR";
-                PctrBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
-            }
-            else if (comp.IndexOf(5) >= 0)
-            {
-                if (comp.IndexOf(5) == comp.Count - 1) algos[comp.IndexOf(5)].Text = "";
-                else
-                {
-                    for (int i = comp.IndexOf(5); i < comp.Count - 1; i++)
-                    {
-                        algos[i].Text = algos[i + 1].Text;
-                    }
-                    algos[comp.Count - 1].Text = "";
-                }
-                comp.Remove(5);
-                PctrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
-            }
-        }
-
-        private void PsrBtn_Click(object sender, MouseButtonEventArgs e)
+        private void SlackBtn_Click(object sender, MouseButtonEventArgs e)
         {
             var bc = new BrushConverter();
 
             if (comp.IndexOf(6) < 0 && comp.Count < 3)
             {
                 comp.Add(6);
-                algos[comp.Count - 1].Text = "- PSR";
-                PsrBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+                algos[comp.Count - 1].Text = "- Slack Time";
+                SlackBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
             }
             else if (comp.IndexOf(6) >= 0)
             {
@@ -388,6 +311,84 @@ namespace FinalAppTest.Views
                     algos[comp.Count - 1].Text = "";
                 }
                 comp.Remove(6);
+                SlackBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+        }
+
+        private void PlaBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            if (comp.IndexOf(2) < 0 && comp.Count < 3)
+            {
+                comp.Add(2);
+                algos[comp.Count - 1].Text = "- PLA";
+                PlaBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+            }
+            else if (comp.IndexOf(2) >= 0)
+            {
+                if (comp.IndexOf(2) == comp.Count - 1) algos[comp.IndexOf(2)].Text = "";
+                else
+                {
+                    for (int i = comp.IndexOf(2); i < comp.Count - 1; i++)
+                    {
+                        algos[i].Text = algos[i + 1].Text;
+                    }
+                    algos[comp.Count - 1].Text = "";
+                }
+                comp.Remove(2);
+                PlaBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+        }
+
+        private void PctrBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            if (comp.IndexOf(3) < 0 && comp.Count < 3)
+            {
+                comp.Add(3);
+                algos[comp.Count - 1].Text = "- PCTR";
+                PctrBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+            }
+            else if (comp.IndexOf(3) >= 0)
+            {
+                if (comp.IndexOf(3) == comp.Count - 1) algos[comp.IndexOf(3)].Text = "";
+                else
+                {
+                    for (int i = comp.IndexOf(3); i < comp.Count - 1; i++)
+                    {
+                        algos[i].Text = algos[i + 1].Text;
+                    }
+                    algos[comp.Count - 1].Text = "";
+                }
+                comp.Remove(3);
+                PctrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+        }
+
+        private void PsrBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            if (comp.IndexOf(5) < 0 && comp.Count < 3)
+            {
+                comp.Add(5);
+                algos[comp.Count - 1].Text = "- PSR";
+                PsrBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+            }
+            else if (comp.IndexOf(5) >= 0)
+            {
+                if (comp.IndexOf(5) == comp.Count - 1) algos[comp.IndexOf(5)].Text = "";
+                else
+                {
+                    for (int i = comp.IndexOf(5); i < comp.Count - 1; i++)
+                    {
+                        algos[i].Text = algos[i + 1].Text;
+                    }
+                    algos[comp.Count - 1].Text = "";
+                }
+                comp.Remove(5);
                 PsrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
             }
         }
@@ -399,7 +400,7 @@ namespace FinalAppTest.Views
             if (comp.IndexOf(7) < 0 && comp.Count < 3)
             {
                 comp.Add(7);
-                algos[comp.Count - 1].Text = "- Round Robin";
+                algos[comp.Count - 1].Text = "- RR";
                 RRBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
             }
             else if (comp.IndexOf(7) >= 0)
@@ -415,6 +416,31 @@ namespace FinalAppTest.Views
                 }
                 comp.Remove(7);
                 RRBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+        }
+        private void PARDBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            var bc = new BrushConverter();
+
+            if (comp.IndexOf(8) < 0 && comp.Count < 3)
+            {
+                comp.Add(8);
+                algos[comp.Count - 1].Text = "- PARD";
+                PARDBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+            }
+            else if (comp.IndexOf(8) >= 0)
+            {
+                if (comp.IndexOf(8) == comp.Count - 1) algos[comp.IndexOf(8)].Text = "";
+                else
+                {
+                    for (int i = comp.IndexOf(8); i < comp.Count - 1; i++)
+                    {
+                        algos[i].Text = algos[i + 1].Text;
+                    }
+                    algos[comp.Count - 1].Text = "";
+                }
+                comp.Remove(8);
+                PARDBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
             }
         }
 
