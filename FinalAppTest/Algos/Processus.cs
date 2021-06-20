@@ -65,6 +65,18 @@ namespace Ordonnancement
             this.deadline = deadline;
             slackTime = deadline - 0 - tempsRestant;
         }
+        public Processus(Processus pro)  //constructeur pour l'algorithme de priorité
+        {
+            famine = false;
+            this.etat = 3;
+            this.id = pro.id;
+            this.tempsArriv = pro.tempsArriv;
+            this.duree = pro.duree;
+            this.prio = pro.prio;
+            tempsRestant = pro.duree;
+            this.deadline = pro.deadline;
+            slackTime = pro.deadline - 0 - pro.tempsRestant;
+        }
         public Processus(int id, int tempsArriv, int duree) //constructeur pour les autres algorithmes
         {
             famine = false;

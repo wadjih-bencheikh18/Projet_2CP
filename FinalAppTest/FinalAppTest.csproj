@@ -533,5 +533,11 @@
   <ItemGroup>
     <Resource Include="Pics\Reda.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WpfCharts\WpfCharts.csproj">
+      <Project>{AFCE1275-7070-41AA-B6FE-DBDD1AF25D7C}</Project>
+      <Name>WpfCharts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

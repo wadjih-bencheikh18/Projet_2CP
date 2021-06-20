@@ -11,7 +11,20 @@ namespace Ordonnancement
 {
     public abstract class Ordonnancement
     {
-
+        public void CalculeResultats()
+        {
+            for (int i = 0; i < listeProcessus.Count; i++)
+            {
+                tempsAtt += listeProcessus[i].tempsAtt;
+                tempsService += listeProcessus[i].tempsService;
+                tempsReponse += listeProcessus[i].tempsReponse;
+                tempsFin += listeProcessus[i].tempsFin;
+            }
+            tempsAtt = Math.Round((double)tempsAtt / listeProcessus.Count, 3);
+            tempsService = Math.Round((double)tempsService / listeProcessus.Count, 3);
+            tempsReponse = Math.Round((double)tempsReponse / listeProcessus.Count, 3);
+            tempsFin = Math.Round((double)tempsFin / listeProcessus.Count, 3);
+        }
         #region Attributs
         public List<Processus> listeProcessus = new List<Processus>();  // liste des processus fournis par l'utilisateur
         public List<Processus> listePrets = new List<Processus>();  // liste des processus prêts
@@ -21,13 +34,18 @@ namespace Ordonnancement
         public static WrapPanel GanttChart;
         public int nbFamine;
         public int tempsRepos;
+        public double tempsFin;
+        public double tempsAtt;
+        public double tempsService;
+        public double tempsReponse;
+        public double pourcentageRepos;
         //public List<Processus> listePro = new List<Processus>();
         #endregion
         #region Visualisation
 
         public abstract Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView,StackPanel deroulement, WrapPanel GanttChart);
         public abstract Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, int i);
-
+        public abstract int Executer();
         public async Task<int> MAJListePrets(int temps, int indice, StackPanel ListePretsView) //ajouter à la liste des processus prêts tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
         {
             bool ajout = false;
@@ -915,10 +933,10 @@ namespace Ordonnancement
         #endregion
 
         #region Taux d'utilisation du CPU
-        public double TauxUtil(int tempsfin) //tempsfin est l'attribut "temps" retourné dans les methodes "Executer"
+        public void TauxUtil(int tempsfin) //tempsfin est l'attribut "temps" retourné dans les methodes "Executer"
         {
             //int util = tempsfin - tempsRepos; return (util / tempsfin);
-            return (1 - (tempsRepos / tempsfin));
+            if (tempsfin!=0) pourcentageRepos =1 - (tempsRepos / tempsfin);
         }
         #endregion
     }

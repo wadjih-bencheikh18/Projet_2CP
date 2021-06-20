@@ -88,7 +88,7 @@ namespace Ordonnancement
         #endregion
 
         #region Test
-        public int Executer()  // exécuter la liste des processus et retourner le temps total pour terminer l'exécution
+        public override int Executer()  // exécuter la liste des processus et retourner le temps total pour terminer l'exécution
         {
             SortListeProcessus(); //Tri de la liste des processus par temps d'arrivée
             int indice = 0, temps = 0, q = 0;
@@ -96,9 +96,9 @@ namespace Ordonnancement
             {
                 if (indice < listeProcessus.Count && listePrets.Count == 0)  // Si il y a des processus dans listeProcessus et la listePrets est vide
                 {
+                    tempsRepos++;
                     if (temps < listeProcessus[indice].tempsArriv)  // si aucun processus n'est arrivé
                     {
-                        AfficheLigne(temps); //affiche le temps actuel et le mot "repos", i.e le processeur n'execute aucun processus
                         temps++;
                     }
                     else indice = MAJListePrets(temps, indice);  // sinon, on ajoute les processus arrivés à listePrets
@@ -107,7 +107,6 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
-                    AfficheLigne(temps, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     temps++;
                     InterruptionExecute();
                     q++;  // on incrémente le quantum
@@ -135,6 +134,8 @@ namespace Ordonnancement
                     }
                 }
             }
+
+            TauxUtil(temps);
             return temps;
         }
 

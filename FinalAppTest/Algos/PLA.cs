@@ -71,7 +71,7 @@ namespace Ordonnancement
         #endregion
 
         #region Test
-        public int Executer()
+        public override int Executer()
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = 0, indice = 0;
@@ -100,7 +100,6 @@ namespace Ordonnancement
                     listePrets[0].etat = 2;
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //execution du 1er processus de listePrets et donc décrémenter le tempsRestant
-                    AfficheLigne(temps - 1, listePrets[0].id); //affiche le temps actuel et l'ID du processus entrain d'être executé
                     if (listePrets[0].tempsRestant == 0) //si l'execution du premier processus de listePrets est terminée
                     {
                         listePrets[0].tempsFin = temps; //temps de fin d'execution = au temps actuel
@@ -111,8 +110,9 @@ namespace Ordonnancement
                         if (listePrets.Count != 0) sort = true; //donc il faut trier les processus restants dans listePrets
                     }
                 }
-                else AfficheLigne(temps - 1); //affiche le temps actuel et le mot "repos" ie le processeur n'execute aucun processus
+                else tempsRepos++;
             }
+            TauxUtil(temps);
             return temps;
         }
         #endregion
