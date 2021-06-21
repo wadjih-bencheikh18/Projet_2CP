@@ -173,13 +173,7 @@ namespace FinalAppTest.Views
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            if (prog.listeProcessus.Count == 0)
-            {
-                var bc = new BrushConverter();
-                //StartButton.BorderBrush = (Brush)bc.ConvertFrom("#FFF52C2C");
-                StartButton.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            }
-            else
+            if (prog.listeProcessus.Count != 0)
             {
                 if (NbHint == 0)
                     MainWindow.main.Content = new SimulationPage(prog, 3);
@@ -570,6 +564,20 @@ namespace FinalAppTest.Views
         private void NbProcessusTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             ((TextBox)sender).Text = "";
+        }
+
+         private void proChange(object sender, EventArgs e)
+        {
+            if (ProcessusGrid.Children.Count == 0)
+            {
+                StartHover.Fill = (Brush)(new BrushConverter()).ConvertFrom("#8AAA");
+                StartHover.Cursor = Cursors.No;
+            }
+            else
+            {
+                StartHover.Fill = (Brush)(new BrushConverter()).ConvertFrom("#0000");
+                StartHover.Cursor = Cursors.Hand;
+            }
         }
     }
 }

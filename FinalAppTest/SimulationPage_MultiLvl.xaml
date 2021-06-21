@@ -33,7 +33,8 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Height="500"  Background="White"  Width="500" CornerRadius="10" BorderBrush="Black" BorderThickness="1">
+            <TextBlock HorizontalAlignment="Center" Margin="0,30" VerticalAlignment="Top" Grid.Row="0" TextWrapping="Wrap" TextAlignment="Center" FontSize="24" FontFamily="Lexend" Width="300">Diagramme de Gantt</TextBlock>
+            <Border Height="450" Margin="0,50,0,0"  Background="White"  Width="500" CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <ScrollViewer x:Name="ScrollGantt"  CanContentScroll="True"  Margin="5 5" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <WrapPanel x:Name="GanttChart"/>
                 </ScrollViewer>
@@ -255,57 +256,254 @@
                     <Grid>
                         <Ellipse Height="65" Width="65" Fill="#0D9330">
                             <Ellipse.Effect>
-                                <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                                <DropShadowEffect x:Name="StartEffect" Color="#FF0D9330" Direction="-90" ShadowDepth="2" BlurRadius="15" Opacity="0.5"/>
                             </Ellipse.Effect>
                         </Ellipse>
                         <Image Source="Pics/Start.png" Width="30" Height="30"/>
-                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="StartBtn_Click"/>
+                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseEnter="Start_MouseEnter" MouseLeftButtonDown="StartBtn_Click">
+                            <Ellipse.Triggers>
+                                <EventTrigger RoutedEvent="Ellipse.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="StartEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Ellipse.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="StartEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="2" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Ellipse.Triggers>
+                        </Ellipse>
                     </Grid>
 
                     <Grid Grid.Column="1">
                         <Ellipse Height="65" Width="65" Fill="#FFB53E">
                             <Ellipse.Effect>
-                                <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                                <DropShadowEffect x:Name="StopEffect" Direction="-90" Color="#FFFFB53E" BlurRadius="15" ShadowDepth="2" Opacity="0.5"/>
                             </Ellipse.Effect>
+
                         </Ellipse>
                         <Image Source="Pics/pause.png" Width="30" Height="30"/>
-                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Pause_Click"/>
+                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Pause_Click">
+                            <Ellipse.Triggers>
+                                <EventTrigger RoutedEvent="Ellipse.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="StopEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="StopEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="2" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Ellipse.Triggers>
+                        </Ellipse>
                     </Grid>
 
                     <Grid Grid.Column="2">
                         <Ellipse Height="65" Width="65" Fill="#B51F1F">
                             <Ellipse.Effect>
-                                <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                                <DropShadowEffect x:Name="ReplayEffect" Direction="-90" BlurRadius="15" Color="#FFB51F1F" ShadowDepth="2" Opacity="0.5"/>
                             </Ellipse.Effect>
+                            
                         </Ellipse>
-                        <Image Source="Pics/circle.png" Width="30" Height="30"/>
-                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Repeat_Click"/>
+                        <Image Source="Pics/Replay.png" Width="40" Height="40" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                    <SkewTransform AngleY="0" AngleX="0"/>
+                                    <RotateTransform Angle="0"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Repeat_Click">
+                            <Ellipse.Triggers>
+                                <EventTrigger RoutedEvent="Ellipse.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="ReplayEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Ellipse.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="ReplayEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="2" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Ellipse.Triggers>
+                        </Ellipse>
                     </Grid>
 
                     <Grid Grid.Column="4">
                         <Image Cursor="Hand" Source="Pics/ReturnButton.png" Width="65" Height="65" MouseLeftButtonDown="Return_Click">
                             <Image.Effect>
-                                <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                                <DropShadowEffect x:Name="QuitEffect" Direction="-90" BlurRadius="15" Color="#FF31326F" ShadowDepth="2" Opacity="0.5"/>
                             </Image.Effect>
+                            <Image.Triggers>
+                                <EventTrigger RoutedEvent="Image.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="QuitEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Image.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="QuitEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="2" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Image.Triggers>
+
                         </Image>
                     </Grid>
 
                     <Grid Grid.Column="5">
                         <Image Cursor="Hand" Source="Pics/HomeButton.png" Width="65" Height="65" MouseLeftButtonDown="Home_Click">
                             <Image.Effect>
-                                <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                                <DropShadowEffect x:Name="HomeEffect" Direction="-90" Color="#FF31326F" BlurRadius="15" ShadowDepth="2" Opacity="0.5"/>
                             </Image.Effect>
+                            <Image.Triggers>
+                                <EventTrigger RoutedEvent="Image.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="HomeEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Image.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="HomeEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="2" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Image.Triggers>
                         </Image>
                     </Grid>
 
                     <Grid Grid.Column="3">
                         <Ellipse Height="65" Width="65" Fill="#666666">
                             <Ellipse.Effect>
-                                <DropShadowEffect Direction="-25" Color="#C8D0DA" ShadowDepth="3" Opacity="1"/>
+                                <DropShadowEffect x:Name="TableEffect" Direction="-90" Color="#FF121E2C" ShadowDepth="2" BlurRadius="15" Opacity="0.5"/>
                             </Ellipse.Effect>
                         </Ellipse>
                         <Image Source="Pics/algos.png" Width="30" Height="30"/>
-                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="ResultFinalBtn_Click"/>
+                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="ResultFinalBtn_Click">
+                            <Ellipse.Triggers>
+                                <EventTrigger RoutedEvent="Ellipse.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="TableEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Ellipse.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="TableEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="2" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Ellipse.Triggers>
+
+                        </Ellipse>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="1" Margin="50,0">

@@ -548,5 +548,11 @@
   <ItemGroup>
     <Resource Include="Views\Logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Replay.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

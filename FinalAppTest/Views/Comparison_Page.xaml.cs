@@ -270,6 +270,12 @@ namespace FinalAppTest.Views
                     return "PAPS";
             }
         }
+
+     /*   private void resizer(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            Repere.Width = Panel1.ActualWidth - 60;
+        }*/
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
