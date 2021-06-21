@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalAppTest.Comparaison;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace FinalAppTest.Views
         public string TitleText { get; set; }
         public string DescriptionText { get; set; }
         public UserControl Page;
+        public Page Comp_page;
         public Viewbox hint;
         public Hint(string TitleText, string DescriptionText,UserControl Page,Viewbox hint)
         {
@@ -31,6 +33,15 @@ namespace FinalAppTest.Views
             this.TitleText = TitleText;
             this.DescriptionText = DescriptionText;
             this.Page = Page;
+            this.hint = hint;
+        }
+        public Hint(string TitleText, string DescriptionText, Page Page, Viewbox hint)
+        {
+            InitializeComponent();
+            this.TitleText = TitleText;
+            this.DescriptionText = DescriptionText;
+            this.Comp_page = Page;
+            this.Page = null;
             this.hint = hint;
         }
         public Hint()
@@ -44,7 +55,25 @@ namespace FinalAppTest.Views
         }
         private void Next_Button(object sender, MouseButtonEventArgs e)
         {
-            if(Page.GetType()==typeof(PAPS_Tab))
+            if (Page == null)  // Comp page
+            {
+                if (Suivant.Text == "FIN")
+                {
+                    ((Compar_Saisie)Comp_page).FinHint();
+                }
+                else if (Compar_Saisie.NextHintCondition)
+                {
+                    Compar_Saisie.NbHint++;
+                    hint.Child = null;
+                    ((Compar_Saisie)Comp_page).Hint();
+                }
+                else
+                {
+                    Storyboard sb = this.FindResource("Error") as Storyboard;
+                    sb.Begin();
+                }
+            }
+            else if(Page.GetType()==typeof(PAPS_Tab))
             {
                 if(Suivant.Text=="FIN")
                 {
@@ -244,9 +273,14 @@ namespace FinalAppTest.Views
                 }
             }
         }
-         private void Skip_Button(object sender, MouseButtonEventArgs e)
+        
+        private void Skip_Button(object sender, MouseButtonEventArgs e)
         {
-            if (Page.GetType() == typeof(PAPS_Tab))
+            if (Page == null)  // Comp page
+            {
+                ((Compar_Saisie)Comp_page).FinHint();
+            }
+            else if (Page.GetType() == typeof(PAPS_Tab))
             {
               
                     ((PAPS_Tab)Page).FinHint();
@@ -315,7 +349,16 @@ namespace FinalAppTest.Views
 
         private void Previous_Button(object sender, MouseButtonEventArgs e)
         {
-            if (Page.GetType() == typeof(PAPS_Tab))
+            if (Page == null)
+            {
+                if (Compar_Saisie.NbHint > 0)
+                {
+                    Compar_Saisie.NbHint++;
+                    hint.Child = null;
+                    ((Compar_Saisie)Comp_page).Hint();
+                }
+            }
+            else if (Page.GetType() == typeof(PAPS_Tab))
             {
                 if(PAPS_Tab.NbHint>0)
                 {

@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -22,31 +23,37 @@ namespace FinalAppTest.Comparaison
     /// </summary>
     public partial class Compar_Saisie : Page
     {
+        public static int NbHint = 0;
+        public static bool NextHintCondition = true;
+
         public Compar_Saisie()
         {
+            indice = 0;
             InitializeComponent();
             IdTextBox.Text = indice.ToString();
             algos = new TextBlock[3] { algo1, algo2, algo3 };
+            ThisPage = this;
         }
         public static bool modifier = false;
         public static Comp_TabRow proModifier;
-        private int indice = 0;
+        public static int indice = 0;
         private List<int> comp = new List<int>();
         private TextBlock[] algos;
         private int quantum = 5;
         private int tempsMAJ = 5;
         public static List<Processus> listeProc = new List<Processus>();
+        public static Compar_Saisie ThisPage;
 
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
-            int NbProcessus;
             var bc = new BrushConverter();
-            if (!Int32.TryParse(NbProcessusTextBox.Text, out NbProcessus) && NbProcessus <= 0)
+            if (!Int32.TryParse(NbProcessusTextBox.Text, out int NbProcessus) || NbProcessus <= 0)
             {
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
             else
             {
+                if (NbHint == 5) HintSuivant();
                 listeProc.Clear();  // vider la liste pour l'ecraser
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
@@ -87,19 +94,19 @@ namespace FinalAppTest.Comparaison
         private void AddProcessusButton_Click(object sender, RoutedEventArgs e)  // ajouter un processus
         {
             bool valide = true;
-            int id, tempsArrive, duree, prio;
+            int id;
             var bc = new BrushConverter();
-            if (!Int32.TryParse(TempsArrivTextBox.Text, out tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
+            if (!Int32.TryParse(TempsArrivTextBox.Text, out int tempsArrive) || tempsArrive < 0)  // get temps d'arrivé
             {
                 valide = false;
                 RectTar.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
-            if (!Int32.TryParse(DureeTextBox.Text, out duree) || duree <= 0)  // get durée
+            if (!Int32.TryParse(DureeTextBox.Text, out int duree) || duree <= 0)  // get durée
             {
                 RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
-            if (!Int32.TryParse(PrioTextBox.Text, out prio) || prio < 0)  // get priorité
+            if (!Int32.TryParse(PrioTextBox.Text, out int prio) || prio < 0)  // get priorité
             {
                 RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
@@ -153,8 +160,9 @@ namespace FinalAppTest.Comparaison
 
         private void Comparer_Click(object sender, MouseEventArgs e)
         {
-            if (comp.Count > 1)
+            if (comp.Count > 1 && NbHint == 0)
                 MainWindow.main.Content = new Comparaison_Page(comp, quantum, tempsMAJ);
+            else FinHint();
         }
         private void AddProcessusButton_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -236,6 +244,10 @@ namespace FinalAppTest.Comparaison
                 comp.Remove(0);
                 PapsBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
             }
+            if (comp.Count >= 2 && NbHint == 1)
+            {
+                NextHintCondition = true;
+            }
         }
 
         private void PcaBtn_Click(object sender, MouseButtonEventArgs e)
@@ -261,6 +273,10 @@ namespace FinalAppTest.Comparaison
                 }
                 comp.Remove(1);
                 PcaBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+            if (comp.Count >= 2 && NbHint == 1)
+            {
+                NextHintCondition = true;
             }
         }
 
@@ -288,6 +304,10 @@ namespace FinalAppTest.Comparaison
                 comp.Remove(4);
                 ParBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
             }
+            if (comp.Count >= 2 && NbHint == 1)
+            {
+                NextHintCondition = true;
+            }
         }
 
         private void SlackBtn_Click(object sender, MouseButtonEventArgs e)
@@ -313,6 +333,10 @@ namespace FinalAppTest.Comparaison
                 }
                 comp.Remove(6);
                 SlackBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+            if (comp.Count >= 2 && NbHint == 1)
+            {
+                NextHintCondition = true;
             }
         }
 
@@ -340,6 +364,10 @@ namespace FinalAppTest.Comparaison
                 comp.Remove(2);
                 PlaBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
             }
+            if (comp.Count >= 2 && NbHint == 1)
+            {
+                NextHintCondition = true;
+            }
         }
 
         private void PctrBtn_Click(object sender, MouseButtonEventArgs e)
@@ -366,6 +394,10 @@ namespace FinalAppTest.Comparaison
                 comp.Remove(3);
                 PctrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
             }
+            if (comp.Count >= 2 && NbHint == 1)
+            {
+                NextHintCondition = true;
+            }
         }
 
         private void PsrBtn_Click(object sender, MouseButtonEventArgs e)
@@ -391,6 +423,10 @@ namespace FinalAppTest.Comparaison
                 }
                 comp.Remove(5);
                 PsrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+            }
+            if (comp.Count >= 2 && NbHint == 1)
+            {
+                NextHintCondition = true;
             }
         }
 
@@ -424,6 +460,10 @@ namespace FinalAppTest.Comparaison
                 QuantumTxt.Cursor = Cursors.Arrow;
                 QuantumTxt.IsReadOnly = true;
             }
+            if (comp.Count >= 2 && NbHint == 1)
+            {
+                NextHintCondition = true;
+            }
         }
         private void PARDBtn_Click(object sender, MouseButtonEventArgs e)
         {
@@ -454,6 +494,10 @@ namespace FinalAppTest.Comparaison
                 RectTempsMAJ.Fill = (Brush)bc.ConvertFrom("#FFE9F2FE");
                 TempsMAJtxt.Cursor = Cursors.Arrow;
                 TempsMAJtxt.IsReadOnly = true;
+            }
+            if (comp.Count >= 2 && NbHint == 1)
+            {
+                NextHintCondition = true;
             }
         }
 
@@ -504,11 +548,6 @@ namespace FinalAppTest.Comparaison
             shadowHome.BlurRadius = 5;
         }
 
-        private void Hint_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) 
-        {
-            
-        }
-
         private void Hint_MouseEnter(object sender, MouseEventArgs e)
         {
             shadowHint.ShadowDepth = 2;
@@ -536,6 +575,224 @@ namespace FinalAppTest.Comparaison
         {
             if (TempsMAJtxt.IsReadOnly) return;
             ((TextBox)sender).Text = "";
+        }
+
+        public static void HintSuivant()
+        {
+            if (NbHint != 0)
+            {
+                NextHintCondition = true;
+                NbHint++;
+                ThisPage.Hint();
+            }
+        }
+
+        public void ApplyEffect()
+        {
+            BlurEffect Effect = new BlurEffect();
+            Effect.Radius = 8;
+            buttons.Effect = Effect;
+            AlgoSide.Effect = Effect;
+            Description.Effect = Effect;
+            Random.Effect = Effect;
+            Tableau.Effect = Effect;
+            Simuler.Effect = Effect;
+            Grey.Visibility = Visibility.Visible;
+            Panel.SetZIndex(buttons, 0);
+            Panel.SetZIndex(AlgoSide, 0);
+            Panel.SetZIndex(Description, 0);
+            Panel.SetZIndex(Random, 0);
+            Panel.SetZIndex(Tableau, 0);
+            Panel.SetZIndex(Simuler, 0);
+        }
+
+        public void FinHint()
+        {
+            NbHint = 0;
+            buttons.Effect = null;
+            AlgoSide.Effect = null;
+            Description.Effect = null;
+            Random.Effect = null;
+            Tableau.Effect = null;
+            Simuler.Effect = null;
+            Grey.Visibility = Visibility.Hidden;
+            Panel.SetZIndex(buttons, 0);
+            Panel.SetZIndex(AlgoSide, 0);
+            Panel.SetZIndex(Description, 0);
+            Panel.SetZIndex(Random, 0);
+            Panel.SetZIndex(Tableau, 0);
+            Panel.SetZIndex(Simuler, 0);
+            hint.Child = null;
+        }
+
+        private void Hint_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NbHint = 0;
+            ApplyEffect();
+            Description.Effect = null;
+            Panel.SetZIndex(Description, 1);
+            if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(300, 180, 0, 0);
+            else hint.Margin = new Thickness(344, 172, 0, 0);
+            Hint Test = new Hint(
+                                "Comparaison des algorithmes",
+                                "On va faire une comparaison entre les différents algorithmes",
+                                this,
+                                hint
+                            );
+
+            NextHintCondition = true;
+            Test.DataContext = Test;
+            hint.Child = Test;
+        }
+
+        public void Hint()
+        {
+            Hint Test;
+            if (NextHintCondition)
+            {
+                ApplyEffect();
+                if (NbHint == 0)
+                {
+                    Description.Effect = null;
+                    Panel.SetZIndex(Description, 1);
+                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(315, 175, 0, 0);
+                    else hint.Margin = new Thickness(344, 172, 0, 0);
+                    Test = new Hint(
+                                        "Comparaison des algorithmes",
+                                        "On va faire une comparaison entre les différents algorithmes",
+                                        this,
+                                        hint
+                                    );
+
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 1)
+                {
+                    AlgoSide.Effect = null;
+                    Panel.SetZIndex(AlgoSide, 1);
+                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(315, 175, 0, 0);
+                    else hint.Margin = new Thickness(198, 89, 0, 0);
+                    Test = new Hint(
+                                        "Choisir les algorithmes",
+                                        "Sélectionnez 2 ou 3 algorithmes que vous voulez comparer entre eux",
+                                        this,
+                                        hint
+                                    );
+
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 2)
+                {
+                    Random.Effect = null;
+                    Panel.SetZIndex(Random, 1);
+                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(420, 390, 0, 0);
+                    else hint.Margin = new Thickness(548, 274, 0, 0);
+                    Test = new Hint(
+                                        "Générer les processus + Présiser les paramétres",
+                                        "Vous pouvez générer les processus aléatoirement et présiser les paramétres de quelques algorithmes ici",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 3)
+                {
+                    Random.Effect = null;
+                    Panel.SetZIndex(Random, 1);
+                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(35, 240, 0, 0);
+                    else hint.Margin = new Thickness(0, 274, 0, 0);
+                    Test = new Hint(
+                                        "Générer les processus",
+                                        "Entrez le nombre des processus à générer",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 4)
+                {
+                    Random.Effect = null;
+                    Panel.SetZIndex(Random, 1);
+                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(250, 230, 0, 0);
+                    else hint.Margin = new Thickness(532, 158, 0, 0);
+                    Test = new Hint(
+                                        "Générer les processus",
+                                        "Vous pouvez générer des interruptions pour les processus en cochant cette case",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 5)
+                {
+                    Random.Effect = null;
+                    Panel.SetZIndex(Random, 1);
+                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(420, 390, 0, 0);
+                    else hint.Margin = new Thickness(360, 384, 0, 0);
+                    Test = new Hint(
+                                        "Générer les processus",
+                                        "Cliquez sur le button 'Générer' pour créer les processus",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = false;
+                }
+                else if (NbHint == 6)
+                {
+                    Random.Effect = null;
+                    Panel.SetZIndex(Random, 1);
+                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(420, 390, 0, 0);
+                    else hint.Margin = new Thickness(527, 407, 0, 0);
+                    Test = new Hint(
+                                        "Préciser les paramétres",
+                                        "Si vous avez choisi RR ou PARD, vous pouvez modifier ses paramétres",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 7)
+                {
+                    Tableau.Effect = null;
+                    Panel.SetZIndex(Tableau, 1);
+                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(675, 345, 0, 0);
+                    else hint.Margin = new Thickness(366, 244, 0, 0);
+                    Test = new Hint(
+                                        "Tableau des processus",
+                                        "Voici le tableau des processus générés, il a les mêmes fonctionalités que dans la page de simulation",
+                                        this,
+                                        hint
+                                    );
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 8)
+                {
+                    Simuler.Effect = null;
+                    Panel.SetZIndex(Simuler, 1);
+                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(360, 505, 0, 0);
+                    else hint.Margin = new Thickness(505, 518, 0, -111);
+                    Test = new Hint(
+                                        "Comparaison",
+                                        "Cliquez sur le button 'Comparer' pour voir les résultats de la comparaison",
+                                        this,
+                                        hint
+                                    );
+                    Test.Fin();
+                    NextHintCondition = true;
+                }
+                else
+                {
+                    hint.Margin = new Thickness(264, 117, 0, 0);
+                    Test = new Hint(
+                                        "Error",
+                                        "Error 404",
+                                        this,
+                                        hint
+                                    );
+                }
+                Test.DataContext = Test;
+                hint.Child = Test;
+            }
         }
     }
 }
