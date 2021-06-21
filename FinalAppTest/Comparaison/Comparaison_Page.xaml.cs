@@ -2,19 +2,26 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfCharts;
 
-namespace FinalAppTest.Views
+namespace FinalAppTest.Comparaison
 {
     /// <summary>
-    /// Logique d'interaction pour Comparison_Page.xaml
+    /// Interaction logic for Comparaison_Page.xaml
     /// </summary>
-    public partial class Comparison_Page : Page
+    public partial class Comparaison_Page : Page
     {
         private Ordonnancement.Ordonnancement prog1, prog2, prog3;
         private readonly Random random = new Random(1234);
@@ -28,20 +35,16 @@ namespace FinalAppTest.Views
 
         int quantum;
         int tempsMAJ;
-        /* List<int> caca = new List<int>()
-         {
-             Algo1Tser,
-         };*/
-        public Comparison_Page()
+        public Comparaison_Page()
         {
             InitializeComponent();
         }
 
-        public Comparison_Page(List<int> Algos, int quantum, int tempsMAJ)
+        public Comparaison_Page(List<int> Algos, int quantum, int tempsMAJ)
         {
             InitializeComponent();
             this.Algos = Algos;
-            
+
             this.quantum = quantum;
             this.tempsMAJ = tempsMAJ;
             nbPros = Algos.Count;
@@ -67,7 +70,7 @@ namespace FinalAppTest.Views
                 prog3.CalculeResultats();
                 prog3.Famine(60);
             }
-            
+
             Lines = new ObservableCollection<ChartLine>();
         }
         private double Crit(Ordonnancement.Ordonnancement prog, int i)
@@ -87,7 +90,7 @@ namespace FinalAppTest.Views
         {
             if (nbPros > 2)
             {
-                if (Crit(prog1,i) >= Crit(prog2, i) && Crit(prog2, i) >= Crit(prog3, i))
+                if (Crit(prog1, i) >= Crit(prog2, i) && Crit(prog2, i) >= Crit(prog3, i))
                 {
                     algo1Rects[i].Fill = rectColors[2];
                     algo2Rects[i].Fill = rectColors[1];
@@ -105,7 +108,7 @@ namespace FinalAppTest.Views
                     algo2Rects[i].Fill = rectColors[2];
                     algo3Rects[i].Fill = rectColors[0];
                 }
-                else if (Crit(prog2, i) >= Crit(prog3, i)  && Crit(prog3, i) >= Crit(prog1, i))
+                else if (Crit(prog2, i) >= Crit(prog3, i) && Crit(prog3, i) >= Crit(prog1, i))
                 {
                     algo1Rects[i].Fill = rectColors[0];
                     algo2Rects[i].Fill = rectColors[2];
@@ -146,9 +149,9 @@ namespace FinalAppTest.Views
         private double CalculateMax()
         {
             double max = 0;
-            if (CalculateMaxProg(prog1)>max) max = CalculateMaxProg(prog1);
-            if (CalculateMaxProg(prog2)>max) max = CalculateMaxProg(prog2);
-            if(nbPros == 3) if (CalculateMaxProg(prog3) > max) max = CalculateMaxProg(prog3);
+            if (CalculateMaxProg(prog1) > max) max = CalculateMaxProg(prog1);
+            if (CalculateMaxProg(prog2) > max) max = CalculateMaxProg(prog2);
+            if (nbPros == 3) if (CalculateMaxProg(prog3) > max) max = CalculateMaxProg(prog3);
             return max;
         }
         private double CalculateMaxProg(Ordonnancement.Ordonnancement prog)
@@ -161,14 +164,14 @@ namespace FinalAppTest.Views
             if (prog.tempsFin > max) max = prog.tempsFin;
             return max;
         }
-        private void FillAlgo(Ordonnancement.Ordonnancement prog, int Algo, List<TextBlock> Texts,Color color)
+        private void FillAlgo(Ordonnancement.Ordonnancement prog, int Algo, List<TextBlock> Texts, Color color)
         {
             prog.CalculeResultats();
             prog.Famine(60);
             Texts[0].Text = NameProg(Algo);
             Texts[1].Text = DescProg(Algo);
             Texts[2].Text = prog.tempsAtt.ToString();
-            Texts[3].Text = (prog.pourcentageRepos*100).ToString()+"%";
+            Texts[3].Text = (prog.pourcentageRepos * 100).ToString() + "%";
             Texts[4].Text = prog.tempsService.ToString();
             Texts[5].Text = prog.tempsReponse.ToString();
             Texts[6].Text = prog.tempsFin.ToString();
@@ -183,13 +186,13 @@ namespace FinalAppTest.Views
             pts.Add(prog.tempsFin);
             pts.Add(prog.tempsRepos);
             ChartLine line = new ChartLine
-                {
-                    LineColor = color,
-                    FillColor = FillColor,
-                    LineThickness = 2,
-                    PointDataSource = pts,
-                    Name = "Chart " + (Lines.Count + 1)
-                };
+            {
+                LineColor = color,
+                FillColor = FillColor,
+                LineThickness = 2,
+                PointDataSource = pts,
+                Name = "Chart " + (Lines.Count + 1)
+            };
             Lines.Add(line);
         }
         private Ordonnancement.Ordonnancement CreateProg(int Algo)
@@ -277,17 +280,17 @@ namespace FinalAppTest.Views
 
             Axes = new[] { "Temps d'attante", "Temps de service", "Temps de reponse", "Temps de fin", "Temps de Repos" };
 
-            
+
             var bc = new BrushConverter();
             mainGrids = new List<Grid>() { AlgoGrid, TatGrid, TCPUGrid, TSerGrid, TRepGrid, TFinGrid, FamiGrid };
-            algo1 = new List<TextBlock>() { Algo1Name, Algo1Def, Algo1Tat, Algo1TCPU, Algo1TSer, Algo1TRep, Algo1TFin, Algo1Fami,nameAlgo1 };
+            algo1 = new List<TextBlock>() { Algo1Name, Algo1Def, Algo1Tat, Algo1TCPU, Algo1TSer, Algo1TRep, Algo1TFin, Algo1Fami, nameAlgo1 };
             algo2 = new List<TextBlock>() { Algo2Name, Algo2Def, Algo2Tat, Algo2TCPU, Algo2TSer, Algo2TRep, Algo2TFin, Algo2Fami, nameAlgo2 };
-            algo3 = new List<TextBlock>() { Algo3Name, Algo3Def, Algo3Tat, Algo3TCPU, Algo3TSer, Algo3TRep, Algo3TFin, Algo3Fami, nameAlgo3};
+            algo3 = new List<TextBlock>() { Algo3Name, Algo3Def, Algo3Tat, Algo3TCPU, Algo3TSer, Algo3TRep, Algo3TFin, Algo3Fami, nameAlgo3 };
             algo3Grids = new List<Grid>() { Algo3TatGrid, Algo3TCPUGrid, Algo3TSerGrid, Algo3TRepGrid, Algo3TFinGrid, Algo3FamiGrid };
             algo1Rects = new List<Rectangle>() { Algo1TatRect, Algo1TCPURect, Algo1TSerRect, Algo1TRepRect, Algo1TFinRect, Algo1FamiRect };
             algo2Rects = new List<Rectangle>() { Algo2TatRect, Algo2TCPURect, Algo2TSerRect, Algo2TRepRect, Algo2TFinRect, Algo2FamiRect };
             algo3Rects = new List<Rectangle>() { Algo3TatRect, Algo3TCPURect, Algo3TSerRect, Algo3TRepRect, Algo3TFinRect, Algo3FamiRect };
-            rectColors = new List<Brush>() { (Brush)bc.ConvertFrom("#FF90F47B"), (Brush)bc.ConvertFrom("#FFFFB162"), (Brush)bc.ConvertFrom("#FFFF9898")  };
+            rectColors = new List<Brush>() { (Brush)bc.ConvertFrom("#FF90F47B"), (Brush)bc.ConvertFrom("#FFFFB162"), (Brush)bc.ConvertFrom("#FFFF9898") };
 
             if (nbPros < 3)
             {
@@ -352,7 +355,33 @@ namespace FinalAppTest.Views
             MainWindow.main.Content = new Compar_Saisie();
         }
 
+        private void Home_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.main.Content = new WelcomePage();
+        }
 
+        private void Home_MouseEnter(object sender, MouseEventArgs e)
+        {
+            shadowHome.ShadowDepth = 2;
+            shadowHome.BlurRadius = 7;
+        }
 
+        private void Home_MouseLeave(object sender, MouseEventArgs e)
+        {
+            shadowHome.ShadowDepth = 0;
+            shadowHome.BlurRadius = 5;
+        }
+
+        private void Return_MouseEnter(object sender, MouseEventArgs e)
+        {
+            shadowReturn.ShadowDepth = 2;
+            shadowReturn.BlurRadius = 7;
+        }
+
+        private void Return_MouseLeave(object sender, MouseEventArgs e)
+        {
+            shadowReturn.ShadowDepth = 0;
+            shadowReturn.BlurRadius = 5;
+        }
     }
 }

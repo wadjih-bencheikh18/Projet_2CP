@@ -1,4 +1,5 @@
 ﻿using FinalAppTest.Views;
+using FinalAppTest.Comparaison;
 using System;
 using System.Collections.Generic;
 using System.Linq;

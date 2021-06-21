@@ -78,11 +78,17 @@
     <Compile Include="Algos\PARD.cs" />
     <Compile Include="Algos\SlackTime.cs" />
     <Compile Include="Algos\RR.cs" />
+    <Compile Include="Comparaison\Comparaison_Page.xaml.cs">
+      <DependentUpon>Comparaison_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comparaison\Compar_Saisie.xaml.cs">
+      <DependentUpon>Compar_Saisie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comparaison\Comp_TabRow.xaml.cs">
+      <DependentUpon>Comp_TabRow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DashBoard.xaml.cs">
       <DependentUpon>DashBoard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Comparison_Page.xaml.cs">
-      <DependentUpon>Comparison_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Hint.xaml.cs">
       <DependentUpon>Hint.xaml</DependentUpon>
@@ -96,9 +102,6 @@
     <Compile Include="ViewModels\PARD_ViewModel.cs" />
     <Compile Include="Views\APropos.xaml.cs">
       <DependentUpon>APropos.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Compar_Saisie.xaml.cs">
-      <DependentUpon>Compar_Saisie.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Interruption_TabHeader.xaml.cs">
       <DependentUpon>Interruption_TabHeader.xaml</DependentUpon>
@@ -114,9 +117,6 @@
     </Compile>
     <Compile Include="Views\PARD_TabRow.xaml.cs">
       <DependentUpon>PARD_TabRow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Comp_TabRow.xaml.cs">
-      <DependentUpon>Comp_TabRow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
@@ -215,11 +215,19 @@
     <Compile Include="Views\RR_TabRow.xaml.cs">
       <DependentUpon>RR_TabRow.xaml</DependentUpon>
     </Compile>
-    <Page Include="DashBoard.xaml">
+    <Page Include="Comparaison\Comparaison_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Comparison_Page.xaml">
+    <Page Include="Comparaison\Compar_Saisie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comparaison\Comp_TabRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DashBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -236,10 +244,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\APropos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Compar_Saisie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,10 +264,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PARD_TabRow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Comp_TabRow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalAppTest.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FinalAppTest.Views
+namespace FinalAppTest.Comparaison
 {
     /// <summary>
-    /// Interaction logic for PSR_TabRow.xaml
+    /// Interaction logic for Comp_TabRow.xaml
     /// </summary>
     public partial class Comp_TabRow : UserControl
     {
@@ -49,6 +50,7 @@ namespace FinalAppTest.Views
 
             parent = TreeViewParent;
 
+            parent.Items.Add(new Interruption_TabHeader());
             parent.Items.Add(new Interruption_Ajouter(this));
         }
         private void modifier_Button_Click(object sender, RoutedEventArgs e)
@@ -71,6 +73,21 @@ namespace FinalAppTest.Views
         private void TreeViewParent_Selected(object sender, RoutedEventArgs e)
         {
             TreeViewParent.IsSelected = false;
+        }
+
+        private void GridScale(object sender, RoutedEventArgs e)
+        {
+            processusHeader.Width = mainGrid.ActualWidth - 5;
+        }
+
+        private void Afficher_Interrup(object sender, MouseEventArgs e)
+        {
+            TreeViewParent.IsExpanded = (!TreeViewParent.IsExpanded);
+        }
+
+        private void TreeViewParent_Expanded(object sender, RoutedEventArgs e)
+        {
+            // if (PAPS_Tab.NbHint == 12) PAPS_Tab.HintSuivant();
         }
     }
 }

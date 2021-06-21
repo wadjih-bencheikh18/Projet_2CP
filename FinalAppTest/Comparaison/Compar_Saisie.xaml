@@ -1,0 +1,374 @@
+﻿<Page x:Class="FinalAppTest.Comparaison.Compar_Saisie"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FinalAppTest.Comparaison"
+      mc:Ignorable="d" 
+      d:DesignHeight="766" d:DesignWidth="1366"
+      Title="Compar_Saisie">
+
+    <Grid x:Name="Page">
+        <Grid Background="#FFE9F2FE">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="2.75*"/>
+                <ColumnDefinition Width="6.25*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Column="1" x:Name="buttons" Margin="0,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="10">
+                    <Image VerticalAlignment="Center" Source="../Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
+                        <Image.Effect>
+                            <DropShadowEffect x:Name="shadowHome" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+                <Grid Grid.Column="1" Margin="10">
+                    <Image VerticalAlignment="Center" Source="../Pics/HintButton.png" MouseLeftButtonDown="Hint_MouseLeftButtonDown" MouseEnter="Hint_MouseEnter" MouseLeave="Hint_MouseLeave">
+                        <Image.Effect>
+                            <DropShadowEffect x:Name="shadowHint" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
+                        </Image.Effect>
+                    </Image>
+                </Grid>
+            </Grid>
+            
+            <DockPanel x:Name="AlgoSide" Background="#FFE9F2FE" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Margin="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" VerticalAlignment="Center" Margin="0,20,0,0">
+                        <TextBlock Text="Algorithmes" HorizontalAlignment="Center" FontSize="24" FontWeight="SemiBold" FontFamily="Lexend" Foreground="Black"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Margin="25,15">
+                        <Rectangle x:Name="PapsBtn"  Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PAPS</TextBlock>
+                        <Rectangle MouseLeftButtonDown="PapsBtn_Click" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Margin="25,15">
+                        <Rectangle x:Name="RRBtn"  Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Round Robin</TextBlock>
+                        <Rectangle MouseLeftButtonDown="RRBtn_Click" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    </Grid>
+
+                    <Grid Grid.Row="3" Margin="25,15">
+                        <Rectangle x:Name="PcaBtn"  Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PCA</TextBlock>
+                        <Rectangle MouseLeftButtonDown="PcaBtn_Click" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    </Grid>
+
+                    <Grid Grid.Row="4" Margin="25,15">
+                        <Rectangle x:Name="PlaBtn"  Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PLA</TextBlock>
+                        <Rectangle MouseLeftButtonDown="PlaBtn_Click" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    </Grid>
+
+                    <Grid Grid.Row="5" Margin="25,15">
+                        <Rectangle x:Name="PctrBtn"  Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PCTR</TextBlock>
+                        <Rectangle MouseLeftButtonDown="PctrBtn_Click" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    </Grid>
+                    
+                    <Grid Grid.Row="6" Margin="25,15">
+                        <Rectangle x:Name="PsrBtn"  Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PSR</TextBlock>
+                        <Rectangle MouseLeftButtonDown="PsrBtn_Click" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    </Grid>
+
+                    <Grid Grid.Row="7" Margin="25,15">
+                        <Rectangle x:Name="ParBtn"  Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PAR</TextBlock>
+                        <Rectangle MouseLeftButtonDown="ParBtn_Click" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    </Grid>
+                    
+                    <Grid Grid.Row="8" Margin="25,15">
+                        <Rectangle x:Name="PARDBtn"  Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PARD</TextBlock>
+                        <Rectangle MouseLeftButtonDown="PARDBtn_Click" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    </Grid>
+
+                    <Grid Grid.Row="9" Margin="25,15">
+                        <Rectangle x:Name="SlackBtn"  Fill="#FF000000" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Slack Time</TextBlock>
+                        <Rectangle MouseLeftButtonDown="SlackBtn_Click" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                    </Grid>
+
+                </Grid>
+            </DockPanel>
+
+            <StackPanel x:Name="Description" Grid.Row="1" Grid.Column="1">
+                <TextBlock Margin="10,10,0,0 " Text="Comparaison de" FontSize="40" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F"/>
+
+                <TextBlock x:Name="algo1" Margin="20,15,10,0" Text="- None" FontSize="18" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock x:Name="algo2" Margin="20,0,10,0" Text="- None" FontSize="18" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
+                <TextBlock x:Name="algo3" Margin="20,0,10,40" Text="- None" FontSize="18" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
+            </StackPanel>
+
+            <Grid x:Name="Random" Grid.Row="1" Grid.Column="1" Margin="0,200,0,0" Height="240" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Quantum:" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Rectangle x:Name="RectQuantum" Grid.Column="1" Fill="#FFE9F2FE" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" HorizontalAlignment="Stretch" Margin="10,0"/>
+                    <TextBox GotFocus="NbProcessusTextBoxx_GotFocus" IsReadOnly="True" x:Name="QuantumTxt" Cursor="Arrow" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Column="1" Text="5" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" TextAlignment="Center" VerticalContentAlignment="Center" Margin="10,0"/>
+                </Grid>
+                
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Temps" VerticalAlignment="Center" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+                        <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="MAJ:" VerticalAlignment="Center" Margin="0,20,0,0" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle x:Name="RectTempsMAJ" Grid.Column="1" Fill="#FFE9F2FE" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" HorizontalAlignment="Stretch" Margin="10,0"/>
+                    <TextBox GotFocus="NbProcessusTextBoxxx_GotFocus" IsReadOnly="True" x:Name="TempsMAJtxt" Cursor="Arrow" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Column="1" Text="5" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" TextAlignment="Center" VerticalContentAlignment="Center" Margin="10,0"/>
+                </Grid>
+                
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="1.5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" VerticalAlignment="Bottom">
+                        <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des" VerticalAlignment="Center" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+                        <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="processus:" VerticalAlignment="Center" Margin="0,20,0,0" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                    <TextBox GotFocus="NbProcessusTextBox_GotFocus" x:Name="NbProcessusTextBox" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="40" Margin="30,0" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="1.5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="20,10" VerticalAlignment="Bottom">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend" Margin="0">Interruptions ?</TextBlock>
+                        <CheckBox Cursor="Hand" x:Name="RandomizeInterrup" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="20,15">
+                        <Rectangle x:Name="RandomButton"  Fill="#FF000000" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF " FontFamily="Lexend">Générer</TextBlock>
+                            <Image Grid.Column="1" Height="50" VerticalAlignment="Center" Source="../Views/Generate.png" HorizontalAlignment="Left" Width="20"/>
+                        </Grid>
+                        <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="RandomButton_Click" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="25"/>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+            
+            <Grid x:Name="Tableau" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="8*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="1" Text="Tableau des processus" FontSize="50" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="Center"/>
+
+                <Grid Background="#00FFFFFF" Grid.Row="1" Margin="20,10" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"/>
+                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="120"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.RowSpan="3" Fill="#FFFFFFFF" RadiusX="12" RadiusY="12" Stroke="#FFB3B3B3" StrokeThickness="0.5">
+                        <Rectangle.Effect>
+                            <DropShadowEffect ShadowDepth="0" Opacity="0.2" BlurRadius="15" Direction="0"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <Grid Grid.Row="0" Margin="10,20,25,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Rectangle Grid.ColumnSpan="5" Fill="#FFE6E6FC" RadiusX="7" RadiusY="7"></Rectangle>
+                        <TextBlock Grid.Column="0" Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                        <TextBlock Grid.Column="1" Text="Temps D'arrivé" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                        <TextBlock Grid.Column="2" Text="Durée" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                        <TextBlock Grid.Column="3" Text="Priorité" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                        <TextBlock Grid.Column="4" Text="Actions" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B"/>
+                    </Grid>
+                    <ScrollViewer Margin="0,0,5,0" Grid.Row="1">
+                        <StackPanel VerticalAlignment="Top" x:Name="ProcessusGrid" x:FieldModifier="public">
+                        </StackPanel>
+                    </ScrollViewer>
+                    <Grid Margin="0,0,0,15" Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Grid.ColumnSpan="5" Margin="80,5,80,5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Fill="#FF999999" Height="1"/>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="ID " VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                            <TextBox  IsReadOnly="True" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="IdTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle x:Name="RectTar" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Temps d'arrivée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                            <TextBox LostFocus="TempsArrivTextBox_LostFocus" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="TempsArrivTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle x:Name="RectDuree" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Durée" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                            <TextBox LostFocus="DureeTextBox_LostFocus" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="DureeTextBox" Grid.Row="1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle x:Name="RectPrio" Grid.Row="1" Fill="#FFEFF3F9" RadiusX="7" RadiusY="7" Height="40" Width="Auto" Margin="30,0"></Rectangle>
+                            <TextBlock FontSize="13" FontFamily="Lexend" FontWeight="Medium" Text="Priorité" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                            <TextBox LostFocus="PrioTextBox_LostFocus" Cursor="Hand" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" x:Name="PrioTextBox" Grid.Row="1" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="60" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="4">
+                            <Rectangle  x:Name="AddProcessusButton" Fill="#FFCCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <Grid Margin="10,40,45,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="ajouterTB" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FF359354" FontFamily="Lexend">Ajouter</TextBlock>
+                                <Image Grid.Column="1" Height="50" VerticalAlignment="Center" Source="../Views/Ajouter.png" HorizontalAlignment="Center" Width="30"/>
+                            </Grid>
+                            <Rectangle Cursor="Hand" MouseEnter="AddProcessusButton_MouseEnter" MouseLeave="AddProcessusButton_MouseLeave" MouseLeftButtonDown="AddProcessusButton_Click" Grid.Column="4" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="10,40,40,15" StrokeThickness="0" RadiusX="25"/>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+
+            </Grid>
+
+            <Grid x:Name="Simuler" Grid.Column="1" Grid.Row="1" Height="120" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="250">
+                <Rectangle x:Name="StartButton" Margin="25" Fill="#F16022" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Effect>
+                        <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Comparer</TextBlock>
+                <Rectangle MouseLeftButtonDown="Comparer_Click" Margin="25" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+            </Grid>
+
+            <Rectangle Visibility="Hidden" x:Name="Grey" Grid.RowSpan="3" Grid.ColumnSpan="3">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#FF444444" Opacity="0.3"/>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        
+        <Viewbox x:Name="hint" Width="200" Panel.ZIndex="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+        </Viewbox>
+    </Grid>
+</Page>

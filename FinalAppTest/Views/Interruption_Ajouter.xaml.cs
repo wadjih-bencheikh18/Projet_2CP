@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Ordonnancement;
+using FinalAppTest.Comparaison;
 
 namespace FinalAppTest.Views
 {

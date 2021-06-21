@@ -1,4 +1,5 @@
-﻿using Ordonnancement;
+﻿using FinalAppTest.Views;
+using Ordonnancement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FinalAppTest.Views
+namespace FinalAppTest.Comparaison
 {
     /// <summary>
     /// Logique d'interaction pour Compar_Saisie.xaml
@@ -47,7 +48,6 @@ namespace FinalAppTest.Views
             else
             {
                 listeProc.Clear();  // vider la liste pour l'ecraser
-                NbProcessusTextBox.Text = "0";
                 ProcessusGrid.Children.RemoveRange(0, ProcessusGrid.Children.Count);
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
                 Random r = new Random();
@@ -153,8 +153,8 @@ namespace FinalAppTest.Views
 
         private void Comparer_Click(object sender, MouseEventArgs e)
         {
-            if(comp.Count>1)
-                MainWindow.main.Content = new Comparison_Page(comp,quantum,tempsMAJ);
+            if (comp.Count > 1)
+                MainWindow.main.Content = new Comparaison_Page(comp, quantum, tempsMAJ);
         }
         private void AddProcessusButton_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -222,23 +222,23 @@ namespace FinalAppTest.Views
                 algos[comp.Count - 1].Text = "- PAPS";
                 PapsBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
             }
-            else if(comp.IndexOf(0) >= 0)
+            else if (comp.IndexOf(0) >= 0)
             {
-                if (comp.IndexOf(0) == comp.Count - 1) algos[comp.IndexOf(0)].Text = "";
+                if (comp.IndexOf(0) == comp.Count - 1) algos[comp.IndexOf(0)].Text = "- None";
                 else
                 {
-                    for (int i = comp.IndexOf(0) ; i < comp.Count - 1 ;  i++)
+                    for (int i = comp.IndexOf(0); i < comp.Count - 1; i++)
                     {
-                        algos[i].Text = algos[i+1].Text;
+                        algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "";
+                    algos[comp.Count - 1].Text = "- None";
                 }
                 comp.Remove(0);
                 PapsBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
             }
         }
 
-        private void PcaBtn_Click (object sender, MouseButtonEventArgs e)
+        private void PcaBtn_Click(object sender, MouseButtonEventArgs e)
         {
             var bc = new BrushConverter();
 
@@ -250,13 +250,14 @@ namespace FinalAppTest.Views
             }
             else if (comp.IndexOf(1) >= 0)
             {
-                if (comp.IndexOf(1) == comp.Count - 1) algos[comp.IndexOf(1)].Text = "";
-                else                {
+                if (comp.IndexOf(1) == comp.Count - 1) algos[comp.IndexOf(1)].Text = "- None";
+                else
+                {
                     for (int i = comp.IndexOf(1); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "";
+                    algos[comp.Count - 1].Text = "- None";
                 }
                 comp.Remove(1);
                 PcaBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -275,14 +276,14 @@ namespace FinalAppTest.Views
             }
             else if (comp.IndexOf(4) >= 0)
             {
-                if (comp.IndexOf(4) == comp.Count - 1) algos[comp.IndexOf(4)].Text = "";
+                if (comp.IndexOf(4) == comp.Count - 1) algos[comp.IndexOf(4)].Text = "- None";
                 else
                 {
                     for (int i = comp.IndexOf(4); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "";
+                    algos[comp.Count - 1].Text = "- None";
                 }
                 comp.Remove(4);
                 ParBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -301,14 +302,14 @@ namespace FinalAppTest.Views
             }
             else if (comp.IndexOf(6) >= 0)
             {
-                if (comp.IndexOf(6) == comp.Count - 1) algos[comp.IndexOf(6)].Text = "";
+                if (comp.IndexOf(6) == comp.Count - 1) algos[comp.IndexOf(6)].Text = "- None";
                 else
                 {
                     for (int i = comp.IndexOf(6); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "";
+                    algos[comp.Count - 1].Text = "- None";
                 }
                 comp.Remove(6);
                 SlackBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -327,14 +328,14 @@ namespace FinalAppTest.Views
             }
             else if (comp.IndexOf(2) >= 0)
             {
-                if (comp.IndexOf(2) == comp.Count - 1) algos[comp.IndexOf(2)].Text = "";
+                if (comp.IndexOf(2) == comp.Count - 1) algos[comp.IndexOf(2)].Text = "- None";
                 else
                 {
                     for (int i = comp.IndexOf(2); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "";
+                    algos[comp.Count - 1].Text = "- None";
                 }
                 comp.Remove(2);
                 PlaBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -353,14 +354,14 @@ namespace FinalAppTest.Views
             }
             else if (comp.IndexOf(3) >= 0)
             {
-                if (comp.IndexOf(3) == comp.Count - 1) algos[comp.IndexOf(3)].Text = "";
+                if (comp.IndexOf(3) == comp.Count - 1) algos[comp.IndexOf(3)].Text = "- None";
                 else
                 {
                     for (int i = comp.IndexOf(3); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "";
+                    algos[comp.Count - 1].Text = "- None";
                 }
                 comp.Remove(3);
                 PctrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -379,14 +380,14 @@ namespace FinalAppTest.Views
             }
             else if (comp.IndexOf(5) >= 0)
             {
-                if (comp.IndexOf(5) == comp.Count - 1) algos[comp.IndexOf(5)].Text = "";
+                if (comp.IndexOf(5) == comp.Count - 1) algos[comp.IndexOf(5)].Text = "- None";
                 else
                 {
                     for (int i = comp.IndexOf(5); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "";
+                    algos[comp.Count - 1].Text = "- None";
                 }
                 comp.Remove(5);
                 PsrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -402,20 +403,26 @@ namespace FinalAppTest.Views
                 comp.Add(7);
                 algos[comp.Count - 1].Text = "- RR";
                 RRBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+                RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFFFFF");
+                QuantumTxt.Cursor = Cursors.IBeam;
+                QuantumTxt.IsReadOnly = false;
             }
             else if (comp.IndexOf(7) >= 0)
             {
-                if (comp.IndexOf(7) == comp.Count - 1) algos[comp.IndexOf(7)].Text = "";
+                if (comp.IndexOf(7) == comp.Count - 1) algos[comp.IndexOf(7)].Text = "- None";
                 else
                 {
                     for (int i = comp.IndexOf(7); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "";
+                    algos[comp.Count - 1].Text = "- None";
                 }
                 comp.Remove(7);
                 RRBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFE9F2FE");
+                QuantumTxt.Cursor = Cursors.Arrow;
+                QuantumTxt.IsReadOnly = true;
             }
         }
         private void PARDBtn_Click(object sender, MouseButtonEventArgs e)
@@ -427,20 +434,26 @@ namespace FinalAppTest.Views
                 comp.Add(8);
                 algos[comp.Count - 1].Text = "- PARD";
                 PARDBtn.Fill = (Brush)bc.ConvertFrom("#FD5825");
+                RectTempsMAJ.Fill = (Brush)bc.ConvertFrom("#FFFFFF");
+                TempsMAJtxt.Cursor = Cursors.IBeam;
+                TempsMAJtxt.IsReadOnly = false;
             }
             else if (comp.IndexOf(8) >= 0)
             {
-                if (comp.IndexOf(8) == comp.Count - 1) algos[comp.IndexOf(8)].Text = "";
+                if (comp.IndexOf(8) == comp.Count - 1) algos[comp.IndexOf(8)].Text = "- None";
                 else
                 {
                     for (int i = comp.IndexOf(8); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "";
+                    algos[comp.Count - 1].Text = "- None";
                 }
                 comp.Remove(8);
                 PARDBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                RectTempsMAJ.Fill = (Brush)bc.ConvertFrom("#FFE9F2FE");
+                TempsMAJtxt.Cursor = Cursors.Arrow;
+                TempsMAJtxt.IsReadOnly = true;
             }
         }
 
@@ -472,6 +485,57 @@ namespace FinalAppTest.Views
                 tempsMAJ = i;
                 RectTempsMAJ.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
             }
+        }
+
+        private void Home_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.main.Content = new WelcomePage();
+        }
+
+        private void Home_MouseEnter(object sender, MouseEventArgs e)
+        {
+            shadowHome.ShadowDepth = 2;
+            shadowHome.BlurRadius = 7;
+        }
+
+        private void Home_MouseLeave(object sender, MouseEventArgs e)
+        {
+            shadowHome.ShadowDepth = 0;
+            shadowHome.BlurRadius = 5;
+        }
+
+        private void Hint_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) 
+        {
+            
+        }
+
+        private void Hint_MouseEnter(object sender, MouseEventArgs e)
+        {
+            shadowHint.ShadowDepth = 2;
+            shadowHint.BlurRadius = 7;
+        }
+
+        private void Hint_MouseLeave(object sender, MouseEventArgs e)
+        {
+            shadowHint.ShadowDepth = 0;
+            shadowHint.BlurRadius = 5;
+        }
+
+        private void NbProcessusTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).Text = "";
+        }
+
+        private void NbProcessusTextBoxx_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (QuantumTxt.IsReadOnly) return;
+            ((TextBox)sender).Text = "";
+        }
+
+        private void NbProcessusTextBoxxx_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TempsMAJtxt.IsReadOnly) return;
+            ((TextBox)sender).Text = "";
         }
     }
 }
