@@ -84,28 +84,19 @@ namespace FinalAppTest
             DataContext = new MultiNiveauRecyclageViewModel();
         }
 
-        public void Image1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        public void Swipe(object sender, MouseButtonEventArgs e)
         {
-            Algos1.Visibility = Visibility.Hidden;
-            Algos2.Visibility = Visibility.Visible;
+            if (Algos1.Visibility == Visibility.Hidden)
+            {
+                Algos1.Visibility = Visibility.Visible;
+                Algos2.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Algos1.Visibility = Visibility.Hidden;
+                Algos2.Visibility = Visibility.Visible;
+            }
         }
 
-        public void Image2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Algos1.Visibility = Visibility.Visible;
-            Algos2.Visibility = Visibility.Hidden;
-        }
-
-        private void Image1_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Algos1.Visibility = Visibility.Hidden;
-            Algos2.Visibility = Visibility.Visible;
-        }
-
-        private void Image2_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Algos1.Visibility = Visibility.Visible;
-            Algos2.Visibility = Visibility.Hidden;
-        }
     }
 }

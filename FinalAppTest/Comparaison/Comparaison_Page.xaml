@@ -19,7 +19,7 @@
                 <DropShadowEffect ShadowDepth="0" Opacity="0.2" BlurRadius="15" Direction="0"/>
             </Rectangle.Effect>
         </Rectangle>
-        <Grid x:Name="Page1" Visibility="Visible" Grid.Column="1" Margin="10,90" >
+        <Grid x:Name="Page1" Visibility="Hidden" Grid.Column="1" Margin="10,90" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="3*" />
@@ -63,7 +63,7 @@
                                LegendLocation="BottomRight"
                                LegendBackgroundColor="Aquamarine"/>
         </Grid>
-        <ScrollViewer x:Name="Page2"  Visibility="Collapsed" Grid.Column="1" Margin="10,140" Padding="20,-40" VerticalScrollBarVisibility="Visible" Grid.RowSpan="2" >
+        <ScrollViewer  x:Name="Page2"  Visibility="Visible" Grid.Column="1" Margin="10,140" Padding="20,-40" VerticalScrollBarVisibility="Visible" Grid.RowSpan="2" >
             <ScrollViewer.OpacityMask>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="Transparent" Offset="1"/>
@@ -82,9 +82,9 @@
                     </Grid.ColumnDefinitions>
                     <Rectangle Grid.Column="0" Margin="5,20" Fill="#FFE9F2FE" RadiusX="20" RadiusY="20" Grid.ColumnSpan="4" >
                     </Rectangle>
+                    <Grid Background="Red" x:Name="Repere" Margin="50,0" Height="0" Visibility="Visible" VerticalAlignment="Top"  />
                     <TextBlock  Text="Algorithmes" FontSize="25" FontFamily="Lexend" FontWeight="Regular" Foreground="#FF333333" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <StackPanel  Grid.Column="1" Margin="30,50" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                        <Grid x:Name="Repere" Margin="30,0" Visibility="Hidden" MinWidth="300"></Grid>
+                    <StackPanel x:Name="Panel1" Grid.Column="1" Margin="30,50" HorizontalAlignment="Center" VerticalAlignment="Center" >
                         <Rectangle   Fill="#FF5829AA" Height="60" VerticalAlignment="Center" RadiusY="10" RadiusX="10" Width="{Binding ActualWidth, ElementName=Repere, Mode=OneWay}" HorizontalAlignment="Center" Panel.ZIndex="-60"/>
                         <TextBlock x:Name="Algo1Name" Panel.ZIndex="1" Text="PAPS" FontSize="30" FontFamily="Lexend" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-60,0,0"/>
                         <TextBlock x:Name="Algo1Def" TextWrapping="WrapWithOverflow" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend" FontSize="14" FontWeight="Medium" Foreground="#FF49606B" Margin="10,20">
@@ -266,7 +266,56 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Rectangle Cursor="Hand" MouseLeftButtonDown="Swipe" Height="60" Width="60" RadiusX="30" RadiusY="30" Fill="#005829AA" VerticalAlignment="Center" />
+            <Rectangle Cursor="Hand" MouseLeftButtonDown="Swipe" Height="60" Width="60" RadiusX="30" RadiusY="30" Fill="#005829AA" VerticalAlignment="Center" >
+                <Rectangle.Triggers>
+                    <!-- Animates the rectangle's opacity. -->
+                    <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="LeftEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="10" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="LeftEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="15" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="LeftEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="LeftEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="10" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Rectangle.Triggers>
+
+            </Rectangle>
         </Grid>
         <Grid x:Name="RightRect" Grid.Column="2" Height="60" Width="60" VerticalAlignment="Center">
             <Rectangle Height="60" Width="60" RadiusX="30" RadiusY="30" VerticalAlignment="Center" >
