@@ -518,7 +518,22 @@ namespace FinalAppTest.Views
             if (NextHintCondition)
             {
                 ApplyEffect();
-                if (NbHint == 1)
+                if (NbHint == 0)
+                {
+                    Description.Effect = null;
+                    Panel.SetZIndex(Description, 1);
+                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(315, 175, 0, 0);
+                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    Test = new Hint(
+                                        "Simulation Multi Niveaux",
+                                        "Commençons la simulation de l'Multi Niveaux",
+                                        this,
+                                        hint
+                                    );
+
+                    NextHintCondition = true;
+                }
+                else if (NbHint == 1)
                 {
                     nivGen.Effect = null;
                     Panel.SetZIndex(nivGen, 1);
@@ -537,7 +552,7 @@ namespace FinalAppTest.Views
                     nivGen.Effect = null;
                     Panel.SetZIndex(nivGen, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(340, 330, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0); 
+                    else hint.Margin = new Thickness(350, 300, 0, 0); 
                     Test = new Hint(
                                         "Ajouter un niveau",
                                         "Cliquez pour ajouter un niveau",
@@ -551,7 +566,7 @@ namespace FinalAppTest.Views
                     nivGen.Effect = null;
                     Panel.SetZIndex(nivGen, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(30, 310, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(20, 520, 0, 0);
                     Test = new Hint(
                                         "Suprimer un niveau",
                                         "Cliquez pour suprimer un niveau",
@@ -566,7 +581,7 @@ namespace FinalAppTest.Views
                     nivGrid.Effect = null;
                     Panel.SetZIndex(nivGrid, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(190, 240, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(550, 300, 0, 0);
                     Test = new Hint(
                                         "Tableau des niveaux",
                                         "Voici le tableau des niveaux générés",
@@ -581,7 +596,7 @@ namespace FinalAppTest.Views
                     nivGrid.Effect = null;
                     Panel.SetZIndex(nivGrid, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(670, 435, 0, 0);
-                    else hint.Margin = new Thickness(585, 350, 0, 0);
+                    else hint.Margin = new Thickness(600, 345, 0, 0);
                     Test = new Hint(
                                         "Ajouter un niveau",
                                         "Entrer les paramètres du niveau à insérer",
@@ -595,7 +610,7 @@ namespace FinalAppTest.Views
                     nivGrid.Effect = null;
                     Panel.SetZIndex(nivGrid, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(1115, 460, 0, 0);
-                    else hint.Margin = new Thickness(950, 360, 0, 0);
+                    else hint.Margin = new Thickness(600, 345, 0, 0);
                     Test = new Hint(
                                         "Ajouter un niveau",
                                         "Cliquez sur 'Ajouter' pour insérer ce niveau",
@@ -623,7 +638,7 @@ namespace FinalAppTest.Views
                     nivGrid.Effect = null;
                     Panel.SetZIndex(nivGrid, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(670, 435, 0, 0);
-                    else hint.Margin = new Thickness(585, 350, 0, 0);
+                    else hint.Margin = new Thickness(585, 345, 0, 0);
                     Test = new Hint(
                                         "Modifier un niveau",
                                         "Changez les paramètres du niveau",
@@ -637,7 +652,7 @@ namespace FinalAppTest.Views
                     nivGrid.Effect = null;
                     Panel.SetZIndex(nivGrid, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(1115, 460, 0, 0);
-                    else hint.Margin = new Thickness(950, 360, 0, 0);
+                    else hint.Margin = new Thickness(585, 345, 0, 0);
                     Test = new Hint(
                                         "Modifier un niveau",
                                         "Cliquez sur 'Modifier' pour confirmer votre modification",
@@ -663,7 +678,7 @@ namespace FinalAppTest.Views
                 {
                     proGen.Effect = null;
                     Panel.SetZIndex(proGen, 1);
-                    hint.Margin = new Thickness(35, 270, 0, 0);
+                    hint.Margin = new Thickness(25, 230, 0, 0);
                     Test = new Hint(
                                         "Générer les processus",
                                         "Entrez le nombre des processus à générer",
@@ -676,7 +691,7 @@ namespace FinalAppTest.Views
                 {
                     proGen.Effect = null;
                     Panel.SetZIndex(proGen, 1);
-                    hint.Margin = new Thickness(250, 260, 0, 0);
+                    hint.Margin = new Thickness(250, 215, 0, 0);
                     Test = new Hint(
                                         "Générer les processus",
                                         "Vous pouvez générer des interruptions en cochant cette case",
@@ -689,7 +704,7 @@ namespace FinalAppTest.Views
                 {
                     proGen.Effect = null;
                     Panel.SetZIndex(proGen, 1);
-                    hint.Margin = new Thickness(420, 390, 0, 0);
+                    hint.Margin = new Thickness(365, 395, 0, 0);
                     Test = new Hint(
                                         "Générer les processus",
                                         "Cliquez sur le button 'Générer' pour créer les processus",
@@ -702,7 +717,7 @@ namespace FinalAppTest.Views
                 {
                     proGrid.Effect = null;
                     Panel.SetZIndex(proGrid, 1);
-                    hint.Margin = new Thickness(675, 345, 0, 0);
+                    hint.Margin = new Thickness(655, 300, 0, 0);
                     Test = new Hint(
                                         "Tableau des processus",
                                         "Voici le tableau des processus générés",
@@ -715,7 +730,7 @@ namespace FinalAppTest.Views
                 {
                     proGrid.Effect = null;
                     Panel.SetZIndex(proGrid, 1);
-                    hint.Margin = new Thickness(670, 435, 0, 0);
+                    hint.Margin = new Thickness(585, 350, 0, 0);
                     Test = new Hint(
                                         "Ajouter un processus",
                                         "Entrer les paramètres du processus à insérer",
@@ -728,7 +743,7 @@ namespace FinalAppTest.Views
                 {
                     proGrid.Effect = null;
                     Panel.SetZIndex(proGrid, 1);
-                    hint.Margin = new Thickness(1115, 460, 0, 0);
+                    hint.Margin = new Thickness(950, 360, 0, 0);
                     Test = new Hint(
                                         "Ajouter un processus",
                                         "Cliquez sur 'Ajouter' pour insérer ce processus",
@@ -741,7 +756,7 @@ namespace FinalAppTest.Views
                 {
                     proGrid.Effect = null;
                     Panel.SetZIndex(proGrid, 1);
-                    hint.Margin = new Thickness(820, 248, 0, 0);
+                    hint.Margin = new Thickness(650, 255, 0, 0);
                     Test = new Hint(
                                         "Supprimer un processus",
                                         "Cliquez sur 'Supprimer' pour supprimer un processus",
@@ -754,7 +769,7 @@ namespace FinalAppTest.Views
                 {
                     proGrid.Effect = null;
                     Panel.SetZIndex(proGrid, 1);
-                    hint.Margin = new Thickness(820, 248, 0, 0);
+                    hint.Margin = new Thickness(650, 255, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
                                         "Cliquez sur 'Modifier' pour modifier les paramètres d'un processus",
@@ -767,7 +782,7 @@ namespace FinalAppTest.Views
                 {
                     proGrid.Effect = null;
                     Panel.SetZIndex(proGrid, 1);
-                    hint.Margin = new Thickness(670, 435, 0, 0);
+                    hint.Margin = new Thickness(585, 350, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
                                         "Changez les paramètres du processus",
@@ -780,7 +795,7 @@ namespace FinalAppTest.Views
                 {
                     proGrid.Effect = null;
                     Panel.SetZIndex(proGrid, 1);
-                    hint.Margin = new Thickness(1115, 460, 0, 0);
+                    hint.Margin = new Thickness(950, 360, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
                                         "Cliquez sur 'Modifier' pour confirmer votre modification",
@@ -793,7 +808,7 @@ namespace FinalAppTest.Views
                 {
                     proGrid.Effect = null;
                     Panel.SetZIndex(proGrid, 1);
-                    hint.Margin = new Thickness(190, 240, 0, 0);
+                    hint.Margin = new Thickness(180, 305, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
                                         "Cliquez sur un processus pour gérer ses interruptions",
@@ -806,7 +821,7 @@ namespace FinalAppTest.Views
                 {
                     proGrid.Effect = null;
                     Panel.SetZIndex(proGrid, 1);
-                    hint.Margin = new Thickness(190, 240, 0, 0);
+                    hint.Margin = new Thickness(180, 305, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
                                         "Changez les paramètres de l'interruption à insérer" +
@@ -821,7 +836,7 @@ namespace FinalAppTest.Views
                 {
                     proGrid.Effect = null;
                     Panel.SetZIndex(proGrid, 1);
-                    hint.Margin = new Thickness(190, 240, 0, 0);
+                    hint.Margin = new Thickness(180, 305, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
                                         "Cliquez sur '+' pour insérer cette interruption",
@@ -834,7 +849,7 @@ namespace FinalAppTest.Views
                 {
                     proGrid.Effect = null;
                     Panel.SetZIndex(proGrid, 1);
-                    hint.Margin = new Thickness(190, 240, 0, 0);
+                    hint.Margin = new Thickness(180, 305, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
                                         "Cliquez sur 'x' pour supprimer une interruption",
@@ -847,7 +862,7 @@ namespace FinalAppTest.Views
                 {
                     SimulationButton.Effect = null;
                     Panel.SetZIndex(SimulationButton, 1);
-                    hint.Margin = new Thickness(360, 505, 0, 0);
+                    hint.Margin = new Thickness(300, 480, 0, 0);
                     Test = new Hint(
                                         "Simulation",
                                         "Cliquez sur le button 'Simuler' pour commencer la simulation",

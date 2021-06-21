@@ -318,7 +318,7 @@ namespace FinalAppTest.Views
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(420, 390, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(370, 355, 0, 0);
                     Test = new Hint(
                                         "Générer les processus",
                                         "Vous pouvez générer les processus aléatoirement",
@@ -332,7 +332,7 @@ namespace FinalAppTest.Views
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(35, 240, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(25, 230, 0, 0);
                     Test = new Hint(
                                         "Générer les processus",
                                         "Entrez le nombre des processus à générer",
@@ -346,7 +346,7 @@ namespace FinalAppTest.Views
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(250, 230, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(250, 215, 0, 0);
                     Test = new Hint(
                                         "Générer les processus",
                                         "Vous pouvez générer des interruptions en cochant cette case",
@@ -360,7 +360,7 @@ namespace FinalAppTest.Views
                     Random.Effect = null;
                     Panel.SetZIndex(Random, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(420, 390, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(365, 395, 0, 0);
                     Test = new Hint(
                                         "Générer les processus",
                                         "Cliquez sur le button 'Générer' pour créer les processus",
@@ -374,7 +374,7 @@ namespace FinalAppTest.Views
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(675, 345, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(655, 300, 0, 0);
                     Test = new Hint(
                                         "Tableau des processus",
                                         "Voici le tableau des processus générés",
@@ -388,7 +388,7 @@ namespace FinalAppTest.Views
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(670, 435, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(585, 350, 0, 0);
                     Test = new Hint(
                                         "Ajouter un processus",
                                         "Entrer les paramètres du processus à insérer",
@@ -402,7 +402,7 @@ namespace FinalAppTest.Views
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(1115, 460, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(950, 360, 0, 0);
                     Test = new Hint(
                                         "Ajouter un processus",
                                         "Cliquez sur 'Ajouter' pour insérer ce processus",
@@ -416,7 +416,7 @@ namespace FinalAppTest.Views
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(820, 248, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(650, 255, 0, 0);
                     Test = new Hint(
                                         "Supprimer un processus",
                                         "Cliquez sur 'Supprimer' pour supprimer un processus",
@@ -430,7 +430,7 @@ namespace FinalAppTest.Views
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(820, 248, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(650, 255, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
                                         "Cliquez sur 'Modifier' pour modifier les paramètres d'un processus",
@@ -444,7 +444,7 @@ namespace FinalAppTest.Views
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(670, 435, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(585, 350, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
                                         "Changez les paramètres du processus",
@@ -458,7 +458,7 @@ namespace FinalAppTest.Views
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(1115, 460, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(950, 360, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
                                         "Cliquez sur 'Modifier' pour confirmer votre modification",
@@ -472,7 +472,7 @@ namespace FinalAppTest.Views
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(190, 240, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(180, 305, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
                                         "Cliquez sur un processus pour gérer ses interruptions",
@@ -486,10 +486,12 @@ namespace FinalAppTest.Views
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(190, 240, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(180, 305, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
-                                        "Changez les paramètres de l'interruption à insérer",
+                                        "Changez les paramètres de l'interruption à insérer" +
+                                        "\n\nNB: le temps d'arrivé de l'interruption doit être " +
+                                        "inférieur à la durée du processus",
                                         this,
                                         hint
                                     );
@@ -500,7 +502,7 @@ namespace FinalAppTest.Views
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(190, 240, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(180, 305, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
                                         "Cliquez sur '+' pour insérer cette interruption",
@@ -514,7 +516,7 @@ namespace FinalAppTest.Views
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(190, 240, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(180, 305, 0, 0);
                     Test = new Hint(
                                         "Gérer les interruptions",
                                         "Cliquez sur 'x' pour supprimer une interruption",
@@ -528,10 +530,10 @@ namespace FinalAppTest.Views
                     Simuler.Effect = null;
                     Panel.SetZIndex(Simuler, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(360, 505, 0, 0);
-                    else hint.Margin = new Thickness(290, 165, 0, 0);
+                    else hint.Margin = new Thickness(300, 480, 0, 0);
                     Test = new Hint(
-                                        "Gérer les interruptions",
-                                        "Cliquez sur 'x' pour supprimer une interruption",
+                                        "Simulation",
+                                        "Cliquez sur le button 'Simuler' pour commencer la simulation",
                                         this,
                                         hint
                                     );
