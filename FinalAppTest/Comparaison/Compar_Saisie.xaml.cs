@@ -116,16 +116,13 @@ namespace FinalAppTest.Comparaison
                 RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+                TempsArrivTextBox.Text = "0";
+                DureeTextBox.Text = "1";
+                PrioTextBox.Text = "0";
                 if (!modifier)  // un nouveau processus
                 {
                     id = indice;
-                    TempsArrivTextBox.Text = "0";
-                    DureeTextBox.Text = "0";
                     IdTextBox.Text = (id + 1).ToString();
-                    PrioTextBox.Text = "0";
-                    RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
-                    RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
-                    RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                     AffichageProcessus pro = new AffichageProcessus
                     {
                         id = id,
@@ -160,8 +157,32 @@ namespace FinalAppTest.Comparaison
 
         private void Comparer_Click(object sender, MouseEventArgs e)
         {
+            var bc = new BrushConverter();
             if (comp.Count > 1 && NbHint == 0)
-                MainWindow.main.Content = new Comparaison_Page(comp, quantum, tempsMAJ);
+            {
+                bool valide = true;
+                if (!int.TryParse(QuantumTxt.Text, out int i) || i <= 0)
+                {
+                    valide = false;
+                    RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                else
+                {
+                    quantum = i;
+                    RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
+                }
+                if (!int.TryParse(TempsMAJtxt.Text, out int j) || j <= 0)
+                {
+                    valide = false;
+                    RectTempsMAJ.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                }
+                else
+                {
+                    tempsMAJ = j;
+                    RectTempsMAJ.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
+                }
+                if (valide) MainWindow.main.Content = new Comparaison_Page(comp, quantum, tempsMAJ);
+            }
             else FinHint();
         }
         private void AddProcessusButton_MouseEnter(object sender, MouseEventArgs e)
