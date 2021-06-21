@@ -218,5 +218,10 @@ namespace FinalAppTest
                 MainWindow.main.Content = new InitPage { DataContext = new MultiNiveauRecyclageViewModel() };
             }
         }
+
+        private void Start_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

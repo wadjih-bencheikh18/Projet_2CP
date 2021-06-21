@@ -19,13 +19,13 @@
             <ColumnDefinition Width="0.25*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
         <!--Home button-->
-        <Grid Margin="50,0,0,0">
+        <Grid Margin="40,0,0,0">
             <Image VerticalAlignment="Center" Source="Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
                 <Image.Effect>
                     <DropShadowEffect x:Name="shadowHome" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
@@ -35,7 +35,7 @@
         <!--Title-->
         <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Veuillez choisir un algorithme" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold"/>
         <!--Algos-->
-        <Rectangle Margin="-2,0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2" Fill="#EEEEEE" RadiusX="30" RadiusY="30"/>
+        <Rectangle Margin="-2,0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2" Fill="#0000EEEE" RadiusX="30" RadiusY="30"/>
         <!--<ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -243,7 +243,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Grid Margin="50,20">
+            <Grid x:Name="Grid1" Margin="40,40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition/>
@@ -256,10 +256,43 @@
                 <TextBlock Text="PAPS" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
                 <TextBlock Grid.Row="1" Text="Ordonnancement Premier" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Arrivé Premier Servi" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
-                <Rectangle MouseEnter="Rectangle_MouseEnter1" MouseLeave="Rectangle_MouseLeave1" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown1" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle MouseEnter="Rectangle_MouseEnter1" MouseLeave="Rectangle_MouseLeave1" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown1" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Triggers>
+                        <!-- Animates the rectangle's opacity. -->
+                        <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid1" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="30,30,30,30" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid1" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="40,40,40,40" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+
+                </Rectangle>
             </Grid>
 
-            <Grid Grid.Row="1" Margin="50,20">
+            <Grid x:Name="Grid4" Grid.Row="1" Margin="40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition/>
@@ -272,10 +305,43 @@
                 <TextBlock Text="Round-Robin" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="37" FontWeight="DemiBold" FontFamily="Lexend"/>
                 <TextBlock Grid.Row="1" Text="Ordonnancement" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Tourniquet" Margin="0,30,0,0" HorizontalAlignment="Center" FontSize="22"/>
-                <Rectangle MouseEnter="Rectangle_MouseEnter2" MouseLeave="Rectangle_MouseLeave2" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown2" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle MouseEnter="Rectangle_MouseEnter2" MouseLeave="Rectangle_MouseLeave2" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown2" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Triggers>
+                        <!-- Animates the rectangle's opacity. -->
+                        <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid4" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="30,30,30,30" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid4" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="40,40,40,40" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+
+                </Rectangle>
             </Grid>
 
-            <Grid Grid.Column="1" Margin="50,20">
+            <Grid x:Name="Grid2" Grid.Column="1" Margin="40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition/>
@@ -288,10 +354,43 @@
                 <TextBlock Text="PSR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
                 <TextBlock Grid.Row="1" Text="Ordonnancement" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Priorité Sans Réquisition" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
-                <Rectangle MouseEnter="Rectangle_MouseEnter3" MouseLeave="Rectangle_MouseLeave3" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown3" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle MouseEnter="Rectangle_MouseEnter3" MouseLeave="Rectangle_MouseLeave3" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown3" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Triggers>
+                        <!-- Animates the rectangle's opacity. -->
+                        <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid2" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="30,30,30,30" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid2" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="40,40,40,40" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+
+                </Rectangle>
             </Grid>
 
-            <Grid Grid.Row="1" Grid.Column="1" Margin="50,20">
+            <Grid x:Name="Grid5" Grid.Row="1" Grid.Column="1" Margin="40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition/>
@@ -304,10 +403,43 @@
                 <TextBlock Text="PAR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
                 <TextBlock Grid.Row="1" Text="Ordonnancement" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Priorité Avec Réquisition" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
-                <Rectangle MouseEnter="Rectangle_MouseEnter4" MouseLeave="Rectangle_MouseLeave4" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown4" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle MouseEnter="Rectangle_MouseEnter4" MouseLeave="Rectangle_MouseLeave4" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown4" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Triggers>
+                        <!-- Animates the rectangle's opacity. -->
+                        <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid5" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="30,30,30,30" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid5" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="40,40,40,40" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+
+                </Rectangle>
             </Grid>
 
-            <Grid Grid.Column="2" Margin="50,20">
+            <Grid x:Name="Grid3" Grid.Column="2" Margin="40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition/>
@@ -321,10 +453,43 @@
                 <TextBlock Grid.Row="1" Text="Ordonnancement" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Priorité Avec Réquisition" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Dynamique" Margin="0,60,0,0" HorizontalAlignment="Center" FontSize="22"/>
-                <Rectangle MouseEnter="Rectangle_MouseEnter5" MouseLeave="Rectangle_MouseLeave5" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown5" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle MouseEnter="Rectangle_MouseEnter5" MouseLeave="Rectangle_MouseLeave5" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown5" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Triggers>
+                        <!-- Animates the rectangle's opacity. -->
+                        <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid3" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="30,30,30,30" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid3" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="40,40,40,40" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+
+                </Rectangle>
             </Grid>
 
-            <Grid Grid.Column="2" Grid.Row="1" Margin="50,20">
+            <Grid x:Name="Grid6" Grid.Column="2" Grid.Row="1" Margin="40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition/>
@@ -337,21 +502,177 @@
                 <TextBlock Text="Slack-Time" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
                 <TextBlock Grid.Row="1" Text="Ordonnancement" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Temps Mort" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
-                <Rectangle MouseEnter="Rectangle_MouseEnter11" MouseLeave="Rectangle_MouseLeave11" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown11" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle MouseEnter="Rectangle_MouseEnter11" MouseLeave="Rectangle_MouseLeave11" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown11" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Triggers>
+                        <!-- Animates the rectangle's opacity. -->
+                        <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid6" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="30,30,30,30" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid6" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="40,40,40,40" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+
+                </Rectangle>
             </Grid>
 
         </Grid>
-        <Image x:Name="Algos1Button" Source="Pics/goLeft.png" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" Margin="30" RenderTransformOrigin="0.5,0.5" MouseEnter="Algos1Button_MouseEnter">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Height="60" Width="60" VerticalAlignment="Center">
+            <Rectangle  Height="60" Width="60" RadiusX="30" RadiusY="30" VerticalAlignment="Center" >
+                <Rectangle.Effect>
+                    <DropShadowEffect x:Name="LeftEffect" Color="#FF5829AA" Opacity="0.5" Direction="-90" BlurRadius="15" ShadowDepth="6"/>
+                </Rectangle.Effect>
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF7337DC" Offset="0"/>
+                        <GradientStop Color="#FF2E0B6B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Image Source="Pics/Arrow.png" Height="30" Width="30" Margin="12,10,18,10" RenderTransformOrigin="0.5,0.5" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Rectangle  Cursor="Hand" MouseLeftButtonDown="Swipe" Height="60" Width="60" RadiusX="30" RadiusY="30" Fill="#005829AA" VerticalAlignment="Center" >
+                <Rectangle.Triggers>
+                    <!-- Animates the rectangle's opacity. -->
+                    <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="LeftEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="10" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="LeftEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="15" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="LeftEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="LeftEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="10" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Rectangle.Triggers>
 
+            </Rectangle>
+        </Grid>
+        <Grid x:Name="RightRect" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" Height="60" Width="60" VerticalAlignment="Center">
+            <Rectangle Height="60" Width="60" RadiusX="30" RadiusY="30" VerticalAlignment="Center" >
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF7337DC" Offset="0"/>
+                        <GradientStop Color="#FF2E0B6B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.Effect>
+                    <DropShadowEffect x:Name="RightEffect" Color="#FF5829AA" Opacity="0.5" Direction="-90" BlurRadius="10" ShadowDepth="6"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Image VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="Pics/Arrow.png" Height="30" Margin="18,10,12,10" />
+            <Rectangle Cursor="Hand" MouseLeftButtonDown="Swipe" Height="60" Width="60" RadiusX="30" RadiusY="30" Fill="#005829AA" VerticalAlignment="Center" >
+                <Rectangle.Triggers>
+                    <!-- Animates the rectangle's opacity. -->
+                    <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="RightEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="10" Duration="0:0:0.5" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="RightEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="15" Duration="0:0:0.5" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="RightEffect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="RightEffect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="10" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Rectangle.Triggers>
+            </Rectangle>
+        </Grid>
         <Grid x:Name="Algos2" Visibility="Hidden" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -363,7 +684,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Column="1" Grid.Row="0" Margin="50,20">
+            <Grid x:Name="Grid7" Grid.Column="1" Grid.Row="0" Margin="40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition/>
@@ -376,10 +697,43 @@
                 <TextBlock Text="PCA" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
                 <TextBlock Grid.Row="1" Text="Ordonnancement Plus" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Court d'Abord" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
-                <Rectangle MouseEnter="Rectangle_MouseEnter6" MouseLeave="Rectangle_MouseLeave6" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown6" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle MouseEnter="Rectangle_MouseEnter6" MouseLeave="Rectangle_MouseLeave6" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown6" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Triggers>
+                        <!-- Animates the rectangle's opacity. -->
+                        <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid7" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="30,30,30,30" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid7" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="40,40,40,40" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+
+                </Rectangle>
             </Grid>
 
-            <Grid Grid.Column="1" Grid.Row="1" Margin="50,20">
+            <Grid x:Name="Grid8" Grid.Column="1" Grid.Row="1" Margin="40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition/>
@@ -392,10 +746,43 @@
                 <TextBlock Text="PCTR" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
                 <TextBlock Grid.Row="1" Text="Ordonnancement" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Plus Court Temps Restant" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
-                <Rectangle MouseEnter="Rectangle_MouseEnter7" MouseLeave="Rectangle_MouseLeave7" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown7" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle MouseEnter="Rectangle_MouseEnter7" MouseLeave="Rectangle_MouseLeave7" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown7" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Triggers>
+                        <!-- Animates the rectangle's opacity. -->
+                        <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid8" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="30,30,30,30" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid8" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="40,40,40,40" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+
+                </Rectangle>
             </Grid>
 
-            <Grid Grid.Column="2" Grid.Row="0" Margin="50,20">
+            <Grid x:Name="Grid9" Grid.Column="2" Grid.Row="0" Margin="40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition/>
@@ -408,10 +795,43 @@
                 <TextBlock Text="PLA" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" FontFamily="Lexend"/>
                 <TextBlock Grid.Row="1" Text="Ordonnancement Plus" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Long d'Abord" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
-                <Rectangle MouseEnter="Rectangle_MouseEnter8" MouseLeave="Rectangle_MouseLeave8" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown8" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle MouseEnter="Rectangle_MouseEnter8" MouseLeave="Rectangle_MouseLeave8" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown8" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Triggers>
+                        <!-- Animates the rectangle's opacity. -->
+                        <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid9" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="30,30,30,30" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid9" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="40,40,40,40" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+
+                </Rectangle>
             </Grid>
 
-            <Grid Grid.Column="0" Margin="50,20">
+            <Grid x:Name="Grid10" Grid.Column="0" Margin="40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition/>
@@ -424,10 +844,43 @@
                 <TextBlock Text="Multi-Niveaux" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="DemiBold" FontFamily="Lexend"/>
                 <TextBlock Grid.Row="1" Text="Ordonnancement à" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Plusieurs Niveaux" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
-                <Rectangle MouseEnter="Rectangle_MouseEnter9" MouseLeave="Rectangle_MouseLeave9" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown9" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle MouseEnter="Rectangle_MouseEnter9" MouseLeave="Rectangle_MouseLeave9" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown9" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Triggers>
+                        <!-- Animates the rectangle's opacity. -->
+                        <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid10" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="30,30,30,30" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid10" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="40,40,40,40" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+
+                </Rectangle>
             </Grid>
 
-            <Grid Grid.Column="0" Grid.Row="1" Margin="50,20">
+            <Grid x:Name="Grid11" Grid.Column="0" Grid.Row="1" Margin="40">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition/>
@@ -442,13 +895,43 @@
                 <TextBlock Grid.Row="1" Text="Ordonnancement à" HorizontalAlignment="Center" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Plusieurs Niveaux Avec" HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="22"/>
                 <TextBlock Grid.Row="1" Text="Recyclage entre eux" HorizontalAlignment="Center" Margin="0,60,0,0" FontSize="22"/>
-                <Rectangle MouseEnter="Rectangle_MouseEnter10" MouseLeave="Rectangle_MouseLeave10" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown10" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                <Rectangle MouseEnter="Rectangle_MouseEnter10" MouseLeave="Rectangle_MouseLeave10" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown10" Grid.RowSpan="2" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                    <Rectangle.Triggers>
+                        <!-- Animates the rectangle's opacity. -->
+                        <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid11" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="30,30,30,30" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation
+                                    Storyboard.TargetName="Grid11" 
+                                    Storyboard.TargetProperty="Margin"
+                                    To="40,40,40,40" Duration="0:0:0.5" >
+                                        <ThicknessAnimation.EasingFunction>
+                                            <BackEase EasingMode="EaseOut"/>
+                                        </ThicknessAnimation.EasingFunction>
+                                    </ThicknessAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+
+                </Rectangle>
             </Grid>
 
         </Grid>
-        <Image x:Name="Algos2Button" Visibility="Hidden" Source="Pics/goLeft.png" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Margin="30" MouseEnter="Algos2Button_MouseEnter">
-            
-        </Image>
 
     </Grid>
 </Page>
