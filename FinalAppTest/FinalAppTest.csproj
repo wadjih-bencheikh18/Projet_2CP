@@ -554,5 +554,47 @@
   <ItemGroup>
     <Resource Include="Replay.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pics\Replay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pageweb\images\AddInterruptions.png" />
+    <Resource Include="Pageweb\images\Aide.png" />
+    <Resource Include="Pageweb\images\AjouterProcess.png" />
+    <Resource Include="Pageweb\images\Algos2.png" />
+    <Resource Include="Pageweb\images\Apropos.png" />
+    <Resource Include="Pageweb\images\Back.png" />
+    <Resource Include="Pageweb\images\Cours.png" />
+    <Resource Include="Pageweb\images\Gantt.png" />
+    <Resource Include="Pageweb\images\Generer.png" />
+    <Resource Include="Pageweb\images\Hint.png" />
+    <Resource Include="Pageweb\images\Home.png" />
+    <Resource Include="Pageweb\images\Interruptions.png" />
+    <Resource Include="Pageweb\images\Interupt.png" />
+    <Resource Include="Pageweb\images\laptop.png" />
+    <Resource Include="Pageweb\images\Logo.jpg" />
+    <Resource Include="Pageweb\images\Modifier.png" />
+    <Resource Include="Pageweb\images\ModifierOptions.png" />
+    <Resource Include="Pageweb\images\NbProcess.png" />
+    <Resource Include="Pageweb\images\PageAccueil.png" />
+    <Resource Include="Pageweb\images\PageSaisie.png" />
+    <Resource Include="Pageweb\images\Pause.png" />
+    <Resource Include="Pageweb\images\Replay.png" />
+    <Resource Include="Pageweb\images\Results.png" />
+    <Resource Include="Pageweb\images\rocket.png" />
+    <Resource Include="Pageweb\images\Simulation.png" />
+    <Resource Include="Pageweb\images\SimulationPage.png" />
+    <Resource Include="Pageweb\images\simuler.png" />
+    <Resource Include="Pageweb\images\SimulerBtn.png" />
+    <Resource Include="Pageweb\images\Start.png" />
+    <Resource Include="Pageweb\images\Supprimer.png" />
+    <Resource Include="Pageweb\images\SupprimerProcess.png" />
+    <Resource Include="Pageweb\images\TableauProcess.png" />
+    <Resource Include="Pageweb\images\Transitions.png" />
+    <Resource Include="Pageweb\images\Vitesse.png" />
+    <Resource Include="Pageweb\images\VoirCours.png" />
+    <Content Include="Pageweb\index.html" />
+    <Content Include="Pageweb\style.css" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

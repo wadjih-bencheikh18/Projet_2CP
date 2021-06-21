@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Diagnostics;
 
 namespace FinalAppTest
 {
@@ -106,6 +107,12 @@ namespace FinalAppTest
             Shadow2.Opacity = 0.37;
             Shadow2.ShadowDepth = 2;
             Shadow2.BlurRadius = 4;
+        }
+
+        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Process.Start("./Pageweb/index.html");
+
         }
     }
 }

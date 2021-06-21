@@ -35,10 +35,12 @@
 
         <Grid Grid.Row="0" Grid.Column="3" Margin="40,35">
             <Rectangle x:Name="Rectangle2" Height="2" Fill="#000000" Margin="45,0" VerticalAlignment="Bottom"/>
-            <TextBlock x:Name="Text2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#000000" FontFamily="Lexend">Aide</TextBlock>
-            <Rectangle MouseEnter="Rectangle2_MouseEnter" MouseLeave="Rectangle2_MouseLeave" Margin="45,10,45,0" Cursor="Hand" Fill="#00CCFFDD" Height="Auto" Width="Auto" StrokeThickness="0"/>
+            <TextBlock x:Name="Text2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#000000" FontFamily="Lexend">Aide
+            </TextBlock>
+            <Rectangle MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" MouseEnter="Rectangle2_MouseEnter" MouseLeave="Rectangle2_MouseLeave" Margin="45,10,45,0" Cursor="Hand" Fill="#00CCFFDD" Height="Auto" Width="Auto" StrokeThickness="0"/>
+           
         </Grid>
-
+        
         <Grid Grid.Row="0" Grid.Column="4" Margin="40,35">
             <Rectangle x:Name="Rectangle3" Height="2" Fill="#000000" Margin="18,0" VerticalAlignment="Bottom"/>
             <TextBlock x:Name="Text3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#000000" FontFamily="Lexend">Voir Cours</TextBlock>

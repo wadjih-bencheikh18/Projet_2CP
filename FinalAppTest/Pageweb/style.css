@@ -1,0 +1,129 @@
+html{
+    box-sizing: border-box;
+    font-family: lexend;
+    background-color: #eaf2ff;
+    line-height: 2em;
+}
+body{
+    margin:0;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    position:sticky;
+    top: 0;
+    height: 60px;
+    width: 100%;
+    z-index: 3000;
+    background: #31326f;
+    border: 1px solid #31326f;
+    padding: 2px;
+}
+#table{
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    padding: 0 5px;
+    line-height: 36px;
+    height: 40px;
+    box-sizing: border-box;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    color: #fff;
+    position: absolute;
+    right: 16px;
+    text-shadow: 1px 1px 4px #000000;
+}
+.cards_container{
+    background-color: white;
+    
+    max-width: 1024px;
+    margin: auto;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: inherit;
+    box-shadow: 1px 1px 6px 1px #888888;
+}
+.card{
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+    text-align: center;
+    border: #1d1c1d;
+}
+.card_image{
+    margin: 0 auto 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.card_title{
+    color: #1d1c1d;
+    font-size: 28px;
+    margin-bottom: 10px;
+    margin-top: 0;
+    font-weight: bolder;
+}
+.card_description{
+    color: #454245;
+    font-size: 24px;
+    padding: 0;
+    margin: 4px auto 0;
+    max-width: 340px;
+}
+#logo_text{
+    font-size: 32px;
+    color: white;
+    margin: 5px;
+    margin-left: 15px;
+    text-shadow: 1px 1px 4px #000000;
+}
+a{
+    color: inherit;
+    text-decoration: inherit;
+}
+#TableDeMatiere{
+    width: 100%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+    padding: 10px;
+    display: table;
+    background-color: white;
+    line-height: 2em;
+    box-shadow: 1px 1px 4px 1px #888888;
+}
+.big_titles{
+    font-size: 22px;
+    margin-left: 10px;
+    font-weight: 400;
+}
+.text{
+    margin: 10px;
+    padding: 10px;
+    color: #333333;
+}
+#titre{
+    text-align: center;
+    font-weight: 500;
+    font-size: 36px;
+}
+footer{
+    bottom: 0;
+    width: 100%;
+    z-index: 3000;
+    background: #fff;
+    padding: 5px 10px;
+    box-shadow: 1px 0px 2px 1px #888888;
+}

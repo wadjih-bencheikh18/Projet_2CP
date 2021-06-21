@@ -353,9 +353,10 @@ namespace FinalAppTest.Views
             {
                 if (Compar_Saisie.NbHint > 0)
                 {
-                    Compar_Saisie.NbHint++;
+                    Compar_Saisie.NbHint--;
                     hint.Child = null;
                     ((Compar_Saisie)Comp_page).Hint();
+                    Compar_Saisie.NextHintCondition = true;
                 }
             }
             else if (Page.GetType() == typeof(PAPS_Tab))
@@ -365,6 +366,7 @@ namespace FinalAppTest.Views
                     PAPS_Tab.NbHint--;
                     hint.Child = null;
                     ((PAPS_Tab)Page).Hint();
+                    PAPS_Tab.NextHintCondition = true;
                 }
             }
             else if (Page.GetType() == typeof(RR_Tab))
@@ -374,6 +376,7 @@ namespace FinalAppTest.Views
                     RR_Tab.NbHint--;
                     hint.Child = null;
                     ((RR_Tab)Page).Hint();
+                    RR_Tab.NextHintCondition = true;
                 }
             }
             else if (Page.GetType() == typeof(PARD_Tab))
@@ -383,6 +386,7 @@ namespace FinalAppTest.Views
                     PARD_Tab.NbHint--;
                     hint.Child = null;
                     ((PARD_Tab)Page).Hint();
+                    PARD_Tab.NextHintCondition = true;
                 }
             }
             else if (Page.GetType() == typeof(PSR_Tab))
@@ -393,6 +397,7 @@ namespace FinalAppTest.Views
                     PSR_Tab.NbHint--;
                     hint.Child = null;
                     ((PSR_Tab)Page).Hint();
+                    PSR_Tab.NextHintCondition = true;
                 }
                 
             }
@@ -404,6 +409,7 @@ namespace FinalAppTest.Views
                     PAR_Tab.NbHint--;
                     hint.Child = null;
                     ((PAR_Tab)Page).Hint();
+                    PAR_Tab.NextHintCondition = true;
                 }
                 
             }
@@ -414,6 +420,7 @@ namespace FinalAppTest.Views
                     SlackTime_Tab.NbHint++;
                     hint.Child = null;
                     ((SlackTime_Tab)Page).Hint();
+                    SlackTime_Tab.NextHintCondition = true;
                 }
                 
             }
@@ -424,6 +431,7 @@ namespace FinalAppTest.Views
                     PCA_Tab.NbHint++;
                     hint.Child = null;
                     ((PCA_Tab)Page).Hint();
+                    PCA_Tab.NextHintCondition = true;
                 }
 
             }
@@ -434,6 +442,7 @@ namespace FinalAppTest.Views
                     PCTR_Tab.NbHint++;
                     hint.Child = null;
                     ((PCTR_Tab)Page).Hint();
+                    PCTR_Tab.NextHintCondition = true;
                 }
 
             }
@@ -444,6 +453,7 @@ namespace FinalAppTest.Views
                     PLA_Tab.NbHint++;
                     hint.Child = null;
                     ((PLA_Tab)Page).Hint();
+                    PLA_Tab.NextHintCondition = true;
                 }
 
             }
@@ -454,6 +464,7 @@ namespace FinalAppTest.Views
                     Mult_Niv_Tab.NbHint++;
                     hint.Child = null;
                     ((Mult_Niv_Tab)Page).Hint();
+                    Mult_Niv_Tab.NextHintCondition = true;
                 }
 
             }
@@ -464,6 +475,7 @@ namespace FinalAppTest.Views
                     Mult_Niv_Recyclage_Tab.NbHint++;
                     hint.Child = null;
                     ((Mult_Niv_Recyclage_Tab)Page).Hint();
+                    Mult_Niv_Recyclage_Tab.NextHintCondition = true;
                 }
 
             }
