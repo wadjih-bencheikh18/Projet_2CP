@@ -414,6 +414,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\FinalAppTest.exe.config" />
     <None Include="Design\projectGuides.guides" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -558,43 +559,161 @@
     <Resource Include="Pics\Replay.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pageweb\images\AddInterruptions.png" />
-    <Resource Include="Pageweb\images\Aide.png" />
-    <Resource Include="Pageweb\images\AjouterProcess.png" />
-    <Resource Include="Pageweb\images\Algos2.png" />
-    <Resource Include="Pageweb\images\Apropos.png" />
-    <Resource Include="Pageweb\images\Back.png" />
-    <Resource Include="Pageweb\images\Cours.png" />
-    <Resource Include="Pageweb\images\Gantt.png" />
-    <Resource Include="Pageweb\images\Generer.png" />
-    <Resource Include="Pageweb\images\Hint.png" />
-    <Resource Include="Pageweb\images\Home.png" />
-    <Resource Include="Pageweb\images\Interruptions.png" />
-    <Resource Include="Pageweb\images\Interupt.png" />
-    <Resource Include="Pageweb\images\laptop.png" />
-    <Resource Include="Pageweb\images\Logo.jpg" />
-    <Resource Include="Pageweb\images\Modifier.png" />
-    <Resource Include="Pageweb\images\ModifierOptions.png" />
-    <Resource Include="Pageweb\images\NbProcess.png" />
-    <Resource Include="Pageweb\images\PageAccueil.png" />
-    <Resource Include="Pageweb\images\PageSaisie.png" />
-    <Resource Include="Pageweb\images\Pause.png" />
-    <Resource Include="Pageweb\images\Replay.png" />
-    <Resource Include="Pageweb\images\Results.png" />
-    <Resource Include="Pageweb\images\rocket.png" />
-    <Resource Include="Pageweb\images\Simulation.png" />
-    <Resource Include="Pageweb\images\SimulationPage.png" />
-    <Resource Include="Pageweb\images\simuler.png" />
-    <Resource Include="Pageweb\images\SimulerBtn.png" />
-    <Resource Include="Pageweb\images\Start.png" />
-    <Resource Include="Pageweb\images\Supprimer.png" />
-    <Resource Include="Pageweb\images\SupprimerProcess.png" />
-    <Resource Include="Pageweb\images\TableauProcess.png" />
-    <Resource Include="Pageweb\images\Transitions.png" />
-    <Resource Include="Pageweb\images\Vitesse.png" />
-    <Resource Include="Pageweb\images\VoirCours.png" />
-    <Content Include="Pageweb\index.html" />
-    <Content Include="Pageweb\style.css" />
+    <Resource Include="Pageweb\images\AddInterruptions.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Aide.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\AjouterProcess.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Algos2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Apropos.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Back.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Cours.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Gantt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Generer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Hint.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Home.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Interruptions.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Interupt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\laptop.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Modifier.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\ModifierOptions.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\NbProcess.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\PageAccueil.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\PageSaisie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Pause.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Replay.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Results.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\rocket.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Simulation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\SimulationPage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\simuler.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\SimulerBtn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Start.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Supprimer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\SupprimerProcess.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\TableauProcess.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Transitions.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Vitesse.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\VoirCours.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pageweb\images\Logo.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="bin\Debug\FinalAppTest.exe" />
+    <Content Include="bin\Debug\FinalAppTest.pdb" />
+    <Resource Include="bin\Debug\Pageweb\images\AddInterruptions.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Aide.png" />
+    <Resource Include="bin\Debug\Pageweb\images\AjouterProcess.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Algos2.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Apropos.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Back.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Cours.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Gantt.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Generer.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Hint.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Home.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Interruptions.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Interupt.png" />
+    <Resource Include="bin\Debug\Pageweb\images\laptop.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Logo.jpg" />
+    <Resource Include="bin\Debug\Pageweb\images\Modifier.png" />
+    <Resource Include="bin\Debug\Pageweb\images\ModifierOptions.png" />
+    <Resource Include="bin\Debug\Pageweb\images\NbProcess.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageAccueil.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisie.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Pause.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Replay.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Results.png" />
+    <Resource Include="bin\Debug\Pageweb\images\rocket.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Simulation.png" />
+    <Resource Include="bin\Debug\Pageweb\images\SimulationPage.png" />
+    <Resource Include="bin\Debug\Pageweb\images\simuler.png" />
+    <Resource Include="bin\Debug\Pageweb\images\SimulerBtn.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Start.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Supprimer.png" />
+    <Resource Include="bin\Debug\Pageweb\images\SupprimerProcess.png" />
+    <Resource Include="bin\Debug\Pageweb\images\TableauProcess.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Transitions.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Vitesse.png" />
+    <Resource Include="bin\Debug\Pageweb\images\VoirCours.png" />
+    <Content Include="bin\Debug\Pageweb\index.html" />
+    <Content Include="bin\Debug\Pageweb\style.css" />
+    <Content Include="bin\Debug\WpfCharts.dll" />
+    <Content Include="bin\Debug\WpfCharts.pdb" />
+    <Content Include="Pageweb\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pageweb\style.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

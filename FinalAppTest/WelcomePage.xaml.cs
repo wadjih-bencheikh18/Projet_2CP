@@ -111,7 +111,8 @@ namespace FinalAppTest
 
         private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start("./Pageweb/index.html");
+            System.Diagnostics.Process.Start(AppDomain.CurrentDomain.BaseDirectory + "Pageweb/index.html");
+            
 
         }
     }
