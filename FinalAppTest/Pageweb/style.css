@@ -119,11 +119,3 @@ a{
     font-weight: 500;
     font-size: 36px;
 }
-footer{
-    bottom: 0;
-    width: 100%;
-    z-index: 3000;
-    background: #fff;
-    padding: 5px 10px;
-    box-shadow: 1px 0px 2px 1px #888888;
-}

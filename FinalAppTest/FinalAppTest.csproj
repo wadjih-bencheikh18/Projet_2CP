@@ -561,7 +561,6 @@
     <Resource Include="Pageweb\images\AddInterruptions.png" />
     <Resource Include="Pageweb\images\Aide.png" />
     <Resource Include="Pageweb\images\AjouterProcess.png" />
-    <Resource Include="Pageweb\images\Algos2.png" />
     <Resource Include="Pageweb\images\Apropos.png" />
     <Resource Include="Pageweb\images\Back.png" />
     <Resource Include="Pageweb\images\Cours.png" />
