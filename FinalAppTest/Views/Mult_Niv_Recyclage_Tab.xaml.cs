@@ -211,13 +211,13 @@ namespace FinalAppTest.Views
             niv = int.Parse(nivId.Text);
             algo = algoSelect.SelectedIndex;
 
-            if ((algo==7 || algo==8) && (!Int32.TryParse(nivQuantum.Text, out q) || q<= 0))  // get durée
+            if ((algo==6 || algo==7) && (!Int32.TryParse(nivQuantum.Text, out q) || q<= 0))  // get durée
             {
                 RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
             string quan = q.ToString();
-            if (algo != 7 && algo!=8) quan = "/";
+            if (algo != 7 && algo!=6) quan = "/";
             if (valide && !modifier)  // si tous est correcte
             {
                 if (NbHint == 6) HintSuivant();
@@ -231,7 +231,7 @@ namespace FinalAppTest.Views
                     quantum = quan
                 };
                 pro.InsererNivMLR(NiveauGrid, nivId, algoSelect, nivQuantum, ajouterNV);
-                if (algo == 7 || algo==8) niveaux[indiceniv] = new Niveau(algo, q);
+                if (algo == 7 || algo==6) niveaux[indiceniv] = new Niveau(algo, q);
                 else niveaux[indiceniv] = new Niveau(algo);
                 indiceniv++;
                 randNiv.Text = indiceniv.ToString();
@@ -262,11 +262,11 @@ namespace FinalAppTest.Views
         private void algoSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!IsLoaded) return;
-            if (algoSelect.SelectedIndex == 7 || algoSelect.SelectedIndex == 8)
+            if (algoSelect.SelectedIndex == 7 || algoSelect.SelectedIndex == 6)
 
             {
                 RectQuantum.Fill = (Brush)new BrushConverter().ConvertFrom("#FFEFF3F9");
-                if (algoSelect.SelectedIndex == 8) OptionText.Text = "Temps de MAJ";
+                if (algoSelect.SelectedIndex == 7) OptionText.Text = "Temps de MAJ";
                 else OptionText.Text = "Quantum";
                 nivQuantum.Text = "5";
                 nivQuantum.IsReadOnly = false;
@@ -320,12 +320,12 @@ namespace FinalAppTest.Views
             {
                 return;
             }
-            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PAR", "PSR", "Slack-Time",  "RR", "PARD" };
+            string[] algos = { "PAPS", "PCA", "PLA", "PCTR", "PAR", "PSR",  "RR", "PARD" };
             Random random = new Random();
-            int niv,algo= random.Next(0, 9), q = 0;
+            int niv,algo= random.Next(0, 8), q = 0;
             string type=algos[algo];
             niv = indiceniv;
-            if (algo == 7|| algo ==8) 
+            if (algo == 7|| algo ==6) 
             {
                 q= random.Next(1, 6);
                 niveaux[indiceniv] = new Niveau(algo, q);
@@ -335,7 +335,7 @@ namespace FinalAppTest.Views
             randNiv.Text = indiceniv.ToString();
             nivId.Text = indiceniv.ToString();
             string quan = q.ToString();
-            if (algo != 7 && algo !=8) quan = "/";
+            if (algo != 7 && algo !=6) quan = "/";
             AffichageProcessus pro = new AffichageProcessus
             {
                 id = niv,
@@ -923,7 +923,7 @@ namespace FinalAppTest.Views
         private void NbProcessusTextBoxx_GotFocus(object sender, RoutedEventArgs e)
         {
             if (!IsLoaded) return;
-            if (algoSelect.SelectedIndex == 7 || algoSelect.SelectedIndex == 8)
+            if (algoSelect.SelectedIndex == 7 || algoSelect.SelectedIndex == 6)
             {
                 ((TextBox)sender).Text = "";
             }
