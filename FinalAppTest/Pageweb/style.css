@@ -1,8 +1,9 @@
-html{
+html {
     box-sizing: border-box;
     font-family: lexend;
     background-color: #eaf2ff;
     line-height: 2em;
+    scroll-padding-top: 4rem;
 }
 body{
     margin:0;
@@ -84,7 +85,7 @@ body{
 #logo_text{
     font-size: 32px;
     color: white;
-    margin: 5px;
+    margin: 10px;
     margin-left: 15px;
     text-shadow: 1px 1px 4px #000000;
 }
@@ -118,12 +119,4 @@ a{
     text-align: center;
     font-weight: 500;
     font-size: 36px;
-}
-footer{
-    bottom: 0;
-    width: 100%;
-    z-index: 3000;
-    background: #fff;
-    padding: 5px 10px;
-    box-shadow: 1px 0px 2px 1px #888888;
 }
