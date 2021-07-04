@@ -414,13 +414,18 @@
                 </Grid>
 
             </Grid>
-            <Grid Margin="250,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50">
+            <Grid Margin="250,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="100">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Temps :" FontWeight="Bold" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="16" />
-                <TextBlock Grid.Column="1" x:Name="TempsView" HorizontalAlignment="Center" Text="0" VerticalAlignment="Center" TextAlignment="Center" Margin="0" FontSize="16"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.ColumnSpan="2" x:Name="SimAlgo" Text="Simulation PAPS" FontSize="25" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Temps :" FontWeight="Bold" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Center" FontSize="16" />
+                <TextBlock Grid.Column="1" Grid.Row="1" x:Name="TempsView" HorizontalAlignment="Left" Text="0" VerticalAlignment="Center" TextAlignment="Center" Margin="40,0,0,0" FontSize="16"/>
             </Grid>
         </Grid>
     </Grid>

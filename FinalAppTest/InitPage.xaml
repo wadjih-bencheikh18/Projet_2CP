@@ -351,7 +351,7 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0" Margin="20,15">
-                        <Rectangle  Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                        <Rectangle x:Name="paps" Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.5" Direction="-90" ShadowDepth="3" BlurRadius="15"/>
                             </Rectangle.Effect>
@@ -361,7 +361,7 @@
                     </Grid>
 
                     <Grid Grid.Row="1" Margin="20,15">
-                        <Rectangle  Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                        <Rectangle x:Name="rr" Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.5" Direction="-90" ShadowDepth="3" BlurRadius="15"/>
                             </Rectangle.Effect>
@@ -371,7 +371,7 @@
                     </Grid>
 
                     <Grid Grid.Row="2" Margin="20,15">
-                        <Rectangle  Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                        <Rectangle x:Name="psr" Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.5" Direction="-90" ShadowDepth="3" BlurRadius="15"/>
                             </Rectangle.Effect>
@@ -381,7 +381,7 @@
                     </Grid>
 
                     <Grid Grid.Row="3" Margin="20,15">
-                        <Rectangle  Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                        <Rectangle x:Name="par" Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.5" Direction="-90" ShadowDepth="3" BlurRadius="15"/>
                             </Rectangle.Effect>
@@ -391,7 +391,7 @@
                     </Grid>
 
                     <Grid Grid.Row="4" Margin="20,15">
-                        <Rectangle  Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                        <Rectangle x:Name="pard" Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.5" Direction="-90" ShadowDepth="3" BlurRadius="15"/>
                             </Rectangle.Effect>
@@ -401,7 +401,7 @@
                     </Grid>
 
                     <Grid Grid.Row="5" Margin="20,15">
-                        <Rectangle  Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                        <Rectangle x:Name="slacktime" Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.5" Direction="-90" ShadowDepth="3" BlurRadius="15"/>
                             </Rectangle.Effect>
@@ -424,7 +424,7 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="1" Margin="20,15">
-                        <Rectangle  Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                        <Rectangle x:Name="pca" Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.5" Direction="-90" ShadowDepth="3" BlurRadius="15"/>
                             </Rectangle.Effect>
@@ -434,7 +434,7 @@
                     </Grid>
 
                     <Grid Grid.Row="2" Margin="20,15">
-                        <Rectangle  Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                        <Rectangle x:Name="pctr" Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.5" Direction="-90" ShadowDepth="3" BlurRadius="15"/>
                             </Rectangle.Effect>
@@ -444,7 +444,7 @@
                     </Grid>
 
                     <Grid Grid.Row="3" Margin="20,15">
-                        <Rectangle  Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                        <Rectangle x:Name="pla" Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.5" Direction="-90" ShadowDepth="3" BlurRadius="15"/>
                             </Rectangle.Effect>
@@ -454,7 +454,7 @@
                     </Grid>
 
                     <Grid Grid.Row="4" Margin="20,15">
-                        <Rectangle  Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                        <Rectangle x:Name="mulniv" Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.5" Direction="-90" ShadowDepth="3" BlurRadius="15"/>
                             </Rectangle.Effect>
@@ -465,7 +465,7 @@
                     </Grid>
 
                     <Grid Grid.Row="5" Margin="20,15">
-                        <Rectangle  Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                        <Rectangle x:Name="mulnivrec" Fill="#FF000000" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.5" Direction="-90" ShadowDepth="3" BlurRadius="15"/>
                             </Rectangle.Effect>
