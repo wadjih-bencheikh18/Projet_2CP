@@ -371,7 +371,7 @@
                     </Grid>
 
                     <Grid Grid.Row="2" Margin="20,15">
-                        <Rectangle  Fill="Red" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
+                        <Rectangle  Fill="#FFA5D6FF" Opacity="1" RadiusY="15" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="15">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.5" Direction="-90" ShadowDepth="3" BlurRadius="15"/>
                             </Rectangle.Effect>
