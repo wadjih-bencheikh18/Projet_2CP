@@ -274,9 +274,15 @@
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend">Interruptions ?</TextBlock>
                             <CheckBox Cursor="Hand" Margin="0,0,10,0" x:Name="RandomizeInterrup" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
                         </Grid>
-                        <Rectangle Grid.Column="1" x:Name="RandomButton" Fill="#FF000000" RadiusY="25" Height="Auto" Width="Auto" Margin="5,22" StrokeThickness="0" RadiusX="25">
+                        <Rectangle Grid.Column="1" x:Name="RandomButton" RadiusY="25" Height="Auto" Width="Auto" Margin="5,22" StrokeThickness="0" RadiusX="25">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FF2E0B6B" Offset="1"/>
+                                    <GradientStop Color="#FF5118B6"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
                             <Rectangle.Effect>
-                                <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                                <DropShadowEffect x:Name="Add2Effect" Color="#FF5829AA" Opacity="0.5" Direction="-90" BlurRadius="10" ShadowDepth="2"/>
                             </Rectangle.Effect>
                         </Rectangle>
                         <Grid Grid.Column="1" Margin="5">
@@ -287,7 +293,55 @@
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF " FontFamily="Lexend">Générer</TextBlock>
                             <Image Grid.Column="1" Height="50" VerticalAlignment="Center" Source="Generate.png" HorizontalAlignment="Left" Width="20"/>
                         </Grid>
-                        <Rectangle Cursor="Hand" MouseEnter="RandomButton_MouseEnter" MouseLeave="RandomButton_MouseLeave" MouseLeftButtonDown="RandomButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="5,22" StrokeThickness="0" RadiusX="25"/>
+                        <Rectangle Cursor="Hand" MouseLeftButtonDown="RandomButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="5,22" StrokeThickness="0" RadiusX="25">
+                            <Rectangle.Triggers>
+                                <!-- Animates the rectangle's opacity. -->
+                                <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="Add2Effect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="Add2Effect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="15" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="Add2Effect" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="2" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation
+                                    Storyboard.TargetName="Add2Effect" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="10" Duration="0:0:1" >
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Rectangle.Triggers>
+                        </Rectangle>
                     </Grid>
                     <Grid Grid.Column="0">
                         <Grid.RowDefinitions>
