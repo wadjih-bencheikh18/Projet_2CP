@@ -127,6 +127,10 @@ namespace FinalAppTest.Views
             }
             if (valide)  // si tous est correcte
             {
+                RectProTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+                RectProDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+                RectProPrio.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+                RectProNiv.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 TempsArrivTextBox.Text = "0";
                 DureeTextBox.Text = "1";
                 PrioTextBox.Text = "0";

@@ -250,7 +250,7 @@
                     <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
                     <TextBlock Margin="10,0,10,20 " Text="Le Tourniquet" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
                 </StackPanel>
-                <StackPanel x:Name="Random" Grid.Row="1" Margin="0,200,0,0" >
+                <StackPanel x:Name="Random" Grid.Row="1" Margin="0,180,0,0" >
                     <TextBlock Margin="10,0,0,10 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
                     <Grid Height="200">
                         <Grid.ColumnDefinitions>
@@ -309,7 +309,7 @@
                         </Grid>
                     </Grid>
                 </StackPanel>
-                <Grid x:Name="Simuler" Height="100" Width="250" Margin="0,430,0,0" Grid.Row="1">
+                <Grid x:Name="Simuler" Height="100" Width="250" Margin="0,380,0,0" Grid.Row="1" Grid.RowSpan="2">
                         <Rectangle x:Name="StartButton" Margin="10" Grid.Row="0" Fill="#F16022" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
                             <Rectangle.Effect>
                                 <DropShadowEffect Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
