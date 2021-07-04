@@ -190,6 +190,7 @@
                                 </EventTrigger>
                             </Ellipse.Triggers>
                         </Ellipse>
+                        <Ellipse x:Name="playCover" Cursor="No" Height="65" Width="65" Visibility="Hidden" Fill="#FF575757" Opacity="0.5"/>
                     </Grid>
 
                     <Grid Grid.Column="1">

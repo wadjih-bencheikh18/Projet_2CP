@@ -66,6 +66,7 @@ namespace Ordonnancement
                 }
             }
             TauxUtil(temps);
+            SimulationPage.play.Visibility = Visibility.Hidden;
             return temps;
         }
         #endregion

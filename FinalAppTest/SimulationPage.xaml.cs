@@ -30,6 +30,7 @@ namespace FinalAppTest
         public static bool paused = false;
         public static bool stop = false;
         public static double Speed = 2;
+        public static Ellipse play;
 
         public SimulationPage(Ordonnancement.Ordonnancement prog)
         {
@@ -41,6 +42,7 @@ namespace FinalAppTest
             save = this;
             activated = false;
             paused = false;
+            play = playCover;
         }
 
         public SimulationPage(Ordonnancement.Ordonnancement prog, int i)
@@ -63,6 +65,7 @@ namespace FinalAppTest
             else if (previous_algo_num == 6) SimAlgo.Text = "Simulation PCTR";
             else if (previous_algo_num == 7) SimAlgo.Text = "Simulation PLA";
             else if (previous_algo_num == 8) SimAlgo.Text = "Simulation Slack Time";
+            play = playCover;
         }
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
@@ -70,6 +73,7 @@ namespace FinalAppTest
             if (!activated) prog.Executer(ListePretsView, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
             else if (paused) paused = false;
             activated = true;
+            playCover.Visibility = Visibility.Visible;
         }
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
@@ -90,6 +94,7 @@ namespace FinalAppTest
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
             paused = true;
+            playCover.Visibility = Visibility.Hidden;
         }
 
         private void VitesseSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -126,7 +131,7 @@ namespace FinalAppTest
             TempsView.Text = "0";
             await Task.Delay(2000);
             stop = false;
-
+            playCover.Visibility = Visibility.Visible;
             _ = prog.Executer(ListePretsView, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
         }
 
@@ -146,7 +151,7 @@ namespace FinalAppTest
             if (previous_algo_num == 0) 
             { 
                 MainWindow.main.Content = new InitPage { DataContext = new PAPS_ViewModel() };
-                ((InitPage)MainWindow.main.Content).paps.Fill = (Brush)new BrushConverter().ConvertFrom("#F16022");
+                //((InitPage)MainWindow.main.Content).paps.Fill = (Brush)new BrushConverter().ConvertFrom("#F16022");
             }
             else if (previous_algo_num == 1)
             {
@@ -154,31 +159,24 @@ namespace FinalAppTest
             }
             else if (previous_algo_num == 2) {
                 MainWindow.main.Content = new InitPage { DataContext = new PSR_ViewModel() };
-                ((InitPage)MainWindow.main.Content).psr.Fill = (Brush)new BrushConverter().ConvertFrom("#F16022");
             }
             else if (previous_algo_num == 3) {
                 MainWindow.main.Content = new InitPage { DataContext = new PAR_ViewModel() };
-                ((InitPage)MainWindow.main.Content).par.Fill = (Brush)new BrushConverter().ConvertFrom("#F16022");
             }
             else if (previous_algo_num == 4) {
                 MainWindow.main.Content = new InitPage { DataContext = new PARD_ViewModel() };
-                ((InitPage)MainWindow.main.Content).pard.Fill = (Brush)new BrushConverter().ConvertFrom("#F16022");
             }
             else if (previous_algo_num == 5) {
                 MainWindow.main.Content = new InitPage { DataContext = new PCA_ViewModel() };
-                ((InitPage)MainWindow.main.Content).pca.Fill = (Brush)new BrushConverter().ConvertFrom("#F16022");
             }
             else if (previous_algo_num == 6) {
                 MainWindow.main.Content = new InitPage { DataContext = new PCTR_ViewModel() };
-                ((InitPage)MainWindow.main.Content).pctr.Fill = (Brush)new BrushConverter().ConvertFrom("#F16022");
             }
             else if (previous_algo_num == 7) {
                 MainWindow.main.Content = new InitPage { DataContext = new PLA_ViewModel() };
-                ((InitPage)MainWindow.main.Content).pla.Fill = (Brush)new BrushConverter().ConvertFrom("#F16022");
             }
             else if (previous_algo_num == 8) {
                 MainWindow.main.Content = new InitPage { DataContext = new SlackTime_ViewModel() };
-                ((InitPage)MainWindow.main.Content).slacktime.Fill = (Brush)new BrushConverter().ConvertFrom("#F16022");
             }
         }
     }
