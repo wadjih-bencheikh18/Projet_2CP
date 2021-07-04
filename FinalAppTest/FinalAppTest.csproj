@@ -420,11 +420,47 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Next.bmp" />
+    <Resource Include="Resources\Next.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="bin\Debug\Pageweb\images\AddInterruptions.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Aide.png" />
+    <Resource Include="bin\Debug\Pageweb\images\AjouterProcess.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Apropos.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Back.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Cours.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Gantt.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Generer.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Hint.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Home.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Interruptions.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Interupt.png" />
+    <Resource Include="bin\Debug\Pageweb\images\laptop.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Logo.jpg" />
+    <Resource Include="bin\Debug\Pageweb\images\Modifier.png" />
+    <Resource Include="bin\Debug\Pageweb\images\ModifierOptions.png" />
+    <Resource Include="bin\Debug\Pageweb\images\NbProcess.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageAccueil.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisie.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Pause.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Replay.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Results.png" />
+    <Resource Include="bin\Debug\Pageweb\images\rocket.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Simulation.png" />
+    <Resource Include="bin\Debug\Pageweb\images\SimulationPage.png" />
+    <Resource Include="bin\Debug\Pageweb\images\simuler.png" />
+    <Resource Include="bin\Debug\Pageweb\images\SimulerBtn.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Start.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Supprimer.png" />
+    <Resource Include="bin\Debug\Pageweb\images\SupprimerProcess.png" />
+    <Resource Include="bin\Debug\Pageweb\images\TableauProcess.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Transitions.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Vitesse.png" />
+    <Resource Include="bin\Debug\Pageweb\images\VoirCours.png" />
     <Resource Include="Views\Ajouter.png" />
   </ItemGroup>
   <ItemGroup>
@@ -470,12 +506,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pics\Next.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Next.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Next.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pics\aprop1.png" />
@@ -661,45 +691,54 @@
     </Resource>
     <Content Include="bin\Debug\FinalAppTest.exe" />
     <Content Include="bin\Debug\FinalAppTest.pdb" />
-    <Resource Include="bin\Debug\Pageweb\images\AddInterruptions.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Aide.png" />
-    <Resource Include="bin\Debug\Pageweb\images\AjouterProcess.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Algos2.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Apropos.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Back.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Cours.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Gantt.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Generer.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Hint.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Home.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Interruptions.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Interupt.png" />
-    <Resource Include="bin\Debug\Pageweb\images\laptop.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Logo.jpg" />
-    <Resource Include="bin\Debug\Pageweb\images\Modifier.png" />
-    <Resource Include="bin\Debug\Pageweb\images\ModifierOptions.png" />
-    <Resource Include="bin\Debug\Pageweb\images\NbProcess.png" />
-    <Resource Include="bin\Debug\Pageweb\images\PageAccueil.png" />
-    <Resource Include="bin\Debug\Pageweb\images\PageSaisie.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Pause.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Replay.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Results.png" />
-    <Resource Include="bin\Debug\Pageweb\images\rocket.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Simulation.png" />
-    <Resource Include="bin\Debug\Pageweb\images\SimulationPage.png" />
-    <Resource Include="bin\Debug\Pageweb\images\simuler.png" />
-    <Resource Include="bin\Debug\Pageweb\images\SimulerBtn.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Start.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Supprimer.png" />
-    <Resource Include="bin\Debug\Pageweb\images\SupprimerProcess.png" />
-    <Resource Include="bin\Debug\Pageweb\images\TableauProcess.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Transitions.png" />
-    <Resource Include="bin\Debug\Pageweb\images\Vitesse.png" />
-    <Resource Include="bin\Debug\Pageweb\images\VoirCours.png" />
-    <Content Include="bin\Debug\Pageweb\index.html" />
-    <Content Include="bin\Debug\Pageweb\style.css" />
+    <Resource Include="bin\Debug\Pageweb\images\AjouterNiveau.png" />
+    <Resource Include="bin\Debug\Pageweb\images\AjouterProcessPSR.png" />
+    <Resource Include="bin\Debug\Pageweb\images\AjouterProcessST.png" />
+    <Resource Include="bin\Debug\Pageweb\images\ComparerBtn.png" />
+    <Resource Include="bin\Debug\Pageweb\images\InterruptPSR.png" />
+    <Resource Include="bin\Debug\Pageweb\images\ModifierLevel1.png" />
+    <Resource Include="bin\Debug\Pageweb\images\ModifierLevel2.png" />
+    <Resource Include="bin\Debug\Pageweb\images\ModifierOptionsPSR.png" />
+    <Resource Include="bin\Debug\Pageweb\images\NbLevels.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Next.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageAlgos1.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageAlgos2.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageComparaison.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisieComparaison.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisieML.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisieML2.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisieMLR.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisieMLR2.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisiePAR.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisiePARD.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisiePCA.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisiePCTR.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisiePLA.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisiePSR.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisieRR.png" />
+    <Resource Include="bin\Debug\Pageweb\images\PageSaisieST.png" />
+    <Resource Include="bin\Debug\Pageweb\images\ProcessusinML.png" />
+    <Resource Include="bin\Debug\Pageweb\images\quantum.png" />
+    <Resource Include="bin\Debug\Pageweb\images\SelectionsAlgos.png" />
+    <Resource Include="bin\Debug\Pageweb\images\SpiderChart.png" />
+    <Resource Include="bin\Debug\Pageweb\images\TableauResultats.png" />
+    <Resource Include="bin\Debug\Pageweb\images\TempsAtt.png" />
+    <Resource Include="bin\Debug\Pageweb\images\TempsMAJ.png" />
+    <Resource Include="bin\Debug\Pageweb\images\Terminer.png" />
+    <Resource Include="bin\Debug\Pageweb\favicon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="bin\Debug\Pageweb\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Pageweb\style.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="bin\Debug\WpfCharts.dll" />
     <Content Include="bin\Debug\WpfCharts.pdb" />
+    <Resource Include="Pageweb\favicon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Pageweb\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
