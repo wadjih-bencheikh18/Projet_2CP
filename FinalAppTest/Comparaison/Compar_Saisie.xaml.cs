@@ -65,10 +65,11 @@ namespace FinalAppTest.Comparaison
                         id = i,
                         tempsArriv = r.Next(20),
                         duree = r.Next(1, 5),
-                        prio = r.Next(1, 20)
+                        prio = r.Next(1, 20),
+                        deadline = r.Next(10, 20)
                     };
-                    Comp_TabRow processus = pro.InsererComp(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
-                    Processus proc = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);
+                    Comp_TabRow processus = pro.InsererComp(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, DeadlineTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
+                    Processus proc = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.deadline);
                     processus.parent.Items.RemoveAt(processus.parent.Items.Count - 1);  // remove the ajouter_row
                     for (int j = 0; ((bool)RandomizeInterrup.IsChecked) && pro.duree > 1 && j < r.Next(0, 3); j++)  // générer des interruptions
                     {
@@ -111,14 +112,21 @@ namespace FinalAppTest.Comparaison
                 RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
                 valide = false;
             }
+            if (!Int32.TryParse(DeadlineTextBox.Text, out int deadline) || deadline < duree)  // get deadline
+            {
+                RectDeadline.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
+                valide = false;
+            }
             if (valide)  // si tous est correcte
             {
                 RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
+                RectDeadline.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
                 TempsArrivTextBox.Text = "0";
                 DureeTextBox.Text = "1";
                 PrioTextBox.Text = "0";
+                DeadlineTextBox.Text = "0";
                 if (!modifier)  // un nouveau processus
                 {
                     id = indice;
@@ -128,9 +136,10 @@ namespace FinalAppTest.Comparaison
                         id = id,
                         tempsArriv = tempsArrive,
                         duree = duree,
-                        prio = prio
+                        prio = prio,
+                        deadline = deadline
                     };
-                    pro.InsererComp(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);
+                    pro.InsererComp(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, DeadlineTextBox, ajouterTB);
                     listeProc.Add(new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio));  // added to the program
                     indice++;
                 }
@@ -142,12 +151,13 @@ namespace FinalAppTest.Comparaison
                         tempsArriv = tempsArrive,
                         duree = duree,
                         prio = prio,
+                        deadline = deadline,
                         Background = "#FFEFF3F9"
                     };
                     Comp_TabRow item = (Comp_TabRow)ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)];
                     item.DataContext = pro;
                     ProcessusGrid.Children[ProcessusGrid.Children.IndexOf(proModifier)] = item;
-                    listeProc[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);  // modifier le processus correspondant
+                    listeProc[ProcessusGrid.Children.IndexOf(proModifier)] = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio, pro.deadline);  // modifier le processus correspondant
                     modifier = false;
                     IdTextBox.Text = indice.ToString();
                     ajouterTB.Text = "Ajouter";
@@ -253,14 +263,14 @@ namespace FinalAppTest.Comparaison
             }
             else if (comp.IndexOf(0) >= 0)
             {
-                if (comp.IndexOf(0) == comp.Count - 1) algos[comp.IndexOf(0)].Text = "- None";
+                if (comp.IndexOf(0) == comp.Count - 1) algos[comp.IndexOf(0)].Text = "- ";
                 else
                 {
                     for (int i = comp.IndexOf(0); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "- None";
+                    algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(0);
                 PapsBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -283,14 +293,14 @@ namespace FinalAppTest.Comparaison
             }
             else if (comp.IndexOf(1) >= 0)
             {
-                if (comp.IndexOf(1) == comp.Count - 1) algos[comp.IndexOf(1)].Text = "- None";
+                if (comp.IndexOf(1) == comp.Count - 1) algos[comp.IndexOf(1)].Text = "- ";
                 else
                 {
                     for (int i = comp.IndexOf(1); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "- None";
+                    algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(1);
                 PcaBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -313,14 +323,14 @@ namespace FinalAppTest.Comparaison
             }
             else if (comp.IndexOf(4) >= 0)
             {
-                if (comp.IndexOf(4) == comp.Count - 1) algos[comp.IndexOf(4)].Text = "- None";
+                if (comp.IndexOf(4) == comp.Count - 1) algos[comp.IndexOf(4)].Text = "- ";
                 else
                 {
                     for (int i = comp.IndexOf(4); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "- None";
+                    algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(4);
                 ParBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -343,14 +353,14 @@ namespace FinalAppTest.Comparaison
             }
             else if (comp.IndexOf(6) >= 0)
             {
-                if (comp.IndexOf(6) == comp.Count - 1) algos[comp.IndexOf(6)].Text = "- None";
+                if (comp.IndexOf(6) == comp.Count - 1) algos[comp.IndexOf(6)].Text = "- ";
                 else
                 {
                     for (int i = comp.IndexOf(6); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "- None";
+                    algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(6);
                 SlackBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -373,14 +383,14 @@ namespace FinalAppTest.Comparaison
             }
             else if (comp.IndexOf(2) >= 0)
             {
-                if (comp.IndexOf(2) == comp.Count - 1) algos[comp.IndexOf(2)].Text = "- None";
+                if (comp.IndexOf(2) == comp.Count - 1) algos[comp.IndexOf(2)].Text = "- ";
                 else
                 {
                     for (int i = comp.IndexOf(2); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "- None";
+                    algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(2);
                 PlaBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -403,14 +413,14 @@ namespace FinalAppTest.Comparaison
             }
             else if (comp.IndexOf(3) >= 0)
             {
-                if (comp.IndexOf(3) == comp.Count - 1) algos[comp.IndexOf(3)].Text = "- None";
+                if (comp.IndexOf(3) == comp.Count - 1) algos[comp.IndexOf(3)].Text = "- ";
                 else
                 {
                     for (int i = comp.IndexOf(3); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "- None";
+                    algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(3);
                 PctrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -433,14 +443,14 @@ namespace FinalAppTest.Comparaison
             }
             else if (comp.IndexOf(5) >= 0)
             {
-                if (comp.IndexOf(5) == comp.Count - 1) algos[comp.IndexOf(5)].Text = "- None";
+                if (comp.IndexOf(5) == comp.Count - 1) algos[comp.IndexOf(5)].Text = "- ";
                 else
                 {
                     for (int i = comp.IndexOf(5); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "- None";
+                    algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(5);
                 PsrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -466,14 +476,14 @@ namespace FinalAppTest.Comparaison
             }
             else if (comp.IndexOf(7) >= 0)
             {
-                if (comp.IndexOf(7) == comp.Count - 1) algos[comp.IndexOf(7)].Text = "- None";
+                if (comp.IndexOf(7) == comp.Count - 1) algos[comp.IndexOf(7)].Text = "- ";
                 else
                 {
                     for (int i = comp.IndexOf(7); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "- None";
+                    algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(7);
                 RRBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
@@ -501,14 +511,14 @@ namespace FinalAppTest.Comparaison
             }
             else if (comp.IndexOf(8) >= 0)
             {
-                if (comp.IndexOf(8) == comp.Count - 1) algos[comp.IndexOf(8)].Text = "- None";
+                if (comp.IndexOf(8) == comp.Count - 1) algos[comp.IndexOf(8)].Text = "- ";
                 else
                 {
                     for (int i = comp.IndexOf(8); i < comp.Count - 1; i++)
                     {
                         algos[i].Text = algos[i + 1].Text;
                     }
-                    algos[comp.Count - 1].Text = "- None";
+                    algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(8);
                 PARDBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");

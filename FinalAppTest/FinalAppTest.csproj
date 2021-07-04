@@ -457,9 +457,6 @@
     <Resource Include="Pics\Loading.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pics\Page d%27accueil.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Pics\background_rotated.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -559,6 +556,7 @@
     <Resource Include="Pics\Replay.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Pics\Page d%27accueil.png" />
     <Resource Include="Pageweb\images\AddInterruptions.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

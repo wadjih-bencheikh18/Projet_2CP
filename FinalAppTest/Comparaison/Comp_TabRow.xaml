@@ -33,20 +33,22 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Rectangle Grid.ColumnSpan="5" Fill="{Binding Background}" RadiusX="5" RadiusY="5"></Rectangle>
+                        <Rectangle Grid.ColumnSpan="6" Fill="{Binding Background}" RadiusX="5" RadiusY="5"></Rectangle>
                         <TextBlock x:Name="idTest" Grid.Column="0" Text="{Binding id}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                         <TextBlock x:Name="tempsArrTest" Grid.Column="1" Text="{Binding tempsArriv}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                         <TextBlock x:Name="dureeTest" Grid.Column="2" Text="{Binding duree}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                         <TextBlock x:Name="prioTest" Grid.Column="3" Text="{Binding prio}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
+                        <TextBlock x:Name="deadlineTest" Grid.Column="4" Text="{Binding deadline}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Lexend"/>
                         <Rectangle x:Name="ExpandRect" Grid.ColumnSpan="5" Fill="#0000" RadiusX="5" RadiusY="5" Cursor="Hand" MouseLeftButtonDown="Afficher_Interrup" >
                         </Rectangle>
                         <Rectangle x:Name="ColorRect" Fill="Indigo" RadiusX="5" RadiusY="5" Width="15" HorizontalAlignment="Left" ></Rectangle>
-                        <Grid Grid.Column="4">
+                        <Grid Grid.Column="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>

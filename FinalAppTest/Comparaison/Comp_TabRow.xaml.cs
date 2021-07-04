@@ -33,12 +33,13 @@ namespace FinalAppTest.Comparaison
         private TextBox tempsArriv;
         private TextBox duree;
         private TextBox prio;
+        private TextBox deadline;
         private TextBlock Ajouter;
         private StackPanel Table;
 
         public TreeViewItem parent;
 
-        public Comp_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, StackPanel Table, TextBlock Ajouter)
+        public Comp_TabRow(TextBox id, TextBox tempsArriv, TextBox duree, TextBox prio, TextBox deadline, StackPanel Table, TextBlock Ajouter)
         {
             InitializeComponent();
             this.id = id;
@@ -46,6 +47,7 @@ namespace FinalAppTest.Comparaison
             this.duree = duree;
             this.Table = Table;
             this.prio = prio;
+            this.deadline = deadline;
             this.Ajouter = Ajouter;
 
             parent = TreeViewParent;
@@ -59,6 +61,7 @@ namespace FinalAppTest.Comparaison
             tempsArriv.Text = tempsArrTest.Text;
             duree.Text = dureeTest.Text;
             prio.Text = prioTest.Text;
+            deadline.Text = deadlineTest.Text;
             Compar_Saisie.modifier = true;
             Compar_Saisie.proModifier = this;
             Ajouter.Text = "Modifier";
