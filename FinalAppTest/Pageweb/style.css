@@ -1,8 +1,9 @@
-html{
+html {
     box-sizing: border-box;
     font-family: lexend;
     background-color: #eaf2ff;
     line-height: 2em;
+    scroll-padding-top: 4rem;
 }
 body{
     margin:0;
