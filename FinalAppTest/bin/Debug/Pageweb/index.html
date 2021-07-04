@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CPU Simulator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div>
+            <header class="header">
+                <img src="images/Logo.jpg" height="60 px" width="60 px">
+                <p id="logo_text">CPU Simulator</p>
+                <a id="table" href="#TableDeMatiere">Table de matiere</a>
+            </header>
+            <main>
+                <section class="cards_container">
+                    <div class="card">
+                        <a href="#commencer" title="getting_started">
+                            <img class="card_image" src="images/rocket.png" height="150px" width="150px">
+                            <p class="card_title">Commencer</p>
+                            <p class="card_description">Petite introduction <br> pour commencer <br> CPU Simulator</p>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="#UsingCS" title="Using_CS">
+                            <img class="card_image" src="images/laptop.png" height="200px" width="200px">
+                            <p class="card_title">Apprende avec <br> CPU Simulator</p>
+                            <p class="card_description">Savoir comment bien utiliser CPU Simulator, pour avoir un meilleur apprentissage</p>
+                        </a>
+                    </div>
+                </section>
+                <section>
+                    <div id="TableDeMatiere">
+                        <p id="titre">Table de Matiere</p>
+                        <ol>
+                            <li class="big_titles" id="commencer">Commencer avec CPU Simulator</li>
+                            <ol>
+                                <li class="first_titles">Introduction à CPU Simulator</li>
+                                <ol>
+                                    <li><a href="#definition" class="second titles">Qu'est ce que CPU Simulator ?</a></li>
+                                    <li><a href="#apropos" class="second titles">Qui sommes nous ?</a></li>
+                                </ol>
+                                <li class="first_titles"><a href="#guide">Commencer avec CPU Simulator : Un guide rapide d'utilisation</a></li>
+                            </ol>
+                            <br>
+                            <li class="big_titles">Apprende avec CPU Simulator</li>
+                            <ol>
+                                <li class="first_titles"><a href="#accueil"> La page d'accueil</li>                            
+                                <li class="first_titles">La simulation</a></li>
+                                <ol>
+                                    <li class="second titles"><a href="simulation">Comment lancer la simulation ?</a></li>
+                                    <li class="second titles">Comment remplir le tableau des processus ?</li>
+                                    <ol>
+                                        <li class="third_title"><a href="#paps">PAPS : Premier Arrivé Premier Servi</a></li>
+                                        <li class="third_title"><a href="#pca">PCA : Plus Court d'Abord</a></li>
+                                        <li class="third_title"><a href="#pla">PLA : Plus Long d'Abord</a></li>
+                                        <li class="third_title"><a href="#pctr">PCTR : Plus Court Temps Restant d'abord</a></li>
+                                        <li class="third_title"><a href="#psr">PSR : Algorithme avec priorité Sans Réquisition</a></li>
+                                        <li class="third_title"><a href="#par">PAR : Algorithme evec Priorité Avec Réquisition</a></li>
+                                        <li class="third_title"><a href="#pard">PARD : Algorithme evec Priorité Avec Réquisition Dynamique</a></li>
+                                        <li class="third_title"><a href="#rr">RR : Round Robin</a></li>
+                                        <li class="third_title"><a href="#st">Slack-Time : </a></li>
+                                        <li class="third_title"><a href="#ml">ML : Files multi-niveaux</a></li>
+                                        <li class="third_title"><a href="#mlr">ML avec recyclage : Files multi-niveaux avec recyclage</a></li>
+                                    </ol>
+                                    <li class="second titles"><a href="#simuler">La page de simulation</a></li>
+                                </ol>
+                                <li class="first_titles">La comparaison</li>
+                            </ol>      
+                        </ol>
+                    </div>
+                </section>
+                <section class="text">
+                    <div>
+                        <ol>
+                            <li class="big_titles">Commencer avec CPU Simulator</li>
+                            <ol>
+                                <li class="first_titles">Introduction à CPU Simulator</li>
+                                <ol>
+                                    <li id="definition">Qu'est ce que CPU Simulator ?</li>
+                                    <p>CPU Simulator est une application Desktop réalisée en 2021 dans le cadre du Projet 2CP permettant une simulation visuelle des processus afin d'aider les étudiants à comprendre le fonctionnement des différents algorithmes d'ordonnancement.</p>
+                                    <li id="apropos">Qui sommes nous ?</li>
+                                    <p>Notre équipe se compose de 6 étudiants de l'Ecole Nationale Supérieure d'Informatique d'Alger (ESI) de la promo 2019, encadrés par Mr Dahamni Foudil et Mme Charabi Leila.</p>
+                                    <p>Nos membres : </p>
+                                    <ul>
+                                        <li>Wadjih Bencheikh - Chef d'équipe</li>
+                                        <li>Aymen Bendhakir</li>
+                                        <li>Mounia Kias</li>
+                                        <li>Mohammed Nazim Keskes</li>
+                                        <li>Meriem Afaf Haddou</li>
+                                        <li>Mohammed Réda Sbaihi</li>
+                                    </ul>
+                                    <br>
+                                </ol>
+                                <li class="first_titles" id="guide">Commencer avec CPU Simulator : Un guide rapide d'utilisation</li> 
+                                Quand vous commencez CPU Simulator, vous trouvez une page d'accueil, Cliquez sur simuler et choisissez un parmi les algorithmes d'ordonnancement, puis remplissez le tableau des processus, et cliquez sur simuler pour commencer la simulation de votre algorithme choisi.  
+                                <br> Cliquez sue comparer et choisissez les algorithmes que vous voulez comparer, remplissez le tableau des processus et cliquez sur comparer pour avoir les résultats de comparaison.
+                                
+                            </ol>
+                            <br>
+                            <li class="big_titles">Apprende avec CPU Simulator</li>
+                                <ol>                            
+                                <li class="first_titles" id="accueil">La page d'accueil</li>
+                                <img src="images/PageAccueil.png" height="80%" width="80%">
+                                <p>Dans la page d'accueil, vous trouvez 2 boutons principaux, un pour faire la simulation visuelle des algorithmes 
+                                    d'ordonnancement, <br><img src="images/simuler.png"><br> et l'autre pour faire la comparaison entre les algorithmes selon quelques critères.
+                                    
+                                    En dessus, vous trouvez : <br>
+                                    A propos : Une petite présentation de notre application, et des memebres de l'équipe qui l'a réalisé.
+                                    <br>
+                                    <img src="images/Apropos.png">
+                                    <br> Aide : La page d'aide de l'application. <br>
+                                    <img src="images/Aide.png">
+                                    <br> Voir cours : Une présentation sur le cours "Gestion des processus" contenant les notions de processus et l'ordonnancement
+                                    des processus. <br>
+                                    <img src="images/VoirCours.png">
+                                </p>
+                                    <br>
+                                <li class="first_titles">La simulation</li>
+                                <ol>
+                                    <li class="second titles">Comment lancer la simulation ?</li>
+                                    <p>Pour lancer la simulation, cliquez sur le bouton "Simuler", <br><img src="images/simuler.png"><br> Puis choisissez un algorithme 
+                                        parmi les 11 algorithmes d'ordonnancement [PAPS, PCA, PLA, PCTR, PSR, PAR, PARD, Slack-Time, RR, ML, ML avec recyclage]
+                                        <img src="images/Algos1.png" height="80%" width="80%"><img src="images/Algos2.png" height="80%" width="80%">, <br> Ensuite, remplissez le tableau des processus,et vous cliquez sur "simuler".</p>
+                                    <li class="second titles">Comment remplir le tableau des processus ?</li>
+                                    <ol>
+                                        <li class="third_title" id="paps">PAPS</li>
+                                        <p>Vous avez 2 méthodes pour remplir le tableau des processus:
+                                            <br> 1\ Vous pouvez générer les données aléatoirement, en précisant le nombre des processus ,<br><img src="images/NbProcess.png"><br> et en spécifiant s'il y'a des
+                                            interruptions ou non ,<br><img src="images/Interruptions.png"><br> puis cliquez sur "Générer". <br><img src="images/Generer.png"><br>
+                                            <br> 2\ Vous pouvez remplir toutes les données de chaque processus[ID, Temps d'arrivée, Durée] par vous-même 
+                                            en entrant les options, puis en cliquant sur le boutton "Ajouter", <br><img src="images/AjouterProcess.png"><br>
+                                            Vous pouvez aussi modifier ces données en cliquant sur le boutton modifier,<br><img src="images/Modifier.png"><br> 
+                                            effectuez vos changement puis cliquez sur modifier pour confirmer vos modifications, <br><img src="images/ModifierOptions.png"><br>   
+                                            Pour gérer les interruptions, cliquez sur un processus, <br><img src="images/Interupt.png"><br> Entrez les options de l'intérruption et cliquez
+                                              sur "+", <br><img src="images/AddInterruptions.png"><br> Et pour les supprimer, cliquez sur "x" .
+                                              <br><img src="images/SupprimerProcess.png">
+                                            <li class="third_title" id="pca">PCA</li>
+                                            <p>Vous avez 2 méthodes pour remplir le tableau des processus:
+                                                <br> 1\ Vous pouvez générer les données aléatoirement, en précisant le nombre des processus ,<br><img src="images/NbProcess.png"><br> et en spécifiant s'il y'a des
+                                                interruptions ou non ,<br><img src="images/Interruptions.png"><br> puis cliquez sur "Générer". <br><img src="images/Generer.png"><br>
+                                                <br> 2\ Vous pouvez remplir toutes les données de chaque processus[ID, Temps d'arrivée, Durée] par vous-même 
+                                                en entrant les options, puis en cliquant sur le boutton "Ajouter", <br><img src="images/AjouterProcess.png"><br>
+                                                Vous pouvez aussi modifier ces données en cliquant sur le boutton modifier,<br><img src="images/Modifier.png"><br> 
+                                                effectuez vos changement puis cliquez sur modifier pour confirmer vos modifications, <br><img src="images/ModifierOptions.png"><br>   
+                                                Pour gérer les interruptions, cliquez sur un processus, <br><img src="images/Interupt.png"><br> Entrez les options de l'intérruption et cliquez
+                                                  sur "+", <br><img src="images/AddInterruptions.png"><br> Et pour les supprimer, cliquez sur "x" .
+                                                  <br><img src="images/SupprimerProcess.png">
+                                        <li class="third_title" id="pla">PLA</li>
+                                        <p>Vous avez 2 méthodes pour remplir le tableau des processus:
+                                            <br> 1\ Vous pouvez générer les données aléatoirement, en précisant le nombre des processus ,<br><img src="images/NbProcess.png"><br> et en spécifiant s'il y'a des
+                                            interruptions ou non ,<br><img src="images/Interruptions.png"><br> puis cliquez sur "Générer". <br><img src="images/Generer.png"><br>
+                                            <br> 2\ Vous pouvez remplir toutes les données de chaque processus[ID, Temps d'arrivée, Durée] par vous-même 
+                                            en entrant les options, puis en cliquant sur le boutton "Ajouter", <br><img src="images/AjouterProcess.png"><br>
+                                            Vous pouvez aussi modifier ces données en cliquant sur le boutton modifier,<br><img src="images/Modifier.png"><br> 
+                                            effectuez vos changement puis cliquez sur modifier pour confirmer vos modifications, <br><img src="images/ModifierOptions.png"><br>   
+                                            Pour gérer les interruptions, cliquez sur un processus, <br><img src="images/Interupt.png"><br> Entrez les options de l'intérruption et cliquez
+                                              sur "+", <br><img src="images/AddInterruptions.png"><br> Et pour les supprimer, cliquez sur "x" .
+                                              <br><img src="images/SupprimerProcess.png">
+                                        <li class="third_title" id="pctr">PCTR</li>
+                                        <p>Vous avez 2 méthodes pour remplir le tableau des processus:
+                                            <br> 1\ Vous pouvez générer les données aléatoirement, en précisant le nombre des processus ,<br><img src="images/NbProcess.png"><br> et en spécifiant s'il y'a des
+                                            interruptions ou non ,<br><img src="images/Interruptions.png"><br> puis cliquez sur "Générer". <br><img src="images/Generer.png"><br>
+                                            <br> 2\ Vous pouvez remplir toutes les données de chaque processus[ID, Temps d'arrivée, Durée] par vous-même 
+                                            en entrant les options, puis en cliquant sur le boutton "Ajouter", <br><img src="images/AjouterProcess.png"><br>
+                                            Vous pouvez aussi modifier ces données en cliquant sur le boutton modifier,<br><img src="images/Modifier.png"><br> 
+                                            effectuez vos changement puis cliquez sur modifier pour confirmer vos modifications, <br><img src="images/ModifierOptions.png"><br>   
+                                            Pour gérer les interruptions, cliquez sur un processus, <br><img src="images/Interupt.png"><br> Entrez les options de l'intérruption et cliquez
+                                              sur "+", <br><img src="images/AddInterruptions.png"><br> Et pour les supprimer, cliquez sur "x" .
+                                              <br><img src="images/SupprimerProcess.png">
+                                        <li class="third_title">PSR</li>
+                                        <p>Vous avez 2 méthodes pour remplir le tableau des processus:
+                                            <br> 1\ Vous pouvez générer les données aléatoirement, en précisant le nombre des processus, et en spécifiant s'il y'a des
+                                            interruptions ou non, puis cliquez sur "Générer" [Affichage du boutton Générer].
+                                            Vous pouvez aussi modifier ces données, ajouter ou bien supprimer les processus. [Affichage des bouttons].
+                                            <br> 2\ Vous pouvez remplir toutes les données de chaque processus[ID, Temps d'arrivée, Durée, priorité] par vous-même 
+                                            en entrant les options, puis en cliquant sur le boutton "Ajouter", ensuite vous cliquez sur la flèche pour ajouter
+                                            les interruptions, saisisser le [Type, Temps d'arrivée, Durée] et cliquez sur ajouter.</p>
+                                        <li class="third_title">PAR</li>
+                                        <p>Vous avez 2 méthodes pour remplir le tableau des processus:
+                                            <br> 1\ Vous pouvez générer les données aléatoirement, en précisant le nombre des processus, et en spécifiant s'il y'a des
+                                            interruptions ou non, puis cliquez sur "Générer" [Affichage du boutton Générer].
+                                            Vous pouvez aussi modifier ces données, ajouter ou bien supprimer les processus. [Affichage des bouttons].
+                                            <br> 2\ Vous pouvez remplir toutes les données de chaque processus[ID, Temps d'arrivée, Durée, priorité] par vous-même 
+                                            en entrant les options, puis en cliquant sur le boutton "Ajouter", ensuite vous cliquez sur la flèche pour ajouter
+                                            les interruptions, saisisser le [Type, Temps d'arrivée, Durée] et cliquez sur ajouter.</p>
+                                        <li class="third_title">PARD</li>
+                                        <p>Vous avez 2 méthodes pour remplir le tableau des processus:
+                                            <br> 1\ Vous pouvez générer les données aléatoirement, en précisant le nombre des processus, et en spécifiant s'il y'a des
+                                            interruptions ou non, puis cliquez sur "Générer" [Affichage du boutton Générer].
+                                            Vous pouvez aussi modifier ces données, ajouter ou bien supprimer les processus. [Affichage des bouttons].
+                                            <br> 2\ Vous pouvez remplir toutes les données de chaque processus[ID, Temps d'arrivée, Durée, priorité] par vous-même 
+                                            en entrant les options, puis en cliquant sur le boutton "Ajouter", ensuite vous cliquez sur la flèche pour ajouter
+                                            les interruptions, saisisser le [Type, Temps d'arrivée, Durée] et cliquez sur ajouter.</p>
+                                        <li class="third_title">RR</li>
+                                        <p>Vous avez 2 méthodes pour remplir le tableau des processus:
+                                            <br> 1\ Vous pouvez générer les données aléatoirement, en précisant le nombre des processus, et en spécifiant s'il y'a des
+                                            interruptions ou non, puis cliquez sur "Générer" [Affichage du boutton Générer].
+                                            Vous pouvez aussi modifier ces données, ajouter ou bien supprimer les processus. [Affichage des bouttons].
+                                            <br> 2\ Vous pouvez remplir toutes les données de chaque processus[ID, Temps d'arrivée, Durée, quantum] par vous-même 
+                                            en entrant les options, puis en cliquant sur le boutton "Ajouter", ensuite vous cliquez sur la flèche pour ajouter
+                                            les interruptions, saisisser le [Type, Temps d'arrivée, Durée] et cliquez sur ajouter.</p>
+                                        <li class="third_title">Slack-Time</li>
+                                        <p>Vous avez 2 méthodes pour remplir le tableau des processus:
+                                            <br> 1\ Vous pouvez générer les données aléatoirement, en précisant le nombre des processus, et en spécifiant s'il y'a des
+                                            interruptions ou non, puis cliquez sur "Générer" [Affichage du boutton Générer].
+                                            Vous pouvez aussi modifier ces données, ajouter ou bien supprimer les processus. [Affichage des bouttons].
+                                           <br> 2\ Vous pouvez remplir toutes les données de chaque processus[ID, Temps d'arrivée, Durée, Deadline] par vous-même 
+                                            en entrant les options, puis en cliquant sur le boutton "Ajouter", ensuite vous cliquez sur la flèche pour ajouter
+                                            les interruptions, saisisser le [Type, Temps d'arrivée, Durée] et cliquez sur ajouter.
+                                            </p>
+                                        <li class="third_title">Multi-Niveaux</li>
+                                        <p> Vous avez 2 méthodes pour remplir le tableau des processus:
+                                           <br> 1\ Vous pouvez générer les données aléatoirement, en précisant le nombre des niveaux, puis cliquez sur processus, 
+                                            pécisez le nombre des processus en spécifiant s'il y'a des interruptions ou non, 
+                                            puis cliquez sur "Générer" [Affichage du boutton Générer].
+                                            Vous pouvez aussi modifier ces données, ajouter ou bien supprimer les processus. [Affichage des bouttons].
+                                           <br> 2\ Pour la saisie manuelle, saisissez [niveau, Algorithme, option[dépend de l'algorithme] ] et cliquez sur Ajouter.
+                                            Puis remplissez toutes les données de chaque processus[ID, Temps d'arrivée, Durée] par vous-même 
+                                            en entrant les options, puis en cliquant sur le boutton "Ajouter", ensuite vous cliquez sur la flèche pour ajouter
+                                            les interruptions, saisisser le [Type, Temps d'arrivée, Durée] et cliquez sur ajouter.</p>
+                                        <li class="third_title">Multi-Niveaux avec recyclage</li>
+                                        <p> Vous avez 2 méthodes pour remplir le tableau des processus:
+                                            <br> 1\ Vous pouvez générer les données aléatoirement, en précisant le nombre des niveaux, puis cliquez sur processus, 
+                                            pécisez le nombre des processus en spécifiant s'il y'a des interruptions ou non, 
+                                            puis cliquez sur "Générer" [Affichage du boutton Générer].
+                                            Vous pouvez aussi modifier ces données, ajouter ou bien supprimer les processus. [Affichage des bouttons].
+                                           <br> 2\ Pour la saisie manuelle, saisissez [niveau, Algorithme, option[dépend de l'algorithme] ] et cliquez sur Ajouter.
+                                            Puis remplissez toutes les données de chaque processus[ID, Temps d'arrivée, Durée] par vous-même 
+                                            en entrant les options, puis en cliquant sur le boutton "Ajouter", ensuite vous cliquez sur la flèche pour ajouter
+                                            les interruptions, saisisser le [Type, Temps d'arrivée, Durée] et cliquez sur ajouter.</p>
+                                    </ol>
+                                    <br>
+                                    <li class="second titles">La page de simulation</li>
+                                    <img src="images/SimulationPage.png" height="80%" width="80%">
+                                    <p>Pour lancer la simulation visuelle de l'algorithme choisi, cliquez sur le boutton "Start", <br><img src="images/Start.png"><br>
+                                        <br> Vous pouvez aussi faire pause à la simulation en cliquant sur le boutton "Pause", <br><img src="images/Pause.png"><br> ou refaire la simulation en cliquant 
+                                        sur le boutton "repeat". <br><img src="images/Replay.png"><br>
+                                        <br> Vous pouvez revenir à tous moments à la page des algorithmes en cliquant sur le boutton "Retour" <br><img src="images/Back.png"><br>,
+                                        ou revenir à la page d'accueil en cliquant sur le boutton "Home" <br><img src="images/Home.png"><br>
+                                        Pour contrôler la vitesse de la simulation, faites défiler la barre de la vitesse. <br><img src="images/Vitesse.png"><br>
+                                        la simulation commence en fonction du temps qui s'incrémente,les processus se déplacent entre la liste des 
+                                        processus prêts, la liste des processus bloqués, et le processeur selon leurs états. <br><img src="images/Simulation.png"><br>
+                                        <br> vous trouvez un diagramme de Gantt pour l'évolution des états des processus : dans chaque unité temps, vous trouvez les états de tous les processus : le vert pour l'état actif, l'orange pour l'état prêt et le rouge pour l'état bloqué <br><img src="images/Gantt.png"><br> Et vous trouvez la transition des états des 
+                                        différents processus dans le box "Transition des états". <br><img src="images/Transitions.png"><br>
+                                        <br> Pour afficher les résultats de l'algorithme, cliquez sur le boutton "Résultats".<br><img src="images/Results.png"><br></p>
+                                </ol>
+                                <br>
+                                <li class="first_titles">La comparaison</li>
+                                <p>Pour faire la comparaison, cliquez sur le bouton Comparer dans la page d'accueil, séléctionnez 2 ou 3 algorithmes d'ordonnancement que vous voulez comparer, puis remplissez le tableau des processus par vous vous-même ou bien aléatoirement, et enfin cliquez sur comparer. Vous aurez les résultats suivants :</p>    
+                        </ol>
+                    </div>
+                </section>
+            </main>
+            <footer>
+                <span>© Copyright 2021 CPU Simulator,. All rights reserved. Various trademarks held by their respective owners.</span>
+            </footer>
+        </div>
+    </body>
+</html>
