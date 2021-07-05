@@ -26,7 +26,7 @@
         </Grid.RowDefinitions>
         <!--Home button-->
         <Grid Margin="40,0,0,0">
-            <Image VerticalAlignment="Center" Source="Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
+            <Image VerticalAlignment="Center" ToolTip="Accueil" Source="Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
                 <Image.Effect>
                     <DropShadowEffect x:Name="shadowHome" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
                 </Image.Effect>

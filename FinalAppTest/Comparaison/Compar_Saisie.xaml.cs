@@ -195,56 +195,6 @@ namespace FinalAppTest.Comparaison
             }
             else FinHint();
         }
-        private void AddProcessusButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            var bc = new BrushConverter();
-            AddProcessusButton.Fill = (Brush)bc.ConvertFrom("#FFE9FFF0");
-        }
-
-        private void AddProcessusButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            var bc = new BrushConverter();
-            AddProcessusButton.Fill = (Brush)bc.ConvertFrom("#FFCCFFDD");
-        }
-
-        private void RandomButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            var bc = new BrushConverter();
-            RandomButton.Fill = (Brush)bc.ConvertFrom("#FF575757");
-        }
-        private void RandomButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            var bc = new BrushConverter();
-            RandomButton.Fill = (Brush)bc.ConvertFrom("#FF000000");
-        }
-
-        private void TempsArrivTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            var bc = new BrushConverter();
-            if (!int.TryParse(TempsArrivTextBox.Text, out int i) || i < 0) RectTar.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            else RectTar.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
-        }
-
-        private void DureeTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            var bc = new BrushConverter();
-            if (!int.TryParse(DureeTextBox.Text, out int i) || i <= 0) RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            else RectDuree.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
-        }
-
-        private void NbProcessusTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            var bc = new BrushConverter();
-            if (!int.TryParse(NbProcessusTextBox.Text, out int i) || i < 0) RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            else RectRand.Fill = (Brush)bc.ConvertFrom("#FFFFFFFF");
-        }
-
-        private void PrioTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            var bc = new BrushConverter();
-            if (!int.TryParse(PrioTextBox.Text, out int i) || i < 0) RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
-            else RectPrio.Fill = (Brush)bc.ConvertFrom("#FFEFF3F9");
-        }
 
         private void ReturnButton_Click(object sender, MouseButtonEventArgs e)
         {

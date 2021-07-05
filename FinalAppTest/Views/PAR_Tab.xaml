@@ -25,7 +25,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid Margin="10">
-                    <Image Cursor="Hand" VerticalAlignment="Center" Source="../Pics/ReturnButton.png" MouseLeftButtonDown="Return_MouseLeftButtonDown" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave" SnapsToDevicePixels="True">
+                    <Image Cursor="Hand" ToolTip="Revenir" VerticalAlignment="Center" Source="../Pics/ReturnButton.png" MouseLeftButtonDown="Return_MouseLeftButtonDown" MouseEnter="Return_MouseEnter" MouseLeave="Return_MouseLeave" SnapsToDevicePixels="True">
                         <Image.Effect>
                             <DropShadowEffect x:Name="shadowReturn" Opacity="0.5"  ShadowDepth="2" Direction="-90" BlurRadius="10"/>
                         </Image.Effect>
@@ -79,7 +79,7 @@
                     </Image>
                 </Grid>
                 <Grid Grid.Column="1" Margin="10">
-                    <Image Cursor="Hand" VerticalAlignment="Center" Source="../Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
+                    <Image Cursor="Hand" ToolTip="Accueil" VerticalAlignment="Center" Source="../Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
                         <Image.Effect>
                             <DropShadowEffect x:Name="shadowHome" Opacity="0.5"  ShadowDepth="2" Direction="-90" BlurRadius="10"/>
                         </Image.Effect>
@@ -133,7 +133,7 @@
                     </Image>
                 </Grid>
                 <Grid Grid.Column="2" Margin="10">
-                    <Image Cursor="Hand" VerticalAlignment="Center" Source="../Pics/HintButton.png" MouseLeftButtonDown="Hint_MouseLeftButtonDown" MouseEnter="Hint_MouseEnter" MouseLeave="Hint_MouseLeave">
+                    <Image Cursor="Hand" ToolTip="Tutoriel" VerticalAlignment="Center" Source="../Pics/HintButton.png" MouseLeftButtonDown="Hint_MouseLeftButtonDown" MouseEnter="Hint_MouseEnter" MouseLeave="Hint_MouseLeave">
                         <Image.Effect>
                             <DropShadowEffect x:Name="shadowHint" Direction="-90" Opacity="0.5" ShadowDepth="2" BlurRadius="10"/>
                         </Image.Effect>
@@ -188,7 +188,7 @@
                     </Image>
                 </Grid>
                 <Grid Grid.Column="3" Margin="10">
-                    <Image Cursor="Hand" VerticalAlignment="Center" Source="../Pics/VoirCoursButton.png" MouseLeftButtonDown="Cours_MouseLeftButtonDown" MouseEnter="Cours_MouseEnter" MouseLeave="Cours_MouseLeave">
+                    <Image Cursor="Hand" ToolTip="Cours" VerticalAlignment="Center" Source="../Pics/VoirCoursButton.png" MouseLeftButtonDown="Cours_MouseLeftButtonDown" MouseEnter="Cours_MouseEnter" MouseLeave="Cours_MouseLeave">
                         <Image.Effect>
                             <DropShadowEffect x:Name="shadowCours" Direction="-90" Opacity="0.5" ShadowDepth="2" BlurRadius="10"/>
                         </Image.Effect>

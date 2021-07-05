@@ -29,14 +29,14 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" Margin="10">
-                    <Image VerticalAlignment="Center" Source="../Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
+                    <Image VerticalAlignment="Center" ToolTip="Accueil" Source="../Pics/HomeButton.png" MouseLeftButtonDown="Home_MouseLeftButtonDown" MouseEnter="Home_MouseEnter" MouseLeave="Home_MouseLeave">
                         <Image.Effect>
                             <DropShadowEffect x:Name="shadowHome" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
                         </Image.Effect>
                     </Image>
                 </Grid>
                 <Grid Grid.Column="1" Margin="10">
-                    <Image VerticalAlignment="Center" Source="../Pics/HintButton.png" MouseLeftButtonDown="Hint_MouseLeftButtonDown" MouseEnter="Hint_MouseEnter" MouseLeave="Hint_MouseLeave">
+                    <Image VerticalAlignment="Center" ToolTip="Tutoriel" Source="../Pics/HintButton.png" MouseLeftButtonDown="Hint_MouseLeftButtonDown" MouseEnter="Hint_MouseEnter" MouseLeave="Hint_MouseLeave">
                         <Image.Effect>
                             <DropShadowEffect x:Name="shadowHint" Opacity="0.5" ShadowDepth="0" BlurRadius="5"/>
                         </Image.Effect>
@@ -70,7 +70,7 @@
                             </Rectangle.Effect>
                         </Rectangle>
                         <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">PAPS</TextBlock>
-                        <Rectangle MouseLeftButtonDown="PapsBtn_Click" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+                        <Rectangle MouseLeftButtonDown="PapsBtn_Click" ToolTip="Sélectionner" Cursor="Hand" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
                     </Grid>
 
                     <Grid Grid.Row="2" Margin="25,15">
