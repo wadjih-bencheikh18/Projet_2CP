@@ -450,6 +450,56 @@ namespace Ordonnancement
             for(int i=0; i < 4; i++) ScrollDeroulement.LineDown();
 
         }
+        public async Task AfficherDeroulement(StackPanel deroulement,List<ProcessusNiveau> listebloque) //Affiche les transitions des états des processus
+        {
+            TextBlock item = new TextBlock();
+            if (listePrets.Count != 0)
+            {
+                
+                 if (listePrets[0].transition == 1)
+                {
+                    item.Text = $"Désactivation du processus de l'ID = {listePrets[0].id}";
+                    await Task.Delay(100);
+                }
+                else if (listePrets[0].transition == 2)
+                {
+                    item.Text = $"Activation du processus de l'ID = {listePrets[0].id}";
+                    await Task.Delay(100);
+                }
+                else if(listePrets[0].etat == 3)
+                {
+                    item.Text = $"Fin du processus de l'ID = {listePrets[0].id}";
+                    await Task.Delay(100);
+                }
+            }
+            if (listebloque.Count != 0)
+            {
+                foreach (Processus pro in listebloque)
+                {
+                    if (pro.transition == 0)
+                    {
+                        item.Text = $"Blocage du processus de l'ID = {pro.id}";
+                        pro.transition = -1;
+                        await Task.Delay(100);
+                    }
+                    else if (pro.transition == 3)
+                    {
+                        item.Text = $"Réveil du processus de l'ID = {pro.id}";
+                        pro.transition = -1;
+                        await Task.Delay(100);
+                    }
+                }
+
+            }
+            BrushConverter bc = new BrushConverter();
+            item.Foreground = (Brush)bc.ConvertFrom("#2ECC71");
+            item.FontSize = 18;
+            item.TextAlignment = TextAlignment.Center;
+            if(deroulement.Children.Count!=0) ((TextBlock)deroulement.Children[deroulement.Children.Count - 1]).Foreground = Brushes.Black;
+            deroulement.Children.Add(item);
+            for(int i=0; i < 4; i++) ScrollDeroulement.LineDown();
+
+        }
         public void AfficherEtat(WrapPanel GanttChart, int temps)
         {
             int cpt = 0;
@@ -870,21 +920,21 @@ namespace Ordonnancement
                     interupt = true;
                     listePrets[0].transition = 0; //Blocage du processus qui était entrain d'exécution
                     listePrets[0].etat = 0;
-                    await AfficherDeroulement(deroulement);
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
                     await Blocage_MultiLvl(ListeBloqueView, Processeur);
                     listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
                     listePrets.RemoveAt(0);
                     if (listePrets.Count != 0)
                     {
                         listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
-                        await AfficherDeroulement(deroulement);
+                        await AfficherDeroulement(deroulement, listebloqueGenerale);
                         await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
                     }
                 }
                 if (Anime && vide)
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
-                    await AfficherDeroulement(deroulement);
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
                     await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
                 }
             }

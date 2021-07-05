@@ -189,7 +189,7 @@ namespace Ordonnancement
                         else if (proc != listePrets[0])
                         {
                             listePrets[0].transition = 1; //désactivation du processus qui était entrain d'être exécuté 
-                            await AfficherDeroulement(deroulement);
+                            await AfficherDeroulement(deroulement, listebloqueGenerale);
                             await Desactivation_MultiLvl(ListePretsView, Processeur, proc, indiceNiveau);
                             i = 0;
                             anime = true;
@@ -201,7 +201,7 @@ namespace Ordonnancement
                 if (anime && listePrets.Count != 0) //si un tri par tempsRestant est necessaire et il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus dans listePrets
-                    await AfficherDeroulement(deroulement);
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                     anime = false;
                 }
@@ -225,7 +225,7 @@ namespace Ordonnancement
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3; //Fin d'exécution du processus
-                        await AfficherDeroulement(deroulement);
+                        await AfficherDeroulement(deroulement, listebloqueGenerale);
                         await FinProcessus_MultiLvl(Processeur);
                         debut = true;
                         anime = true;
@@ -239,7 +239,7 @@ namespace Ordonnancement
             {
                 listePrets[0].transition = 1; //Désactivation du processus qui était entrain d'être exécuté
                 listePrets[0].etat = 1;
-                await AfficherDeroulement(deroulement);
+                await AfficherDeroulement(deroulement, listebloqueGenerale);
                 await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
                 listePrets.Add(listePrets[0]);
                 listePrets.RemoveAt(0);
@@ -335,7 +335,7 @@ namespace Ordonnancement
                         else if (proc != listePrets[0])
                         {
                             listePrets[0].transition = 1; //désactivation du processus qui était entrain d'être exécuté 
-                            await AfficherDeroulement(deroulement);
+                            await AfficherDeroulement(deroulement, listebloqueGenerale);
                             if (indiceNiveau + 1 < nbNiveau)
                             {
                                 await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, proc, indiceNiveau + 1);
@@ -356,7 +356,7 @@ namespace Ordonnancement
                 if (anime && listePrets.Count != 0) //si un tri par tempsRestant est necessaire et il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus dans listePrets
-                    await AfficherDeroulement(deroulement);
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                     anime = false;
                 }
@@ -380,7 +380,7 @@ namespace Ordonnancement
                         listePrets[0].tempsService = temps - listePrets[0].tempsArriv; // temps de service = temps de fin d'execution - temps d'arrivé
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree; //temps d'attente = temps de service - durée d'execution
                         listePrets[0].etat = 3; //Fin d'exécution du processus
-                        await AfficherDeroulement(deroulement);
+                        await AfficherDeroulement(deroulement, listebloqueGenerale);
                         await FinProcessus_MultiLvl(Processeur);
                         debut = true;
                         anime = true;
@@ -394,7 +394,7 @@ namespace Ordonnancement
             {
                 listePrets[0].transition = 1; //Désactivation du processus qui était entrain d'être exécuté
                 listePrets[0].etat = 1;
-                await AfficherDeroulement(deroulement);
+                await AfficherDeroulement(deroulement, listebloqueGenerale);
                 if (indiceNiveau + 1 < nbNiveau)
                 {
                     await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, listePrets[0], indiceNiveau + 1);

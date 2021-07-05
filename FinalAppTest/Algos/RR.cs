@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using FinalAppTest;
+﻿using FinalAppTest;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Animation;
 
 namespace Ordonnancement
 {
@@ -156,11 +154,11 @@ namespace Ordonnancement
                     if (anime)
                     {
                         listePrets[0].transition = 2; //Activation du 1er processus de listePrets
-                        await AfficherDeroulement(deroulement);
+                        await AfficherDeroulement(deroulement, listebloqueGenerale);
                         await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                     }
 
-                    if (await InterruptionExecute(niveaux,listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
+                    if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
                     anime = false;
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
@@ -179,7 +177,7 @@ namespace Ordonnancement
                         listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;
                         listePrets[0].etat = 3; //Fin d'exécution du processus
                         listePrets[0].transition = 0;
-                        await AfficherDeroulement(deroulement);
+                        await AfficherDeroulement(deroulement, listebloqueGenerale);
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                         niveaux[indiceNiveau].indice[1] = 0;  // un nouveau quantum va commencer
                         await FinProcessus_MultiLvl(Processeur);
@@ -190,7 +188,7 @@ namespace Ordonnancement
                     {
                         listePrets[0].transition = 1; //Désactivation du processus
                         listePrets[0].etat = 1;
-                        await AfficherDeroulement(deroulement);
+                        await AfficherDeroulement(deroulement, listebloqueGenerale);
                         await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
                         listePrets[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                         niveaux[indiceNiveau].indice[1] = 0;  // nouveau quantum                        
@@ -201,16 +199,16 @@ namespace Ordonnancement
 
                 }
             }
-            if (! PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)  // On est arrivé à tempsFin => la fin de l'exécution 
-                {
-                    listePrets[0].transition = 1;//Desactivation du 1er processus de listePrets
-                    listePrets[0].etat = 1;
-                    await AfficherDeroulement(deroulement);
-                    await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
-                    listePrets.Add(listePrets[0]);
-                    listePrets.RemoveAt(0);
-                    return temps;
-                }
+            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)  // On est arrivé à tempsFin => la fin de l'exécution 
+            {
+                listePrets[0].transition = 1;//Desactivation du 1er processus de listePrets
+                listePrets[0].etat = 1;
+                await AfficherDeroulement(deroulement, listebloqueGenerale);
+                await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
+                listePrets.Add(listePrets[0]);
+                listePrets.RemoveAt(0);
+                return temps;
+            }
             return temps;
         }
 
@@ -274,7 +272,7 @@ namespace Ordonnancement
 
         #region MultiNiveauRecyclage
 
-        public override async Task<int> Executer(int temps, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement,int i)
+        public override async Task<int> Executer(int temps, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, int i)
         {
             niveaux[indiceNiveau].indice[1] = 0;
             bool anime = true;
@@ -284,12 +282,12 @@ namespace Ordonnancement
                 if (anime)
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
-                    await AfficherDeroulement(deroulement);
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
 
 
-                if (await InterruptionExecute(niveaux,listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
+                if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
                 anime = false;
                 listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                 listePrets[0].etat = 2;
@@ -308,7 +306,7 @@ namespace Ordonnancement
                     listePrets[0].tempsAtt = listePrets[0].tempsService - listePrets[0].duree;
                     listePrets[0].etat = 3; //Fin d'exécution du processus
                     listePrets[0].transition = 0;
-                    await AfficherDeroulement(deroulement);
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
                     listePrets.RemoveAt(0); //supprimer le premier processus executé
                     niveaux[indiceNiveau].indice[1] = 0;  // un nouveau quantum va commencer
                     await FinProcessus_MultiLvl(Processeur);
@@ -318,7 +316,7 @@ namespace Ordonnancement
                 {
                     listePrets[0].transition = 1; //Désactivation du processus
                     listePrets[0].etat = 1;
-                    await AfficherDeroulement(deroulement);
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
                     listePrets[0].tempsFin = temps;  // On sauvegarde le tempsFin puisqu'on a interrompu l'exécution de ce processus
                     niveaux[indiceNiveau].indice[1] = 0;  // nouveau quantum
                     if (indiceNiveau + 1 < nbNiveau)
@@ -341,7 +339,7 @@ namespace Ordonnancement
             {
                 listePrets[0].transition = 1;//Desactivation du 1er processus de listePrets
                 listePrets[0].etat = 1;
-                await AfficherDeroulement(deroulement);
+                await AfficherDeroulement(deroulement, listebloqueGenerale);
                 if (indiceNiveau + 1 < nbNiveau)
                 {
                     await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, listePrets[0], indiceNiveau + 1);
