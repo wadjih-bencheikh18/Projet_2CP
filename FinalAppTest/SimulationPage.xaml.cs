@@ -30,7 +30,6 @@ namespace FinalAppTest
         public static bool paused = false;
         public static bool stop = false;
         public static double Speed = 2;
-        public static Ellipse play;
 
         public SimulationPage(Ordonnancement.Ordonnancement prog)
         {
@@ -42,7 +41,6 @@ namespace FinalAppTest
             save = this;
             activated = false;
             paused = false;
-            play = playCover;
         }
 
         public SimulationPage(Ordonnancement.Ordonnancement prog, int i)
@@ -65,15 +63,50 @@ namespace FinalAppTest
             else if (previous_algo_num == 6) SimAlgo.Text = "Simulation PCTR";
             else if (previous_algo_num == 7) SimAlgo.Text = "Simulation PLA";
             else if (previous_algo_num == 8) SimAlgo.Text = "Simulation Slack Time";
-            play = playCover;
         }
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
+            BeginSimulation();
             if (!activated) prog.Executer(ListePretsView, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
             else if (paused) paused = false;
             activated = true;
+        }
+
+        public void BeginSimulation()
+        {
             playCover.Visibility = Visibility.Visible;
+            pauseCover.Visibility = Visibility.Hidden;
+            reloadCover.Visibility = Visibility.Hidden;
+            resultCover.Visibility = Visibility.Visible;
+            TempsView.Foreground = (Brush)new BrushConverter().ConvertFrom("#0D9330");
+        }
+
+        public void EndSimulation()
+        {
+            playCover.Visibility = Visibility.Visible;
+            pauseCover.Visibility = Visibility.Visible;
+            reloadCover.Visibility = Visibility.Hidden;
+            resultCover.Visibility = Visibility.Hidden;
+            TempsView.Foreground = (Brush)new BrushConverter().ConvertFrom("#000000");
+        }
+
+        public void PauseSimulation()
+        {
+            playCover.Visibility = Visibility.Hidden;
+            pauseCover.Visibility = Visibility.Visible;
+            reloadCover.Visibility = Visibility.Hidden;
+            resultCover.Visibility = Visibility.Hidden;
+            TempsView.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFB53E");
+        }
+
+        public void reloadSimulation()
+        {
+            playCover.Visibility = Visibility.Hidden;
+            pauseCover.Visibility = Visibility.Visible;
+            reloadCover.Visibility = Visibility.Visible;
+            resultCover.Visibility = Visibility.Visible;
+            TempsView.Foreground = (Brush)new BrushConverter().ConvertFrom("#B51F1F");
         }
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
@@ -93,8 +126,8 @@ namespace FinalAppTest
 
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
+            PauseSimulation();
             paused = true;
-            playCover.Visibility = Visibility.Hidden;
         }
 
         private void VitesseSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -109,7 +142,9 @@ namespace FinalAppTest
 
         private async void Repeat_Click(object sender, MouseButtonEventArgs e)
         {
+            reloadSimulation();
             stop = true;
+            paused = true;
             prog.listebloque.Clear();
             prog.listePrets.Clear();
             for (int i = 0; i < prog.listeProcessus.Count(); i++)
@@ -129,10 +164,12 @@ namespace FinalAppTest
             deroulement.Children.Clear();
             GanttChart.Children.Clear();
             TempsView.Text = "0";
-            await Task.Delay(2000);
+            activated = false;
+            paused = false;
+            await Task.Delay(1000);
+            TempsView.Text = "0";
             stop = false;
-            playCover.Visibility = Visibility.Visible;
-            _ = prog.Executer(ListePretsView, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
+            StartBtn_Click(sender, e);
         }
 
         private void Home_Click(object sender, MouseButtonEventArgs e)

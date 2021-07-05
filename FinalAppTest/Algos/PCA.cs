@@ -67,6 +67,7 @@ namespace Ordonnancement
                 }
             }
             TauxUtil(temps);
+            SimulationPage.save.EndSimulation();
             return temps;
         }
         #endregion

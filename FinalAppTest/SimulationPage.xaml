@@ -136,7 +136,7 @@
             </Border>
             <TextBlock HorizontalAlignment="Center" Margin="0,0,50,520" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontSize="24" FontFamily="Lexend" Width="300"><Run Text="Liste des processus pr"/><Run Text="ê"/><Run Text="t"/><Run Text="s"/></TextBlock>
             <TextBlock HorizontalAlignment="Center" Margin="0,520,50,0" Grid.Row="0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
-            <Grid Grid.Row="1" Margin="50,0">
+            <Grid Grid.Row="1" Margin="0,0,60,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -232,7 +232,8 @@
                                     </BeginStoryboard>
                                 </EventTrigger>
                             </Ellipse.Triggers>
-                        </Ellipse>
+                        </Ellipse>                
+                        <Ellipse x:Name="pauseCover" Cursor="No" Height="65" Width="65" Visibility="Visible" Fill="#FF575757" Opacity="0.5"/>
                     </Grid>
 
                     <Grid Grid.Column="2">
@@ -240,7 +241,6 @@
                             <Ellipse.Effect>
                                 <DropShadowEffect x:Name="ReplayEffect" Direction="-90" BlurRadius="15" Color="#FFB51F1F" ShadowDepth="2" Opacity="0.5"/>
                             </Ellipse.Effect>
-
                         </Ellipse>
                         <Image Source="Replay.png" Width="40" Height="40" RenderTransformOrigin="0.5,0.5">
                             <Image.RenderTransform>
@@ -284,6 +284,7 @@
                                 </EventTrigger>
                             </Ellipse.Triggers>
                         </Ellipse>
+                        <Ellipse x:Name="reloadCover" Cursor="No" Height="65" Width="65" Visibility="Visible" Fill="#FF575757" Opacity="0.5"/>
                     </Grid>
 
                     <Grid Grid.Column="4">
@@ -403,6 +404,7 @@
                             </Ellipse.Triggers>
 
                         </Ellipse>
+                        <Ellipse x:Name="resultCover" Cursor="No" Height="65" Width="65" Visibility="Hidden" Fill="#FF575757" Opacity="0.5"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="1" Margin="50,0">
