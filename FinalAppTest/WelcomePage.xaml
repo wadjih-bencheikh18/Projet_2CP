@@ -48,23 +48,131 @@
         </Grid>
         <!--Simuler-->
         <Grid Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Margin="120,30">
-            <Rectangle Fill="#F16022" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+            <Rectangle RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#D9480A" Offset="1"/>
+                        <GradientStop Color="#F16022"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
                 <Rectangle.Effect>
-                    <DropShadowEffect x:Name="Shadow1" Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    <DropShadowEffect x:Name="Shadow1" Color="#F16022" Opacity="0.5" Direction="-90" BlurRadius="10" ShadowDepth="2"/>
                 </Rectangle.Effect>
             </Rectangle>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Simuler</TextBlock>
-            <Rectangle MouseEnter="Rectangle4_MouseEnter" MouseLeave="Rectangle4_MouseLeave" Cursor="Hand" x:Name="SimulationButton" MouseLeftButtonDown="SimulationButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+            <Rectangle Cursor="Hand" x:Name="SimulationButton" MouseLeftButtonDown="SimulationButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                <Rectangle.Triggers>
+                    <!-- Animates the rectangle's opacity. -->
+                    <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="Shadow1" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="Shadow1" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="15" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="Shadow1" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="2" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="Shadow1" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="10" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Rectangle.Triggers>
+            </Rectangle>
         </Grid>
         <!--Comparer-->
         <Grid Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Margin="120,0,120,60">
-            <Rectangle Fill="#F16022" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+            <Rectangle RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#D9480A" Offset="1"/>
+                        <GradientStop Color="#F16022"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
                 <Rectangle.Effect>
-                    <DropShadowEffect x:Name="Shadow2" Opacity="0.37" ShadowDepth="2" BlurRadius="4"/>
+                    <DropShadowEffect x:Name="Shadow2" Color="#F16022" Opacity="0.5" Direction="-90" BlurRadius="10" ShadowDepth="2"/>
                 </Rectangle.Effect>
             </Rectangle>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Comparer</TextBlock>
-            <Rectangle MouseEnter="Rectangle5_MouseEnter" MouseLeave="Rectangle5_MouseLeave" Cursor="Hand" x:Name="ComparaisonButton" MouseLeftButtonDown="ComparaisonButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20"/>
+            <Rectangle Cursor="Hand" x:Name="ComparaisonButton" MouseLeftButtonDown="ComparaisonButton_Click" Fill="#00CCFFDD" RadiusY="20" Height="Auto" Width="Auto" StrokeThickness="0" RadiusX="20">
+                <Rectangle.Triggers>
+                    <!-- Animates the rectangle's opacity. -->
+                    <EventTrigger RoutedEvent="Rectangle.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="Shadow2" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="6" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="Shadow2" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="15" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="Shadow2" 
+                                    Storyboard.TargetProperty="ShadowDepth"
+                                    To="2" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="Shadow2" 
+                                    Storyboard.TargetProperty="BlurRadius"
+                                    To="10" Duration="0:0:1" >
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Rectangle.Triggers>
+            </Rectangle>
         </Grid>
     </Grid>
 </Page>
