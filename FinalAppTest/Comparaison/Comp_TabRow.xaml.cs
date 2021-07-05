@@ -80,7 +80,7 @@ namespace FinalAppTest.Comparaison
 
         private void GridScale(object sender, RoutedEventArgs e)
         {
-            processusHeader.Width = mainGrid.ActualWidth - 5;
+            processusHeader.Width = Math.Abs(mainGrid.ActualWidth - 5);
         }
 
         private void Afficher_Interrup(object sender, MouseEventArgs e)

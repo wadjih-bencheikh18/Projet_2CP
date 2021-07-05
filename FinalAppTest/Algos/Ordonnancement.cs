@@ -32,7 +32,7 @@ namespace Ordonnancement
         public static ScrollViewer ScrollGantt;
         public static ScrollViewer ScrollDeroulement;
         public static WrapPanel GanttChart;
-        public int nbFamine;
+        public int nbFamine=0;
         public int tempsRepos;
         public double tempsFin;
         public double tempsAtt;
@@ -978,10 +978,10 @@ namespace Ordonnancement
         #endregion
 
         #region  Famine
-        public void Famine(int tempsRestantMax)
+        public void Famine(int tempsFinMax)
         {
             foreach(Processus pro in listeProcessus)
-                if (pro.tempsRestant >= tempsRestantMax)
+                if (pro.tempsFin >= tempsFinMax && !pro.famine)
                 {
                     pro.famine = true;
                     nbFamine++;
@@ -994,7 +994,7 @@ namespace Ordonnancement
         public void TauxUtil(int tempsfin) //tempsfin est l'attribut "temps" retourné dans les methodes "Executer"
         {
             //int util = tempsfin - tempsRepos; return (util / tempsfin);
-            if (tempsfin!=0) pourcentageRepos =1 - (tempsRepos / tempsfin);
+            if (tempsfin!=0) pourcentageRepos =1 - ((double)tempsRepos / tempsfin);
         }
         #endregion
     }
