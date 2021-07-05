@@ -55,7 +55,7 @@ namespace FinalAppTest.Views
                     {
                         id = i,
                         tempsArriv = r.Next(20),
-                        duree = r.Next(1, 5)
+                        duree = r.Next(2, 10)
                     };
                     PAPS_TabRow processus = pro.InsererPAPS(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
 
@@ -450,27 +450,14 @@ namespace FinalAppTest.Views
                 }
                 else if (NbHint == 10)
                 {
-                    Tableau.Effect = null;
-                    Panel.SetZIndex(Tableau, 1);
-                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(670, 435, 0, 0);
-                    else hint.Margin = new Thickness(585, 350, 0, 0);
-                    Test = new Hint(
-                                        "Modifier un processus",
-                                        "Changez les paramètres du processus",
-                                        this,
-                                        hint
-                                    );
-                    NextHintCondition = true;
-                }
-                else if (NbHint == 11)
-                {
+                    NbHint++;
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(1115, 460, 0, 0);
                     else hint.Margin = new Thickness(950, 360, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
-                                        "Cliquez sur 'Modifier' pour confirmer votre modification",
+                                        "Changez les paramètres du processus puis cliquez sur 'Modifier' pour confirmer votre modification",
                                         this,
                                         hint
                                     );
