@@ -223,7 +223,7 @@ namespace FinalAppTest.Comparaison
                     algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(0);
-                PapsBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                PapsBtn.Fill = (Brush)bc.ConvertFrom("#FFA5D6FF");
             }
             if (comp.Count >= 2 && NbHint == 1)
             {
@@ -253,7 +253,7 @@ namespace FinalAppTest.Comparaison
                     algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(1);
-                PcaBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                PcaBtn.Fill = (Brush)bc.ConvertFrom("#FFA5D6FF");
             }
             if (comp.Count >= 2 && NbHint == 1)
             {
@@ -283,7 +283,7 @@ namespace FinalAppTest.Comparaison
                     algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(4);
-                ParBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                ParBtn.Fill = (Brush)bc.ConvertFrom("#FFA5D6FF");
             }
             if (comp.Count >= 2 && NbHint == 1)
             {
@@ -313,7 +313,7 @@ namespace FinalAppTest.Comparaison
                     algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(6);
-                SlackBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                SlackBtn.Fill = (Brush)bc.ConvertFrom("#FFA5D6FF");
             }
             if (comp.Count >= 2 && NbHint == 1)
             {
@@ -343,7 +343,7 @@ namespace FinalAppTest.Comparaison
                     algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(2);
-                PlaBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                PlaBtn.Fill = (Brush)bc.ConvertFrom("#FFA5D6FF");
             }
             if (comp.Count >= 2 && NbHint == 1)
             {
@@ -373,7 +373,7 @@ namespace FinalAppTest.Comparaison
                     algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(3);
-                PctrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                PctrBtn.Fill = (Brush)bc.ConvertFrom("#FFA5D6FF");
             }
             if (comp.Count >= 2 && NbHint == 1)
             {
@@ -403,7 +403,7 @@ namespace FinalAppTest.Comparaison
                     algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(5);
-                PsrBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                PsrBtn.Fill = (Brush)bc.ConvertFrom("#FFA5D6FF");
             }
             if (comp.Count >= 2 && NbHint == 1)
             {
@@ -436,7 +436,7 @@ namespace FinalAppTest.Comparaison
                     algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(7);
-                RRBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                RRBtn.Fill = (Brush)bc.ConvertFrom("#FFA5D6FF");
                 RectQuantum.Fill = (Brush)bc.ConvertFrom("#FFE9F2FE");
                 QuantumTxt.Cursor = Cursors.Arrow;
                 QuantumTxt.IsReadOnly = true;
@@ -471,7 +471,7 @@ namespace FinalAppTest.Comparaison
                     algos[comp.Count - 1].Text = "- ";
                 }
                 comp.Remove(8);
-                PARDBtn.Fill = (Brush)bc.ConvertFrom("#FF000000");
+                PARDBtn.Fill = (Brush)bc.ConvertFrom("#FFA5D6FF");
                 RectTempsMAJ.Fill = (Brush)bc.ConvertFrom("#FFE9F2FE");
                 TempsMAJtxt.Cursor = Cursors.Arrow;
                 TempsMAJtxt.IsReadOnly = true;
