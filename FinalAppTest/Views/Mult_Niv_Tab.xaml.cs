@@ -69,7 +69,7 @@ namespace FinalAppTest.Views
                     {
                         id = i,
                         tempsArriv = r.Next(20),
-                        duree = r.Next(1, 10),
+                        duree = r.Next(2, 10),
                         prio = r.Next(0, 6),
                         niveau = r.Next(0, indiceniv)
                     };
@@ -524,7 +524,7 @@ namespace FinalAppTest.Views
                     else hint.Margin = new Thickness(290, 165, 0, 0);
                     Test = new Hint(
                                         "Simulation Multi Niveaux",
-                                        "Commençons la simulation de l'Multi Niveaux",
+                                        "Commençons la simulation du Multi Niveaux",
                                         this,
                                         hint
                                     );
@@ -566,8 +566,8 @@ namespace FinalAppTest.Views
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(30, 310, 0, 0);
                     else hint.Margin = new Thickness(20, 520, 0, 0);
                     Test = new Hint(
-                                        "Suprimer un niveau",
-                                        "Cliquez pour suprimer un niveau",
+                                        "Supprimer un niveau",
+                                        "Cliquez pour supprimer un niveau",
                                         this,
                                         hint
                                     );
@@ -625,7 +625,7 @@ namespace FinalAppTest.Views
                     else hint.Margin = new Thickness(650, 255, 0, 0);
                     Test = new Hint(
                                         "Modifier un niveau",
-                                        "Cliquez sur 'Modifier' pour modifier les paramètres d'un processus",
+                                        "Cliquez sur 'Modifier' pour modifier les paramètres d'un niveau",
                                         this,
                                         hint
                                     );
@@ -633,27 +633,14 @@ namespace FinalAppTest.Views
                 }
                 else if (NbHint == 8)
                 {
-                    nivGrid.Effect = null;
-                    Panel.SetZIndex(nivGrid, 1);
-                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(670, 435, 0, 0);
-                    else hint.Margin = new Thickness(585, 345, 0, 0);
-                    Test = new Hint(
-                                        "Modifier un niveau",
-                                        "Changez les paramètres du niveau",
-                                        this,
-                                        hint
-                                    );
-                    NextHintCondition = true;
-                }
-                else if (NbHint == 9)
-                {
+                    NbHint++;
                     nivGrid.Effect = null;
                     Panel.SetZIndex(nivGrid, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(1115, 460, 0, 0);
                     else hint.Margin = new Thickness(585, 345, 0, 0);
                     Test = new Hint(
                                         "Modifier un niveau",
-                                        "Cliquez sur 'Modifier' pour confirmer votre modification",
+                                        "Changez les paramètres du niveau et cliquez sur 'Modifier' pour confirmer votre modification",
                                         this,
                                         hint
                                     );
@@ -793,24 +780,11 @@ namespace FinalAppTest.Views
                     else hint.Margin = new Thickness(585, 350, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
-                                        "Changez les paramètres du processus",
+                                        "Changez les paramètres du processus puis cliquez sur 'Modifier' pour confirmer votre modification",
                                         this,
                                         hint
                                     );
-                    NextHintCondition = true;
-                }
-                else if (NbHint == 20)
-                {
-                    proGrid.Effect = null;
-                    Panel.SetZIndex(proGrid, 1);
-                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(670, 435, 0, 0);
-                    else hint.Margin = new Thickness(1115, 460, 0, 0);
-                    Test = new Hint(
-                                        "Modifier un processus",
-                                        "Cliquez sur 'Modifier' pour confirmer votre modification",
-                                        this,
-                                        hint
-                                    );
+                    NbHint++;
                     NextHintCondition = false;
                 }
                 else if (NbHint == 21)

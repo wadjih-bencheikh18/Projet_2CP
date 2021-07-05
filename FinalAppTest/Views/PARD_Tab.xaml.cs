@@ -61,8 +61,8 @@ namespace FinalAppTest.Views
                     {
                         id = i,
                         tempsArriv = r.Next(20),
-                        duree = r.Next(1, 5),
-                        prio = r.Next(1, 20)
+                        duree = r.Next(2, 10),
+                        prio = r.Next(1, 6)
                     };
                     PARD_TabRow processus = pro.InsererPARD(ProcessusGrid, IdTextBox, TempsArrivTextBox, DureeTextBox, PrioTextBox, ajouterTB);  // inserer son ligne dans le tableau des processus
                     Processus proc = new Processus(pro.id, pro.tempsArriv, pro.duree, pro.prio);
@@ -479,27 +479,14 @@ namespace FinalAppTest.Views
                 }
                 else if (NbHint == 11)
                 {
-                    Tableau.Effect = null;
-                    Panel.SetZIndex(Tableau, 1);
-                    if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(670, 435, 0, 0);
-                    else hint.Margin = new Thickness(585, 350, 0, 0);
-                    Test = new Hint(
-                                        "Modifier un processus",
-                                        "Changez les paramètres du processus",
-                                        this,
-                                        hint
-                                    );
-                    NextHintCondition = true;
-                }
-                else if (NbHint == 12)
-                {
+                    NbHint++;
                     Tableau.Effect = null;
                     Panel.SetZIndex(Tableau, 1);
                     if (MainWindow.PageWidth() > 1500) hint.Margin = new Thickness(1115, 460, 0, 0);
                     else hint.Margin = new Thickness(950, 360, 0, 0);
                     Test = new Hint(
                                         "Modifier un processus",
-                                        "Cliquez sur 'Modifier' pour confirmer votre modification",
+                                        "Changez les paramètres du processus puis cliquez sur 'Modifier' pour confirmer votre modification",
                                         this,
                                         hint
                                     );

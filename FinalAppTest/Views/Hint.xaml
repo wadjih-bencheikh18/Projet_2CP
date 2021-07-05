@@ -65,7 +65,7 @@
     <Grid x:Name="HintPage" Width="400" HorizontalAlignment="Center" VerticalAlignment="Top">
         <Rectangle RadiusY="10" RadiusX="10">
             <Rectangle.Fill>
-                <SolidColorBrush x:Name="solidColorBrush" Color="#FFB9C0D9" Opacity="0.8"/>
+                <SolidColorBrush x:Name="solidColorBrush" Color="#FFABEBE3" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
         <Grid x:Name="Skip" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,30,0">
