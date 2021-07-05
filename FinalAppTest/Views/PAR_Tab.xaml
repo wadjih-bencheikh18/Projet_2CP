@@ -250,8 +250,8 @@
                 <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,10,40 " FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"><Run Text="avec priorité avec réquisition."/></TextBlock>
             </StackPanel>
-            <StackPanel x:Name="Random" Orientation="Vertical" Margin="0,200,0,0"  Grid.Row="1">
-                <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
+            <StackPanel x:Name="Random" Orientation="Vertical" Margin="0,200,0,0" Grid.Row="1">
+                <TextBlock Margin="10,0,0,0" AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
                 <Grid Height="120">
                     <Grid Margin="217,0,0,0">
                         <Grid Margin="5,12,5,70">
@@ -336,8 +336,8 @@
                             <RowDefinition/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
-                        <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Width="Auto" Margin="30,20"/>
-                        <TextBox GotFocus="NbProcessusTextBox_GotFocus" x:Name="NbProcessusTextBox" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,20" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                        <Rectangle x:Name="RectRand" Grid.Row="1" Fill="#FFFFFFFF" Stroke="Black" RadiusX="7" RadiusY="7" Width="Auto" Margin="30,0" Height="40"/>
+                        <TextBox GotFocus="NbProcessusTextBox_GotFocus" x:Name="NbProcessusTextBox" Cursor="IBeam" MaxLength="4" FontSize="14" FontFamily="Lexend" FontWeight="SemiBold" BorderThickness="0" Background="#00FFFFFF" Grid.Row="1" Text="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="30,0" Height="40" TextAlignment="Center" VerticalContentAlignment="Center"/>
                         <TextBlock FontSize="15" FontFamily="Lexend" FontWeight="Medium" Text="Nombre des processus" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                     </Grid>
                 </Grid>

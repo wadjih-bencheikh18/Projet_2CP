@@ -59,6 +59,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontSize="24" FontFamily="Lexend" Grid.Column="1" Margin="0,0,0,560"><Run Text="Liste des processus prêts"/></TextBlock>
+            <TextBlock Text="Algo1" Visibility="Hidden" x:Name="algo1" Margin="0,0,15,460" FontSize="18" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <Border Visibility="Hidden"  x:Name="Border1" Margin="0,0,0,460"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
                 <StackPanel x:Name="ListProcessusView0" Orientation="Horizontal">
                     <StackPanel.Resources>
@@ -87,6 +88,7 @@
                     </StackPanel.Resources>
                 </StackPanel>
             </Border>
+            <TextBlock Text="Algo2" Visibility="Hidden" x:Name="algo2" Margin="0,0,15,340" FontSize="18" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <Border Visibility="Hidden"  x:Name="Border2"  Margin="0,0,0,340"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
                 <StackPanel x:Name="ListProcessusView1" Orientation="Horizontal">
                     <StackPanel.Resources>
@@ -115,6 +117,7 @@
                     </StackPanel.Resources>
                 </StackPanel>
             </Border>
+            <TextBlock Text="Algo3" Visibility="Hidden" x:Name="algo3" Margin="0,0,15,220" FontSize="18" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <Border Visibility="Hidden"  x:Name="Border3"  Margin="0,0,0,220"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
                 <StackPanel x:Name="ListProcessusView2" Orientation="Horizontal">
                     <StackPanel.Resources>
@@ -143,6 +146,7 @@
                     </StackPanel.Resources>
                 </StackPanel>
             </Border>
+            <TextBlock Text="Algo4" Visibility="Hidden" x:Name="algo4" Margin="0,0,15,100" FontSize="18" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <Border Visibility="Hidden" x:Name="Border4"  Margin="0,0,0,100"  Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#DCE9FF" BorderBrush="Black" BorderThickness="1" MinWidth="600">
                 <StackPanel x:Name="ListProcessusView3" Orientation="Horizontal">
                     <StackPanel.Resources>
@@ -227,13 +231,18 @@
                     </StackPanel.Resources>
                 </StackPanel>
             </Border>
-            <Grid Margin="300,150,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50">
+            <Grid Margin="300,150,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="100">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Temps :" FontWeight="Bold" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" FontSize="16" />
-                <TextBlock Grid.Column="1" x:Name="TempsView" HorizontalAlignment="Center" Text="0" VerticalAlignment="Center" TextAlignment="Center" Margin="0" FontSize="16"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.ColumnSpan="2" x:Name="SimAlgo" Text="Simulation Multi-Niveaux Recyc" FontSize="24" FontWeight="SemiBold" FontFamily="Lexend" Foreground="#FF31326F" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Temps :" FontWeight="Bold" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Center" FontSize="16" />
+                <TextBlock Grid.Column="1" Grid.Row="1" x:Name="TempsView" HorizontalAlignment="Left" Text="0" VerticalAlignment="Center" TextAlignment="Center" Margin="40,0" FontSize="16"/>
             </Grid>
             <TextBlock HorizontalAlignment="Center" Margin="0,550,0,0" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Lexend" FontSize="24"><Run Text="Liste des processus "/><Run Text="bloqués"/></TextBlock>
 
@@ -260,7 +269,7 @@
                             </Ellipse.Effect>
                         </Ellipse>
                         <Image Source="Pics/Start.png" Width="30" Height="30"/>
-                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseEnter="Start_MouseEnter" MouseLeftButtonDown="StartBtn_Click">
+                        <Ellipse Cursor="Hand" ToolTip="Commencer" Height="65" Width="65" Fill="#00CCFFDD" MouseEnter="Start_MouseEnter" MouseLeftButtonDown="StartBtn_Click">
                             <Ellipse.Triggers>
                                 <EventTrigger RoutedEvent="Ellipse.MouseEnter">
                                     <BeginStoryboard>
@@ -292,6 +301,7 @@
                                 </EventTrigger>
                             </Ellipse.Triggers>
                         </Ellipse>
+                        <Ellipse x:Name="playCover" Cursor="No" Height="65" Width="65" Visibility="Hidden" Fill="#FF575757" Opacity="0.5"/>
                     </Grid>
 
                     <Grid Grid.Column="1">
@@ -302,7 +312,7 @@
 
                         </Ellipse>
                         <Image Source="Pics/pause.png" Width="30" Height="30"/>
-                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Pause_Click">
+                        <Ellipse Cursor="Hand" ToolTip="Pause" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Pause_Click">
                             <Ellipse.Triggers>
                                 <EventTrigger RoutedEvent="Ellipse.MouseEnter">
                                     <BeginStoryboard>
@@ -334,6 +344,7 @@
                                 </EventTrigger>
                             </Ellipse.Triggers>
                         </Ellipse>
+                        <Ellipse x:Name="pauseCover" Cursor="No" Height="65" Width="65" Visibility="Visible" Fill="#FF575757" Opacity="0.5"/>
                     </Grid>
 
                     <Grid Grid.Column="2">
@@ -353,7 +364,7 @@
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
-                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Repeat_Click">
+                        <Ellipse Cursor="Hand" Height="65" ToolTip="Recommencer" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Repeat_Click">
                             <Ellipse.Triggers>
                                 <EventTrigger RoutedEvent="Ellipse.MouseEnter">
                                     <BeginStoryboard>
@@ -385,10 +396,11 @@
                                 </EventTrigger>
                             </Ellipse.Triggers>
                         </Ellipse>
+                        <Ellipse x:Name="reloadCover" Cursor="No" Height="65" Width="65" Visibility="Visible" Fill="#FF575757" Opacity="0.5"/>
                     </Grid>
 
                     <Grid Grid.Column="4">
-                        <Image Cursor="Hand" Source="Pics/ReturnButton.png" Width="65" Height="65" MouseLeftButtonDown="Return_Click">
+                        <Image Cursor="Hand" ToolTip="Revenir" Source="Pics/ReturnButton.png" Width="65" Height="65" MouseLeftButtonDown="Return_Click">
                             <Image.Effect>
                                 <DropShadowEffect x:Name="QuitEffect" Direction="-90" BlurRadius="15" Color="#FF31326F" ShadowDepth="2" Opacity="0.5"/>
                             </Image.Effect>
@@ -427,7 +439,7 @@
                     </Grid>
 
                     <Grid Grid.Column="5">
-                        <Image Cursor="Hand" Source="Pics/HomeButton.png" Width="65" Height="65" MouseLeftButtonDown="Home_Click">
+                        <Image Cursor="Hand" ToolTip="Accueil" Source="Pics/HomeButton.png" Width="65" Height="65" MouseLeftButtonDown="Home_Click">
                             <Image.Effect>
                                 <DropShadowEffect x:Name="HomeEffect" Direction="-90" Color="#FF31326F" BlurRadius="15" ShadowDepth="2" Opacity="0.5"/>
                             </Image.Effect>
@@ -471,7 +483,7 @@
                             </Ellipse.Effect>
                         </Ellipse>
                         <Image Source="Pics/algos.png" Width="30" Height="30"/>
-                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="ResultFinalBtn_Click">
+                        <Ellipse Cursor="Hand" ToolTip="Résultats Finaux" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="ResultFinalBtn_Click">
                             <Ellipse.Triggers>
                                 <EventTrigger RoutedEvent="Ellipse.MouseEnter">
                                     <BeginStoryboard>
@@ -504,14 +516,15 @@
                             </Ellipse.Triggers>
 
                         </Ellipse>
+                        <Ellipse x:Name="resultCover" Cursor="No" Height="65" Width="65" Visibility="Hidden" Fill="#FF575757" Opacity="0.5"/>
                     </Grid>
                 </Grid>
-                <Grid Grid.Row="1" Margin="50,0">
+                <Grid Grid.Row="1" ToolTip="Vitesse de l'animation" Margin="50,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2.5*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Vitesse :" Margin="20 0"  FontSize="30" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="0" Text="Vitesse :" Margin="0 0"  FontSize="30" FontFamily="Lexend" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Slider Grid.Column="1" x:Name="VitesseSlider" VerticalAlignment="Center" Minimum="1" Maximum="6" ValueChanged="VitesseSlider_ValueChanged" Loaded="VitesseSlider_Loaded" />
                 </Grid>
             </Grid>

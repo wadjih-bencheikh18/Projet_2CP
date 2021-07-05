@@ -251,7 +251,7 @@
                 <TextBlock Margin="10,0,10,0" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"><Run Text="avec priorité sans réquisition."/></TextBlock>
             </StackPanel>
             <StackPanel x:Name="Random" Orientation="Vertical" Margin="0,200,0,0" Grid.Row="1">
-                <TextBlock Margin="10,10,0,0" AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
+                <TextBlock Margin="10,0,0,0" AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
                 <Grid Height="120">
                     <Grid Margin="217,0,0,0">
                         <Grid Margin="5,12,5,70">

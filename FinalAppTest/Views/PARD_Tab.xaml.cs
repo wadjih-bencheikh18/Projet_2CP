@@ -44,7 +44,7 @@ namespace FinalAppTest.Views
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             var bc = new BrushConverter();
-            if (!Int32.TryParse(NbProcessusTextBox.Text, out int NbProcessus) && NbProcessus <= 0)
+            if (!Int32.TryParse(NbProcessusTextBox.Text, out int NbProcessus) || NbProcessus <= 0)
             {
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
@@ -183,8 +183,13 @@ namespace FinalAppTest.Views
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            if (prog.listeProcessus.Count != 0)
+            if (!Int32.TryParse(QuantumTxt.Text, out int q) || q <= 0)  // get temps de refreche
             {
+                RectQuantum.Fill = (Brush)new BrushConverter().ConvertFrom("#FFEEBEBE");
+            }
+            else if (prog.listeProcessus.Count != 0)
+            {
+                prog.refrechTemps = q;
                 MainWindow.main.Content = new SimulationPage(prog, 4);
             }
         }

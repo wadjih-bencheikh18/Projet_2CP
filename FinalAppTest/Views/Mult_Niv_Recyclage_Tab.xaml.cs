@@ -53,7 +53,7 @@ namespace FinalAppTest.Views
         {
             ListPro.Clear();
             var bc = new BrushConverter();
-            if (!Int32.TryParse(NbProcessusTextBox.Text, out int NbProcessus) && NbProcessus <= 0)
+            if (!Int32.TryParse(NbProcessusTextBox.Text, out int NbProcessus) || NbProcessus <= 0)
             {
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }
@@ -69,7 +69,7 @@ namespace FinalAppTest.Views
                     {
                         id = i,
                         tempsArriv = r.Next(20),
-                        duree = r.Next(1, 20),
+                        duree = r.Next(1, 10),
                         prio = r.Next(0, 6),
                         niveau = r.Next(0, indiceniv)
                     };

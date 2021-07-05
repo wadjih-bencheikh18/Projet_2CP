@@ -251,24 +251,17 @@
                 <TextBlock Margin="10,0,10,0 " Text="Algorithme d'ordonnancement" FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"/>
                 <TextBlock Margin="10,0,10,40 " FontSize="16" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF31326F"><Run Text="plus long d'abord."/></TextBlock>
             </StackPanel>
-            <StackPanel x:Name="Random" Grid.Row="1" Margin="0,200,0,0" >
-                <TextBlock Margin="10,0,0,20 " AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
+            <StackPanel x:Name="Random" Orientation="Vertical" Margin="0,200,0,0" Grid.Row="1">
+                <TextBlock Margin="10,0,0,0" AllowDrop="True" Text="Générer Aléatoirement" FontSize="30" FontWeight="Regular" FontFamily="Lexend" Foreground="#FF333333"/>
                 <Grid Height="120">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Column="1">
+                    <Grid Margin="217,0,0,0">
                         <Grid Margin="5,12,5,70">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend">Interruptions ?</TextBlock>
-                            <CheckBox Cursor="Hand" x:Name="RandomizeInterrup" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" FontFamily="Lexend"><Run Text="Interruptions ?"/></TextBlock>
+                            <CheckBox Cursor="Hand" x:Name="RandomizeInterrup" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                         <Rectangle x:Name="RandomButton" RadiusY="25" Height="Auto" Width="Auto" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
                             <Rectangle.Fill>
@@ -286,7 +279,7 @@
                                 <ColumnDefinition Width="6*"/>
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF" FontFamily="Lexend">Générer</TextBlock>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Medium" Foreground="#FFFFFFFF " FontFamily="Lexend"><Run Text="Générer"/></TextBlock>
                             <Image Grid.Column="1" Height="50" VerticalAlignment="Center" Source="Generate.png" HorizontalAlignment="Left" Width="20"/>
                         </Grid>
                         <Rectangle Cursor="Hand" MouseLeftButtonDown="RandomButton_Click" Grid.Column="3" Fill="#00CCFFDD" RadiusY="25" Height="Auto" Width="Auto" Margin="5,55,5,15" StrokeThickness="0" RadiusX="25">
@@ -339,7 +332,7 @@
                             </Rectangle.Triggers>
                         </Rectangle>
                     </Grid>
-                    <Grid Grid.Column="0">
+                    <Grid Grid.Column="0" Margin="0,0,145,0">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="2*"/>

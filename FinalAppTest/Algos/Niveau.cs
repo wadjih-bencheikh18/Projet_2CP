@@ -43,14 +43,8 @@ namespace Ordonnancement
                 case 5:
                     algo = new PSR();
                     break;
-                case 6:
-                    algo = new SlackTime();
-                    break;
-                case 7:
-                    Console.WriteLine("Il manque un quantum. Veuillez reessayer");
-                    break;
                 default:
-                    Console.WriteLine("ERREUR. Veuillez choisir un numero entre 0 et 7");
+                    Console.WriteLine("ERREUR. Veuillez choisir un numero entre 0 et 5");
                     break;
             }
         }
@@ -78,12 +72,9 @@ namespace Ordonnancement
                     algo = new PSR();
                     break;
                 case 6:
-                    algo = new SlackTime();
-                    break;
-                case 7:
                     algo = new RR(quantum);
                     break;
-                case 8:
+                case 7:
                     algo = new PARD(quantum);
                     break;
                 default:

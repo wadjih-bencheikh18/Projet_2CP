@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+
 namespace FinalAppTest
 {
     /// <summary>
@@ -38,13 +40,51 @@ namespace FinalAppTest
             {
                 nbNiveaux = ((MultiNiveau)prog).nbNiveau;
                 ((MultiNiveau)prog).InitVisualisation(ListesPretsViews);
+                SimAlgo.Text = "Simulation Multi-Niveaux";
             }
             else
             {
                 nbNiveaux = ((MultiNiveauRecyclage)prog).nbNiveau;
                 ((MultiNiveauRecyclage)prog).InitVisualisation(ListesPretsViews);
+                SimAlgo.Text = "Simulation Multi-Niveaux Recyc";
             }
 
+        }
+
+        public void BeginSimulation()
+        {
+            playCover.Visibility = Visibility.Visible;
+            pauseCover.Visibility = Visibility.Hidden;
+            reloadCover.Visibility = Visibility.Hidden;
+            resultCover.Visibility = Visibility.Visible;
+            TempsView.Foreground = (Brush)new BrushConverter().ConvertFrom("#0D9330");
+        }
+
+        public void EndSimulation()
+        {
+            playCover.Visibility = Visibility.Visible;
+            pauseCover.Visibility = Visibility.Visible;
+            reloadCover.Visibility = Visibility.Hidden;
+            resultCover.Visibility = Visibility.Hidden;
+            TempsView.Foreground = (Brush)new BrushConverter().ConvertFrom("#000000");
+        }
+
+        public void PauseSimulation()
+        {
+            playCover.Visibility = Visibility.Hidden;
+            pauseCover.Visibility = Visibility.Visible;
+            reloadCover.Visibility = Visibility.Hidden;
+            resultCover.Visibility = Visibility.Hidden;
+            TempsView.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFB53E");
+        }
+
+        public void reloadSimulation()
+        {
+            playCover.Visibility = Visibility.Hidden;
+            pauseCover.Visibility = Visibility.Visible;
+            reloadCover.Visibility = Visibility.Visible;
+            resultCover.Visibility = Visibility.Visible;
+            TempsView.Foreground = (Brush)new BrushConverter().ConvertFrom("#B51F1F");
         }
 
         private void ResultFinalBtn_Click(object sender, RoutedEventArgs e)
@@ -59,17 +99,53 @@ namespace FinalAppTest
             if (nbNiveaux == 1)
             {
                 Border1.Visibility = Visibility.Visible;
+                algo1.Visibility = Visibility.Visible;
+                if (previous_algo_num == 0)
+                {
+                    algo1.Text = ((MultiNiveau)prog).niveaux[0].algo.ToString().Split('.').Last();
+                }
+                else
+                {
+                    algo1.Text = ((MultiNiveauRecyclage)prog).niveaux[0].algo.ToString().Split('.').Last();
+                }
             }
             else if (nbNiveaux == 2)
             {
                 Border1.Visibility = Visibility.Visible;
                 Border2.Visibility = Visibility.Visible;
+                algo1.Visibility = Visibility.Visible;
+                algo2.Visibility = Visibility.Visible;
+                if (previous_algo_num == 0)
+                {
+                    algo1.Text = ((MultiNiveau)prog).niveaux[0].algo.ToString().Split('.').Last();
+                    algo2.Text = ((MultiNiveau)prog).niveaux[1].algo.ToString().Split('.').Last();
+                }
+                else
+                {
+                    algo1.Text = ((MultiNiveauRecyclage)prog).niveaux[0].algo.ToString().Split('.').Last();
+                    algo2.Text = ((MultiNiveauRecyclage)prog).niveaux[1].algo.ToString().Split('.').Last();
+                }
             }
             else if (nbNiveaux == 3)
             {
                 Border1.Visibility = Visibility.Visible;
                 Border2.Visibility = Visibility.Visible;
                 Border3.Visibility = Visibility.Visible;
+                algo1.Visibility = Visibility.Visible;
+                algo2.Visibility = Visibility.Visible;
+                algo3.Visibility = Visibility.Visible;
+                if (previous_algo_num == 0)
+                {
+                    algo1.Text = ((MultiNiveau)prog).niveaux[0].algo.ToString().Split('.').Last();
+                    algo2.Text = ((MultiNiveau)prog).niveaux[1].algo.ToString().Split('.').Last();
+                    algo3.Text = ((MultiNiveau)prog).niveaux[2].algo.ToString().Split('.').Last();
+                }
+                else
+                {
+                    algo1.Text = ((MultiNiveauRecyclage)prog).niveaux[0].algo.ToString().Split('.').Last();
+                    algo2.Text = ((MultiNiveauRecyclage)prog).niveaux[1].algo.ToString().Split('.').Last();
+                    algo3.Text = ((MultiNiveauRecyclage)prog).niveaux[2].algo.ToString().Split('.').Last();
+                }
             }
             else if (nbNiveaux == 4)
             {
@@ -77,11 +153,30 @@ namespace FinalAppTest
                 Border2.Visibility = Visibility.Visible;
                 Border3.Visibility = Visibility.Visible;
                 Border4.Visibility = Visibility.Visible;
+                algo1.Visibility = Visibility.Visible;
+                algo2.Visibility = Visibility.Visible;
+                algo3.Visibility = Visibility.Visible;
+                algo4.Visibility = Visibility.Visible;
+                if (previous_algo_num == 0)
+                {
+                    algo1.Text = ((MultiNiveau)prog).niveaux[0].algo.ToString().Split('.').Last();
+                    algo2.Text = ((MultiNiveau)prog).niveaux[1].algo.ToString().Split('.').Last();
+                    algo3.Text = ((MultiNiveau)prog).niveaux[2].algo.ToString().Split('.').Last();
+                    algo4.Text = ((MultiNiveau)prog).niveaux[3].algo.ToString().Split('.').Last();
+                }
+                else
+                {
+                    algo1.Text = ((MultiNiveauRecyclage)prog).niveaux[0].algo.ToString().Split('.').Last();
+                    algo2.Text = ((MultiNiveauRecyclage)prog).niveaux[1].algo.ToString().Split('.').Last();
+                    algo3.Text = ((MultiNiveauRecyclage)prog).niveaux[2].algo.ToString().Split('.').Last();
+                    algo4.Text = ((MultiNiveauRecyclage)prog).niveaux[3].algo.ToString().Split('.').Last();
+                }
             }
         }
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
+            BeginSimulation();
             if (!activated) prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
             else if (paused) paused = false;
             activated = true;
@@ -105,13 +200,15 @@ namespace FinalAppTest
 
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
+            PauseSimulation();
             paused = true;
         }
 
         private async void Repeat_Click(object sender, MouseButtonEventArgs e)
         {
+            reloadSimulation();
             stop = true;
-            await Task.Delay(2000);
+            await Task.Delay(1000);
             if (previous_algo_num == 0)
             {
                 for (int i = 0; i < ((MultiNiveau)prog).nbNiveau; i++)
@@ -133,9 +230,7 @@ namespace FinalAppTest
                     ((MultiNiveauRecyclage)prog).niveaux[i].listebloque.Clear();
                 }
             }
-
-
-
+            
             if (previous_algo_num == 0)
             {
                 for (int i = 0; i < ((MultiNiveau)prog).listeProcessus.Count(); i++)
@@ -175,8 +270,10 @@ namespace FinalAppTest
             GanttChart.Children.Clear();
             TempsView.Text = "0";
             stop = false;
-            await Task.Delay(2000);
-            _ = prog.Executer(ListProcessusView0, Processeur, TempsView, ListeBloqueView, deroulement, GanttChart);
+            await Task.Delay(1000);
+            paused = false;
+            activated = false;
+            StartBtn_Click(sender, e);
         }
 
         private void Home_Click(object sender, MouseButtonEventArgs e)

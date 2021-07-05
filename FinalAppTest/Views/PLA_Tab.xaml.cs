@@ -47,7 +47,7 @@ namespace FinalAppTest.Views
         private void RandomButton_Click(object sender, RoutedEventArgs e)  // générer aléatoirement des processus
         {
             var bc = new BrushConverter();
-            if (!Int32.TryParse(NbProcessusTextBox.Text, out int NbProcessus) && NbProcessus <= 0)
+            if (!Int32.TryParse(NbProcessusTextBox.Text, out int NbProcessus) || NbProcessus <= 0)
             {
                 RectRand.Fill = (Brush)bc.ConvertFrom("#FFEEBEBE");
             }

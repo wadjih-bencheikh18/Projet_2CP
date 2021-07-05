@@ -158,7 +158,7 @@
                             </Ellipse.Effect>
                         </Ellipse>
                         <Image Source="Pics/Start.png" Width="30" Height="30"/>
-                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="StartBtn_Click">
+                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" ToolTip="Commencer" MouseLeftButtonDown="StartBtn_Click">
                             <Ellipse.Triggers>
                                 <EventTrigger RoutedEvent="Ellipse.MouseEnter">
                                     <BeginStoryboard>
@@ -201,7 +201,7 @@
 
                         </Ellipse>
                         <Image Source="Pics/pause.png" Width="30" Height="30"/>
-                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Pause_Click">
+                        <Ellipse Cursor="Hand" ToolTip="Pause" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Pause_Click">
                             <Ellipse.Triggers>
                                 <EventTrigger RoutedEvent="Ellipse.MouseEnter">
                                     <BeginStoryboard>
@@ -252,7 +252,7 @@
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
-                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Repeat_Click">
+                        <Ellipse Cursor="Hand" ToolTip="Recommencer" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="Repeat_Click">
                             <Ellipse.Triggers>
                                 <EventTrigger RoutedEvent="Ellipse.MouseEnter">
                                     <BeginStoryboard>
@@ -288,7 +288,7 @@
                     </Grid>
 
                     <Grid Grid.Column="4">
-                        <Image Cursor="Hand" Source="Pics/ReturnButton.png" Width="65" Height="65" MouseLeftButtonDown="Return_Click">
+                        <Image Cursor="Hand" ToolTip="Revenir" Source="Pics/ReturnButton.png" Width="65" Height="65" MouseLeftButtonDown="Return_Click">
                             <Image.Effect>
                                 <DropShadowEffect x:Name="QuitEffect" Direction="-90" BlurRadius="15" Color="#FF31326F" ShadowDepth="2" Opacity="0.5"/>
                             </Image.Effect>
@@ -327,7 +327,7 @@
                     </Grid>
 
                     <Grid Grid.Column="5">
-                        <Image Cursor="Hand" Source="Pics/HomeButton.png" Width="65" Height="65" MouseLeftButtonDown="Home_Click">
+                        <Image Cursor="Hand" ToolTip="Accueil" Source="Pics/HomeButton.png" Width="65" Height="65" MouseLeftButtonDown="Home_Click">
                             <Image.Effect>
                                 <DropShadowEffect x:Name="HomeEffect" Direction="-90" Color="#FF31326F" BlurRadius="15" ShadowDepth="2" Opacity="0.5"/>
                             </Image.Effect>
@@ -371,7 +371,7 @@
                             </Ellipse.Effect>
                         </Ellipse>
                         <Image Source="Pics/algos.png" Width="30" Height="30"/>
-                        <Ellipse Cursor="Hand" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="ResultFinalBtn_Click">
+                        <Ellipse Cursor="Hand" ToolTip="Résultats Finaux" Height="65" Width="65" Fill="#00CCFFDD" MouseLeftButtonDown="ResultFinalBtn_Click">
                             <Ellipse.Triggers>
                                 <EventTrigger RoutedEvent="Ellipse.MouseEnter">
                                     <BeginStoryboard>
@@ -412,7 +412,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2.5*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Vitesse :" Margin="20 0"  FontSize="30" FontFamily="Lexend" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="0" Text="Vitesse :" Margin="0"  FontSize="30" FontFamily="Lexend" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <Slider Grid.Column="1" x:Name="VitesseSlider" VerticalAlignment="Center" Minimum="1" Maximum="6" ValueChanged="VitesseSlider_ValueChanged" Loaded="VitesseSlider_Loaded" />
                 </Grid>
 
