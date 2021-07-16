@@ -165,9 +165,9 @@ namespace FinalAppTest.Comparaison
             return max;
         }
         private void FillAlgo(Ordonnancement.Ordonnancement prog, int Algo, List<TextBlock> Texts, Color color)
-        {
+        { 
             prog.CalculeResultats();
-            prog.Famine(40);
+            prog.Famine(800);
             Texts[0].Text = NameProg(Algo);
             Texts[1].Text = DescProg(Algo);
             Texts[2].Text = prog.tempsAtt.ToString();
@@ -238,7 +238,7 @@ namespace FinalAppTest.Comparaison
                 case 5:
                     return "PSR";
                 case 6:
-                    return "SlackTime";
+                    return "ST";
                 case 7:
                     return "RR";
                 case 8:
@@ -264,7 +264,7 @@ namespace FinalAppTest.Comparaison
                 case 5:
                     return "PSR";
                 case 6:
-                    return "SlackTime";
+                    return "ST";
                 case 7:
                     return "RR";
                 case 8:
