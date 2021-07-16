@@ -474,7 +474,7 @@ namespace Ordonnancement
             }
             if (listebloque.Count != 0)
             {
-                foreach (Processus pro in listebloque)
+                foreach (ProcessusNiveau pro in listebloque)
                 {
                     if (pro.transition == 0)
                     {
@@ -899,7 +899,7 @@ namespace Ordonnancement
                     listebloqueGenerale[i].transition = 3; //Réveil du ieme processus de listebloqueGenerale
                     listebloqueGenerale[i].etat = 1;
                     niveaux[listebloqueGenerale[i].niveau].listePrets.Add((Processus)listebloqueGenerale[i]);
-                    await AfficherDeroulement(deroulement);
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
                     await Reveil_MultiLvl(ListesPretsViews[listebloqueGenerale[i].niveau], ListeBloqueView, i, listebloqueGenerale);
                     listebloqueGenerale.RemoveAt(i);
                     Anime = true;
