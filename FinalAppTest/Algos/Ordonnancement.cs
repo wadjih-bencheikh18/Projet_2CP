@@ -32,7 +32,7 @@ namespace Ordonnancement
         public static ScrollViewer ScrollGantt;
         public static ScrollViewer ScrollDeroulement;
         public static WrapPanel GanttChart;
-        public int nbFamine;
+        public int nbFamine=0;
         public int tempsRepos;
         public double tempsFin;
         public double tempsAtt;
@@ -474,7 +474,7 @@ namespace Ordonnancement
             }
             if (listebloque.Count != 0)
             {
-                foreach (Processus pro in listebloque)
+                foreach (ProcessusNiveau pro in listebloque)
                 {
                     if (pro.transition == 0)
                     {
@@ -899,7 +899,7 @@ namespace Ordonnancement
                     listebloqueGenerale[i].transition = 3; //Réveil du ieme processus de listebloqueGenerale
                     listebloqueGenerale[i].etat = 1;
                     niveaux[listebloqueGenerale[i].niveau].listePrets.Add((Processus)listebloqueGenerale[i]);
-                    await AfficherDeroulement(deroulement);
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
                     await Reveil_MultiLvl(ListesPretsViews[listebloqueGenerale[i].niveau], ListeBloqueView, i, listebloqueGenerale);
                     listebloqueGenerale.RemoveAt(i);
                     Anime = true;
@@ -978,10 +978,10 @@ namespace Ordonnancement
         #endregion
 
         #region  Famine
-        public void Famine(int tempsRestantMax)
+        public void Famine(int tempsFinMax)
         {
             foreach(Processus pro in listeProcessus)
-                if (pro.tempsRestant >= tempsRestantMax)
+                if (pro.tempsFin >= tempsFinMax && !pro.famine)
                 {
                     pro.famine = true;
                     nbFamine++;
@@ -994,7 +994,7 @@ namespace Ordonnancement
         public void TauxUtil(int tempsfin) //tempsfin est l'attribut "temps" retourné dans les methodes "Executer"
         {
             //int util = tempsfin - tempsRepos; return (util / tempsfin);
-            if (tempsfin!=0) pourcentageRepos =1 - (tempsRepos / tempsfin);
+            if (tempsfin!=0) pourcentageRepos =1 - ((double)tempsRepos / tempsfin);
         }
         #endregion
     }

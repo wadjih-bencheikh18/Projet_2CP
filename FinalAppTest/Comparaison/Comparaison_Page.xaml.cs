@@ -129,7 +129,7 @@ namespace FinalAppTest.Comparaison
             }
             else
             {
-                if (Crit(prog1, i) > Crit(prog2, i))
+                if (Crit(prog1, i) >= Crit(prog2, i))
                 {
                     algo1Rects[i].Fill = rectColors[2];
                     algo2Rects[i].Fill = rectColors[0];
@@ -149,9 +149,9 @@ namespace FinalAppTest.Comparaison
         private double CalculateMax()
         {
             double max = 0;
-            if (CalculateMaxProg(prog1) > max) max = CalculateMaxProg(prog1);
-            if (CalculateMaxProg(prog2) > max) max = CalculateMaxProg(prog2);
-            if (nbPros == 3) if (CalculateMaxProg(prog3) > max) max = CalculateMaxProg(prog3);
+            if (CalculateMaxProg(prog1) >= max) max = CalculateMaxProg(prog1);
+            if (CalculateMaxProg(prog2) >= max) max = CalculateMaxProg(prog2);
+            if (nbPros == 3) if (CalculateMaxProg(prog3) >= max) max = CalculateMaxProg(prog3);
             return max;
         }
         private double CalculateMaxProg(Ordonnancement.Ordonnancement prog)
@@ -165,13 +165,13 @@ namespace FinalAppTest.Comparaison
             return max;
         }
         private void FillAlgo(Ordonnancement.Ordonnancement prog, int Algo, List<TextBlock> Texts, Color color)
-        {
+        { 
             prog.CalculeResultats();
-            prog.Famine(60);
+            prog.Famine(800);
             Texts[0].Text = NameProg(Algo);
             Texts[1].Text = DescProg(Algo);
             Texts[2].Text = prog.tempsAtt.ToString();
-            Texts[3].Text = (prog.pourcentageRepos * 100).ToString() + "%";
+            Texts[3].Text = (prog.pourcentageRepos*100).ToString("0.00") + "%";
             Texts[4].Text = prog.tempsService.ToString();
             Texts[5].Text = prog.tempsReponse.ToString();
             Texts[6].Text = prog.tempsFin.ToString();
@@ -216,7 +216,7 @@ namespace FinalAppTest.Comparaison
                 case 7:
                     return new RR(quantum);
                 case 8:
-                    return new PARD(quantum);
+                    return new PARD(tempsMAJ);
                 default:
                     return new PAPS();
             }
@@ -238,7 +238,7 @@ namespace FinalAppTest.Comparaison
                 case 5:
                     return "PSR";
                 case 6:
-                    return "SlackTime";
+                    return "ST";
                 case 7:
                     return "RR";
                 case 8:
@@ -264,7 +264,7 @@ namespace FinalAppTest.Comparaison
                 case 5:
                     return "PSR";
                 case 6:
-                    return "SlackTime";
+                    return "ST";
                 case 7:
                     return "RR";
                 case 8:
