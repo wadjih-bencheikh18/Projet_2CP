@@ -4,6 +4,7 @@ html {
     background-color: #eaf2ff;
     line-height: 2em;
     scroll-padding-top: 4.5rem;
+    overflow-x: hidden;
 }
 body{
     margin:0;
