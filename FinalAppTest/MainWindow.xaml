@@ -1,4 +1,4 @@
-﻿<Window x:Class="FinalAppTest.MainWindow"
+﻿<Window x:Name="CPU_Simulator" x:Class="FinalAppTest.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:viewmodels="clr-namespace:FinalAppTest.ViewModels"
         xmlns:views="clr-namespace:FinalAppTest.Views"
-        Title="MainWindow" WindowState="Maximized" Width="1366" Height="768">
+        Title="CPU Simulator" WindowState="Maximized" Width="1366" Height="768" Icon="Logo.ico" ResizeMode="CanMinimize">
 
     <Grid x:Name="Window">
         <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>

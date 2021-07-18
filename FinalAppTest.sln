@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Blend for Visual Studio Version 16
+# Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalAppTest", "FinalAppTest\FinalAppTest.csproj", "{0A3FC8BC-21FC-42F2-B4F8-58F0BFDE1CA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCharts", "WpfCharts\WpfCharts.csproj", "{AFCE1275-7070-41AA-B6FE-DBDD1AF25D7C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CPU Simulator", "CPU Simulator\CPU Simulator.vdproj", "{BEE6A374-C193-4A17-B012-D0DD51A401E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,8 @@ Global
 		{AFCE1275-7070-41AA-B6FE-DBDD1AF25D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFCE1275-7070-41AA-B6FE-DBDD1AF25D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFCE1275-7070-41AA-B6FE-DBDD1AF25D7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEE6A374-C193-4A17-B012-D0DD51A401E0}.Debug|Any CPU.ActiveCfg = Debug
+		{BEE6A374-C193-4A17-B012-D0DD51A401E0}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
