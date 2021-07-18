@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:viewmodels="clr-namespace:FinalAppTest.ViewModels"
         xmlns:views="clr-namespace:FinalAppTest.Views"
-        Title="CPU Simulator" WindowState="Maximized" Width="1366" Height="768" Icon="Logo.ico" ResizeMode="CanMinimize">
+        Title="CPU Simulator" WindowState="Maximized" Width="1366" Height="768" Icon="Logo (1).ico" ResizeMode="CanMinimize">
 
     <Grid x:Name="Window">
         <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>

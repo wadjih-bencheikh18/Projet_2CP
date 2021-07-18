@@ -842,6 +842,8 @@
     <Resource Include="Pageweb\images\TempsMAJ.png" />
     <Resource Include="Pageweb\images\Terminer.png" />
     <Resource Include="Logo.ico" />
+    <Resource Include="Logo.png" />
+    <Resource Include="Logo %281%29.ico" />
     <Content Include="Pageweb\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

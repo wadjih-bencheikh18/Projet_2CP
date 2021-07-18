@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalAppTest", "FinalAppTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCharts", "WpfCharts\WpfCharts.csproj", "{AFCE1275-7070-41AA-B6FE-DBDD1AF25D7C}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CPU Simulator", "CPU Simulator\CPU Simulator.vdproj", "{BEE6A374-C193-4A17-B012-D0DD51A401E0}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CPU Simulator", "CPU Simulator\CPU Simulator.vdproj", "{C7B91D4A-2F28-40FC-AC00-0FF0DB6564AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,8 +23,8 @@ Global
 		{AFCE1275-7070-41AA-B6FE-DBDD1AF25D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFCE1275-7070-41AA-B6FE-DBDD1AF25D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFCE1275-7070-41AA-B6FE-DBDD1AF25D7C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BEE6A374-C193-4A17-B012-D0DD51A401E0}.Debug|Any CPU.ActiveCfg = Debug
-		{BEE6A374-C193-4A17-B012-D0DD51A401E0}.Release|Any CPU.ActiveCfg = Release
+		{C7B91D4A-2F28-40FC-AC00-0FF0DB6564AD}.Debug|Any CPU.ActiveCfg = Debug
+		{C7B91D4A-2F28-40FC-AC00-0FF0DB6564AD}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

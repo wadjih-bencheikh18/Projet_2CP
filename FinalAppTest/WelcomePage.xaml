@@ -27,19 +27,26 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <!--Content-->
-        <Grid  Grid.Row="0" Grid.Column="2" Margin="40,35">
-            <Rectangle x:Name="Rectangle1" Height="2" Fill="#000000" Margin="25,0" VerticalAlignment="Bottom"/>
-            <TextBlock x:Name="Text1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#000000" FontFamily="Lexend">A propos</TextBlock>
-            <Rectangle MouseEnter="Rectangle1_MouseEnter" MouseLeave="Rectangle1_MouseLeave" MouseLeftButtonDown="AproposButton_Click" Margin="25,10,25,0" Cursor="Hand" Fill="#00CCFFDD" Height="Auto" Width="Auto" StrokeThickness="0"/>
-        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid  Margin="80,35">
+                <Rectangle x:Name="Rectangle1" Height="2" Fill="#000000" Margin="25,0" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="Text1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#000000" FontFamily="Lexend">A propos</TextBlock>
+                <Rectangle MouseEnter="Rectangle1_MouseEnter" MouseLeave="Rectangle1_MouseLeave" MouseLeftButtonDown="AproposButton_Click" Margin="25,10,25,0" Cursor="Hand" Fill="#00CCFFDD" Height="Auto" Width="Auto" StrokeThickness="0"/>
+            </Grid>
 
-        <Grid Grid.Row="0" Grid.Column="3" Margin="40,35">
-            <Rectangle x:Name="Rectangle2" Height="2" Fill="#000000" Margin="45,0" VerticalAlignment="Bottom"/>
-            <TextBlock x:Name="Text2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#000000" FontFamily="Lexend">Aide
-            </TextBlock>
-            <Rectangle MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" MouseEnter="Rectangle2_MouseEnter" MouseLeave="Rectangle2_MouseLeave" Margin="45,10,45,0" Cursor="Hand" Fill="#00CCFFDD" Height="Auto" Width="Auto" StrokeThickness="0"/>
-           
+            <Grid  Grid.Column="1" Margin="80,35">
+                <Rectangle x:Name="Rectangle2" Height="2" Fill="#000000" Margin="45,0" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="Text2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Medium" Foreground="#000000" FontFamily="Lexend">Aide
+                </TextBlock>
+                <Rectangle MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" MouseEnter="Rectangle2_MouseEnter" MouseLeave="Rectangle2_MouseLeave" Margin="45,10,45,0" Cursor="Hand" Fill="#00CCFFDD" Height="Auto" Width="Auto" StrokeThickness="0"/>
+
+            </Grid>
         </Grid>
+        
         
         <Grid Visibility="Hidden" Grid.Row="0" Grid.Column="4" Margin="40,35">
             <Rectangle x:Name="Rectangle3" Height="2" Fill="#000000" Margin="18,0" VerticalAlignment="Bottom"/>
