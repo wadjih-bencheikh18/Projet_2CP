@@ -187,61 +187,6 @@
 
                     </Image>
                 </Grid>
-                <Grid Grid.Column="3" Margin="10">
-                    <Image Cursor="Hand" ToolTip="Cours" VerticalAlignment="Center" Source="../Pics/VoirCoursButton.png" MouseLeftButtonDown="Cours_MouseLeftButtonDown" MouseEnter="Cours_MouseEnter" MouseLeave="Cours_MouseLeave">
-                        <Image.Effect>
-                            <DropShadowEffect x:Name="shadowCours" Direction="-90" Opacity="0.5" ShadowDepth="2" BlurRadius="10"/>
-                        </Image.Effect>
-                        <Image.Triggers>
-                            <!-- Animates the rectangle's opacity. -->
-                            <EventTrigger RoutedEvent="Image.MouseEnter">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                    Storyboard.TargetName="shadowCours" 
-                                    Storyboard.TargetProperty="ShadowDepth"
-                                    To="6" Duration="0:0:1" >
-                                            <DoubleAnimation.EasingFunction>
-                                                <BackEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                        <DoubleAnimation
-                                    Storyboard.TargetName="shadowCours" 
-                                    Storyboard.TargetProperty="BlurRadius"
-                                    To="15" Duration="0:0:1" >
-                                            <DoubleAnimation.EasingFunction>
-                                                <BackEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="Image.MouseLeave">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                    Storyboard.TargetName="shadowCours" 
-                                    Storyboard.TargetProperty="ShadowDepth"
-                                    To="2" Duration="0:0:1" >
-                                            <DoubleAnimation.EasingFunction>
-                                                <BackEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                        <DoubleAnimation
-                                    Storyboard.TargetName="shadowCours" 
-                                    Storyboard.TargetProperty="BlurRadius"
-                                    To="10" Duration="0:0:1" >
-                                            <DoubleAnimation.EasingFunction>
-                                                <BackEase EasingMode="EaseOut"/>
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </Image.Triggers>
-
-                    </Image>
-                </Grid>
             </Grid>
             <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Text="Tableau des processus" FontSize="50" VerticalAlignment="Center" FontFamily="Lexend" FontWeight="SemiBold" TextAlignment="Center"/>
             <StackPanel x:Name="Description" Orientation="Vertical" Grid.Row="1">

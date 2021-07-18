@@ -220,22 +220,7 @@ namespace FinalAppTest.Views
             shadowReturn.BlurRadius = 5;
         }
 
-        private void Cours_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //MainWindow.main.Content = new WelcomePage();
-        }
-
-        private void Cours_MouseEnter(object sender, MouseEventArgs e)
-        {
-            shadowCours.ShadowDepth = 2;
-            shadowCours.BlurRadius = 7;
-        }
-
-        private void Cours_MouseLeave(object sender, MouseEventArgs e)
-        {
-            shadowCours.ShadowDepth = 0;
-            shadowCours.BlurRadius = 5;
-        }
+        
 
         private void Hint_MouseEnter(object sender, MouseEventArgs e)
         {
