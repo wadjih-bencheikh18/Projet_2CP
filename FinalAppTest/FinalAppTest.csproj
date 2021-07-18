@@ -813,16 +813,6 @@
     <Resource Include="Pageweb\images\PageSaisieComparaison.png" />
     <Resource Include="Pageweb\images\PageSaisieML.png" />
     <Resource Include="Pageweb\images\PageSaisieML2.png" />
-    <Resource Include="Pageweb\images\PageSaisieMLR.png" />
-    <Resource Include="Pageweb\images\PageSaisieMLR2.png" />
-    <Resource Include="Pageweb\images\PageSaisiePAR.png" />
-    <Resource Include="Pageweb\images\PageSaisiePARD.png" />
-    <Resource Include="Pageweb\images\PageSaisiePCA.png" />
-    <Resource Include="Pageweb\images\PageSaisiePCTR.png" />
-    <Resource Include="Pageweb\images\PageSaisiePLA.png" />
-    <Resource Include="Pageweb\images\PageSaisiePSR.png" />
-    <Resource Include="Pageweb\images\PageSaisieRR.png" />
-    <Resource Include="Pageweb\images\PageSaisieST.png" />
     <Resource Include="Pageweb\images\ProcessusinML.png" />
     <Resource Include="Pageweb\images\quantum.png" />
     <Resource Include="Pageweb\images\SelectionsAlgos.png" />
