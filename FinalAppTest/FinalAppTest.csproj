@@ -36,10 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ReachFramework" />
-    <Reference Include="scichart.charting, Version=6.3.0.13476, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL" />
-    <Reference Include="SciChart.Core, Version=6.3.0.13476, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL" />
-    <Reference Include="SciChart.Data, Version=6.3.0.13476, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL" />
-    <Reference Include="SciChart.Drawing, Version=6.3.0.13476, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -568,9 +564,6 @@
     <Resource Include="Pageweb\images\Back.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pageweb\images\Cours.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Pageweb\images\Gantt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -647,9 +640,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pageweb\images\Vitesse.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Pageweb\images\VoirCours.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pageweb\images\Logo.jpg">
@@ -844,6 +834,7 @@
     <Resource Include="Logo.ico" />
     <Resource Include="Logo.png" />
     <Resource Include="Logo %281%29.ico" />
+    <Resource Include="Pageweb\images\process.png" />
     <Content Include="Pageweb\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

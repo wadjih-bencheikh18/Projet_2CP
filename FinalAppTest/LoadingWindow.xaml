@@ -19,7 +19,7 @@
             </DockPanel.Background>
         </DockPanel>
         <Path x:Name="line" Data="M366.66667,129.33333 L366.16632,217.50033" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="96.5" Margin="376.166,122.833,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="5" StrokeThickness="5"/>
-        <TextBlock x:Name="Title" HorizontalAlignment="Left" Height="107.366" Margin="394,121.544,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="363" FontSize="43" LineHeight="6" FontFamily="Bahnschrift" FontWeight="Bold"><Run Text="CPU"/><LineBreak/><Run Text="SIMULATO"/><Run Text="R"/></TextBlock>
+        <TextBlock x:Name="Title" HorizontalAlignment="Left" Height="107.366" Margin="394,121.544,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="363" FontSize="43" LineHeight="6" FontFamily="Bahnschrift" FontWeight="Bold"><Run Text="CPU"/><LineBreak/><Run Text="SIMULATOR"/></TextBlock>
         <Border x:Name="loadicon" BorderThickness="1" Height="60" Margin="0,298.21,0,3.79" VerticalAlignment="Center" Width="60" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
             <Border.RenderTransform>
                 <RotateTransform x:Name="noFreeze" />
