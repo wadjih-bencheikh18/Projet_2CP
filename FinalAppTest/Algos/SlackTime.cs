@@ -51,11 +51,15 @@ namespace Ordonnancement
                         }
                         else if (proc != listePrets[0])
                         {
+                            Processus pro1 = listePrets[0];
+                            listePrets[0] = proc;
                             listePrets[0].transition = 1; //Desactivation du 1er processus de listePrets
                             await AfficherDeroulement(deroulement);
+                            listePrets[0].etat = 1;
                             await Desactivation(ListePretsView, Processeur, proc);
                             i = 0;
                             anime = true;
+                            listePrets[0] = pro1;
                         }
                         else i = 1;
                         await MAJListePretsView(ListePretsView, i);
@@ -186,11 +190,15 @@ namespace Ordonnancement
                         }
                         else if (proc != listePrets[0])
                         {
+                            Processus pro1 = listePrets[0];
+                            listePrets[0] = proc;
                             listePrets[0].transition = 1; //désactivation du processus qui était entrain d'être exécuté 
                             await AfficherDeroulement(deroulement);
+                            listePrets[0].etat = 1;
                             await Desactivation_MultiLvl(ListePretsView, Processeur, proc, indiceNiveau);
                             i = 0;
                             anime = true;
+                            listePrets[0] = pro1;
                         }
                         else i = 1;
                         await MAJListePretsView_MultiLvl(ListePretsView, i);
@@ -335,8 +343,11 @@ namespace Ordonnancement
                         }
                         else if (proc != listePrets[0])
                         {
+                            Processus pro1 = listePrets[0];
+                            listePrets[0] = proc;
                             listePrets[0].transition = 1; //désactivation du processus qui était entrain d'être exécuté 
                             await AfficherDeroulement(deroulement);
+                            listePrets[0].etat = 1;
                             if (indiceNiveau + 1 < nbNiveau)
                             {
                                 await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, proc, indiceNiveau + 1);
@@ -349,6 +360,7 @@ namespace Ordonnancement
                             }
                             i = 0;
                             anime = true;
+                            listePrets[0] = pro1;
                         }
                         else i = 1;
                         await MAJListePretsView_MultiLvl(ListePretsView, i);

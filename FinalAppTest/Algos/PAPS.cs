@@ -154,6 +154,7 @@ namespace Ordonnancement
                 listePrets[0].transition = 1; //Désactivation du processus qui etait entrain d'exécution
                 listePrets[0].etat = 1;
                 await AfficherDeroulement(deroulement, listebloqueGenerale);
+                listePrets[0].etat = 1;
                 await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0],indiceNiveau);
                 listePrets.Add(listePrets[0]);
                 listePrets.RemoveAt(0);
@@ -253,6 +254,7 @@ namespace Ordonnancement
                 listePrets[0].transition = 1; //Désactivation du processus qui etait entrain d'exécution
                 listePrets[0].etat = 1;
                 await AfficherDeroulement(deroulement, listebloqueGenerale);
+                listePrets[0].etat = 1;
                 if (indiceNiveau+1<nbNiveau)
                 {
                     await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, listePrets[0], indiceNiveau+1);
