@@ -122,6 +122,7 @@ namespace Ordonnancement
         // à utiliser dans MultiNiveaux
         public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement)
         {
+            bool noDis = false;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;
             if (niveaux[indiceNiveau].indice[2] == 0) niveaux[indiceNiveau].indice[1] = 1; //si aucun processus du niveau actuel n'a été executé alors il faut trier les processus de listePrets de ce niveau par priorité
@@ -138,7 +139,9 @@ namespace Ordonnancement
                     await AfficherDeroulement(deroulement,listebloqueGenerale);
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
-                await InterruptionExecute(niveaux,listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau);
+                if (!SimulationPage_MultiLvl.paused)
+                    if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau) && !PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
+                        noDis = true; 
                 niveaux[indiceNiveau].indice[1] = 0;
                 if(!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
@@ -165,7 +168,7 @@ namespace Ordonnancement
                 }
                 else if(!SimulationPage_MultiLvl.paused) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
             }
-            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)
+            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0 & !noDis)
             {
                 niveaux[indiceNiveau].indice[1] = 1;
                 listePrets[0].transition = 1; //Désactivation du processus entrain d'exécution
@@ -239,6 +242,7 @@ namespace Ordonnancement
         #region MultiNiveauRecyclage
         public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, int i)
         {
+            bool noDis = false;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;
             if (niveaux[indiceNiveau].indice[2] == 0) niveaux[indiceNiveau].indice[1] = 1; //si aucun processus du niveau actuel n'a été executé alors il faut trier les processus de listePrets de ce niveau par priorité
@@ -255,7 +259,9 @@ namespace Ordonnancement
                     await AfficherDeroulement(deroulement, listebloqueGenerale);
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
-                await InterruptionExecute(niveaux,listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau);
+                if (!SimulationPage_MultiLvl.paused)
+                    if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau) && !PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
+                        noDis = true; 
                 niveaux[indiceNiveau].indice[1] = 0;
                 if(!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
@@ -282,7 +288,7 @@ namespace Ordonnancement
                 }
                 else if(!SimulationPage_MultiLvl.paused) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
             }
-            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)
+            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0 && !noDis)
             {
                 niveaux[indiceNiveau].indice[1] = 1;
                 listePrets[0].transition = 1; //Désactivation du processus entrain d'exécution

@@ -145,10 +145,11 @@ namespace Ordonnancement
         public override async Task<int> Executer(int temps, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement)
         {
             niveaux[indiceNiveau].indice[1] = 0;
-            bool anime = true;
+            bool anime = true,noDis=false;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop)  //tant qu'il existe des processus prêts
             {
+
                 if (!SimulationPage_MultiLvl.paused)
                 {
                     if (anime)
@@ -166,7 +167,12 @@ namespace Ordonnancement
                     TempsView.Text = temps.ToString();
                     AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                     niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);
-                    if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau)) niveaux[indiceNiveau].indice[1] = 0;
+                    if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau)) 
+                    { 
+                        niveaux[indiceNiveau].indice[1] = 0;
+                        if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
+                                noDis = true;
+                    }
                     if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) break;
                     niveaux[indiceNiveau].indice[1]++;  // quantum++
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
@@ -201,7 +207,7 @@ namespace Ordonnancement
 
                 }
             }
-            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)  // On est arrivé à tempsFin => la fin de l'exécution 
+            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0 && !noDis)  // On est arrivé à tempsFin => la fin de l'exécution 
             {
                 listePrets[0].transition = 1;//Desactivation du 1er processus de listePrets
                 listePrets[0].etat = 1;
@@ -277,7 +283,7 @@ namespace Ordonnancement
         public override async Task<int> Executer(int temps, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, int i)
         {
             niveaux[indiceNiveau].indice[1] = 0;
-            bool anime = true;
+            bool anime = true,noDis=false;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop)  //tant qu'il existe des processus prêts
             {
@@ -296,7 +302,12 @@ namespace Ordonnancement
                 TempsView.Text = temps.ToString();
                 AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);
-                if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau)) niveaux[indiceNiveau].indice[1] = 0;
+                if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau))
+                {
+                    niveaux[indiceNiveau].indice[1] = 0;
+                    if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
+                        noDis = true;
+                }
                 if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) break;
                 niveaux[indiceNiveau].indice[1]++;  // quantum++
                 if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
@@ -339,7 +350,7 @@ namespace Ordonnancement
 
 
             }
-            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)  // On est arrivé à tempsFin => la fin de l'exécution 
+            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0 && noDis)  // On est arrivé à tempsFin => la fin de l'exécution 
             {
                 listePrets[0].transition = 1;//Desactivation du 1er processus de listePrets
                 listePrets[0].etat = 1;
