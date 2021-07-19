@@ -111,9 +111,8 @@ namespace Ordonnancement
             {
                 indice = await MAJListePrets(temps, indice, ListesPretsViews);  //remplir la liste des processus prêts de chaque niveau
                 if (!SimulationPage_MultiLvl.paused)
-                {
                     for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listePrets.Count == 0; indiceNiveau++) ; //la recherche du permier niveau non vide
-                }
+                
                 if (SimulationPage_MultiLvl.paused) continue;
                 else if (indiceNiveau < nbNiveau)  //il existe un niveau non vide
                 {

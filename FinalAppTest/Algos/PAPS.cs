@@ -1,27 +1,25 @@
 ﻿using FinalAppTest;
 using System.Collections.Generic;
-using System.Windows.Controls;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media.Animation;
+using System.Windows.Controls;
 
 namespace Ordonnancement
 {
     public partial class PAPS : Ordonnancement
     {
-        
+
         #region Constructeur
         public PAPS() { }
         #endregion
 
         #region Visualisation
-        public override async  Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, WrapPanel GanttChart)
+        public override async Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, WrapPanel GanttChart)
         {
             SortListeProcessus(); //tri des processus par ordre d'arrivé
             int temps = 0, indice = 0;
             bool anime = true;
             TempsView.Text = temps.ToString();
-            while ((indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0) && !SimulationPage.stop )//s'il existe des processus non executés
+            while ((indice < listeProcessus.Count || listePrets.Count != 0 || listebloque.Count != 0) && !SimulationPage.stop)//s'il existe des processus non executés
             {
                 if (listePrets.Count == 0) anime = true;
                 indice = await MAJListePrets(temps, indice, ListePretsView); //remplir listePrets
@@ -32,9 +30,9 @@ namespace Ordonnancement
                     listePrets[0].transition = 0;
                     await Activation(ListePretsView, Processeur, listePrets[0]);
                 }
-                await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur,deroulement);
+                await InterruptionExecute(ListePretsView, ListeBloqueView, Processeur, deroulement);
                 anime = false;
-                if (!SimulationPage.paused)  temps++; //incrementer le temps réel
+                if (!SimulationPage.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
                 if (listePrets.Count != 0 && !SimulationPage.paused) //s'il y a des processus prêts
                 {
@@ -111,13 +109,13 @@ namespace Ordonnancement
         {
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;
-            bool anime = true;
-            while (listePrets.Count != 0 && PrioNiveaux(niveaux,indiceNiveau,nbNiveau) && !SimulationPage_MultiLvl.stop) //s'il existe des processus prêts 
+            bool anime = true, noDis = false;
+            while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop) //s'il existe des processus prêts 
             {
-                if(anime)
+                if (anime)
                 {
                     listePrets[0].transition = 2; //Activation du 1er procussus dans ListePrets 
-                    await AfficherDeroulement(deroulement,listebloqueGenerale);
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
                     listePrets[0].transition = 0;
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
@@ -125,7 +123,9 @@ namespace Ordonnancement
                 if (!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
-                if (!SimulationPage_MultiLvl.paused)await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau);
+                if (!SimulationPage_MultiLvl.paused)
+                    if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau) && !PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
+                        noDis = true;
 
                 if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //s'il y a des processus prêts
                 {
@@ -147,15 +147,15 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
-                else if (!SimulationPage_MultiLvl.paused) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
+                else if (!SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
             }
-            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau)&& listePrets.Count!=0)
+            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0 && !noDis)
             {
                 listePrets[0].transition = 1; //Désactivation du processus qui etait entrain d'exécution
                 listePrets[0].etat = 1;
                 await AfficherDeroulement(deroulement, listebloqueGenerale);
                 listePrets[0].etat = 1;
-                await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0],indiceNiveau);
+                await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
                 listePrets.Add(listePrets[0]);
                 listePrets.RemoveAt(0);
                 return temps;
@@ -169,7 +169,7 @@ namespace Ordonnancement
         public override int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel deroulement)
         {
             int temps = tempsDebut;
-            while (listePrets.Count != 0 && !SimulationPage_MultiLvl.stop ) //s'il existe des processus prêts 
+            while (listePrets.Count != 0 && !SimulationPage_MultiLvl.stop) //s'il existe des processus prêts 
             {
                 niveaux[indiceNiveau].indice[0] = MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau); //remplir la liste des processus prêts de chaque niveau
                 if (!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
@@ -191,7 +191,7 @@ namespace Ordonnancement
                         listePrets.RemoveAt(0); //supprimer le premier processus executé
                     }
                 }
-                else if(!SimulationPage_MultiLvl.paused) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
+                else if (!SimulationPage_MultiLvl.paused) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                 if (temps == tempsFin)
                 {
                     listePrets[0].transition = 1; //Désactivation du processus entrain d'exécution
@@ -207,25 +207,13 @@ namespace Ordonnancement
 
 
         #region MultiNiveauRecyclage
-        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement,int i)
+        public override async Task<int> Executer(int tempsDebut, int nbNiveau, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, int i)
         {
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;
-            bool anime = true;
+            bool anime = true,noDis=false;
             while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop) //s'il existe des processus prêts 
             {
-                if (anime)
-                {
-                    listePrets[0].transition = 2; //Activation du 1er procussus dans ListePrets
-                    await AfficherDeroulement(deroulement,listebloqueGenerale);
-                    listePrets[0].transition = 0;
-                    await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
-                }
-                anime = false;
-                if(!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
-                TempsView.Text = temps.ToString();
-                niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
-                if (!SimulationPage_MultiLvl.paused) if(await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau)) anime = true;
                 if (anime)
                 {
                     listePrets[0].transition = 2; //Activation du 1er procussus dans ListePrets
@@ -233,6 +221,13 @@ namespace Ordonnancement
                     listePrets[0].transition = 0;
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
+                anime = false;
+                if (!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
+                TempsView.Text = temps.ToString();
+                niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
+                if (!SimulationPage_MultiLvl.paused)
+                    if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau) && !PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
+                        noDis = true; 
                 if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //s'il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
@@ -254,19 +249,19 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
-                else if (!SimulationPage_MultiLvl.paused) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
+                else if (!SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
             }
-            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0)
+            if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0 && !noDis)
             {
                 listePrets[0].transition = 1; //Désactivation du processus qui etait entrain d'exécution
                 listePrets[0].etat = 1;
                 await AfficherDeroulement(deroulement, listebloqueGenerale);
                 listePrets[0].etat = 1;
-                if (indiceNiveau+1<nbNiveau)
+                if (indiceNiveau + 1 < nbNiveau)
                 {
 
                     ((ProcessusNiveau)listePrets[0]).niveau++;
-                    await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, listePrets[0], indiceNiveau+1);
+                    await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, listePrets[0], indiceNiveau + 1);
                     niveaux[indiceNiveau + 1].listePrets.Add(listePrets[0]);
                 }
                 else
@@ -274,7 +269,7 @@ namespace Ordonnancement
                     await Desactivation_MultiLvl(ListePretsView, Processeur, listePrets[0], indiceNiveau);
                     listePrets.Add(listePrets[0]);
                 }
-                
+
                 listePrets.RemoveAt(0);
                 return temps;
             }
