@@ -219,7 +219,7 @@ namespace Ordonnancement
                 if (!SimulationPage_MultiLvl.paused)  await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
                 anime = false;
                 debut = false;
-                if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused) //S'il y a des processus prêts
+                if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //S'il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
@@ -382,7 +382,7 @@ namespace Ordonnancement
                 if (!SimulationPage_MultiLvl.paused) await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
                 anime = false;
                 debut = false;
-                if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused) //S'il y a des processus prêts
+                if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //S'il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;

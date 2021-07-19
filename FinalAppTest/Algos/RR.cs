@@ -167,6 +167,7 @@ namespace Ordonnancement
                     AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                     niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);
                     if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
+                    if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) break;
                     niveaux[indiceNiveau].indice[1]++;  // quantum++
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
@@ -296,6 +297,7 @@ namespace Ordonnancement
                 AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews);
                 if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) niveaux[indiceNiveau].indice[1] = 0;
+                if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) break;
                 niveaux[indiceNiveau].indice[1]++;  // quantum++
                 if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                 listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant

@@ -970,9 +970,9 @@ namespace Ordonnancement
                     interupt = true;
                     listePrets[0].transition = 0; //Blocage du processus qui était entrain d'exécution
                     listePrets[0].etat = 0;
-                    await Blocage_MultiLvl(ListeBloqueView, Processeur);
                     listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
                     await AfficherDeroulement(deroulement, listebloqueGenerale);
+                    await Blocage_MultiLvl(ListeBloqueView, Processeur);
                     listePrets.RemoveAt(0);
                     if (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, niveaux.Length))
                     {

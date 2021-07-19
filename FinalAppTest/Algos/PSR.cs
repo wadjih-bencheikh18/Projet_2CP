@@ -142,7 +142,7 @@ namespace Ordonnancement
                 niveaux[indiceNiveau].indice[1] = 0;
                 if(!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
-                if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused) //il y a des processus prêts
+                if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
@@ -259,7 +259,7 @@ namespace Ordonnancement
                 niveaux[indiceNiveau].indice[1] = 0;
                 if(!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
-                if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused) //il y a des processus prêts
+                if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets
                     listePrets[0].etat = 2;
