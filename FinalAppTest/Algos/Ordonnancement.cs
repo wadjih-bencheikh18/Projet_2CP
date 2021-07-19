@@ -32,7 +32,7 @@ namespace Ordonnancement
         public static ScrollViewer ScrollGantt;
         public static ScrollViewer ScrollDeroulement;
         public static WrapPanel GanttChart;
-        public int nbFamine=0;
+        public int nbFamine = 0;
         public int tempsRepos;
         public double tempsFin;
         public double tempsAtt;
@@ -43,7 +43,7 @@ namespace Ordonnancement
         #endregion
         #region Visualisation
 
-        public abstract Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView,StackPanel deroulement, WrapPanel GanttChart);
+        public abstract Task<int> Executer(StackPanel ListePretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, WrapPanel GanttChart);
         public abstract Task<int> Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsView, StackPanel Processeur, TextBlock TempsView, StackPanel ListeBloqueView, StackPanel deroulement, int i);
         public abstract int Executer();
         public async Task<int> MAJListePrets(int temps, int indice, StackPanel ListePretsView) //ajouter à la liste des processus prêts tous les processus de "listeProcessus" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution
@@ -66,11 +66,11 @@ namespace Ordonnancement
                     listePrets.Add(listeProcessus[indice]); //sinon on ajoute le processus à la liste des processus prêts              
                 }
             }
-            if (ajout) await Task.Delay(Convert.ToInt32(1000/ SimulationPage.Speed));
+            if (ajout) await Task.Delay(Convert.ToInt32(1000 / SimulationPage.Speed));
             else await Task.Delay(Convert.ToInt32(500 / SimulationPage.Speed));
             return indice;
         }
-        
+
         public async Task<bool> MAJListBloque(StackPanel ListePretsView, StackPanel ListeBloqueView, StackPanel deroulement)
         {
             bool Anime = false;
@@ -79,7 +79,7 @@ namespace Ordonnancement
                 listebloque[i].InterruptionExecute();
                 if (listebloque[i].indiceInterruptions[0] == listebloque[i].indiceInterruptions[1])
                 {
-                    
+
                     listebloque[i].transition = 3; //Reviel du ieme processus de listebloque
                     await AfficherDeroulement(deroulement);
                     await Reveil(ListePretsView, ListeBloqueView, i);
@@ -94,9 +94,9 @@ namespace Ordonnancement
         public async Task<bool> InterruptionExecute(StackPanel ListePretsView, StackPanel ListeBloqueView, StackPanel Processeur, StackPanel deroulement)
         {
             bool interupt = false;
-            bool vide=false;
+            bool vide = false;
             if (listePrets.Count == 0) vide = true;
-            bool Anime=await MAJListBloque(ListePretsView, ListeBloqueView,deroulement);
+            bool Anime = await MAJListBloque(ListePretsView, ListeBloqueView, deroulement);
             if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
             {
                 interupt = true;
@@ -126,7 +126,7 @@ namespace Ordonnancement
 
         #region Animation
 
-        public async Task Activation(StackPanel ListePretsView, StackPanel Processeur,Processus proc)
+        public async Task Activation(StackPanel ListePretsView, StackPanel Processeur, Processus proc)
         {
             Processeur.Children.Clear();
             ProcessusDesign item = new ProcessusDesign();
@@ -145,7 +145,7 @@ namespace Ordonnancement
             await Task.Delay(Convert.ToInt32(500 / SimulationPage.Speed));
             Processeur.Children.Add(item);
             ListePretsView.Children[0].Visibility = Visibility.Hidden;
-            for(int j=1;j< ListePretsView.Children.Count;j++)
+            for (int j = 1; j < ListePretsView.Children.Count; j++)
             {
                 AnimeList.Begin((FrameworkElement)ListePretsView.Children[j]);
             }
@@ -183,7 +183,7 @@ namespace Ordonnancement
             {
                 AnimeList.Begin((FrameworkElement)ListePretsView.Children[j]);
             }
-            await Task.Delay(Convert.ToInt32(1000/ SimulationPage_MultiLvl.Speed));
+            await Task.Delay(Convert.ToInt32(1000 / SimulationPage_MultiLvl.Speed));
             AnimeList = new Storyboard();
             AnimeList.Children.Add(ListePretsView.FindResource("Listback") as Storyboard);
             AnimeList.SpeedRatio = SimulationPage_MultiLvl.Speed;
@@ -264,45 +264,45 @@ namespace Ordonnancement
             await Task.Delay(Convert.ToInt32(500 / SimulationPage_MultiLvl.Speed));
         }
 
-        public async Task Reveil(StackPanel ListePretsView, StackPanel ListeBloqueView,int i)
+        public async Task Reveil(StackPanel ListePretsView, StackPanel ListeBloqueView, int i)
         {
             ProcessusDesign item = new ProcessusDesign();
             AffichageProcessus pro = new AffichageProcessus(listebloque[i]);
-            pro.X1 = - 60 * ListePretsView.Children.Count + 60 * i;
+            pro.X1 = -60 * ListePretsView.Children.Count + 60 * i;
             pro.Y1 = 340;
             pro.Y2 = 340;
             pro.X2 = 600 - 60 * ListePretsView.Children.Count;
             pro.X3 = pro.X2;
-            pro.Speed= SimulationPage.Speed;
-            item.DataContext = pro; 
+            pro.Speed = SimulationPage.Speed;
+            item.DataContext = pro;
             Storyboard animeReveil = new Storyboard();
             animeReveil.Children.Add(ListeBloqueView.FindResource("up") as Storyboard);
-            animeReveil.SpeedRatio=  SimulationPage.Speed;
+            animeReveil.SpeedRatio = SimulationPage.Speed;
             animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[i]);
             await Task.Delay(Convert.ToInt32(500 / SimulationPage.Speed));
 
             animeReveil = (Storyboard)ListeBloqueView.FindResource("decalage");
-            animeReveil.SpeedRatio=  SimulationPage.Speed;
-            for (int j=i+1;j< ListeBloqueView.Children.Count; j++)
+            animeReveil.SpeedRatio = SimulationPage.Speed;
+            for (int j = i + 1; j < ListeBloqueView.Children.Count; j++)
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
 
             await Task.Delay(Convert.ToInt32(1000 / SimulationPage.Speed));
             ListeBloqueView.Children.RemoveAt(i);
             animeReveil = ListeBloqueView.FindResource("Retour") as Storyboard;
-            animeReveil.SpeedRatio=  SimulationPage.Speed;
+            animeReveil.SpeedRatio = SimulationPage.Speed;
             for (int j = i; j < ListeBloqueView.Children.Count; j++)
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
-            
+
             ListePretsView.Children.Add(item);
             await Task.Delay(Convert.ToInt32(3000 / SimulationPage.Speed));
         }
 
-        public async Task Reveil_MultiLvl(StackPanel ListePretsView, StackPanel ListeBloqueView, int i,List<ProcessusNiveau> listebloqueGenerale)
+        public async Task Reveil_MultiLvl(StackPanel ListePretsView, StackPanel ListeBloqueView, int i, List<ProcessusNiveau> listebloqueGenerale)
         {
             ProcessusDesignMultiLvl item = new ProcessusDesignMultiLvl();
             AffichageProcessus pro = new AffichageProcessus(listebloqueGenerale[i]);
             pro.X1 = -45 * ListePretsView.Children.Count + 45 * i;
-            pro.Y1 = 230+(3 - listebloqueGenerale[i].niveau)*60;
+            pro.Y1 = 230 + (3 - listebloqueGenerale[i].niveau) * 60;
             pro.Y2 = 230 + (3 - listebloqueGenerale[i].niveau) * 60;
             pro.X2 = 600 - 45 * ListePretsView.Children.Count;
             pro.X3 = pro.X2;
@@ -314,7 +314,7 @@ namespace Ordonnancement
             animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[i]);
             await Task.Delay(Convert.ToInt32(500 / SimulationPage_MultiLvl.Speed));
 
-            animeReveil = (Storyboard)ListeBloqueView.FindResource("decalage"); 
+            animeReveil = (Storyboard)ListeBloqueView.FindResource("decalage");
             animeReveil.SpeedRatio = SimulationPage_MultiLvl.Speed;
             for (int j = i + 1; j < ListeBloqueView.Children.Count; j++)
                 animeReveil.Begin((FrameworkElement)ListeBloqueView.Children[j]);
@@ -334,7 +334,7 @@ namespace Ordonnancement
         {
             Storyboard animeBloque = new Storyboard();
             animeBloque.Children.Add(Processeur.FindResource("Blocage") as Storyboard);
-            animeBloque.SpeedRatio= SimulationPage.Speed;
+            animeBloque.SpeedRatio = SimulationPage.Speed;
             animeBloque.Begin((FrameworkElement)Processeur.Children[0]);
             await Task.Delay(Convert.ToInt32(1000 / SimulationPage.Speed));
             Processeur.Children.Clear();
@@ -358,7 +358,7 @@ namespace Ordonnancement
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(listePrets[0]);
             pro.X1 = 600 - 45 * ListeBloqueView.Children.Count;
-            pro.Speed= SimulationPage_MultiLvl.Speed;
+            pro.Speed = SimulationPage_MultiLvl.Speed;
             item.DataContext = pro;
             ListeBloqueView.Children.Add(item);
             await Task.Delay(Convert.ToInt32(1000 / SimulationPage_MultiLvl.Speed));
@@ -374,7 +374,7 @@ namespace Ordonnancement
             Processeur.Children.Clear();
             AffichageProcessus pro = new AffichageProcessus(proc);
             pro.X1 = 600 - 60 * ListePretsView.Children.Count;
-            pro.Speed= SimulationPage.Speed;
+            pro.Speed = SimulationPage.Speed;
             ProcessusDesign item = new ProcessusDesign();
             item.DataContext = pro;
             ListePretsView.Children.Add(item);
@@ -405,8 +405,8 @@ namespace Ordonnancement
             TextBlock item = new TextBlock();
             if (listePrets.Count != 0)
             {
-                
-                 if (listePrets[0].transition == 1)
+
+                if (listePrets[0].transition == 1)
                 {
                     item.Text = $"Désactivation du processus de l'ID = {listePrets[0].id}";
                     await Task.Delay(100);
@@ -416,7 +416,7 @@ namespace Ordonnancement
                     item.Text = $"Activation du processus de l'ID = {listePrets[0].id}";
                     await Task.Delay(100);
                 }
-                else if(listePrets[0].etat == 3)
+                else if (listePrets[0].etat == 3)
                 {
                     item.Text = $"Fin du processus de l'ID = {listePrets[0].id}";
                     await Task.Delay(100);
@@ -445,18 +445,18 @@ namespace Ordonnancement
             item.Foreground = (Brush)bc.ConvertFrom("#2ECC71");
             item.FontSize = 18;
             item.TextAlignment = TextAlignment.Center;
-            if(deroulement.Children.Count!=0) ((TextBlock)deroulement.Children[deroulement.Children.Count - 1]).Foreground = Brushes.Black;
+            if (deroulement.Children.Count != 0) ((TextBlock)deroulement.Children[deroulement.Children.Count - 1]).Foreground = Brushes.Black;
             deroulement.Children.Add(item);
-            for(int i=0; i < 4; i++) ScrollDeroulement.LineDown();
+            for (int i = 0; i < 4; i++) ScrollDeroulement.LineDown();
 
         }
-        public async Task AfficherDeroulement(StackPanel deroulement,List<ProcessusNiveau> listebloque) //Affiche les transitions des états des processus
+        public async Task AfficherDeroulement(StackPanel deroulement, List<ProcessusNiveau> listebloque) //Affiche les transitions des états des processus
         {
             TextBlock item = new TextBlock();
             if (listePrets.Count != 0)
             {
-                
-                 if (listePrets[0].transition == 1)
+
+                if (listePrets[0].transition == 1)
                 {
                     item.Text = $"Désactivation du processus de l'ID = {listePrets[0].id}";
                     await Task.Delay(100);
@@ -466,7 +466,7 @@ namespace Ordonnancement
                     item.Text = $"Activation du processus de l'ID = {listePrets[0].id}";
                     await Task.Delay(100);
                 }
-                else if(listePrets[0].etat == 3)
+                else if (listePrets[0].etat == 3)
                 {
                     item.Text = $"Fin du processus de l'ID = {listePrets[0].id}";
                     await Task.Delay(100);
@@ -495,9 +495,9 @@ namespace Ordonnancement
             item.Foreground = (Brush)bc.ConvertFrom("#2ECC71");
             item.FontSize = 18;
             item.TextAlignment = TextAlignment.Center;
-            if(deroulement.Children.Count!=0) ((TextBlock)deroulement.Children[deroulement.Children.Count - 1]).Foreground = Brushes.Black;
+            if (deroulement.Children.Count != 0) ((TextBlock)deroulement.Children[deroulement.Children.Count - 1]).Foreground = Brushes.Black;
             deroulement.Children.Add(item);
-            for(int i=0; i < 4; i++) ScrollDeroulement.LineDown();
+            for (int i = 0; i < 4; i++) ScrollDeroulement.LineDown();
 
         }
         public void AfficherEtat(WrapPanel GanttChart, int temps)
@@ -529,7 +529,7 @@ namespace Ordonnancement
                     item.VerticalAlignment = VerticalAlignment.Center;
                     item.FontFamily = new FontFamily("Lexend");
                     item.FontWeight = FontWeights.Medium;
-                    Grid.SetRow(item, listeProcessus.Count-i-1);
+                    Grid.SetRow(item, listeProcessus.Count - i - 1);
                     coldefinit.Children.Add(item);
                     cpt++;
                 }
@@ -804,7 +804,7 @@ namespace Ordonnancement
         /// <summary>
         /// les algorithme utuliser pour implimenter Algo multi niveau
         /// </summary>
-        
+
         public abstract int Executer(int tempsDebut, int tempsFin, Niveau[] niveaux, int indiceNiveau, List<ProcessusNiveau> listeGeneral, List<ProcessusNiveau> listebloqueGenerale, StackPanel deroulement);
         public int MAJListePrets(int temps, int indice, Niveau[] niveaux, List<ProcessusNiveau> listeGeneral, int indiceNiveau) //ajouter à la liste des processus prêts tous les processus de "listeGeneral" (liste ordonnée) dont le temps d'arrivé est <= au temps réel d'execution de MultiNiveaux
         {
@@ -819,7 +819,7 @@ namespace Ordonnancement
             }
             return indice;
         }
-        
+
         public void Init(List<Processus> listeProcessus, List<Processus> listePrets, List<Processus> listebloque)
         {
             this.listeProcessus = listeProcessus;
@@ -854,7 +854,7 @@ namespace Ordonnancement
             }
         }
         #region Animation-Multi
-        public bool PrioNiveaux(Niveau[] niveaux,int indiceNiveau,int nbNiveau)
+        public bool PrioNiveaux(Niveau[] niveaux, int indiceNiveau, int nbNiveau)
         {
             int i;
             for (i = 0; i < nbNiveau && niveaux[i].listePrets.Count == 0; i++) ;
@@ -888,7 +888,7 @@ namespace Ordonnancement
             else await Task.Delay(Convert.ToInt32(500 / SimulationPage_MultiLvl.Speed));
             return indice;
         }
-        public async Task<bool> MAJListBloque(Niveau[] niveaux,List<ProcessusNiveau> listebloqueGenerale,StackPanel[] ListesPretsViews, StackPanel ListeBloqueView, StackPanel deroulement)
+        public async Task<bool> MAJListBloque(Niveau[] niveaux, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, StackPanel ListeBloqueView, StackPanel deroulement)
         {
             bool Anime = false;
             for (int i = 0; i < listebloqueGenerale.Count; i++)
@@ -907,13 +907,13 @@ namespace Ordonnancement
             }
             return Anime;
         }
-        public async Task<bool> InterruptionExecute(Niveau[] niveaux,List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews,int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur, StackPanel deroulement)
+        public async Task<bool> InterruptionExecute(Niveau[] niveaux, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur, StackPanel deroulement)
         {
             bool interupt = false;
             bool vide = false;
             if (indiceNiveau != -1 && listePrets.Count == 0) vide = true;
-            bool Anime=await MAJListBloque(niveaux,listebloqueGenerale,ListesPretsViews, ListeBloqueView, deroulement);
-            if(indiceNiveau != -1)
+            bool Anime = await MAJListBloque(niveaux, listebloqueGenerale, ListesPretsViews, ListeBloqueView, deroulement);
+            if (indiceNiveau != -1)
             {
                 if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
                 {
@@ -933,13 +933,16 @@ namespace Ordonnancement
                 }
                 if (Anime && vide)
                 {
-                    listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
-                    await AfficherDeroulement(deroulement, listebloqueGenerale);
-                    await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
+                    if (listePrets.Count != 0)
+                    {
+                        listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
+                        await AfficherDeroulement(deroulement, listebloqueGenerale);
+                        await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
+                    }
                 }
             }
-            
-            
+
+
             return interupt;
         }
         #endregion
@@ -980,13 +983,13 @@ namespace Ordonnancement
         #region  Famine
         public void Famine(int tempsFinMax)
         {
-            foreach(Processus pro in listeProcessus)
+            foreach (Processus pro in listeProcessus)
                 if (pro.tempsFin >= tempsFinMax && !pro.famine)
                 {
                     pro.famine = true;
                     nbFamine++;
                 }
-                    
+
         }
         #endregion
 
@@ -994,7 +997,7 @@ namespace Ordonnancement
         public void TauxUtil(int tempsfin) //tempsfin est l'attribut "temps" retourné dans les methodes "Executer"
         {
             //int util = tempsfin - tempsRepos; return (util / tempsfin);
-            if (tempsfin!=0) pourcentageRepos =1 - ((double)tempsRepos / tempsfin);
+            if (tempsfin != 0) pourcentageRepos = 1 - ((double)tempsRepos / tempsfin);
         }
         #endregion
     }

@@ -110,8 +110,11 @@ namespace Ordonnancement
             while ((indice < listeProcessus.Count || indiceNiveau < nbNiveau || listebloque.Count!=0) && !SimulationPage_MultiLvl.stop) //tant que le processus est dans listeProcessus ou il existe un niveau non vide
             {
                 indice = await MAJListePrets(temps, indice, ListesPretsViews);  //remplir la liste des processus prêts de chaque niveau
-                await InterruptionExecute(niveaux,listebloque, ListesPretsViews,-1,ListeBloqueView,Processeur,deroulement); 
-                for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listePrets.Count == 0; indiceNiveau++) ; //la recherche du permier niveau non vide
+                if (!SimulationPage_MultiLvl.paused)
+                {
+                    await InterruptionExecute(niveaux, listebloque, ListesPretsViews, -1, ListeBloqueView, Processeur, deroulement);
+                    for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listePrets.Count == 0; indiceNiveau++) ; //la recherche du permier niveau non vide
+                }
                 if (SimulationPage_MultiLvl.paused) continue;
                 else if (indiceNiveau < nbNiveau)  //il existe un niveau non vide
                 {
