@@ -121,11 +121,12 @@ namespace Ordonnancement
                     temps = await NiveauExecute(temps, indiceNiveau,Processeur,TempsView,ListeBloqueView,deroulement);  //temps de fin d'execution du niveau "indiceNiveau"
                     indice = niveaux[indiceNiveau].indice[0];  //recuperer l'indice sauvegardé precedemment
                 }
-                else if (indice < listeProcessus.Count || indiceNiveau < nbNiveau || listebloque.Count != 0)
+                else if (indice < listeProcessus.Count || listebloque.Count != 0)
                 {
                     temps++;
                     TempsView.Text = temps.ToString();
                     await InterruptionExecute(niveaux, listebloque, ListesPretsViews, -1, ListeBloqueView, Processeur, deroulement);
+                    indiceNiveau=-1;
                     AfficherEtat(listeProcessus,Ordonnancement.GanttChart, temps);
                     tempsRepos++;
                 }

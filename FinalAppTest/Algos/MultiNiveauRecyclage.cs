@@ -105,7 +105,6 @@ namespace Ordonnancement
             while (indice < listeProcessus.Count || indiceNiveau < nbNiveau || listebloque.Count != 0) //tant que le processus est dans listeProcessus ou il existe un niveau non vide
             {
                 indice = await MAJListePrets(temps, indice, ListesPretsViews);  //remplir la liste des processus prêts de chaque niveau
-                await InterruptionExecute(niveaux,listebloque, ListesPretsViews, -1, ListeBloqueView, Processeur, deroulement);
                 for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listePrets.Count == 0; indiceNiveau++) ; //la recherche du permier niveau non vide
                 if (indiceNiveau < nbNiveau && !SimulationPage_MultiLvl.paused)  //il existe un niveau non vide
                 {
@@ -113,10 +112,12 @@ namespace Ordonnancement
                     temps = await NiveauExecute(temps, indiceNiveau, Processeur, TempsView, ListeBloqueView, deroulement);  //temps de fin d'execution du niveau "indiceNiveau"
                     indice = niveaux[indiceNiveau].indice[0];  //recuperer l'indice sauvegardé precedemment
                 }
-                else if ((indice < listeProcessus.Count || indiceNiveau < nbNiveau || listebloque.Count != 0) && !SimulationPage_MultiLvl.paused)
+                else if ((indice < listeProcessus.Count || listebloque.Count != 0) && !SimulationPage_MultiLvl.paused)
                 {
                     temps++;
                     TempsView.Text = temps.ToString();
+                    await InterruptionExecute(niveaux, listebloque, ListesPretsViews, -1, ListeBloqueView, Processeur, deroulement);
+                    indiceNiveau = -1;
                     AfficherEtat(listeProcessus, Ordonnancement.GanttChart, temps);
                     tempsRepos++;
                 }
