@@ -500,7 +500,7 @@ namespace Ordonnancement
             for (int i = 0; i < 4; i++) ScrollDeroulement.LineDown();
 
         }
-        public async Task AfficherDeroulement(Niveau[] niveaux,StackPanel deroulement, List<ProcessusNiveau> listebloque,int indiceNiveau) //Affiche les transitions des états des processus
+        public async Task AfficherDeroulement(Niveau[] niveaux, StackPanel deroulement, List<ProcessusNiveau> listebloque, int indiceNiveau) //Affiche les transitions des états des processus
         {
             TextBlock item = new TextBlock();
             if (listePrets.Count != 0)
@@ -961,45 +961,34 @@ namespace Ordonnancement
         {
             bool interupt = false;
             bool vide = false;
-            if (indiceNiveau != -1 && niveaux[indiceNiveau].listePrets.Count == 0) vide = true;
+            if (indiceNiveau != -1 && listePrets.Count == 0) vide = true;
             bool Anime = await MAJListBloque(niveaux, listebloqueGenerale, ListesPretsViews, ListeBloqueView, deroulement);
             if (indiceNiveau != -1)
             {
-                if (niveaux[indiceNiveau].listePrets.Count != 0 && niveaux[indiceNiveau].listePrets[0].InterruptionExist())
+                if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
                 {
                     interupt = true;
-                    niveaux[indiceNiveau].listePrets[0].transition = 0; //Blocage du processus qui était entrain d'exécution
-                    niveaux[indiceNiveau].listePrets[0].etat = 0;
+                    listePrets[0].transition = 0; //Blocage du processus qui était entrain d'exécution
+                    listePrets[0].etat = 0;
                     await Blocage_MultiLvl(ListeBloqueView, Processeur);
-                    listebloqueGenerale.Add((ProcessusNiveau)niveaux[indiceNiveau].listePrets[0]);
+                    listebloqueGenerale.Add((ProcessusNiveau)listePrets[0]);
                     await AfficherDeroulement(deroulement, listebloqueGenerale);
-                    niveaux[indiceNiveau].listePrets.RemoveAt(0);
-                    
+                    listePrets.RemoveAt(0);
+                    if (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, niveaux.Length))
+                    {
+                        listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
+                        await AfficherDeroulement(niveaux, deroulement, listebloqueGenerale, indiceNiveau);
+                        await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
+                    }
                 }
-                if (Anime && vide) interupt = true;
-            }
-
-
-            return interupt;
-        }
-        public async Task<bool> InterruptionExecuteRR(Niveau[] niveaux, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur, StackPanel deroulement)
-        {
-            bool interupt = false;
-            bool vide = false;
-            if (indiceNiveau != -1 && niveaux[indiceNiveau].listePrets.Count == 0) vide = true;
-            bool Anime = await MAJListBloque(niveaux, listebloqueGenerale, ListesPretsViews, ListeBloqueView, deroulement);
-            if (indiceNiveau != -1)
-            {
-                if (niveaux[indiceNiveau].listePrets.Count != 0 && niveaux[indiceNiveau].listePrets[0].InterruptionExist())
+                if (Anime && vide)
                 {
-                    interupt = true;
-                    niveaux[indiceNiveau].listePrets[0].transition = 0; //Blocage du processus qui était entrain d'exécution
-                    niveaux[indiceNiveau].listePrets[0].etat = 0;
-                    await Blocage_MultiLvl(ListeBloqueView, Processeur);
-                    listebloqueGenerale.Add((ProcessusNiveau)niveaux[indiceNiveau].listePrets[0]);
-                    await AfficherDeroulement(deroulement, listebloqueGenerale);
-                    niveaux[indiceNiveau].listePrets.RemoveAt(0);
-
+                    if (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, niveaux.Length))
+                    {
+                        listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
+                        await AfficherDeroulement(niveaux, deroulement, listebloqueGenerale, indiceNiveau);
+                        await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
+                    }
                 }
             }
 
