@@ -147,7 +147,7 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
-                else if (!SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
+                else if (!SimulationPage_MultiLvl.paused ) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
             }
             if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0 && !noDis)
             {
@@ -249,7 +249,7 @@ namespace Ordonnancement
                         anime = true;
                     }
                 }
-                else if (!SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
+                else if (!SimulationPage_MultiLvl.paused) AfficherEtat(listeGeneral, Ordonnancement.GanttChart, temps);
             }
             if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && listePrets.Count != 0 && !noDis)
             {
