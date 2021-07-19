@@ -21,12 +21,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_048E813B2FAEE2B33D4BE0DB2093EA87"
-        "OwnerKey" = "8:_FC3C26F907FE47CF90A3EDE792C69D88"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0ED3B5DB1A1D41569BAD5E69835D8DC1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -107,6 +101,12 @@
         {
         "MsmKey" = "8:_3A283194C0F1422AAB790AA72B3693B4"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3ACBF3283FA5A503447CEE38E795BA36"
+        "OwnerKey" = "8:_74D9BE9979A74205B5B62593D862A83B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -202,6 +202,12 @@
         "Entry"
         {
         "MsmKey" = "8:_71FB356001B84770B158BF4D2BE1DE5E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_74D9BE9979A74205B5B62593D862A83B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -322,7 +328,7 @@
         "Entry"
         {
         "MsmKey" = "8:_D02002CB09A102DF2F3857027D4DC70E"
-        "OwnerKey" = "8:_FC3C26F907FE47CF90A3EDE792C69D88"
+        "OwnerKey" = "8:_74D9BE9979A74205B5B62593D862A83B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -387,12 +393,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FC3C26F907FE47CF90A3EDE792C69D88"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_FE2C6459AC6E4E528D935056FDB8C401"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -400,19 +400,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FC3C26F907FE47CF90A3EDE792C69D88"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_048E813B2FAEE2B33D4BE0DB2093EA87"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D02002CB09A102DF2F3857027D4DC70E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3ACBF3283FA5A503447CEE38E795BA36"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_74D9BE9979A74205B5B62593D862A83B"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -440,6 +440,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -464,6 +472,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -512,37 +528,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_048E813B2FAEE2B33D4BE0DB2093EA87"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:WpfCharts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_048E813B2FAEE2B33D4BE0DB2093EA87"
-                    {
-                    "Name" = "8:WpfCharts.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:WpfCharts.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_734FBB683E5C4BCCB5BC50318396BD2F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0ED3B5DB1A1D41569BAD5E69835D8DC1"
@@ -823,6 +808,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3ACBF3283FA5A503447CEE38E795BA36"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:WpfCharts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_3ACBF3283FA5A503447CEE38E795BA36"
+                    {
+                    "Name" = "8:WpfCharts.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:WpfCharts.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_734FBB683E5C4BCCB5BC50318396BD2F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3F69BB8CC403471D9E02C3D1FEC2A26F"
@@ -1795,7 +1811,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_734FBB683E5C4BCCB5BC50318396BD2F"
             {
-            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -1855,7 +1871,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CPU Simulator"
         "ProductCode" = "8:{A5F97C86-39A7-4697-AE44-0EDA7B1CF211}"
-        "PackageCode" = "8:{5024782E-BDAE-40FB-9703-626D9108E75F}"
+        "PackageCode" = "8:{A17581FA-47D2-49CF-B893-2740B1822CCD}"
         "UpgradeCode" = "8:{F6C3A08E-8B3E-44F4-956D-1005EE0C1C4B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1876,7 +1892,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:1"
+        "TargetPlatform" = "3:0"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"
@@ -1975,15 +1991,15 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C89364F91AA6434AB204A6F708D2CA11"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6FA54BF3EBEC4849A6367754A9A3997F"
             {
             "Name" = "8:CPU Simulator"
             "Arguments" = "8:"
-            "Description" = "8:Logiciel de visualisation des algorithme d'ordonnancement"
+            "Description" = "8:Logiciel de visualisation des algorithmes d'ordonnancement"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_FC3C26F907FE47CF90A3EDE792C69D88"
+            "Target" = "8:_74D9BE9979A74205B5B62593D862A83B"
             "Folder" = "8:_87A19B3C00564729BA8E558DC6452DFB"
             "WorkingFolder" = "8:_734FBB683E5C4BCCB5BC50318396BD2F"
             "Icon" = "8:_5290161F95554B3294F0A1BD1DC6CA9E"
@@ -2388,7 +2404,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FC3C26F907FE47CF90A3EDE792C69D88"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_74D9BE9979A74205B5B62593D862A83B"
             {
             "SourcePath" = "8:..\\FinalAppTest\\obj\\Debug\\FinalAppTest.exe"
             "TargetName" = "8:"
