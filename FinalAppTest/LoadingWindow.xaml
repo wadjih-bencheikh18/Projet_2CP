@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalAppTest"
         mc:Ignorable="d"
-        Title="LoadingWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+        Title="LoadingWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="Logo (1).ico" ResizeMode="NoResize" WindowStyle="None">
     <Grid x:Name="BackgroundLoad">
         <Grid.Background>
             <ImageBrush ImageSource="Pics/BackgroundLoading.png"/>
