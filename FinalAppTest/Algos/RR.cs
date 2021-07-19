@@ -173,7 +173,7 @@ namespace Ordonnancement
                         if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
                                 noDis = true;
                     }
-                    if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) break;
+                    if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) || listePrets.Count == 0) break;
                     niveaux[indiceNiveau].indice[1]++;  // quantum++
                     if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                     listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
@@ -308,7 +308,7 @@ namespace Ordonnancement
                     if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
                         noDis = true;
                 }
-                if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) break;
+                if (!PrioNiveaux(niveaux, indiceNiveau, nbNiveau) || listePrets.Count==0) break;
                 niveaux[indiceNiveau].indice[1]++;  // quantum++
                 if (listePrets[0].tempsRestant == listePrets[0].duree) listePrets[0].tempsReponse = temps - 1 - listePrets[0].tempsArriv;
                 listePrets[0].tempsRestant--; //L'exécution courante du 1er processus de listePrets => décrémenter tempsRestant
