@@ -125,7 +125,14 @@ namespace Ordonnancement
                 if (!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
-                if (!SimulationPage_MultiLvl.paused) if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) anime = true; 
+                if (!SimulationPage_MultiLvl.paused) if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) anime = true;
+                if (anime)
+                {
+                    listePrets[0].transition = 2; //Activation du 1er procussus dans ListePrets
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
+                    listePrets[0].transition = 0;
+                    await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
+                }
                 if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused) //s'il y a des processus prêts
                 {
                     listePrets[0].etat = 2;
@@ -225,6 +232,13 @@ namespace Ordonnancement
                 TempsView.Text = temps.ToString();
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
                 if (!SimulationPage_MultiLvl.paused) if(await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement)) anime = true;
+                if (anime)
+                {
+                    listePrets[0].transition = 2; //Activation du 1er procussus dans ListePrets
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
+                    listePrets[0].transition = 0;
+                    await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
+                }
                 if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused) //s'il y a des processus prêts
                 {
                     listePrets[0].transition = 2; //Activation du 1er processus de listePrets

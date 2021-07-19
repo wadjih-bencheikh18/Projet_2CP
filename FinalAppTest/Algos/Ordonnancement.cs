@@ -976,6 +976,31 @@ namespace Ordonnancement
                     niveaux[indiceNiveau].listePrets.RemoveAt(0);
                     
                 }
+                if (Anime && vide) interupt = true;
+            }
+
+
+            return interupt;
+        }
+        public async Task<bool> InterruptionExecuteRR(Niveau[] niveaux, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur, StackPanel deroulement)
+        {
+            bool interupt = false;
+            bool vide = false;
+            if (indiceNiveau != -1 && niveaux[indiceNiveau].listePrets.Count == 0) vide = true;
+            bool Anime = await MAJListBloque(niveaux, listebloqueGenerale, ListesPretsViews, ListeBloqueView, deroulement);
+            if (indiceNiveau != -1)
+            {
+                if (niveaux[indiceNiveau].listePrets.Count != 0 && niveaux[indiceNiveau].listePrets[0].InterruptionExist())
+                {
+                    interupt = true;
+                    niveaux[indiceNiveau].listePrets[0].transition = 0; //Blocage du processus qui était entrain d'exécution
+                    niveaux[indiceNiveau].listePrets[0].etat = 0;
+                    await Blocage_MultiLvl(ListeBloqueView, Processeur);
+                    listebloqueGenerale.Add((ProcessusNiveau)niveaux[indiceNiveau].listePrets[0]);
+                    await AfficherDeroulement(deroulement, listebloqueGenerale);
+                    niveaux[indiceNiveau].listePrets.RemoveAt(0);
+
+                }
             }
 
 
