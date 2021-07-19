@@ -114,12 +114,16 @@ namespace Ordonnancement
                 }
                 else if ((indice < listeProcessus.Count || listebloque.Count != 0) && !SimulationPage_MultiLvl.paused)
                 {
-                    temps++;
-                    TempsView.Text = temps.ToString();
-                    await InterruptionExecute(niveaux, listebloque, ListesPretsViews, -1, ListeBloqueView, Processeur, deroulement);
-                    indiceNiveau = -1;
-                    AfficherEtat(listeProcessus, Ordonnancement.GanttChart, temps);
-                    tempsRepos++;
+                    await InterruptionExecute(niveaux, listebloque, ListesPretsViews, -1, ListeBloqueView, Processeur, deroulement, nbNiveau);
+                    for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listePrets.Count == 0; indiceNiveau++) ; //la recherche du permier niveau non vide
+                    if (indiceNiveau >= nbNiveau)
+                    {
+                        tempsRepos++;
+                        temps++;
+                        TempsView.Text = temps.ToString();
+                        AfficherEtat(listeProcessus, Ordonnancement.GanttChart, temps);
+                    }
+
                 }
             }
             TauxUtil(temps);

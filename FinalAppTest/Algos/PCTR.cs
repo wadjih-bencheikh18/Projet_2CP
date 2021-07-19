@@ -216,7 +216,7 @@ namespace Ordonnancement
                 if(!SimulationPage_MultiLvl.paused) temps++;
                 TempsView.Text = temps.ToString();
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
-                if (!SimulationPage_MultiLvl.paused) await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
+                if (!SimulationPage_MultiLvl.paused) await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau);
                 anime = false;
                 debut = false;
                 if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //S'il y a des processus prêts
@@ -376,7 +376,7 @@ namespace Ordonnancement
                 if(!SimulationPage_MultiLvl.paused) temps++;
                 TempsView.Text = temps.ToString();
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
-                if (!SimulationPage_MultiLvl.paused) await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
+                if (!SimulationPage_MultiLvl.paused) await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau);
                 anime = false;
                 debut = false;
                 if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //S'il y a des processus prêts

@@ -138,7 +138,7 @@ namespace Ordonnancement
                     listePrets[0].transition = 0;
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
-                await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
+                await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau);
                 niveaux[indiceNiveau].indice[1] = 0;
                 if (!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
@@ -258,7 +258,7 @@ namespace Ordonnancement
                     listePrets[0].transition = 0;
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                 }
-                await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
+                await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau);
                 niveaux[indiceNiveau].indice[1] = 0;
                 if (!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();

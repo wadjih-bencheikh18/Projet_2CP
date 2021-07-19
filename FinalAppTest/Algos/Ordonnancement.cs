@@ -957,13 +957,15 @@ namespace Ordonnancement
             }
             return Anime;
         }
-        public async Task<bool> InterruptionExecute(Niveau[] niveaux, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur, StackPanel deroulement)
+        public async Task<bool> InterruptionExecute(Niveau[] niveaux, List<ProcessusNiveau> listebloqueGenerale, StackPanel[] ListesPretsViews, int indiceNiveau, StackPanel ListeBloqueView, StackPanel Processeur, StackPanel deroulement,int nbNiveau)
         {
+            bool cas = false;
+            if (indiceNiveau == -1) cas = true;
             bool interupt = false;
             bool vide = false;
-            if (indiceNiveau != -1 && listePrets.Count == 0) vide = true;
+            if (!cas && listePrets.Count == 0) vide = true;
             bool Anime = await MAJListBloque(niveaux, listebloqueGenerale, ListesPretsViews, ListeBloqueView, deroulement);
-            if (indiceNiveau != -1)
+            if (!cas)
             {
                 if (listePrets.Count != 0 && listePrets[0].InterruptionExist())
                 {
@@ -974,9 +976,9 @@ namespace Ordonnancement
                     await AfficherDeroulement(deroulement, listebloqueGenerale);
                     await Blocage_MultiLvl(ListeBloqueView, Processeur);
                     listePrets.RemoveAt(0);
-                    if (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, niveaux.Length))
+                    if (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
                     {
-                        listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
+                        listePrets[0].transition = 3; //Activation du 1er processus de ListePrets
                         await AfficherDeroulement(niveaux, deroulement, listebloqueGenerale, indiceNiveau);
                         await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
                     }
@@ -985,13 +987,13 @@ namespace Ordonnancement
                 {
                     if (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, niveaux.Length))
                     {
-                        listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
+                        listePrets[0].transition = 3; //Activation du 1er processus de ListePrets
                         await AfficherDeroulement(niveaux, deroulement, listebloqueGenerale, indiceNiveau);
                         await Activation_MultiLvl(ListesPretsViews[indiceNiveau], Processeur, listePrets[0]);
                     }
                 }
             }
-
+           
 
             return interupt;
         }

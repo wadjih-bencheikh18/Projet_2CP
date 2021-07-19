@@ -372,7 +372,7 @@ namespace Ordonnancement
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
                     anime = false;
                 }
-                await InterruptionExecute(niveaux,listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement);
+                await InterruptionExecute(niveaux,listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau);
                 temps++;
                 UpdateStackTime(temps);
                 TempsView.Text = temps.ToString();
