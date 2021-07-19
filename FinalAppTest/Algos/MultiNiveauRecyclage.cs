@@ -124,6 +124,7 @@ namespace Ordonnancement
                         AfficherEtat(listeProcessus, Ordonnancement.GanttChart, temps);
                     }
 
+
                 }
             }
             TauxUtil(temps);

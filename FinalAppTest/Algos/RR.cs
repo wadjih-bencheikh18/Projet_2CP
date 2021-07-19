@@ -324,6 +324,7 @@ namespace Ordonnancement
                     niveaux[indiceNiveau].indice[1] = 0;  // nouveau quantum
                     if (indiceNiveau + 1 < nbNiveau)
                     {
+                        ((ProcessusNiveau)listePrets[0]).niveau++;
                         await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, listePrets[0], indiceNiveau + 1);
                         niveaux[indiceNiveau + 1].listePrets.Add(listePrets[0]);
                     }
@@ -345,6 +346,7 @@ namespace Ordonnancement
                 await AfficherDeroulement(deroulement, listebloqueGenerale);
                 if (indiceNiveau + 1 < nbNiveau)
                 {
+                    ((ProcessusNiveau)listePrets[0]).niveau++;
                     await Desactivation_MultiLvl(ListesPretsViews[indiceNiveau + 1], Processeur, listePrets[0], indiceNiveau + 1);
                     niveaux[indiceNiveau + 1].listePrets.Add(listePrets[0]);
                 }
