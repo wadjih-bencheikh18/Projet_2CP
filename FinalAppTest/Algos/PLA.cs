@@ -125,8 +125,7 @@ namespace Ordonnancement
             bool noDis = false;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;
-            if (niveaux[indiceNiveau].indice[2] == 0) niveaux[indiceNiveau].indice[1] = 1; //si aucun processus du niveau actuel n'a été executé alors il faut trier les processus de listePrets de ce niveau par durée
-            niveaux[indiceNiveau].indice[2] = 1; //l'execution d'un processus de ce niveau commence
+            niveaux[indiceNiveau].indice[1] = 1;
             while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop) //s'il existe des processus prêts et le temps < le temps de fin  ou il n'y a pas de temps fin
             {
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
@@ -138,11 +137,11 @@ namespace Ordonnancement
                     listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
                     await AfficherDeroulement(deroulement, listebloqueGenerale);
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
+                    niveaux[indiceNiveau].indice[1] = 0;
                 }
                 if (!SimulationPage_MultiLvl.paused)
                     if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau) && !PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
                         noDis = true; 
-                niveaux[indiceNiveau].indice[1] = 0;
                 if(!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
                 if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //il y a des processus prêts
@@ -245,8 +244,7 @@ namespace Ordonnancement
             bool noDis = false;
             StackPanel ListePretsView = ListesPretsViews[indiceNiveau];
             int temps = tempsDebut;
-            if (niveaux[indiceNiveau].indice[2] == 0) niveaux[indiceNiveau].indice[1] = 1; //si aucun processus du niveau actuel n'a été executé alors il faut trier les processus de listePrets de ce niveau par durée
-            niveaux[indiceNiveau].indice[2] = 1; //l'execution d'un processus de ce niveau commence
+            niveaux[indiceNiveau].indice[1] = 1; //si aucun processus du niveau actuel n'a été executé alors il faut trier les processus de listePrets de ce niveau par durée
             while (listePrets.Count != 0 && PrioNiveaux(niveaux, indiceNiveau, nbNiveau) && !SimulationPage_MultiLvl.stop) //s'il existe des processus prêts et le temps < le temps de fin  ou il n'y a pas de temps fin
             {
                 niveaux[indiceNiveau].indice[0] = await MAJListePrets(temps, niveaux[indiceNiveau].indice[0], niveaux, listeGeneral, indiceNiveau, ListesPretsViews); //remplir la liste des processus prêts de chaque niveau
@@ -258,11 +256,11 @@ namespace Ordonnancement
                     listePrets[0].transition = 2; //Activation du 1er processus de ListePrets
                     await AfficherDeroulement(deroulement, listebloqueGenerale);
                     await Activation_MultiLvl(ListePretsView, Processeur, listePrets[0]);
+                    niveaux[indiceNiveau].indice[1] = 0;
                 }
                 if (!SimulationPage_MultiLvl.paused)
                     if (await InterruptionExecute(niveaux, listebloqueGenerale, ListesPretsViews, indiceNiveau, ListeBloqueView, Processeur, deroulement, nbNiveau) && !PrioNiveaux(niveaux, indiceNiveau, nbNiveau))
                         noDis = true; 
-                niveaux[indiceNiveau].indice[1] = 0;
                 if(!SimulationPage_MultiLvl.paused) temps++; //incrementer le temps réel
                 TempsView.Text = temps.ToString();
                 if (listePrets.Count != 0 && !SimulationPage_MultiLvl.paused && PrioNiveaux(niveaux, indiceNiveau, nbNiveau)) //il y a des processus prêts

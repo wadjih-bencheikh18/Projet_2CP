@@ -121,6 +121,7 @@ namespace Ordonnancement
         public void Push(Interruption interruption)
         {
             listeInterruptions.Add(interruption);
+            SortListeInterruptions();
         }
 
         public void SortListeInterruptions()
