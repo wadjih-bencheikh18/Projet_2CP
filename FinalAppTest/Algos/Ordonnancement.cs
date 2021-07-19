@@ -944,7 +944,7 @@ namespace Ordonnancement
             for (int i = 0; i < listebloqueGenerale.Count; i++)
             {
                 listebloqueGenerale[i].InterruptionExecute();
-                if (listebloqueGenerale[i].indiceInterruptions[0] == listebloqueGenerale[i].indiceInterruptions[1])
+                if (listebloqueGenerale[i].indiceInterruptions[0] >= listebloqueGenerale[i].indiceInterruptions[1])
                 {
                     listebloqueGenerale[i].transition = 3; //Réveil du ieme processus de listebloqueGenerale
                     listebloqueGenerale[i].etat = 1;

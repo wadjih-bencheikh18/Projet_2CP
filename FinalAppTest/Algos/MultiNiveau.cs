@@ -112,7 +112,6 @@ namespace Ordonnancement
                 indice = await MAJListePrets(temps, indice, ListesPretsViews);  //remplir la liste des processus prêts de chaque niveau
                 if (!SimulationPage_MultiLvl.paused)
                 {
-                    await InterruptionExecute(niveaux, listebloque, ListesPretsViews, -1, ListeBloqueView, Processeur, deroulement);
                     for (indiceNiveau = 0; indiceNiveau < nbNiveau && niveaux[indiceNiveau].listePrets.Count == 0; indiceNiveau++) ; //la recherche du permier niveau non vide
                 }
                 if (SimulationPage_MultiLvl.paused) continue;
@@ -126,6 +125,7 @@ namespace Ordonnancement
                 {
                     temps++;
                     TempsView.Text = temps.ToString();
+                    await InterruptionExecute(niveaux, listebloque, ListesPretsViews, -1, ListeBloqueView, Processeur, deroulement);
                     AfficherEtat(listeProcessus,Ordonnancement.GanttChart, temps);
                     tempsRepos++;
                 }
